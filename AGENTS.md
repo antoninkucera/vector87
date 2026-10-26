@@ -8,6 +8,10 @@ Hosted on GitHub Pages (`https://github.com/antoninkucera/vector87`), fully stat
 - Astro (static output), Tailwind CSS, Chart.js
 - Data: pre-generated JSON committed into this repo
 
+## Localization (i18n)
+- Two supported locales: **English (`en`, primary/default)** at root routes (`/`, `/roles`, `/gcp-hub`, `/academy`, `/about`) and **Czech (`cs`)** at `/cs/*` (`/cs/`, `/cs/roles`, `/cs/gcp-hub`, `/cs/academy`, `/cs/about`).
+- Architecture follows Rule #10 (Generic base + delta): shared view components in `src/components/views/` render both languages using typed dictionaries in `src/i18n/ui.ts` and localized `en`/`cs` fields in `src/data/market-data.json`.
+
 ## Visual identity
 - Dark style by default, high contrast for charts, no visual clutter.
 - Brand meaning: precise mathematical sense (vector = direction of market development), clear analytical vision; "87" signals maturity.

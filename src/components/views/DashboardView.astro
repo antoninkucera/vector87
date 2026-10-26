@@ -1,0 +1,545 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import MarketTrendChart from '../MarketTrendChart.astro';
+import marketData from '../../data/market-data.json';
+import { ui, getLocalePath, type Locale } from '../../i18n/ui';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = ui[lang].dashboard;
+
+const {
+  meta,
+  market_vitality,
+  tech_cloud_stack,
+  industry_heatmap,
+  hierarchy_shift,
+  trend_radar,
+  time_series,
+  headcount_analytics,
+} = marketData;
+
+const topCompaniesSlice = market_vitality.top_hiring_companies.slice(0, 10);
+
+const cloudLabels = [
+  ...tech_cloud_stack.hyperscalers.map((h) => h.skill_name),
+  ...tech_cloud_stack.data_platforms.slice(0, 4).map((p) => p.skill_name),
+];
+const cloudCounts = [
+  ...tech_cloud_stack.hyperscalers.map((h) => h.job_count),
+  ...tech_cloud_stack.data_platforms.slice(0, 4).map((p) => p.job_count),
+];
+
+const topTechSlice = tech_cloud_stack.top_technologies.slice(0, 12);
+const seniorityItems = hierarchy_shift.by_seniority;
+const radarItems = trend_radar.keywords;
+
+function getHeatmapCellStyle(val: number, maxVal: number): string {
+  if (val <= 0) return 'background-color: rgba(15, 23, 42, 0.4); color: #475569;';
+  const ratio = Math.min(val / Math.max(maxVal, 1), 1);
+  const alpha = (0.12 + ratio * 0.68).toFixed(2);
+  const textColor = ratio > 0.45 ? '#ffffff' : '#bae6fd';
+  return `background-color: rgba(34, 211, 238, ${alpha}); color: ${textColor};`;
+}
+
+const maxSectorSenCount = Math.max(
+  ...industry_heatmap.sectors.flatMap((s) => Object.values(s.seniority_breakdown)),
+  1
+);
+
+const sp500AdoptionPct = Math.round((market_vitality.sp500_hiring_companies / meta.sp500_tracked_companies) * 100);
+---
+
+<Layout title={t.pageTitle} activeNav="dashboard" lang={lang}>
+  <!-- Hero Header -->
+  <section class="mb-10 pb-8 border-b border-slate-800/80">
+    <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+      <div class="space-y-3 max-w-3xl">
+        <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-mono">
+          <span>{t.heroBadge}</span>
+          <span class="text-slate-500">•</span>
+          <span>SNAPSHOT {meta.latest_snapshot_date}</span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight">
+          {t.heroTitlePrefix}
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-cyan-400 to-blue-500">
+            {t.heroTitleHighlight}
+          </span>
+        </h1>
+        <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+          {t.heroDescription(meta.sp500_tracked_companies)}
+        </p>
+      </div>
+
+      <div class="flex flex-wrap gap-3 shrink-0">
+        <a
+          href={getLocalePath(lang, 'roles')}
+          class="px-4 py-2.5 rounded-lg bg-cyan-400 text-slate-950 font-mono text-xs font-bold hover:bg-cyan-300 transition-colors"
+        >
+          {t.ctaRoles}
+        </a>
+        <a
+          href={getLocalePath(lang, 'gcp')}
+          class="px-4 py-2.5 rounded-lg border border-slate-700 bg-slate-900/90 text-slate-200 font-mono text-xs font-semibold hover:border-cyan-400/50 hover:text-cyan-300 transition-colors"
+        >
+          {t.ctaGcp}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 01: MARKET VITALITY -->
+  <section id="vitality" class="mb-14 scroll-mt-20">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 mb-6">
+      <div>
+        <span class="text-xs font-mono uppercase tracking-widest text-cyan-400">{t.s1Tag}</span>
+        <h2 class="text-2xl font-bold text-white tracking-tight mt-0.5">{t.s1Title}</h2>
+      </div>
+      <p class="text-xs font-mono text-slate-400">{t.s1Sub}</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+      <div class="panel-surface rounded-xl p-5 border-l-2 border-l-cyan-400">
+        <p class="text-xs font-mono uppercase text-slate-400">{t.kpi1Title}</p>
+        <div class="mt-2 flex items-baseline gap-2">
+          <span class="text-3xl font-bold font-mono text-cyan-300">{market_vitality.sp500_ai_intensity_pct}%</span>
+          <span class="text-xs font-mono text-slate-400">{t.kpi1Sub}</span>
+        </div>
+        <p class="text-xs text-slate-400 mt-2 font-mono">
+          {t.kpi1Foot(
+            market_vitality.sp500_ai_data_jobs.toLocaleString('en-US'),
+            market_vitality.sp500_open_jobs_pool.toLocaleString('en-US')
+          )}
+        </p>
+      </div>
+
+      <div class="panel-surface rounded-xl p-5 border-l-2 border-l-blue-500">
+        <p class="text-xs font-mono uppercase text-slate-400">{t.kpi2Title}</p>
+        <div class="mt-2 flex items-baseline gap-2">
+          <span class="text-3xl font-bold font-mono text-white">{market_vitality.total_ai_data_jobs.toLocaleString('en-US')}</span>
+          <span class="text-xs font-mono text-emerald-400">{market_vitality.overall_ai_intensity_pct}% {t.kpi2Sub}</span>
+        </div>
+        <p class="text-xs text-slate-400 mt-2 font-mono">
+          {t.kpi2Foot(market_vitality.total_open_jobs_pool.toLocaleString('en-US'))}
+        </p>
+      </div>
+
+      <div class="panel-surface rounded-xl p-5 border-l-2 border-l-emerald-400">
+        <p class="text-xs font-mono uppercase text-slate-400">{t.kpi3Title}</p>
+        <div class="mt-2 flex items-baseline gap-2">
+          <span class="text-3xl font-bold font-mono text-emerald-400">
+            {market_vitality.sp500_hiring_companies}
+            <span class="text-lg text-slate-500">/{meta.sp500_tracked_companies}</span>
+          </span>
+        </div>
+        <p class="text-xs text-slate-400 mt-2 font-mono">
+          {t.kpi3Foot(sp500AdoptionPct)}
+        </p>
+      </div>
+
+      <div class="panel-surface rounded-xl p-5 border-l-2 border-l-amber-400">
+        <p class="text-xs font-mono uppercase text-slate-400">{t.kpi4Title}</p>
+        <div class="mt-2 flex items-baseline gap-3">
+          <span class="text-2xl font-bold font-mono text-white">
+            {market_vitality.us_ca_ai_data_jobs.toLocaleString('en-US')} <small class="text-xs text-slate-400 font-normal">NA</small>
+          </span>
+          <span class="text-slate-600">/</span>
+          <span class="text-2xl font-bold font-mono text-amber-300">
+            {market_vitality.eu_uk_ch_ai_data_jobs.toLocaleString('en-US')} <small class="text-xs text-slate-400 font-normal">EU+</small>
+          </span>
+        </div>
+        <p class="text-xs text-slate-400 mt-2 font-mono">
+          {t.kpi4Foot} <strong class="text-slate-200">{market_vitality.cz_ai_data_jobs}</strong> {t.kpi4FootSuffix}
+        </p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div class="lg:col-span-2">
+        <MarketTrendChart
+          chartId="chart-top-companies"
+          title={t.chartTopCompTitle}
+          subtitle={t.chartTopCompSub}
+          badge="LIVE ATS POOL"
+          type="horizontalBar"
+          labels={topCompaniesSlice.map((c) => c.company_name)}
+          datasets={[
+            {
+              label: t.chartTopCompLabel,
+              data: topCompaniesSlice.map((c) => c.ai_data_jobs),
+              backgroundColor: 'rgba(34, 211, 238, 0.75)',
+              borderColor: '#22d3ee',
+              borderWidth: 1,
+              borderRadius: 4,
+            },
+          ]}
+          heightClass="h-80"
+        />
+      </div>
+
+      <div class="panel-surface rounded-xl p-5 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-sm font-semibold text-white">{t.geoTitle}</h3>
+            <span class="text-[10px] font-mono text-slate-400 uppercase">{t.geoBadge}</span>
+          </div>
+          <div class="space-y-3">
+            {market_vitality.regional_breakdown.slice(0, 8).map((reg) => (
+              <div>
+                <div class="flex justify-between text-xs font-mono mb-1">
+                  <span class="text-slate-200">
+                    <strong class="text-cyan-400 mr-1.5">{reg.country_code}</strong>
+                    {reg.country_name}
+                  </span>
+                  <span class="text-slate-300">
+                    {reg.job_count.toLocaleString('en-US')}{' '}
+                    <span class="text-slate-500">({reg.share_pct}%)</span>
+                  </span>
+                </div>
+                <div class="w-full h-1.5 bg-slate-900 rounded-full overflow-hidden border border-slate-800">
+                  <div
+                    class="h-full bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full"
+                    style={`width: ${Math.max(reg.share_pct, 2)}%`}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="mt-6 pt-4 border-t border-slate-800/80 text-[11px] font-mono text-slate-400 space-y-1.5">
+          <div class="flex items-center justify-between">
+            <span>{t.longitudinalLabel}</span>
+            <span class="text-amber-300">{time_series.has_mature_history ? 'MATURE COHORTS' : 'Q4 BASELINE BUILD'}</span>
+          </div>
+          <p class="text-[11px] font-sans text-slate-400 leading-relaxed">
+            {time_series.status_note[lang]}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02: TECH & CLOUD STACK -->
+  <section id="stack" class="mb-14 scroll-mt-20">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 mb-6">
+      <div>
+        <span class="text-xs font-mono uppercase tracking-widest text-cyan-400">{t.s2Tag}</span>
+        <h2 class="text-2xl font-bold text-white tracking-tight mt-0.5">{t.s2Title}</h2>
+      </div>
+      <p class="text-xs font-mono text-slate-400">{t.s2Sub}</p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+      <MarketTrendChart
+        chartId="chart-cloud-share"
+        title={t.chartCloudTitle}
+        subtitle={t.chartCloudSub}
+        badge="CLOUD WARS"
+        type="bar"
+        labels={cloudLabels}
+        datasets={[
+          {
+            label: t.chartCloudLabel,
+            data: cloudCounts,
+            backgroundColor: [
+              'rgba(245, 158, 11, 0.8)',
+              'rgba(34, 211, 238, 0.85)',
+              'rgba(59, 130, 246, 0.8)',
+              'rgba(56, 189, 248, 0.65)',
+              'rgba(239, 68, 68, 0.65)',
+              'rgba(16, 185, 129, 0.65)',
+              'rgba(139, 92, 246, 0.65)',
+            ],
+            borderRadius: 5,
+          },
+        ]}
+        heightClass="h-72"
+      />
+
+      <MarketTrendChart
+        chartId="chart-top-tech"
+        title={t.chartTechTitle}
+        subtitle={t.chartTechSub}
+        badge="CORE STACK"
+        type="horizontalBar"
+        labels={topTechSlice.map((item) => item.skill_name)}
+        datasets={[
+          {
+            label: t.chartTechLabel,
+            data: topTechSlice.map((item) => item.penetration_pct),
+            backgroundColor: 'rgba(59, 130, 246, 0.78)',
+            borderColor: '#3b82f6',
+            borderWidth: 1,
+            borderRadius: 4,
+          },
+        ]}
+        valueSuffix="%"
+        heightClass="h-72"
+      />
+    </div>
+
+    <div class="panel-surface rounded-xl p-5">
+      <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+        <div>
+          <h3 class="text-sm font-semibold text-white">{t.coocTitle}</h3>
+          <p class="text-xs text-slate-400">{t.coocSub}</p>
+        </div>
+        <span class="text-[11px] font-mono text-cyan-400">v_skill_cooccurrence</span>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+        {tech_cloud_stack.skill_cooccurrence.slice(0, 12).map((pair) => (
+          <div class="p-3 rounded-lg bg-slate-900/90 border border-slate-800/90 flex flex-col justify-between">
+            <div class="text-xs font-semibold text-slate-200 leading-snug">
+              <span>{pair.skill_a}</span>
+              <span class="text-cyan-400 mx-1">+</span>
+              <span>{pair.skill_b}</span>
+            </div>
+            <div class="mt-2.5 flex items-center justify-between text-[11px] font-mono">
+              <span class="text-slate-400">{pair.cooccurrence_count}×</span>
+              <span class="px-1.5 py-0.5 rounded bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">
+                J: {pair.jaccard_pct}%
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 03: INDUSTRY HEATMAP -->
+  <section id="heatmap" class="mb-14 scroll-mt-20">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 mb-6">
+      <div>
+        <span class="text-xs font-mono uppercase tracking-widest text-cyan-400">{t.s3Tag}</span>
+        <h2 class="text-2xl font-bold text-white tracking-tight mt-0.5">{t.s3Title}</h2>
+      </div>
+      <p class="text-xs font-mono text-slate-400">{t.s3Sub}</p>
+    </div>
+
+    <div class="panel-surface rounded-xl overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="border-b border-slate-800 bg-slate-950/80 text-[11px] font-mono uppercase text-slate-400">
+              <th class="py-3.5 px-4">{t.thSector}</th>
+              <th class="py-3.5 px-3 text-right">{t.thFirms}</th>
+              <th class="py-3.5 px-3 text-right">{t.thAiJobs}</th>
+              <th class="py-3.5 px-3 text-right text-cyan-300">{t.thIntensity}</th>
+              <th class="py-3.5 px-3 text-right text-emerald-400">{t.thGenAi}</th>
+              {industry_heatmap.seniority_levels.map((lvl) => (
+                <th class="py-3.5 px-2.5 text-center">{lvl.replace(' / ', '/')}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800/70 text-xs">
+            {industry_heatmap.sectors.map((sec) => (
+              <tr class="hover:bg-slate-900/50 transition-colors">
+                <td class="py-3 px-4 font-semibold text-white whitespace-nowrap">{sec.sector}</td>
+                <td class="py-3 px-3 text-right font-mono text-slate-400">{sec.companies_count}</td>
+                <td class="py-3 px-3 text-right font-mono text-slate-200 font-semibold">
+                  {sec.ai_data_jobs.toLocaleString('en-US')}
+                </td>
+                <td class="py-3 px-3 text-right font-mono">
+                  <span class="px-2 py-0.5 rounded bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 font-bold">
+                    {sec.ai_intensity_pct}%
+                  </span>
+                </td>
+                <td class="py-3 px-3 text-right font-mono text-emerald-400">
+                  {sec.genai_share_of_ai_pct}%
+                </td>
+                {industry_heatmap.seniority_levels.map((lvl) => {
+                  const val = sec.seniority_breakdown[lvl as keyof typeof sec.seniority_breakdown] || 0;
+                  return (
+                    <td class="p-1.5 text-center font-mono text-[11px]">
+                      <div
+                        class="py-1.5 px-2 rounded font-medium"
+                        style={getHeatmapCellStyle(val, maxSectorSenCount)}
+                      >
+                        {val}
+                      </div>
+                    </td>
+                  );
+                })}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04: HIERARCHY SHIFT -->
+  <section id="hierarchy" class="mb-14 scroll-mt-20">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 mb-6">
+      <div>
+        <span class="text-xs font-mono uppercase tracking-widest text-cyan-400">{t.s4Tag}</span>
+        <h2 class="text-2xl font-bold text-white tracking-tight mt-0.5">{t.s4Title}</h2>
+      </div>
+      <p class="text-xs font-mono text-slate-400">{t.s4Sub}</p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div class="panel-surface rounded-xl p-6 flex flex-col justify-between">
+        <div>
+          <span class="text-[11px] font-mono uppercase text-cyan-400">{t.ratioTag}</span>
+          <h3 class="text-xl font-bold text-white mt-1">
+            {t.ratioTitle(hierarchy_shift.ic_to_management_ratio)}
+          </h3>
+          <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+            {t.ratioDesc(hierarchy_shift.ic_share_pct, hierarchy_shift.management_share_pct)}
+          </p>
+
+          <div class="mt-6">
+            <div class="flex justify-between text-xs font-mono mb-1.5">
+              <span class="text-cyan-300 font-bold">IC: {hierarchy_shift.ic_count.toLocaleString('en-US')} ({hierarchy_shift.ic_share_pct}%)</span>
+              <span class="text-violet-300 font-bold">MGMT: {hierarchy_shift.management_count.toLocaleString('en-US')} ({hierarchy_shift.management_share_pct}%)</span>
+            </div>
+            <div class="w-full h-3 rounded-full bg-slate-900 overflow-hidden flex border border-slate-800">
+              <div class="bg-cyan-400 h-full" style={`width: ${hierarchy_shift.ic_share_pct}%`} />
+              <div class="bg-violet-500 h-full" style={`width: ${hierarchy_shift.management_share_pct}%`} />
+            </div>
+          </div>
+
+          <div class="mt-6 space-y-2.5">
+            <p class="text-[11px] font-mono uppercase text-slate-400">{t.domainBreakdownLabel}</p>
+            {hierarchy_shift.by_domain.map((d) => (
+              <div class="flex items-center justify-between text-xs font-mono py-1 border-b border-slate-800/60">
+                <span class="text-slate-200">{d.domain}</span>
+                <span class="text-slate-400">
+                  <strong class="text-white">{d.ic_jobs}</strong> IC / {d.management_jobs} Mgmt
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="mt-6 pt-4 border-t border-slate-800/80">
+          <div class="flex items-center justify-between text-[11px] font-mono text-emerald-400 mb-1">
+            <span>LINKEDIN HEADCOUNT RATIO</span>
+            <span>PILOT ACTIVE</span>
+          </div>
+          <p class="text-[11px] text-slate-400 leading-relaxed">
+            {headcount_analytics.coverage_note[lang]}
+          </p>
+        </div>
+      </div>
+
+      <div class="lg:col-span-2">
+        <MarketTrendChart
+          chartId="chart-seniority-distribution"
+          title={t.chartSenTitle}
+          subtitle={t.chartSenSub}
+          badge="SENIORITY SKEW"
+          type="bar"
+          labels={seniorityItems.map((s) => s.seniority)}
+          datasets={[
+            {
+              label: t.chartSenLabel,
+              data: seniorityItems.map((s) => s.job_count),
+              backgroundColor: [
+                'rgba(148, 163, 184, 0.55)',
+                'rgba(56, 189, 248, 0.8)',
+                'rgba(34, 211, 238, 0.9)',
+                'rgba(16, 185, 129, 0.85)',
+                'rgba(139, 92, 246, 0.8)',
+                'rgba(245, 158, 11, 0.85)',
+              ],
+              borderRadius: 5,
+            },
+          ]}
+          heightClass="h-80"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- 05: TREND RADAR -->
+  <section id="trend-radar" class="mb-6 scroll-mt-20">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 mb-6">
+      <div>
+        <span class="text-xs font-mono uppercase tracking-widest text-cyan-400">{t.s5Tag}</span>
+        <h2 class="text-2xl font-bold text-white tracking-tight mt-0.5">{t.s5Title}</h2>
+      </div>
+      <p class="text-xs font-mono text-slate-400">{t.s5Sub}</p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <div class="lg:col-span-5">
+        <MarketTrendChart
+          chartId="chart-trend-radar"
+          title={t.chartRadarTitle}
+          subtitle={t.chartRadarSub}
+          badge="SIGNAL RADAR"
+          type="radar"
+          labels={radarItems.slice(0, 8).map((k) => k.label.split(' / ')[0])}
+          datasets={[
+            {
+              label: t.chartRadarLabel,
+              data: radarItems.slice(0, 8).map((k) => k.penetration_pct),
+              backgroundColor: 'rgba(34, 211, 238, 0.20)',
+              borderColor: '#22d3ee',
+              borderWidth: 2,
+            },
+          ]}
+          valueSuffix="%"
+          heightClass="h-80"
+        />
+      </div>
+
+      <div class="lg:col-span-7 panel-surface rounded-xl p-5">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-sm font-semibold text-white">{t.signalMatrixTitle}</h3>
+          <span class="text-[11px] font-mono text-slate-400">
+            N = {market_vitality.total_ai_data_jobs.toLocaleString('en-US')} {t.postingsLabel}
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {radarItems.map((kw) => {
+            const badgeColor =
+              kw.signal_stage === 'Dominant'
+                ? 'bg-cyan-500/15 text-cyan-300 border-cyan-500/40'
+                : kw.signal_stage === 'Scaling'
+                  ? 'bg-emerald-500/15 text-emerald-300 border-emerald-500/40'
+                  : kw.signal_stage === 'Emerging'
+                    ? 'bg-amber-500/15 text-amber-300 border-amber-500/40'
+                    : 'bg-slate-800 text-slate-300 border-slate-700';
+
+            return (
+              <div class="p-3.5 rounded-lg bg-slate-900/90 border border-slate-800 flex flex-col justify-between">
+                <div class="flex items-start justify-between gap-2">
+                  <div>
+                    <p class="text-xs font-semibold text-white">{kw.label}</p>
+                    <p class="text-[10px] font-mono text-slate-400 mt-0.5">
+                      {t.categoryLabel} {kw.category} • S&amp;P 500: {kw.sp500_job_count}×
+                    </p>
+                  </div>
+                  <span class:list={['px-2 py-0.5 rounded text-[10px] font-mono border shrink-0', badgeColor]}>
+                    {kw.signal_stage}
+                  </span>
+                </div>
+
+                <div class="mt-3">
+                  <div class="flex justify-between text-xs font-mono mb-1">
+                    <span class="text-cyan-300 font-bold">{kw.penetration_pct}% {t.ofMarket}</span>
+                    <span class="text-slate-400">{kw.job_count.toLocaleString('en-US')} {t.positionsWord}</span>
+                  </div>
+                  <div class="w-full h-1.5 rounded-full bg-slate-950 overflow-hidden">
+                    <div
+                      class="h-full bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full"
+                      style={`width: ${Math.min(kw.penetration_pct * 4.5, 100)}%`}
+                    />
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

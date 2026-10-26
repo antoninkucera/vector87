@@ -1,0 +1,252 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import MarketTrendChart from '../MarketTrendChart.astro';
+import marketData from '../../data/market-data.json';
+import { ui, type Locale } from '../../i18n/ui';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = ui[lang].roles;
+
+const { roles, meta } = marketData;
+const domains = Array.from(new Set(roles.map((r) => r.domain)));
+const topRolesForChart = roles.filter((r) => r.job_count > 0).slice(0, 12);
+---
+
+<Layout title={t.pageTitle} activeNav="roles" lang={lang}>
+  <section class="mb-10 pb-8 border-b border-slate-800/80">
+    <div class="max-w-3xl space-y-3">
+      <span class="text-xs font-mono uppercase tracking-widest text-cyan-400">{t.tag}</span>
+      <h1 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+        {t.title(roles.length)}
+      </h1>
+      <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
+        {t.subtitle}
+      </p>
+    </div>
+  </section>
+
+  <section class="mb-10">
+    <MarketTrendChart
+      chartId="chart-roles-overview"
+      title={t.chartTitle}
+      subtitle={t.chartSub(meta.sp500_tracked_companies)}
+      badge="CANONICAL ROLES"
+      type="horizontalBar"
+      labels={topRolesForChart.map((r) => r.canonical_name)}
+      datasets={[
+        {
+          label: t.chartLabel,
+          data: topRolesForChart.map((r) => r.job_count),
+          backgroundColor: 'rgba(34, 211, 238, 0.78)',
+          borderColor: '#22d3ee',
+          borderWidth: 1,
+          borderRadius: 4,
+        },
+      ]}
+      heightClass="h-80"
+    />
+  </section>
+
+  <section class="mb-6 flex flex-wrap items-center justify-between gap-4">
+    <div class="flex flex-wrap items-center gap-2" id="domain-filters">
+      <button
+        type="button"
+        data-domain="ALL"
+        class="domain-btn px-3 py-1.5 rounded-md text-xs font-mono bg-cyan-500/15 text-cyan-300 border border-cyan-500/40 font-semibold cursor-pointer"
+      >
+        {t.allDomainsBtn} ({roles.length})
+      </button>
+      {domains.map((dom) => {
+        const cnt = roles.filter((r) => r.domain === dom).length;
+        return (
+          <button
+            type="button"
+            data-domain={dom}
+            class="domain-btn px-3 py-1.5 rounded-md text-xs font-mono bg-slate-900/80 text-slate-300 border border-slate-800 hover:border-slate-700 cursor-pointer"
+          >
+            {dom} ({cnt})
+          </button>
+        );
+      })}
+    </div>
+    <p class="text-xs font-mono text-slate-400">{t.filterHint}</p>
+  </section>
+
+  <section class="space-y-4" id="roles-list">
+    {roles.map((role, idx) => (
+      <details
+        class="role-card panel-surface-interactive rounded-xl group overflow-hidden"
+        data-role-domain={role.domain}
+        open={idx < 3}
+      >
+        <summary class="cursor-pointer list-none p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 select-none">
+          <div class="space-y-1.5">
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono uppercase bg-cyan-500/10 text-cyan-300 border border-cyan-500/30">
+                {role.domain}
+              </span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono uppercase bg-slate-800 text-slate-300 border border-slate-700">
+                {role.track}
+              </span>
+              {role.cz_job_count > 0 && (
+                <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-500/10 text-emerald-300 border border-emerald-500/30">
+                  CZ: {role.cz_job_count} {t.positionsWord}
+                </span>
+              )}
+            </div>
+            <h2 class="text-lg sm:text-xl font-bold text-white group-hover:text-cyan-300 transition-colors">
+              {role.canonical_name}
+            </h2>
+          </div>
+
+          <div class="flex items-center gap-6 shrink-0">
+            <div class="text-right font-mono">
+              <div class="text-xl font-bold text-cyan-300">
+                {role.job_count.toLocaleString('en-US')}{' '}
+                <span class="text-xs font-normal text-slate-400">{t.positionsWord}</span>
+              </div>
+              <div class="text-[11px] text-slate-400">
+                {t.shareLabel} {role.market_share_pct}% • Senior+: {role.senior_plus_pct}%
+              </div>
+            </div>
+            <span class="w-7 h-7 rounded-md bg-slate-900 border border-slate-700 flex items-center justify-center text-xs font-mono text-cyan-400 group-open:rotate-180 transition-transform">
+              ▼
+            </span>
+          </div>
+        </summary>
+
+        <div class="px-5 sm:px-6 pb-6 pt-2 border-t border-slate-800/80 space-y-6 bg-[#070b14]/60">
+          <div class="space-y-3 max-w-4xl">
+            <div class="flex items-center gap-2 text-[11px] font-mono uppercase tracking-wider text-cyan-400">
+              <span>{t.synthHeader}</span>
+              <span class="text-slate-600">//</span>
+              <span>{t.synthSub}</span>
+            </div>
+            {role.synthesized_description[lang].map((paragraph) => (
+              <p class="text-sm text-slate-200 leading-relaxed">{paragraph}</p>
+            ))}
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 pt-2">
+            <div class="p-4 rounded-lg bg-slate-900/90 border border-slate-800/90">
+              <h3 class="text-xs font-mono uppercase tracking-wider text-cyan-300 font-semibold mb-3">
+                {t.colSkills}
+              </h3>
+              {role.top_skills.length > 0 ? (
+                <ul class="space-y-2 text-xs">
+                  {role.top_skills.map((sk) => (
+                    <li class="flex items-center justify-between gap-2">
+                      <span class="text-slate-200 flex items-center gap-1.5">
+                        <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+                        {sk.skill_name}
+                      </span>
+                      <span class="font-mono text-[11px] text-cyan-300">{sk.penetration_pct}%</span>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p class="text-xs text-slate-500 font-mono">{t.emptySample}</p>
+              )}
+            </div>
+
+            <div class="p-4 rounded-lg bg-slate-900/90 border border-slate-800/90">
+              <h3 class="text-xs font-mono uppercase tracking-wider text-blue-400 font-semibold mb-3">
+                {t.colTech}
+              </h3>
+              {role.top_technologies.length > 0 ? (
+                <ul class="space-y-2 text-xs">
+                  {role.top_technologies.map((tech) => (
+                    <li class="flex items-center justify-between gap-2">
+                      <span class="text-slate-200 flex items-center gap-1.5">
+                        <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+                        {tech.skill_name}
+                      </span>
+                      <span class="font-mono text-[11px] text-blue-300">{tech.penetration_pct}%</span>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p class="text-xs text-slate-500 font-mono">{t.emptySample}</p>
+              )}
+            </div>
+
+            <div class="p-4 rounded-lg bg-slate-900/90 border border-slate-800/90">
+              <h3 class="text-xs font-mono uppercase tracking-wider text-emerald-400 font-semibold mb-3">
+                {t.colCompanies}
+              </h3>
+              {role.top_companies.length > 0 ? (
+                <ul class="space-y-2 text-xs">
+                  {role.top_companies.map((comp) => (
+                    <li class="flex items-center justify-between gap-2">
+                      <span class="text-slate-200 truncate">{comp.company_name}</span>
+                      <span class="font-mono text-[11px] text-emerald-300 shrink-0">
+                        {comp.job_count} {t.positionsWord}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p class="text-xs text-slate-500 font-mono">{t.emptyPostings}</p>
+              )}
+            </div>
+
+            <div class="p-4 rounded-lg bg-slate-900/90 border border-slate-800/90">
+              <h3 class="text-xs font-mono uppercase tracking-wider text-amber-400 font-semibold mb-3">
+                {t.colSectors}
+              </h3>
+              {role.top_sectors.length > 0 ? (
+                <ul class="space-y-2 text-xs">
+                  {role.top_sectors.map((sec) => (
+                    <li class="flex items-center justify-between gap-2">
+                      <span class="text-slate-200 truncate">{sec.sector}</span>
+                      <span class="font-mono text-[11px] text-amber-300 shrink-0">
+                        {sec.job_count} ({sec.share_pct}%)
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p class="text-xs text-slate-500 font-mono">{t.emptySp500}</p>
+              )}
+            </div>
+          </div>
+        </div>
+      </details>
+    ))}
+  </section>
+
+  <script>
+    function initRoleFilters() {
+      const buttons = document.querySelectorAll<HTMLButtonElement>('.domain-btn');
+      const cards = document.querySelectorAll<HTMLElement>('.role-card');
+
+      buttons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const targetDomain = btn.getAttribute('data-domain');
+          buttons.forEach((b) => {
+            b.className =
+              'domain-btn px-3 py-1.5 rounded-md text-xs font-mono bg-slate-900/80 text-slate-300 border border-slate-800 hover:border-slate-700 cursor-pointer';
+          });
+          btn.className =
+            'domain-btn px-3 py-1.5 rounded-md text-xs font-mono bg-cyan-500/15 text-cyan-300 border border-cyan-500/40 font-semibold cursor-pointer';
+
+          cards.forEach((card) => {
+            const cardDomain = card.getAttribute('data-role-domain');
+            if (targetDomain === 'ALL' || cardDomain === targetDomain) {
+              card.style.display = '';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+    }
+
+    initRoleFilters();
+    document.addEventListener('astro:page-load', initRoleFilters);
+  </script>
+</Layout>

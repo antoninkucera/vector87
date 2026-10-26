@@ -1,9 +1,9 @@
 {
   "meta": {
-    "generated_at": "2026-10-26T13:21:07Z",
+    "generated_at": "2026-10-26T15:47:34Z",
     "schema_version": "1.0.0",
     "latest_snapshot_date": "2026-10-26",
-    "total_tracked_companies": 818,
+    "total_tracked_companies": 931,
     "sp500_tracked_companies": 508
   },
   "market_vitality": {
@@ -56,6 +56,15 @@
         "ai_intensity_pct": 4.21
       },
       {
+        "company_id": "alphabet",
+        "company_name": "Google (Alphabet)",
+        "is_sp500": true,
+        "sector": "Communication Services",
+        "ai_data_jobs": 132,
+        "total_active_jobs": 3458,
+        "ai_intensity_pct": 3.82
+      },
+      {
         "company_id": "alphabet_class_c",
         "company_name": "Alphabet Inc. (Class C)",
         "is_sp500": true,
@@ -67,15 +76,6 @@
       {
         "company_id": "alphabet_class_a",
         "company_name": "Alphabet Inc. (Class A)",
-        "is_sp500": true,
-        "sector": "Communication Services",
-        "ai_data_jobs": 132,
-        "total_active_jobs": 3458,
-        "ai_intensity_pct": 3.82
-      },
-      {
-        "company_id": "alphabet",
-        "company_name": "Google (Alphabet)",
         "is_sp500": true,
         "sector": "Communication Services",
         "ai_data_jobs": 132,
@@ -234,8 +234,8 @@
         "share_pct": 0.26
       },
       {
-        "country_code": "IT",
-        "country_name": "Italy",
+        "country_code": "PT",
+        "country_name": "Portugal",
         "region": "EU",
         "job_count": 10,
         "share_pct": 0.18
@@ -1000,7 +1000,10 @@
   },
   "time_series": {
     "has_mature_history": false,
-    "status_note": "Longitudinální sběr je v iniciační fázi (Q4 2026). Počáteční nárůst snapshotů odráží postupné zapojování S&P 500 ATS zdrojů; plnohodnotné MoM/WoW srovnávání tržní dynamiky se aktivuje po uzavření 3 měsíčních kohort.",
+    "status_note": {
+      "en": "Longitudinal collection is in its initial baseline phase (Q4 2026). Early snapshot growth reflects progressive onboarding of S&P 500 ATS sources; full MoM/WoW market dynamics activate after 3 completed monthly cohorts.",
+      "cs": "Longitudinální sběr je v iniciační fázi (Q4 2026). Počáteční nárůst snapshotů odráží postupné zapojování S&P 500 ATS zdrojů; plnohodnotné MoM/WoW srovnávání tržní dynamiky se aktivuje po uzavření 3 měsíčních kohort."
+    },
     "snapshots": [
       {
         "snapshot_date": "2026-10-01",
@@ -1076,9 +1079,12 @@
     ]
   },
   "headcount_analytics": {
-    "tracked_companies_count": 1,
-    "total_snapshots": 44,
-    "coverage_note": "Pilotní integrace LinkedIn / Coresignal headcount dat (1 firem v DB). Modul měří Hiring Intensity Ratio — poměr otevřených inzerátů vůči aktuálně obsazeným datovým křeslům ve firmě.",
+    "tracked_companies_count": 126,
+    "total_snapshots": 5544,
+    "coverage_note": {
+      "en": "Pilot integration of LinkedIn / Coresignal workforce headcount (126 companies in DB). Measures Hiring Intensity Ratio — open job postings relative to currently occupied data/AI seats.",
+      "cs": "Pilotní integrace LinkedIn / Coresignal headcount dat (126 firem v DB). Modul měří Hiring Intensity Ratio — poměr otevřených inzerátů vůči aktuálně obsazeným datovým křeslům ve firmě."
+    },
     "company_ratios": [
       {
         "company_id": "walmart",
@@ -1099,6 +1105,96 @@
         "us_headcount": 553,
         "open_jobs": 4,
         "hiring_intensity_ratio_pct": 0.44
+      },
+      {
+        "company_id": "shipmonk",
+        "company_name": "ShipMonk",
+        "role_id": "data_engineer",
+        "role_name": "Data Engineer",
+        "global_headcount": 3,
+        "us_headcount": null,
+        "open_jobs": 3,
+        "hiring_intensity_ratio_pct": 100.0
+      },
+      {
+        "company_id": "tipsport",
+        "company_name": "Tipsport",
+        "role_id": "ml_engineer",
+        "role_name": "Machine Learning Engineer",
+        "global_headcount": 8,
+        "us_headcount": null,
+        "open_jobs": 2,
+        "hiring_intensity_ratio_pct": 25.0
+      },
+      {
+        "company_id": "gen_digital",
+        "company_name": "Gen Digital",
+        "role_id": "data_analyst",
+        "role_name": "Data Analyst",
+        "global_headcount": 1,
+        "us_headcount": null,
+        "open_jobs": 2,
+        "hiring_intensity_ratio_pct": 200.0
+      },
+      {
+        "company_id": "blindspot_solutions",
+        "company_name": "Blindspot Solutions",
+        "role_id": "ai_developer",
+        "role_name": "AI Developer",
+        "global_headcount": 1,
+        "us_headcount": null,
+        "open_jobs": 2,
+        "hiring_intensity_ratio_pct": 200.0
+      },
+      {
+        "company_id": "kiwi",
+        "company_name": "Kiwi.com",
+        "role_id": "data_analyst",
+        "role_name": "Data Analyst",
+        "global_headcount": 10,
+        "us_headcount": null,
+        "open_jobs": 1,
+        "hiring_intensity_ratio_pct": 10.0
+      },
+      {
+        "company_id": "mews",
+        "company_name": "Mews",
+        "role_id": "analytics_engineer",
+        "role_name": "Analytics Engineer",
+        "global_headcount": 9,
+        "us_headcount": null,
+        "open_jobs": 1,
+        "hiring_intensity_ratio_pct": 11.11
+      },
+      {
+        "company_id": "tipsport",
+        "company_name": "Tipsport",
+        "role_id": "data_analyst",
+        "role_name": "Data Analyst",
+        "global_headcount": 5,
+        "us_headcount": null,
+        "open_jobs": 1,
+        "hiring_intensity_ratio_pct": 20.0
+      },
+      {
+        "company_id": "kiwi",
+        "company_name": "Kiwi.com",
+        "role_id": "data_engineer",
+        "role_name": "Data Engineer",
+        "global_headcount": 4,
+        "us_headcount": null,
+        "open_jobs": 1,
+        "hiring_intensity_ratio_pct": 25.0
+      },
+      {
+        "company_id": "blindspot_solutions",
+        "company_name": "Blindspot Solutions",
+        "role_id": "ml_engineer",
+        "role_name": "Machine Learning Engineer",
+        "global_headcount": 2,
+        "us_headcount": null,
+        "open_jobs": 1,
+        "hiring_intensity_ratio_pct": 50.0
       },
       {
         "company_id": "walmart",
@@ -1141,6 +1237,16 @@
         "hiring_intensity_ratio_pct": 0.0
       },
       {
+        "company_id": "home_credit",
+        "company_name": "Home Credit",
+        "role_id": "data_analyst",
+        "role_name": "Data Analyst",
+        "global_headcount": 128,
+        "us_headcount": null,
+        "open_jobs": 0,
+        "hiring_intensity_ratio_pct": 0.0
+      },
+      {
         "company_id": "walmart",
         "company_name": "Walmart",
         "role_id": "bi_developer",
@@ -1151,12 +1257,32 @@
         "hiring_intensity_ratio_pct": 0.0
       },
       {
+        "company_id": "jetbrains",
+        "company_name": "JetBrains",
+        "role_id": "ml_engineer",
+        "role_name": "Machine Learning Engineer",
+        "global_headcount": 59,
+        "us_headcount": null,
+        "open_jobs": 0,
+        "hiring_intensity_ratio_pct": 0.0
+      },
+      {
         "company_id": "walmart",
         "company_name": "Walmart",
         "role_id": "ai_product_manager",
         "role_name": "AI / Data Product Manager",
         "global_headcount": 54,
         "us_headcount": 45,
+        "open_jobs": 0,
+        "hiring_intensity_ratio_pct": 0.0
+      },
+      {
+        "company_id": "home_credit",
+        "company_name": "Home Credit",
+        "role_id": "data_scientist",
+        "role_name": "Data Scientist",
+        "global_headcount": 46,
+        "us_headcount": null,
         "open_jobs": 0,
         "hiring_intensity_ratio_pct": 0.0
       },
@@ -1181,6 +1307,16 @@
         "hiring_intensity_ratio_pct": 0.0
       },
       {
+        "company_id": "home_credit",
+        "company_name": "Home Credit",
+        "role_id": "data_engineer",
+        "role_name": "Data Engineer",
+        "global_headcount": 32,
+        "us_headcount": null,
+        "open_jobs": 0,
+        "hiring_intensity_ratio_pct": 0.0
+      },
+      {
         "company_id": "walmart",
         "company_name": "Walmart",
         "role_id": "research_scientist",
@@ -1199,96 +1335,6 @@
         "us_headcount": 19,
         "open_jobs": 0,
         "hiring_intensity_ratio_pct": 0.0
-      },
-      {
-        "company_id": "walmart",
-        "company_name": "Walmart",
-        "role_id": "llm_engineer",
-        "role_name": "LLM / GenAI Engineer",
-        "global_headcount": 22,
-        "us_headcount": 19,
-        "open_jobs": 0,
-        "hiring_intensity_ratio_pct": 0.0
-      },
-      {
-        "company_id": "walmart",
-        "company_name": "Walmart",
-        "role_id": "ai_developer",
-        "role_name": "AI Developer",
-        "global_headcount": 21,
-        "us_headcount": 20,
-        "open_jobs": 0,
-        "hiring_intensity_ratio_pct": 0.0
-      },
-      {
-        "company_id": "walmart",
-        "company_name": "Walmart",
-        "role_id": "head_of_ai_data",
-        "role_name": "Head of AI / Data",
-        "global_headcount": 14,
-        "us_headcount": 7,
-        "open_jobs": 0,
-        "hiring_intensity_ratio_pct": 0.0
-      },
-      {
-        "company_id": "walmart",
-        "company_name": "Walmart",
-        "role_id": "team_lead_data_ai",
-        "role_name": "Team Lead (Data/AI)",
-        "global_headcount": 7,
-        "us_headcount": 4,
-        "open_jobs": 0,
-        "hiring_intensity_ratio_pct": 0.0
-      },
-      {
-        "company_id": "walmart",
-        "company_name": "Walmart",
-        "role_id": "mlops_engineer",
-        "role_name": "MLOps Engineer",
-        "global_headcount": 6,
-        "us_headcount": 4,
-        "open_jobs": 0,
-        "hiring_intensity_ratio_pct": 0.0
-      },
-      {
-        "company_id": "walmart",
-        "company_name": "Walmart",
-        "role_id": "analytics_engineer",
-        "role_name": "Analytics Engineer",
-        "global_headcount": 5,
-        "us_headcount": 5,
-        "open_jobs": 0,
-        "hiring_intensity_ratio_pct": 0.0
-      },
-      {
-        "company_id": "walmart",
-        "company_name": "Walmart",
-        "role_id": "computer_vision_engineer",
-        "role_name": "Computer Vision Engineer",
-        "global_headcount": 4,
-        "us_headcount": 4,
-        "open_jobs": 0,
-        "hiring_intensity_ratio_pct": 0.0
-      },
-      {
-        "company_id": "walmart",
-        "company_name": "Walmart",
-        "role_id": "nlp_engineer",
-        "role_name": "NLP Engineer",
-        "global_headcount": 2,
-        "us_headcount": 0,
-        "open_jobs": 0,
-        "hiring_intensity_ratio_pct": 0.0
-      },
-      {
-        "company_id": "walmart",
-        "company_name": "Walmart",
-        "role_id": "chief_data_ai_officer",
-        "role_name": "Chief Data / AI Officer (CDO/CAIO)",
-        "global_headcount": 1,
-        "us_headcount": 1,
-        "open_jobs": 0,
-        "hiring_intensity_ratio_pct": 0.0
       }
     ]
   },
@@ -1304,10 +1350,16 @@
       "cz_job_count": 68,
       "senior_plus_pct": 64.3,
       "remote_pct": 15.0,
-      "synthesized_description": [
-        "Role AI Developera představuje v současném korporátním prostředí S&P 500 nejrychleji rostoucí inženýrský profil na pomezí klasického softwarového vývoje a aplikované umělé inteligence. Namísto trénování základních modelů od nuly se tito specialisté soustředí na integraci foundation modelů (LLM), návrh agentních systémů (Agentic AI) a budování produkčních RAG architektur přímo do zákaznických i interních produktů.",
-        "Firmy od kandidátů očekávají silné softwarové základy v Pythonu nebo TypeScriptu/Javě kombinované se schopností řídit spolehlivost generativních systémů — od prompt engineeringu a správy vektorových databází až po evaluace (Evals), guardrails a kontrolu latence či nákladů v cloudu (AWS, GCP Vertex AI, Azure)."
-      ],
+      "synthesized_description": {
+        "en": [
+          "The AI Developer represents the fastest-growing engineering profile across S&P 500 enterprises, sitting at the intersection of software engineering and applied artificial intelligence. Rather than training foundational models from scratch, these engineers focus on integrating Large Language Models (LLMs), designing agentic workflows (Agentic AI), and shipping production-grade RAG architectures directly into customer-facing and internal systems.",
+          "Organizations expect strong software engineering fundamentals in Python, TypeScript, or Java paired with the discipline required to operate probabilistic systems reliably — from prompt engineering and vector database management to automated evaluations (Evals), guardrails, and latency/cost optimization across cloud hyperscalers (AWS, GCP Vertex AI, Azure)."
+        ],
+        "cs": [
+          "Role AI Developera představuje v současném korporátním prostředí S&P 500 nejrychleji rostoucí inženýrský profil na pomezí klasického softwarového vývoje a aplikované umělé inteligence. Namísto trénování základních modelů od nuly se tito specialisté soustředí na integraci foundation modelů (LLM), návrh agentních systémů (Agentic AI) a budování produkčních RAG architektur přímo do zákaznických i interních produktů.",
+          "Firmy od kandidátů očekávají silné softwarové základy v Pythonu nebo TypeScriptu/Javě kombinované se schopností řídit spolehlivost generativních systémů — od prompt engineeringu a správy vektorových databází až po evaluace (Evals), guardrails a kontrolu latence či nákladů v cloudu (AWS, GCP Vertex AI, Azure)."
+        ]
+      },
       "top_skills": [
         {
           "skill_id": "python",
@@ -1446,7 +1498,7 @@
           "job_count": 30
         },
         {
-          "company_name": "Alphabet Inc. (Class C)",
+          "company_name": "Google (Alphabet)",
           "job_count": 29
         }
       ],
@@ -1521,10 +1573,16 @@
       "cz_job_count": 20,
       "senior_plus_pct": 38.0,
       "remote_pct": 19.5,
-      "synthesized_description": [
-        "Data Analyst zůstává páteřní rolí pro demokratizaci dat a rozhodování napříč byznysem (Data-Informed decision making). V éře moderního datového stacku se těžiště práce posouvá od rutinního skládání tabulek k hlubší doménové analytice, definici produktových a finančních metrik a práci nad sémantickou vrstvou (Semantic Layer).",
-        "Základním předpokladem je pokročilá znalost SQL a analytického modelování doplněná o vizualizační nástroje (Tableau, Power BI, Looker) a Python pro ad-hoc statistické šetření. Největší přidanou hodnotu dnes přinášejí analytici, kteří dokáží propojit surová data v cloudovém skladu (Snowflake, BigQuery, Databricks) s konkrétním obchodním kontextem."
-      ],
+      "synthesized_description": {
+        "en": [
+          "The Data Analyst remains the foundational pillar for democratizing data and driving Data-Informed decision-making across business units. In the modern data stack era, the role has shifted away from static spreadsheet assembly toward deep domain analytics, product and financial metric ownership, and operating over a governed Semantic Layer.",
+          "Core requirements center on advanced SQL and analytical data modeling paired with visualization platforms (Tableau, Power BI, Looker) and Python for statistical investigation. The highest leverage comes from analysts who bridge raw warehouse tables (Snowflake, BigQuery, Databricks) with strategic business context."
+        ],
+        "cs": [
+          "Data Analyst zůstává páteřní rolí pro demokratizaci dat a rozhodování napříč byznysem (Data-Informed decision making). V éře moderního datového stacku se těžiště práce posouvá od rutinního skládání tabulek k hlubší doménové analytice, definici produktových a finančních metrik a práci nad sémantickou vrstvou (Semantic Layer).",
+          "Základním předpokladem je pokročilá znalost SQL a analytického modelování doplněná o vizualizační nástroje (Tableau, Power BI, Looker) a Python pro ad-hoc statistické šetření. Největší přidanou hodnotu dnes přinášejí analytici, kteří dokáží propojit surová data v cloudovém skladu (Snowflake, BigQuery, Databricks) s konkrétním obchodním kontextem."
+        ]
+      },
       "top_skills": [
         {
           "skill_id": "sql",
@@ -1663,7 +1721,7 @@
           "job_count": 22
         },
         {
-          "company_name": "Mettler Toledo",
+          "company_name": "PG&E Corporation",
           "job_count": 15
         }
       ],
@@ -1738,10 +1796,16 @@
       "cz_job_count": 15,
       "senior_plus_pct": 69.7,
       "remote_pct": 26.5,
-      "synthesized_description": [
-        "Machine Learning Engineer je klíčovým článkem, který přetavuje experimentální modely do robustních, škálovatelných produkčních systémů. V inzerátech S&P 500 firem dominuje důraz na end-to-end vlastnictví životního cyklu modelů — od přípravy feature pipelines přes distribuovaný trénink a fine-tuning až po nízkolatenční inference.",
-        "Technologickému profilu vévodí Python, PyTorch a ekosystém moderního MLOps (Docker, Kubernetes, MLflow, monitoring produkčních modelů). Stále častěji se prolíná klasické strojové učení (prediktivní modely, doporučovací systémy) s nasazováním LLM a hybridních vyhledávacích architektur v cloudovém prostředí."
-      ],
+      "synthesized_description": {
+        "en": [
+          "The Machine Learning Engineer translates experimental models into resilient, high-throughput production systems. Across S&P 500 job postings, demand centers on end-to-end ownership of the ML lifecycle — spanning feature pipelines, distributed training, fine-tuning, and low-latency inference at scale.",
+          "The technical stack is anchored by Python, PyTorch, and modern MLOps infrastructure (Docker, Kubernetes, MLflow, production observability). Increasingly, classical predictive ML and recommendation engines converge with LLM deployment and hybrid search architectures in the cloud."
+        ],
+        "cs": [
+          "Machine Learning Engineer je klíčovým článkem, který přetavuje experimentální modely do robustních, škálovatelných produkčních systémů. V inzerátech S&P 500 firem dominuje důraz na end-to-end vlastnictví životního cyklu modelů — od přípravy feature pipelines přes distribuovaný trénink a fine-tuning až po nízkolatenční inference.",
+          "Technologickému profilu vévodí Python, PyTorch a ekosystém moderního MLOps (Docker, Kubernetes, MLflow, monitoring produkčních modelů). Stále častěji se prolíná klasické strojové učení (prediktivní modely, doporučovací systémy) s nasazováním LLM a hybridních vyhledávacích architektur v cloudovém prostředí."
+        ]
+      },
       "top_skills": [
         {
           "skill_id": "python",
@@ -1872,11 +1936,11 @@
           "job_count": 31
         },
         {
-          "company_name": "Google (Alphabet)",
+          "company_name": "Alphabet Inc. (Class A)",
           "job_count": 27
         },
         {
-          "company_name": "Alphabet Inc. (Class A)",
+          "company_name": "Google (Alphabet)",
           "job_count": 27
         },
         {
@@ -1955,10 +2019,16 @@
       "cz_job_count": 22,
       "senior_plus_pct": 59.6,
       "remote_pct": 16.2,
-      "synthesized_description": [
-        "Role Data Scientista se v posledních letech výrazně vyprofilovala: firmy méně hledají obecné průzkumníky dat a více specialisty na kauzální inferenci, pokročilé experimentování (A/B testování), optimalizační algoritmy a prediktivní modelování s přímým dopadem na výnosy či riziko.",
-        "Vedle suverénního ovládání Pythonu, SQL a statistických či ML knihoven (scikit-learn, PyTorch, pandas) roste poptávka po schopnosti využívat generativní AI a LLM pro obohacování nestrukturovaných dat. Klíčová je schopnost formulovat hypotézy a komunikovat složité pravděpodobnostní závěry směrem k produktu a managementu."
-      ],
+      "synthesized_description": {
+        "en": [
+          "The Data Scientist role has sharpened considerably: enterprises are hiring fewer generalist data explorers and more specialists focused on causal inference, rigorous experimentation (A/B testing), optimization algorithms, and predictive modeling tied directly to revenue and risk.",
+          "Beyond fluency in Python, SQL, and statistical/ML libraries (scikit-learn, PyTorch, pandas), demand is rising for practitioners who combine econometric rigor with generative AI techniques to enrich unstructured datasets and communicate probabilistic trade-offs to executive stakeholders."
+        ],
+        "cs": [
+          "Role Data Scientista se v posledních letech výrazně vyprofilovala: firmy méně hledají obecné průzkumníky dat a více specialisty na kauzální inferenci, pokročilé experimentování (A/B testování), optimalizační algoritmy a prediktivní modelování s přímým dopadem na výnosy či riziko.",
+          "Vedle suverénního ovládání Pythonu, SQL a statistických či ML knihoven (scikit-learn, PyTorch, pandas) roste poptávka po schopnosti využívat generativní AI a LLM pro obohacování nestrukturovaných dat. Klíčová je schopnost formulovat hypotézy a komunikovat složité pravděpodobnostní závěry směrem k produktu a managementu."
+        ]
+      },
       "top_skills": [
         {
           "skill_id": "python",
@@ -2054,15 +2124,15 @@
           "penetration_pct": 7.4
         },
         {
-          "skill_id": "tensorflow",
-          "skill_name": "TensorFlow",
+          "skill_id": "scikit_learn",
+          "skill_name": "scikit-learn",
           "category": "Framework",
           "job_count": 56,
           "penetration_pct": 6.7
         },
         {
-          "skill_id": "scikit_learn",
-          "skill_name": "scikit-learn",
+          "skill_id": "tensorflow",
+          "skill_name": "TensorFlow",
           "category": "Framework",
           "job_count": 56,
           "penetration_pct": 6.7
@@ -2172,10 +2242,16 @@
       "cz_job_count": 47,
       "senior_plus_pct": 58.5,
       "remote_pct": 21.5,
-      "synthesized_description": [
-        "Data Engineer tvoří infrastrukturní základ celého datového a AI ekosystému. Bez spolehlivých, čistých a nízkolatenčních datových toků zůstávají investice do analytiky i generativní AI nefunkční, což z datových inženýrů dělá jednu z nejstabilněji poptávaných hands-on (IC) rolí na trhu.",
-        "Standardem požadavků je suverénní zvládnutí SQL a Pythonu (či Scaly/Javy), distribuovaného zpracování dat (Apache Spark, Databricks, Dataflow) a orchestrace (Airflow, dbt). Důraz se přesouvá na spravované cloudové platformy (Snowflake, BigQuery, AWS/Azure/GCP), data governance, kvalitu dat a přípravu nestrukturovaných dat pro AI pipelines."
-      ],
+      "synthesized_description": {
+        "en": [
+          "The Data Engineer forms the infrastructural backbone of the entire data and AI ecosystem. Without reliable, governed, low-latency data pipelines, both executive BI and generative AI initiatives stall — making Data Engineering one of the most consistently demanded hands-on (IC) tracks on the market.",
+          "Employers standardize around production SQL and Python (or Scala/Java), distributed compute (Apache Spark, Databricks, Dataflow), and orchestration (Airflow, dbt). Focus is shifting toward cloud lakehouse architectures (Snowflake, BigQuery, AWS/Azure/GCP), data quality contracts, and preparing unstructured data for AI pipelines."
+        ],
+        "cs": [
+          "Data Engineer tvoří infrastrukturní základ celého datového a AI ekosystému. Bez spolehlivých, čistých a nízkolatenčních datových toků zůstávají investice do analytiky i generativní AI nefunkční, což z datových inženýrů dělá jednu z nejstabilněji poptávaných hands-on (IC) rolí na trhu.",
+          "Standardem požadavků je suverénní zvládnutí SQL a Pythonu (či Scaly/Javy), distribuovaného zpracování dat (Apache Spark, Databricks, Dataflow) a orchestrace (Airflow, dbt). Důraz se přesouvá na spravované cloudové platformy (Snowflake, BigQuery, AWS/Azure/GCP), data governance, kvalitu dat a přípravu nestrukturovaných dat pro AI pipelines."
+        ]
+      },
       "top_skills": [
         {
           "skill_id": "python",
@@ -2389,10 +2465,16 @@
       "cz_job_count": 0,
       "senior_plus_pct": 42.7,
       "remote_pct": 7.6,
-      "synthesized_description": [
-        "Research Scientist v oblasti AI/ML se zaměřuje na posouvání hranic algoritmických možností — od vývoje nových architektur neuronových sítí, multimodálních modelů a reinforcement learningu až po pokročilý post-training, zarovnání (alignment) a efektivitu inference.",
-        "Tato role je silně koncentrována v technologických lídrech, farmaceutickém výzkumu a kvantitativních financích. Vyžaduje hluboké teoretické zázemí (často Ph.D. nebo publikační historii), perfektní znalost PyTorche či JAXu a zkušenost s trénováním modelů na rozsáhlých GPU/TPU clusterech."
-      ],
+      "synthesized_description": {
+        "en": [
+          "The Research Scientist (AI/ML) pushes algorithmic frontiers — developing novel neural architectures, multimodal systems, reinforcement learning methods, post-training alignment, and inference efficiency breakthroughs.",
+          "Heavily concentrated among frontier tech leaders, quantitative finance, and pharmaceutical R&D, the role requires deep theoretical grounding (often a Ph.D. or publication track record), mastery of PyTorch or JAX, and hands-on experience training large models across distributed GPU/TPU clusters."
+        ],
+        "cs": [
+          "Research Scientist v oblasti AI/ML se zaměřuje na posouvání hranic algoritmických možností — od vývoje nových architektur neuronových sítí, multimodálních modelů a reinforcement learningu až po pokročilý post-training, zarovnání (alignment) a efektivitu inference.",
+          "Tato role je silně koncentrována v technologických lídrech, farmaceutickém výzkumu a kvantitativních financích. Vyžaduje hluboké teoretické zázemí (často Ph.D. nebo publikační historii), perfektní znalost PyTorche či JAXu a zkušenost s trénováním modelů na rozsáhlých GPU/TPU clusterech."
+        ]
+      },
       "top_skills": [
         {
           "skill_id": "llm",
@@ -2495,16 +2577,16 @@
           "penetration_pct": 3.5
         },
         {
-          "skill_id": "aws",
-          "skill_name": "AWS",
-          "category": "Cloud",
+          "skill_id": "spark",
+          "skill_name": "Apache Spark",
+          "category": "Framework",
           "job_count": 9,
           "penetration_pct": 2.6
         },
         {
-          "skill_id": "spark",
-          "skill_name": "Apache Spark",
-          "category": "Framework",
+          "skill_id": "aws",
+          "skill_name": "AWS",
+          "category": "Cloud",
           "job_count": 9,
           "penetration_pct": 2.6
         }
@@ -2515,11 +2597,11 @@
           "job_count": 43
         },
         {
-          "company_name": "Google (Alphabet)",
+          "company_name": "Alphabet Inc. (Class A)",
           "job_count": 32
         },
         {
-          "company_name": "Alphabet Inc. (Class A)",
+          "company_name": "Google (Alphabet)",
           "job_count": 32
         },
         {
@@ -2527,11 +2609,11 @@
           "job_count": 32
         },
         {
-          "company_name": "Amazon",
+          "company_name": "OpenAI",
           "job_count": 17
         },
         {
-          "company_name": "OpenAI",
+          "company_name": "Amazon",
           "job_count": 17
         }
       ],
@@ -2606,10 +2688,16 @@
       "cz_job_count": 1,
       "senior_plus_pct": 98.4,
       "remote_pct": 26.5,
-      "synthesized_description": [
-        "AI / Data Product Manager přemosťuje propast mezi technickými možnostmi moderních modelů a reálnou hodnotou pro uživatele i byznys. Odpovídá za definici produktové vize datových platforem či AI funkcí, prioritizaci roadmapy a vyhodnocování návratnosti investic (ROI) v prostředí vysoké technologické nejistoty.",
-        "Úspěšní kandidáti kombinují produktové řemeslo s technickou gramotností v oblasti LLM, RAG, kvality dat a evaluačních metrik. Namísto slepého přidávání AI funkcí musí rozumět limitům modelů (halucinace, latence, soukromí dat, governance) a nastavovat jasné metriky adopce."
-      ],
+      "synthesized_description": {
+        "en": [
+          "The AI / Data Product Manager bridges technical model capabilities and measurable customer and business outcomes. They own product vision for data platforms and AI-powered workflows, prioritize roadmaps, and govern ROI under high technological uncertainty.",
+          "Successful candidates pair core product craft with technical literacy in LLMs, RAG, data quality, and evaluation frameworks. Rather than bolting AI onto every surface, they manage model constraints (hallucinations, latency, privacy, unit economics) and define clear adoption telemetry."
+        ],
+        "cs": [
+          "AI / Data Product Manager přemosťuje propast mezi technickými možnostmi moderních modelů a reálnou hodnotou pro uživatele i byznys. Odpovídá za definici produktové vize datových platforem či AI funkcí, prioritizaci roadmapy a vyhodnocování návratnosti investic (ROI) v prostředí vysoké technologické nejistoty.",
+          "Úspěšní kandidáti kombinují produktové řemeslo s technickou gramotností v oblasti LLM, RAG, kvality dat a evaluačních metrik. Namísto slepého přidávání AI funkcí musí rozumět limitům modelů (halucinace, latence, soukromí dat, governance) a nastavovat jasné metriky adopce."
+        ]
+      },
       "top_skills": [
         {
           "skill_id": "ai_agents",
@@ -2719,9 +2807,9 @@
           "penetration_pct": 1.6
         },
         {
-          "skill_id": "spark",
-          "skill_name": "Apache Spark",
-          "category": "Framework",
+          "skill_id": "vector_db",
+          "skill_name": "Vector Databases",
+          "category": "Database",
           "job_count": 2,
           "penetration_pct": 1.1
         }
@@ -2732,11 +2820,11 @@
           "job_count": 18
         },
         {
-          "company_name": "Databricks",
+          "company_name": "Scale AI",
           "job_count": 8
         },
         {
-          "company_name": "Scale AI",
+          "company_name": "Databricks",
           "job_count": 8
         },
         {
@@ -2823,10 +2911,16 @@
       "cz_job_count": 1,
       "senior_plus_pct": 100.0,
       "remote_pct": 3.2,
-      "synthesized_description": [
-        "Data Architect navrhuje celopodnikovou strategii ukládání, integrace a správy dat tak, aby organizace dokázala bezpečně škálovat jak tradiční BI reporting, tak náročné AI/ML úlohy. Jde o vysoce seniorní roli (Staff/Principal úroveň), která definuje technologické standardy napříč týmy.",
-        "Požadavky zahrnují hlubokou expertízu v návrhu moderních data lakehouse a warehouse architektur (Snowflake, Databricks, BigQuery), datovém modelování, sémantických vrstvách a striktní Data Governance (katalogizace, lineage, bezpečnost v multi-cloud prostředí AWS, Azure či GCP)."
-      ],
+      "synthesized_description": {
+        "en": [
+          "The Data Architect designs enterprise-wide strategies for data storage, integration, and governance so organizations can scale both mission-critical BI and compute-heavy AI workloads. Typically positioned at the Staff or Principal level, this role sets technical standards across engineering domains.",
+          "Requirements emphasize deep expertise in modern lakehouse and warehouse architectures (Snowflake, Databricks, BigQuery), dimensional and semantic modeling, and strict Data Governance (cataloging, lineage, security, and multi-cloud compliance across AWS, Azure, and GCP)."
+        ],
+        "cs": [
+          "Data Architect navrhuje celopodnikovou strategii ukládání, integrace a správy dat tak, aby organizace dokázala bezpečně škálovat jak tradiční BI reporting, tak náročné AI/ML úlohy. Jde o vysoce seniorní roli (Staff/Principal úroveň), která definuje technologické standardy napříč týmy.",
+          "Požadavky zahrnují hlubokou expertízu v návrhu moderních data lakehouse a warehouse architektur (Snowflake, Databricks, BigQuery), datovém modelování, sémantických vrstvách a striktní Data Governance (katalogizace, lineage, bezpečnost v multi-cloud prostředí AWS, Azure či GCP)."
+        ]
+      },
       "top_skills": [
         {
           "skill_id": "python",
@@ -2957,15 +3051,15 @@
           "job_count": 21
         },
         {
-          "company_name": "Nvidia",
-          "job_count": 4
-        },
-        {
           "company_name": "Stripe",
           "job_count": 4
         },
         {
           "company_name": "Teledyne Technologies",
+          "job_count": 4
+        },
+        {
+          "company_name": "Nvidia",
           "job_count": 4
         }
       ],
@@ -3040,10 +3134,16 @@
       "cz_job_count": 0,
       "senior_plus_pct": 100.0,
       "remote_pct": 48.5,
-      "synthesized_description": [
-        "Director / VP of Data & AI nese exekutivní odpovědnost za to, aby datová a AI organizace nebyla nákladovým střediskem, ale strategickým motorem růstu firmy. Řídí víceúrovňové týmy inženýrů, vědců a analytiků, spravuje rozpočty cloudové infrastruktury a přímo spolupracuje s C-level vedením.",
-        "Firmy hledají lídry, kteří dokáží spojit technologický nadhled (transformace na cloud, adopce GenAI a agentních workflow, enterprise data governance) s pragmatickým doručováním obchodních výsledků, budováním datové kultury a rozvojem talentu."
-      ],
+      "synthesized_description": {
+        "en": [
+          "The Director / VP of Data & AI holds executive accountability for turning the data and AI organization from a cost center into a strategic growth engine. They lead multi-layered teams of engineers, scientists, and analysts, govern cloud budgets, and partner directly with C-suite leadership.",
+          "Companies seek leaders who combine architectural vision (cloud modernization, pragmatic GenAI and agentic adoption, enterprise data governance) with commercial execution, organizational design, and talent retention."
+        ],
+        "cs": [
+          "Director / VP of Data & AI nese exekutivní odpovědnost za to, aby datová a AI organizace nebyla nákladovým střediskem, ale strategickým motorem růstu firmy. Řídí víceúrovňové týmy inženýrů, vědců a analytiků, spravuje rozpočty cloudové infrastruktury a přímo spolupracuje s C-level vedením.",
+          "Firmy hledají lídry, kteří dokáží spojit technologický nadhled (transformace na cloud, adopce GenAI a agentních workflow, enterprise data governance) s pragmatickým doručováním obchodních výsledků, budováním datové kultury a rozvojem talentu."
+        ]
+      },
       "top_skills": [
         {
           "skill_id": "data_governance",
@@ -3081,16 +3181,16 @@
           "penetration_pct": 11.8
         },
         {
-          "skill_id": "llm",
-          "skill_name": "LLM / Large Language Models",
-          "category": "AI/ML",
+          "skill_id": "sql",
+          "skill_name": "SQL",
+          "category": "Programming",
           "job_count": 10,
           "penetration_pct": 10.8
         },
         {
-          "skill_id": "sql",
-          "skill_name": "SQL",
-          "category": "Programming",
+          "skill_id": "llm",
+          "skill_name": "LLM / Large Language Models",
+          "category": "AI/ML",
           "job_count": 10,
           "penetration_pct": 10.8
         },
@@ -3111,13 +3211,6 @@
           "penetration_pct": 9.7
         },
         {
-          "skill_id": "spark",
-          "skill_name": "Apache Spark",
-          "category": "Framework",
-          "job_count": 7,
-          "penetration_pct": 7.5
-        },
-        {
           "skill_id": "aws",
           "skill_name": "AWS",
           "category": "Cloud",
@@ -3125,15 +3218,22 @@
           "penetration_pct": 7.5
         },
         {
-          "skill_id": "databricks",
-          "skill_name": "Databricks",
+          "skill_id": "spark",
+          "skill_name": "Apache Spark",
+          "category": "Framework",
+          "job_count": 7,
+          "penetration_pct": 7.5
+        },
+        {
+          "skill_id": "snowflake_db",
+          "skill_name": "Snowflake",
           "category": "Cloud",
           "job_count": 6,
           "penetration_pct": 6.5
         },
         {
-          "skill_id": "snowflake_db",
-          "skill_name": "Snowflake",
+          "skill_id": "databricks",
+          "skill_name": "Databricks",
           "category": "Cloud",
           "job_count": 6,
           "penetration_pct": 6.5
@@ -3146,15 +3246,15 @@
           "penetration_pct": 4.3
         },
         {
-          "skill_id": "kubernetes",
-          "skill_name": "Kubernetes",
-          "category": "MLOps",
+          "skill_id": "gcp",
+          "skill_name": "Google Cloud Platform",
+          "category": "Cloud",
           "job_count": 2,
           "penetration_pct": 2.2
         },
         {
-          "skill_id": "gcp",
-          "skill_name": "Google Cloud Platform",
+          "skill_id": "vertex_ai",
+          "skill_name": "Vertex AI",
           "category": "Cloud",
           "job_count": 2,
           "penetration_pct": 2.2
@@ -3174,7 +3274,7 @@
           "job_count": 4
         },
         {
-          "company_name": "Global Payments",
+          "company_name": "Hartford (The)",
           "job_count": 3
         },
         {
@@ -3182,7 +3282,7 @@
           "job_count": 3
         },
         {
-          "company_name": "Hartford (The)",
+          "company_name": "Global Payments",
           "job_count": 3
         }
       ],
@@ -3257,10 +3357,16 @@
       "cz_job_count": 7,
       "senior_plus_pct": 38.0,
       "remote_pct": 28.6,
-      "synthesized_description": [
-        "Analytics Engineer je klíčovou spojnicí mezi surovou datovou infrastrukturou a koncovou analytikou. Přináší softwarové inženýrské praktiky — verzování v Gitu, automatizované testy kvality dat, dokumentaci a CI/CD — přímo do vrstvy transformace dat a budování sémantických modelů.",
-        "Středobodem technologického stacku je dbt (či Dataform v ekosystému Google Cloud), pokročilé SQL a hluboká znalost cloudových databází (Snowflake, BigQuery, Databricks). Výsledkem práce jsou čisté, důvěryhodné a znovupoužitelné datové sady připravené pro samoobslužné BI i AI agenty."
-      ],
+      "synthesized_description": {
+        "en": [
+          "The Analytics Engineer serves as the critical connective tissue between raw data infrastructure and business consumption. They bring software engineering rigor — Git version control, automated data quality assertions, documentation, and CI/CD — directly into the data transformation and semantic modeling layer.",
+          "The technical stack revolves around dbt (or Dataform in the Google Cloud ecosystem), advanced SQL, and cloud data platforms (Snowflake, BigQuery, Databricks). Their output is clean, modular, trustworthy data assets ready for self-service BI and AI agents."
+        ],
+        "cs": [
+          "Analytics Engineer je klíčovou spojnicí mezi surovou datovou infrastrukturou a koncovou analytikou. Přináší softwarové inženýrské praktiky — verzování v Gitu, automatizované testy kvality dat, dokumentaci a CI/CD — přímo do vrstvy transformace dat a budování sémantických modelů.",
+          "Středobodem technologického stacku je dbt (či Dataform v ekosystému Google Cloud), pokročilé SQL a hluboká znalost cloudových databází (Snowflake, BigQuery, Databricks). Výsledkem práce jsou čisté, důvěryhodné a znovupoužitelné datové sady připravené pro samoobslužné BI i AI agenty."
+        ]
+      },
       "top_skills": [
         {
           "skill_id": "sql",
@@ -3356,13 +3462,6 @@
           "penetration_pct": 8.7
         },
         {
-          "skill_id": "spark",
-          "skill_name": "Apache Spark",
-          "category": "Framework",
-          "job_count": 6,
-          "penetration_pct": 6.5
-        },
-        {
           "skill_id": "azure",
           "skill_name": "Microsoft Azure",
           "category": "Cloud",
@@ -3370,9 +3469,16 @@
           "penetration_pct": 6.5
         },
         {
-          "skill_id": "docker",
-          "skill_name": "Docker",
-          "category": "MLOps",
+          "skill_id": "spark",
+          "skill_name": "Apache Spark",
+          "category": "Framework",
+          "job_count": 6,
+          "penetration_pct": 6.5
+        },
+        {
+          "skill_id": "bigquery",
+          "skill_name": "BigQuery",
+          "category": "Cloud",
           "job_count": 4,
           "penetration_pct": 4.3
         }
@@ -3383,11 +3489,11 @@
           "job_count": 7
         },
         {
-          "company_name": "Booking Holdings",
+          "company_name": "Delivery Hero",
           "job_count": 4
         },
         {
-          "company_name": "Delivery Hero",
+          "company_name": "Booking Holdings",
           "job_count": 4
         },
         {
@@ -3399,7 +3505,7 @@
           "job_count": 2
         },
         {
-          "company_name": "Lennar",
+          "company_name": "Coinbase",
           "job_count": 2
         }
       ],
@@ -3415,12 +3521,12 @@
           "share_pct": 17.1
         },
         {
-          "sector": "Consumer Discretionary",
+          "sector": "Financials",
           "job_count": 7,
           "share_pct": 17.1
         },
         {
-          "sector": "Financials",
+          "sector": "Consumer Discretionary",
           "job_count": 7,
           "share_pct": 17.1
         },
@@ -3474,10 +3580,16 @@
       "cz_job_count": 0,
       "senior_plus_pct": 100.0,
       "remote_pct": 14.3,
-      "synthesized_description": [
-        "BI / Analytics Manager vede týmy datových a BI analytiků a garantuje, že management i operativní oddělení mají k dispozici spolehlivý, srozumitelný a včasný pohled na výkonnost firmy. Role spojuje people management s rolí architekta reportovacího ekosystému.",
-        "Kromě vedení lidí a komunikace se stakeholdery se očekává silný přesah do návrhu KPI stromů, správy BI platforem (Power BI, Tableau, Looker), prosazování jednotné sémantické vrstvy a postupného zapojování AI asistované analytiky do každodenního fungování firmy."
-      ],
+      "synthesized_description": {
+        "en": [
+          "The BI / Analytics Manager leads teams of data and business intelligence analysts, ensuring executive and operational stakeholders have reliable, timely visibility into business performance. The role blends people leadership with ownership of the reporting architecture.",
+          "Beyond stakeholder management and coaching, candidates are expected to drive KPI taxonomy design, govern enterprise BI platforms (Power BI, Tableau, Looker), enforce a unified Semantic Layer, and integrate AI-assisted analytics responsibly."
+        ],
+        "cs": [
+          "BI / Analytics Manager vede týmy datových a BI analytiků a garantuje, že management i operativní oddělení mají k dispozici spolehlivý, srozumitelný a včasný pohled na výkonnost firmy. Role spojuje people management s rolí architekta reportovacího ekosystému.",
+          "Kromě vedení lidí a komunikace se stakeholdery se očekává silný přesah do návrhu KPI stromů, správy BI platforem (Power BI, Tableau, Looker), prosazování jednotné sémantické vrstvy a postupného zapojování AI asistované analytiky do každodenního fungování firmy."
+        ]
+      },
       "top_skills": [
         {
           "skill_id": "sql",
@@ -3494,15 +3606,15 @@
           "penetration_pct": 20.7
         },
         {
-          "skill_id": "tableau",
-          "skill_name": "Tableau",
+          "skill_id": "powerbi",
+          "skill_name": "Power BI",
           "category": "Business",
           "job_count": 17,
           "penetration_pct": 18.5
         },
         {
-          "skill_id": "powerbi",
-          "skill_name": "Power BI",
+          "skill_id": "tableau",
+          "skill_name": "Tableau",
           "category": "Business",
           "job_count": 17,
           "penetration_pct": 18.5
@@ -3587,9 +3699,9 @@
           "penetration_pct": 2.2
         },
         {
-          "skill_id": "mlflow",
-          "skill_name": "MLflow",
-          "category": "MLOps",
+          "skill_id": "snowflake_db",
+          "skill_name": "Snowflake",
+          "category": "Cloud",
           "job_count": 1,
           "penetration_pct": 1.1
         }
@@ -3616,7 +3728,7 @@
           "job_count": 4
         },
         {
-          "company_name": "Mettler Toledo",
+          "company_name": "Johnson & Johnson",
           "job_count": 3
         }
       ],
@@ -3691,10 +3803,16 @@
       "cz_job_count": 0,
       "senior_plus_pct": 100.0,
       "remote_pct": 30.4,
-      "synthesized_description": [
-        "Engineering Manager (AI/Data) stojí v čele inženýrských týmů budujících datové platformy, datové pipeline nebo produkční ML/AI systémy. Zodpovídá za technickou excelenci, stabilitu dodávek, architekturu řešení a kariérní růst jednotlivých inženýrů.",
-        "Od kandidátů se vyžaduje předchozí silná hands-on zkušenost v datovém nebo ML inženýrství (Python, SQL, Spark, cloudová architektura, MLOps), aby dokázali činit kvalifikovaná architektonická rozhodnutí, odstraňovat technický dluh a efektivně škálovat infrastrukturu."
-      ],
+      "synthesized_description": {
+        "en": [
+          "The Engineering Manager (AI/Data) leads engineering squads building core data platforms, ingestion pipelines, or production ML/AI services. They are accountable for technical quality, delivery predictability, system reliability, and engineer growth.",
+          "Employers require a strong prior hands-on background in data or ML engineering (Python, SQL, Spark, cloud architecture, MLOps) so the manager can guide architectural trade-offs, retire technical debt, and scale platform operations."
+        ],
+        "cs": [
+          "Engineering Manager (AI/Data) stojí v čele inženýrských týmů budujících datové platformy, datové pipeline nebo produkční ML/AI systémy. Zodpovídá za technickou excelenci, stabilitu dodávek, architekturu řešení a kariérní růst jednotlivých inženýrů.",
+          "Od kandidátů se vyžaduje předchozí silná hands-on zkušenost v datovém nebo ML inženýrství (Python, SQL, Spark, cloudová architektura, MLOps), aby dokázali činit kvalifikovaná architektonická rozhodnutí, odstraňovat technický dluh a efektivně škálovat infrastrukturu."
+        ]
+      },
       "top_skills": [
         {
           "skill_id": "ai_agents",
@@ -3725,16 +3843,16 @@
           "penetration_pct": 16.5
         },
         {
-          "skill_id": "data_governance",
-          "skill_name": "Data Governance & Quality",
-          "category": "Business",
+          "skill_id": "sql",
+          "skill_name": "SQL",
+          "category": "Programming",
           "job_count": 13,
           "penetration_pct": 14.3
         },
         {
-          "skill_id": "sql",
-          "skill_name": "SQL",
-          "category": "Programming",
+          "skill_id": "data_governance",
+          "skill_name": "Data Governance & Quality",
+          "category": "Business",
           "job_count": 13,
           "penetration_pct": 14.3
         },
@@ -3825,15 +3943,15 @@
           "job_count": 4
         },
         {
+          "company_name": "CrowdStrike",
+          "job_count": 3
+        },
+        {
+          "company_name": "Anthropic",
+          "job_count": 3
+        },
+        {
           "company_name": "Alphabet Inc. (Class C)",
-          "job_count": 3
-        },
-        {
-          "company_name": "Google (Alphabet)",
-          "job_count": 3
-        },
-        {
-          "company_name": "Netflix",
           "job_count": 3
         }
       ],
@@ -3908,10 +4026,16 @@
       "cz_job_count": 6,
       "senior_plus_pct": 35.1,
       "remote_pct": 44.4,
-      "synthesized_description": [
-        "BI Developer se specializuje na návrh, vývoj a optimalizaci interaktivních dashboardů, datových modelů a automatizovaných reportů, které transformují podniková data do vizuálně přehledných výstupů pro každodenní řízení firmy.",
-        "Dominují požadavky na hlubokou znalost BI nástrojů (Power BI vč. DAX, Tableau, Looker), psaní výkonných SQL dotazů a práci s cloudovými datovými sklady. Roste důraz na UX datových výstupů, výkonnost dotazů nad velkými objemy dat a správu certifikovaných datových zdrojů."
-      ],
+      "synthesized_description": {
+        "en": [
+          "The BI Developer specializes in designing, building, and optimizing interactive dashboards, semantic data models, and automated reporting systems that turn enterprise data into actionable operational views.",
+          "Job requirements emphasize mastery of BI suites (Power BI including DAX, Tableau, Looker), performant SQL, and cloud data warehouses, with growing focus on dashboard UX, query cost optimization, and certified dataset governance."
+        ],
+        "cs": [
+          "BI Developer se specializuje na návrh, vývoj a optimalizaci interaktivních dashboardů, datových modelů a automatizovaných reportů, které transformují podniková data do vizuálně přehledných výstupů pro každodenní řízení firmy.",
+          "Dominují požadavky na hlubokou znalost BI nástrojů (Power BI vč. DAX, Tableau, Looker), psaní výkonných SQL dotazů a práci s cloudovými datovými sklady. Roste důraz na UX datových výstupů, výkonnost dotazů nad velkými objemy dat a správu certifikovaných datových zdrojů."
+        ]
+      },
       "top_skills": [
         {
           "skill_id": "sql",
@@ -3979,15 +4103,15 @@
           "penetration_pct": 7.8
         },
         {
-          "skill_id": "bigquery",
-          "skill_name": "BigQuery",
+          "skill_id": "aws",
+          "skill_name": "AWS",
           "category": "Cloud",
           "job_count": 4,
           "penetration_pct": 5.2
         },
         {
-          "skill_id": "aws",
-          "skill_name": "AWS",
+          "skill_id": "bigquery",
+          "skill_name": "BigQuery",
           "category": "Cloud",
           "job_count": 4,
           "penetration_pct": 5.2
@@ -4007,13 +4131,6 @@
           "penetration_pct": 3.9
         },
         {
-          "skill_id": "azure",
-          "skill_name": "Microsoft Azure",
-          "category": "Cloud",
-          "job_count": 2,
-          "penetration_pct": 2.6
-        },
-        {
           "skill_id": "spark",
           "skill_name": "Apache Spark",
           "category": "Framework",
@@ -4023,6 +4140,13 @@
         {
           "skill_id": "redshift",
           "skill_name": "Amazon Redshift",
+          "category": "Cloud",
+          "job_count": 2,
+          "penetration_pct": 2.6
+        },
+        {
+          "skill_id": "azure",
+          "skill_name": "Microsoft Azure",
           "category": "Cloud",
           "job_count": 2,
           "penetration_pct": 2.6
@@ -4050,7 +4174,7 @@
           "job_count": 2
         },
         {
-          "company_name": "Snap-on",
+          "company_name": "Twilio",
           "job_count": 2
         }
       ],
@@ -4071,12 +4195,12 @@
           "share_pct": 12.0
         },
         {
-          "sector": "Health Care",
+          "sector": "Financials",
           "job_count": 5,
           "share_pct": 10.0
         },
         {
-          "sector": "Financials",
+          "sector": "Health Care",
           "job_count": 5,
           "share_pct": 10.0
         }
@@ -4125,10 +4249,16 @@
       "cz_job_count": 2,
       "senior_plus_pct": 98.4,
       "remote_pct": 25.0,
-      "synthesized_description": [
-        "Team Lead v oblasti Data/AI je typicky hybridní role ('player-coach'), která kombinuje přímou technickou práci na klíčových komponentách s každodenním technickým vedením menšího týmu specialistů, code reviews a mentoringem.",
-        "Vyžaduje vysokou senioritu v jádrových technologiích (Python, SQL, cloudové datové a ML nástroje) spojenou se schopností rozkládat komplexní byznysové zadání na inženýrské úkoly a hlídat kvalitu výstupů."
-      ],
+      "synthesized_description": {
+        "en": [
+          "The Team Lead (Data/AI) operates as a 'player-coach', combining direct hands-on contributions on critical architectural components with day-to-day technical leadership, code reviews, and mentoring of a focused engineering pod.",
+          "The role demands senior proficiency in core technologies (Python, SQL, cloud data and ML tooling) alongside the ability to decompose ambiguous business problems into crisp engineering milestones."
+        ],
+        "cs": [
+          "Team Lead v oblasti Data/AI je typicky hybridní role ('player-coach'), která kombinuje přímou technickou práci na klíčových komponentách s každodenním technickým vedením menšího týmu specialistů, code reviews a mentoringem.",
+          "Vyžaduje vysokou senioritu v jádrových technologiích (Python, SQL, cloudové datové a ML nástroje) spojenou se schopností rozkládat komplexní byznysové zadání na inženýrské úkoly a hlídat kvalitu výstupů."
+        ]
+      },
       "top_skills": [
         {
           "skill_id": "sql",
@@ -4152,16 +4282,16 @@
           "penetration_pct": 18.0
         },
         {
-          "skill_id": "genai",
-          "skill_name": "GenAI / Generative AI",
-          "category": "AI/ML",
+          "skill_id": "tableau",
+          "skill_name": "Tableau",
+          "category": "Business",
           "job_count": 8,
           "penetration_pct": 13.1
         },
         {
-          "skill_id": "tableau",
-          "skill_name": "Tableau",
-          "category": "Business",
+          "skill_id": "genai",
+          "skill_name": "GenAI / Generative AI",
+          "category": "AI/ML",
           "job_count": 8,
           "penetration_pct": 13.1
         },
@@ -4180,9 +4310,9 @@
           "penetration_pct": 6.6
         },
         {
-          "skill_id": "r",
-          "skill_name": "R",
-          "category": "Programming",
+          "skill_id": "rag",
+          "skill_name": "RAG (Retrieval-Augmented Generation)",
+          "category": "AI/ML",
           "job_count": 2,
           "penetration_pct": 3.3
         }
@@ -4194,6 +4324,13 @@
           "category": "Cloud",
           "job_count": 5,
           "penetration_pct": 8.2
+        },
+        {
+          "skill_id": "azure",
+          "skill_name": "Microsoft Azure",
+          "category": "Cloud",
+          "job_count": 4,
+          "penetration_pct": 6.6
         },
         {
           "skill_id": "gcp",
@@ -4210,23 +4347,16 @@
           "penetration_pct": 6.6
         },
         {
-          "skill_id": "azure",
-          "skill_name": "Microsoft Azure",
+          "skill_id": "aws",
+          "skill_name": "AWS",
           "category": "Cloud",
-          "job_count": 4,
-          "penetration_pct": 6.6
+          "job_count": 3,
+          "penetration_pct": 4.9
         },
         {
           "skill_id": "spark",
           "skill_name": "Apache Spark",
           "category": "Framework",
-          "job_count": 3,
-          "penetration_pct": 4.9
-        },
-        {
-          "skill_id": "aws",
-          "skill_name": "AWS",
-          "category": "Cloud",
           "job_count": 3,
           "penetration_pct": 4.9
         },
@@ -4238,9 +4368,9 @@
           "penetration_pct": 3.3
         },
         {
-          "skill_id": "evals_observability",
-          "skill_name": "MLOps / Evals & Observability",
-          "category": "MLOps",
+          "skill_id": "dbt",
+          "skill_name": "dbt",
+          "category": "Framework",
           "job_count": 2,
           "penetration_pct": 3.3
         }
@@ -4342,10 +4472,16 @@
       "cz_job_count": 0,
       "senior_plus_pct": 100.0,
       "remote_pct": 42.9,
-      "synthesized_description": [
-        "Data Science / ML Manager vede týmy datových vědců a ML inženýrů od fáze výzkumu a formulace problému až po nasazení modelů do produkce a měření jejich reálného obchodního přínosu.",
-        "Role vyžaduje jak hluboké porozumění statistickému modelování, experimentování a moderním AI přístupům (včetně LLM a GenAI), tak schopnost chránit tým před ad-hoc operativou a soustředit kapacity na projekty s nejvyšší strategickou návratností."
-      ],
+      "synthesized_description": {
+        "en": [
+          "The Data Science / ML Manager guides teams of data scientists and ML engineers from problem formulation and experimentation through production deployment and business impact measurement.",
+          "The position requires both deep fluency in statistical modeling, experimentation, and modern AI paradigms (including LLMs and GenAI) and the leadership discipline to shield the team from ad-hoc noise while focusing on high-ROI initiatives."
+        ],
+        "cs": [
+          "Data Science / ML Manager vede týmy datových vědců a ML inženýrů od fáze výzkumu a formulace problému až po nasazení modelů do produkce a měření jejich reálného obchodního přínosu.",
+          "Role vyžaduje jak hluboké porozumění statistickému modelování, experimentování a moderním AI přístupům (včetně LLM a GenAI), tak schopnost chránit tým před ad-hoc operativou a soustředit kapacity na projekty s nejvyšší strategickou návratností."
+        ]
+      },
       "top_skills": [
         {
           "skill_id": "python",
@@ -4362,16 +4498,16 @@
           "penetration_pct": 27.9
         },
         {
-          "skill_id": "r",
-          "skill_name": "R",
-          "category": "Programming",
+          "skill_id": "llm",
+          "skill_name": "LLM / Large Language Models",
+          "category": "AI/ML",
           "job_count": 9,
           "penetration_pct": 20.9
         },
         {
-          "skill_id": "llm",
-          "skill_name": "LLM / Large Language Models",
-          "category": "AI/ML",
+          "skill_id": "r",
+          "skill_name": "R",
+          "category": "Programming",
           "job_count": 9,
           "penetration_pct": 20.9
         },
@@ -4406,6 +4542,13 @@
       ],
       "top_technologies": [
         {
+          "skill_id": "spark",
+          "skill_name": "Apache Spark",
+          "category": "Framework",
+          "job_count": 3,
+          "penetration_pct": 7.0
+        },
+        {
           "skill_id": "evals_observability",
           "skill_name": "MLOps / Evals & Observability",
           "category": "MLOps",
@@ -4413,11 +4556,11 @@
           "penetration_pct": 7.0
         },
         {
-          "skill_id": "spark",
-          "skill_name": "Apache Spark",
-          "category": "Framework",
-          "job_count": 3,
-          "penetration_pct": 7.0
+          "skill_id": "databricks",
+          "skill_name": "Databricks",
+          "category": "Cloud",
+          "job_count": 1,
+          "penetration_pct": 2.3
         },
         {
           "skill_id": "azure",
@@ -4430,13 +4573,6 @@
           "skill_id": "pytorch",
           "skill_name": "PyTorch",
           "category": "Framework",
-          "job_count": 1,
-          "penetration_pct": 2.3
-        },
-        {
-          "skill_id": "databricks",
-          "skill_name": "Databricks",
-          "category": "Cloud",
           "job_count": 1,
           "penetration_pct": 2.3
         }
@@ -4455,7 +4591,7 @@
           "job_count": 3
         },
         {
-          "company_name": "Alphabet Inc. (Class C)",
+          "company_name": "Biogen",
           "job_count": 2
         },
         {
@@ -4538,10 +4674,16 @@
       "cz_job_count": 4,
       "senior_plus_pct": 60.7,
       "remote_pct": 0.0,
-      "synthesized_description": [
-        "LLM / GenAI Engineer je úzce specializovaná inženýrská role zaměřená výhradně na návrh, ladění a produkční provoz systémů postavených na velkých jazykových modelech. Řeší kompletní řetězec od přípravy doménových dat přes RAG a fine-tuning až po bezpečné nasazení.",
-        "Klíčovým stackem je Python, PyTorch, frameworky pro orchestraci agentů a LLM (LangChain, LlamaIndex, LangGraph), vektorové databáze a nástroje pro systematickou evaluaci (Evals & Observability), které brání degradaci kvality odpovědí v produkci."
-      ],
+      "synthesized_description": {
+        "en": [
+          "The LLM / GenAI Engineer is a specialized engineering role dedicated to designing, tuning, and operating systems powered by Large Language Models — covering domain data curation, RAG, fine-tuning, and low-latency deployment.",
+          "The core stack pairs Python and PyTorch with agent/LLM orchestration frameworks (LangChain, LlamaIndex, LangGraph), vector databases, and rigorous evaluation & observability tooling to prevent quality regressions in production."
+        ],
+        "cs": [
+          "LLM / GenAI Engineer je úzce specializovaná inženýrská role zaměřená výhradně na návrh, ladění a produkční provoz systémů postavených na velkých jazykových modelech. Řeší kompletní řetězec od přípravy doménových dat přes RAG a fine-tuning až po bezpečné nasazení.",
+          "Klíčovým stackem je Python, PyTorch, frameworky pro orchestraci agentů a LLM (LangChain, LlamaIndex, LangGraph), vektorové databáze a nástroje pro systematickou evaluaci (Evals & Observability), které brání degradaci kvality odpovědí v produkci."
+        ]
+      },
       "top_skills": [
         {
           "skill_id": "genai",
@@ -4558,16 +4700,16 @@
           "penetration_pct": 46.4
         },
         {
-          "skill_id": "llm",
-          "skill_name": "LLM / Large Language Models",
-          "category": "AI/ML",
+          "skill_id": "python",
+          "skill_name": "Python",
+          "category": "Programming",
           "job_count": 12,
           "penetration_pct": 42.9
         },
         {
-          "skill_id": "python",
-          "skill_name": "Python",
-          "category": "Programming",
+          "skill_id": "llm",
+          "skill_name": "LLM / Large Language Models",
+          "category": "AI/ML",
           "job_count": 12,
           "penetration_pct": 42.9
         },
@@ -4630,13 +4772,6 @@
           "penetration_pct": 14.3
         },
         {
-          "skill_id": "databricks",
-          "skill_name": "Databricks",
-          "category": "Cloud",
-          "job_count": 3,
-          "penetration_pct": 10.7
-        },
-        {
           "skill_id": "evals_observability",
           "skill_name": "MLOps / Evals & Observability",
           "category": "MLOps",
@@ -4644,15 +4779,22 @@
           "penetration_pct": 10.7
         },
         {
-          "skill_id": "pandas",
-          "skill_name": "pandas",
+          "skill_id": "databricks",
+          "skill_name": "Databricks",
+          "category": "Cloud",
+          "job_count": 3,
+          "penetration_pct": 10.7
+        },
+        {
+          "skill_id": "scikit_learn",
+          "skill_name": "scikit-learn",
           "category": "Framework",
           "job_count": 2,
           "penetration_pct": 7.1
         },
         {
-          "skill_id": "llama_index",
-          "skill_name": "LlamaIndex",
+          "skill_id": "pandas",
+          "skill_name": "pandas",
           "category": "Framework",
           "job_count": 2,
           "penetration_pct": 7.1
@@ -4668,10 +4810,6 @@
           "job_count": 3
         },
         {
-          "company_name": "Datadog",
-          "job_count": 2
-        },
-        {
           "company_name": "GE Vernova",
           "job_count": 2
         },
@@ -4681,6 +4819,10 @@
         },
         {
           "company_name": "NXP Semiconductors",
+          "job_count": 2
+        },
+        {
+          "company_name": "Datadog",
           "job_count": 2
         }
       ],
@@ -4755,10 +4897,16 @@
       "cz_job_count": 0,
       "senior_plus_pct": 100.0,
       "remote_pct": 28.6,
-      "synthesized_description": [
-        "Head of AI / Data zastřešuje celkovou datovou a AI agendu společnosti nebo její klíčové divize. Definuje dlouhodobou technologickou i organizační vizi, nastavuje standardy data governance a rozhoduje o tom, kde firma vyvine vlastní modely a kde využije komerční platformy.",
-        "Pozice vyžaduje kombinaci strategického leadershipu, orientace v moderní cloudové a AI architektuře a schopnosti komunikovat na úrovni představenstva o příležitostech, rizicích i reálné ekonomice AI projektů."
-      ],
+      "synthesized_description": {
+        "en": [
+          "The Head of AI / Data oversees the end-to-end data and artificial intelligence agenda for a company or major business unit, defining long-term technical and organizational strategy, governance standards, and build-vs-buy platform decisions.",
+          "The role demands executive leadership, command of modern cloud and AI architectures, and the ability to align board-level stakeholders on AI economics, risk management, and measurable value creation."
+        ],
+        "cs": [
+          "Head of AI / Data zastřešuje celkovou datovou a AI agendu společnosti nebo její klíčové divize. Definuje dlouhodobou technologickou i organizační vizi, nastavuje standardy data governance a rozhoduje o tom, kde firma vyvine vlastní modely a kde využije komerční platformy.",
+          "Pozice vyžaduje kombinaci strategického leadershipu, orientace v moderní cloudové a AI architektuře a schopnosti komunikovat na úrovni představenstva o příležitostech, rizicích i reálné ekonomice AI projektů."
+        ]
+      },
       "top_skills": [
         {
           "skill_id": "data_governance",
@@ -4768,15 +4916,15 @@
           "penetration_pct": 38.1
         },
         {
-          "skill_id": "llm",
-          "skill_name": "LLM / Large Language Models",
+          "skill_id": "ai_agents",
+          "skill_name": "AI Agents / Agentic AI",
           "category": "AI/ML",
           "job_count": 7,
           "penetration_pct": 33.3
         },
         {
-          "skill_id": "ai_agents",
-          "skill_name": "AI Agents / Agentic AI",
+          "skill_id": "llm",
+          "skill_name": "LLM / Large Language Models",
           "category": "AI/ML",
           "job_count": 7,
           "penetration_pct": 33.3
@@ -4796,13 +4944,6 @@
           "penetration_pct": 19.0
         },
         {
-          "skill_id": "python",
-          "skill_name": "Python",
-          "category": "Programming",
-          "job_count": 4,
-          "penetration_pct": 19.0
-        },
-        {
           "skill_id": "powerbi",
           "skill_name": "Power BI",
           "category": "Business",
@@ -4810,8 +4951,15 @@
           "penetration_pct": 19.0
         },
         {
-          "skill_id": "tableau",
-          "skill_name": "Tableau",
+          "skill_id": "python",
+          "skill_name": "Python",
+          "category": "Programming",
+          "job_count": 4,
+          "penetration_pct": 19.0
+        },
+        {
+          "skill_id": "excel",
+          "skill_name": "Excel",
           "category": "Business",
           "job_count": 1,
           "penetration_pct": 4.8
@@ -4826,23 +4974,16 @@
           "penetration_pct": 28.6
         },
         {
-          "skill_id": "spark",
-          "skill_name": "Apache Spark",
-          "category": "Framework",
-          "job_count": 2,
-          "penetration_pct": 9.5
-        },
-        {
-          "skill_id": "gcp",
-          "skill_name": "Google Cloud Platform",
-          "category": "Cloud",
-          "job_count": 2,
-          "penetration_pct": 9.5
-        },
-        {
           "skill_id": "aws",
           "skill_name": "AWS",
           "category": "Cloud",
+          "job_count": 2,
+          "penetration_pct": 9.5
+        },
+        {
+          "skill_id": "spark",
+          "skill_name": "Apache Spark",
+          "category": "Framework",
           "job_count": 2,
           "penetration_pct": 9.5
         },
@@ -4854,15 +4995,22 @@
           "penetration_pct": 9.5
         },
         {
-          "skill_id": "databricks",
-          "skill_name": "Databricks",
+          "skill_id": "gcp",
+          "skill_name": "Google Cloud Platform",
+          "category": "Cloud",
+          "job_count": 2,
+          "penetration_pct": 9.5
+        },
+        {
+          "skill_id": "snowflake_db",
+          "skill_name": "Snowflake",
           "category": "Cloud",
           "job_count": 1,
           "penetration_pct": 4.8
         },
         {
-          "skill_id": "snowflake_db",
-          "skill_name": "Snowflake",
+          "skill_id": "databricks",
+          "skill_name": "Databricks",
           "category": "Cloud",
           "job_count": 1,
           "penetration_pct": 4.8
@@ -4885,19 +5033,19 @@
           "job_count": 2
         },
         {
-          "company_name": "Brown & Brown",
+          "company_name": "Johnson & Johnson",
           "job_count": 1
         },
         {
-          "company_name": "Abbott Laboratories",
+          "company_name": "Chubb Limited",
           "job_count": 1
         },
         {
-          "company_name": "Franklin Resources",
+          "company_name": "Citigroup",
           "job_count": 1
         },
         {
-          "company_name": "Robinhood Markets",
+          "company_name": "OpenAI",
           "job_count": 1
         }
       ],
@@ -4967,10 +5115,16 @@
       "cz_job_count": 0,
       "senior_plus_pct": 66.7,
       "remote_pct": 0.0,
-      "synthesized_description": [
-        "MLOps Engineer (často označovaný i jako LLMOps nebo AI Platform Engineer) buduje standardizovanou infrastrukturu pro trénování, verzování, nasazování a nepřetržité sledování strojového učení a generativních modelů v produkci.",
-        "Těžištěm práce je automatizace CI/CD pro ML, správa kontejnerů a clusterů (Docker, Kubernetes), optimalizace GPU/inferenčních serverů (Triton), správa feature stores a nasazení systémů pro observabilitu, detekci data driftu a vyhodnocování kvality modelů."
-      ],
+      "synthesized_description": {
+        "en": [
+          "The MLOps Engineer (often titled LLMOps or AI Platform Engineer) builds standardized infrastructure for training, versioning, deploying, and continuously monitoring machine learning and generative AI models in production.",
+          "Work centers on CI/CD automation for ML, container and cluster orchestration (Docker, Kubernetes), GPU/inference server optimization (Triton), feature stores, and observability pipelines for drift detection and automated evaluations."
+        ],
+        "cs": [
+          "MLOps Engineer (často označovaný i jako LLMOps nebo AI Platform Engineer) buduje standardizovanou infrastrukturu pro trénování, verzování, nasazování a nepřetržité sledování strojového učení a generativních modelů v produkci.",
+          "Těžištěm práce je automatizace CI/CD pro ML, správa kontejnerů a clusterů (Docker, Kubernetes), optimalizace GPU/inferenčních serverů (Triton), správa feature stores a nasazení systémů pro observabilitu, detekci data driftu a vyhodnocování kvality modelů."
+        ]
+      },
       "top_skills": [
         {
           "skill_id": "python",
@@ -4987,6 +5141,13 @@
           "penetration_pct": 33.3
         },
         {
+          "skill_id": "rag",
+          "skill_name": "RAG (Retrieval-Augmented Generation)",
+          "category": "AI/ML",
+          "job_count": 3,
+          "penetration_pct": 20.0
+        },
+        {
           "skill_id": "ai_agents",
           "skill_name": "AI Agents / Agentic AI",
           "category": "AI/ML",
@@ -5001,23 +5162,16 @@
           "penetration_pct": 20.0
         },
         {
-          "skill_id": "rag",
-          "skill_name": "RAG (Retrieval-Augmented Generation)",
-          "category": "AI/ML",
-          "job_count": 3,
-          "penetration_pct": 20.0
+          "skill_id": "sql",
+          "skill_name": "SQL",
+          "category": "Programming",
+          "job_count": 2,
+          "penetration_pct": 13.3
         },
         {
           "skill_id": "data_governance",
           "skill_name": "Data Governance & Quality",
           "category": "Business",
-          "job_count": 2,
-          "penetration_pct": 13.3
-        },
-        {
-          "skill_id": "sql",
-          "skill_name": "SQL",
-          "category": "Programming",
           "job_count": 2,
           "penetration_pct": 13.3
         },
@@ -5059,13 +5213,6 @@
           "penetration_pct": 26.7
         },
         {
-          "skill_id": "vertex_ai",
-          "skill_name": "Vertex AI",
-          "category": "Cloud",
-          "job_count": 3,
-          "penetration_pct": 20.0
-        },
-        {
           "skill_id": "pytorch",
           "skill_name": "PyTorch",
           "category": "Framework",
@@ -5073,8 +5220,15 @@
           "penetration_pct": 20.0
         },
         {
-          "skill_id": "gcp",
-          "skill_name": "Google Cloud Platform",
+          "skill_id": "vertex_ai",
+          "skill_name": "Vertex AI",
+          "category": "Cloud",
+          "job_count": 3,
+          "penetration_pct": 20.0
+        },
+        {
+          "skill_id": "azure",
+          "skill_name": "Microsoft Azure",
           "category": "Cloud",
           "job_count": 3,
           "penetration_pct": 20.0
@@ -5089,7 +5243,7 @@
       ],
       "top_companies": [
         {
-          "company_name": "United Parcel Service",
+          "company_name": "UnitedHealth Group",
           "job_count": 2
         },
         {
@@ -5097,7 +5251,7 @@
           "job_count": 2
         },
         {
-          "company_name": "UnitedHealth Group",
+          "company_name": "United Parcel Service",
           "job_count": 2
         },
         {
@@ -5105,11 +5259,11 @@
           "job_count": 2
         },
         {
-          "company_name": "Occidental Petroleum",
+          "company_name": "Expand Energy",
           "job_count": 1
         },
         {
-          "company_name": "Gen Digital",
+          "company_name": "Michael Page",
           "job_count": 1
         }
       ],
@@ -5130,12 +5284,12 @@
           "share_pct": 14.3
         },
         {
-          "sector": "Health Care",
+          "sector": "Energy",
           "job_count": 2,
           "share_pct": 14.3
         },
         {
-          "sector": "Energy",
+          "sector": "Health Care",
           "job_count": 2,
           "share_pct": 14.3
         }
@@ -5184,30 +5338,36 @@
       "cz_job_count": 0,
       "senior_plus_pct": 100.0,
       "remote_pct": 0.0,
-      "synthesized_description": [
-        "Chief Data / AI Officer (CDO / CAIO) je nejvyšší exekutivní role v představenstvu (C-suite), která nese plnou odpovědnost za přeměnu dat a umělé inteligence v měřitelnou konkurenční výhodu celé korporace, včetně regulatorní shody a AI etiky.",
-        "Kandidáti musí prokázat zkušenost s řízením rozsáhlých podnikových transformací, budováním datových organizací o desítkách až stovkách lidí a strategickým řízením víceletých investic do cloudové a AI infrastruktury."
-      ],
+      "synthesized_description": {
+        "en": [
+          "The Chief Data / AI Officer (CDO / CAIO) is the top C-suite executive accountable for transforming enterprise data and artificial intelligence into a durable competitive advantage, encompassing regulatory compliance and AI governance.",
+          "Candidates must demonstrate a track record of leading large-scale corporate transformations, scaling multi-disciplinary data organizations, and governing multi-year capital investments in cloud and AI infrastructure."
+        ],
+        "cs": [
+          "Chief Data / AI Officer (CDO / CAIO) je nejvyšší exekutivní role v představenstvu (C-suite), která nese plnou odpovědnost za přeměnu dat a umělé inteligence v měřitelnou konkurenční výhodu celé korporace, včetně regulatorní shody a AI etiky.",
+          "Kandidáti musí prokázat zkušenost s řízením rozsáhlých podnikových transformací, budováním datových organizací o desítkách až stovkách lidí a strategickým řízením víceletých investic do cloudové a AI infrastruktury."
+        ]
+      },
       "top_skills": [],
       "top_technologies": [],
       "top_companies": [
         {
-          "company_name": "UnitedHealth Group",
+          "company_name": "Berkshire Hathaway",
           "job_count": 1
         },
         {
-          "company_name": "Berkshire Hathaway",
+          "company_name": "UnitedHealth Group",
           "job_count": 1
         }
       ],
       "top_sectors": [
         {
-          "sector": "Financials",
+          "sector": "Health Care",
           "job_count": 1,
           "share_pct": 50.0
         },
         {
-          "sector": "Health Care",
+          "sector": "Financials",
           "job_count": 1,
           "share_pct": 50.0
         }
@@ -5256,10 +5416,16 @@
       "cz_job_count": 0,
       "senior_plus_pct": 100.0,
       "remote_pct": 0.0,
-      "synthesized_description": [
-        "Computer Vision Engineer se specializuje na algoritmy zpracování obrazu, videa a 3D prostorových dat (LiDAR, senzorická fúze) s využitím hlubokých neuronových sítí a vizuálních či multimodálních transformerů.",
-        "Uplatnění nachází v robotice, autonomních systémech, průmyslové kontrole kvality a medicínské diagnostice. Klíčová je znalost Pythonu, C++, PyTorche, OpenCV a optimalizace modelů pro běh v reálném čase či na edge zařízeních."
-      ],
+      "synthesized_description": {
+        "en": [
+          "The Computer Vision Engineer specializes in algorithms for image, video, and 3D spatial data (LiDAR, sensor fusion) powered by deep convolutional networks and visual/multimodal transformers.",
+          "Deployed across robotics, autonomous systems, industrial inspection, and medical imaging, the role requires strong Python and C++ skills, PyTorch, OpenCV, and model quantization/optimization for real-time or edge execution."
+        ],
+        "cs": [
+          "Computer Vision Engineer se specializuje na algoritmy zpracování obrazu, videa a 3D prostorových dat (LiDAR, senzorická fúze) s využitím hlubokých neuronových sítí a vizuálních či multimodálních transformerů.",
+          "Uplatnění nachází v robotice, autonomních systémech, průmyslové kontrole kvality a medicínské diagnostice. Klíčová je znalost Pythonu, C++, PyTorche, OpenCV a optimalizace modelů pro běh v reálném čase či na edge zařízeních."
+        ]
+      },
       "top_skills": [
         {
           "skill_id": "computer_vision",
@@ -5327,10 +5493,16 @@
       "cz_job_count": 0,
       "senior_plus_pct": 0.0,
       "remote_pct": 0.0,
-      "synthesized_description": [
-        "NLP Engineer se věnuje algoritmickému zpracování přirozeného jazyka — od klasických úloh extrakce entit, klasifikace dokumentů a sémantického vyhledávání až po moderní architektury postavené na transformerech a velkých jazykových modelech.",
-        "Požadavky spojují znalost lingvistických principů a zpracování textu s praxí v Pythonu, PyTorchi, ekosystému Hugging Face Transformers a budování vyhledávacích či konverzačních pipeline."
-      ],
+      "synthesized_description": {
+        "en": [
+          "The NLP Engineer focuses on algorithmic natural language processing — spanning entity extraction, document classification, and semantic search through modern transformer and large language model architectures.",
+          "Requirements combine computational linguistics and text processing fundamentals with production proficiency in Python, PyTorch, Hugging Face Transformers, and retrieval or conversational pipelines."
+        ],
+        "cs": [
+          "NLP Engineer se věnuje algoritmickému zpracování přirozeného jazyka — od klasických úloh extrakce entit, klasifikace dokumentů a sémantického vyhledávání až po moderní architektury postavené na transformerech a velkých jazykových modelech.",
+          "Požadavky spojují znalost lingvistických principů a zpracování textu s praxí v Pythonu, PyTorchi, ekosystému Hugging Face Transformers a budování vyhledávacích či konverzačních pipeline."
+        ]
+      },
       "top_skills": [],
       "top_technologies": [],
       "top_companies": [],
@@ -5452,10 +5624,10 @@
         "penetration_in_gcp_pct": 0.3,
         "penetration_all_pct": 0.04,
         "top_paired_skills": [
-          "BigQuery",
-          "Data Governance & Quality",
-          "Java",
-          "dbt"
+          "Tableau",
+          "Google Cloud Dataflow",
+          "Kubernetes",
+          "Apache Airflow"
         ]
       }
     ],
@@ -5500,13 +5672,13 @@
         "job_count": 119
       },
       {
-        "company_name": "General Motors",
-        "sector": "Consumer Discretionary",
+        "company_name": "MongoDB",
+        "sector": null,
         "job_count": 20
       },
       {
-        "company_name": "MongoDB",
-        "sector": null,
+        "company_name": "General Motors",
+        "sector": "Consumer Discretionary",
         "job_count": 20
       },
       {
@@ -5535,13 +5707,13 @@
         "job_count": 14
       },
       {
-        "company_name": "Reddit",
-        "sector": "Communication Services",
+        "company_name": "Scale AI",
+        "sector": null,
         "job_count": 13
       },
       {
-        "company_name": "Scale AI",
-        "sector": null,
+        "company_name": "Reddit",
+        "sector": "Communication Services",
         "job_count": 13
       }
     ]

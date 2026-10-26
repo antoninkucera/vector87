@@ -9,6 +9,12 @@ Vector87.com is a high-speed static intelligence hub monitoring the global AI, M
 3. **Exporter (`pipeline/export_market_data.py`)**: Connects to DuckDB in `read_only=True` mode, computes all aggregations, merges synthesized role descriptions from `pipeline/role_descriptions.json`, validates against `schema/market-data.schema.json`, and writes `src/data/market-data.json`.
 4. **Static Frontend (`src/`)**: Astro + Tailwind CSS + Chart.js static site generator producing zero-backend HTML/CSS/JS bundles for GitHub Pages.
 
+## Localization (i18n)
+
+- **Primary language (`en`)**: Root routes (`/`, `/roles`, `/gcp-hub`, `/academy`, `/about`).
+- **Secondary language (`cs`)**: Prefixed routes (`/cs/`, `/cs/roles`, `/cs/gcp-hub`, `/cs/academy`, `/cs/about`).
+- Shared view components live in `src/components/views/` and consume typed translations from `src/i18n/ui.ts` plus bilingual `en`/`cs` narratives in `src/data/market-data.json`.
+
 ## Key Modules
 
 - **`/` (Market Dashboard)**:

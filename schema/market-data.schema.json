@@ -235,7 +235,7 @@
       "required": ["has_mature_history", "status_note", "snapshots", "monthly_inflow"],
       "properties": {
         "has_mature_history": { "type": "boolean" },
-        "status_note": { "type": "string" },
+        "status_note": { "$ref": "#/$defs/localizedString" },
         "snapshots": {
           "type": "array",
           "items": {
@@ -275,7 +275,7 @@
       "properties": {
         "tracked_companies_count": { "type": "integer" },
         "total_snapshots": { "type": "integer" },
-        "coverage_note": { "type": "string" },
+        "coverage_note": { "$ref": "#/$defs/localizedString" },
         "company_ratios": {
           "type": "array",
           "items": {
@@ -329,10 +329,22 @@
           "senior_plus_pct": { "type": "number" },
           "remote_pct": { "type": "number" },
           "synthesized_description": {
-            "type": "array",
-            "minItems": 2,
-            "maxItems": 2,
-            "items": { "type": "string" }
+            "type": "object",
+            "required": ["en", "cs"],
+            "properties": {
+              "en": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": { "type": "string" }
+              },
+              "cs": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": { "type": "string" }
+              }
+            }
           },
           "top_skills": {
             "type": "array",
@@ -433,6 +445,14 @@
     }
   },
   "$defs": {
+    "localizedString": {
+      "type": "object",
+      "required": ["en", "cs"],
+      "properties": {
+        "en": { "type": "string" },
+        "cs": { "type": "string" }
+      }
+    },
     "skillMetric": {
       "type": "object",
       "required": ["skill_id", "skill_name", "category", "job_count", "penetration_pct"],

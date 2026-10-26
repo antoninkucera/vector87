@@ -1,38 +1,49 @@
 ---
 import '../styles/global.css';
 import marketData from '../data/market-data.json';
+import { ui, getLocalePath, type Locale, type NavKey } from '../i18n/ui';
 
 interface Props {
   title?: string;
   description?: string;
-  activeNav?: 'dashboard' | 'roles' | 'gcp' | 'academy' | 'about';
+  activeNav?: NavKey;
+  lang?: Locale;
 }
 
 const {
-  title = 'Vector87 — Quantitative Intelligence for the AI & Data Job Market',
-  description = 'Analytický datový hub monitorující stav AI, ML a datového trhu práce v S&P 500, USA a Evropě.',
+  lang = 'en',
   activeNav = 'dashboard',
+  title = ui[lang].meta.defaultTitle,
+  description = ui[lang].meta.defaultDescription,
 } = Astro.props;
 
-const navItems = [
-  { id: 'dashboard', label: '01 / Market Dashboard', href: '/' },
-  { id: 'roles', label: '02 / Analýza rolí', href: '/roles' },
-  { id: 'gcp', label: '03 / Google Cloud Hub', href: '/gcp-hub' },
-  { id: 'academy', label: '04 / Vzdělávací akademie', href: '/academy' },
-  { id: 'about', label: '05 / O autorovi', href: '/about' },
-] as const;
+const t = ui[lang];
+
+const navKeys: NavKey[] = ['dashboard', 'roles', 'gcp', 'academy', 'about'];
+const navItems = navKeys.map((key) => ({
+  id: key,
+  label: t.nav[key],
+  href: getLocalePath(lang, key),
+}));
+
+const enHref = getLocalePath('en', activeNav);
+const csHref = getLocalePath('cs', activeNav);
+const homeHref = getLocalePath(lang, 'dashboard');
 
 const { meta, market_vitality } = marketData;
 ---
 
 <!doctype html>
-<html lang="cs" class="dark">
+<html lang={lang} class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
+    <link rel="alternate" hreflang="en" href={`https://vector87.com${enHref}`} />
+    <link rel="alternate" hreflang="cs" href={`https://vector87.com${csHref}`} />
+    <link rel="alternate" hreflang="x-default" href={`https://vector87.com${enHref}`} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -47,24 +58,24 @@ const { meta, market_vitality } = marketData;
         <div class="flex items-center gap-4">
           <span class="inline-flex items-center gap-1.5 text-cyan-400 font-semibold">
             <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-            TELEMETRY: ONLINE
+            {t.telemetryBar.status}
           </span>
           <span class="hidden sm:inline text-slate-600">|</span>
           <span class="hidden sm:inline">
-            SNAPSHOT: <strong class="text-slate-200">{meta.latest_snapshot_date}</strong>
+            {t.telemetryBar.snapshot} <strong class="text-slate-200">{meta.latest_snapshot_date}</strong>
           </span>
           <span class="text-slate-600">|</span>
           <span>
-            ACTIVE AI/DATA JOBS: <strong class="text-cyan-300">{market_vitality.total_ai_data_jobs.toLocaleString('en-US')}</strong>
+            {t.telemetryBar.activeJobs} <strong class="text-cyan-300">{market_vitality.total_ai_data_jobs.toLocaleString('en-US')}</strong>
           </span>
         </div>
         <div class="flex items-center gap-4">
           <span>
-            S&amp;P 500 COVERAGE: <strong class="text-slate-200">{meta.sp500_tracked_companies}</strong> FIRMS
+            {t.telemetryBar.sp500Coverage} <strong class="text-slate-200">{meta.sp500_tracked_companies}</strong> {t.telemetryBar.firms}
           </span>
           <span class="hidden md:inline text-slate-600">|</span>
           <span class="hidden md:inline">
-            INTENSITY: <strong class="text-emerald-400">{market_vitality.sp500_ai_intensity_pct}%</strong> OF TOTAL HIRING POOL
+            {t.telemetryBar.intensity} <strong class="text-emerald-400">{market_vitality.sp500_ai_intensity_pct}%</strong> {t.telemetryBar.ofPool}
           </span>
         </div>
       </div>
@@ -73,7 +84,7 @@ const { meta, market_vitality } = marketData;
     <!-- Main Navigation Header -->
     <header class="sticky top-0 z-40 border-b border-slate-800/80 bg-[#060911]/85 backdrop-blur-md">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
-        <a href="/" class="flex items-center gap-3 group">
+        <a href={homeHref} class="flex items-center gap-3 group">
           <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-cyan-500/20 to-blue-600/20 border border-cyan-400/40 flex items-center justify-center font-mono font-bold text-cyan-300 tracking-tighter text-sm group-hover:border-cyan-300 transition-colors">
             V87
           </div>
@@ -88,7 +99,7 @@ const { meta, market_vitality } = marketData;
           </div>
         </a>
 
-        <nav aria-label="Hlavní navigace" class="hidden lg:flex items-center gap-1">
+        <nav aria-label={t.nav.mainAria} class="hidden lg:flex items-center gap-1">
           {navItems.map((item) => {
             const isActive = activeNav === item.id;
             return (
@@ -108,6 +119,36 @@ const { meta, market_vitality } = marketData;
         </nav>
 
         <div class="flex items-center gap-2.5">
+          <!-- Language Switcher (EN primary / CS secondary) -->
+          <div
+            class="inline-flex items-center rounded-md border border-slate-800 bg-slate-900/90 p-0.5 font-mono text-[11px]"
+            role="group"
+            aria-label="Language switcher"
+          >
+            <a
+              href={enHref}
+              class:list={[
+                'px-2 py-1 rounded transition-colors',
+                lang === 'en'
+                  ? 'bg-cyan-500/20 text-cyan-300 font-bold'
+                  : 'text-slate-400 hover:text-slate-200',
+              ]}
+            >
+              EN
+            </a>
+            <a
+              href={csHref}
+              class:list={[
+                'px-2 py-1 rounded transition-colors',
+                lang === 'cs'
+                  ? 'bg-cyan-500/20 text-cyan-300 font-bold'
+                  : 'text-slate-400 hover:text-slate-200',
+              ]}
+            >
+              CS
+            </a>
+          </div>
+
           <a
             href="https://akucera.eu"
             target="_blank"
@@ -121,7 +162,7 @@ const { meta, market_vitality } = marketData;
       </div>
 
       <!-- Mobile Horizontal Nav -->
-      <nav aria-label="Mobilní navigace" class="lg:hidden border-t border-slate-800/60 px-4 py-2 flex items-center gap-2 overflow-x-auto">
+      <nav aria-label={t.nav.mobileAria} class="lg:hidden border-t border-slate-800/60 px-4 py-2 flex items-center gap-2 overflow-x-auto">
         {navItems.map((item) => {
           const isActive = activeNav === item.id;
           return (
@@ -153,13 +194,20 @@ const { meta, market_vitality } = marketData;
           <div class="flex items-center gap-2 font-mono text-slate-200 font-semibold">
             <span class="text-cyan-400">VECTOR 87</span>
             <span>//</span>
-            <span>Analytical Telemetry Hub</span>
+            <span>{t.footer.subtitle}</span>
           </div>
           <p class="text-slate-400 max-w-xl">
-            Statický datový hub monitorující globální poptávku po datových a AI expertech napříč S&amp;P 500, Severní Amerikou a Evropou. Poháněno lokální DuckDB pipeline a Astro SSG.
+            {t.footer.description}
           </p>
         </div>
         <div class="flex flex-wrap items-center gap-5 font-mono text-xs">
+          <a href={enHref} class:list={[lang === 'en' ? 'text-cyan-300 font-semibold' : 'hover:text-cyan-300']}>
+            EN
+          </a>
+          <a href={csHref} class:list={[lang === 'cs' ? 'text-cyan-300 font-semibold' : 'hover:text-cyan-300']}>
+            CS
+          </a>
+          <span class="text-slate-700">|</span>
           <a href="https://akucera.eu" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-300 transition-colors">
             akucera.eu ↗
           </a>

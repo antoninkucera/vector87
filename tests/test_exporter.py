@@ -38,23 +38,31 @@ class TestVector87Exporter(unittest.TestCase):
         gcp_ids = {s["skill_id"] for s in self.payload["gcp_hub"]["services"]}
         self.assertEqual({"gcp", "bigquery", "vertex_ai", "looker", "dataflow", "dataform"}, gcp_ids)
 
-        # 3. Každá role má 2 odstavce, skills, technologie, firmy a odvětví
+        # 3. Každá role má 2 odstavce v EN i CS, skills, technologie, firmy a odvětví
         self.assertEqual(len(self.payload["roles"]), 21)
         for role in self.payload["roles"]:
-            self.assertEqual(len(role["synthesized_description"]), 2)
-            for p in role["synthesized_description"]:
-                self.assertIsInstance(p, str)
-                self.assertGreater(len(p), 40)
+            desc = role["synthesized_description"]
+            self.assertIsInstance(desc, dict)
+            for locale in ("en", "cs"):
+                self.assertEqual(len(desc[locale]), 2)
+                for p in desc[locale]:
+                    self.assertIsInstance(p, str)
+                    self.assertGreater(len(p), 40)
             self.assertIn("top_skills", role)
             self.assertIn("top_technologies", role)
             self.assertIn("top_companies", role)
             self.assertIn("top_sectors", role)
 
+        # 4. Lokalizované poznámky v time_series a headcount_analytics
+        for locale in ("en", "cs"):
+            self.assertIn(locale, self.payload["time_series"]["status_note"])
+            self.assertIn(locale, self.payload["headcount_analytics"]["coverage_note"])
+
     def test_contract_validation_fails_on_broken_payload(self) -> None:
         broken = copy.deepcopy(self.payload)
-        broken["roles"][0]["synthesized_description"] = ["Pouze jeden odstavec"]
+        broken["roles"][0]["synthesized_description"]["en"] = ["Only one paragraph"]
 
-        with self.assertRaisesRegex(ValueError, "must have exactly 2 paragraphs"):
+        with self.assertRaisesRegex(ValueError, "must have localized 'en' and 'cs' arrays of 2 paragraphs"):
             validate_against_contract(broken)
 
         broken_missing_key = copy.deepcopy(self.payload)

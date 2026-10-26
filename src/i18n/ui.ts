@@ -1,0 +1,639 @@
+export type Locale = 'en' | 'cs';
+
+export type NavKey = 'dashboard' | 'roles' | 'gcp' | 'academy' | 'about';
+
+const PATH_MAP: Record<NavKey, string> = {
+  dashboard: '/',
+  roles: '/roles',
+  gcp: '/gcp-hub',
+  academy: '/academy',
+  about: '/about',
+};
+
+export function getLocalePath(lang: Locale, key: NavKey): string {
+  const base = PATH_MAP[key];
+  if (lang === 'en') return base;
+  return base === '/' ? '/cs/' : `/cs${base}`;
+}
+
+export const ui = {
+  en: {
+    meta: {
+      defaultTitle: 'Vector87 — Quantitative Intelligence for the AI & Data Job Market',
+      defaultDescription:
+        'Analytical data hub monitoring the state of the AI, ML, and Data job market across the S&P 500, North America, and Europe.',
+    },
+    nav: {
+      dashboard: '01 / Market Dashboard',
+      roles: '02 / Role Analysis',
+      gcp: '03 / Google Cloud Hub',
+      academy: '04 / Education Academy',
+      about: '05 / About Author',
+      mainAria: 'Main navigation',
+      mobileAria: 'Mobile navigation',
+    },
+    telemetryBar: {
+      status: 'TELEMETRY: ONLINE',
+      snapshot: 'SNAPSHOT:',
+      activeJobs: 'ACTIVE AI/DATA JOBS:',
+      sp500Coverage: 'S&P 500 COVERAGE:',
+      firms: 'FIRMS',
+      intensity: 'INTENSITY:',
+      ofPool: 'OF TOTAL HIRING POOL',
+    },
+    footer: {
+      subtitle: 'Analytical Telemetry Hub',
+      description:
+        'Static intelligence hub monitoring global demand for data and AI specialists across the S&P 500, North America, and Europe. Powered by a local DuckDB pipeline and Astro SSG.',
+    },
+    dashboard: {
+      pageTitle: 'Vector87 — Market Dashboard | S&P 500 & Global Data/AI Job Telemetry',
+      heroBadge: 'VECTOR 87 // MARKET TELEMETRY',
+      heroTitlePrefix: 'Direction and structure of demand in the ',
+      heroTitleHighlight: 'AI & Data job market',
+      heroDescription: (sp500Count: number) =>
+        `Quantitative telemetry across ${sp500Count} S&P 500 corporations, frontier technology leaders, and the European market. Data is aggregated directly from corporate ATS platforms into a local DuckDB warehouse and exported to a static JSON contract.`,
+      ctaRoles: 'EXPLORE 21 ROLES →',
+      ctaGcp: 'GOOGLE CLOUD HUB',
+
+      s1Tag: '01 // PRIORITY METRIC',
+      s1Title: 'Market Vitality & AI/Data Hiring Intensity',
+      s1Sub: 'Share of AI and data positions relative to the total corporate hiring pool',
+      kpi1Title: 'S&P 500 AI/Data Intensity',
+      kpi1Sub: 'of total hiring pool',
+      kpi1Foot: (aiJobs: string, pool: string) => `${aiJobs} AI/Data out of ${pool} open roles`,
+      kpi2Title: 'Total Active AI/Data Jobs',
+      kpi2Sub: 'of pool',
+      kpi2Foot: (pool: string) => `Total hiring pool: ${pool} open positions`,
+      kpi3Title: 'S&P 500 Adoption Breadth',
+      kpi3Foot: (pct: number) => `${pct}% of S&P 500 corporations actively hiring data talent`,
+      kpi4Title: 'Geographic Scope (US/CA vs. Europe)',
+      kpi4Foot: 'Czech Republic (CZ):',
+      kpi4FootSuffix: 'active positions',
+      chartTopCompTitle: 'Top 10 Corporations by Open AI & Data Positions',
+      chartTopCompSub: 'Absolute count of active data and AI job postings in the current snapshot',
+      chartTopCompLabel: 'Open AI/Data Positions',
+      geoTitle: 'Geographic Market Distribution',
+      geoBadge: 'TOP 8 MARKETS',
+      longitudinalLabel: 'LONGITUDINAL STATUS:',
+
+      s2Tag: '02 // INFRASTRUCTURE & TOOLING',
+      s2Title: 'Technology & Cloud Stack',
+      s2Sub: 'Adoption of hyperscalers (AWS, GCP, Azure), modern data platforms, and core libraries',
+      chartCloudTitle: 'Cloud Hyperscalers & Modern Data Platforms',
+      chartCloudSub: 'Active job postings explicitly requiring the given cloud or data platform',
+      chartCloudLabel: 'Job Postings',
+      chartTechTitle: 'Most Demanded Technologies & Competencies (% Penetration)',
+      chartTechSub: 'Share of all active AI and data job postings',
+      chartTechLabel: 'Job Posting Penetration',
+      coocTitle: 'Most Frequent Technology Pairings (Skill Co-occurrence)',
+      coocSub: 'Tool combinations requested together within the same job posting (ranked by volume and Jaccard similarity)',
+
+      s3Tag: '03 // SECTOR MATRIX',
+      s3Title: 'Industry Heatmap: S&P 500 Sectors & Seniority Distribution',
+      s3Sub: 'Ordered by AI/Data Hiring Intensity (% of data roles out of all open positions in the sector)',
+      thSector: 'GICS Sector (S&P 500)',
+      thFirms: 'Firms',
+      thAiJobs: 'AI/Data Jobs',
+      thIntensity: 'AI Intensity',
+      thGenAi: 'GenAI Share',
+
+      s4Tag: '04 // ORGANIZATIONAL STRUCTURE',
+      s4Title: 'Hierarchy Shift: Hands-on (IC) vs. Management',
+      s4Sub: 'Ratio of executive and management positions relative to individual contributors',
+      ratioTag: 'STRUCTURAL RATIO',
+      ratioTitle: (ratio: number) => `${ratio} : 1 in favor of Hands-on IC`,
+      ratioDesc: (icPct: number, mgmtPct: number) =>
+        `The market overwhelmingly demands direct technical execution. Fully ${icPct}% of all open roles are Individual Contributors (engineers, analysts, scientists), while pure management accounts for ${mgmtPct}%.`,
+      domainBreakdownLabel: 'IC Share by Domain',
+      chartSenTitle: 'Demand Distribution by Seniority',
+      chartSenSub: 'Mid, Senior, and Staff/Principal engineering roles dominate; entry-level Junior positions represent only ~4.4%',
+      chartSenLabel: 'Active Job Postings',
+
+      s5Tag: '05 // JOB DESCRIPTION SIGNALS',
+      s5Title: 'Trend Radar: Adoption of Emerging Paradigms',
+      s5Sub: 'Frequency of high-signal terms (GenAI, Agentic AI, RAG, Evals, Semantic Layer, Vertex AI, Dataform) in job descriptions',
+      chartRadarTitle: 'Emerging Technology Penetration Radar (%)',
+      chartRadarSub: 'Percentage of all AI/Data postings mentioning the concept',
+      chartRadarLabel: 'Posting Penetration (%)',
+      signalMatrixTitle: 'Detailed Job Posting Signal Matrix',
+      postingsLabel: 'POSTINGS',
+      categoryLabel: 'Category:',
+      ofMarket: 'of market',
+      positionsWord: 'positions',
+    },
+    roles: {
+      pageTitle: 'Role Analysis — Vector87 | Synthesized AI & Data Job Profiles',
+      tag: '02 // TAXONOMY & REQUIREMENT SYNTHESIS',
+      title: (count: number) => `AI & Data Role Analysis (${count} Canonical Profiles)`,
+      subtitle:
+        'Each canonical role below combines a two-paragraph executive synthesis derived from aggregated corporate job requirements with a quantitative breakdown of core skills, engineering stack, top hiring companies, and S&P 500 sectors.',
+      chartTitle: 'Top 12 AI & Data Roles by Active Job Postings',
+      chartSub: (sp500Count: number) => `Source: ${sp500Count} S&P 500 corporations + frontier tech leaders and European market`,
+      chartLabel: 'Active Positions',
+      allDomainsBtn: 'All Domains',
+      filterHint: 'Click any role card to expand its full synthesized profile',
+      positionsWord: 'positions',
+      shareLabel: 'Share:',
+      synthHeader: 'SYNTHESIZED JOB DESCRIPTION',
+      synthSub: 'AGGREGATED ROLE PROFILE',
+      colSkills: '• Required Core Skills & Domain',
+      colTech: '• Technology Stack & Tooling',
+      colCompanies: '• Top Hiring Companies',
+      colSectors: '• Top S&P 500 Sectors (Industry)',
+      emptySample: 'Insufficient sample size',
+      emptyPostings: 'No active postings',
+      emptySp500: 'Outside S&P 500 sample',
+    },
+    gcp: {
+      pageTitle: 'Google Cloud Hub — Vector87 | BigQuery, Vertex AI, Dataform & Looker Telemetry',
+      tag: '03 // SPECIALIZED TELEMETRY',
+      title: 'Google Cloud (GCP) Data & AI Hub',
+      subtitle:
+        'Dedicated tracking of Google Cloud Platform adoption across data and AI job postings — spanning BigQuery analytics, Dataform SQLX transformations, Dataflow streaming, Looker semantic modeling, and Vertex AI.',
+      kpi1Title: 'Positions in GCP Ecosystem',
+      kpi1Foot: 'Active postings mentioning at least one GCP data/AI service',
+      kpi2Title: 'Share of Total Market',
+      kpi2Foot: 'Across all tracked AI & Data job postings',
+      kpi3Title: 'Share Among Cloud Postings',
+      kpi3Foot: 'Among positions explicitly specifying a cloud platform',
+      chartSvcTitle: 'Demand for Specific Google Cloud Services',
+      chartSvcSub: 'Active job postings in the current snapshot',
+      chartSvcLabel: 'Positions',
+      chartRoleTitle: 'Top Roles Operating on the GCP Ecosystem',
+      chartRoleSub: 'Distribution of canonical roles requiring GCP / BigQuery / Vertex AI',
+      chartRoleLabel: 'GCP Positions',
+      svcSectionTitle: 'Detailed Telemetry of Tracked GCP Services',
+      ofGcpPositions: 'of GCP roles',
+      postingsOfMarket: (pct: number) => `postings (${pct}% of market)`,
+      pairedWithLabel: 'Most frequently paired with:',
+      notesSectionTitle: 'Architectural Notes, Service Benchmarks & Practice',
+      topCompTitle: 'Top 10 Corporations Hiring for GCP',
+      topCompSub: 'Ranked by open job postings requiring the GCP stack',
+      positionsWord: 'positions',
+      notes: [
+        {
+          service: 'BigQuery & BigLake',
+          tag: 'Serverless Lakehouse',
+          summary:
+            'The foundational analytical engine on GCP. Dominates enterprise architectures through decoupled compute/storage, native Apache Iceberg support via BigLake, and in-warehouse ML/LLM execution (BigQuery ML).',
+          linkLabel: 'BigQuery Deep-Dives on akucera.eu',
+          href: 'https://akucera.eu',
+        },
+        {
+          service: 'Vertex AI & Agent Builder',
+          tag: 'Enterprise GenAI & MLOps',
+          summary:
+            'Unified platform for deploying Gemini and open-weight models, managing low-latency Vector Search, running automated Rapid Evaluations, and orchestrating production AI agents.',
+          linkLabel: 'Vertex AI Documentation',
+          href: 'https://cloud.google.com/vertex-ai/docs',
+        },
+        {
+          service: 'Dataform (in BigQuery)',
+          tag: 'SQLX Analytics Engineering',
+          summary:
+            'Native ELT transformation orchestrator inside BigQuery built on SQLX. Enables Git-versioned data models, automated data quality assertions, and dependency graphs without external infrastructure.',
+          linkLabel: 'Dataform Best Practices',
+          href: 'https://cloud.google.com/dataform/docs',
+        },
+        {
+          service: 'Looker & Semantic Layer',
+          tag: 'Governed BI & LookML',
+          summary:
+            'Mission-critical semantic layer (LookML) defining unified business metrics across the enterprise. In the GenAI era, it serves as a deterministic grounding layer that prevents metric hallucinations.',
+          linkLabel: 'Essay: Why AI Made Me Double Down on Being Data-Informed',
+          href: 'https://akucera.eu/no-blueprint-exists-why-ai-made-me-double-down-on-being-data-informed/',
+        },
+      ],
+    },
+    academy: {
+      pageTitle: 'Education Academy — Vector87 | Learning Tracks, Literature & Best Practices',
+      tag: '04 // CURATED EDUCATION',
+      title: 'Education Academy & Learning Tracks',
+      subtitle:
+        'A curriculum mapped directly to real S&P 500 hiring demand from our telemetry. Rather than ephemeral tool tutorials, it focuses on architectural foundations, engineering rigor, and measurable business delivery.',
+      tracksTitle: 'Structured Learning Tracks',
+      booksTitle: 'Essential Library for Data Architects & AI Engineers',
+      tracks: [
+        {
+          code: 'TRACK 01',
+          title: 'Analytics & Modern BI Engineering',
+          level: 'Foundational → Senior IC',
+          focus:
+            'Transitioning from ad-hoc reporting to engineering-grade analytics, semantic layers, and Data-Informed decision-making.',
+          modules: [
+            'Advanced analytical SQL (Window functions, CTEs, execution plan optimization in BigQuery/Snowflake)',
+            'Analytics Engineering: Git-versioned data modeling in dbt and Dataform (SQLX), automated data quality assertions',
+            'Semantic Layer design (LookML / MetricFlow) to eliminate inconsistent KPI definitions across departments',
+            'Product & business analytics: causal reasoning, cohort retention analysis, and executive storytelling',
+          ],
+        },
+        {
+          code: 'TRACK 02',
+          title: 'Cloud Data Engineering & Lakehouse Architecture',
+          level: 'Mid → Staff / Architect',
+          focus:
+            'Building scalable data platforms, distributed ingestion/transformation pipelines, and resilient infrastructure.',
+          modules: [
+            'Production Python & software engineering for data teams (typing, automated testing, CI/CD, Docker containerization)',
+            'Distributed compute & streaming: Apache Spark, Databricks, Google Cloud Dataflow',
+            'Modern table formats & storage engines: Apache Iceberg, Delta Lake, BigLake',
+            'Orchestration, Data Contracts, and enterprise Data Governance at scale',
+          ],
+        },
+        {
+          code: 'TRACK 03',
+          title: 'Applied AI, LLM Systems & Agentic Engineering',
+          level: 'Mid → Principal AI Engineer',
+          focus:
+            'Designing, evaluating, and operating production applications powered by foundation models and autonomous agents.',
+          modules: [
+            'Production RAG architectures: chunking strategies, hybrid lexical/vector retrieval, and vector databases',
+            'Agentic AI workflows: deterministic tool use, state machines, and multi-agent orchestration (LangGraph, Vertex AI)',
+            'LLMOps & Evals: systematic measurement of hallucinations, latency, regression testing, and runtime guardrails',
+            'Fine-tuning (LoRA/QLoRA) vs. in-context learning and unit economics of LLM inference in production',
+          ],
+        },
+      ],
+      books: [
+        {
+          title: 'Designing Data-Intensive Applications',
+          author: 'Martin Kleppmann',
+          category: 'Data Systems & Architecture',
+          why: 'The definitive foundation for understanding distributed data systems, replication, partitioning, consensus, and stream processing.',
+        },
+        {
+          title: 'Fundamentals of Data Engineering',
+          author: 'Joe Reis & Matt Housley',
+          category: 'Data Engineering',
+          why: 'A vendor-neutral architectural framework covering the complete data engineering lifecycle and undercurrents.',
+        },
+        {
+          title: 'AI Engineering: Building Applications with Foundation Models',
+          author: 'Chip Huyen',
+          category: 'Applied AI & LLMOps',
+          why: 'A rigorous engineering guide to evaluation (evals), RAG, fine-tuning, latency optimization, and production deployment of foundation models.',
+        },
+        {
+          title: 'Google BigQuery: The Definitive Guide',
+          author: 'Valliappa Lakshmanan & Jordan Tigani',
+          category: 'Google Cloud / DWH',
+          why: 'Deep architectural dive into Dremel, Colossus, Borg, and writing high-efficiency analytical and ML workloads in BigQuery.',
+        },
+      ],
+    },
+    about: {
+      pageTitle: 'About the Author — Vector87 | Antonín Kučera (akucera.eu)',
+      tag: '05 // AUTHOR & PROJECT PHILOSOPHY',
+      roleSubtitle: 'Data & BI Leader • Google Cloud & BigQuery Specialist • Creator of Vector87',
+      bioP1:
+        'I build and lead Data and Business Intelligence organizations, architect high-throughput cloud data platforms (primarily on Google Cloud Platform / BigQuery), and apply AI pragmatically across analytics teams. My background includes leading BI and data operations in global high-traffic environments (including Livesport) and speaking regularly across the Central European data community (Data Talk, Data Day).',
+      bioP2:
+        'Vector87.com was created as an independent, quantitative counterweight to the marketing noise surrounding AI. Instead of relying on hype, we measure how S&P 500 enterprises and technology leaders actually allocate capital — tracked through open engineering seats, required technical competencies, and shifts in organizational hierarchy.',
+      ctaBlog: 'PERSONAL WEBSITE & BLOG (akucera.eu) ↗',
+      ctaLinkedin: 'LINKEDIN PROFILE ↗',
+      brandCardTitle: 'WHY VECTOR 87?',
+      brandCardP1:
+        'Vector represents mathematical direction and magnitude — capturing the actual trajectory of the global data and AI job market.',
+      brandCardP2:
+        '87 signals maturity and grounding: in an era of synthetic noise, we anchor decisions on primary telemetry and a Data-Informed philosophy rather than blind Data-Driven automation.',
+      articlesTag: 'ESSAYS & ANALYSES',
+      articlesTitle: 'Selected Essays from akucera.eu & Substack',
+      articlesAllLink: 'View all articles on akucera.eu →',
+      readArticle: 'Read essay',
+      articles: [
+        {
+          title: 'No Blueprint Exists: Why AI Made Me Double Down on Being “Data-Informed”',
+          topic: 'Data Leadership & AI Philosophy',
+          summary:
+            'Why blind "data-driven" automation falls short in the age of generative AI — when model output scales noise faster than signal, and why pairing telemetry with domain context and human judgment is decisive.',
+          href: 'https://akucera.eu/no-blueprint-exists-why-ai-made-me-double-down-on-being-data-informed/',
+        },
+        {
+          title: 'Google Cloud & BigQuery Architecture in High-Throughput Environments',
+          topic: 'Google Cloud / BigQuery',
+          summary:
+            'Architectural lessons from operating and scaling analytical infrastructure over terabytes of daily data — spanning query optimization, slot economics in BigQuery, and modern SQLX/ELT pipelines.',
+          href: 'https://akucera.eu',
+        },
+        {
+          title: 'The AI Productivity Paradox in Analytics & BI Teams',
+          topic: 'AI Impact on Analytics',
+          summary:
+            'How autonomous agents and LLMs reshape the day-to-day craft of data analysts, BI engineers, and data leaders — and where the boundary lies between rapid prototyping and durable production architecture.',
+          href: 'https://akucera.eu',
+        },
+      ],
+    },
+  },
+
+  cs: {
+    meta: {
+      defaultTitle: 'Vector87 — Kvantitativní telemetrie trhu práce v oblasti AI & Dat',
+      defaultDescription:
+        'Analytický datový hub monitorující stav AI, ML a datového trhu práce v S&P 500, Severní Americe a Evropě.',
+    },
+    nav: {
+      dashboard: '01 / Market Dashboard',
+      roles: '02 / Analýza rolí',
+      gcp: '03 / Google Cloud Hub',
+      academy: '04 / Vzdělávací akademie',
+      about: '05 / O autorovi',
+      mainAria: 'Hlavní navigace',
+      mobileAria: 'Mobilní navigace',
+    },
+    telemetryBar: {
+      status: 'TELEMETRIE: ONLINE',
+      snapshot: 'SNAPSHOT:',
+      activeJobs: 'AKTIVNÍ AI/DATA POZICE:',
+      sp500Coverage: 'POKRYTÍ S&P 500:',
+      firms: 'FIREM',
+      intensity: 'INTENZITA:',
+      ofPool: 'Z CELKOVÉHO NÁBOROVÉHO POOLU',
+    },
+    footer: {
+      subtitle: 'Analytical Telemetry Hub',
+      description:
+        'Statický datový hub monitorující globální poptávku po datových a AI expertech napříč S&P 500, Severní Amerikou a Evropou. Poháněno lokální DuckDB pipeline a Astro SSG.',
+    },
+    dashboard: {
+      pageTitle: 'Vector87 — Market Dashboard | S&P 500 & Globální telemetrie datového a AI trhu',
+      heroBadge: 'VECTOR 87 // MARKET TELEMETRY',
+      heroTitlePrefix: 'Směr a struktura poptávky na ',
+      heroTitleHighlight: 'datovém a AI trhu',
+      heroDescription: (sp500Count: number) =>
+        `Kvantitativní pohled na otevřené pozice v ${sp500Count} korporacích indexu S&P 500, technologických lídrech a evropském trhu. Data jsou agregována přímo z firemních ATS systémů do lokální DuckDB a exportována do statického kontraktu.`,
+      ctaRoles: 'ANALÝZA 21 ROLÍ →',
+      ctaGcp: 'GOOGLE CLOUD HUB',
+
+      s1Tag: '01 // PRIORITNÍ METRIKA',
+      s1Title: 'Tržní vitalita & AI/Data Hiring Intensity',
+      s1Sub: 'Podíl datových a AI pozic vůči celkovému náborovému poolu firem',
+      kpi1Title: 'S&P 500 AI/Data Intensity',
+      kpi1Sub: 'z celkového poolu',
+      kpi1Foot: (aiJobs: string, pool: string) => `${aiJobs} AI/Data z ${pool} otevřených pozic`,
+      kpi2Title: 'Celkem aktivních AI/Data pozic',
+      kpi2Sub: 'poolu',
+      kpi2Foot: (pool: string) => `Celkový pool: ${pool} otevřených míst`,
+      kpi3Title: 'S&P 500 šířka adopce',
+      kpi3Foot: (pct: number) => `${pct}% firem S&P 500 aktivně nabírá dataře`,
+      kpi4Title: 'Geografický záběr (US/CA vs. Evropa)',
+      kpi4Foot: 'Česká republika (CZ):',
+      kpi4FootSuffix: 'aktivních pozic',
+      chartTopCompTitle: 'Top 10 korporací podle počtu otevřených AI & Data pozic',
+      chartTopCompSub: 'Absolutní počet aktivních datových a AI inzerátů v aktuálním snapshotu',
+      chartTopCompLabel: 'Otevřené AI/Data pozice',
+      geoTitle: 'Geografická distribuce trhu',
+      geoBadge: 'TOP 8 TRHŮ',
+      longitudinalLabel: 'LONGITUDINÁLNÍ STATUS:',
+
+      s2Tag: '02 // INFRASTRUKTURA & NÁSTROJE',
+      s2Title: 'Technologický a cloudový stack',
+      s2Sub: 'Zastoupení hyperscalerů (AWS, GCP, Azure), datových platforem a klíčových knihoven',
+      chartCloudTitle: 'Cloud Hyperscalers & Modern Data Platforms',
+      chartCloudSub: 'Počet aktivních inzerátů explicitně vyžadujících daný cloud či datovou platformu',
+      chartCloudLabel: 'Počet inzerátů',
+      chartTechTitle: 'Nejžádanější technologie a kompetence (% penetrace)',
+      chartTechSub: 'Podíl ze všech aktivních datových a AI inzerátů',
+      chartTechLabel: 'Penetrace v inzerátech',
+      coocTitle: 'Nejčastější technologické dvojice v inzerátech (Skill Co-occurrence)',
+      coocSub: 'Kombinace nástrojů, které firmy požadují společně v jednom inzerátu (seřazeno dle výskytu a Jaccard indexu)',
+
+      s3Tag: '03 // SEKTOROVÁ MATICE',
+      s3Title: 'Industry Heatmap: S&P 500 odvětví a rozložení seniority',
+      s3Sub: 'Seřazeno podle AI/Data Hiring Intensity (% datových pozic ze všech otevřených míst v sektoru)',
+      thSector: 'GICS Sektor (S&P 500)',
+      thFirms: 'Firem',
+      thAiJobs: 'AI/Data pozic',
+      thIntensity: 'AI Intensity',
+      thGenAi: 'GenAI podíl',
+
+      s4Tag: '04 // ORGANIZAČNÍ STRUKTURA',
+      s4Title: 'Posun v hierarchii: Hands-on (IC) vs. Management',
+      s4Sub: 'Poměr exekutivních/manažerských pozic vůči individuálním přispěvatelům',
+      ratioTag: 'STRUKTURÁLNÍ POMĚR',
+      ratioTitle: (ratio: number) => `${ratio} : 1 ve prospěch Hands-on IC`,
+      ratioDesc: (icPct: number, mgmtPct: number) =>
+        `Trh jednoznačně poptává přímou technickou exekuci. Celkem ${icPct}% všech otevřených rolí tvoří Individual Contributors (inženýři, analytici, vědci), zatímco čistý management tvoří ${mgmtPct}%.`,
+      domainBreakdownLabel: 'Podíl IC podle domény',
+      chartSenTitle: 'Rozložení poptávky podle seniority',
+      chartSenSub: 'Dominují Mid, Senior a Staff/Principal inženýrské pozice; vstupních Junior pozic jsou pouze ~4,4 %',
+      chartSenLabel: 'Počet aktivních pozic',
+
+      s5Tag: '05 // SIGNÁLY Z TEXTŮ INZERÁTŮ',
+      s5Title: 'Trend Radar: Adopce nových paradigmat',
+      s5Sub: 'Frekvence klíčových pojmů (GenAI, Agentic AI, RAG, Evals, Semantic Layer, Vertex AI, Dataform) v popisech pozic',
+      chartRadarTitle: 'Radar penetrace nových technologií (%)',
+      chartRadarSub: 'Procento všech AI/Data inzerátů zmiňujících daný koncept',
+      chartRadarLabel: 'Penetrace v inzerátech (%)',
+      signalMatrixTitle: 'Detailní matice signálů v inzerátech',
+      postingsLabel: 'INZERÁTŮ',
+      categoryLabel: 'Kategorie:',
+      ofMarket: 'trhu',
+      positionsWord: 'pozic',
+    },
+    roles: {
+      pageTitle: 'Analýza rolí — Vector87 | Syntetizované profily datových a AI pozic',
+      tag: '02 // TAXONOMIE & SYNTÉZA POŽADAVKŮ',
+      title: (count: number) => `Analýza datových a AI rolí (${count} kanonických profilů)`,
+      subtitle:
+        'Každá role níže kombinuje dvouodstavcový syntetizovaný job description vycházející z agregovaných požadavků korporací s přesným rozpadem nejžádanějších odborných dovedností (Skills), technologického stacku, top zaměstnavatelů a odvětví S&P 500.',
+      chartTitle: 'Top 12 datových a AI rolí podle počtu aktivních inzerátů',
+      chartSub: (sp500Count: number) => `Zdroj: ${sp500Count} S&P 500 firem + technologičtí lídři a EU trh`,
+      chartLabel: 'Aktivní pozice',
+      allDomainsBtn: 'Všechny domény',
+      filterHint: 'Kliknutím na kartu role zobrazíte kompletní syntetizovaný profil',
+      positionsWord: 'pozic',
+      shareLabel: 'Podíl:',
+      synthHeader: 'SYNTETIZOVANÝ JOB DESCRIPTION',
+      synthSub: 'AGREGOVANÝ PROFIL ROLE',
+      colSkills: '• Požadované Skills & Doména',
+      colTech: '• Technologický Stack & Nástroje',
+      colCompanies: '• Nejčastěji najímající firmy',
+      colSectors: '• Top S&P 500 odvětví (Industry)',
+      emptySample: 'Nedostatek dat ve vzorku',
+      emptyPostings: 'Žádné aktivní inzeráty',
+      emptySp500: 'Mimo S&P 500 vzorek',
+    },
+    gcp: {
+      pageTitle: 'Google Cloud Hub — Vector87 | BigQuery, Vertex AI, Dataform & Looker Telemetry',
+      tag: '03 // SPECIALIZOVANÁ TELEMETRIE',
+      title: 'Google Cloud (GCP) Data & AI Hub',
+      subtitle:
+        'Detailní sledování adopce služeb Google Cloud Platform v datových a AI inzerátech — od analytického jádra BigQuery a transformací v Dataformu přes Dataflow a Looker až po generativní platformu Vertex AI.',
+      kpi1Title: 'Pozice v GCP ekosystému',
+      kpi1Foot: 'Aktivní inzeráty zmiňující alespoň jednu GCP datovou/AI službu',
+      kpi2Title: 'Podíl na celkovém trhu',
+      kpi2Foot: 'Ze všech sledovaných AI & Data inzerátů',
+      kpi3Title: 'Podíl mezi cloudovými inzeráty',
+      kpi3Foot: 'Z pozic, které explicitně uvádějí cloudovou platformu',
+      chartSvcTitle: 'Poptávka po konkrétních službách Google Cloud',
+      chartSvcSub: 'Počet aktivních inzerátů v aktuálním snapshotu',
+      chartSvcLabel: 'Počet pozic',
+      chartRoleTitle: 'Nejčastější role pracující s GCP ekosystémem',
+      chartRoleSub: 'Rozložení kanonických pozic vyžadujících GCP / BigQuery / Vertex AI',
+      chartRoleLabel: 'Počet GCP pozic',
+      svcSectionTitle: 'Detailní telemetrie sledovaných GCP služeb',
+      ofGcpPositions: 'GCP pozic',
+      postingsOfMarket: (pct: number) => `inzerátů (${pct}% trhu)`,
+      pairedWithLabel: 'Nejčastěji párováno s:',
+      notesSectionTitle: 'Architektonické poznámky, testování služeb a praxe',
+      topCompTitle: 'Top 10 korporací poptávajících GCP',
+      topCompSub: 'Podle počtu otevřených inzerátů s GCP stackem',
+      positionsWord: 'pozic',
+      notes: [
+        {
+          service: 'BigQuery & BigLake',
+          tag: 'Serverless Lakehouse',
+          summary:
+            'Základní analytický motor na GCP. V podnikových architekturách dominuje díky oddělení výpočetní kapacity od úložiště, nativní podpoře Apache Iceberg přes BigLake a přímému volání LLM/ML modelů z SQL (BigQuery ML).',
+          linkLabel: 'BigQuery Deep-Dives na akucera.eu',
+          href: 'https://akucera.eu',
+        },
+        {
+          service: 'Vertex AI & Agent Builder',
+          tag: 'Enterprise GenAI & MLOps',
+          summary:
+            'Sjednocená platforma pro nasazování Gemini i open-weight modelů, správu vektorového vyhledávání (Vector Search), evaluaci výstupů (Rapid Evaluation API) a orchestraci produkčních AI agentů.',
+          linkLabel: 'Dokumentace Vertex AI',
+          href: 'https://cloud.google.com/vertex-ai/docs',
+        },
+        {
+          service: 'Dataform (v BigQuery)',
+          tag: 'SQLX Analytics Engineering',
+          summary:
+            'Nativní orchestrátor ELT transformací v BigQuery postavený na SQLX. Umožňuje verzovat datové modely v Gitu, vynucovat data quality assertions a stavět závislosti bez nutnosti spravovat externí instanci.',
+          linkLabel: 'Dataform Best Practices',
+          href: 'https://cloud.google.com/dataform/docs',
+        },
+        {
+          service: 'Looker & Semantic Layer',
+          tag: 'Governed BI & LookML',
+          summary:
+            'Kritická sémantická vrstva (LookML), která definuje jednotné byznysové metriky napříč organizací. V éře GenAI slouží jako spolehlivý kontext, který brání halucinacím při dotazování nad firemními daty.',
+          linkLabel: 'Článek: Proč je Data-Informed víc než Data-Driven',
+          href: 'https://akucera.eu/no-blueprint-exists-why-ai-made-me-double-down-on-being-data-informed/',
+        },
+      ],
+    },
+    academy: {
+      pageTitle: 'Vzdělávací akademie — Vector87 | Studijní cesty, literatura a Best Practices',
+      tag: '04 // KURÁTOROVANÉ VZDĚLÁVÁNÍ',
+      title: 'Vzdělávací akademie & Studijní cesty',
+      subtitle:
+        'Rozcestník sestavený přímo podle reálné poptávky S&P 500 firem z naší telemetrie. Namísto nahodilých tutoriálů se soustředí na architektonické základy, inženýrskou disciplínu a schopnost doručovat měřitelnou hodnotu.',
+      tracksTitle: 'Strukturované studijní dráhy (Learning Tracks)',
+      booksTitle: 'Základní knihovna datového architekta a AI inženýra',
+      tracks: [
+        {
+          code: 'TRACK 01',
+          title: 'Analytics & Modern BI Engineering',
+          level: 'Foundational → Senior IC',
+          focus:
+            'Přechod od ad-hoc reportingu k inženýrsky řízené analytice, sémantickým vrstvám a Data-Informed rozhodování.',
+          modules: [
+            'Pokročilé analytické SQL (Window functions, CTEs, optimalizace exekučních plánů v BigQuery/Snowflake)',
+            'Analytics Engineering: verzování datových modelů v dbt a Dataform (SQLX), automatizované testy kvality dat',
+            'Návrh sémantické vrstvy (Semantic Layer / LookML / MetricFlow) jako prevence nekonzistentních KPI',
+            'Produktová a byznysová analytika: kauzální uvažování, kohortové analýzy a komunikace se stakeholdery',
+          ],
+        },
+        {
+          code: 'TRACK 02',
+          title: 'Cloud Data Engineering & Lakehouse Architecture',
+          level: 'Mid → Staff / Architect',
+          focus:
+            'Budování škálovatelných datových platforem, distribuovaných pipeline a spolehlivé infrastruktury.',
+          modules: [
+            'Python a softwarové inženýrství pro dataře (typování, testování, CI/CD, kontejnerizace v Dockeru)',
+            'Distribuované zpracování a streaming: Apache Spark, Databricks, Google Cloud Dataflow',
+            'Moderní úložiště a otevřené tabulkové formáty: Apache Iceberg, Delta Lake, BigLake',
+            'Orchestrace, Data Contracts a Data Governance ve velkých organizacích',
+          ],
+        },
+        {
+          code: 'TRACK 03',
+          title: 'Applied AI, LLM Systems & Agentic Engineering',
+          level: 'Mid → Principal AI Engineer',
+          focus:
+            'Návrh, evaluace a produkční provoz aplikací postavených na foundation modelech a autonomních agentech.',
+          modules: [
+            'Architektura RAG systémů: chunking strategie, hybridní vyhledávání a vektorové databáze',
+            'Agentic AI workflows: nástrojové volání (tool use), multi-agentní orchestrace (LangGraph, Vertex AI)',
+            'LLMOps & Evals: systematické měření halucinací, latence, regrese kvality a nasazení guardrails',
+            'Fine-tuning (LoRA/QLoRA) vs. in-context learning a ekonomika provozu LLM v produkci',
+          ],
+        },
+      ],
+      books: [
+        {
+          title: 'Designing Data-Intensive Applications',
+          author: 'Martin Kleppmann',
+          category: 'Data Systems & Architecture',
+          why: 'Základní bible pro pochopení distribuovaných datových systémů, replikace, konsistence a stream processingu.',
+        },
+        {
+          title: 'Fundamentals of Data Engineering',
+          author: 'Joe Reis & Matt Housley',
+          category: 'Data Engineering',
+          why: 'Systematický rámec životního cyklu datového inženýrství nezávislý na konkrétních módních nástrojích.',
+        },
+        {
+          title: 'AI Engineering: Building Applications with Foundation Models',
+          author: 'Chip Huyen',
+          category: 'Applied AI & LLMOps',
+          why: 'Praktický inženýrský pohled na hodnocení (evals), RAG, fine-tuning a produkční nasazování foundation modelů.',
+        },
+        {
+          title: 'Google BigQuery: The Definitive Guide',
+          author: 'Valliappa Lakshmanan & Jordan Tigani',
+          category: 'Google Cloud / DWH',
+          why: 'Hluboký vhled do interní architektury Dremelu, Colossusu a psaní vysoce efektivních analytických dotazů.',
+        },
+      ],
+    },
+    about: {
+      pageTitle: 'O autorovi — Vector87 | Antonín Kučera (akucera.eu)',
+      tag: '05 // AUTOR & FILOZOFIE PROJEKTU',
+      roleSubtitle: 'Data & BI Leader • Google Cloud & BigQuery Specialist • Autor projektu Vector87',
+      bioP1:
+        'Věnuji se budování a vedení datových a Business Intelligence týmů, návrhu škálovatelných cloudových architektur (primárně na Google Cloud Platform / BigQuery) a praktické aplikaci AI v analytice. V praxi jsem vedl BI a datové operace ve vysokozátěžovém globálním prostředí (mj. Livesport) a pravidelně vystupuji v odborné komunitě (Data Talk, Data Day).',
+      bioP2:
+        'Projekt Vector87.com vznikl jako nezávislá, daty podložená protiváha k marketingovému šumu kolem AI. Namísto dojmů měříme reálnou alokaci kapitálu firem S&P 500 a technologických lídrů skrze jejich otevřené pozice, požadované technické kompetence a posuny v organizační hierarchii.',
+      ctaBlog: 'OSOBNÍ WEB & BLOG (akucera.eu) ↗',
+      ctaLinkedin: 'LINKEDIN PROFIL ↗',
+      brandCardTitle: 'PROČ VECTOR 87?',
+      brandCardP1:
+        'Vector vyjadřuje exaktní matematický směr a velikost — v našem případě trajektorii, jakou se vyvíjí globální datový a AI trh.',
+      brandCardP2:
+        '87 odkazuje na zralost a osobní ukotvení: v záplavě generovaného obsahu stavíme na zkušenosti, ověřitelných primárních datech a principu Data-Informed namísto slepého Data-Driven.',
+      articlesTag: 'ESEJE & ANALÝZY',
+      articlesTitle: 'Vybrané texty z akucera.eu & Substacku',
+      articlesAllLink: 'Zobrazit všechny články na akucera.eu →',
+      readArticle: 'Číst článek',
+      articles: [
+        {
+          title: 'No Blueprint Exists: Why AI Made Me Double Down on Being “Data-Informed”',
+          topic: 'Data Leadership & AI Philosophy',
+          summary:
+            'Proč v éře automatizované analytiky a generativní AI přestává stačit slepé „data-driven“ rozhodování. Kdy surový výstup modelů škáluje šum místo signálu a proč je klíčové spojit data s doménovým kontextem a lidským úsudkem.',
+          href: 'https://akucera.eu/no-blueprint-exists-why-ai-made-me-double-down-on-being-data-informed/',
+        },
+        {
+          title: 'Google Cloud & BigQuery Architecture in High-Throughput Environments',
+          topic: 'Google Cloud / BigQuery',
+          summary:
+            'Praktické poznatky z provozu a škálování analytické infrastruktury nad terabajty denních dat — od optimalizace dotazů a řízení nákladů v BigQuery až po moderní ELT transformace.',
+          href: 'https://akucera.eu',
+        },
+        {
+          title: 'The AI Productivity Paradox in Analytics & BI Teams',
+          topic: 'AI Impact on Analytics',
+          summary:
+            'Jak autonomní agenti a LLM mění každodenní práci datových analytiků, BI inženýrů a lídrů datových týmů — a kde leží hranice mezi rychlým prototypem a udržitelnou produkční architekturou.',
+          href: 'https://akucera.eu',
+        },
+      ],
+    },
+  },
+} as const;

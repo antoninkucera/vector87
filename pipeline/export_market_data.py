@@ -63,7 +63,7 @@ def classify_signal_stage(penetration_pct: float) -> str:
     return "Niche Signal"
 
 
-def load_role_descriptions() -> dict[str, list[str]]:
+def load_role_descriptions() -> dict[str, dict[str, list[str]]]:
     if ROLE_DESC_PATH.exists():
         return json.loads(ROLE_DESC_PATH.read_text(encoding="utf-8"))
     return {}
@@ -75,13 +75,21 @@ def build_fallback_description(
     job_count: int,
     top_skills: list[dict[str, Any]],
     top_tech: list[dict[str, Any]],
-) -> list[str]:
-    skill_names = ", ".join(s["skill_name"] for s in top_skills[:3]) or "SQL a Python"
-    tech_names = ", ".join(t["skill_name"] for t in top_tech[:3]) or "moderní cloudové platformy"
-    return [
-        f"Pozice {canonical_name} spadá do domény {domain} a v aktuálním vzorku pokrývá {job_count} aktivních inzerátů. Role se zaměřuje na návrh, realizaci a rozvoj datových či AI řešení s přímým dopadem na produkt a firemní rozhodování.",
-        f"Mezi nejčastěji vyžadované odborné dovednosti patří {skill_names}, zatímco technologickému stacku dominují nástroje jako {tech_names}.",
-    ]
+) -> dict[str, list[str]]:
+    skill_names_en = ", ".join(s["skill_name"] for s in top_skills[:3]) or "SQL and Python"
+    tech_names_en = ", ".join(t["skill_name"] for t in top_tech[:3]) or "modern cloud platforms"
+    skill_names_cs = ", ".join(s["skill_name"] for s in top_skills[:3]) or "SQL a Python"
+    tech_names_cs = ", ".join(t["skill_name"] for t in top_tech[:3]) or "moderní cloudové platformy"
+    return {
+        "en": [
+            f"The {canonical_name} role sits within the {domain} domain and currently accounts for {job_count} active job postings. It focuses on designing, building, and scaling data or AI capabilities with direct impact on product and enterprise decision-making.",
+            f"Core competency requirements center on {skill_names_en}, while the underlying technology stack is anchored by {tech_names_en}.",
+        ],
+        "cs": [
+            f"Pozice {canonical_name} spadá do domény {domain} a v aktuálním vzorku pokrývá {job_count} aktivních inzerátů. Role se zaměřuje na návrh, realizaci a rozvoj datových či AI řešení s přímým dopadem na produkt a firemní rozhodování.",
+            f"Mezi nejčastěji vyžadované odborné dovednosti patří {skill_names_cs}, zatímco technologickému stacku dominují nástroje jako {tech_names_cs}.",
+        ],
+    }
 
 
 def export_market_data(db_path: Path | None = None, output_path: Path | None = None) -> dict[str, Any]:
@@ -524,11 +532,18 @@ def export_market_data(db_path: Path | None = None, output_path: Path | None = N
 
         time_series = {
             "has_mature_history": has_mature_history,
-            "status_note": (
-                "Longitudinální sběr je v iniciační fázi (Q4 2026). Počáteční nárůst snapshotů odráží postupné zapojování S&P 500 ATS zdrojů; plnohodnotné MoM/WoW srovnávání tržní dynamiky se aktivuje po uzavření 3 měsíčních kohort."
-                if not has_mature_history
-                else "Aktivní longitudinální sledování týdenních a měsíčních kohort."
-            ),
+            "status_note": {
+                "en": (
+                    "Longitudinal collection is in its initial baseline phase (Q4 2026). Early snapshot growth reflects progressive onboarding of S&P 500 ATS sources; full MoM/WoW market dynamics activate after 3 completed monthly cohorts."
+                    if not has_mature_history
+                    else "Active longitudinal tracking across weekly and monthly cohorts."
+                ),
+                "cs": (
+                    "Longitudinální sběr je v iniciační fázi (Q4 2026). Počáteční nárůst snapshotů odráží postupné zapojování S&P 500 ATS zdrojů; plnohodnotné MoM/WoW srovnávání tržní dynamiky se aktivuje po uzavření 3 měsíčních kohort."
+                    if not has_mature_history
+                    else "Aktivní longitudinální sledování týdenních a měsíčních kohort."
+                ),
+            },
             "snapshots": snapshots,
             "monthly_inflow": monthly_inflow,
         }
@@ -580,9 +595,14 @@ def export_market_data(db_path: Path | None = None, output_path: Path | None = N
         headcount_analytics = {
             "tracked_companies_count": hc_tracked_comps,
             "total_snapshots": hc_total_snaps,
-            "coverage_note": (
-                f"Pilotní integrace LinkedIn / Coresignal headcount dat ({hc_tracked_comps} firem v DB). Modul měří Hiring Intensity Ratio — poměr otevřených inzerátů vůči aktuálně obsazeným datovým křeslům ve firmě."
-            ),
+            "coverage_note": {
+                "en": (
+                    f"Pilot integration of LinkedIn / Coresignal workforce headcount ({hc_tracked_comps} companies in DB). Measures Hiring Intensity Ratio — open job postings relative to currently occupied data/AI seats."
+                ),
+                "cs": (
+                    f"Pilotní integrace LinkedIn / Coresignal headcount dat ({hc_tracked_comps} firem v DB). Modul měří Hiring Intensity Ratio — poměr otevřených inzerátů vůči aktuálně obsazeným datovým křeslům ve firmě."
+                ),
+            },
             "company_ratios": company_ratios,
         }
 
@@ -725,7 +745,11 @@ def export_market_data(db_path: Path | None = None, output_path: Path | None = N
             ][:8]
 
             narrative = role_narratives.get(cat_id)
-            if not narrative or len(narrative) != 2:
+            if (
+                not isinstance(narrative, dict)
+                or len(narrative.get("en", [])) != 2
+                or len(narrative.get("cs", [])) != 2
+            ):
                 narrative = build_fallback_description(can_name, domain, job_cnt, top_skills_list, top_tech_list)
 
             sec_tuples = role_secs_by_cat.get(cat_id, [])
@@ -904,8 +928,11 @@ def validate_against_contract(payload: dict[str, Any]) -> None:
     if not isinstance(payload.get("roles"), list) or len(payload["roles"]) == 0:
         raise ValueError("Exported 'roles' array must not be empty")
     for role in payload["roles"]:
-        if len(role.get("synthesized_description", [])) != 2:
-            raise ValueError(f"Role '{role.get('category_id')}' must have exactly 2 paragraphs in synthesized_description")
+        desc = role.get("synthesized_description", {})
+        if not isinstance(desc, dict) or len(desc.get("en", [])) != 2 or len(desc.get("cs", [])) != 2:
+            raise ValueError(
+                f"Role '{role.get('category_id')}' must have localized 'en' and 'cs' arrays of 2 paragraphs in synthesized_description"
+            )
 
 
 if __name__ == "__main__":
