@@ -37,6 +37,13 @@ const topTechSlice = tech_cloud_stack.top_technologies.slice(0, 12);
 const seniorityItems = hierarchy_shift.by_seniority;
 const radarItems = trend_radar.keywords;
 
+// Data pro Headcount & Team Dynamics
+const macroRoles = headcount_analytics.macro_role_intensity.slice(0, 8);
+const macroLabels = macroRoles.map((r) => r.canonical_name.replace(' (AI/ML)', '').replace(' / Analyst', ''));
+const macroOccupied = macroRoles.map((r) => r.occupied_seats);
+const macroOpen = macroRoles.map((r) => r.open_jobs);
+const topGrowingTeams = headcount_analytics.company_team_growth.slice(0, 10);
+
 function getHeatmapCellStyle(val: number, maxVal: number): string {
   if (val <= 0) return 'background-color: rgba(15, 23, 42, 0.4); color: #475569;';
   const ratio = Math.min(val / Math.max(maxVal, 1), 1);
@@ -453,6 +460,79 @@ const sp500AdoptionPct = Math.round((market_vitality.sp500_hiring_companies / me
           ]}
           heightClass="h-80"
         />
+      </div>
+    </div>
+
+    <!-- NOVÝ HEADCOUNT TELEMETRY PANEL: Installed Base vs Hiring Velocity -->
+    <div class="mt-8 panel-surface rounded-xl p-6 border-t-2 border-t-emerald-400">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 mb-6">
+        <div>
+          <span class="text-xs font-mono uppercase tracking-widest text-emerald-400">{t.headcountBadge}</span>
+          <h3 class="text-xl font-bold text-white tracking-tight mt-0.5">{t.headcountTitle}</h3>
+        </div>
+        <p class="text-xs font-mono text-slate-400">{t.headcountSub}</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <!-- Makro graf: obsazené týmy vs inzeráty -->
+        <div class="lg:col-span-7">
+          <MarketTrendChart
+            chartId="chart-macro-occupied-vs-open"
+            title={t.macroChartTitle}
+            subtitle={t.macroChartSub}
+            badge="HEADCOUNT RATIO"
+            type="horizontalBar"
+            labels={macroLabels}
+            datasets={[
+              {
+                label: t.macroOccupiedLabel,
+                data: macroOccupied,
+                backgroundColor: 'rgba(148, 163, 184, 0.45)',
+                borderColor: '#94a3b8',
+                borderWidth: 1,
+                borderRadius: 4,
+              },
+              {
+                label: t.macroOpenLabel,
+                data: macroOpen,
+                backgroundColor: 'rgba(16, 185, 129, 0.85)',
+                borderColor: '#10b981',
+                borderWidth: 1,
+                borderRadius: 4,
+              },
+            ]}
+            heightClass="h-80"
+          />
+        </div>
+
+        <!-- Žebříček firem s nejvyšší rychlostí expanze datových týmů -->
+        <div class="lg:col-span-5 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <h4 class="text-sm font-semibold text-white">{t.intensityRankTitle}</h4>
+              <span class="text-[10px] font-mono text-emerald-400 uppercase">EXPANSION %</span>
+            </div>
+            <p class="text-[11px] text-slate-400 mb-3">{t.intensityRankSub}</p>
+
+            <div class="space-y-2">
+              {topGrowingTeams.map((comp, idx) => (
+                <div class="p-2.5 rounded-lg bg-slate-900/80 border border-slate-800/80 flex items-center justify-between gap-3 text-xs font-mono">
+                  <div class="truncate">
+                    <span class="text-slate-500 mr-1.5 font-bold">#{idx + 1}</span>
+                    <strong class="text-slate-200">{comp.company_name}</strong>
+                    <span class="text-[10px] text-slate-500 block font-normal truncate">{comp.sector}</span>
+                  </div>
+                  <div class="text-right shrink-0">
+                    <div class="text-emerald-400 font-bold">+{comp.hiring_intensity_ratio_pct}%</div>
+                    <div class="text-[10px] text-slate-400 font-normal">
+                      {comp.open_data_jobs} open / {comp.total_data_team} team
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>

@@ -112,6 +112,14 @@ const topRolesForChart = roles.filter((r) => r.job_count > 0).slice(0, 12);
               <div class="text-[11px] text-slate-400">
                 {t.shareLabel} {role.market_share_pct}% • Senior+: {role.senior_plus_pct}%
               </div>
+              {role.occupied_seats && (
+                <div class="text-[10px] text-slate-400 mt-0.5">
+                  {t.installedBaseLabel} <strong class="text-slate-300">{role.occupied_seats.toLocaleString('en-US')}</strong>
+                  {role.expansion_index_pct && (
+                    <span class="text-emerald-400 ml-1.5 font-bold">({role.expansion_index_pct}%)</span>
+                  )}
+                </div>
+              )}
             </div>
             <span class="w-7 h-7 rounded-md bg-slate-900 border border-slate-700 flex items-center justify-center text-xs font-mono text-cyan-400 group-open:rotate-180 transition-transform">
               ▼

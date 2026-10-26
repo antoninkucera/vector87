@@ -271,11 +271,61 @@
     },
     "headcount_analytics": {
       "type": "object",
-      "required": ["tracked_companies_count", "total_snapshots", "coverage_note", "company_ratios"],
+      "required": [
+        "tracked_companies_count",
+        "total_snapshots",
+        "coverage_note",
+        "total_occupied_seats",
+        "macro_role_intensity",
+        "company_team_growth",
+        "company_ratios"
+      ],
       "properties": {
         "tracked_companies_count": { "type": "integer" },
         "total_snapshots": { "type": "integer" },
+        "total_occupied_seats": { "type": "integer" },
         "coverage_note": { "$ref": "#/$defs/localizedString" },
+        "macro_role_intensity": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["role_id", "canonical_name", "domain", "occupied_seats", "open_jobs", "hiring_intensity_pct"],
+            "properties": {
+              "role_id": { "type": "string" },
+              "canonical_name": { "type": "string" },
+              "domain": { "type": "string" },
+              "occupied_seats": { "type": "integer" },
+              "open_jobs": { "type": "integer" },
+              "hiring_intensity_pct": { "type": "number" }
+            }
+          }
+        },
+        "company_team_growth": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "company_id",
+              "company_name",
+              "sector",
+              "total_company_headcount",
+              "total_data_team",
+              "open_data_jobs",
+              "hiring_intensity_ratio_pct",
+              "data_team_share_pct"
+            ],
+            "properties": {
+              "company_id": { "type": "string" },
+              "company_name": { "type": "string" },
+              "sector": { "type": ["string", "null"] },
+              "total_company_headcount": { "type": ["integer", "null"] },
+              "total_data_team": { "type": "integer" },
+              "open_data_jobs": { "type": "integer" },
+              "hiring_intensity_ratio_pct": { "type": "number" },
+              "data_team_share_pct": { "type": ["number", "null"] }
+            }
+          }
+        },
         "company_ratios": {
           "type": "array",
           "items": {
@@ -326,6 +376,8 @@
           "market_share_pct": { "type": "number" },
           "sp500_job_count": { "type": "integer" },
           "cz_job_count": { "type": "integer" },
+          "occupied_seats": { "type": ["integer", "null"] },
+          "expansion_index_pct": { "type": ["number", "null"] },
           "senior_plus_pct": { "type": "number" },
           "remote_pct": { "type": "number" },
           "synthesized_description": {

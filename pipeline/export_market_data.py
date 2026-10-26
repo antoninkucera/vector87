@@ -551,13 +551,122 @@ def export_market_data(db_path: Path | None = None, output_path: Path | None = N
         # 7. Headcount Analytics (LinkedIn / Coresignal obsazené pozice vs. inzeráty)
         hc_tracked_comps = 0
         hc_total_snaps = 0
+        total_occupied_seats = 0
         company_ratios: list[dict[str, Any]] = []
+        macro_role_intensity: list[dict[str, Any]] = []
+        company_team_growth: list[dict[str, Any]] = []
+        occupied_by_role: dict[str, int] = {}
+
         try:
             hc_meta = con.execute(
                 "SELECT COUNT(DISTINCT company_id), COUNT(*) FROM fact_headcount_snapshots"
             ).fetchone()
             hc_tracked_comps = int(hc_meta[0] or 0)
             hc_total_snaps = int(hc_meta[1] or 0)
+
+            total_occ_row = con.execute(
+                "SELECT SUM(headcount) FROM fact_headcount_snapshots WHERE country_code = 'GLOBAL' AND role_id != '_ALL_'"
+            ).fetchone()
+            total_occupied_seats = int(total_occ_row[0] or 0)
+
+            # 7a. Makro poměr pro každou roli (obsazená místa vs. otevřené inzeráty)
+            macro_rows = con.execute(
+                """
+                WITH occupied AS (
+                    SELECT 
+                        role_id,
+                        SUM(headcount) AS total_headcount
+                    FROM fact_headcount_snapshots
+                    WHERE country_code = 'GLOBAL' AND role_id != '_ALL_'
+                    GROUP BY 1
+                ),
+                open_p AS (
+                    SELECT 
+                        r.category_id AS role_id,
+                        COUNT(DISTINCT r.job_id) AS total_open_jobs
+                    FROM bridge_job_roles r
+                    JOIN fact_jobs j ON r.job_id = j.job_id
+                    WHERE j.is_active = TRUE
+                    GROUP BY 1
+                )
+                SELECT 
+                    c.category_id,
+                    c.canonical_name,
+                    c.domain,
+                    COALESCE(o.total_headcount, 0) AS occupied_seats,
+                    COALESCE(p.total_open_jobs, 0) AS open_jobs,
+                    ROUND(100.0 * COALESCE(p.total_open_jobs, 0) / NULLIF(o.total_headcount, 0), 2) AS intensity_pct
+                FROM dim_job_categories c
+                LEFT JOIN occupied o ON c.category_id = o.role_id
+                LEFT JOIN open_p p ON c.category_id = p.role_id
+                ORDER BY occupied_seats DESC NULLS LAST
+                """
+            ).fetchall()
+
+            for r in macro_rows:
+                cid, cname, cdom, occ, op, inten = r
+                occ = int(occ)
+                op = int(op)
+                occupied_by_role[cid] = occ
+                macro_role_intensity.append({
+                    "role_id": cid,
+                    "canonical_name": cname,
+                    "domain": cdom,
+                    "occupied_seats": occ,
+                    "open_jobs": op,
+                    "hiring_intensity_pct": float(inten) if inten is not None else 0.0,
+                })
+
+            # 7b. Firemní žebříček: růst a expanze stávajících datových týmů
+            team_growth_rows = con.execute(
+                """
+                WITH comp_jobs AS (
+                    SELECT 
+                        j.company_id,
+                        COUNT(DISTINCT j.job_id) AS open_data_jobs
+                    FROM fact_jobs j
+                    WHERE j.is_active = TRUE
+                    GROUP BY 1
+                ),
+                comp_headcount AS (
+                    SELECT 
+                        company_id,
+                        MAX(CASE WHEN role_id = '_ALL_' THEN headcount ELSE NULL END) AS total_company_headcount,
+                        SUM(CASE WHEN role_id != '_ALL_' THEN headcount ELSE 0 END) AS total_data_team
+                    FROM fact_headcount_snapshots
+                    WHERE country_code = 'GLOBAL'
+                    GROUP BY 1
+                )
+                SELECT 
+                    c.company_id,
+                    c.company_name,
+                    c.sp500_sector,
+                    h.total_company_headcount,
+                    h.total_data_team,
+                    COALESCE(j.open_data_jobs, 0) AS open_data_jobs,
+                    ROUND(100.0 * COALESCE(j.open_data_jobs, 0) / NULLIF(h.total_data_team, 0), 1) AS hiring_intensity_ratio_pct,
+                    ROUND(100.0 * h.total_data_team / NULLIF(h.total_company_headcount, 0), 2) AS data_team_share_pct
+                FROM dim_companies c
+                JOIN comp_headcount h ON c.company_id = h.company_id
+                LEFT JOIN comp_jobs j ON c.company_id = j.company_id
+                WHERE h.total_data_team >= 20 AND COALESCE(j.open_data_jobs, 0) > 0
+                ORDER BY hiring_intensity_ratio_pct DESC
+                LIMIT 15
+                """
+            ).fetchall()
+
+            for r in team_growth_rows:
+                cid, cname, sec, comp_tot, dt_tot, op_tot, ratio_pct, share_pct = r
+                company_team_growth.append({
+                    "company_id": cid,
+                    "company_name": cname,
+                    "sector": sec,
+                    "total_company_headcount": int(comp_tot) if comp_tot is not None else None,
+                    "total_data_team": int(dt_tot),
+                    "open_data_jobs": int(op_tot),
+                    "hiring_intensity_ratio_pct": float(ratio_pct) if ratio_pct is not None else 0.0,
+                    "data_team_share_pct": float(share_pct) if share_pct is not None else None,
+                })
 
             hc_rows = con.execute(
                 """
@@ -595,14 +704,17 @@ def export_market_data(db_path: Path | None = None, output_path: Path | None = N
         headcount_analytics = {
             "tracked_companies_count": hc_tracked_comps,
             "total_snapshots": hc_total_snaps,
+            "total_occupied_seats": total_occupied_seats,
             "coverage_note": {
                 "en": (
-                    f"Pilot integration of LinkedIn / Coresignal workforce headcount ({hc_tracked_comps} companies in DB). Measures Hiring Intensity Ratio — open job postings relative to currently occupied data/AI seats."
+                    f"Workforce intelligence integration tracking {total_occupied_seats:,} occupied Data & AI seats across {hc_tracked_comps} enterprises. Measures Hiring Intensity Ratio — open job postings relative to currently occupied team seats."
                 ),
                 "cs": (
-                    f"Pilotní integrace LinkedIn / Coresignal headcount dat ({hc_tracked_comps} firem v DB). Modul měří Hiring Intensity Ratio — poměr otevřených inzerátů vůči aktuálně obsazeným datovým křeslům ve firmě."
+                    f"Telemetrie obsazených pozic sledující {total_occupied_seats:,} zaměstnaných Data & AI expertů u {hc_tracked_comps} korporací. Měří Hiring Intensity Ratio — poměr otevřených inzerátů vůči aktuální velikosti týmů."
                 ),
             },
+            "macro_role_intensity": macro_role_intensity,
+            "company_team_growth": company_team_growth,
             "company_ratios": company_ratios,
         }
 
@@ -773,6 +885,9 @@ def export_market_data(db_path: Path | None = None, output_path: Path | None = N
                 for lvl in SENIORITY_ORDER
             ]
 
+            occ_count = occupied_by_role.get(cat_id)
+            exp_index = round(100.0 * job_cnt / occ_count, 1) if (occ_count and occ_count > 0) else None
+
             roles_output.append(
                 {
                     "category_id": cat_id,
@@ -783,6 +898,8 @@ def export_market_data(db_path: Path | None = None, output_path: Path | None = N
                     "market_share_pct": round(100.0 * job_cnt / max(total_jobs, 1), 2),
                     "sp500_job_count": int(sp500_cnt),
                     "cz_job_count": int(cz_cnt),
+                    "occupied_seats": occ_count,
+                    "expansion_index_pct": exp_index,
                     "senior_plus_pct": float(sen_plus or 0.0),
                     "remote_pct": float(rem_pct or 0.0),
                     "synthesized_description": narrative,

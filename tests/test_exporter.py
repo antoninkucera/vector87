@@ -58,6 +58,12 @@ class TestVector87Exporter(unittest.TestCase):
             self.assertIn(locale, self.payload["time_series"]["status_note"])
             self.assertIn(locale, self.payload["headcount_analytics"]["coverage_note"])
 
+        # 5. Headcount & Macro team telemetry
+        ha = self.payload["headcount_analytics"]
+        self.assertGreater(ha["total_occupied_seats"], 100000)
+        self.assertGreater(len(ha["macro_role_intensity"]), 15)
+        self.assertGreater(len(ha["company_team_growth"]), 5)
+
     def test_contract_validation_fails_on_broken_payload(self) -> None:
         broken = copy.deepcopy(self.payload)
         broken["roles"][0]["synthesized_description"]["en"] = ["Only one paragraph"]

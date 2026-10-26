@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-10-26T15:47:34Z",
+    "generated_at": "2026-10-26T19:38:45Z",
     "schema_version": "1.0.0",
     "latest_snapshot_date": "2026-10-26",
     "total_tracked_companies": 931,
@@ -56,8 +56,8 @@
         "ai_intensity_pct": 4.21
       },
       {
-        "company_id": "alphabet",
-        "company_name": "Google (Alphabet)",
+        "company_id": "alphabet_class_a",
+        "company_name": "Alphabet Inc. (Class A)",
         "is_sp500": true,
         "sector": "Communication Services",
         "ai_data_jobs": 132,
@@ -74,8 +74,8 @@
         "ai_intensity_pct": 3.82
       },
       {
-        "company_id": "alphabet_class_a",
-        "company_name": "Alphabet Inc. (Class A)",
+        "company_id": "alphabet",
+        "company_name": "Google (Alphabet)",
         "is_sp500": true,
         "sector": "Communication Services",
         "ai_data_jobs": 132,
@@ -146,13 +146,13 @@
         "ai_intensity_pct": 4.03
       },
       {
-        "company_id": "general_motors",
-        "company_name": "General Motors",
-        "is_sp500": true,
-        "sector": "Consumer Discretionary",
+        "company_id": "stripe",
+        "company_name": "Stripe",
+        "is_sp500": false,
+        "sector": null,
         "ai_data_jobs": 46,
-        "total_active_jobs": 770,
-        "ai_intensity_pct": 5.97
+        "total_active_jobs": 4171,
+        "ai_intensity_pct": 1.1
       }
     ],
     "regional_breakdown": [
@@ -1079,262 +1079,585 @@
     ]
   },
   "headcount_analytics": {
-    "tracked_companies_count": 126,
-    "total_snapshots": 5544,
+    "tracked_companies_count": 627,
+    "total_snapshots": 27610,
+    "total_occupied_seats": 187585,
     "coverage_note": {
-      "en": "Pilot integration of LinkedIn / Coresignal workforce headcount (126 companies in DB). Measures Hiring Intensity Ratio — open job postings relative to currently occupied data/AI seats.",
-      "cs": "Pilotní integrace LinkedIn / Coresignal headcount dat (126 firem v DB). Modul měří Hiring Intensity Ratio — poměr otevřených inzerátů vůči aktuálně obsazeným datovým křeslům ve firmě."
+      "en": "Workforce intelligence integration tracking 187,585 occupied Data & AI seats across 627 enterprises. Measures Hiring Intensity Ratio — open job postings relative to currently occupied team seats.",
+      "cs": "Telemetrie obsazených pozic sledující 187,585 zaměstnaných Data & AI expertů u 627 korporací. Měří Hiring Intensity Ratio — poměr otevřených inzerátů vůči aktuální velikosti týmů."
     },
+    "macro_role_intensity": [
+      {
+        "role_id": "data_analyst",
+        "canonical_name": "Data Analyst",
+        "domain": "Analytics & DS",
+        "occupied_seats": 51483,
+        "open_jobs": 962,
+        "hiring_intensity_pct": 1.87
+      },
+      {
+        "role_id": "data_engineer",
+        "canonical_name": "Data Engineer",
+        "domain": "Data Engineering",
+        "occupied_seats": 46799,
+        "open_jobs": 829,
+        "hiring_intensity_pct": 1.77
+      },
+      {
+        "role_id": "data_scientist",
+        "canonical_name": "Data Scientist",
+        "domain": "Analytics & DS",
+        "occupied_seats": 29182,
+        "open_jobs": 836,
+        "hiring_intensity_pct": 2.86
+      },
+      {
+        "role_id": "research_scientist",
+        "canonical_name": "Research Scientist (AI/ML)",
+        "domain": "AI/ML",
+        "occupied_seats": 17181,
+        "open_jobs": 344,
+        "hiring_intensity_pct": 2.0
+      },
+      {
+        "role_id": "ml_engineer",
+        "canonical_name": "Machine Learning Engineer",
+        "domain": "AI/ML",
+        "occupied_seats": 9867,
+        "open_jobs": 876,
+        "hiring_intensity_pct": 8.88
+      },
+      {
+        "role_id": "bi_developer",
+        "canonical_name": "BI Developer / Analyst",
+        "domain": "Analytics & DS",
+        "occupied_seats": 7790,
+        "open_jobs": 77,
+        "hiring_intensity_pct": 0.99
+      },
+      {
+        "role_id": "bi_analytics_manager",
+        "canonical_name": "BI / Analytics Manager",
+        "domain": "Management",
+        "occupied_seats": 5228,
+        "open_jobs": 92,
+        "hiring_intensity_pct": 1.76
+      },
+      {
+        "role_id": "data_architect",
+        "canonical_name": "Data Architect",
+        "domain": "Data Engineering",
+        "occupied_seats": 3610,
+        "open_jobs": 168,
+        "hiring_intensity_pct": 4.65
+      },
+      {
+        "role_id": "data_science_manager",
+        "canonical_name": "Data Science / ML Manager",
+        "domain": "Management",
+        "occupied_seats": 2860,
+        "open_jobs": 43,
+        "hiring_intensity_pct": 1.5
+      },
+      {
+        "role_id": "ai_product_manager",
+        "canonical_name": "AI / Data Product Manager",
+        "domain": "Product",
+        "occupied_seats": 1989,
+        "open_jobs": 182,
+        "hiring_intensity_pct": 9.15
+      },
+      {
+        "role_id": "team_lead_data_ai",
+        "canonical_name": "Team Lead (Data/AI)",
+        "domain": "Management",
+        "occupied_seats": 1922,
+        "open_jobs": 61,
+        "hiring_intensity_pct": 3.17
+      },
+      {
+        "role_id": "engineering_manager_ai_data",
+        "canonical_name": "Engineering Manager (AI/Data)",
+        "domain": "Management",
+        "occupied_seats": 1758,
+        "open_jobs": 91,
+        "hiring_intensity_pct": 5.18
+      },
+      {
+        "role_id": "ai_developer",
+        "canonical_name": "AI Developer",
+        "domain": "AI/ML",
+        "occupied_seats": 1541,
+        "open_jobs": 1433,
+        "hiring_intensity_pct": 92.99
+      },
+      {
+        "role_id": "analytics_engineer",
+        "canonical_name": "Analytics Engineer",
+        "domain": "Data Engineering",
+        "occupied_seats": 1485,
+        "open_jobs": 92,
+        "hiring_intensity_pct": 6.2
+      },
+      {
+        "role_id": "llm_engineer",
+        "canonical_name": "LLM / GenAI Engineer",
+        "domain": "AI/ML",
+        "occupied_seats": 1404,
+        "open_jobs": 28,
+        "hiring_intensity_pct": 1.99
+      },
+      {
+        "role_id": "director_vp_data_ai",
+        "canonical_name": "Director / VP of Data & AI",
+        "domain": "Executive",
+        "occupied_seats": 1250,
+        "open_jobs": 93,
+        "hiring_intensity_pct": 7.44
+      },
+      {
+        "role_id": "head_of_ai_data",
+        "canonical_name": "Head of AI / Data",
+        "domain": "Executive",
+        "occupied_seats": 1248,
+        "open_jobs": 21,
+        "hiring_intensity_pct": 1.68
+      },
+      {
+        "role_id": "chief_data_ai_officer",
+        "canonical_name": "Chief Data / AI Officer (CDO/CAIO)",
+        "domain": "Executive",
+        "occupied_seats": 417,
+        "open_jobs": 2,
+        "hiring_intensity_pct": 0.48
+      },
+      {
+        "role_id": "mlops_engineer",
+        "canonical_name": "MLOps Engineer",
+        "domain": "Data Engineering",
+        "occupied_seats": 295,
+        "open_jobs": 15,
+        "hiring_intensity_pct": 5.08
+      },
+      {
+        "role_id": "computer_vision_engineer",
+        "canonical_name": "Computer Vision Engineer",
+        "domain": "AI/ML",
+        "occupied_seats": 221,
+        "open_jobs": 1,
+        "hiring_intensity_pct": 0.45
+      },
+      {
+        "role_id": "nlp_engineer",
+        "canonical_name": "NLP Engineer",
+        "domain": "AI/ML",
+        "occupied_seats": 55,
+        "open_jobs": 0,
+        "hiring_intensity_pct": 0.0
+      }
+    ],
+    "company_team_growth": [
+      {
+        "company_id": "citigroup",
+        "company_name": "Citigroup",
+        "sector": "Financials",
+        "total_company_headcount": 12719,
+        "total_data_team": 58,
+        "open_data_jobs": 56,
+        "hiring_intensity_ratio_pct": 96.6,
+        "data_team_share_pct": 0.46
+      },
+      {
+        "company_id": "kinder_morgan",
+        "company_name": "Kinder Morgan",
+        "sector": "Energy",
+        "total_company_headcount": 6767,
+        "total_data_team": 40,
+        "open_data_jobs": 37,
+        "hiring_intensity_ratio_pct": 92.5,
+        "data_team_share_pct": 0.59
+      },
+      {
+        "company_id": "te_connectivity",
+        "company_name": "TE Connectivity",
+        "sector": "Information Technology",
+        "total_company_headcount": 27333,
+        "total_data_team": 283,
+        "open_data_jobs": 210,
+        "hiring_intensity_ratio_pct": 74.2,
+        "data_team_share_pct": 1.04
+      },
+      {
+        "company_id": "intercontinental_exchange",
+        "company_name": "Intercontinental Exchange",
+        "sector": "Financials",
+        "total_company_headcount": 1256,
+        "total_data_team": 58,
+        "open_data_jobs": 42,
+        "hiring_intensity_ratio_pct": 72.4,
+        "data_team_share_pct": 4.62
+      },
+      {
+        "company_id": "fortive",
+        "company_name": "Fortive",
+        "sector": "Industrials",
+        "total_company_headcount": 898,
+        "total_data_team": 25,
+        "open_data_jobs": 14,
+        "hiring_intensity_ratio_pct": 56.0,
+        "data_team_share_pct": 2.78
+      },
+      {
+        "company_id": "carnival_corporation",
+        "company_name": "Carnival Corporation",
+        "sector": "Consumer Discretionary",
+        "total_company_headcount": 2187,
+        "total_data_team": 26,
+        "open_data_jobs": 14,
+        "hiring_intensity_ratio_pct": 53.8,
+        "data_team_share_pct": 1.19
+      },
+      {
+        "company_id": "firstenergy",
+        "company_name": "FirstEnergy",
+        "sector": "Utilities",
+        "total_company_headcount": 4838,
+        "total_data_team": 30,
+        "open_data_jobs": 16,
+        "hiring_intensity_ratio_pct": 53.3,
+        "data_team_share_pct": 0.62
+      },
+      {
+        "company_id": "u_s_bancorp",
+        "company_name": "U.S. Bancorp",
+        "sector": "Financials",
+        "total_company_headcount": 1577,
+        "total_data_team": 26,
+        "open_data_jobs": 13,
+        "hiring_intensity_ratio_pct": 50.0,
+        "data_team_share_pct": 1.65
+      },
+      {
+        "company_id": "freeport_mcmoran",
+        "company_name": "Freeport-McMoRan",
+        "sector": "Materials",
+        "total_company_headcount": 6467,
+        "total_data_team": 34,
+        "open_data_jobs": 17,
+        "hiring_intensity_ratio_pct": 50.0,
+        "data_team_share_pct": 0.53
+      },
+      {
+        "company_id": "danaher_corporation",
+        "company_name": "Danaher Corporation",
+        "sector": "Health Care",
+        "total_company_headcount": 3088,
+        "total_data_team": 41,
+        "open_data_jobs": 18,
+        "hiring_intensity_ratio_pct": 43.9,
+        "data_team_share_pct": 1.33
+      },
+      {
+        "company_id": "hubbell_incorporated",
+        "company_name": "Hubbell Incorporated",
+        "sector": "Industrials",
+        "total_company_headcount": 3101,
+        "total_data_team": 26,
+        "open_data_jobs": 11,
+        "hiring_intensity_ratio_pct": 42.3,
+        "data_team_share_pct": 0.84
+      },
+      {
+        "company_id": "abbott_laboratories",
+        "company_name": "Abbott Laboratories",
+        "sector": "Health Care",
+        "total_company_headcount": 7759,
+        "total_data_team": 53,
+        "open_data_jobs": 22,
+        "hiring_intensity_ratio_pct": 41.5,
+        "data_team_share_pct": 0.68
+      },
+      {
+        "company_id": "mettler_toledo",
+        "company_name": "Mettler Toledo",
+        "sector": "Health Care",
+        "total_company_headcount": 9848,
+        "total_data_team": 55,
+        "open_data_jobs": 22,
+        "hiring_intensity_ratio_pct": 40.0,
+        "data_team_share_pct": 0.56
+      },
+      {
+        "company_id": "pnc_financial_services",
+        "company_name": "PNC Financial Services",
+        "sector": "Financials",
+        "total_company_headcount": 1483,
+        "total_data_team": 35,
+        "open_data_jobs": 13,
+        "hiring_intensity_ratio_pct": 37.1,
+        "data_team_share_pct": 2.36
+      },
+      {
+        "company_id": "w_r_berkley_corporation",
+        "company_name": "W. R. Berkley Corporation",
+        "sector": "Financials",
+        "total_company_headcount": 1053,
+        "total_data_team": 53,
+        "open_data_jobs": 17,
+        "hiring_intensity_ratio_pct": 32.1,
+        "data_team_share_pct": 5.03
+      }
+    ],
     "company_ratios": [
       {
-        "company_id": "walmart",
-        "company_name": "Walmart",
-        "role_id": "data_scientist",
-        "role_name": "Data Scientist",
-        "global_headcount": 1548,
-        "us_headcount": 1064,
-        "open_jobs": 12,
-        "hiring_intensity_ratio_pct": 0.78
-      },
-      {
-        "company_id": "walmart",
-        "company_name": "Walmart",
+        "company_id": "te_connectivity",
+        "company_name": "TE Connectivity",
         "role_id": "data_analyst",
         "role_name": "Data Analyst",
-        "global_headcount": 915,
-        "us_headcount": 553,
-        "open_jobs": 4,
-        "hiring_intensity_ratio_pct": 0.44
+        "global_headcount": 46,
+        "us_headcount": 6,
+        "open_jobs": 142,
+        "hiring_intensity_ratio_pct": 308.7
       },
       {
-        "company_id": "shipmonk",
-        "company_name": "ShipMonk",
-        "role_id": "data_engineer",
-        "role_name": "Data Engineer",
-        "global_headcount": 3,
-        "us_headcount": null,
-        "open_jobs": 3,
-        "hiring_intensity_ratio_pct": 100.0
+        "company_id": "unitedhealth_group",
+        "company_name": "UnitedHealth Group",
+        "role_id": "ai_developer",
+        "role_name": "AI Developer",
+        "global_headcount": 6,
+        "us_headcount": 6,
+        "open_jobs": 88,
+        "hiring_intensity_ratio_pct": 1466.67
       },
       {
-        "company_id": "tipsport",
-        "company_name": "Tipsport",
+        "company_id": "unitedhealth_group",
+        "company_name": "UnitedHealth Group",
         "role_id": "ml_engineer",
         "role_name": "Machine Learning Engineer",
-        "global_headcount": 8,
-        "us_headcount": null,
-        "open_jobs": 2,
-        "hiring_intensity_ratio_pct": 25.0
+        "global_headcount": 194,
+        "us_headcount": 129,
+        "open_jobs": 67,
+        "hiring_intensity_ratio_pct": 34.54
       },
       {
-        "company_id": "gen_digital",
-        "company_name": "Gen Digital",
+        "company_id": "unitedhealth_group",
+        "company_name": "UnitedHealth Group",
+        "role_id": "data_engineer",
+        "role_name": "Data Engineer",
+        "global_headcount": 736,
+        "us_headcount": 627,
+        "open_jobs": 42,
+        "hiring_intensity_ratio_pct": 5.71
+      },
+      {
+        "company_id": "kinder_morgan",
+        "company_name": "Kinder Morgan",
         "role_id": "data_analyst",
         "role_name": "Data Analyst",
-        "global_headcount": 1,
-        "us_headcount": null,
-        "open_jobs": 2,
-        "hiring_intensity_ratio_pct": 200.0
+        "global_headcount": 35,
+        "us_headcount": 35,
+        "open_jobs": 36,
+        "hiring_intensity_ratio_pct": 102.86
       },
       {
-        "company_id": "blindspot_solutions",
-        "company_name": "Blindspot Solutions",
+        "company_id": "ecolab",
+        "company_name": "Ecolab",
+        "role_id": "ai_developer",
+        "role_name": "AI Developer",
+        "global_headcount": 2,
+        "us_headcount": 0,
+        "open_jobs": 33,
+        "hiring_intensity_ratio_pct": 1650.0
+      },
+      {
+        "company_id": "unitedhealth_group",
+        "company_name": "UnitedHealth Group",
+        "role_id": "director_vp_data_ai",
+        "role_name": "Director / VP of Data & AI",
+        "global_headcount": 41,
+        "us_headcount": 28,
+        "open_jobs": 30,
+        "hiring_intensity_ratio_pct": 73.17
+      },
+      {
+        "company_id": "amazon",
+        "company_name": "Amazon",
+        "role_id": "data_scientist",
+        "role_name": "Data Scientist",
+        "global_headcount": 1839,
+        "us_headcount": 1252,
+        "open_jobs": 26,
+        "hiring_intensity_ratio_pct": 1.41
+      },
+      {
+        "company_id": "reddit",
+        "company_name": "Reddit",
+        "role_id": "ml_engineer",
+        "role_name": "Machine Learning Engineer",
+        "global_headcount": 195,
+        "us_headcount": 148,
+        "open_jobs": 25,
+        "hiring_intensity_ratio_pct": 12.82
+      },
+      {
+        "company_id": "hewlett_packard_enterprise",
+        "company_name": "Hewlett Packard Enterprise",
+        "role_id": "ai_developer",
+        "role_name": "AI Developer",
+        "global_headcount": 7,
+        "us_headcount": 4,
+        "open_jobs": 25,
+        "hiring_intensity_ratio_pct": 357.14
+      },
+      {
+        "company_id": "schlumberger",
+        "company_name": "Schlumberger",
+        "role_id": "data_analyst",
+        "role_name": "Data Analyst",
+        "global_headcount": 288,
+        "us_headcount": 25,
+        "open_jobs": 24,
+        "hiring_intensity_ratio_pct": 8.33
+      },
+      {
+        "company_id": "intel",
+        "company_name": "Intel",
+        "role_id": "ai_developer",
+        "role_name": "AI Developer",
+        "global_headcount": 100,
+        "us_headcount": 26,
+        "open_jobs": 24,
+        "hiring_intensity_ratio_pct": 24.0
+      },
+      {
+        "company_id": "te_connectivity",
+        "company_name": "TE Connectivity",
+        "role_id": "ai_developer",
+        "role_name": "AI Developer",
+        "global_headcount": 2,
+        "us_headcount": 0,
+        "open_jobs": 24,
+        "hiring_intensity_ratio_pct": 1200.0
+      },
+      {
+        "company_id": "amazon",
+        "company_name": "Amazon",
+        "role_id": "data_engineer",
+        "role_name": "Data Engineer",
+        "global_headcount": 3167,
+        "us_headcount": 2117,
+        "open_jobs": 22,
+        "hiring_intensity_ratio_pct": 0.69
+      },
+      {
+        "company_id": "amgen",
+        "company_name": "Amgen",
+        "role_id": "data_scientist",
+        "role_name": "Data Scientist",
+        "global_headcount": 298,
+        "us_headcount": 176,
+        "open_jobs": 22,
+        "hiring_intensity_ratio_pct": 7.38
+      },
+      {
+        "company_id": "intercontinental_exchange",
+        "company_name": "Intercontinental Exchange",
+        "role_id": "data_analyst",
+        "role_name": "Data Analyst",
+        "global_headcount": 50,
+        "us_headcount": 5,
+        "open_jobs": 22,
+        "hiring_intensity_ratio_pct": 44.0
+      },
+      {
+        "company_id": "leidos",
+        "company_name": "Leidos",
+        "role_id": "data_scientist",
+        "role_name": "Data Scientist",
+        "global_headcount": 166,
+        "us_headcount": 161,
+        "open_jobs": 21,
+        "hiring_intensity_ratio_pct": 12.65
+      },
+      {
+        "company_id": "general_motors",
+        "company_name": "General Motors",
+        "role_id": "ml_engineer",
+        "role_name": "Machine Learning Engineer",
+        "global_headcount": 147,
+        "us_headcount": 128,
+        "open_jobs": 21,
+        "hiring_intensity_ratio_pct": 14.29
+      },
+      {
+        "company_id": "amgen",
+        "company_name": "Amgen",
+        "role_id": "data_engineer",
+        "role_name": "Data Engineer",
+        "global_headcount": 320,
+        "us_headcount": 100,
+        "open_jobs": 19,
+        "hiring_intensity_ratio_pct": 5.94
+      },
+      {
+        "company_id": "analog_devices",
+        "company_name": "Analog Devices",
         "role_id": "ai_developer",
         "role_name": "AI Developer",
         "global_headcount": 1,
-        "us_headcount": null,
-        "open_jobs": 2,
-        "hiring_intensity_ratio_pct": 200.0
+        "us_headcount": 0,
+        "open_jobs": 19,
+        "hiring_intensity_ratio_pct": 1900.0
       },
       {
-        "company_id": "kiwi",
-        "company_name": "Kiwi.com",
-        "role_id": "data_analyst",
-        "role_name": "Data Analyst",
-        "global_headcount": 10,
-        "us_headcount": null,
-        "open_jobs": 1,
-        "hiring_intensity_ratio_pct": 10.0
-      },
-      {
-        "company_id": "mews",
-        "company_name": "Mews",
-        "role_id": "analytics_engineer",
-        "role_name": "Analytics Engineer",
-        "global_headcount": 9,
-        "us_headcount": null,
-        "open_jobs": 1,
-        "hiring_intensity_ratio_pct": 11.11
-      },
-      {
-        "company_id": "tipsport",
-        "company_name": "Tipsport",
-        "role_id": "data_analyst",
-        "role_name": "Data Analyst",
-        "global_headcount": 5,
-        "us_headcount": null,
-        "open_jobs": 1,
-        "hiring_intensity_ratio_pct": 20.0
-      },
-      {
-        "company_id": "kiwi",
-        "company_name": "Kiwi.com",
-        "role_id": "data_engineer",
-        "role_name": "Data Engineer",
-        "global_headcount": 4,
-        "us_headcount": null,
-        "open_jobs": 1,
-        "hiring_intensity_ratio_pct": 25.0
-      },
-      {
-        "company_id": "blindspot_solutions",
-        "company_name": "Blindspot Solutions",
-        "role_id": "ml_engineer",
-        "role_name": "Machine Learning Engineer",
-        "global_headcount": 2,
-        "us_headcount": null,
-        "open_jobs": 1,
-        "hiring_intensity_ratio_pct": 50.0
-      },
-      {
-        "company_id": "walmart",
-        "company_name": "Walmart",
-        "role_id": "data_engineer",
-        "role_name": "Data Engineer",
-        "global_headcount": 1401,
-        "us_headcount": 905,
-        "open_jobs": 0,
-        "hiring_intensity_ratio_pct": 0.0
-      },
-      {
-        "company_id": "walmart",
-        "company_name": "Walmart",
-        "role_id": "ml_engineer",
-        "role_name": "Machine Learning Engineer",
-        "global_headcount": 197,
-        "us_headcount": 150,
-        "open_jobs": 0,
-        "hiring_intensity_ratio_pct": 0.0
-      },
-      {
-        "company_id": "walmart",
-        "company_name": "Walmart",
-        "role_id": "bi_analytics_manager",
-        "role_name": "BI / Analytics Manager",
-        "global_headcount": 143,
-        "us_headcount": 95,
-        "open_jobs": 0,
-        "hiring_intensity_ratio_pct": 0.0
-      },
-      {
-        "company_id": "walmart",
-        "company_name": "Walmart",
-        "role_id": "data_science_manager",
-        "role_name": "Data Science / ML Manager",
-        "global_headcount": 130,
-        "us_headcount": 94,
-        "open_jobs": 0,
-        "hiring_intensity_ratio_pct": 0.0
-      },
-      {
-        "company_id": "home_credit",
-        "company_name": "Home Credit",
-        "role_id": "data_analyst",
-        "role_name": "Data Analyst",
-        "global_headcount": 128,
-        "us_headcount": null,
-        "open_jobs": 0,
-        "hiring_intensity_ratio_pct": 0.0
-      },
-      {
-        "company_id": "walmart",
-        "company_name": "Walmart",
-        "role_id": "bi_developer",
-        "role_name": "BI Developer / Analyst",
-        "global_headcount": 104,
-        "us_headcount": 75,
-        "open_jobs": 0,
-        "hiring_intensity_ratio_pct": 0.0
-      },
-      {
-        "company_id": "jetbrains",
-        "company_name": "JetBrains",
-        "role_id": "ml_engineer",
-        "role_name": "Machine Learning Engineer",
-        "global_headcount": 59,
-        "us_headcount": null,
-        "open_jobs": 0,
-        "hiring_intensity_ratio_pct": 0.0
-      },
-      {
-        "company_id": "walmart",
-        "company_name": "Walmart",
+        "company_id": "veeva_systems",
+        "company_name": "Veeva Systems",
         "role_id": "ai_product_manager",
         "role_name": "AI / Data Product Manager",
-        "global_headcount": 54,
-        "us_headcount": 45,
-        "open_jobs": 0,
-        "hiring_intensity_ratio_pct": 0.0
+        "global_headcount": 7,
+        "us_headcount": 0,
+        "open_jobs": 18,
+        "hiring_intensity_ratio_pct": 257.14
       },
       {
-        "company_id": "home_credit",
-        "company_name": "Home Credit",
-        "role_id": "data_scientist",
-        "role_name": "Data Scientist",
-        "global_headcount": 46,
-        "us_headcount": null,
-        "open_jobs": 0,
-        "hiring_intensity_ratio_pct": 0.0
+        "company_id": "keysight_technologies",
+        "company_name": "Keysight Technologies",
+        "role_id": "ai_developer",
+        "role_name": "AI Developer",
+        "global_headcount": 1,
+        "us_headcount": 0,
+        "open_jobs": 18,
+        "hiring_intensity_ratio_pct": 1800.0
       },
       {
-        "company_id": "walmart",
-        "company_name": "Walmart",
-        "role_id": "engineering_manager_ai_data",
-        "role_name": "Engineering Manager (AI/Data)",
-        "global_headcount": 40,
-        "us_headcount": 26,
-        "open_jobs": 0,
-        "hiring_intensity_ratio_pct": 0.0
-      },
-      {
-        "company_id": "walmart",
-        "company_name": "Walmart",
-        "role_id": "director_vp_data_ai",
-        "role_name": "Director / VP of Data & AI",
-        "global_headcount": 36,
-        "us_headcount": 33,
-        "open_jobs": 0,
-        "hiring_intensity_ratio_pct": 0.0
-      },
-      {
-        "company_id": "home_credit",
-        "company_name": "Home Credit",
-        "role_id": "data_engineer",
-        "role_name": "Data Engineer",
-        "global_headcount": 32,
-        "us_headcount": null,
-        "open_jobs": 0,
-        "hiring_intensity_ratio_pct": 0.0
-      },
-      {
-        "company_id": "walmart",
-        "company_name": "Walmart",
+        "company_id": "amazon",
+        "company_name": "Amazon",
         "role_id": "research_scientist",
         "role_name": "Research Scientist (AI/ML)",
-        "global_headcount": 32,
-        "us_headcount": 20,
-        "open_jobs": 0,
-        "hiring_intensity_ratio_pct": 0.0
+        "global_headcount": 6033,
+        "us_headcount": 4606,
+        "open_jobs": 17,
+        "hiring_intensity_ratio_pct": 0.28
       },
       {
-        "company_id": "walmart",
-        "company_name": "Walmart",
-        "role_id": "data_architect",
-        "role_name": "Data Architect",
-        "global_headcount": 32,
-        "us_headcount": 19,
-        "open_jobs": 0,
-        "hiring_intensity_ratio_pct": 0.0
+        "company_id": "unitedhealth_group",
+        "company_name": "UnitedHealth Group",
+        "role_id": "engineering_manager_ai_data",
+        "role_name": "Engineering Manager (AI/Data)",
+        "global_headcount": 69,
+        "us_headcount": 20,
+        "open_jobs": 17,
+        "hiring_intensity_ratio_pct": 24.64
+      },
+      {
+        "company_id": "amgen",
+        "company_name": "Amgen",
+        "role_id": "ml_engineer",
+        "role_name": "Machine Learning Engineer",
+        "global_headcount": 65,
+        "us_headcount": 29,
+        "open_jobs": 17,
+        "hiring_intensity_ratio_pct": 26.15
       }
     ]
   },
@@ -1348,6 +1671,8 @@
       "market_share_pct": 25.2,
       "sp500_job_count": 1026,
       "cz_job_count": 68,
+      "occupied_seats": 1541,
+      "expansion_index_pct": 93.0,
       "senior_plus_pct": 64.3,
       "remote_pct": 15.0,
       "synthesized_description": {
@@ -1498,7 +1823,7 @@
           "job_count": 30
         },
         {
-          "company_name": "Google (Alphabet)",
+          "company_name": "Alphabet Inc. (Class C)",
           "job_count": 29
         }
       ],
@@ -1571,6 +1896,8 @@
       "market_share_pct": 16.92,
       "sp500_job_count": 917,
       "cz_job_count": 20,
+      "occupied_seats": 51483,
+      "expansion_index_pct": 1.9,
       "senior_plus_pct": 38.0,
       "remote_pct": 19.5,
       "synthesized_description": {
@@ -1664,15 +1991,15 @@
           "penetration_pct": 2.4
         },
         {
-          "skill_id": "gcp",
-          "skill_name": "Google Cloud Platform",
+          "skill_id": "databricks",
+          "skill_name": "Databricks",
           "category": "Cloud",
           "job_count": 19,
           "penetration_pct": 2.0
         },
         {
-          "skill_id": "databricks",
-          "skill_name": "Databricks",
+          "skill_id": "gcp",
+          "skill_name": "Google Cloud Platform",
           "category": "Cloud",
           "job_count": 19,
           "penetration_pct": 2.0
@@ -1794,6 +2121,8 @@
       "market_share_pct": 15.41,
       "sp500_job_count": 530,
       "cz_job_count": 15,
+      "occupied_seats": 9867,
+      "expansion_index_pct": 8.9,
       "senior_plus_pct": 69.7,
       "remote_pct": 26.5,
       "synthesized_description": {
@@ -1936,11 +2265,11 @@
           "job_count": 31
         },
         {
-          "company_name": "Alphabet Inc. (Class A)",
+          "company_name": "Google (Alphabet)",
           "job_count": 27
         },
         {
-          "company_name": "Google (Alphabet)",
+          "company_name": "Alphabet Inc. (Class A)",
           "job_count": 27
         },
         {
@@ -2017,6 +2346,8 @@
       "market_share_pct": 14.7,
       "sp500_job_count": 681,
       "cz_job_count": 22,
+      "occupied_seats": 29182,
+      "expansion_index_pct": 2.9,
       "senior_plus_pct": 59.6,
       "remote_pct": 16.2,
       "synthesized_description": {
@@ -2151,11 +2482,11 @@
           "job_count": 49
         },
         {
-          "company_name": "Google (Alphabet)",
+          "company_name": "Alphabet Inc. (Class A)",
           "job_count": 49
         },
         {
-          "company_name": "Alphabet Inc. (Class A)",
+          "company_name": "Google (Alphabet)",
           "job_count": 49
         },
         {
@@ -2240,6 +2571,8 @@
       "market_share_pct": 14.58,
       "sp500_job_count": 651,
       "cz_job_count": 47,
+      "occupied_seats": 46799,
+      "expansion_index_pct": 1.8,
       "senior_plus_pct": 58.5,
       "remote_pct": 21.5,
       "synthesized_description": {
@@ -2463,6 +2796,8 @@
       "market_share_pct": 6.05,
       "sp500_job_count": 219,
       "cz_job_count": 0,
+      "occupied_seats": 17181,
+      "expansion_index_pct": 2.0,
       "senior_plus_pct": 42.7,
       "remote_pct": 7.6,
       "synthesized_description": {
@@ -2601,19 +2936,19 @@
           "job_count": 32
         },
         {
-          "company_name": "Google (Alphabet)",
-          "job_count": 32
-        },
-        {
           "company_name": "Alphabet Inc. (Class C)",
           "job_count": 32
         },
         {
-          "company_name": "OpenAI",
-          "job_count": 17
+          "company_name": "Google (Alphabet)",
+          "job_count": 32
         },
         {
           "company_name": "Amazon",
+          "job_count": 17
+        },
+        {
+          "company_name": "OpenAI",
           "job_count": 17
         }
       ],
@@ -2634,12 +2969,12 @@
           "share_pct": 10.0
         },
         {
-          "sector": "Industrials",
+          "sector": "Health Care",
           "job_count": 16,
           "share_pct": 7.3
         },
         {
-          "sector": "Health Care",
+          "sector": "Industrials",
           "job_count": 16,
           "share_pct": 7.3
         }
@@ -2686,6 +3021,8 @@
       "market_share_pct": 3.2,
       "sp500_job_count": 141,
       "cz_job_count": 1,
+      "occupied_seats": 1989,
+      "expansion_index_pct": 9.2,
       "senior_plus_pct": 98.4,
       "remote_pct": 26.5,
       "synthesized_description": {
@@ -2758,16 +3095,16 @@
       ],
       "top_technologies": [
         {
-          "skill_id": "evals_observability",
-          "skill_name": "MLOps / Evals & Observability",
-          "category": "MLOps",
+          "skill_id": "azure",
+          "skill_name": "Microsoft Azure",
+          "category": "Cloud",
           "job_count": 17,
           "penetration_pct": 9.3
         },
         {
-          "skill_id": "azure",
-          "skill_name": "Microsoft Azure",
-          "category": "Cloud",
+          "skill_id": "evals_observability",
+          "skill_name": "MLOps / Evals & Observability",
+          "category": "MLOps",
           "job_count": 17,
           "penetration_pct": 9.3
         },
@@ -2807,9 +3144,9 @@
           "penetration_pct": 1.6
         },
         {
-          "skill_id": "vector_db",
-          "skill_name": "Vector Databases",
-          "category": "Database",
+          "skill_id": "dbt",
+          "skill_name": "dbt",
+          "category": "Framework",
           "job_count": 2,
           "penetration_pct": 1.1
         }
@@ -2828,11 +3165,11 @@
           "job_count": 8
         },
         {
-          "company_name": "Workday, Inc.",
+          "company_name": "Datadog",
           "job_count": 7
         },
         {
-          "company_name": "Datadog",
+          "company_name": "Workday, Inc.",
           "job_count": 7
         },
         {
@@ -2909,6 +3246,8 @@
       "market_share_pct": 2.95,
       "sp500_job_count": 74,
       "cz_job_count": 1,
+      "occupied_seats": 3610,
+      "expansion_index_pct": 4.7,
       "senior_plus_pct": 100.0,
       "remote_pct": 3.2,
       "synthesized_description": {
@@ -3016,16 +3355,16 @@
           "penetration_pct": 26.8
         },
         {
-          "skill_id": "snowflake_db",
-          "skill_name": "Snowflake",
-          "category": "Cloud",
+          "skill_id": "spark",
+          "skill_name": "Apache Spark",
+          "category": "Framework",
           "job_count": 26,
           "penetration_pct": 15.5
         },
         {
-          "skill_id": "spark",
-          "skill_name": "Apache Spark",
-          "category": "Framework",
+          "skill_id": "snowflake_db",
+          "skill_name": "Snowflake",
+          "category": "Cloud",
           "job_count": 26,
           "penetration_pct": 15.5
         },
@@ -3051,11 +3390,11 @@
           "job_count": 21
         },
         {
-          "company_name": "Stripe",
+          "company_name": "Teledyne Technologies",
           "job_count": 4
         },
         {
-          "company_name": "Teledyne Technologies",
+          "company_name": "Stripe",
           "job_count": 4
         },
         {
@@ -3132,6 +3471,8 @@
       "market_share_pct": 1.64,
       "sp500_job_count": 93,
       "cz_job_count": 0,
+      "occupied_seats": 1250,
+      "expansion_index_pct": 7.4,
       "senior_plus_pct": 100.0,
       "remote_pct": 48.5,
       "synthesized_description": {
@@ -3181,16 +3522,16 @@
           "penetration_pct": 11.8
         },
         {
-          "skill_id": "sql",
-          "skill_name": "SQL",
-          "category": "Programming",
+          "skill_id": "llm",
+          "skill_name": "LLM / Large Language Models",
+          "category": "AI/ML",
           "job_count": 10,
           "penetration_pct": 10.8
         },
         {
-          "skill_id": "llm",
-          "skill_name": "LLM / Large Language Models",
-          "category": "AI/ML",
+          "skill_id": "sql",
+          "skill_name": "SQL",
+          "category": "Programming",
           "job_count": 10,
           "penetration_pct": 10.8
         },
@@ -3225,15 +3566,15 @@
           "penetration_pct": 7.5
         },
         {
-          "skill_id": "snowflake_db",
-          "skill_name": "Snowflake",
+          "skill_id": "databricks",
+          "skill_name": "Databricks",
           "category": "Cloud",
           "job_count": 6,
           "penetration_pct": 6.5
         },
         {
-          "skill_id": "databricks",
-          "skill_name": "Databricks",
+          "skill_id": "snowflake_db",
+          "skill_name": "Snowflake",
           "category": "Cloud",
           "job_count": 6,
           "penetration_pct": 6.5
@@ -3253,9 +3594,9 @@
           "penetration_pct": 2.2
         },
         {
-          "skill_id": "vertex_ai",
-          "skill_name": "Vertex AI",
-          "category": "Cloud",
+          "skill_id": "vector_db",
+          "skill_name": "Vector Databases",
+          "category": "Database",
           "job_count": 2,
           "penetration_pct": 2.2
         }
@@ -3355,6 +3696,8 @@
       "market_share_pct": 1.62,
       "sp500_job_count": 41,
       "cz_job_count": 7,
+      "occupied_seats": 1485,
+      "expansion_index_pct": 6.2,
       "senior_plus_pct": 38.0,
       "remote_pct": 28.6,
       "synthesized_description": {
@@ -3390,15 +3733,15 @@
           "penetration_pct": 22.8
         },
         {
-          "skill_id": "ai_agents",
-          "skill_name": "AI Agents / Agentic AI",
+          "skill_id": "llm",
+          "skill_name": "LLM / Large Language Models",
           "category": "AI/ML",
           "job_count": 12,
           "penetration_pct": 13.0
         },
         {
-          "skill_id": "llm",
-          "skill_name": "LLM / Large Language Models",
+          "skill_id": "ai_agents",
+          "skill_name": "AI Agents / Agentic AI",
           "category": "AI/ML",
           "job_count": 12,
           "penetration_pct": 13.0
@@ -3476,9 +3819,9 @@
           "penetration_pct": 6.5
         },
         {
-          "skill_id": "bigquery",
-          "skill_name": "BigQuery",
-          "category": "Cloud",
+          "skill_id": "docker",
+          "skill_name": "Docker",
+          "category": "MLOps",
           "job_count": 4,
           "penetration_pct": 4.3
         }
@@ -3489,11 +3832,11 @@
           "job_count": 7
         },
         {
-          "company_name": "Delivery Hero",
+          "company_name": "Booking Holdings",
           "job_count": 4
         },
         {
-          "company_name": "Booking Holdings",
+          "company_name": "Delivery Hero",
           "job_count": 4
         },
         {
@@ -3501,7 +3844,7 @@
           "job_count": 2
         },
         {
-          "company_name": "voize",
+          "company_name": "Perplexity AI",
           "job_count": 2
         },
         {
@@ -3516,12 +3859,12 @@
           "share_pct": 26.8
         },
         {
-          "sector": "Information Technology",
+          "sector": "Financials",
           "job_count": 7,
           "share_pct": 17.1
         },
         {
-          "sector": "Financials",
+          "sector": "Information Technology",
           "job_count": 7,
           "share_pct": 17.1
         },
@@ -3578,6 +3921,8 @@
       "market_share_pct": 1.62,
       "sp500_job_count": 91,
       "cz_job_count": 0,
+      "occupied_seats": 5228,
+      "expansion_index_pct": 1.8,
       "senior_plus_pct": 100.0,
       "remote_pct": 14.3,
       "synthesized_description": {
@@ -3678,13 +4023,6 @@
           "penetration_pct": 3.3
         },
         {
-          "skill_id": "dbt",
-          "skill_name": "dbt",
-          "category": "Framework",
-          "job_count": 2,
-          "penetration_pct": 2.2
-        },
-        {
           "skill_id": "redshift",
           "skill_name": "Amazon Redshift",
           "category": "Cloud",
@@ -3699,8 +4037,15 @@
           "penetration_pct": 2.2
         },
         {
-          "skill_id": "snowflake_db",
-          "skill_name": "Snowflake",
+          "skill_id": "dbt",
+          "skill_name": "dbt",
+          "category": "Framework",
+          "job_count": 2,
+          "penetration_pct": 2.2
+        },
+        {
+          "skill_id": "bigquery",
+          "skill_name": "BigQuery",
           "category": "Cloud",
           "job_count": 1,
           "penetration_pct": 1.1
@@ -3712,11 +4057,11 @@
           "job_count": 6
         },
         {
-          "company_name": "Abbott Laboratories",
+          "company_name": "Amgen",
           "job_count": 5
         },
         {
-          "company_name": "Amgen",
+          "company_name": "Abbott Laboratories",
           "job_count": 5
         },
         {
@@ -3728,7 +4073,7 @@
           "job_count": 4
         },
         {
-          "company_name": "Johnson & Johnson",
+          "company_name": "Carnival Corporation",
           "job_count": 3
         }
       ],
@@ -3754,7 +4099,7 @@
           "share_pct": 8.8
         },
         {
-          "sector": "Information Technology",
+          "sector": "Financials",
           "job_count": 7,
           "share_pct": 7.7
         }
@@ -3801,6 +4146,8 @@
       "market_share_pct": 1.6,
       "sp500_job_count": 66,
       "cz_job_count": 0,
+      "occupied_seats": 1758,
+      "expansion_index_pct": 5.2,
       "senior_plus_pct": 100.0,
       "remote_pct": 30.4,
       "synthesized_description": {
@@ -3843,16 +4190,16 @@
           "penetration_pct": 16.5
         },
         {
-          "skill_id": "sql",
-          "skill_name": "SQL",
-          "category": "Programming",
+          "skill_id": "data_governance",
+          "skill_name": "Data Governance & Quality",
+          "category": "Business",
           "job_count": 13,
           "penetration_pct": 14.3
         },
         {
-          "skill_id": "data_governance",
-          "skill_name": "Data Governance & Quality",
-          "category": "Business",
+          "skill_id": "sql",
+          "skill_name": "SQL",
+          "category": "Programming",
           "job_count": 13,
           "penetration_pct": 14.3
         },
@@ -3951,7 +4298,7 @@
           "job_count": 3
         },
         {
-          "company_name": "Alphabet Inc. (Class C)",
+          "company_name": "Google (Alphabet)",
           "job_count": 3
         }
       ],
@@ -4024,6 +4371,8 @@
       "market_share_pct": 1.35,
       "sp500_job_count": 50,
       "cz_job_count": 6,
+      "occupied_seats": 7790,
+      "expansion_index_pct": 1.0,
       "senior_plus_pct": 35.1,
       "remote_pct": 44.4,
       "synthesized_description": {
@@ -4103,13 +4452,6 @@
           "penetration_pct": 7.8
         },
         {
-          "skill_id": "aws",
-          "skill_name": "AWS",
-          "category": "Cloud",
-          "job_count": 4,
-          "penetration_pct": 5.2
-        },
-        {
           "skill_id": "bigquery",
           "skill_name": "BigQuery",
           "category": "Cloud",
@@ -4117,15 +4459,22 @@
           "penetration_pct": 5.2
         },
         {
-          "skill_id": "ms_fabric",
-          "skill_name": "Microsoft Fabric",
+          "skill_id": "aws",
+          "skill_name": "AWS",
+          "category": "Cloud",
+          "job_count": 4,
+          "penetration_pct": 5.2
+        },
+        {
+          "skill_id": "databricks",
+          "skill_name": "Databricks",
           "category": "Cloud",
           "job_count": 3,
           "penetration_pct": 3.9
         },
         {
-          "skill_id": "databricks",
-          "skill_name": "Databricks",
+          "skill_id": "ms_fabric",
+          "skill_name": "Microsoft Fabric",
           "category": "Cloud",
           "job_count": 3,
           "penetration_pct": 3.9
@@ -4166,15 +4515,15 @@
           "job_count": 3
         },
         {
-          "company_name": "GEICO",
+          "company_name": "Twilio",
+          "job_count": 2
+        },
+        {
+          "company_name": "Snap-on",
           "job_count": 2
         },
         {
           "company_name": "GSF Car Parts",
-          "job_count": 2
-        },
-        {
-          "company_name": "Twilio",
           "job_count": 2
         }
       ],
@@ -4247,6 +4596,8 @@
       "market_share_pct": 1.07,
       "sp500_job_count": 59,
       "cz_job_count": 2,
+      "occupied_seats": 1922,
+      "expansion_index_pct": 3.2,
       "senior_plus_pct": 98.4,
       "remote_pct": 25.0,
       "synthesized_description": {
@@ -4326,15 +4677,15 @@
           "penetration_pct": 8.2
         },
         {
-          "skill_id": "azure",
-          "skill_name": "Microsoft Azure",
+          "skill_id": "gcp",
+          "skill_name": "Google Cloud Platform",
           "category": "Cloud",
           "job_count": 4,
           "penetration_pct": 6.6
         },
         {
-          "skill_id": "gcp",
-          "skill_name": "Google Cloud Platform",
+          "skill_id": "azure",
+          "skill_name": "Microsoft Azure",
           "category": "Cloud",
           "job_count": 4,
           "penetration_pct": 6.6
@@ -4347,16 +4698,16 @@
           "penetration_pct": 6.6
         },
         {
-          "skill_id": "aws",
-          "skill_name": "AWS",
-          "category": "Cloud",
+          "skill_id": "spark",
+          "skill_name": "Apache Spark",
+          "category": "Framework",
           "job_count": 3,
           "penetration_pct": 4.9
         },
         {
-          "skill_id": "spark",
-          "skill_name": "Apache Spark",
-          "category": "Framework",
+          "skill_id": "aws",
+          "skill_name": "AWS",
+          "category": "Cloud",
           "job_count": 3,
           "penetration_pct": 4.9
         },
@@ -4368,9 +4719,9 @@
           "penetration_pct": 3.3
         },
         {
-          "skill_id": "dbt",
-          "skill_name": "dbt",
-          "category": "Framework",
+          "skill_id": "evals_observability",
+          "skill_name": "MLOps / Evals & Observability",
+          "category": "MLOps",
           "job_count": 2,
           "penetration_pct": 3.3
         }
@@ -4418,12 +4769,12 @@
           "share_pct": 8.5
         },
         {
-          "sector": "Industrials",
+          "sector": "Information Technology",
           "job_count": 4,
           "share_pct": 6.8
         },
         {
-          "sector": "Information Technology",
+          "sector": "Industrials",
           "job_count": 4,
           "share_pct": 6.8
         }
@@ -4470,6 +4821,8 @@
       "market_share_pct": 0.76,
       "sp500_job_count": 39,
       "cz_job_count": 0,
+      "occupied_seats": 2860,
+      "expansion_index_pct": 1.5,
       "senior_plus_pct": 100.0,
       "remote_pct": 42.9,
       "synthesized_description": {
@@ -4542,13 +4895,6 @@
       ],
       "top_technologies": [
         {
-          "skill_id": "spark",
-          "skill_name": "Apache Spark",
-          "category": "Framework",
-          "job_count": 3,
-          "penetration_pct": 7.0
-        },
-        {
           "skill_id": "evals_observability",
           "skill_name": "MLOps / Evals & Observability",
           "category": "MLOps",
@@ -4556,11 +4902,11 @@
           "penetration_pct": 7.0
         },
         {
-          "skill_id": "databricks",
-          "skill_name": "Databricks",
-          "category": "Cloud",
-          "job_count": 1,
-          "penetration_pct": 2.3
+          "skill_id": "spark",
+          "skill_name": "Apache Spark",
+          "category": "Framework",
+          "job_count": 3,
+          "penetration_pct": 7.0
         },
         {
           "skill_id": "azure",
@@ -4573,6 +4919,13 @@
           "skill_id": "pytorch",
           "skill_name": "PyTorch",
           "category": "Framework",
+          "job_count": 1,
+          "penetration_pct": 2.3
+        },
+        {
+          "skill_id": "databricks",
+          "skill_name": "Databricks",
+          "category": "Cloud",
           "job_count": 1,
           "penetration_pct": 2.3
         }
@@ -4591,15 +4944,15 @@
           "job_count": 3
         },
         {
+          "company_name": "Stripe",
+          "job_count": 2
+        },
+        {
+          "company_name": "Motorola Solutions",
+          "job_count": 2
+        },
+        {
           "company_name": "Biogen",
-          "job_count": 2
-        },
-        {
-          "company_name": "Google (Alphabet)",
-          "job_count": 2
-        },
-        {
-          "company_name": "Alphabet Inc. (Class A)",
           "job_count": 2
         }
       ],
@@ -4672,6 +5025,8 @@
       "market_share_pct": 0.49,
       "sp500_job_count": 22,
       "cz_job_count": 4,
+      "occupied_seats": 1404,
+      "expansion_index_pct": 2.0,
       "senior_plus_pct": 60.7,
       "remote_pct": 0.0,
       "synthesized_description": {
@@ -4700,16 +5055,16 @@
           "penetration_pct": 46.4
         },
         {
-          "skill_id": "python",
-          "skill_name": "Python",
-          "category": "Programming",
+          "skill_id": "llm",
+          "skill_name": "LLM / Large Language Models",
+          "category": "AI/ML",
           "job_count": 12,
           "penetration_pct": 42.9
         },
         {
-          "skill_id": "llm",
-          "skill_name": "LLM / Large Language Models",
-          "category": "AI/ML",
+          "skill_id": "python",
+          "skill_name": "Python",
+          "category": "Programming",
           "job_count": 12,
           "penetration_pct": 42.9
         },
@@ -4786,16 +5141,16 @@
           "penetration_pct": 10.7
         },
         {
-          "skill_id": "scikit_learn",
-          "skill_name": "scikit-learn",
+          "skill_id": "pandas",
+          "skill_name": "pandas",
           "category": "Framework",
           "job_count": 2,
           "penetration_pct": 7.1
         },
         {
-          "skill_id": "pandas",
-          "skill_name": "pandas",
-          "category": "Framework",
+          "skill_id": "docker",
+          "skill_name": "Docker",
+          "category": "MLOps",
           "job_count": 2,
           "penetration_pct": 7.1
         }
@@ -4810,19 +5165,19 @@
           "job_count": 3
         },
         {
-          "company_name": "GE Vernova",
-          "job_count": 2
-        },
-        {
-          "company_name": "Citigroup",
-          "job_count": 2
-        },
-        {
           "company_name": "NXP Semiconductors",
           "job_count": 2
         },
         {
           "company_name": "Datadog",
+          "job_count": 2
+        },
+        {
+          "company_name": "GE Vernova",
+          "job_count": 2
+        },
+        {
+          "company_name": "Citigroup",
           "job_count": 2
         }
       ],
@@ -4895,6 +5250,8 @@
       "market_share_pct": 0.37,
       "sp500_job_count": 19,
       "cz_job_count": 0,
+      "occupied_seats": 1248,
+      "expansion_index_pct": 1.7,
       "senior_plus_pct": 100.0,
       "remote_pct": 28.6,
       "synthesized_description": {
@@ -4916,15 +5273,15 @@
           "penetration_pct": 38.1
         },
         {
-          "skill_id": "ai_agents",
-          "skill_name": "AI Agents / Agentic AI",
+          "skill_id": "llm",
+          "skill_name": "LLM / Large Language Models",
           "category": "AI/ML",
           "job_count": 7,
           "penetration_pct": 33.3
         },
         {
-          "skill_id": "llm",
-          "skill_name": "LLM / Large Language Models",
+          "skill_id": "ai_agents",
+          "skill_name": "AI Agents / Agentic AI",
           "category": "AI/ML",
           "job_count": 7,
           "penetration_pct": 33.3
@@ -4944,13 +5301,6 @@
           "penetration_pct": 19.0
         },
         {
-          "skill_id": "powerbi",
-          "skill_name": "Power BI",
-          "category": "Business",
-          "job_count": 4,
-          "penetration_pct": 19.0
-        },
-        {
           "skill_id": "python",
           "skill_name": "Python",
           "category": "Programming",
@@ -4958,9 +5308,16 @@
           "penetration_pct": 19.0
         },
         {
-          "skill_id": "excel",
-          "skill_name": "Excel",
+          "skill_id": "powerbi",
+          "skill_name": "Power BI",
           "category": "Business",
+          "job_count": 4,
+          "penetration_pct": 19.0
+        },
+        {
+          "skill_id": "rag",
+          "skill_name": "RAG (Retrieval-Augmented Generation)",
+          "category": "AI/ML",
           "job_count": 1,
           "penetration_pct": 4.8
         }
@@ -5009,15 +5366,15 @@
           "penetration_pct": 4.8
         },
         {
-          "skill_id": "databricks",
-          "skill_name": "Databricks",
+          "skill_id": "ms_fabric",
+          "skill_name": "Microsoft Fabric",
           "category": "Cloud",
           "job_count": 1,
           "penetration_pct": 4.8
         },
         {
-          "skill_id": "ms_fabric",
-          "skill_name": "Microsoft Fabric",
+          "skill_id": "databricks",
+          "skill_name": "Databricks",
           "category": "Cloud",
           "job_count": 1,
           "penetration_pct": 4.8
@@ -5025,27 +5382,27 @@
       ],
       "top_companies": [
         {
-          "company_name": "Ares Management",
-          "job_count": 2
-        },
-        {
           "company_name": "Synchrony Financial",
           "job_count": 2
         },
         {
-          "company_name": "Johnson & Johnson",
+          "company_name": "Ares Management",
+          "job_count": 2
+        },
+        {
+          "company_name": "Cigna",
           "job_count": 1
         },
         {
-          "company_name": "Chubb Limited",
+          "company_name": "Brown & Brown",
           "job_count": 1
         },
         {
-          "company_name": "Citigroup",
+          "company_name": "Abbott Laboratories",
           "job_count": 1
         },
         {
-          "company_name": "OpenAI",
+          "company_name": "Franklin Resources",
           "job_count": 1
         }
       ],
@@ -5113,6 +5470,8 @@
       "market_share_pct": 0.26,
       "sp500_job_count": 14,
       "cz_job_count": 0,
+      "occupied_seats": 295,
+      "expansion_index_pct": 5.1,
       "senior_plus_pct": 66.7,
       "remote_pct": 0.0,
       "synthesized_description": {
@@ -5127,13 +5486,6 @@
       },
       "top_skills": [
         {
-          "skill_id": "python",
-          "skill_name": "Python",
-          "category": "Programming",
-          "job_count": 5,
-          "penetration_pct": 33.3
-        },
-        {
           "skill_id": "genai",
           "skill_name": "GenAI / Generative AI",
           "category": "AI/ML",
@@ -5141,11 +5493,11 @@
           "penetration_pct": 33.3
         },
         {
-          "skill_id": "rag",
-          "skill_name": "RAG (Retrieval-Augmented Generation)",
-          "category": "AI/ML",
-          "job_count": 3,
-          "penetration_pct": 20.0
+          "skill_id": "python",
+          "skill_name": "Python",
+          "category": "Programming",
+          "job_count": 5,
+          "penetration_pct": 33.3
         },
         {
           "skill_id": "ai_agents",
@@ -5162,9 +5514,16 @@
           "penetration_pct": 20.0
         },
         {
-          "skill_id": "sql",
-          "skill_name": "SQL",
-          "category": "Programming",
+          "skill_id": "rag",
+          "skill_name": "RAG (Retrieval-Augmented Generation)",
+          "category": "AI/ML",
+          "job_count": 3,
+          "penetration_pct": 20.0
+        },
+        {
+          "skill_id": "nlp",
+          "skill_name": "Natural Language Processing",
+          "category": "AI/ML",
           "job_count": 2,
           "penetration_pct": 13.3
         },
@@ -5176,9 +5535,9 @@
           "penetration_pct": 13.3
         },
         {
-          "skill_id": "nlp",
-          "skill_name": "Natural Language Processing",
-          "category": "AI/ML",
+          "skill_id": "sql",
+          "skill_name": "SQL",
+          "category": "Programming",
           "job_count": 2,
           "penetration_pct": 13.3
         }
@@ -5213,22 +5572,8 @@
           "penetration_pct": 26.7
         },
         {
-          "skill_id": "pytorch",
-          "skill_name": "PyTorch",
-          "category": "Framework",
-          "job_count": 3,
-          "penetration_pct": 20.0
-        },
-        {
           "skill_id": "vertex_ai",
           "skill_name": "Vertex AI",
-          "category": "Cloud",
-          "job_count": 3,
-          "penetration_pct": 20.0
-        },
-        {
-          "skill_id": "azure",
-          "skill_name": "Microsoft Azure",
           "category": "Cloud",
           "job_count": 3,
           "penetration_pct": 20.0
@@ -5239,9 +5584,27 @@
           "category": "Framework",
           "job_count": 3,
           "penetration_pct": 20.0
+        },
+        {
+          "skill_id": "pytorch",
+          "skill_name": "PyTorch",
+          "category": "Framework",
+          "job_count": 3,
+          "penetration_pct": 20.0
+        },
+        {
+          "skill_id": "azure",
+          "skill_name": "Microsoft Azure",
+          "category": "Cloud",
+          "job_count": 3,
+          "penetration_pct": 20.0
         }
       ],
       "top_companies": [
+        {
+          "company_name": "Skydance Corporation",
+          "job_count": 2
+        },
         {
           "company_name": "UnitedHealth Group",
           "job_count": 2
@@ -5255,15 +5618,11 @@
           "job_count": 2
         },
         {
-          "company_name": "Skydance Corporation",
-          "job_count": 2
-        },
-        {
-          "company_name": "Expand Energy",
+          "company_name": "Michael Page",
           "job_count": 1
         },
         {
-          "company_name": "Michael Page",
+          "company_name": "S&P Global",
           "job_count": 1
         }
       ],
@@ -5279,7 +5638,7 @@
           "share_pct": 21.4
         },
         {
-          "sector": "Communication Services",
+          "sector": "Health Care",
           "job_count": 2,
           "share_pct": 14.3
         },
@@ -5289,7 +5648,7 @@
           "share_pct": 14.3
         },
         {
-          "sector": "Health Care",
+          "sector": "Communication Services",
           "job_count": 2,
           "share_pct": 14.3
         }
@@ -5336,6 +5695,8 @@
       "market_share_pct": 0.04,
       "sp500_job_count": 2,
       "cz_job_count": 0,
+      "occupied_seats": 417,
+      "expansion_index_pct": 0.5,
       "senior_plus_pct": 100.0,
       "remote_pct": 0.0,
       "synthesized_description": {
@@ -5362,12 +5723,12 @@
       ],
       "top_sectors": [
         {
-          "sector": "Health Care",
+          "sector": "Financials",
           "job_count": 1,
           "share_pct": 50.0
         },
         {
-          "sector": "Financials",
+          "sector": "Health Care",
           "job_count": 1,
           "share_pct": 50.0
         }
@@ -5414,6 +5775,8 @@
       "market_share_pct": 0.02,
       "sp500_job_count": 1,
       "cz_job_count": 0,
+      "occupied_seats": 221,
+      "expansion_index_pct": 0.5,
       "senior_plus_pct": 100.0,
       "remote_pct": 0.0,
       "synthesized_description": {
@@ -5491,6 +5854,8 @@
       "market_share_pct": 0.0,
       "sp500_job_count": 0,
       "cz_job_count": 0,
+      "occupied_seats": 55,
+      "expansion_index_pct": 0.0,
       "senior_plus_pct": 0.0,
       "remote_pct": 0.0,
       "synthesized_description": {
@@ -5625,9 +5990,9 @@
         "penetration_all_pct": 0.04,
         "top_paired_skills": [
           "Tableau",
-          "Google Cloud Dataflow",
-          "Kubernetes",
-          "Apache Airflow"
+          "dbt",
+          "Python",
+          "Docker"
         ]
       }
     ],
@@ -5672,13 +6037,13 @@
         "job_count": 119
       },
       {
-        "company_name": "MongoDB",
-        "sector": null,
+        "company_name": "General Motors",
+        "sector": "Consumer Discretionary",
         "job_count": 20
       },
       {
-        "company_name": "General Motors",
-        "sector": "Consumer Discretionary",
+        "company_name": "MongoDB",
+        "sector": null,
         "job_count": 20
       },
       {
@@ -5707,13 +6072,13 @@
         "job_count": 14
       },
       {
-        "company_name": "Scale AI",
-        "sector": null,
+        "company_name": "Reddit",
+        "sector": "Communication Services",
         "job_count": 13
       },
       {
-        "company_name": "Reddit",
-        "sector": "Communication Services",
+        "company_name": "Scale AI",
+        "sector": null,
         "job_count": 13
       }
     ]
