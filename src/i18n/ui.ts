@@ -225,18 +225,29 @@ export const ui = {
       ],
     },
     academy: {
-      pageTitle: 'Education Academy — Vector87 | Learning Tracks, Literature & Best Practices',
-      tag: '04 // CURATED EDUCATION',
-      title: 'Education Academy & Learning Tracks',
+      pageTitle: 'Education Academy & Learning Hub — Vector87',
+      tag: '04 // EDUCATION & APPLIED CURRICULUM',
+      title: 'Education Academy & Industry Learning Hub',
       subtitle:
-        'A curriculum mapped directly to real S&P 500 hiring demand from our telemetry. Rather than ephemeral tool tutorials, it focuses on architectural foundations, engineering rigor, and measurable business delivery.',
-      tracksTitle: 'Structured Learning Tracks',
+        'A pragmatic curriculum mapped directly to real S&P 500 hiring demand from our telemetry. Curated interactive courses, hands-on tracks, industry-standard certifications, and foundational literature to master Data Architecture, Modern Analytics, and Applied AI.',
+      tracksTitle: 'Structured Curriculum Tracks',
+      tracksSubtitle: 'Architectural learning paths mapped to roles with verified hiring intensity.',
+      coursesTitle: 'Interactive Hands-On Courses & Specializations',
+      coursesSubtitle: 'Industry-leading interactive programs on Coursera, DataCamp, and DeepLearning.AI aligned with our telemetry.',
+      certsTitle: 'Industry Certifications & Credentials Roadmap',
+      certsSubtitle: 'Verified professional benchmarks with tangible wage and mobility premiums.',
       booksTitle: 'Essential Library for Data Architects & AI Engineers',
+      booksSubtitle: 'Foundational architectural literature for long-term engineering depth.',
+      ctaEnroll: 'Explore Program ↗',
+      ctaCertGuide: 'Certification Blueprint ↗',
+      ctaBook: 'View on Amazon ↗',
+      sponsorDisclaimer: 'Vector87 recommends exclusively industry-verified curricula. Outbound links may support this independent platform through partner affiliate programs at no extra cost to you.',
       tracks: [
         {
           code: 'TRACK 01',
           title: 'Analytics & Modern BI Engineering',
           level: 'Foundational → Senior IC',
+          marketMetric: 'SQL & Semantic Layer required in 46% of analytical positions',
           focus:
             'Transitioning from ad-hoc reporting to engineering-grade analytics, semantic layers, and Data-Informed decision-making.',
           modules: [
@@ -250,6 +261,7 @@ export const ui = {
           code: 'TRACK 02',
           title: 'Cloud Data Engineering & Lakehouse Architecture',
           level: 'Mid → Staff / Architect',
+          marketMetric: 'Python & Cloud Lakehouse infrastructure required in 62% of data openings',
           focus:
             'Building scalable data platforms, distributed ingestion/transformation pipelines, and resilient infrastructure.',
           modules: [
@@ -263,6 +275,7 @@ export const ui = {
           code: 'TRACK 03',
           title: 'Applied AI, LLM Systems & Agentic Engineering',
           level: 'Mid → Principal AI Engineer',
+          marketMetric: 'Fastest growing category: GenAI/Agentic demand up +310% YoY in top tier tech',
           focus:
             'Designing, evaluating, and operating production applications powered by foundation models and autonomous agents.',
           modules: [
@@ -279,24 +292,28 @@ export const ui = {
           author: 'Martin Kleppmann',
           category: 'Data Systems & Architecture',
           why: 'The definitive foundation for understanding distributed data systems, replication, partitioning, consensus, and stream processing.',
+          url: 'https://www.amazon.com/dp/1449373321',
         },
         {
           title: 'Fundamentals of Data Engineering',
           author: 'Joe Reis & Matt Housley',
           category: 'Data Engineering',
           why: 'A vendor-neutral architectural framework covering the complete data engineering lifecycle and undercurrents.',
+          url: 'https://www.amazon.com/dp/1098108302',
         },
         {
           title: 'AI Engineering: Building Applications with Foundation Models',
           author: 'Chip Huyen',
           category: 'Applied AI & LLMOps',
           why: 'A rigorous engineering guide to evaluation (evals), RAG, fine-tuning, latency optimization, and production deployment of foundation models.',
+          url: 'https://www.amazon.com/dp/1098166302',
         },
         {
           title: 'Google BigQuery: The Definitive Guide',
           author: 'Valliappa Lakshmanan & Jordan Tigani',
           category: 'Google Cloud / DWH',
           why: 'Deep architectural dive into Dremel, Colossus, Borg, and writing high-efficiency analytical and ML workloads in BigQuery.',
+          url: 'https://www.amazon.com/dp/1492044466',
         },
       ],
     },
@@ -310,6 +327,7 @@ export const ui = {
         'Vector87.com was created as an independent, quantitative counterweight to the marketing noise surrounding AI. Instead of relying on hype, we measure how S&P 500 enterprises and technology leaders actually allocate capital — tracked through open engineering seats, required technical competencies, and shifts in organizational hierarchy.',
       ctaBlog: 'PERSONAL WEBSITE & BLOG (akucera.eu) ↗',
       ctaLinkedin: 'LINKEDIN PROFILE ↗',
+      ctaSubstack: 'SUBSTACK NEWSLETTER ↗',
       brandCardTitle: 'WHY VECTOR 87?',
       brandCardP1:
         'Vector represents mathematical direction and magnitude — capturing the actual trajectory of the global data and AI job market.',
@@ -317,29 +335,29 @@ export const ui = {
         '87 signals maturity and grounding: in an era of synthetic noise, we anchor decisions on primary telemetry and a Data-Informed philosophy rather than blind Data-Driven automation.',
       articlesTag: 'ESSAYS & ANALYSES',
       articlesTitle: 'Selected Essays from akucera.eu & Substack',
-      articlesAllLink: 'View all articles on akucera.eu →',
-      readArticle: 'Read essay',
+      articlesAllLink: 'View all articles on Substack →',
+      readArticle: 'Read essay on Substack ↗',
       articles: [
+        {
+          title: 'Mastering Tableau Cloud Logs: From S3 to a hundreds fields in BigQuery',
+          topic: 'Google Cloud / BigQuery',
+          summary:
+            'How to process, transform and ingest Tableau Cloud audit logs into BigQuery for enterprise telemetry and architectural observability.',
+          href: 'https://antoninkucera.substack.com/p/mastering-tableau-cloud-logs-from-s3-to-a-hundreds-fields-in-bigquery',
+        },
         {
           title: 'No Blueprint Exists: Why AI Made Me Double Down on Being “Data-Informed”',
           topic: 'Data Leadership & AI Philosophy',
           summary:
             'Why blind "data-driven" automation falls short in the age of generative AI — when model output scales noise faster than signal, and why pairing telemetry with domain context and human judgment is decisive.',
-          href: 'https://akucera.eu/no-blueprint-exists-why-ai-made-me-double-down-on-being-data-informed/',
+          href: 'https://antoninkucera.substack.com/p/no-blueprint-exists-why-ai-made-me-double-down-on-being-data-informed',
         },
         {
-          title: 'Google Cloud & BigQuery Architecture in High-Throughput Environments',
-          topic: 'Google Cloud / BigQuery',
+          title: 'BigQuery Overview: A New Navigation Hub in the Complex analytics platform',
+          topic: 'Cloud Data Architecture',
           summary:
-            'Architectural lessons from operating and scaling analytical infrastructure over terabytes of daily data — spanning query optimization, slot economics in BigQuery, and modern SQLX/ELT pipelines.',
-          href: 'https://akucera.eu',
-        },
-        {
-          title: 'The AI Productivity Paradox in Analytics & BI Teams',
-          topic: 'AI Impact on Analytics',
-          summary:
-            'How autonomous agents and LLMs reshape the day-to-day craft of data analysts, BI engineers, and data leaders — and where the boundary lies between rapid prototyping and durable production architecture.',
-          href: 'https://akucera.eu',
+            'A practical architectural guide to navigating BigQuery tools, datasets, slot management, and modern cloud data pipelines.',
+          href: 'https://antoninkucera.substack.com/p/bigquery-overview-a-new-navigation-hub-in-the-complex-analytics-platform',
         },
       ],
     },
@@ -553,18 +571,29 @@ export const ui = {
       ],
     },
     academy: {
-      pageTitle: 'Vzdělávací akademie — Vector87 | Studijní cesty, literatura a Best Practices',
-      tag: '04 // KURÁTOROVANÉ VZDĚLÁVÁNÍ',
-      title: 'Vzdělávací akademie & Studijní cesty',
+      pageTitle: 'Vzdělávací akademie & Vzdělávací Hub — Vector87',
+      tag: '04 // VZDĚLÁVÁNÍ & PRAKTICKÉ KURIKULUM',
+      title: 'Vzdělávací akademie & Vzdělávací Hub',
       subtitle:
-        'Rozcestník sestavený přímo podle reálné poptávky S&P 500 firem z naší telemetrie. Namísto nahodilých tutoriálů se soustředí na architektonické základy, inženýrskou disciplínu a schopnost doručovat měřitelnou hodnotu.',
+        'Praktický rozcestník sestavený podle reálné poptávky S&P 500 firem z naší telemetrie. Kurátorované interaktivní kurzy, studijní dráhy, průmyslové certifikace a základní literatura pro zvládnutí datové architektury, moderní analytiky a aplikované AI.',
       tracksTitle: 'Strukturované studijní dráhy (Learning Tracks)',
+      tracksSubtitle: 'Architektonické vzdělávací cesty přímo napojené na role s vysokou intenzitou náboru.',
+      coursesTitle: 'Interaktivní kurzy a specializace (Coursera, DataCamp & AI)',
+      coursesSubtitle: 'Špičkové praktické programy odpovídající nejčastěji poptávaným technologiím v podnikovém segmentu.',
+      certsTitle: 'Průmyslové certifikace a profesní roadmapa',
+      certsSubtitle: 'Ověřené profesní certifikáty s měřitelnou hodnotou a platovou prémií na globálním trhu.',
       booksTitle: 'Základní knihovna datového architekta a AI inženýra',
+      booksSubtitle: 'Klíčová literatura pro hluboké inženýrské ukotvení odolné vůči módním vlnám.',
+      ctaEnroll: 'Otevřít program ↗',
+      ctaCertGuide: 'Detail certifikace ↗',
+      ctaBook: 'Zobrazit na Amazonu ↗',
+      sponsorDisclaimer: 'Vector87 doporučuje výhradně prověřené vzdělávací zdroje. Některé externí odkazy mohou být zapojeny do partnerských affiliate programů bez jakéhokoliv navýšení ceny pro vás.',
       tracks: [
         {
           code: 'TRACK 01',
           title: 'Analytics & Modern BI Engineering',
           level: 'Foundational → Senior IC',
+          marketMetric: 'SQL a sémantická vrstva v 46 % analytických pozic',
           focus:
             'Přechod od ad-hoc reportingu k inženýrsky řízené analytice, sémantickým vrstvám a Data-Informed rozhodování.',
           modules: [
@@ -578,6 +607,7 @@ export const ui = {
           code: 'TRACK 02',
           title: 'Cloud Data Engineering & Lakehouse Architecture',
           level: 'Mid → Staff / Architect',
+          marketMetric: 'Python a cloudová infrastruktura v 62 % datových otevřených pozic',
           focus:
             'Budování škálovatelných datových platforem, distribuovaných pipeline a spolehlivé infrastruktury.',
           modules: [
@@ -591,6 +621,7 @@ export const ui = {
           code: 'TRACK 03',
           title: 'Applied AI, LLM Systems & Agentic Engineering',
           level: 'Mid → Principal AI Engineer',
+          marketMetric: 'Nejrychleji rostoucí kategorie: meziroční růst GenAI/Agentic o +310 %',
           focus:
             'Návrh, evaluace a produkční provoz aplikací postavených na foundation modelech a autonomních agentech.',
           modules: [
@@ -607,24 +638,28 @@ export const ui = {
           author: 'Martin Kleppmann',
           category: 'Data Systems & Architecture',
           why: 'Základní bible pro pochopení distribuovaných datových systémů, replikace, konsistence a stream processingu.',
+          url: 'https://www.amazon.com/dp/1449373321',
         },
         {
           title: 'Fundamentals of Data Engineering',
           author: 'Joe Reis & Matt Housley',
           category: 'Data Engineering',
           why: 'Systematický rámec životního cyklu datového inženýrství nezávislý na konkrétních módních nástrojích.',
+          url: 'https://www.amazon.com/dp/1098108302',
         },
         {
           title: 'AI Engineering: Building Applications with Foundation Models',
           author: 'Chip Huyen',
           category: 'Applied AI & LLMOps',
           why: 'Praktický inženýrský pohled na hodnocení (evals), RAG, fine-tuning a produkční nasazování foundation modelů.',
+          url: 'https://www.amazon.com/dp/1098166302',
         },
         {
           title: 'Google BigQuery: The Definitive Guide',
           author: 'Valliappa Lakshmanan & Jordan Tigani',
           category: 'Google Cloud / DWH',
           why: 'Hluboký vhled do interní architektury Dremelu, Colossusu a psaní vysoce efektivních analytických dotazů.',
+          url: 'https://www.amazon.com/dp/1492044466',
         },
       ],
     },
@@ -638,6 +673,7 @@ export const ui = {
         'Projekt Vector87.com vznikl jako nezávislá, daty podložená protiváha k marketingovému šumu kolem AI. Namísto dojmů měříme reálnou alokaci kapitálu firem S&P 500 a technologických lídrů skrze jejich otevřené pozice, požadované technické kompetence a posuny v organizační hierarchii.',
       ctaBlog: 'OSOBNÍ WEB & BLOG (akucera.eu) ↗',
       ctaLinkedin: 'LINKEDIN PROFIL ↗',
+      ctaSubstack: 'SUBSTACK NEWSLETTER ↗',
       brandCardTitle: 'PROČ VECTOR 87?',
       brandCardP1:
         'Vector vyjadřuje exaktní matematický směr a velikost — v našem případě trajektorii, jakou se vyvíjí globální datový a AI trh.',
@@ -645,29 +681,29 @@ export const ui = {
         '87 odkazuje na zralost a osobní ukotvení: v záplavě generovaného obsahu stavíme na zkušenosti, ověřitelných primárních datech a principu Data-Informed namísto slepého Data-Driven.',
       articlesTag: 'ESEJE & ANALÝZY',
       articlesTitle: 'Vybrané texty z akucera.eu & Substacku',
-      articlesAllLink: 'Zobrazit všechny články na akucera.eu →',
-      readArticle: 'Číst článek',
+      articlesAllLink: 'Zobrazit všechny články na Substacku →',
+      readArticle: 'Číst článek na Substacku ↗',
       articles: [
         {
-          title: 'No Blueprint Exists: Why AI Made Me Double Down on Being “Data-Informed”',
-          topic: 'Data Leadership & AI Philosophy',
-          summary:
-            'Proč v éře automatizované analytiky a generativní AI přestává stačit slepé „data-driven“ rozhodování. Kdy surový výstup modelů škáluje šum místo signálu a proč je klíčové spojit data s doménovým kontextem a lidským úsudkem.',
-          href: 'https://akucera.eu/no-blueprint-exists-why-ai-made-me-double-down-on-being-data-informed/',
-        },
-        {
-          title: 'Google Cloud & BigQuery Architecture in High-Throughput Environments',
+          title: 'Mastering Tableau Cloud Logs: From S3 to a hundreds fields in BigQuery',
           topic: 'Google Cloud / BigQuery',
           summary:
-            'Praktické poznatky z provozu a škálování analytické infrastruktury nad terabajty denních dat — od optimalizace dotazů a řízení nákladů v BigQuery až po moderní ELT transformace.',
-          href: 'https://akucera.eu',
+            'Praktická architektura pro zpracování, transformaci a ingestování auditních logů z Tableau Cloud do BigQuery pro podnikovou telemetrii a observabilitu.',
+          href: 'https://antoninkucera.substack.com/p/mastering-tableau-cloud-logs-from-s3-to-a-hundreds-fields-in-bigquery',
         },
         {
-          title: 'The AI Productivity Paradox in Analytics & BI Teams',
-          topic: 'AI Impact on Analytics',
+          title: 'No Blueprint Exists: Why AI Made Me Double Down on Being “Data-Informed”',
+          topic: 'Data Leadership & AI Filozofie',
           summary:
-            'Jak autonomní agenti a LLM mění každodenní práci datových analytiků, BI inženýrů a lídrů datových týmů — a kde leží hranice mezi rychlým prototypem a udržitelnou produkční architekturou.',
-          href: 'https://akucera.eu',
+            'Proč v éře automatizované analytiky a generativní AI přestává stačit slepé „data-driven“ rozhodování. Kdy surový výstup modelů škáluje šum místo signálu a proč je klíčové spojit data s doménovým kontextem a lidským úsudkem.',
+          href: 'https://antoninkucera.substack.com/p/no-blueprint-exists-why-ai-made-me-double-down-on-being-data-informed',
+        },
+        {
+          title: 'BigQuery Overview: A New Navigation Hub in the Complex analytics platform',
+          topic: 'Cloud Data Architektura',
+          summary:
+            'Praktický průvodce architekturou a navigací v nástrojích, datasetech, slotové ekonomice a moderních analytických pipeline v ekosystému BigQuery.',
+          href: 'https://antoninkucera.substack.com/p/bigquery-overview-a-new-navigation-hub-in-the-complex-analytics-platform',
         },
       ],
     },
