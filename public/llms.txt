@@ -1,0 +1,22 @@
+# Vector87.com — Quantitative Telemetry of the Global AI & Data Job Market
+
+> Vector87.com is an open, static data and intelligence hub monitoring the direction of the AI, ML, Data Science, and Analytics job market across S&P 500 corporations, frontier technology leaders, and Europe. Data is aggregated directly from corporate ATS platforms into a local DuckDB analytical warehouse and exported into deterministic static JSON contracts.
+
+## Core Market Telemetry (Snapshot: 2026-10-26)
+- **Active AI & Data Job Postings**: 6,025
+- **S&P 500 AI/Data Postings**: 4,646 (1.12% of total corporate hiring pool)
+- **S&P 500 Enterprise Coverage**: 475 hiring / 508 tracked firms
+- **Tracked Occupied Workforce (Headcount)**: 187,585 data/AI team seats across 627 enterprises
+- **Hands-on (IC) to Management Ratio**: 14.1 : 1 (93.36% IC vs 6.64% Management)
+
+## Key Pages & Endpoints
+- [Market Dashboard](https://vector87.com/): Core telemetry covering vitality, cloud stack, S&P 500 sector heatmap, hierarchy ratios, and emerging technology signals.
+- [Czech Version / Česká verze](https://vector87.com/cs/): Kompletní zrcadlo v češtině.
+- [Role Analysis](https://vector87.com/roles): 21 canonical AI & Data roles with synthesized job descriptions, required competencies, and team expansion velocity.
+- [Google Cloud Hub](https://vector87.com/gcp-hub): Specialized telemetry for Google Cloud Platform (BigQuery, Vertex AI, Dataform, Looker, Dataflow).
+- [Education Academy](https://vector87.com/academy): 3 structured learning tracks (Analytics Engineering, Cloud Data Engineering, Applied AI/LLMOps) and essential architectural literature.
+- [About Author](https://vector87.com/about): Background of Antonín Kučera (akucera.eu), project philosophy, and essays on Data-Informed leadership.
+
+## Machine-Readable Data Contracts
+- [JSON Schema](https://vector87.com/schema/market-data.schema.json): Formal draft 2020-12 schema specification.
+- [Full Text for LLMs](https://vector87.com/llms-full.txt): Complete uncompressed textual dump of all synthesized role profiles, skills, and telemetry for direct ingestion.

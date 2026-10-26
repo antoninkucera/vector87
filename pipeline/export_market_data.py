@@ -21,6 +21,8 @@ DEFAULT_DB_PATH = Path("/Users/antonin.kucera/Projects/personal/ai_data_jobs/db/
 SCHEMA_PATH = ROOT_DIR / "schema" / "market-data.schema.json"
 ROLE_DESC_PATH = ROOT_DIR / "pipeline" / "role_descriptions.json"
 OUTPUT_PATH = ROOT_DIR / "src" / "data" / "market-data.json"
+LLMS_TXT_PATH = ROOT_DIR / "public" / "llms.txt"
+LLMS_FULL_TXT_PATH = ROOT_DIR / "public" / "llms-full.txt"
 
 # Rozdělení skillů pro detail role: koncepční/jádrové dovednosti vs. konkrétní nástroje a platformy
 SKILL_CATEGORIES = {"Programming", "AI/ML", "Business"}
@@ -156,17 +158,23 @@ def export_market_data(db_path: Path | None = None, output_path: Path | None = N
         top_comp_rows = con.execute(
             """
             SELECT
-                c.company_id,
-                c.company_name,
-                COALESCE(c.is_sp500, FALSE) AS is_sp500,
-                c.sp500_sector,
-                COUNT(j.job_id) AS ai_jobs,
-                COALESCE(c.total_active_jobs, 0) AS total_pool,
-                ROUND(100.0 * COUNT(j.job_id) / NULLIF(c.total_active_jobs, 0), 2) AS intensity_pct
+                CASE 
+                    WHEN c.company_id IN ('alphabet', 'alphabet_class_a', 'alphabet_class_c', 'google') THEN 'alphabet'
+                    ELSE c.company_id 
+                END AS comp_id,
+                CASE 
+                    WHEN c.company_id IN ('alphabet', 'alphabet_class_a', 'alphabet_class_c', 'google') THEN 'Google (Alphabet)'
+                    ELSE c.company_name 
+                END AS comp_name,
+                MAX(COALESCE(c.is_sp500, FALSE)) AS is_sp500,
+                MAX(c.sp500_sector) AS sector,
+                COUNT(DISTINCT j.url) AS ai_jobs,
+                MAX(COALESCE(c.total_active_jobs, 0)) AS total_pool,
+                ROUND(100.0 * COUNT(DISTINCT j.url) / NULLIF(MAX(c.total_active_jobs), 0), 2) AS intensity_pct
             FROM fact_jobs j
             JOIN dim_companies c ON j.company_id = c.company_id
             WHERE j.is_active = TRUE
-            GROUP BY c.company_id, c.company_name, c.is_sp500, c.sp500_sector, c.total_active_jobs
+            GROUP BY 1, 2
             ORDER BY ai_jobs DESC
             LIMIT 15
             """
@@ -185,22 +193,34 @@ def export_market_data(db_path: Path | None = None, output_path: Path | None = N
             for r in top_comp_rows
         ]
 
+        sp500_distinct_jobs = int(
+            con.execute(
+                """
+                SELECT COUNT(DISTINCT j.url)
+                FROM fact_jobs j
+                JOIN dim_companies c ON j.company_id = c.company_id
+                WHERE j.is_active = TRUE AND c.is_sp500 = TRUE
+                """
+            ).fetchone()[0]
+        )
+
         reg_rows = con.execute(
             """
             SELECT
                 j.country_code,
                 COALESCE(d.country_name, j.country_code) AS country_name,
                 COALESCE(d.region, 'Other') AS region,
-                COUNT(j.job_id) AS cnt,
-                ROUND(100.0 * COUNT(j.job_id) / NULLIF(?, 0), 2) AS share_pct
+                COUNT(DISTINCT j.url) AS cnt,
+                ROUND(100.0 * COUNT(DISTINCT j.url) / NULLIF(?, 0), 2) AS share_pct
             FROM fact_jobs j
+            JOIN dim_companies c ON j.company_id = c.company_id
             LEFT JOIN dim_countries d ON j.country_code = d.country_code
-            WHERE j.is_active = TRUE AND j.country_code IS NOT NULL
+            WHERE j.is_active = TRUE AND j.country_code IS NOT NULL AND c.is_sp500 = TRUE
             GROUP BY 1, 2, 3
             ORDER BY cnt DESC
             LIMIT 12
             """,
-            [total_jobs],
+            [sp500_distinct_jobs],
         ).fetchall()
 
         regional_breakdown = [
@@ -966,10 +986,11 @@ def export_market_data(db_path: Path | None = None, output_path: Path | None = N
 
         gcp_role_rows = con.execute(
             """
-            SELECT c.canonical_name, COUNT(DISTINCT r.job_id) AS cnt
+            SELECT c.canonical_name, COUNT(DISTINCT j.url) AS cnt
             FROM bridge_job_roles r
             JOIN dim_job_categories c ON r.category_id = c.category_id
-            WHERE r.job_id IN (
+            JOIN fact_jobs j ON r.job_id = j.job_id
+            WHERE j.is_active = TRUE AND r.job_id IN (
                 SELECT DISTINCT job_id FROM bridge_job_skills WHERE skill_id IN (SELECT UNNEST(?))
             )
             GROUP BY 1
@@ -981,13 +1002,19 @@ def export_market_data(db_path: Path | None = None, output_path: Path | None = N
 
         gcp_comp_rows = con.execute(
             """
-            SELECT comp.company_name, comp.sp500_sector, COUNT(DISTINCT j.job_id) AS cnt
+            SELECT 
+                CASE 
+                    WHEN comp.company_id IN ('alphabet', 'alphabet_class_a', 'alphabet_class_c', 'google') THEN 'Google (Alphabet)'
+                    ELSE comp.company_name 
+                END AS c_name,
+                MAX(comp.sp500_sector) AS sector,
+                COUNT(DISTINCT j.url) AS cnt
             FROM fact_jobs j
             JOIN dim_companies comp ON j.company_id = comp.company_id
             WHERE j.is_active = TRUE AND j.job_id IN (
                 SELECT DISTINCT job_id FROM bridge_job_skills WHERE skill_id IN (SELECT UNNEST(?))
             )
-            GROUP BY 1, 2
+            GROUP BY 1
             ORDER BY cnt DESC
             LIMIT 10
             """,
@@ -1026,9 +1053,111 @@ def export_market_data(db_path: Path | None = None, output_path: Path | None = N
             f"[Vector87 Exporter] Wrote {resolved_out} "
             f"({resolved_out.stat().st_size:,} bytes, {total_jobs:,} active jobs, {len(roles_output)} roles)"
         )
+
+        # Automatické generování a synchronizace llms.txt a llms-full.txt
+        generate_llms_txt(payload)
+
         return payload
     finally:
         con.close()
+
+
+def generate_llms_txt(payload: dict[str, Any]) -> None:
+    """Generuje /public/llms.txt a /public/llms-full.txt podle standardu llmstxt.org."""
+    meta = payload["meta"]
+    mv = payload["market_vitality"]
+    ha = payload["headcount_analytics"]
+    roles = payload["roles"]
+    gcp = payload["gcp_hub"]
+    trend = payload["trend_radar"]
+
+    # 1. llms.txt (Lehký přehledový manifest)
+    llms_txt = f"""# Vector87.com — Quantitative Telemetry of the Global AI & Data Job Market
+
+> Vector87.com is an open, static data and intelligence hub monitoring the direction of the AI, ML, Data Science, and Analytics job market across S&P 500 corporations, frontier technology leaders, and Europe. Data is aggregated directly from corporate ATS platforms into a local DuckDB analytical warehouse and exported into deterministic static JSON contracts.
+
+## Core Market Telemetry (Snapshot: {meta['latest_snapshot_date']})
+- **Active AI & Data Job Postings**: {mv['total_ai_data_jobs']:,}
+- **S&P 500 AI/Data Postings**: {mv['sp500_ai_data_jobs']:,} ({mv['sp500_ai_intensity_pct']}% of total corporate hiring pool)
+- **S&P 500 Enterprise Coverage**: {mv['sp500_hiring_companies']} hiring / {meta['sp500_tracked_companies']} tracked firms
+- **Tracked Occupied Workforce (Headcount)**: {ha['total_occupied_seats']:,} data/AI team seats across {ha['tracked_companies_count']} enterprises
+- **Hands-on (IC) to Management Ratio**: {payload['hierarchy_shift']['ic_to_management_ratio']} : 1 ({payload['hierarchy_shift']['ic_share_pct']}% IC vs {payload['hierarchy_shift']['management_share_pct']}% Management)
+
+## Key Pages & Endpoints
+- [Market Dashboard](https://vector87.com/): Core telemetry covering vitality, cloud stack, S&P 500 sector heatmap, hierarchy ratios, and emerging technology signals.
+- [Czech Version / Česká verze](https://vector87.com/cs/): Kompletní zrcadlo v češtině.
+- [Role Analysis](https://vector87.com/roles): 21 canonical AI & Data roles with synthesized job descriptions, required competencies, and team expansion velocity.
+- [Google Cloud Hub](https://vector87.com/gcp-hub): Specialized telemetry for Google Cloud Platform (BigQuery, Vertex AI, Dataform, Looker, Dataflow).
+- [Education Academy](https://vector87.com/academy): 3 structured learning tracks (Analytics Engineering, Cloud Data Engineering, Applied AI/LLMOps) and essential architectural literature.
+- [About Author](https://vector87.com/about): Background of Antonín Kučera (akucera.eu), project philosophy, and essays on Data-Informed leadership.
+
+## Machine-Readable Data Contracts
+- [JSON Schema](https://vector87.com/schema/market-data.schema.json): Formal draft 2020-12 schema specification.
+- [Full Text for LLMs](https://vector87.com/llms-full.txt): Complete uncompressed textual dump of all synthesized role profiles, skills, and telemetry for direct ingestion.
+"""
+
+    LLMS_TXT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    LLMS_TXT_PATH.write_text(llms_txt.strip() + "\n", encoding="utf-8")
+
+    # 2. llms-full.txt (Detailní datový a syntetický výtah pro AI agenty)
+    full_lines = [
+        f"# Vector87.com — Complete Telemetry & Role Syntheses (Snapshot {meta['latest_snapshot_date']})",
+        "",
+        "## 1. Executive Summary & Market Vitality",
+        f"- Total Active AI & Data Jobs: {mv['total_ai_data_jobs']:,}",
+        f"- Total Corporate Hiring Pool (all departments): {mv['total_open_jobs_pool']:,}",
+        f"- S&P 500 AI Hiring Intensity: {mv['sp500_ai_intensity_pct']}% of all open jobs",
+        f"- Tracked Headcount Base (Coresignal / LinkedIn): {ha['total_occupied_seats']:,} occupied data/AI seats across {ha['tracked_companies_count']} companies",
+        f"- Organizational Shift: {payload['hierarchy_shift']['ic_to_management_ratio']} : 1 in favor of Individual Contributors",
+        "",
+        "## 2. Emerging Paradigms & Trend Radar Signals",
+    ]
+
+    for kw in trend["keywords"]:
+        full_lines.append(f"- **{kw['label']}** ({kw['category']}): {kw['job_count']:,} postings ({kw['penetration_pct']}% market penetration) — Stage: {kw['signal_stage']}")
+
+    full_lines.extend([
+        "",
+        "## 3. Google Cloud (GCP) Telemetry",
+        f"- Total GCP Ecosystem Postings: {gcp['total_gcp_ecosystem_jobs']:,} ({gcp['gcp_share_of_all_jobs_pct']}% of all data jobs, {gcp['gcp_share_of_cloud_jobs_pct']}% of cloud jobs)",
+    ])
+    for s in gcp["services"]:
+        full_lines.append(f"- {s['service_name']} ({s['category']}): {s['job_count']:,} postings ({s['penetration_in_gcp_pct']}% of GCP positions) | Paired with: {', '.join(s['top_paired_skills'])}")
+
+    full_lines.extend([
+        "",
+        "## 4. Canonical Role Analysis & Syntheses (21 Profiles)",
+    ])
+
+    for r in roles:
+        full_lines.append(f"### {r['canonical_name']} ({r['domain']} • {r['track']})")
+        full_lines.append(f"- Active Job Postings: {r['job_count']:,} ({r['market_share_pct']}% of market)")
+        if r.get("occupied_seats"):
+            full_lines.append(f"- Installed Workforce Base: {r['occupied_seats']:,} occupied seats (Expansion Index: {r.get('expansion_index_pct')}%)")
+        full_lines.append(f"- Seniority Skew (Senior+): {r['senior_plus_pct']}% | Remote Share: {r['remote_pct']}%")
+        full_lines.append("- Synthesized Profile (English):")
+        for p in r["synthesized_description"]["en"]:
+            full_lines.append(f"  {p}")
+        full_lines.append("- Syntetizovaný profil (Čeština):")
+        for p in r["synthesized_description"]["cs"]:
+            full_lines.append(f"  {p}")
+        skills_str = ", ".join(f"{s['skill_name']} ({s['penetration_pct']}%)" for s in r["top_skills"][:5])
+        tech_str = ", ".join(f"{t['skill_name']} ({t['penetration_pct']}%)" for t in r["top_technologies"][:5])
+        comps_str = ", ".join(f"{c['company_name']} ({c['job_count']})" for c in r["top_companies"][:4])
+        full_lines.append(f"- Core Skills: {skills_str or 'N/A'}")
+        full_lines.append(f"- Technology Stack: {tech_str or 'N/A'}")
+        full_lines.append(f"- Top Hiring Companies: {comps_str or 'N/A'}")
+        full_lines.append("")
+
+    full_lines.extend([
+        "## 5. Author & Methodology",
+        "Author: Antonín Kučera (akucera.eu) — Data & BI Leader, Google Cloud & BigQuery specialist.",
+        "Methodology: Continuous scraping of ATS endpoints across S&P 500, EU leaders, and consultancies; normalized through DuckDB regex taxonomies and point-in-time snapshotting.",
+        "License: CC BY 4.0 Vector87.com / Antonín Kučera."
+    ])
+
+    LLMS_FULL_TXT_PATH.write_text("\n".join(full_lines).strip() + "\n", encoding="utf-8")
+    print(f"[Vector87 Exporter] Generated {LLMS_TXT_PATH} and {LLMS_FULL_TXT_PATH} successfully.")
 
 
 def validate_against_contract(payload: dict[str, Any]) -> None:

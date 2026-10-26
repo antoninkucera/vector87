@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import copy
 import json
+from pathlib import Path
 import unittest
 
 from pipeline.export_market_data import (
@@ -63,6 +64,14 @@ class TestVector87Exporter(unittest.TestCase):
         self.assertGreater(ha["total_occupied_seats"], 100000)
         self.assertGreater(len(ha["macro_role_intensity"]), 15)
         self.assertGreater(len(ha["company_team_growth"]), 5)
+
+        # 6. LLM files generation for AI crawlers
+        llms_txt = Path(__file__).resolve().parent.parent / "public" / "llms.txt"
+        llms_full_txt = Path(__file__).resolve().parent.parent / "public" / "llms-full.txt"
+        self.assertTrue(llms_txt.exists())
+        self.assertTrue(llms_full_txt.exists())
+        self.assertIn("Vector87.com", llms_txt.read_text(encoding="utf-8"))
+        self.assertIn("Canonical Role Analysis", llms_full_txt.read_text(encoding="utf-8"))
 
     def test_contract_validation_fails_on_broken_payload(self) -> None:
         broken = copy.deepcopy(self.payload)
