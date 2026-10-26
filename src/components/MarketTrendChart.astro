@@ -123,10 +123,16 @@ const chartPayload = JSON.stringify({
           responsive: true,
           maintainAspectRatio: false,
           indexAxis: cfg.indexAxis,
-          interaction: {
-            mode: 'index',
-            intersect: false,
-          },
+          interaction: isDoughnutOrRadar
+            ? {
+                mode: 'nearest',
+                intersect: false,
+              }
+            : {
+                mode: 'index',
+                intersect: false,
+                axis: cfg.indexAxis === 'y' ? 'y' : 'x',
+              },
           plugins: {
             legend: {
               display: showLegend,
@@ -139,6 +145,9 @@ const chartPayload = JSON.stringify({
               },
             },
             tooltip: {
+              animation: {
+                duration: 100,
+              },
               backgroundColor: 'rgba(6, 9, 17, 0.96)',
               titleColor: '#f8fafc',
               bodyColor: '#22d3ee',
