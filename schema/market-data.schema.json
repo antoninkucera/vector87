@@ -1,0 +1,459 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vector87.com/schema/market-data.schema.json",
+  "title": "Vector87 Market Data Contract",
+  "description": "Pre-generated analytical dataset exported from the AI Data Jobs DuckDB warehouse for Vector87.com static frontend.",
+  "type": "object",
+  "required": [
+    "meta",
+    "market_vitality",
+    "tech_cloud_stack",
+    "industry_heatmap",
+    "hierarchy_shift",
+    "trend_radar",
+    "time_series",
+    "headcount_analytics",
+    "roles",
+    "gcp_hub"
+  ],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["generated_at", "schema_version", "latest_snapshot_date", "total_tracked_companies", "sp500_tracked_companies"],
+      "properties": {
+        "generated_at": { "type": "string", "format": "date-time" },
+        "schema_version": { "type": "string" },
+        "latest_snapshot_date": { "type": "string" },
+        "total_tracked_companies": { "type": "integer" },
+        "sp500_tracked_companies": { "type": "integer" }
+      }
+    },
+    "market_vitality": {
+      "type": "object",
+      "required": [
+        "total_ai_data_jobs",
+        "total_open_jobs_pool",
+        "overall_ai_intensity_pct",
+        "sp500_ai_data_jobs",
+        "sp500_open_jobs_pool",
+        "sp500_ai_intensity_pct",
+        "sp500_hiring_companies",
+        "sp500_zero_job_companies",
+        "cz_ai_data_jobs",
+        "eu_uk_ch_ai_data_jobs",
+        "us_ca_ai_data_jobs",
+        "top_hiring_companies",
+        "regional_breakdown"
+      ],
+      "properties": {
+        "total_ai_data_jobs": { "type": "integer" },
+        "total_open_jobs_pool": { "type": "integer" },
+        "overall_ai_intensity_pct": { "type": "number" },
+        "sp500_ai_data_jobs": { "type": "integer" },
+        "sp500_open_jobs_pool": { "type": "integer" },
+        "sp500_ai_intensity_pct": { "type": "number" },
+        "sp500_hiring_companies": { "type": "integer" },
+        "sp500_zero_job_companies": { "type": "integer" },
+        "cz_ai_data_jobs": { "type": "integer" },
+        "eu_uk_ch_ai_data_jobs": { "type": "integer" },
+        "us_ca_ai_data_jobs": { "type": "integer" },
+        "top_hiring_companies": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["company_id", "company_name", "is_sp500", "sector", "ai_data_jobs", "total_active_jobs", "ai_intensity_pct"],
+            "properties": {
+              "company_id": { "type": "string" },
+              "company_name": { "type": "string" },
+              "is_sp500": { "type": "boolean" },
+              "sector": { "type": ["string", "null"] },
+              "ai_data_jobs": { "type": "integer" },
+              "total_active_jobs": { "type": "integer" },
+              "ai_intensity_pct": { "type": "number" }
+            }
+          }
+        },
+        "regional_breakdown": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["country_code", "country_name", "region", "job_count", "share_pct"],
+            "properties": {
+              "country_code": { "type": "string" },
+              "country_name": { "type": "string" },
+              "region": { "type": "string" },
+              "job_count": { "type": "integer" },
+              "share_pct": { "type": "number" }
+            }
+          }
+        }
+      }
+    },
+    "tech_cloud_stack": {
+      "type": "object",
+      "required": ["hyperscalers", "data_platforms", "top_technologies", "skill_cooccurrence"],
+      "properties": {
+        "hyperscalers": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/skillMetric" }
+        },
+        "data_platforms": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/skillMetric" }
+        },
+        "top_technologies": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/skillMetric" }
+        },
+        "skill_cooccurrence": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["skill_a", "skill_b", "cooccurrence_count", "jaccard_pct"],
+            "properties": {
+              "skill_a": { "type": "string" },
+              "skill_b": { "type": "string" },
+              "cooccurrence_count": { "type": "integer" },
+              "jaccard_pct": { "type": "number" }
+            }
+          }
+        }
+      }
+    },
+    "industry_heatmap": {
+      "type": "object",
+      "required": ["sectors", "seniority_levels"],
+      "properties": {
+        "sectors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "sector",
+              "companies_count",
+              "total_active_jobs",
+              "ai_data_jobs",
+              "ai_intensity_pct",
+              "genai_jobs",
+              "genai_share_of_ai_pct",
+              "seniority_breakdown"
+            ],
+            "properties": {
+              "sector": { "type": "string" },
+              "companies_count": { "type": "integer" },
+              "total_active_jobs": { "type": "integer" },
+              "ai_data_jobs": { "type": "integer" },
+              "ai_intensity_pct": { "type": "number" },
+              "genai_jobs": { "type": "integer" },
+              "genai_share_of_ai_pct": { "type": "number" },
+              "seniority_breakdown": {
+                "type": "object",
+                "additionalProperties": { "type": "integer" }
+              }
+            }
+          }
+        },
+        "seniority_levels": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "hierarchy_shift": {
+      "type": "object",
+      "required": ["ic_count", "management_count", "ic_share_pct", "management_share_pct", "ic_to_management_ratio", "by_seniority", "by_domain", "work_modes"],
+      "properties": {
+        "ic_count": { "type": "integer" },
+        "management_count": { "type": "integer" },
+        "ic_share_pct": { "type": "number" },
+        "management_share_pct": { "type": "number" },
+        "ic_to_management_ratio": { "type": "number" },
+        "by_seniority": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["seniority", "track", "job_count", "share_pct"],
+            "properties": {
+              "seniority": { "type": "string" },
+              "track": { "type": "string" },
+              "job_count": { "type": "integer" },
+              "share_pct": { "type": "number" }
+            }
+          }
+        },
+        "by_domain": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["domain", "ic_jobs", "management_jobs", "ic_share_pct"],
+            "properties": {
+              "domain": { "type": "string" },
+              "ic_jobs": { "type": "integer" },
+              "management_jobs": { "type": "integer" },
+              "ic_share_pct": { "type": "number" }
+            }
+          }
+        },
+        "work_modes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["work_mode", "job_count", "share_pct"],
+            "properties": {
+              "work_mode": { "type": "string" },
+              "job_count": { "type": "integer" },
+              "share_pct": { "type": "number" }
+            }
+          }
+        }
+      }
+    },
+    "trend_radar": {
+      "type": "object",
+      "required": ["keywords"],
+      "properties": {
+        "keywords": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["skill_id", "label", "category", "job_count", "penetration_pct", "sp500_job_count", "signal_stage"],
+            "properties": {
+              "skill_id": { "type": "string" },
+              "label": { "type": "string" },
+              "category": { "type": "string" },
+              "job_count": { "type": "integer" },
+              "penetration_pct": { "type": "number" },
+              "sp500_job_count": { "type": "integer" },
+              "signal_stage": { "type": "string", "enum": ["Dominant", "Scaling", "Emerging", "Niche Signal"] }
+            }
+          }
+        }
+      }
+    },
+    "time_series": {
+      "type": "object",
+      "required": ["has_mature_history", "status_note", "snapshots", "monthly_inflow"],
+      "properties": {
+        "has_mature_history": { "type": "boolean" },
+        "status_note": { "type": "string" },
+        "snapshots": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["snapshot_date", "snapshot_week", "active_jobs", "active_companies", "senior_plus_pct", "remote_of_known_pct"],
+            "properties": {
+              "snapshot_date": { "type": "string" },
+              "snapshot_week": { "type": "string" },
+              "active_jobs": { "type": "integer" },
+              "active_companies": { "type": "integer" },
+              "senior_plus_pct": { "type": "number" },
+              "remote_of_known_pct": { "type": "number" }
+            }
+          }
+        },
+        "monthly_inflow": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["posted_month", "new_jobs", "aiml_jobs", "data_eng_jobs", "analytics_jobs", "aiml_share_pct", "senior_plus_pct"],
+            "properties": {
+              "posted_month": { "type": "string" },
+              "new_jobs": { "type": "integer" },
+              "aiml_jobs": { "type": "integer" },
+              "data_eng_jobs": { "type": "integer" },
+              "analytics_jobs": { "type": "integer" },
+              "aiml_share_pct": { "type": "number" },
+              "senior_plus_pct": { "type": "number" }
+            }
+          }
+        }
+      }
+    },
+    "headcount_analytics": {
+      "type": "object",
+      "required": ["tracked_companies_count", "total_snapshots", "coverage_note", "company_ratios"],
+      "properties": {
+        "tracked_companies_count": { "type": "integer" },
+        "total_snapshots": { "type": "integer" },
+        "coverage_note": { "type": "string" },
+        "company_ratios": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["company_id", "company_name", "role_id", "role_name", "global_headcount", "us_headcount", "open_jobs", "hiring_intensity_ratio_pct"],
+            "properties": {
+              "company_id": { "type": "string" },
+              "company_name": { "type": "string" },
+              "role_id": { "type": "string" },
+              "role_name": { "type": "string" },
+              "global_headcount": { "type": ["integer", "null"] },
+              "us_headcount": { "type": ["integer", "null"] },
+              "open_jobs": { "type": "integer" },
+              "hiring_intensity_ratio_pct": { "type": ["number", "null"] }
+            }
+          }
+        }
+      }
+    },
+    "roles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "category_id",
+          "canonical_name",
+          "domain",
+          "track",
+          "job_count",
+          "market_share_pct",
+          "sp500_job_count",
+          "cz_job_count",
+          "senior_plus_pct",
+          "remote_pct",
+          "synthesized_description",
+          "top_skills",
+          "top_technologies",
+          "top_companies",
+          "top_sectors",
+          "seniority_breakdown"
+        ],
+        "properties": {
+          "category_id": { "type": "string" },
+          "canonical_name": { "type": "string" },
+          "domain": { "type": "string" },
+          "track": { "type": "string" },
+          "job_count": { "type": "integer" },
+          "market_share_pct": { "type": "number" },
+          "sp500_job_count": { "type": "integer" },
+          "cz_job_count": { "type": "integer" },
+          "senior_plus_pct": { "type": "number" },
+          "remote_pct": { "type": "number" },
+          "synthesized_description": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": { "type": "string" }
+          },
+          "top_skills": {
+            "type": "array",
+            "items": { "$ref": "#/$defs/roleSkillItem" }
+          },
+          "top_technologies": {
+            "type": "array",
+            "items": { "$ref": "#/$defs/roleSkillItem" }
+          },
+          "top_companies": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["company_name", "job_count"],
+              "properties": {
+                "company_name": { "type": "string" },
+                "job_count": { "type": "integer" }
+              }
+            }
+          },
+          "top_sectors": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["sector", "job_count", "share_pct"],
+              "properties": {
+                "sector": { "type": "string" },
+                "job_count": { "type": "integer" },
+                "share_pct": { "type": "number" }
+              }
+            }
+          },
+          "seniority_breakdown": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["seniority", "job_count", "share_pct"],
+              "properties": {
+                "seniority": { "type": "string" },
+                "job_count": { "type": "integer" },
+                "share_pct": { "type": "number" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "gcp_hub": {
+      "type": "object",
+      "required": ["total_gcp_ecosystem_jobs", "gcp_share_of_all_jobs_pct", "gcp_share_of_cloud_jobs_pct", "services", "top_gcp_roles", "top_gcp_companies"],
+      "properties": {
+        "total_gcp_ecosystem_jobs": { "type": "integer" },
+        "gcp_share_of_all_jobs_pct": { "type": "number" },
+        "gcp_share_of_cloud_jobs_pct": { "type": "number" },
+        "services": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["skill_id", "service_name", "category", "job_count", "penetration_in_gcp_pct", "penetration_all_pct", "top_paired_skills"],
+            "properties": {
+              "skill_id": { "type": "string" },
+              "service_name": { "type": "string" },
+              "category": { "type": "string" },
+              "job_count": { "type": "integer" },
+              "penetration_in_gcp_pct": { "type": "number" },
+              "penetration_all_pct": { "type": "number" },
+              "top_paired_skills": {
+                "type": "array",
+                "items": { "type": "string" }
+              }
+            }
+          }
+        },
+        "top_gcp_roles": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["canonical_name", "job_count"],
+            "properties": {
+              "canonical_name": { "type": "string" },
+              "job_count": { "type": "integer" }
+            }
+          }
+        },
+        "top_gcp_companies": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["company_name", "sector", "job_count"],
+            "properties": {
+              "company_name": { "type": "string" },
+              "sector": { "type": ["string", "null"] },
+              "job_count": { "type": "integer" }
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "skillMetric": {
+      "type": "object",
+      "required": ["skill_id", "skill_name", "category", "job_count", "penetration_pct"],
+      "properties": {
+        "skill_id": { "type": "string" },
+        "skill_name": { "type": "string" },
+        "category": { "type": "string" },
+        "job_count": { "type": "integer" },
+        "penetration_pct": { "type": "number" }
+      }
+    },
+    "roleSkillItem": {
+      "type": "object",
+      "required": ["skill_id", "skill_name", "category", "job_count", "penetration_pct"],
+      "properties": {
+        "skill_id": { "type": "string" },
+        "skill_name": { "type": "string" },
+        "category": { "type": "string" },
+        "job_count": { "type": "integer" },
+        "penetration_pct": { "type": "number" }
+      }
+    }
+  }
+}

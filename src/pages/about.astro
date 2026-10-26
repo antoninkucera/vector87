@@ -1,0 +1,128 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const articles = [
+  {
+    title: 'No Blueprint Exists: Why AI Made Me Double Down on Being “Data-Informed”',
+    topic: 'Data Leadership & AI Philosophy',
+    summary:
+      'Proč v éře automatizované analytiky a generativní AI přestává stačit slepé „data-driven“ rozhodování. Kdy surový výstup modelů škáluje šum místo signálu a proč je klíčové spojit data s doménovým kontextem a lidským úsudkem.',
+    href: 'https://akucera.eu/no-blueprint-exists-why-ai-made-me-double-down-on-being-data-informed/',
+  },
+  {
+    title: 'Google Cloud & BigQuery Architecture in High-Throughput Environments',
+    topic: 'Google Cloud / BigQuery',
+    summary:
+      'Praktické poznatky z provozu a škálování analytické infrastruktury nad terabajty denních dat — od optimalizace dotazů a řízení nákladů v BigQuery až po moderní ELT transformace.',
+    href: 'https://akucera.eu',
+  },
+  {
+    title: 'The AI Productivity Paradox in Analytics & BI Teams',
+    topic: 'AI Impact on Analytics',
+    summary:
+      'Jak autonomní agenti a LLM mění každodenní práci datových analytiků, BI inženýrů a lídrů datových týmů — a kde leží hranice mezi rychlým prototypem a udržitelnou produkční architekturou.',
+    href: 'https://akucera.eu',
+  },
+];
+---
+
+<Layout
+  title="O autorovi — Vector87 | Antonín Kučera (akucera.eu)"
+  activeNav="about"
+>
+  <section class="mb-12 pb-8 border-b border-slate-800/80">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <div class="lg:col-span-8 space-y-4">
+        <span class="text-xs font-mono uppercase tracking-widest text-cyan-400">05 // AUTOR &amp; FILOZOFIE PROJEKTU</span>
+        <h1 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+          Antonín Kučera
+        </h1>
+        <p class="text-base text-cyan-300 font-mono">
+          Data &amp; BI Leader • Google Cloud &amp; BigQuery Specialist • Autor projektu Vector87
+        </p>
+        <p class="text-sm sm:text-base text-slate-200 leading-relaxed">
+          Věnuji se budování a vedení datových a Business Intelligence týmů, návrhu škálovatelných cloudových architektur (primárně na <strong>Google Cloud Platform / BigQuery</strong>) a praktické aplikaci AI v analytice. V praxi jsem vedl BI a datové operace ve vysokozátěžovém globálním prostředí (mj. <strong>Livesport</strong>) a pravidelně vystupuji v odborné komunitě (<em>Data Talk</em>, <em>Data Day</em>).
+        </p>
+        <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
+          Projekt <strong>Vector87.com</strong> vznikl jako nezávislá, daty podložená protiváha k marketingovému šumu kolem AI. Namísto dojmů měříme reálnou alokaci kapitálu firem S&amp;P 500 a technologických lídrů skrze jejich otevřené pozice, požadované technické kompetence a posuny v organizační hierarchii.
+        </p>
+
+        <div class="pt-3 flex flex-wrap gap-3">
+          <a
+            href="https://akucera.eu"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-4 py-2.5 rounded-lg bg-cyan-400 text-slate-950 font-mono text-xs font-bold hover:bg-cyan-300 transition-colors"
+          >
+            OSOBNÍ WEB &amp; BLOG (akucera.eu) ↗
+          </a>
+          <a
+            href="https://www.linkedin.com/in/antoninkucera/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-4 py-2.5 rounded-lg border border-slate-700 bg-slate-900 text-slate-200 font-mono text-xs font-semibold hover:border-cyan-400/50 hover:text-cyan-300 transition-colors"
+          >
+            LINKEDIN PROFIL ↗
+          </a>
+        </div>
+      </div>
+
+      <!-- Brand Card Vector 87 -->
+      <div class="lg:col-span-4 panel-surface rounded-xl p-6 space-y-4 border-t-2 border-t-cyan-400">
+        <div class="flex items-center justify-between">
+          <span class="font-mono text-xs uppercase text-cyan-400">PROČ VECTOR 87?</span>
+          <span class="font-mono text-xs text-slate-500">EST. 1987 // TELEMETRY</span>
+        </div>
+        <p class="text-xs text-slate-300 leading-relaxed">
+          <strong>Vector</strong> vyjadřuje exaktní matematický směr a velikost — v našem případě trajektorii, jakou se vyvíjí globální datový a AI trh.
+        </p>
+        <p class="text-xs text-slate-300 leading-relaxed">
+          <strong>87</strong> odkazuje na zralost a osobní ukotvení: v záplavě generovaného obsahu stavíme na zkušenosti, ověřitelných primárních datech a principu <em>Data-Informed</em> namísto slepého <em>Data-Driven</em>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vybrané články a eseje -->
+  <section class="mb-10">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 mb-6">
+      <div>
+        <span class="text-xs font-mono uppercase tracking-widest text-cyan-400">ESEJE &amp; ANALÝZY</span>
+        <h2 class="text-2xl font-bold text-white mt-0.5">Vybrané texty z akucera.eu &amp; Substacku</h2>
+      </div>
+      <a
+        href="https://akucera.eu"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-xs font-mono text-cyan-300 hover:text-cyan-200"
+      >
+        Zobrazit všechny články na akucera.eu →
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      {articles.map((art) => (
+        <a
+          href={art.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="panel-surface-interactive rounded-xl p-5 flex flex-col justify-between group"
+        >
+          <div>
+            <span class="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-300 border border-cyan-500/30">
+              {art.topic}
+            </span>
+            <h3 class="text-base font-bold text-white mt-3 group-hover:text-cyan-300 transition-colors leading-snug">
+              {art.title}
+            </h3>
+            <p class="text-xs text-slate-300 mt-2.5 leading-relaxed">{art.summary}</p>
+          </div>
+          <div class="mt-5 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs font-mono text-cyan-400">
+            <span>Číst článek</span>
+            <span class="group-hover:translate-x-0.5 transition-transform">↗</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+</Layout>

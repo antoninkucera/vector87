@@ -1,0 +1,86 @@
+{
+  "ai_developer": [
+    "Role AI Developera představuje v současném korporátním prostředí S&P 500 nejrychleji rostoucí inženýrský profil na pomezí klasického softwarového vývoje a aplikované umělé inteligence. Namísto trénování základních modelů od nuly se tito specialisté soustředí na integraci foundation modelů (LLM), návrh agentních systémů (Agentic AI) a budování produkčních RAG architektur přímo do zákaznických i interních produktů.",
+    "Firmy od kandidátů očekávají silné softwarové základy v Pythonu nebo TypeScriptu/Javě kombinované se schopností řídit spolehlivost generativních systémů — od prompt engineeringu a správy vektorových databází až po evaluace (Evals), guardrails a kontrolu latence či nákladů v cloudu (AWS, GCP Vertex AI, Azure)."
+  ],
+  "data_analyst": [
+    "Data Analyst zůstává páteřní rolí pro demokratizaci dat a rozhodování napříč byznysem (Data-Informed decision making). V éře moderního datového stacku se těžiště práce posouvá od rutinního skládání tabulek k hlubší doménové analytice, definici produktových a finančních metrik a práci nad sémantickou vrstvou (Semantic Layer).",
+    "Základním předpokladem je pokročilá znalost SQL a analytického modelování doplněná o vizualizační nástroje (Tableau, Power BI, Looker) a Python pro ad-hoc statistické šetření. Největší přidanou hodnotu dnes přinášejí analytici, kteří dokáží propojit surová data v cloudovém skladu (Snowflake, BigQuery, Databricks) s konkrétním obchodním kontextem."
+  ],
+  "ml_engineer": [
+    "Machine Learning Engineer je klíčovým článkem, který přetavuje experimentální modely do robustních, škálovatelných produkčních systémů. V inzerátech S&P 500 firem dominuje důraz na end-to-end vlastnictví životního cyklu modelů — od přípravy feature pipelines přes distribuovaný trénink a fine-tuning až po nízkolatenční inference.",
+    "Technologickému profilu vévodí Python, PyTorch a ekosystém moderního MLOps (Docker, Kubernetes, MLflow, monitoring produkčních modelů). Stále častěji se prolíná klasické strojové učení (prediktivní modely, doporučovací systémy) s nasazováním LLM a hybridních vyhledávacích architektur v cloudovém prostředí."
+  ],
+  "data_scientist": [
+    "Role Data Scientista se v posledních letech výrazně vyprofilovala: firmy méně hledají obecné průzkumníky dat a více specialisty na kauzální inferenci, pokročilé experimentování (A/B testování), optimalizační algoritmy a prediktivní modelování s přímým dopadem na výnosy či riziko.",
+    "Vedle suverénního ovládání Pythonu, SQL a statistických či ML knihoven (scikit-learn, PyTorch, pandas) roste poptávka po schopnosti využívat generativní AI a LLM pro obohacování nestrukturovaných dat. Klíčová je schopnost formulovat hypotézy a komunikovat složité pravděpodobnostní závěry směrem k produktu a managementu."
+  ],
+  "data_engineer": [
+    "Data Engineer tvoří infrastrukturní základ celého datového a AI ekosystému. Bez spolehlivých, čistých a nízkolatenčních datových toků zůstávají investice do analytiky i generativní AI nefunkční, což z datových inženýrů dělá jednu z nejstabilněji poptávaných hands-on (IC) rolí na trhu.",
+    "Standardem požadavků je suverénní zvládnutí SQL a Pythonu (či Scaly/Javy), distribuovaného zpracování dat (Apache Spark, Databricks, Dataflow) a orchestrace (Airflow, dbt). Důraz se přesouvá na spravované cloudové platformy (Snowflake, BigQuery, AWS/Azure/GCP), data governance, kvalitu dat a přípravu nestrukturovaných dat pro AI pipelines."
+  ],
+  "research_scientist": [
+    "Research Scientist v oblasti AI/ML se zaměřuje na posouvání hranic algoritmických možností — od vývoje nových architektur neuronových sítí, multimodálních modelů a reinforcement learningu až po pokročilý post-training, zarovnání (alignment) a efektivitu inference.",
+    "Tato role je silně koncentrována v technologických lídrech, farmaceutickém výzkumu a kvantitativních financích. Vyžaduje hluboké teoretické zázemí (často Ph.D. nebo publikační historii), perfektní znalost PyTorche či JAXu a zkušenost s trénováním modelů na rozsáhlých GPU/TPU clusterech."
+  ],
+  "ai_product_manager": [
+    "AI / Data Product Manager přemosťuje propast mezi technickými možnostmi moderních modelů a reálnou hodnotou pro uživatele i byznys. Odpovídá za definici produktové vize datových platforem či AI funkcí, prioritizaci roadmapy a vyhodnocování návratnosti investic (ROI) v prostředí vysoké technologické nejistoty.",
+    "Úspěšní kandidáti kombinují produktové řemeslo s technickou gramotností v oblasti LLM, RAG, kvality dat a evaluačních metrik. Namísto slepého přidávání AI funkcí musí rozumět limitům modelů (halucinace, latence, soukromí dat, governance) a nastavovat jasné metriky adopce."
+  ],
+  "data_architect": [
+    "Data Architect navrhuje celopodnikovou strategii ukládání, integrace a správy dat tak, aby organizace dokázala bezpečně škálovat jak tradiční BI reporting, tak náročné AI/ML úlohy. Jde o vysoce seniorní roli (Staff/Principal úroveň), která definuje technologické standardy napříč týmy.",
+    "Požadavky zahrnují hlubokou expertízu v návrhu moderních data lakehouse a warehouse architektur (Snowflake, Databricks, BigQuery), datovém modelování, sémantických vrstvách a striktní Data Governance (katalogizace, lineage, bezpečnost v multi-cloud prostředí AWS, Azure či GCP)."
+  ],
+  "director_vp_data_ai": [
+    "Director / VP of Data & AI nese exekutivní odpovědnost za to, aby datová a AI organizace nebyla nákladovým střediskem, ale strategickým motorem růstu firmy. Řídí víceúrovňové týmy inženýrů, vědců a analytiků, spravuje rozpočty cloudové infrastruktury a přímo spolupracuje s C-level vedením.",
+    "Firmy hledají lídry, kteří dokáží spojit technologický nadhled (transformace na cloud, adopce GenAI a agentních workflow, enterprise data governance) s pragmatickým doručováním obchodních výsledků, budováním datové kultury a rozvojem talentu."
+  ],
+  "analytics_engineer": [
+    "Analytics Engineer je klíčovou spojnicí mezi surovou datovou infrastrukturou a koncovou analytikou. Přináší softwarové inženýrské praktiky — verzování v Gitu, automatizované testy kvality dat, dokumentaci a CI/CD — přímo do vrstvy transformace dat a budování sémantických modelů.",
+    "Středobodem technologického stacku je dbt (či Dataform v ekosystému Google Cloud), pokročilé SQL a hluboká znalost cloudových databází (Snowflake, BigQuery, Databricks). Výsledkem práce jsou čisté, důvěryhodné a znovupoužitelné datové sady připravené pro samoobslužné BI i AI agenty."
+  ],
+  "bi_analytics_manager": [
+    "BI / Analytics Manager vede týmy datových a BI analytiků a garantuje, že management i operativní oddělení mají k dispozici spolehlivý, srozumitelný a včasný pohled na výkonnost firmy. Role spojuje people management s rolí architekta reportovacího ekosystému.",
+    "Kromě vedení lidí a komunikace se stakeholdery se očekává silný přesah do návrhu KPI stromů, správy BI platforem (Power BI, Tableau, Looker), prosazování jednotné sémantické vrstvy a postupného zapojování AI asistované analytiky do každodenního fungování firmy."
+  ],
+  "engineering_manager_ai_data": [
+    "Engineering Manager (AI/Data) stojí v čele inženýrských týmů budujících datové platformy, datové pipeline nebo produkční ML/AI systémy. Zodpovídá za technickou excelenci, stabilitu dodávek, architekturu řešení a kariérní růst jednotlivých inženýrů.",
+    "Od kandidátů se vyžaduje předchozí silná hands-on zkušenost v datovém nebo ML inženýrství (Python, SQL, Spark, cloudová architektura, MLOps), aby dokázali činit kvalifikovaná architektonická rozhodnutí, odstraňovat technický dluh a efektivně škálovat infrastrukturu."
+  ],
+  "bi_developer": [
+    "BI Developer se specializuje na návrh, vývoj a optimalizaci interaktivních dashboardů, datových modelů a automatizovaných reportů, které transformují podniková data do vizuálně přehledných výstupů pro každodenní řízení firmy.",
+    "Dominují požadavky na hlubokou znalost BI nástrojů (Power BI vč. DAX, Tableau, Looker), psaní výkonných SQL dotazů a práci s cloudovými datovými sklady. Roste důraz na UX datových výstupů, výkonnost dotazů nad velkými objemy dat a správu certifikovaných datových zdrojů."
+  ],
+  "team_lead_data_ai": [
+    "Team Lead v oblasti Data/AI je typicky hybridní role ('player-coach'), která kombinuje přímou technickou práci na klíčových komponentách s každodenním technickým vedením menšího týmu specialistů, code reviews a mentoringem.",
+    "Vyžaduje vysokou senioritu v jádrových technologiích (Python, SQL, cloudové datové a ML nástroje) spojenou se schopností rozkládat komplexní byznysové zadání na inženýrské úkoly a hlídat kvalitu výstupů."
+  ],
+  "data_science_manager": [
+    "Data Science / ML Manager vede týmy datových vědců a ML inženýrů od fáze výzkumu a formulace problému až po nasazení modelů do produkce a měření jejich reálného obchodního přínosu.",
+    "Role vyžaduje jak hluboké porozumění statistickému modelování, experimentování a moderním AI přístupům (včetně LLM a GenAI), tak schopnost chránit tým před ad-hoc operativou a soustředit kapacity na projekty s nejvyšší strategickou návratností."
+  ],
+  "llm_engineer": [
+    "LLM / GenAI Engineer je úzce specializovaná inženýrská role zaměřená výhradně na návrh, ladění a produkční provoz systémů postavených na velkých jazykových modelech. Řeší kompletní řetězec od přípravy doménových dat přes RAG a fine-tuning až po bezpečné nasazení.",
+    "Klíčovým stackem je Python, PyTorch, frameworky pro orchestraci agentů a LLM (LangChain, LlamaIndex, LangGraph), vektorové databáze a nástroje pro systematickou evaluaci (Evals & Observability), které brání degradaci kvality odpovědí v produkci."
+  ],
+  "head_of_ai_data": [
+    "Head of AI / Data zastřešuje celkovou datovou a AI agendu společnosti nebo její klíčové divize. Definuje dlouhodobou technologickou i organizační vizi, nastavuje standardy data governance a rozhoduje o tom, kde firma vyvine vlastní modely a kde využije komerční platformy.",
+    "Pozice vyžaduje kombinaci strategického leadershipu, orientace v moderní cloudové a AI architektuře a schopnosti komunikovat na úrovni představenstva o příležitostech, rizicích i reálné ekonomice AI projektů."
+  ],
+  "mlops_engineer": [
+    "MLOps Engineer (často označovaný i jako LLMOps nebo AI Platform Engineer) buduje standardizovanou infrastrukturu pro trénování, verzování, nasazování a nepřetržité sledování strojového učení a generativních modelů v produkci.",
+    "Těžištěm práce je automatizace CI/CD pro ML, správa kontejnerů a clusterů (Docker, Kubernetes), optimalizace GPU/inferenčních serverů (Triton), správa feature stores a nasazení systémů pro observabilitu, detekci data driftu a vyhodnocování kvality modelů."
+  ],
+  "chief_data_ai_officer": [
+    "Chief Data / AI Officer (CDO / CAIO) je nejvyšší exekutivní role v představenstvu (C-suite), která nese plnou odpovědnost za přeměnu dat a umělé inteligence v měřitelnou konkurenční výhodu celé korporace, včetně regulatorní shody a AI etiky.",
+    "Kandidáti musí prokázat zkušenost s řízením rozsáhlých podnikových transformací, budováním datových organizací o desítkách až stovkách lidí a strategickým řízením víceletých investic do cloudové a AI infrastruktury."
+  ],
+  "computer_vision_engineer": [
+    "Computer Vision Engineer se specializuje na algoritmy zpracování obrazu, videa a 3D prostorových dat (LiDAR, senzorická fúze) s využitím hlubokých neuronových sítí a vizuálních či multimodálních transformerů.",
+    "Uplatnění nachází v robotice, autonomních systémech, průmyslové kontrole kvality a medicínské diagnostice. Klíčová je znalost Pythonu, C++, PyTorche, OpenCV a optimalizace modelů pro běh v reálném čase či na edge zařízeních."
+  ],
+  "nlp_engineer": [
+    "NLP Engineer se věnuje algoritmickému zpracování přirozeného jazyka — od klasických úloh extrakce entit, klasifikace dokumentů a sémantického vyhledávání až po moderní architektury postavené na transformerech a velkých jazykových modelech.",
+    "Požadavky spojují znalost lingvistických principů a zpracování textu s praxí v Pythonu, PyTorchi, ekosystému Hugging Face Transformers a budování vyhledávacích či konverzačních pipeline."
+  ]
+}

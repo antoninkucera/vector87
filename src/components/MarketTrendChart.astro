@@ -1,0 +1,199 @@
+---
+interface DatasetItem {
+  label: string;
+  data: number[];
+  backgroundColor?: string | string[];
+  borderColor?: string | string[];
+  borderWidth?: number;
+  borderRadius?: number;
+  fill?: boolean;
+  tension?: number;
+}
+
+interface Props {
+  chartId: string;
+  title: string;
+  subtitle?: string;
+  badge?: string;
+  type: 'bar' | 'horizontalBar' | 'doughnut' | 'line' | 'radar';
+  labels: string[];
+  datasets: DatasetItem[];
+  valueSuffix?: string;
+  stacked?: boolean;
+  heightClass?: string;
+}
+
+const {
+  chartId,
+  title,
+  subtitle,
+  badge,
+  type,
+  labels,
+  datasets,
+  valueSuffix = '',
+  stacked = false,
+  heightClass = 'h-72',
+} = Astro.props;
+
+const chartPayload = JSON.stringify({
+  type: type === 'horizontalBar' ? 'bar' : type,
+  indexAxis: type === 'horizontalBar' ? 'y' : 'x',
+  labels,
+  datasets,
+  valueSuffix,
+  stacked,
+});
+---
+
+<div class="panel-surface rounded-xl p-5 flex flex-col justify-between">
+  <div class="flex items-start justify-between gap-3 mb-4">
+    <div>
+      <h3 class="text-sm font-semibold text-white tracking-tight">{title}</h3>
+      {subtitle && <p class="text-xs text-slate-400 mt-0.5">{subtitle}</p>}
+    </div>
+    {badge && (
+      <span class="px-2 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 shrink-0">
+        {badge}
+      </span>
+    )}
+  </div>
+
+  <div class:list={['relative w-full', heightClass]}>
+    <canvas id={chartId} data-v87-chart={chartPayload} aria-label={title}></canvas>
+  </div>
+</div>
+
+<script>
+  import {
+    Chart,
+    BarController,
+    BarElement,
+    LineController,
+    LineElement,
+    PointElement,
+    DoughnutController,
+    ArcElement,
+    RadarController,
+    RadialLinearScale,
+    CategoryScale,
+    LinearScale,
+    Tooltip,
+    Legend,
+    Filler,
+  } from 'chart.js';
+
+  Chart.register(
+    BarController,
+    BarElement,
+    LineController,
+    LineElement,
+    PointElement,
+    DoughnutController,
+    ArcElement,
+    RadarController,
+    RadialLinearScale,
+    CategoryScale,
+    LinearScale,
+    Tooltip,
+    Legend,
+    Filler
+  );
+
+  function initVector87Charts() {
+    const canvases = document.querySelectorAll<HTMLCanvasElement>('canvas[data-v87-chart]');
+    canvases.forEach((canvas) => {
+      if (canvas.dataset.initialized === 'true') return;
+      canvas.dataset.initialized = 'true';
+
+      const raw = canvas.getAttribute('data-v87-chart');
+      if (!raw) return;
+      const cfg = JSON.parse(raw);
+
+      const isDoughnutOrRadar = cfg.type === 'doughnut' || cfg.type === 'radar';
+      const showLegend = cfg.datasets.length > 1 || cfg.type === 'doughnut';
+
+      new Chart(canvas, {
+        type: cfg.type,
+        data: {
+          labels: cfg.labels,
+          datasets: cfg.datasets,
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          indexAxis: cfg.indexAxis,
+          interaction: {
+            mode: 'index',
+            intersect: false,
+          },
+          plugins: {
+            legend: {
+              display: showLegend,
+              position: 'bottom',
+              labels: {
+                color: '#cbd5e1',
+                font: { family: "'JetBrains Mono', monospace", size: 11 },
+                boxWidth: 10,
+                padding: 14,
+              },
+            },
+            tooltip: {
+              backgroundColor: 'rgba(6, 9, 17, 0.96)',
+              titleColor: '#f8fafc',
+              bodyColor: '#22d3ee',
+              borderColor: 'rgba(34, 211, 238, 0.35)',
+              borderWidth: 1,
+              padding: 10,
+              titleFont: { family: "'Inter', sans-serif", size: 12, weight: 'bold' },
+              bodyFont: { family: "'JetBrains Mono', monospace", size: 11 },
+              callbacks: {
+                label: (ctx) => {
+                  const val = ctx.parsed.y !== undefined && cfg.indexAxis !== 'y' ? ctx.parsed.y : ctx.parsed.x ?? ctx.parsed;
+                  const formatted = typeof val === 'number' ? val.toLocaleString('en-US') : val;
+                  return ` ${ctx.dataset.label}: ${formatted}${cfg.valueSuffix || ''}`;
+                },
+              },
+            },
+          },
+          scales: isDoughnutOrRadar
+            ? cfg.type === 'radar'
+              ? {
+                  r: {
+                    angleLines: { color: 'rgba(148, 163, 184, 0.15)' },
+                    grid: { color: 'rgba(148, 163, 184, 0.15)' },
+                    pointLabels: { color: '#cbd5e1', font: { family: "'JetBrains Mono', monospace", size: 10 } },
+                    ticks: { display: false },
+                  },
+                }
+              : {}
+            : {
+                x: {
+                  stacked: cfg.stacked,
+                  grid: {
+                    color: cfg.indexAxis === 'y' ? 'rgba(148, 163, 184, 0.08)' : 'transparent',
+                  },
+                  ticks: {
+                    color: '#94a3b8',
+                    font: { family: "'JetBrains Mono', monospace", size: 10 },
+                  },
+                },
+                y: {
+                  stacked: cfg.stacked,
+                  grid: {
+                    color: cfg.indexAxis === 'x' ? 'rgba(148, 163, 184, 0.08)' : 'transparent',
+                  },
+                  ticks: {
+                    color: '#cbd5e1',
+                    font: { family: "'JetBrains Mono', monospace", size: 11 },
+                  },
+                },
+              },
+        },
+      });
+    });
+  }
+
+  initVector87Charts();
+  document.addEventListener('astro:page-load', initVector87Charts);
+</script>

@@ -1,0 +1,19 @@
+{
+  "name": "vector87-com",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Vector87.com — Quantitative Intelligence Hub for the Global AI & Data Job Market",
+  "scripts": {
+    "dev": "ASTRO_TELEMETRY_DISABLED=1 astro dev",
+    "build": "ASTRO_TELEMETRY_DISABLED=1 astro build",
+    "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview",
+    "export:data": "/Users/antonin.kucera/Projects/personal/ai_data_jobs/.venv/bin/python pipeline/export_market_data.py"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.3.5",
+    "chart.js": "^4.4.8",
+    "tailwindcss": "^4.3.3"
+  }
+}
