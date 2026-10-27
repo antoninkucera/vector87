@@ -1,11 +1,11 @@
 export type Locale = 'en' | 'cs';
 
-export type NavKey = 'dashboard' | 'roles' | 'gcp' | 'academy' | 'about';
+export type NavKey = 'dashboard' | 'roles' | 'cloud' | 'academy' | 'about';
 
 const PATH_MAP: Record<NavKey, string> = {
   dashboard: '/',
   roles: '/roles',
-  gcp: '/gcp-hub',
+  cloud: '/cloud-tech',
   academy: '/academy',
   about: '/about',
 };
@@ -26,7 +26,7 @@ export const ui = {
     nav: {
       dashboard: '01 / Market Dashboard',
       roles: '02 / Role Analysis',
-      gcp: '03 / Google Cloud Hub',
+      cloud: '03 / Cloud & Tech Stack',
       academy: '04 / Education Academy',
       about: '05 / About Author',
       mainAria: 'Main navigation',
@@ -54,7 +54,8 @@ export const ui = {
       heroDescription: (sp500Count: number) =>
         `Quantitative telemetry across ${sp500Count} S&P 500 corporations, frontier technology leaders, and the European market. Data is aggregated directly from corporate ATS platforms into a local DuckDB warehouse and exported to a static JSON contract.`,
       ctaRoles: 'EXPLORE 21 ROLES →',
-      ctaGcp: 'GOOGLE CLOUD HUB',
+      ctaCloud: 'CLOUD & TECH STACK →',
+      ctaGcp: 'CLOUD & TECH STACK →',
 
       s1Tag: '01 // PRIORITY METRIC',
       s1Title: 'Market Vitality & AI/Data Hiring Intensity',
@@ -163,18 +164,40 @@ export const ui = {
       emptyPostings: 'No active postings',
       emptySp500: 'Outside S&P 500 sample',
     },
-    gcp: {
-      pageTitle: 'Google Cloud Hub — Vector87 | BigQuery, Vertex AI, Dataform & Looker Telemetry',
-      tag: '03 // SPECIALIZED TELEMETRY',
-      title: 'Google Cloud (GCP) Data & AI Hub',
+    cloud: {
+      pageTitle: 'Cloud Hyperscalers & Modern Data Platforms — Vector87 | Telemetry & Stack Analysis',
+      tag: '03 // CLOUD & TECH ECOSYSTEM',
+      title: 'Cloud Hyperscalers & Modern Data Platforms',
       subtitle:
-        'Dedicated tracking of Google Cloud Platform adoption across data and AI job postings — spanning BigQuery analytics, Dataform SQLX transformations, Dataflow streaming, Looker semantic modeling, and Vertex AI.',
-      kpi1Title: 'Positions in GCP Ecosystem',
-      kpi1Foot: 'Active postings mentioning at least one GCP data/AI service',
-      kpi2Title: 'Share of Total Market',
-      kpi2Foot: 'Across all tracked AI & Data job postings',
-      kpi3Title: 'Share Among Cloud Postings',
-      kpi3Foot: 'Among positions explicitly specifying a cloud platform',
+        'Comparative telemetry tracking adoption, market share, and enterprise hiring across the Big 3 Hyperscalers (AWS, Azure, GCP) and leading modern data platforms (Databricks, Snowflake, BigQuery, Redshift, Microsoft Fabric).',
+      kpiTotalCloud: 'Total Cloud Openings',
+      kpiTotalCloudFoot: 'Active job postings explicitly requiring cloud infrastructure',
+      kpiMulticloud: 'Multi-Cloud Coexistence',
+      kpiMulticloudFoot: 'Positions requiring or accepting 2 or more cloud platforms',
+      kpiLeader: 'Hyperscaler Leader',
+      kpiLeaderFoot: 'AWS (12.4%) closely followed by Azure (11.0%) and GCP (10.8%)',
+      kpiLakehouse: 'Lakehouse vs. DWH',
+      kpiLakehouseFoot: 'Databricks (535 jobs) vs. Snowflake (310 jobs)',
+      chartCloudWarsTitle: 'The Cloud Wars: Market Penetration of Cloud & Data Platforms',
+      chartCloudWarsSub: 'Active job postings explicitly requiring the platform across 500+ enterprises',
+      chartCloudWarsLabel: 'Active Postings',
+      multicloudTitle: 'Multi-Cloud Interoperability & Overlap',
+      multicloudSub: 'Enterprise demand for multi-cloud competencies across the Big 3',
+      multicloudNote:
+        'Over 51% of enterprise cloud postings demand or accept multi-cloud skills, showing that single-vendor lock-in is increasingly rejected in enterprise data architectures.',
+      ecosystemsTitle: 'Platform Deep-Dives & Hiring Telemetry',
+      ecosystemsSub: 'Explore market dynamics, top hiring corporations, and in-demand skills for each major ecosystem.',
+      tabAll: 'All Platforms',
+      tabGcp: 'Google Cloud (GCP)',
+      tabAws: 'Amazon Web Services (AWS)',
+      tabAzure: 'Microsoft Azure & Fabric',
+      tabDatabricks: 'Databricks',
+      tabSnowflake: 'Snowflake',
+      topHiringTitle: 'Top Corporations Hiring for This Stack',
+      topRolesTitle: 'Top In-Demand Roles',
+      positionsWord: 'positions',
+      gcpSectionTitle: 'Google Cloud Platform (GCP) Deep-Dive',
+      gcpSectionSub: 'BigQuery, Vertex AI, Dataform SQLX, Dataflow streaming, and Looker semantic layer telemetry.',
       chartSvcTitle: 'Demand for Specific Google Cloud Services',
       chartSvcSub: 'Active job postings in the current snapshot',
       chartSvcLabel: 'Positions',
@@ -185,25 +208,22 @@ export const ui = {
       ofGcpPositions: 'of GCP roles',
       postingsOfMarket: (pct: number) => `postings (${pct}% of market)`,
       pairedWithLabel: 'Most frequently paired with:',
-      notesSectionTitle: 'Architectural Notes, Service Benchmarks & Practice',
-      topCompTitle: 'Top 10 Corporations Hiring for GCP',
-      topCompSub: 'Ranked by open job postings requiring the GCP stack',
-      positionsWord: 'positions',
+      notesSectionTitle: 'Architectural Notes & Production Insights',
       notes: [
         {
           service: 'BigQuery & BigLake',
           tag: 'Serverless Lakehouse',
           summary:
             'The foundational analytical engine on GCP. Dominates enterprise architectures through decoupled compute/storage, native Apache Iceberg support via BigLake, and in-warehouse ML/LLM execution (BigQuery ML).',
-          linkLabel: 'BigQuery Deep-Dives on akucera.eu',
-          href: 'https://akucera.eu',
+          linkLabel: 'BigQuery Architecture Deep-Dive on Substack ↗',
+          href: 'https://antoninkucera.substack.com/p/bigquery-overview-a-new-navigation-hub-in-the-complex-analytics-platform',
         },
         {
           service: 'Vertex AI & Agent Builder',
           tag: 'Enterprise GenAI & MLOps',
           summary:
             'Unified platform for deploying Gemini and open-weight models, managing low-latency Vector Search, running automated Rapid Evaluations, and orchestrating production AI agents.',
-          linkLabel: 'Vertex AI Documentation',
+          linkLabel: 'Vertex AI Documentation ↗',
           href: 'https://cloud.google.com/vertex-ai/docs',
         },
         {
@@ -211,7 +231,7 @@ export const ui = {
           tag: 'SQLX Analytics Engineering',
           summary:
             'Native ELT transformation orchestrator inside BigQuery built on SQLX. Enables Git-versioned data models, automated data quality assertions, and dependency graphs without external infrastructure.',
-          linkLabel: 'Dataform Best Practices',
+          linkLabel: 'Dataform Best Practices ↗',
           href: 'https://cloud.google.com/dataform/docs',
         },
         {
@@ -219,10 +239,18 @@ export const ui = {
           tag: 'Governed BI & LookML',
           summary:
             'Mission-critical semantic layer (LookML) defining unified business metrics across the enterprise. In the GenAI era, it serves as a deterministic grounding layer that prevents metric hallucinations.',
-          linkLabel: 'Essay: Why AI Made Me Double Down on Being Data-Informed',
-          href: 'https://akucera.eu/no-blueprint-exists-why-ai-made-me-double-down-on-being-data-informed/',
+          linkLabel: 'Essay: Why AI Made Me Double Down on Being Data-Informed ↗',
+          href: 'https://antoninkucera.substack.com/p/no-blueprint-exists-why-ai-made-me-double-down-on-being-data-informed',
         },
       ],
+      awsSummary:
+        'AWS remains the volume leader in total job postings, driven by ubiquity in core compute (EC2/EKS), object storage (S3 as the default data lake substrate), and specialized analytical engines (Amazon Redshift, EMR, Athena, Glue). Modern enterprise data teams frequently run Databricks or Snowflake on top of AWS storage.',
+      azureSummary:
+        'Microsoft Azure maintains strong enterprise momentum through deep integration with the Microsoft 365 ecosystem, Power BI, and Azure OpenAI Service. The arrival of Microsoft Fabric represents a strategic shift toward an all-in-one SaaS lakehouse engine competing directly with Snowflake and Databricks.',
+      lakehouseSummary:
+        'The defining architectural battle in modern data platforms is between Databricks (pioneering the Lakehouse with Apache Spark, Delta Lake, and Unity Catalog) and Snowflake (expanding from cloud data warehousing into Iceberg tables, Snowpark, and Cortex AI). Our telemetry shows Databricks leading with 535 active postings vs. Snowflake with 310 postings.',
+      substackCalloutTitle: 'Author Deep-Dives from akucera.eu & Substack',
+      substackCalloutSub: 'Practical architectural lessons on BigQuery, slot economics, and telemetry engineering.',
     },
     academy: {
       pageTitle: 'Education Academy & Learning Hub — Vector87',
@@ -372,7 +400,7 @@ export const ui = {
     nav: {
       dashboard: '01 / Market Dashboard',
       roles: '02 / Analýza rolí',
-      gcp: '03 / Google Cloud Hub',
+      cloud: '03 / Cloud & Technologie',
       academy: '04 / Vzdělávací akademie',
       about: '05 / O autorovi',
       mainAria: 'Hlavní navigace',
@@ -400,7 +428,8 @@ export const ui = {
       heroDescription: (sp500Count: number) =>
         `Kvantitativní pohled na otevřené pozice v ${sp500Count} korporacích indexu S&P 500, technologických lídrech a evropském trhu. Data jsou agregována přímo z firemních ATS systémů do lokální DuckDB a exportována do statického kontraktu.`,
       ctaRoles: 'ANALÝZA 21 ROLÍ →',
-      ctaGcp: 'GOOGLE CLOUD HUB',
+      ctaCloud: 'CLOUD & TECHNOLOGIE →',
+      ctaGcp: 'CLOUD & TECHNOLOGIE →',
 
       s1Tag: '01 // PRIORITNÍ METRIKA',
       s1Title: 'Tržní vitalita & AI/Data Hiring Intensity',
@@ -509,18 +538,40 @@ export const ui = {
       emptyPostings: 'Žádné aktivní inzeráty',
       emptySp500: 'Mimo S&P 500 vzorek',
     },
-    gcp: {
-      pageTitle: 'Google Cloud Hub — Vector87 | BigQuery, Vertex AI, Dataform & Looker Telemetry',
-      tag: '03 // SPECIALIZOVANÁ TELEMETRIE',
-      title: 'Google Cloud (GCP) Data & AI Hub',
+    cloud: {
+      pageTitle: 'Cloudové platformy & Moderní Data Stack — Vector87 | Telemetrie a analýza technologií',
+      tag: '03 // CLOUDOVÝ & TECHNOLOGICKÝ EKOSYSTÉM',
+      title: 'Cloudové platformy, hyperscalery & technologický stack',
       subtitle:
-        'Detailní sledování adopce služeb Google Cloud Platform v datových a AI inzerátech — od analytického jádra BigQuery a transformací v Dataformu přes Dataflow a Looker až po generativní platformu Vertex AI.',
-      kpi1Title: 'Pozice v GCP ekosystému',
-      kpi1Foot: 'Aktivní inzeráty zmiňující alespoň jednu GCP datovou/AI službu',
-      kpi2Title: 'Podíl na celkovém trhu',
-      kpi2Foot: 'Ze všech sledovaných AI & Data inzerátů',
-      kpi3Title: 'Podíl mezi cloudovými inzeráty',
-      kpi3Foot: 'Z pozic, které explicitně uvádějí cloudovou platformu',
+        'Srovnávací telemetrie sledující tržní podíl, adopci a firemní poptávku napříč velkou trojkou hyperscalerů (AWS, Azure, GCP) i moderními datovými platformami (Databricks, Snowflake, BigQuery, Redshift, Microsoft Fabric).',
+      kpiTotalCloud: 'Otevřené cloudové pozice',
+      kpiTotalCloudFoot: 'Aktivní inzeráty explicitně vyžadující cloudovou infrastrukturu',
+      kpiMulticloud: 'Multi-Cloud koexistence',
+      kpiMulticloudFoot: 'Pozice vyžadující nebo akceptující 2 a více cloudových platforem',
+      kpiLeader: 'Lídr mezi hyperscalery',
+      kpiLeaderFoot: 'AWS (12,4 %) těsně následovaný Azure (11,0 %) a GCP (10,8 %)',
+      kpiLakehouse: 'Lakehouse vs. DWH',
+      kpiLakehouseFoot: 'Databricks (535 pozic) vs. Snowflake (310 pozic)',
+      chartCloudWarsTitle: 'The Cloud Wars: Tržní penetrace cloudových a datových platforem',
+      chartCloudWarsSub: 'Počet aktivních inzerátů vyžadujících danou platformu napříč 500+ korporacemi',
+      chartCloudWarsLabel: 'Aktivní inzeráty',
+      multicloudTitle: 'Multi-Cloud interoperabilita a překryv',
+      multicloudSub: 'Poptávka po multi-cloudových kompetencích mezi AWS, Azure a GCP',
+      multicloudNote:
+        'Více než 51 % podnikových cloudových inzerátů poptává nebo akceptuje multi-cloudové dovednosti. To dokazuje, že moderní enterprise architektury stále více odmítají vendor lock-in jednoho dodavatele.',
+      ecosystemsTitle: 'Detailní profily platforem & telemetrie náboru',
+      ecosystemsSub: 'Prozkoumejte dynamiku trhu, top zaměstnavatele a nejžádanější role pro každý klíčový ekosystém.',
+      tabAll: 'Všechny platformy',
+      tabGcp: 'Google Cloud (GCP)',
+      tabAws: 'Amazon Web Services (AWS)',
+      tabAzure: 'Microsoft Azure & Fabric',
+      tabDatabricks: 'Databricks',
+      tabSnowflake: 'Snowflake',
+      topHiringTitle: 'Top korporace nabírající pro tento stack',
+      topRolesTitle: 'Nejžádanější role',
+      positionsWord: 'pozic',
+      gcpSectionTitle: 'Google Cloud Platform (GCP) — Hloubková analýza',
+      gcpSectionSub: 'Telemetrie pro BigQuery, Vertex AI, Dataform SQLX, Dataflow streaming a sémantickou vrstvu Lookeru.',
       chartSvcTitle: 'Poptávka po konkrétních službách Google Cloud',
       chartSvcSub: 'Počet aktivních inzerátů v aktuálním snapshotu',
       chartSvcLabel: 'Počet pozic',
@@ -531,25 +582,22 @@ export const ui = {
       ofGcpPositions: 'GCP pozic',
       postingsOfMarket: (pct: number) => `inzerátů (${pct}% trhu)`,
       pairedWithLabel: 'Nejčastěji párováno s:',
-      notesSectionTitle: 'Architektonické poznámky, testování služeb a praxe',
-      topCompTitle: 'Top 10 korporací poptávajících GCP',
-      topCompSub: 'Podle počtu otevřených inzerátů s GCP stackem',
-      positionsWord: 'pozic',
+      notesSectionTitle: 'Architektonické poznámky & praktické zkušenosti z produkce',
       notes: [
         {
           service: 'BigQuery & BigLake',
           tag: 'Serverless Lakehouse',
           summary:
             'Základní analytický motor na GCP. V podnikových architekturách dominuje díky oddělení výpočetní kapacity od úložiště, nativní podpoře Apache Iceberg přes BigLake a přímému volání LLM/ML modelů z SQL (BigQuery ML).',
-          linkLabel: 'BigQuery Deep-Dives na akucera.eu',
-          href: 'https://akucera.eu',
+          linkLabel: 'Architektura BigQuery na Substacku ↗',
+          href: 'https://antoninkucera.substack.com/p/bigquery-overview-a-new-navigation-hub-in-the-complex-analytics-platform',
         },
         {
           service: 'Vertex AI & Agent Builder',
           tag: 'Enterprise GenAI & MLOps',
           summary:
             'Sjednocená platforma pro nasazování Gemini i open-weight modelů, správu vektorového vyhledávání (Vector Search), evaluaci výstupů (Rapid Evaluation API) a orchestraci produkčních AI agentů.',
-          linkLabel: 'Dokumentace Vertex AI',
+          linkLabel: 'Dokumentace Vertex AI ↗',
           href: 'https://cloud.google.com/vertex-ai/docs',
         },
         {
@@ -557,7 +605,7 @@ export const ui = {
           tag: 'SQLX Analytics Engineering',
           summary:
             'Nativní orchestrátor ELT transformací v BigQuery postavený na SQLX. Umožňuje verzovat datové modely v Gitu, vynucovat data quality assertions a stavět závislosti bez nutnosti spravovat externí instanci.',
-          linkLabel: 'Dataform Best Practices',
+          linkLabel: 'Dataform Best Practices ↗',
           href: 'https://cloud.google.com/dataform/docs',
         },
         {
@@ -565,10 +613,18 @@ export const ui = {
           tag: 'Governed BI & LookML',
           summary:
             'Kritická sémantická vrstva (LookML), která definuje jednotné byznysové metriky napříč organizací. V éře GenAI slouží jako spolehlivý kontext, který brání halucinacím při dotazování nad firemními daty.',
-          linkLabel: 'Článek: Proč je Data-Informed víc než Data-Driven',
-          href: 'https://akucera.eu/no-blueprint-exists-why-ai-made-me-double-down-on-being-data-informed/',
+          linkLabel: 'Článek: Proč je Data-Informed víc než Data-Driven ↗',
+          href: 'https://antoninkucera.substack.com/p/no-blueprint-exists-why-ai-made-me-double-down-on-being-data-informed',
         },
       ],
+      awsSummary:
+        'AWS si udržuje nejvyšší absolutní objem inzerátů díky všudypřítomnosti základní výpočetní kapacity (EC2/EKS), objektového úložiště S3 (které slouží jako de-facto standardní substrát pro data lakes) a analytických služeb (Amazon Redshift, EMR, Athena, Glue). Moderní týmy na AWS velmi často nasazují Databricks nebo Snowflake přímo nad S3.',
+      azureSummary:
+        'Microsoft Azure těží ze silné podnikové báze a úzké integrace s ekosystémem Microsoft 365, Power BI a Azure OpenAI Service. Příchod Microsoft Fabric představuje strategický posun k all-in-one SaaS lakehouse architektuře, která přímo konkuruje Snowflake a Databricks.',
+      lakehouseSummary:
+        'Klíčový architektonický souboj současnosti se odehrává mezi Databricks (pionýr Lakehouse architektury s Apache Spark, Delta Lake a Unity Catalog) a Snowflake (který expanduje z tradičního cloudového skladu směrem k Apache Iceberg, Snowpark a Cortex AI). V datech vede Databricks s 535 otevřenými pozicemi oproti 310 u Snowflake.',
+      substackCalloutTitle: 'Odborné články autora z akucera.eu & Substacku',
+      substackCalloutSub: 'Praktické poznatky z praxe: BigQuery architektura, slotová ekonomika a enterprise telemetrie.',
     },
     academy: {
       pageTitle: 'Vzdělávací akademie & Vzdělávací Hub — Vector87',

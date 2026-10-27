@@ -308,11 +308,122 @@ def export_market_data(db_path: Path | None = None, output_path: Path | None = N
             for r in cooc_rows
         ]
 
+        # Multi-cloud kombinace a penetrace
+        mc_row = con.execute(
+            """
+            WITH job_clouds AS (
+                SELECT 
+                    j.url,
+                    MAX(CASE WHEN b.skill_id = 'aws' THEN 1 ELSE 0 END) AS has_aws,
+                    MAX(CASE WHEN b.skill_id = 'azure' THEN 1 ELSE 0 END) AS has_azure,
+                    MAX(CASE WHEN b.skill_id = 'gcp' THEN 1 ELSE 0 END) AS has_gcp
+                FROM fact_jobs j
+                JOIN bridge_job_skills b ON j.job_id = b.job_id
+                WHERE j.is_active = TRUE AND b.skill_id IN ('aws', 'azure', 'gcp')
+                GROUP BY j.url
+            )
+            SELECT 
+                COUNT(*) AS total_cloud_jobs,
+                SUM(CASE WHEN (has_aws + has_azure + has_gcp) >= 2 THEN 1 ELSE 0 END) AS multicloud_jobs,
+                ROUND(100.0 * SUM(CASE WHEN (has_aws + has_azure + has_gcp) >= 2 THEN 1 ELSE 0 END) / NULLIF(COUNT(*), 0), 1) AS multicloud_pct,
+                SUM(CASE WHEN has_aws = 1 AND has_azure = 1 THEN 1 ELSE 0 END) AS aws_azure,
+                SUM(CASE WHEN has_aws = 1 AND has_gcp = 1 THEN 1 ELSE 0 END) AS aws_gcp,
+                SUM(CASE WHEN has_azure = 1 AND has_gcp = 1 THEN 1 ELSE 0 END) AS azure_gcp,
+                SUM(CASE WHEN has_aws = 1 AND has_azure = 1 AND has_gcp = 1 THEN 1 ELSE 0 END) AS all_three
+            FROM job_clouds
+            """
+        ).fetchone()
+
+        multicloud_stats = {
+            "total_cloud_jobs": int(mc_row[0] or 0),
+            "multicloud_jobs": int(mc_row[1] or 0),
+            "multicloud_pct": float(mc_row[2] or 0.0),
+            "aws_azure_jobs": int(mc_row[3] or 0),
+            "aws_gcp_jobs": int(mc_row[4] or 0),
+            "azure_gcp_jobs": int(mc_row[5] or 0),
+            "all_three_jobs": int(mc_row[6] or 0),
+        }
+
+        # Ekosystémové profily pro AWS, Azure, GCP, Databricks a Snowflake
+        ecosystems: dict[str, Any] = {}
+        target_platforms = [
+            ("aws", "AWS", "hyperscaler"),
+            ("azure", "Microsoft Azure", "hyperscaler"),
+            ("gcp", "Google Cloud", "hyperscaler"),
+            ("databricks", "Databricks", "platform"),
+            ("snowflake_db", "Snowflake", "platform"),
+        ]
+
+        for pid, pname, ptype in target_platforms:
+            filter_skill_ids = [pid] if pid != "gcp" else list(GCP_ECOSYSTEM_IDS)
+
+            plat_comps = con.execute(
+                """
+                SELECT 
+                    CASE 
+                        WHEN comp.company_id IN ('alphabet', 'alphabet_class_a', 'alphabet_class_c', 'google') THEN 'Google (Alphabet)'
+                        ELSE comp.company_name 
+                    END AS c_name,
+                    MAX(comp.sp500_sector) AS sector,
+                    COUNT(DISTINCT j.url) AS cnt
+                FROM fact_jobs j
+                JOIN dim_companies comp ON j.company_id = comp.company_id
+                WHERE j.is_active = TRUE AND j.job_id IN (
+                    SELECT DISTINCT job_id FROM bridge_job_skills WHERE skill_id IN (SELECT UNNEST(?))
+                )
+                GROUP BY 1
+                ORDER BY cnt DESC
+                LIMIT 8
+                """,
+                [filter_skill_ids],
+            ).fetchall()
+
+            plat_roles = con.execute(
+                """
+                SELECT c.canonical_name, COUNT(DISTINCT j.url) AS cnt
+                FROM bridge_job_roles r
+                JOIN dim_job_categories c ON r.category_id = c.category_id
+                JOIN fact_jobs j ON r.job_id = j.job_id
+                WHERE j.is_active = TRUE AND r.job_id IN (
+                    SELECT DISTINCT job_id FROM bridge_job_skills WHERE skill_id IN (SELECT UNNEST(?))
+                )
+                GROUP BY 1
+                ORDER BY cnt DESC
+                LIMIT 6
+                """,
+                [filter_skill_ids],
+            ).fetchall()
+
+            plat_tot = int(
+                con.execute(
+                    """
+                    SELECT COUNT(DISTINCT j.url)
+                    FROM bridge_job_skills b
+                    JOIN fact_jobs j ON b.job_id = j.job_id
+                    WHERE j.is_active = TRUE AND b.skill_id IN (SELECT UNNEST(?))
+                    """,
+                    [filter_skill_ids],
+                ).fetchone()[0]
+            )
+
+            ecosystems[pid] = {
+                "id": pid,
+                "name": pname,
+                "type": ptype,
+                "total_jobs": plat_tot,
+                "share_of_all_jobs_pct": round(100.0 * plat_tot / max(total_jobs, 1), 2),
+                "share_of_cloud_jobs_pct": round(100.0 * plat_tot / max(multicloud_stats["total_cloud_jobs"], 1), 2),
+                "top_companies": [{"company_name": r[0], "sector": r[1], "job_count": int(r[2])} for r in plat_comps],
+                "top_roles": [{"canonical_name": r[0], "job_count": int(r[1])} for r in plat_roles],
+            }
+
         tech_cloud_stack = {
             "hyperscalers": hyperscalers,
             "data_platforms": data_platforms,
             "top_technologies": top_technologies,
             "skill_cooccurrence": skill_cooccurrence,
+            "multicloud": multicloud_stats,
+            "ecosystems": ecosystems,
         }
 
         # 3. Industry Heatmap (S&P 500 Sectors + Seniority matrix)

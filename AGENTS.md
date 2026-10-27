@@ -9,7 +9,7 @@ Hosted on GitHub Pages (`https://github.com/antoninkucera/vector87`), fully stat
 - Data: pre-generated JSON committed into this repo
 
 ## Localization (i18n)
-- Two supported locales: **English (`en`, primary/default)** at root routes (`/`, `/roles`, `/gcp-hub`, `/academy`, `/about`) and **Czech (`cs`)** at `/cs/*` (`/cs/`, `/cs/roles`, `/cs/gcp-hub`, `/cs/academy`, `/cs/about`).
+- Two supported locales: **English (`en`, primary/default)** at root routes (`/`, `/roles`, `/cloud-tech`, `/academy`, `/about`) and **Czech (`cs`)** at `/cs/*` (`/cs/`, `/cs/roles`, `/cs/cloud-tech`, `/cs/academy`, `/cs/about`). Old `/gcp-hub` and `/cs/gcp-hub` routes redirect to the Cloud & Tech section.
 - Architecture follows Rule #10 (Generic base + delta): shared view components in `src/components/views/` render both languages using typed dictionaries in `src/i18n/ui.ts` and localized `en`/`cs` fields in `src/data/market-data.json`.
 
 ## Visual identity

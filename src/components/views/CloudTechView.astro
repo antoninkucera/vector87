@@ -1,0 +1,528 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import MarketTrendChart from '../MarketTrendChart.astro';
+import marketData from '../../data/market-data.json';
+import { ui, type Locale } from '../../i18n/ui';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = ui[lang].cloud;
+const { tech_cloud_stack, gcp_hub } = marketData as any;
+const { hyperscalers, data_platforms, multicloud, ecosystems, skill_cooccurrence } = tech_cloud_stack;
+
+// Data for Cloud Wars comparison chart
+const cloudWarsItems = [
+  ...hyperscalers,
+  ...data_platforms.filter((p: any) => p.skill_id !== 'duckdb'),
+].sort((a: any, b: any) => b.job_count - a.job_count);
+
+const cloudWarsLabels = cloudWarsItems.map((item: any) => item.skill_name);
+const cloudWarsCounts = cloudWarsItems.map((item: any) => item.job_count);
+
+const awsEco = ecosystems?.aws;
+const azureEco = ecosystems?.azure;
+const gcpEco = ecosystems?.gcp;
+const databricksEco = ecosystems?.databricks;
+const snowflakeEco = ecosystems?.snowflake_db;
+---
+
+<Layout title={t.pageTitle} activeNav="cloud" lang={lang}>
+  <!-- Hero Section -->
+  <section class="mb-10 pb-8 border-b border-slate-800/80">
+    <div class="max-w-4xl space-y-3">
+      <span class="text-xs font-mono uppercase tracking-widest text-cyan-400">{t.tag}</span>
+      <h1 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+        {t.title}
+      </h1>
+      <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
+        {t.subtitle}
+      </p>
+    </div>
+  </section>
+
+  <!-- Macro Telemetry KPI Bar -->
+  <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+    <div class="panel-surface rounded-xl p-5 border-l-2 border-l-cyan-400">
+      <p class="text-xs font-mono uppercase text-slate-400">{t.kpiTotalCloud}</p>
+      <p class="text-3xl font-bold font-mono text-white mt-2">
+        {multicloud.total_cloud_jobs.toLocaleString('en-US')}
+      </p>
+      <p class="text-xs font-mono text-slate-400 mt-1">{t.kpiTotalCloudFoot}</p>
+    </div>
+
+    <div class="panel-surface rounded-xl p-5 border-l-2 border-l-emerald-400">
+      <p class="text-xs font-mono uppercase text-slate-400">{t.kpiMulticloud}</p>
+      <p class="text-3xl font-bold font-mono text-emerald-400 mt-2">
+        {multicloud.multicloud_pct}%
+      </p>
+      <p class="text-xs font-mono text-slate-400 mt-1">{t.kpiMulticloudFoot}</p>
+    </div>
+
+    <div class="panel-surface rounded-xl p-5 border-l-2 border-l-amber-400">
+      <p class="text-xs font-mono uppercase text-slate-400">{t.kpiLeader}</p>
+      <p class="text-3xl font-bold font-mono text-amber-300 mt-2">
+        AWS <span class="text-base text-slate-400 font-normal">vs</span> Azure <span class="text-base text-slate-400 font-normal">vs</span> GCP
+      </p>
+      <p class="text-xs font-mono text-slate-400 mt-1">{t.kpiLeaderFoot}</p>
+    </div>
+
+    <div class="panel-surface rounded-xl p-5 border-l-2 border-l-blue-500">
+      <p class="text-xs font-mono uppercase text-slate-400">{t.kpiLakehouse}</p>
+      <p class="text-3xl font-bold font-mono text-blue-400 mt-2">
+        535 <span class="text-base text-slate-400 font-normal">vs</span> 310
+      </p>
+      <p class="text-xs font-mono text-slate-400 mt-1">{t.kpiLakehouseFoot}</p>
+    </div>
+  </section>
+
+  <!-- Interactive Platform Tabs Navigation -->
+  <section class="mb-8">
+    <div class="flex flex-wrap items-center gap-2 border-b border-slate-800 pb-3" id="platform-tabs">
+      <a
+        href="#cloud-wars"
+        class="tab-btn px-4 py-2 rounded-lg text-xs font-mono font-semibold bg-cyan-500/15 text-cyan-300 border border-cyan-500/40 hover:bg-cyan-500/25 transition-all"
+        data-target="all"
+      >
+        {t.tabAll}
+      </a>
+      <a
+        href="#gcp"
+        class="tab-btn px-4 py-2 rounded-lg text-xs font-mono font-semibold bg-slate-900 text-slate-300 border border-slate-800 hover:border-cyan-400/40 hover:text-cyan-300 transition-all"
+        data-target="gcp"
+      >
+        {t.tabGcp}
+      </a>
+      <a
+        href="#aws"
+        class="tab-btn px-4 py-2 rounded-lg text-xs font-mono font-semibold bg-slate-900 text-slate-300 border border-slate-800 hover:border-cyan-400/40 hover:text-cyan-300 transition-all"
+        data-target="aws"
+      >
+        {t.tabAws}
+      </a>
+      <a
+        href="#azure"
+        class="tab-btn px-4 py-2 rounded-lg text-xs font-mono font-semibold bg-slate-900 text-slate-300 border border-slate-800 hover:border-cyan-400/40 hover:text-cyan-300 transition-all"
+        data-target="azure"
+      >
+        {t.tabAzure}
+      </a>
+      <a
+        href="#lakehouse"
+        class="tab-btn px-4 py-2 rounded-lg text-xs font-mono font-semibold bg-slate-900 text-slate-300 border border-slate-800 hover:border-cyan-400/40 hover:text-cyan-300 transition-all"
+        data-target="lakehouse"
+      >
+        Databricks vs. Snowflake
+      </a>
+    </div>
+  </section>
+
+  <!-- SECTION 1: THE CLOUD WARS & MULTI-CLOUD OVERLAP -->
+  <section id="cloud-wars" class="mb-14 scroll-mt-20">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+      <div class="lg:col-span-8">
+        <MarketTrendChart
+          chartId="chart-cloud-wars"
+          title={t.chartCloudWarsTitle}
+          subtitle={t.chartCloudWarsSub}
+          badge="CLOUD WARS"
+          type="bar"
+          labels={cloudWarsLabels}
+          datasets={[
+            {
+              label: t.chartCloudWarsLabel,
+              data: cloudWarsCounts,
+              backgroundColor: 'rgba(34, 211, 238, 0.8)',
+              borderColor: '#22d3ee',
+              borderWidth: 1,
+              borderRadius: 5,
+            },
+          ]}
+          heightClass="h-80"
+        />
+      </div>
+
+      <div class="lg:col-span-4 panel-surface rounded-xl p-5 space-y-4">
+        <div>
+          <span class="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 font-semibold">
+            MULTI-CLOUD TELEMETRY
+          </span>
+          <h3 class="text-base font-bold text-white mt-2">{t.multicloudTitle}</h3>
+          <p class="text-xs text-slate-400 mt-1">{t.multicloudSub}</p>
+        </div>
+
+        <div class="space-y-2.5 font-mono text-xs">
+          <div class="flex items-center justify-between p-2.5 rounded-lg bg-slate-900/90 border border-slate-800">
+            <span class="text-slate-300">AWS + Microsoft Azure</span>
+            <span class="font-bold text-cyan-300">{multicloud.aws_azure_jobs} {t.positionsWord}</span>
+          </div>
+
+          <div class="flex items-center justify-between p-2.5 rounded-lg bg-slate-900/90 border border-slate-800">
+            <span class="text-slate-300">AWS + Google Cloud (GCP)</span>
+            <span class="font-bold text-cyan-300">{multicloud.aws_gcp_jobs} {t.positionsWord}</span>
+          </div>
+
+          <div class="flex items-center justify-between p-2.5 rounded-lg bg-slate-900/90 border border-slate-800">
+            <span class="text-slate-300">Azure + Google Cloud (GCP)</span>
+            <span class="font-bold text-cyan-300">{multicloud.azure_gcp_jobs} {t.positionsWord}</span>
+          </div>
+
+          <div class="flex items-center justify-between p-2.5 rounded-lg bg-cyan-950/30 border border-cyan-800/40 text-cyan-300">
+            <span class="font-semibold">Tri-Cloud (AWS + Azure + GCP)</span>
+            <span class="font-bold text-white">{multicloud.all_three_jobs} {t.positionsWord}</span>
+          </div>
+        </div>
+
+        <p class="text-xs text-slate-400 leading-relaxed pt-2 border-t border-slate-800/80">
+          {t.multicloudNote}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: GOOGLE CLOUD PLATFORM (GCP) DEEP-DIVE -->
+  <section id="gcp" class="mb-14 scroll-mt-20 pt-4 border-t border-slate-800/80">
+    <div class="mb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+      <div>
+        <span class="text-xs font-mono uppercase tracking-widest text-cyan-400">DEEP-DIVE PLATFORM 01</span>
+        <h2 class="text-2xl font-bold text-white tracking-tight mt-0.5">{t.gcpSectionTitle}</h2>
+        <p class="text-xs text-slate-400 mt-1">{t.gcpSectionSub}</p>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="px-2.5 py-1 rounded bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 font-mono text-xs font-bold">
+          {gcp_hub.total_gcp_ecosystem_jobs} POSITIONS ({gcp_hub.gcp_share_of_all_jobs_pct}% OF MARKET)
+        </span>
+      </div>
+    </div>
+
+    <!-- GCP Service Breakdown & Roles -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+      <MarketTrendChart
+        chartId="chart-gcp-services"
+        title={t.chartSvcTitle}
+        subtitle={t.chartSvcSub}
+        badge="GCP STACK"
+        type="bar"
+        labels={gcp_hub.services.map((s: any) => s.service_name)}
+        datasets={[
+          {
+            label: t.chartSvcLabel,
+            data: gcp_hub.services.map((s: any) => s.job_count),
+            backgroundColor: 'rgba(34, 211, 238, 0.8)',
+            borderColor: '#22d3ee',
+            borderWidth: 1,
+            borderRadius: 5,
+          },
+        ]}
+        heightClass="h-72"
+      />
+
+      <MarketTrendChart
+        chartId="chart-gcp-roles"
+        title={t.chartRoleTitle}
+        subtitle={t.chartRoleSub}
+        badge="GCP ROLES"
+        type="horizontalBar"
+        labels={gcp_hub.top_gcp_roles.map((r: any) => r.canonical_name)}
+        datasets={[
+          {
+            label: t.chartRoleLabel,
+            data: gcp_hub.top_gcp_roles.map((r: any) => r.job_count),
+            backgroundColor: 'rgba(59, 130, 246, 0.8)',
+            borderColor: '#3b82f6',
+            borderWidth: 1,
+            borderRadius: 4,
+          },
+        ]}
+        heightClass="h-72"
+      />
+    </div>
+
+    <!-- GCP Detailed Services Cards -->
+    <div class="mb-8">
+      <h3 class="text-base font-bold text-white mb-4">{t.svcSectionTitle}</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {gcp_hub.services.map((svc: any) => (
+          <div class="panel-surface rounded-xl p-5 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-300 border border-cyan-500/30">
+                  {svc.category}
+                </span>
+                <span class="text-xs font-mono text-slate-400">
+                  {svc.penetration_in_gcp_pct}% {t.ofGcpPositions}
+                </span>
+              </div>
+              <h4 class="text-lg font-bold text-white mt-2">{svc.service_name}</h4>
+              <p class="text-2xl font-mono font-bold text-cyan-300 mt-1">
+                {svc.job_count.toLocaleString('en-US')}{' '}
+                <span class="text-xs font-normal text-slate-400">{t.postingsOfMarket(svc.penetration_all_pct)}</span>
+              </p>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-slate-800/80">
+              <p class="text-[10px] font-mono uppercase text-slate-400 mb-1.5">{t.pairedWithLabel}</p>
+              <div class="flex flex-wrap gap-1.5">
+                {svc.top_paired_skills.map((ps: string) => (
+                  <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-900 text-slate-200 border border-slate-800">
+                    {ps}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- GCP Notes & Top Companies -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div class="lg:col-span-2 space-y-4">
+        <h3 class="text-base font-bold text-white">{t.notesSectionTitle}</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {t.notes.map((item: any) => (
+            <div class="panel-surface-interactive rounded-xl p-5 flex flex-col justify-between">
+              <div>
+                <span class="text-[10px] font-mono uppercase text-cyan-400 font-semibold">{item.tag}</span>
+                <h4 class="text-base font-bold text-white mt-1">{item.service}</h4>
+                <p class="text-xs text-slate-300 mt-2 leading-relaxed">{item.summary}</p>
+              </div>
+              <a
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mt-4 inline-flex items-center gap-1 text-xs font-mono text-cyan-300 hover:text-cyan-200 font-medium"
+              >
+                <span>{item.linkLabel}</span>
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="panel-surface rounded-xl p-5">
+        <h3 class="text-sm font-semibold text-white mb-1">{t.topHiringTitle} (GCP)</h3>
+        <p class="text-xs text-slate-400 mb-4">{t.gcpSectionSub}</p>
+        <div class="space-y-2.5">
+          {gcp_hub.top_gcp_companies.map((comp: any, idx: number) => (
+            <div class="flex items-center justify-between p-2.5 rounded-lg bg-slate-900/80 border border-slate-800/80 text-xs">
+              <div class="truncate pr-2">
+                <span class="font-mono text-slate-500 mr-1.5">#{idx + 1}</span>
+                <span class="font-medium text-slate-200">{comp.company_name}</span>
+              </div>
+              <span class="font-mono font-bold text-cyan-300 shrink-0">
+                {comp.job_count} {t.positionsWord}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: AMAZON WEB SERVICES (AWS) & MICROSOFT AZURE -->
+  <section id="aws" class="mb-14 scroll-mt-20 pt-4 border-t border-slate-800/80">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <!-- AWS Card -->
+      <div class="panel-surface rounded-xl p-6 flex flex-col justify-between border-t-2 border-t-amber-500">
+        <div>
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <span class="text-xs font-mono uppercase tracking-widest text-amber-400 font-bold">ECOSYSTEM: AWS</span>
+            <span class="px-2.5 py-0.5 rounded bg-amber-500/10 border border-amber-500/30 text-amber-300 font-mono text-xs font-bold">
+              {awsEco?.total_jobs} POSITIONS ({awsEco?.share_of_all_jobs_pct}% MARKET)
+            </span>
+          </div>
+
+          <h3 class="text-xl font-bold text-white">{t.tabAws}</h3>
+          <p class="text-xs text-slate-300 mt-2.5 leading-relaxed">{t.awsSummary}</p>
+
+          <!-- Top Roles -->
+          <div class="mt-4 pt-3 border-t border-slate-800/80">
+            <p class="text-[10px] font-mono uppercase text-slate-400 mb-2">{t.topRolesTitle}:</p>
+            <div class="flex flex-wrap gap-1.5">
+              {awsEco?.top_roles.map((r: any) => (
+                <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-900 text-slate-200 border border-slate-800">
+                  {r.canonical_name} ({r.job_count})
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-5 pt-3 border-t border-slate-800/80">
+          <p class="text-[10px] font-mono uppercase text-slate-400 mb-2">{t.topHiringTitle}:</p>
+          <div class="grid grid-cols-2 gap-2 text-xs font-mono">
+            {awsEco?.top_companies.slice(0, 4).map((c: any) => (
+              <div class="p-2 rounded bg-slate-900/80 border border-slate-800/60 truncate">
+                <span class="text-slate-300">{c.company_name}</span>
+                <span class="text-amber-300 font-bold ml-1">({c.job_count})</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Azure Card -->
+      <div id="azure" class="panel-surface rounded-xl p-6 flex flex-col justify-between border-t-2 border-t-blue-500 scroll-mt-20">
+        <div>
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <span class="text-xs font-mono uppercase tracking-widest text-blue-400 font-bold">ECOSYSTEM: AZURE</span>
+            <span class="px-2.5 py-0.5 rounded bg-blue-500/10 border border-blue-500/30 text-blue-300 font-mono text-xs font-bold">
+              {azureEco?.total_jobs} POSITIONS ({azureEco?.share_of_all_jobs_pct}% MARKET)
+            </span>
+          </div>
+
+          <h3 class="text-xl font-bold text-white">{t.tabAzure}</h3>
+          <p class="text-xs text-slate-300 mt-2.5 leading-relaxed">{t.azureSummary}</p>
+
+          <!-- Top Roles -->
+          <div class="mt-4 pt-3 border-t border-slate-800/80">
+            <p class="text-[10px] font-mono uppercase text-slate-400 mb-2">{t.topRolesTitle}:</p>
+            <div class="flex flex-wrap gap-1.5">
+              {azureEco?.top_roles.map((r: any) => (
+                <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-900 text-slate-200 border border-slate-800">
+                  {r.canonical_name} ({r.job_count})
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-5 pt-3 border-t border-slate-800/80">
+          <p class="text-[10px] font-mono uppercase text-slate-400 mb-2">{t.topHiringTitle}:</p>
+          <div class="grid grid-cols-2 gap-2 text-xs font-mono">
+            {azureEco?.top_companies.slice(0, 4).map((c: any) => (
+              <div class="p-2 rounded bg-slate-900/80 border border-slate-800/60 truncate">
+                <span class="text-slate-300">{c.company_name}</span>
+                <span class="text-blue-300 font-bold ml-1">({c.job_count})</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: DATABRICKS VS. SNOWFLAKE (LAKEHOUSE WARS) -->
+  <section id="lakehouse" class="mb-14 scroll-mt-20 pt-4 border-t border-slate-800/80">
+    <div class="mb-6">
+      <span class="text-xs font-mono uppercase tracking-widest text-cyan-400">DATA PLATFORM BENCHMARK</span>
+      <h2 class="text-2xl font-bold text-white tracking-tight mt-0.5">Databricks vs. Snowflake — Lakehouse vs. Cloud DWH</h2>
+      <p class="text-xs text-slate-400 mt-1">{t.lakehouseSummary}</p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <!-- Databricks Column -->
+      <div class="panel-surface rounded-xl p-5 border-l-2 border-l-cyan-400 space-y-4">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-mono font-bold text-cyan-400">DATABRICKS LAKEHOUSE</span>
+          <span class="text-xs font-mono font-bold text-white">{databricksEco?.total_jobs} positions</span>
+        </div>
+
+        <div class="p-3 rounded-lg bg-slate-900/90 border border-slate-800 text-xs text-slate-300 leading-relaxed">
+          Anchored by <strong>Apache Spark</strong>, <strong>Delta Lake</strong>, and <strong>Unity Catalog</strong>. Strongly favored by teams requiring intensive distributed computing, real-time streaming, and deep ML model training (MLflow).
+        </div>
+
+        <div>
+          <p class="text-[10px] font-mono uppercase text-slate-400 mb-1.5">{t.topHiringTitle}:</p>
+          <div class="space-y-1.5 text-xs font-mono">
+            {databricksEco?.top_companies.slice(0, 4).map((c: any) => (
+              <div class="flex items-center justify-between p-2 rounded bg-slate-900/60 border border-slate-800/60">
+                <span class="text-slate-300 truncate">{c.company_name}</span>
+                <span class="text-cyan-300 font-bold shrink-0">{c.job_count} {t.positionsWord}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Snowflake Column -->
+      <div class="panel-surface rounded-xl p-5 border-l-2 border-l-blue-400 space-y-4">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-mono font-bold text-blue-400">SNOWFLAKE DATA CLOUD</span>
+          <span class="text-xs font-mono font-bold text-white">{snowflakeEco?.total_jobs} positions</span>
+        </div>
+
+        <div class="p-3 rounded-lg bg-slate-900/90 border border-slate-800 text-xs text-slate-300 leading-relaxed">
+          Pioneered instant separation of storage and compute. Highly prevalent in enterprise Business Intelligence, financial services, and SQL analytics. Expanding into data lakes via <strong>Apache Iceberg</strong> and <strong>Cortex AI</strong>.
+        </div>
+
+        <div>
+          <p class="text-[10px] font-mono uppercase text-slate-400 mb-1.5">{t.topHiringTitle}:</p>
+          <div class="space-y-1.5 text-xs font-mono">
+            {snowflakeEco?.top_companies.slice(0, 4).map((c: any) => (
+              <div class="flex items-center justify-between p-2 rounded bg-slate-900/60 border border-slate-800/60">
+                <span class="text-slate-300 truncate">{c.company_name}</span>
+                <span class="text-blue-300 font-bold shrink-0">{c.job_count} {t.positionsWord}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: SKILL CO-OCCURRENCE MATRIX & SUBSTACK CALLOUT -->
+  <section class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start pt-4 border-t border-slate-800/80 mb-8">
+    <div class="lg:col-span-7 panel-surface rounded-xl p-5">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-base font-bold text-white">Cloud Stack Co-occurrence Matrix</h3>
+        <span class="text-[11px] font-mono text-cyan-400">v_skill_cooccurrence</span>
+      </div>
+      <p class="text-xs text-slate-400 mb-4">
+        Telemetry showing which technology pairs most frequently appear together in the same job posting requirements.
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 font-mono text-xs">
+        {skill_cooccurrence.slice(0, 10).map((pair: any) => (
+          <div class="flex items-center justify-between p-2.5 rounded-lg bg-slate-900/90 border border-slate-800">
+            <span class="text-slate-200 truncate">{pair.skill_a} + {pair.skill_b}</span>
+            <span class="font-bold text-cyan-300 shrink-0">{pair.cooccurrence_count}x</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="lg:col-span-5 panel-surface-interactive rounded-xl p-6 border-t-2 border-t-orange-500 space-y-4">
+      <div>
+        <span class="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-orange-500/10 text-orange-300 border border-orange-500/30 font-semibold">
+          SUBSTACK ARCHITECTURE ESSAYS
+        </span>
+        <h3 class="text-lg font-bold text-white mt-2.5">{t.substackCalloutTitle}</h3>
+        <p class="text-xs text-slate-300 mt-1 leading-relaxed">{t.substackCalloutSub}</p>
+      </div>
+
+      <div class="space-y-3 font-mono text-xs pt-2">
+        <a
+          href="https://antoninkucera.substack.com/p/bigquery-overview-a-new-navigation-hub-in-the-complex-analytics-platform"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="block p-3 rounded-lg bg-slate-900 border border-slate-800 hover:border-orange-500/50 transition-colors group"
+        >
+          <span class="text-slate-200 font-semibold group-hover:text-orange-400 transition-colors">
+            BigQuery Overview: A New Navigation Hub in the Complex Analytics Platform ↗
+          </span>
+          <p class="text-[11px] text-slate-400 font-sans mt-1">
+            Navigating datasets, slot economics, and modern cloud pipelines in enterprise GCP environments.
+          </p>
+        </a>
+
+        <a
+          href="https://antoninkucera.substack.com/p/mastering-tableau-cloud-logs-from-s3-to-a-hundreds-fields-in-bigquery"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="block p-3 rounded-lg bg-slate-900 border border-slate-800 hover:border-orange-500/50 transition-colors group"
+        >
+          <span class="text-slate-200 font-semibold group-hover:text-orange-400 transition-colors">
+            Mastering Tableau Cloud Logs: From S3 to Hundreds of Fields in BigQuery ↗
+          </span>
+          <p class="text-[11px] text-slate-400 font-sans mt-1">
+            Architectural patterns for multi-cloud telemetry ingestion between AWS S3 and Google BigQuery.
+          </p>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

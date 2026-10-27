@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-10-26T20:39:00Z",
+    "generated_at": "2026-10-27T06:19:14Z",
     "schema_version": "1.0.0",
     "latest_snapshot_date": "2026-10-26",
     "total_tracked_companies": 931,
@@ -128,15 +128,6 @@
         "ai_intensity_pct": 2.53
       },
       {
-        "company_id": "stripe",
-        "company_name": "Stripe",
-        "is_sp500": false,
-        "sector": null,
-        "ai_data_jobs": 46,
-        "total_active_jobs": 4171,
-        "ai_intensity_pct": 1.1
-      },
-      {
         "company_id": "general_motors",
         "company_name": "General Motors",
         "is_sp500": true,
@@ -144,6 +135,15 @@
         "ai_data_jobs": 46,
         "total_active_jobs": 770,
         "ai_intensity_pct": 5.97
+      },
+      {
+        "company_id": "stripe",
+        "company_name": "Stripe",
+        "is_sp500": false,
+        "sector": null,
+        "ai_data_jobs": 46,
+        "total_active_jobs": 4171,
+        "ai_intensity_pct": 1.1
       },
       {
         "company_id": "hewlett_packard_enterprise",
@@ -234,9 +234,9 @@
         "share_pct": 0.22
       },
       {
-        "country_code": "CH",
-        "country_name": "Switzerland",
-        "region": "Europe Non-EU",
+        "country_code": "IT",
+        "country_name": "Italy",
+        "region": "EU",
         "job_count": 7,
         "share_pct": 0.17
       }
@@ -589,7 +589,398 @@
         "cooccurrence_count": 405,
         "jaccard_pct": 16.5
       }
-    ]
+    ],
+    "multicloud": {
+      "total_cloud_jobs": 1035,
+      "multicloud_jobs": 537,
+      "multicloud_pct": 51.9,
+      "aws_azure_jobs": 481,
+      "aws_gcp_jobs": 409,
+      "azure_gcp_jobs": 377,
+      "all_three_jobs": 365
+    },
+    "ecosystems": {
+      "aws": {
+        "id": "aws",
+        "name": "AWS",
+        "type": "hyperscaler",
+        "total_jobs": 749,
+        "share_of_all_jobs_pct": 12.43,
+        "share_of_cloud_jobs_pct": 72.37,
+        "top_companies": [
+          {
+            "company_name": "Databricks",
+            "sector": null,
+            "job_count": 129
+          },
+          {
+            "company_name": "Amgen",
+            "sector": "Health Care",
+            "job_count": 46
+          },
+          {
+            "company_name": "Amazon",
+            "sector": "Consumer Discretionary",
+            "job_count": 21
+          },
+          {
+            "company_name": "Hewlett Packard Enterprise",
+            "sector": "Information Technology",
+            "job_count": 20
+          },
+          {
+            "company_name": "MongoDB",
+            "sector": null,
+            "job_count": 20
+          },
+          {
+            "company_name": "General Motors",
+            "sector": "Consumer Discretionary",
+            "job_count": 18
+          },
+          {
+            "company_name": "Leidos",
+            "sector": "Industrials",
+            "job_count": 15
+          },
+          {
+            "company_name": "Travelers Companies (The)",
+            "sector": "Financials",
+            "job_count": 14
+          }
+        ],
+        "top_roles": [
+          {
+            "canonical_name": "AI Developer",
+            "job_count": 239
+          },
+          {
+            "canonical_name": "Machine Learning Engineer",
+            "job_count": 214
+          },
+          {
+            "canonical_name": "Data Engineer",
+            "job_count": 183
+          },
+          {
+            "canonical_name": "Data Scientist",
+            "job_count": 59
+          },
+          {
+            "canonical_name": "Data Architect",
+            "job_count": 54
+          },
+          {
+            "canonical_name": "Engineering Manager (AI/Data)",
+            "job_count": 13
+          }
+        ]
+      },
+      "azure": {
+        "id": "azure",
+        "name": "Microsoft Azure",
+        "type": "hyperscaler",
+        "total_jobs": 662,
+        "share_of_all_jobs_pct": 10.99,
+        "share_of_cloud_jobs_pct": 63.96,
+        "top_companies": [
+          {
+            "company_name": "Databricks",
+            "sector": null,
+            "job_count": 129
+          },
+          {
+            "company_name": "Ecolab",
+            "sector": "Materials",
+            "job_count": 30
+          },
+          {
+            "company_name": "Arthur J. Gallagher & Co.",
+            "sector": "Financials",
+            "job_count": 25
+          },
+          {
+            "company_name": "General Motors",
+            "sector": "Consumer Discretionary",
+            "job_count": 20
+          },
+          {
+            "company_name": "MongoDB",
+            "sector": null,
+            "job_count": 20
+          },
+          {
+            "company_name": "Hewlett Packard Enterprise",
+            "sector": "Information Technology",
+            "job_count": 17
+          },
+          {
+            "company_name": "Johnson Controls",
+            "sector": "Industrials",
+            "job_count": 16
+          },
+          {
+            "company_name": "United Parcel Service",
+            "sector": "Industrials",
+            "job_count": 16
+          }
+        ],
+        "top_roles": [
+          {
+            "canonical_name": "AI Developer",
+            "job_count": 235
+          },
+          {
+            "canonical_name": "Machine Learning Engineer",
+            "job_count": 175
+          },
+          {
+            "canonical_name": "Data Engineer",
+            "job_count": 132
+          },
+          {
+            "canonical_name": "Data Architect",
+            "job_count": 55
+          },
+          {
+            "canonical_name": "Data Scientist",
+            "job_count": 54
+          },
+          {
+            "canonical_name": "Data Analyst",
+            "job_count": 30
+          }
+        ]
+      },
+      "gcp": {
+        "id": "gcp",
+        "name": "Google Cloud",
+        "type": "hyperscaler",
+        "total_jobs": 649,
+        "share_of_all_jobs_pct": 10.77,
+        "share_of_cloud_jobs_pct": 62.71,
+        "top_companies": [
+          {
+            "company_name": "Databricks",
+            "sector": null,
+            "job_count": 118
+          },
+          {
+            "company_name": "Google (Alphabet)",
+            "sector": "Communication Services",
+            "job_count": 66
+          },
+          {
+            "company_name": "MongoDB",
+            "sector": null,
+            "job_count": 20
+          },
+          {
+            "company_name": "General Motors",
+            "sector": "Consumer Discretionary",
+            "job_count": 20
+          },
+          {
+            "company_name": "United Parcel Service",
+            "sector": "Industrials",
+            "job_count": 19
+          },
+          {
+            "company_name": "Hartford (The)",
+            "sector": "Financials",
+            "job_count": 17
+          },
+          {
+            "company_name": "Snowflake",
+            "sector": null,
+            "job_count": 16
+          },
+          {
+            "company_name": "Cloudflare",
+            "sector": null,
+            "job_count": 15
+          }
+        ],
+        "top_roles": [
+          {
+            "canonical_name": "AI Developer",
+            "job_count": 209
+          },
+          {
+            "canonical_name": "Machine Learning Engineer",
+            "job_count": 208
+          },
+          {
+            "canonical_name": "Data Engineer",
+            "job_count": 109
+          },
+          {
+            "canonical_name": "Data Scientist",
+            "job_count": 53
+          },
+          {
+            "canonical_name": "Data Architect",
+            "job_count": 46
+          },
+          {
+            "canonical_name": "Data Analyst",
+            "job_count": 29
+          }
+        ]
+      },
+      "databricks": {
+        "id": "databricks",
+        "name": "Databricks",
+        "type": "platform",
+        "total_jobs": 535,
+        "share_of_all_jobs_pct": 8.88,
+        "share_of_cloud_jobs_pct": 51.69,
+        "top_companies": [
+          {
+            "company_name": "Databricks",
+            "sector": null,
+            "job_count": 182
+          },
+          {
+            "company_name": "Amgen",
+            "sector": "Health Care",
+            "job_count": 46
+          },
+          {
+            "company_name": "Ecolab",
+            "sector": "Materials",
+            "job_count": 26
+          },
+          {
+            "company_name": "Mastercard",
+            "sector": "Financials",
+            "job_count": 18
+          },
+          {
+            "company_name": "General Motors",
+            "sector": "Consumer Discretionary",
+            "job_count": 14
+          },
+          {
+            "company_name": "NXP Semiconductors",
+            "sector": "Information Technology",
+            "job_count": 11
+          },
+          {
+            "company_name": "Celonis",
+            "sector": null,
+            "job_count": 11
+          },
+          {
+            "company_name": "Abbott Laboratories",
+            "sector": "Health Care",
+            "job_count": 9
+          }
+        ],
+        "top_roles": [
+          {
+            "canonical_name": "Data Engineer",
+            "job_count": 159
+          },
+          {
+            "canonical_name": "Machine Learning Engineer",
+            "job_count": 127
+          },
+          {
+            "canonical_name": "AI Developer",
+            "job_count": 100
+          },
+          {
+            "canonical_name": "Data Scientist",
+            "job_count": 62
+          },
+          {
+            "canonical_name": "Data Architect",
+            "job_count": 50
+          },
+          {
+            "canonical_name": "Data Analyst",
+            "job_count": 19
+          }
+        ]
+      },
+      "snowflake_db": {
+        "id": "snowflake_db",
+        "name": "Snowflake",
+        "type": "platform",
+        "total_jobs": 310,
+        "share_of_all_jobs_pct": 5.15,
+        "share_of_cloud_jobs_pct": 29.95,
+        "top_companies": [
+          {
+            "company_name": "Snowflake",
+            "sector": null,
+            "job_count": 50
+          },
+          {
+            "company_name": "Ecolab",
+            "sector": "Materials",
+            "job_count": 18
+          },
+          {
+            "company_name": "Arthur J. Gallagher & Co.",
+            "sector": "Financials",
+            "job_count": 16
+          },
+          {
+            "company_name": "Hartford (The)",
+            "sector": "Financials",
+            "job_count": 13
+          },
+          {
+            "company_name": "Databricks",
+            "sector": null,
+            "job_count": 12
+          },
+          {
+            "company_name": "Booking Holdings",
+            "sector": "Consumer Discretionary",
+            "job_count": 12
+          },
+          {
+            "company_name": "Citigroup",
+            "sector": "Financials",
+            "job_count": 9
+          },
+          {
+            "company_name": "Block, Inc.",
+            "sector": "Financials",
+            "job_count": 9
+          }
+        ],
+        "top_roles": [
+          {
+            "canonical_name": "Data Engineer",
+            "job_count": 111
+          },
+          {
+            "canonical_name": "AI Developer",
+            "job_count": 73
+          },
+          {
+            "canonical_name": "Data Scientist",
+            "job_count": 32
+          },
+          {
+            "canonical_name": "Data Architect",
+            "job_count": 25
+          },
+          {
+            "canonical_name": "Data Analyst",
+            "job_count": 24
+          },
+          {
+            "canonical_name": "Machine Learning Engineer",
+            "job_count": 22
+          }
+        ]
+      }
+    }
   },
   "industry_heatmap": {
     "sectors": [
@@ -1759,15 +2150,15 @@
           "penetration_pct": 15.8
         },
         {
-          "skill_id": "gcp",
-          "skill_name": "Google Cloud Platform",
+          "skill_id": "azure",
+          "skill_name": "Microsoft Azure",
           "category": "Cloud",
           "job_count": 237,
           "penetration_pct": 15.5
         },
         {
-          "skill_id": "azure",
-          "skill_name": "Microsoft Azure",
+          "skill_id": "gcp",
+          "skill_name": "Google Cloud Platform",
           "category": "Cloud",
           "job_count": 237,
           "penetration_pct": 15.5
@@ -1811,15 +2202,15 @@
           "job_count": 88
         },
         {
+          "company_name": "Alphabet Inc. (Class A)",
+          "job_count": 61
+        },
+        {
           "company_name": "Alphabet Inc. (Class C)",
           "job_count": 61
         },
         {
           "company_name": "Anthropic",
-          "job_count": 61
-        },
-        {
-          "company_name": "Alphabet Inc. (Class A)",
           "job_count": 61
         },
         {
@@ -2032,11 +2423,11 @@
           "job_count": 62
         },
         {
-          "company_name": "Google (Alphabet)",
+          "company_name": "Alphabet Inc. (Class C)",
           "job_count": 62
         },
         {
-          "company_name": "Alphabet Inc. (Class C)",
+          "company_name": "Google (Alphabet)",
           "job_count": 62
         },
         {
@@ -2486,15 +2877,15 @@
           "job_count": 67
         },
         {
-          "company_name": "Alphabet Inc. (Class C)",
-          "job_count": 39
-        },
-        {
           "company_name": "Alphabet Inc. (Class A)",
           "job_count": 39
         },
         {
           "company_name": "Google (Alphabet)",
+          "job_count": 39
+        },
+        {
+          "company_name": "Alphabet Inc. (Class C)",
           "job_count": 39
         },
         {
@@ -2703,15 +3094,15 @@
       ],
       "top_companies": [
         {
-          "company_name": "Alphabet Inc. (Class C)",
-          "job_count": 58
-        },
-        {
           "company_name": "Alphabet Inc. (Class A)",
           "job_count": 58
         },
         {
           "company_name": "Google (Alphabet)",
+          "job_count": 58
+        },
+        {
+          "company_name": "Alphabet Inc. (Class C)",
           "job_count": 58
         },
         {
@@ -2928,15 +3319,15 @@
       ],
       "top_companies": [
         {
+          "company_name": "Alphabet Inc. (Class C)",
+          "job_count": 44
+        },
+        {
           "company_name": "Google (Alphabet)",
           "job_count": 44
         },
         {
           "company_name": "Alphabet Inc. (Class A)",
-          "job_count": 44
-        },
-        {
-          "company_name": "Alphabet Inc. (Class C)",
           "job_count": 44
         },
         {
@@ -3086,9 +3477,9 @@
           "penetration_pct": 6.8
         },
         {
-          "skill_id": "rag",
-          "skill_name": "RAG (Retrieval-Augmented Generation)",
-          "category": "AI/ML",
+          "skill_id": "r",
+          "skill_name": "R",
+          "category": "Programming",
           "job_count": 6,
           "penetration_pct": 3.1
         }
@@ -3130,15 +3521,15 @@
           "penetration_pct": 5.2
         },
         {
-          "skill_id": "bigquery",
-          "skill_name": "BigQuery",
+          "skill_id": "snowflake_db",
+          "skill_name": "Snowflake",
           "category": "Cloud",
           "job_count": 7,
           "penetration_pct": 3.7
         },
         {
-          "skill_id": "snowflake_db",
-          "skill_name": "Snowflake",
+          "skill_id": "bigquery",
+          "skill_name": "BigQuery",
           "category": "Cloud",
           "job_count": 7,
           "penetration_pct": 3.7
@@ -3157,19 +3548,19 @@
           "job_count": 18
         },
         {
-          "company_name": "Scale AI",
-          "job_count": 8
-        },
-        {
           "company_name": "Databricks",
           "job_count": 8
         },
         {
-          "company_name": "Workday, Inc.",
-          "job_count": 7
+          "company_name": "Scale AI",
+          "job_count": 8
         },
         {
           "company_name": "Datadog",
+          "job_count": 7
+        },
+        {
+          "company_name": "Workday, Inc.",
           "job_count": 7
         },
         {
@@ -3189,12 +3580,12 @@
           "share_pct": 19.3
         },
         {
-          "sector": "Communication Services",
+          "sector": "Financials",
           "job_count": 19,
           "share_pct": 12.7
         },
         {
-          "sector": "Financials",
+          "sector": "Communication Services",
           "job_count": 19,
           "share_pct": 12.7
         },
@@ -3501,15 +3892,15 @@
           "penetration_pct": 21.8
         },
         {
-          "skill_id": "tableau",
-          "skill_name": "Tableau",
+          "skill_id": "data_governance",
+          "skill_name": "Data Governance & Quality",
           "category": "Business",
           "job_count": 20,
           "penetration_pct": 19.8
         },
         {
-          "skill_id": "data_governance",
-          "skill_name": "Data Governance & Quality",
+          "skill_id": "tableau",
+          "skill_name": "Tableau",
           "category": "Business",
           "job_count": 20,
           "penetration_pct": 19.8
@@ -3552,15 +3943,15 @@
           "penetration_pct": 7.9
         },
         {
-          "skill_id": "aws",
-          "skill_name": "AWS",
+          "skill_id": "bigquery",
+          "skill_name": "BigQuery",
           "category": "Cloud",
           "job_count": 7,
           "penetration_pct": 6.9
         },
         {
-          "skill_id": "bigquery",
-          "skill_name": "BigQuery",
+          "skill_id": "aws",
+          "skill_name": "AWS",
           "category": "Cloud",
           "job_count": 7,
           "penetration_pct": 6.9
@@ -3580,16 +3971,16 @@
           "penetration_pct": 3.0
         },
         {
-          "skill_id": "evals_observability",
-          "skill_name": "MLOps / Evals & Observability",
-          "category": "MLOps",
+          "skill_id": "redshift",
+          "skill_name": "Amazon Redshift",
+          "category": "Cloud",
           "job_count": 2,
           "penetration_pct": 2.0
         },
         {
-          "skill_id": "redshift",
-          "skill_name": "Amazon Redshift",
-          "category": "Cloud",
+          "skill_id": "evals_observability",
+          "skill_name": "MLOps / Evals & Observability",
+          "category": "MLOps",
           "job_count": 2,
           "penetration_pct": 2.0
         },
@@ -3607,15 +3998,15 @@
           "job_count": 6
         },
         {
-          "company_name": "Abbott Laboratories",
-          "job_count": 5
-        },
-        {
           "company_name": "eBay Inc.",
           "job_count": 5
         },
         {
           "company_name": "Amgen",
+          "job_count": 5
+        },
+        {
+          "company_name": "Abbott Laboratories",
           "job_count": 5
         },
         {
@@ -3836,11 +4227,7 @@
           "job_count": 6
         },
         {
-          "company_name": "Alphabet Inc. (Class C)",
-          "job_count": 4
-        },
-        {
-          "company_name": "Coinbase",
+          "company_name": "Google (Alphabet)",
           "job_count": 4
         },
         {
@@ -3848,7 +4235,11 @@
           "job_count": 4
         },
         {
-          "company_name": "Google (Alphabet)",
+          "company_name": "Coinbase",
+          "job_count": 4
+        },
+        {
+          "company_name": "Alphabet Inc. (Class C)",
           "job_count": 4
         }
       ],
@@ -4002,16 +4393,16 @@
           "penetration_pct": 9.7
         },
         {
-          "skill_id": "aws",
-          "skill_name": "AWS",
-          "category": "Cloud",
+          "skill_id": "spark",
+          "skill_name": "Apache Spark",
+          "category": "Framework",
           "job_count": 7,
           "penetration_pct": 7.5
         },
         {
-          "skill_id": "spark",
-          "skill_name": "Apache Spark",
-          "category": "Framework",
+          "skill_id": "aws",
+          "skill_name": "AWS",
+          "category": "Cloud",
           "job_count": 7,
           "penetration_pct": 7.5
         },
@@ -4044,9 +4435,9 @@
           "penetration_pct": 2.2
         },
         {
-          "skill_id": "kubernetes",
-          "skill_name": "Kubernetes",
-          "category": "MLOps",
+          "skill_id": "vertex_ai",
+          "skill_name": "Vertex AI",
+          "category": "Cloud",
           "job_count": 2,
           "penetration_pct": 2.2
         }
@@ -4065,7 +4456,7 @@
           "job_count": 4
         },
         {
-          "company_name": "Hartford (The)",
+          "company_name": "TE Connectivity",
           "job_count": 3
         },
         {
@@ -4073,7 +4464,7 @@
           "job_count": 3
         },
         {
-          "company_name": "TE Connectivity",
+          "company_name": "Hartford (The)",
           "job_count": 3
         }
       ],
@@ -4282,23 +4673,23 @@
           "job_count": 7
         },
         {
-          "company_name": "Booking Holdings",
-          "job_count": 4
-        },
-        {
           "company_name": "Delivery Hero",
           "job_count": 4
         },
         {
-          "company_name": "Lennar",
+          "company_name": "Booking Holdings",
+          "job_count": 4
+        },
+        {
+          "company_name": "Coinbase",
           "job_count": 2
         },
         {
-          "company_name": "Perplexity AI",
+          "company_name": "Asana",
           "job_count": 2
         },
         {
-          "company_name": "Autodesk",
+          "company_name": "Block, Inc.",
           "job_count": 2
         }
       ],
@@ -4309,17 +4700,17 @@
           "share_pct": 26.8
         },
         {
+          "sector": "Information Technology",
+          "job_count": 7,
+          "share_pct": 17.1
+        },
+        {
           "sector": "Financials",
           "job_count": 7,
           "share_pct": 17.1
         },
         {
           "sector": "Consumer Discretionary",
-          "job_count": 7,
-          "share_pct": 17.1
-        },
-        {
-          "sector": "Information Technology",
           "job_count": 7,
           "share_pct": 17.1
         },
@@ -4401,16 +4792,16 @@
           "penetration_pct": 26.0
         },
         {
-          "skill_id": "tableau",
-          "skill_name": "Tableau",
-          "category": "Business",
+          "skill_id": "python",
+          "skill_name": "Python",
+          "category": "Programming",
           "job_count": 16,
           "penetration_pct": 20.8
         },
         {
-          "skill_id": "python",
-          "skill_name": "Python",
-          "category": "Programming",
+          "skill_id": "tableau",
+          "skill_name": "Tableau",
+          "category": "Business",
           "job_count": 16,
           "penetration_pct": 20.8
         },
@@ -4452,13 +4843,6 @@
           "penetration_pct": 7.8
         },
         {
-          "skill_id": "aws",
-          "skill_name": "AWS",
-          "category": "Cloud",
-          "job_count": 4,
-          "penetration_pct": 5.2
-        },
-        {
           "skill_id": "bigquery",
           "skill_name": "BigQuery",
           "category": "Cloud",
@@ -4466,11 +4850,11 @@
           "penetration_pct": 5.2
         },
         {
-          "skill_id": "ms_fabric",
-          "skill_name": "Microsoft Fabric",
+          "skill_id": "aws",
+          "skill_name": "AWS",
           "category": "Cloud",
-          "job_count": 3,
-          "penetration_pct": 3.9
+          "job_count": 4,
+          "penetration_pct": 5.2
         },
         {
           "skill_id": "databricks",
@@ -4480,15 +4864,22 @@
           "penetration_pct": 3.9
         },
         {
-          "skill_id": "azure",
-          "skill_name": "Microsoft Azure",
+          "skill_id": "ms_fabric",
+          "skill_name": "Microsoft Fabric",
+          "category": "Cloud",
+          "job_count": 3,
+          "penetration_pct": 3.9
+        },
+        {
+          "skill_id": "redshift",
+          "skill_name": "Amazon Redshift",
           "category": "Cloud",
           "job_count": 2,
           "penetration_pct": 2.6
         },
         {
-          "skill_id": "redshift",
-          "skill_name": "Amazon Redshift",
+          "skill_id": "azure",
+          "skill_name": "Microsoft Azure",
           "category": "Cloud",
           "job_count": 2,
           "penetration_pct": 2.6
@@ -4507,15 +4898,15 @@
           "job_count": 10
         },
         {
-          "company_name": "Dexcom",
-          "job_count": 3
-        },
-        {
           "company_name": "Genuine Parts Company",
           "job_count": 3
         },
         {
-          "company_name": "Johnson Controls",
+          "company_name": "Dexcom",
+          "job_count": 3
+        },
+        {
+          "company_name": "Snap-on",
           "job_count": 2
         },
         {
@@ -4523,7 +4914,7 @@
           "job_count": 2
         },
         {
-          "company_name": "Block, Inc.",
+          "company_name": "GRID esports",
           "job_count": 2
         }
       ],
@@ -4619,16 +5010,16 @@
           "penetration_pct": 21.9
         },
         {
-          "skill_id": "data_governance",
-          "skill_name": "Data Governance & Quality",
-          "category": "Business",
+          "skill_id": "python",
+          "skill_name": "Python",
+          "category": "Programming",
           "job_count": 11,
           "penetration_pct": 15.1
         },
         {
-          "skill_id": "python",
-          "skill_name": "Python",
-          "category": "Programming",
+          "skill_id": "data_governance",
+          "skill_name": "Data Governance & Quality",
+          "category": "Business",
           "job_count": 11,
           "penetration_pct": 15.1
         },
@@ -4661,9 +5052,9 @@
           "penetration_pct": 5.5
         },
         {
-          "skill_id": "scala",
-          "skill_name": "Scala",
-          "category": "Programming",
+          "skill_id": "powerbi",
+          "skill_name": "Power BI",
+          "category": "Business",
           "job_count": 2,
           "penetration_pct": 2.7
         }
@@ -4691,16 +5082,16 @@
           "penetration_pct": 6.8
         },
         {
-          "skill_id": "azure",
-          "skill_name": "Microsoft Azure",
-          "category": "Cloud",
+          "skill_id": "airflow",
+          "skill_name": "Apache Airflow",
+          "category": "Framework",
           "job_count": 4,
           "penetration_pct": 5.5
         },
         {
-          "skill_id": "airflow",
-          "skill_name": "Apache Airflow",
-          "category": "Framework",
+          "skill_id": "azure",
+          "skill_name": "Microsoft Azure",
+          "category": "Cloud",
           "job_count": 4,
           "penetration_pct": 5.5
         },
@@ -4719,8 +5110,8 @@
           "penetration_pct": 2.7
         },
         {
-          "skill_id": "docker",
-          "skill_name": "Docker",
+          "skill_id": "evals_observability",
+          "skill_name": "MLOps / Evals & Observability",
           "category": "MLOps",
           "job_count": 2,
           "penetration_pct": 2.7
@@ -4744,7 +5135,7 @@
           "job_count": 4
         },
         {
-          "company_name": "Alphabet Inc. (Class A)",
+          "company_name": "Google (Alphabet)",
           "job_count": 4
         },
         {
@@ -4774,7 +5165,7 @@
           "share_pct": 7.0
         },
         {
-          "sector": "Industrials",
+          "sector": "Information Technology",
           "job_count": 4,
           "share_pct": 5.6
         }
@@ -4916,16 +5307,16 @@
           "penetration_pct": 1.8
         },
         {
-          "skill_id": "azure",
-          "skill_name": "Microsoft Azure",
-          "category": "Cloud",
+          "skill_id": "pytorch",
+          "skill_name": "PyTorch",
+          "category": "Framework",
           "job_count": 1,
           "penetration_pct": 1.8
         },
         {
-          "skill_id": "pytorch",
-          "skill_name": "PyTorch",
-          "category": "Framework",
+          "skill_id": "azure",
+          "skill_name": "Microsoft Azure",
+          "category": "Cloud",
           "job_count": 1,
           "penetration_pct": 1.8
         }
@@ -4936,10 +5327,6 @@
           "job_count": 8
         },
         {
-          "company_name": "Google (Alphabet)",
-          "job_count": 6
-        },
-        {
           "company_name": "Alphabet Inc. (Class A)",
           "job_count": 6
         },
@@ -4948,11 +5335,15 @@
           "job_count": 6
         },
         {
-          "company_name": "Reddit",
-          "job_count": 3
+          "company_name": "Google (Alphabet)",
+          "job_count": 6
         },
         {
           "company_name": "UnitedHealth Group",
+          "job_count": 3
+        },
+        {
+          "company_name": "Reddit",
           "job_count": 3
         }
       ],
@@ -5083,32 +5474,32 @@
           "penetration_pct": 28.6
         },
         {
-          "skill_id": "sql",
-          "skill_name": "SQL",
-          "category": "Programming",
+          "skill_id": "fine_tuning",
+          "skill_name": "Fine-Tuning",
+          "category": "AI/ML",
           "job_count": 3,
           "penetration_pct": 10.7
         },
         {
-          "skill_id": "fine_tuning",
-          "skill_name": "Fine-Tuning",
-          "category": "AI/ML",
+          "skill_id": "sql",
+          "skill_name": "SQL",
+          "category": "Programming",
           "job_count": 3,
           "penetration_pct": 10.7
         }
       ],
       "top_technologies": [
         {
-          "skill_id": "langchain",
-          "skill_name": "LangChain",
-          "category": "Framework",
+          "skill_id": "azure",
+          "skill_name": "Microsoft Azure",
+          "category": "Cloud",
           "job_count": 7,
           "penetration_pct": 25.0
         },
         {
-          "skill_id": "azure",
-          "skill_name": "Microsoft Azure",
-          "category": "Cloud",
+          "skill_id": "langchain",
+          "skill_name": "LangChain",
+          "category": "Framework",
           "job_count": 7,
           "penetration_pct": 25.0
         },
@@ -5127,13 +5518,6 @@
           "penetration_pct": 14.3
         },
         {
-          "skill_id": "databricks",
-          "skill_name": "Databricks",
-          "category": "Cloud",
-          "job_count": 3,
-          "penetration_pct": 10.7
-        },
-        {
           "skill_id": "evals_observability",
           "skill_name": "MLOps / Evals & Observability",
           "category": "MLOps",
@@ -5141,16 +5525,23 @@
           "penetration_pct": 10.7
         },
         {
-          "skill_id": "llama_index",
-          "skill_name": "LlamaIndex",
-          "category": "Framework",
-          "job_count": 2,
-          "penetration_pct": 7.1
+          "skill_id": "databricks",
+          "skill_name": "Databricks",
+          "category": "Cloud",
+          "job_count": 3,
+          "penetration_pct": 10.7
         },
         {
           "skill_id": "aws",
           "skill_name": "AWS",
           "category": "Cloud",
+          "job_count": 2,
+          "penetration_pct": 7.1
+        },
+        {
+          "skill_id": "docker",
+          "skill_name": "Docker",
+          "category": "MLOps",
           "job_count": 2,
           "penetration_pct": 7.1
         }
@@ -5173,11 +5564,11 @@
           "job_count": 2
         },
         {
-          "company_name": "GE Vernova",
+          "company_name": "Datadog",
           "job_count": 2
         },
         {
-          "company_name": "Datadog",
+          "company_name": "GE Vernova",
           "job_count": 2
         }
       ],
@@ -5294,16 +5685,16 @@
           "penetration_pct": 23.8
         },
         {
-          "skill_id": "powerbi",
-          "skill_name": "Power BI",
-          "category": "Business",
+          "skill_id": "sql",
+          "skill_name": "SQL",
+          "category": "Programming",
           "job_count": 4,
           "penetration_pct": 19.0
         },
         {
-          "skill_id": "sql",
-          "skill_name": "SQL",
-          "category": "Programming",
+          "skill_id": "powerbi",
+          "skill_name": "Power BI",
+          "category": "Business",
           "job_count": 4,
           "penetration_pct": 19.0
         },
@@ -5315,9 +5706,9 @@
           "penetration_pct": 19.0
         },
         {
-          "skill_id": "nlp",
-          "skill_name": "Natural Language Processing",
-          "category": "AI/ML",
+          "skill_id": "excel",
+          "skill_name": "Excel",
+          "category": "Business",
           "job_count": 1,
           "penetration_pct": 4.8
         }
@@ -5329,20 +5720,6 @@
           "category": "MLOps",
           "job_count": 6,
           "penetration_pct": 28.6
-        },
-        {
-          "skill_id": "spark",
-          "skill_name": "Apache Spark",
-          "category": "Framework",
-          "job_count": 2,
-          "penetration_pct": 9.5
-        },
-        {
-          "skill_id": "azure",
-          "skill_name": "Microsoft Azure",
-          "category": "Cloud",
-          "job_count": 2,
-          "penetration_pct": 9.5
         },
         {
           "skill_id": "gcp",
@@ -5359,6 +5736,27 @@
           "penetration_pct": 9.5
         },
         {
+          "skill_id": "spark",
+          "skill_name": "Apache Spark",
+          "category": "Framework",
+          "job_count": 2,
+          "penetration_pct": 9.5
+        },
+        {
+          "skill_id": "azure",
+          "skill_name": "Microsoft Azure",
+          "category": "Cloud",
+          "job_count": 2,
+          "penetration_pct": 9.5
+        },
+        {
+          "skill_id": "databricks",
+          "skill_name": "Databricks",
+          "category": "Cloud",
+          "job_count": 1,
+          "penetration_pct": 4.8
+        },
+        {
           "skill_id": "ms_fabric",
           "skill_name": "Microsoft Fabric",
           "category": "Cloud",
@@ -5371,22 +5769,15 @@
           "category": "Cloud",
           "job_count": 1,
           "penetration_pct": 4.8
-        },
-        {
-          "skill_id": "databricks",
-          "skill_name": "Databricks",
-          "category": "Cloud",
-          "job_count": 1,
-          "penetration_pct": 4.8
         }
       ],
       "top_companies": [
         {
-          "company_name": "Ares Management",
+          "company_name": "Synchrony Financial",
           "job_count": 2
         },
         {
-          "company_name": "Synchrony Financial",
+          "company_name": "Ares Management",
           "job_count": 2
         },
         {
@@ -5394,15 +5785,15 @@
           "job_count": 1
         },
         {
-          "company_name": "Citigroup",
+          "company_name": "Prudential Financial",
           "job_count": 1
         },
         {
-          "company_name": "CDW Corporation",
+          "company_name": "Everest Group",
           "job_count": 1
         },
         {
-          "company_name": "OpenAI",
+          "company_name": "Robinhood",
           "job_count": 1
         }
       ],
@@ -5486,13 +5877,6 @@
       },
       "top_skills": [
         {
-          "skill_id": "python",
-          "skill_name": "Python",
-          "category": "Programming",
-          "job_count": 5,
-          "penetration_pct": 33.3
-        },
-        {
           "skill_id": "genai",
           "skill_name": "GenAI / Generative AI",
           "category": "AI/ML",
@@ -5500,8 +5884,15 @@
           "penetration_pct": 33.3
         },
         {
-          "skill_id": "rag",
-          "skill_name": "RAG (Retrieval-Augmented Generation)",
+          "skill_id": "python",
+          "skill_name": "Python",
+          "category": "Programming",
+          "job_count": 5,
+          "penetration_pct": 33.3
+        },
+        {
+          "skill_id": "llm",
+          "skill_name": "LLM / Large Language Models",
           "category": "AI/ML",
           "job_count": 3,
           "penetration_pct": 20.0
@@ -5514,8 +5905,8 @@
           "penetration_pct": 20.0
         },
         {
-          "skill_id": "llm",
-          "skill_name": "LLM / Large Language Models",
+          "skill_id": "rag",
+          "skill_name": "RAG (Retrieval-Augmented Generation)",
           "category": "AI/ML",
           "job_count": 3,
           "penetration_pct": 20.0
@@ -5572,16 +5963,9 @@
           "penetration_pct": 26.7
         },
         {
-          "skill_id": "airflow",
-          "skill_name": "Apache Airflow",
+          "skill_id": "pytorch",
+          "skill_name": "PyTorch",
           "category": "Framework",
-          "job_count": 3,
-          "penetration_pct": 20.0
-        },
-        {
-          "skill_id": "gcp",
-          "skill_name": "Google Cloud Platform",
-          "category": "Cloud",
           "job_count": 3,
           "penetration_pct": 20.0
         },
@@ -5598,17 +5982,16 @@
           "category": "Cloud",
           "job_count": 3,
           "penetration_pct": 20.0
+        },
+        {
+          "skill_id": "airflow",
+          "skill_name": "Apache Airflow",
+          "category": "Framework",
+          "job_count": 3,
+          "penetration_pct": 20.0
         }
       ],
       "top_companies": [
-        {
-          "company_name": "UnitedHealth Group",
-          "job_count": 2
-        },
-        {
-          "company_name": "TE Connectivity",
-          "job_count": 2
-        },
         {
           "company_name": "Skydance Corporation",
           "job_count": 2
@@ -5618,11 +6001,19 @@
           "job_count": 2
         },
         {
-          "company_name": "GE Vernova",
+          "company_name": "TE Connectivity",
+          "job_count": 2
+        },
+        {
+          "company_name": "UnitedHealth Group",
+          "job_count": 2
+        },
+        {
+          "company_name": "Deere & Company",
           "job_count": 1
         },
         {
-          "company_name": "S&P Global",
+          "company_name": "Expand Energy",
           "job_count": 1
         }
       ],
@@ -5638,7 +6029,7 @@
           "share_pct": 21.4
         },
         {
-          "sector": "Energy",
+          "sector": "Communication Services",
           "job_count": 2,
           "share_pct": 14.3
         },
@@ -5648,7 +6039,7 @@
           "share_pct": 14.3
         },
         {
-          "sector": "Communication Services",
+          "sector": "Energy",
           "job_count": 2,
           "share_pct": 14.3
         }
@@ -5989,10 +6380,10 @@
         "penetration_in_gcp_pct": 0.3,
         "penetration_all_pct": 0.03,
         "top_paired_skills": [
-          "Kubernetes",
-          "Tableau",
-          "Python",
-          "dbt"
+          "Looker",
+          "Apache Spark",
+          "Google Cloud Dataflow",
+          "SQL"
         ]
       }
     ],
@@ -6022,11 +6413,11 @@
         "job_count": 29
       },
       {
-        "canonical_name": "Engineering Manager (AI/Data)",
+        "canonical_name": "AI / Data Product Manager",
         "job_count": 12
       },
       {
-        "canonical_name": "AI / Data Product Manager",
+        "canonical_name": "Engineering Manager (AI/Data)",
         "job_count": 12
       }
     ],
@@ -6077,8 +6468,8 @@
         "job_count": 14
       },
       {
-        "company_name": "Reddit",
-        "sector": "Communication Services",
+        "company_name": "Scale AI",
+        "sector": null,
         "job_count": 13
       }
     ]
