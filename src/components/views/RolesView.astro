@@ -222,6 +222,20 @@ const topRolesForChart = roles.filter((r) => r.job_count > 0).slice(0, 12);
               )}
             </div>
           </div>
+
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-3 border-t border-slate-800/80">
+            <p class="text-xs font-mono text-slate-400">
+              {role.sample_postings && role.sample_postings.length > 0
+                ? `${role.sample_postings.length} ${lang === 'cs' ? 'aktivních korporátních inzerátů se vzorkem prokliků' : 'live corporate ATS job postings available in full profile'}`
+                : ''}
+            </p>
+            <a
+              href={lang === 'en' ? `/roles/${role.category_id}` : `/cs/roles/${role.category_id}`}
+              class="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-xs font-mono font-semibold bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 hover:bg-cyan-500/25 hover:border-cyan-400 transition-colors shrink-0"
+            >
+              {t.viewDetailBtn}
+            </a>
+          </div>
         </div>
       </details>
     ))}

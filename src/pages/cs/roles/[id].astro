@@ -1,0 +1,14 @@
+---
+import RoleDetailView from '../../../components/views/RoleDetailView.astro';
+import marketData from '../../../data/market-data.json';
+
+export async function getStaticPaths() {
+  return marketData.roles.map((role) => ({
+    params: { id: role.category_id },
+  }));
+}
+
+const { id } = Astro.params;
+---
+
+<RoleDetailView lang="cs" roleId={id as string} />

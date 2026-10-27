@@ -26,8 +26,13 @@ const navItems = navKeys.map((key) => ({
   href: getLocalePath(lang, key),
 }));
 
-const enHref = getLocalePath('en', activeNav);
-const csHref = getLocalePath('cs', activeNav);
+const currentPath = Astro.url.pathname;
+const enHref = currentPath.startsWith('/cs')
+  ? currentPath.replace(/^\/cs(\/|$)/, '$1') || '/'
+  : currentPath;
+const csHref = currentPath.startsWith('/cs')
+  ? currentPath
+  : `/cs${currentPath === '/' ? '/' : currentPath}`;
 const homeHref = getLocalePath(lang, 'dashboard');
 
 const { meta, market_vitality } = marketData;

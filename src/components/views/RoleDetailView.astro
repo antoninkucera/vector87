@@ -1,0 +1,513 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import marketData from '../../data/market-data.json';
+import { ACADEMY_COURSES, CERTIFICATIONS_LIST } from '../../data/academy';
+import { ui, type Locale } from '../../i18n/ui';
+
+interface Props {
+  lang: Locale;
+  roleId: string;
+}
+
+const { lang, roleId } = Astro.props;
+const t = ui[lang].roleDetail;
+const rolesNav = ui[lang].roles;
+
+const role = marketData.roles.find((r) => r.category_id === roleId);
+if (!role) {
+  throw new Error(`Role ${roleId} not found in marketData.roles`);
+}
+
+// Map domain to academy track
+const domainTrackMap: Record<string, string> = {
+  'AI/ML': 'applied-ai',
+  'Data Engineering': 'data-engineering',
+  'Analytics & DS': 'analytics',
+  'Product': 'analytics',
+  'Management': 'analytics',
+  'Executive': 'analytics',
+};
+const targetTrackId = domainTrackMap[role.domain] || 'analytics';
+
+// Skill names to match
+const roleSkillNames = [
+  ...role.top_skills.map((s) => s.skill_name.toLowerCase()),
+  ...role.top_technologies.map((t) => t.skill_name.toLowerCase()),
+];
+
+// Match courses: by track or overlapping skills
+const recommendedCourses = ACADEMY_COURSES.filter((course) => {
+  if (course.trackId === targetTrackId) return true;
+  return course.skills.some((sk) =>
+    roleSkillNames.some((rsk) => rsk.includes(sk.toLowerCase()) || sk.toLowerCase().includes(rsk))
+  );
+}).slice(0, 3);
+
+// Match certifications: by skills overlap or fallback
+const recommendedCerts = CERTIFICATIONS_LIST.filter((cert) => {
+  return cert.skills.some((sk) =>
+    roleSkillNames.some((rsk) => rsk.includes(sk.toLowerCase()) || sk.toLowerCase().includes(rsk))
+  );
+}).slice(0, 2);
+
+// If no certs matched specifically, pick top 2 relevant to track
+const finalCerts = recommendedCerts.length > 0 ? recommendedCerts : CERTIFICATIONS_LIST.slice(0, 2);
+
+// Related roles within same domain
+const relatedRoles = marketData.roles
+  .filter((r) => r.domain === role.domain && r.category_id !== role.category_id)
+  .slice(0, 4);
+
+const pageTitle =
+  lang === 'cs'
+    ? `${role.canonical_name} — Požadavky trhu, dovednosti & inzeráty | Vector87`
+    : `${role.canonical_name} — Market Demand, Skills & Live Postings | Vector87`;
+
+const metaDescription =
+  role.synthesized_description[lang]?.[0] ||
+  `Quantitative market telemetry and skill requirements for ${role.canonical_name} across S&P 500 corporations.`;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Occupation',
+  name: role.canonical_name,
+  occupationalCategory: role.domain,
+  description: role.synthesized_description.en[0],
+  skills: role.top_skills.map((s) => s.skill_name).join(', '),
+  responsibilities: role.synthesized_description.en[1],
+  estimatedSalary: {
+    '@type': 'MonetaryAmountDistribution',
+    currency: 'USD',
+  },
+};
+---
+
+<Layout title={pageTitle} description={metaDescription} activeNav="roles" lang={lang}>
+  <!-- Structured Data JSON-LD for SEO -->
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <!-- Breadcrumb Navigation -->
+  <nav class="mb-6 flex items-center gap-2 text-xs font-mono text-slate-400" aria-label="Breadcrumb">
+    <a href={lang === 'en' ? '/' : '/cs/'} class="hover:text-cyan-300 transition-colors">
+      {t.breadcrumbHome}
+    </a>
+    <span class="text-slate-600">/</span>
+    <a href={lang === 'en' ? '/roles' : '/cs/roles'} class="hover:text-cyan-300 transition-colors">
+      {t.breadcrumbRoles}
+    </a>
+    <span class="text-slate-600">/</span>
+    <span class="text-cyan-300 font-semibold">{role.canonical_name}</span>
+  </nav>
+
+  <!-- Hero Header -->
+  <section class="mb-10 pb-8 border-b border-slate-800/80">
+    <div class="space-y-4 max-w-4xl">
+      <div class="flex flex-wrap items-center gap-2.5">
+        <span class="px-2.5 py-1 rounded text-xs font-mono uppercase tracking-wider bg-cyan-500/10 text-cyan-300 border border-cyan-500/30">
+          {t.tag}
+        </span>
+        <span class="px-2.5 py-1 rounded text-xs font-mono uppercase bg-slate-800 text-slate-300 border border-slate-700">
+          {role.domain}
+        </span>
+        <span class="px-2.5 py-1 rounded text-xs font-mono uppercase bg-slate-900 text-slate-400 border border-slate-800">
+          Track: {role.track}
+        </span>
+        {role.cz_job_count > 0 && (
+          <span class="px-2.5 py-1 rounded text-xs font-mono bg-emerald-500/10 text-emerald-300 border border-emerald-500/30">
+            CZ Sample: {role.cz_job_count} {t.positionsWord}
+          </span>
+        )}
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+        {role.canonical_name}
+      </h1>
+
+      <p class="text-base sm:text-lg text-slate-300 leading-relaxed font-light">
+        {role.synthesized_description[lang][0]}
+      </p>
+    </div>
+
+    <!-- KPI Grid -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 pt-8">
+      <div class="p-4 rounded-xl panel-surface border border-slate-800">
+        <div class="text-[10px] font-mono uppercase text-slate-400 tracking-wider mb-1">{t.kpiOpenJobs}</div>
+        <div class="text-2xl font-bold font-mono text-cyan-300">{role.job_count.toLocaleString('en-US')}</div>
+        <div class="text-[11px] text-slate-400 mt-0.5">{t.kpiOpenJobsSub}</div>
+      </div>
+
+      <div class="p-4 rounded-xl panel-surface border border-slate-800">
+        <div class="text-[10px] font-mono uppercase text-slate-400 tracking-wider mb-1">{t.kpiSp500}</div>
+        <div class="text-2xl font-bold font-mono text-white">
+          {role.job_count > 0 ? Math.round((role.sp500_job_count / role.job_count) * 100) : 0}%
+        </div>
+        <div class="text-[11px] text-slate-400 mt-0.5">{role.sp500_job_count} S&P 500 {t.positionsWord}</div>
+      </div>
+
+      <div class="p-4 rounded-xl panel-surface border border-slate-800">
+        <div class="text-[10px] font-mono uppercase text-slate-400 tracking-wider mb-1">{t.kpiSeniorPlus}</div>
+        <div class="text-2xl font-bold font-mono text-amber-300">{role.senior_plus_pct}%</div>
+        <div class="text-[11px] text-slate-400 mt-0.5">{t.kpiSeniorPlusSub}</div>
+      </div>
+
+      <div class="p-4 rounded-xl panel-surface border border-slate-800">
+        <div class="text-[10px] font-mono uppercase text-slate-400 tracking-wider mb-1">{t.kpiRemote}</div>
+        <div class="text-2xl font-bold font-mono text-emerald-300">{role.remote_pct}%</div>
+        <div class="text-[11px] text-slate-400 mt-0.5">{t.kpiRemoteSub}</div>
+      </div>
+
+      <div class="p-4 rounded-xl panel-surface border border-slate-800">
+        <div class="text-[10px] font-mono uppercase text-slate-400 tracking-wider mb-1">{t.kpiHeadcount}</div>
+        <div class="text-2xl font-bold font-mono text-slate-200">
+          {role.occupied_seats ? role.occupied_seats.toLocaleString('en-US') : 'N/A'}
+        </div>
+        <div class="text-[11px] text-slate-400 mt-0.5">{t.kpiHeadcountSub}</div>
+      </div>
+
+      <div class="p-4 rounded-xl panel-surface border border-slate-800">
+        <div class="text-[10px] font-mono uppercase text-slate-400 tracking-wider mb-1">{t.kpiExpansion}</div>
+        <div class="text-2xl font-bold font-mono text-purple-300">
+          {role.expansion_index_pct ? `+${role.expansion_index_pct}%` : 'N/A'}
+        </div>
+        <div class="text-[11px] text-slate-400 mt-0.5">{t.kpiExpansionSub}</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Executive Synthesis Narrative -->
+  <section class="mb-12 p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-slate-900/90 to-[#070b14]/90 border border-slate-800 shadow-xl space-y-4">
+    <div class="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-cyan-400">
+      <span>{t.synthesisTag}</span>
+      <span class="text-slate-600">//</span>
+      <span>{t.synthesisTitle}</span>
+    </div>
+    <div class="space-y-4 max-w-4xl text-slate-200 text-sm sm:text-base leading-relaxed">
+      {role.synthesized_description[lang].map((p) => (
+        <p>{p}</p>
+      ))}
+    </div>
+  </section>
+
+  <!-- Skills & Technology Architecture Grid -->
+  <section class="mb-12 grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <!-- Core Skills -->
+    <div class="p-6 rounded-2xl panel-surface border border-slate-800 space-y-5">
+      <div>
+        <div class="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-cyan-300">
+          <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+          <span>{t.skillsTitle}</span>
+        </div>
+        <p class="text-xs text-slate-400 mt-1">{t.skillsSub}</p>
+      </div>
+
+      {role.top_skills.length > 0 ? (
+        <div class="space-y-3">
+          {role.top_skills.map((sk) => (
+            <div class="space-y-1">
+              <div class="flex items-center justify-between text-xs font-mono">
+                <span class="text-slate-200 font-semibold">{sk.skill_name}</span>
+                <span class="text-cyan-300 font-bold">{sk.penetration_pct}% ({sk.job_count} {t.positionsWord})</span>
+              </div>
+              <div class="w-full bg-slate-800/80 rounded-full h-2 overflow-hidden">
+                <div
+                  class="bg-cyan-400 h-2 rounded-full transition-all duration-500"
+                  style={`width: ${Math.min(sk.penetration_pct * 1.2, 100)}%`}
+                ></div>
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p class="text-xs font-mono text-slate-500">{rolesNav.emptySample}</p>
+      )}
+    </div>
+
+    <!-- Tech Stack & Frameworks -->
+    <div class="p-6 rounded-2xl panel-surface border border-slate-800 space-y-5">
+      <div>
+        <div class="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-blue-400">
+          <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+          <span>{t.techTitle}</span>
+        </div>
+        <p class="text-xs text-slate-400 mt-1">{t.techSub}</p>
+      </div>
+
+      {role.top_technologies.length > 0 ? (
+        <div class="space-y-3">
+          {role.top_technologies.map((tech) => (
+            <div class="space-y-1">
+              <div class="flex items-center justify-between text-xs font-mono">
+                <span class="text-slate-200 font-semibold">{tech.skill_name}</span>
+                <span class="text-blue-300 font-bold">{tech.penetration_pct}% ({tech.job_count} {t.positionsWord})</span>
+              </div>
+              <div class="w-full bg-slate-800/80 rounded-full h-2 overflow-hidden">
+                <div
+                  class="bg-blue-400 h-2 rounded-full transition-all duration-500"
+                  style={`width: ${Math.min(tech.penetration_pct * 1.5, 100)}%`}
+                ></div>
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p class="text-xs font-mono text-slate-500">{rolesNav.emptySample}</p>
+      )}
+    </div>
+  </section>
+
+  <!-- Seniority, Companies & Sectors Section -->
+  <section class="mb-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+    <!-- Seniority Breakdown -->
+    <div class="p-6 rounded-2xl panel-surface border border-slate-800 space-y-4">
+      <div>
+        <h3 class="text-xs font-mono uppercase tracking-wider text-purple-300 font-semibold">{t.seniorityTitle}</h3>
+        <p class="text-[11px] text-slate-400">{t.senioritySub}</p>
+      </div>
+      <div class="space-y-2.5">
+        {role.seniority_breakdown.map((sen) => (
+          <div class="flex items-center justify-between text-xs font-mono">
+            <span class="text-slate-300">{sen.seniority}</span>
+            <span class="text-purple-300 font-bold">{sen.share_pct}%</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Top Hiring Companies -->
+    <div class="p-6 rounded-2xl panel-surface border border-slate-800 space-y-4">
+      <div>
+        <h3 class="text-xs font-mono uppercase tracking-wider text-emerald-300 font-semibold">{t.companiesTitle}</h3>
+        <p class="text-[11px] text-slate-400">{t.companiesSub}</p>
+      </div>
+      {role.top_companies.length > 0 ? (
+        <ul class="space-y-2.5 text-xs font-mono">
+          {role.top_companies.map((comp) => (
+            <li class="flex items-center justify-between gap-2">
+              <span class="text-slate-200 truncate">{comp.company_name}</span>
+              <span class="text-emerald-300 font-bold shrink-0">{comp.job_count} {t.positionsWord}</span>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="text-xs font-mono text-slate-500">{rolesNav.emptyPostings}</p>
+      )}
+    </div>
+
+    <!-- S&P 500 Sectors -->
+    <div class="p-6 rounded-2xl panel-surface border border-slate-800 space-y-4">
+      <div>
+        <h3 class="text-xs font-mono uppercase tracking-wider text-amber-300 font-semibold">{t.sectorsTitle}</h3>
+        <p class="text-[11px] text-slate-400">{t.sectorsSub}</p>
+      </div>
+      {role.top_sectors.length > 0 ? (
+        <ul class="space-y-2.5 text-xs font-mono">
+          {role.top_sectors.map((sec) => (
+            <li class="flex items-center justify-between gap-2">
+              <span class="text-slate-200 truncate">{sec.sector}</span>
+              <span class="text-amber-300 font-bold shrink-0">{sec.share_pct}%</span>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="text-xs font-mono text-slate-500">{rolesNav.emptySp500}</p>
+      )}
+    </div>
+  </section>
+
+  <!-- Live Enterprise Job Postings Sample -->
+  <section class="mb-12">
+    <div class="mb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+      <div>
+        <span class="text-xs font-mono uppercase tracking-widest text-cyan-400">03 // LIVE ATS SPECIMENS</span>
+        <h2 class="text-2xl font-bold text-white tracking-tight mt-1">{t.postingsTitle}</h2>
+        <p class="text-xs sm:text-sm text-slate-400 mt-1">{t.postingsSub}</p>
+      </div>
+      <span class="text-xs font-mono text-slate-400">
+        {role.sample_postings?.length || 0} {lang === 'cs' ? 'aktivních pozic' : 'active openings'}
+      </span>
+    </div>
+
+    {role.sample_postings && role.sample_postings.length > 0 ? (
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {role.sample_postings.map((job) => (
+          <div class="p-5 rounded-xl panel-surface border border-slate-800 hover:border-slate-700 transition-colors flex flex-col justify-between gap-4">
+            <div class="space-y-2">
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="text-xs font-bold text-cyan-300">{job.company_name}</span>
+                {job.is_sp500 && (
+                  <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-cyan-500/10 text-cyan-300 border border-cyan-500/30">
+                    S&P 500
+                  </span>
+                )}
+                <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-800 text-slate-300 border border-slate-700">
+                  {job.location}
+                </span>
+                {job.work_mode && job.work_mode !== 'Unspecified' && (
+                  <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-500/10 text-emerald-300 border border-emerald-500/30">
+                    {job.work_mode}
+                  </span>
+                )}
+              </div>
+              <h3 class="text-base font-bold text-white leading-snug">{job.title}</h3>
+              {job.seniority && (
+                <div class="text-xs font-mono text-slate-400">Seniority tier: <strong class="text-slate-300">{job.seniority}</strong></div>
+              )}
+            </div>
+
+            <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between">
+              <span class="text-[11px] font-mono text-slate-500">
+                {job.posted_at ? `Posted: ${job.posted_at}` : 'Active Vacancy'}
+              </span>
+              <a
+                href={job.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono font-semibold bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 hover:bg-cyan-500/25 hover:border-cyan-400 transition-colors"
+              >
+                {t.applyBtn}
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    ) : (
+      <div class="p-8 rounded-xl panel-surface border border-slate-800 text-center font-mono text-xs text-slate-400">
+        {t.noPostings}
+      </div>
+    )}
+  </section>
+
+  <!-- Recommended Skill Tracks & Certifications (Monetization & Internal linking) -->
+  <section class="mb-14 p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-slate-900/90 to-[#070b14]/90 border border-slate-800 shadow-xl space-y-6">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-slate-800/80 pb-6">
+      <div>
+        <span class="text-xs font-mono uppercase tracking-widest text-emerald-400">04 // BRIDGING THE SKILL GAP</span>
+        <h2 class="text-2xl font-bold text-white tracking-tight mt-1">{t.educationTitle}</h2>
+        <p class="text-xs sm:text-sm text-slate-400 mt-1 max-w-2xl">{t.educationSub}</p>
+      </div>
+      <a
+        href={lang === 'en' ? '/academy' : '/cs/academy'}
+        class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-mono font-semibold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/25 transition-colors shrink-0"
+      >
+        {t.exploreAcademyBtn}
+      </a>
+    </div>
+
+    <!-- Courses & Certs Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      {recommendedCourses.map((course) => (
+        <div class="p-5 rounded-xl bg-slate-900/90 border border-slate-800 flex flex-col justify-between gap-4">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono uppercase bg-emerald-500/10 text-emerald-300 border border-emerald-500/30">
+                {course.platform}
+              </span>
+              <span class="text-[11px] font-mono text-slate-400">{course.duration[lang]}</span>
+            </div>
+
+            <h3 class="text-sm font-bold text-white leading-snug">{course.title[lang]}</h3>
+
+            <p class="text-xs text-slate-300 line-clamp-3 leading-relaxed">
+              {course.description[lang]}
+            </p>
+
+            <div class="flex flex-wrap gap-1.5 pt-1">
+              {course.skills.map((sk) => (
+                <span class="px-1.5 py-0.5 rounded text-[10px] font-mono bg-slate-800 text-slate-300">
+                  {sk}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div class="pt-3 border-t border-slate-800/80">
+            <a
+              href={course.url}
+              target="_blank"
+              rel="sponsored noopener noreferrer"
+              class="w-full inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg text-xs font-mono font-semibold bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 hover:bg-cyan-500/25 transition-colors"
+            >
+              Enroll on {course.platform} ↗
+            </a>
+          </div>
+        </div>
+      ))}
+
+      {finalCerts.map((cert) => (
+        <div class="p-5 rounded-xl bg-slate-900/90 border border-slate-800 flex flex-col justify-between gap-4">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono uppercase bg-purple-500/10 text-purple-300 border border-purple-500/30">
+                CERTIFICATION
+              </span>
+              <span class="text-[11px] font-mono text-slate-400">{cert.issuer}</span>
+            </div>
+
+            <h3 class="text-sm font-bold text-white leading-snug">{cert.title}</h3>
+
+            <p class="text-xs text-slate-300 line-clamp-3 leading-relaxed">
+              {cert.summary[lang]}
+            </p>
+
+            <div class="flex flex-wrap gap-1.5 pt-1">
+              {cert.skills.map((sk) => (
+                <span class="px-1.5 py-0.5 rounded text-[10px] font-mono bg-slate-800 text-slate-300">
+                  {sk}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div class="pt-3 border-t border-slate-800/80">
+            <a
+              href={cert.url}
+              target="_blank"
+              rel="sponsored noopener noreferrer"
+              class="w-full inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg text-xs font-mono font-semibold bg-purple-500/15 text-purple-300 border border-purple-500/30 hover:bg-purple-500/25 transition-colors"
+            >
+              Official Guide & Exam ↗
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Related Roles in Domain -->
+  {relatedRoles.length > 0 && (
+    <section class="mb-14 space-y-4">
+      <h2 class="text-sm font-mono uppercase tracking-wider text-slate-400">
+        {t.relatedRolesTitle}: <span class="text-cyan-300 font-bold">{role.domain}</span>
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {relatedRoles.map((relRole) => (
+          <a
+            href={lang === 'en' ? `/roles/${relRole.category_id}` : `/cs/roles/${relRole.category_id}`}
+            class="p-4 rounded-xl panel-surface border border-slate-800 hover:border-cyan-500/40 transition-colors group block space-y-2"
+          >
+            <div class="flex items-center justify-between text-xs font-mono text-slate-400">
+              <span>{relRole.track}</span>
+              <span class="text-cyan-400 font-bold">{relRole.job_count} {t.positionsWord}</span>
+            </div>
+            <h3 class="text-sm font-bold text-white group-hover:text-cyan-300 transition-colors">
+              {relRole.canonical_name}
+            </h3>
+            <div class="text-[11px] text-slate-400">
+              Senior+: {relRole.senior_plus_pct}% • S&P 500: {relRole.sp500_job_count}
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- Footer Navigation -->
+  <div class="pt-6 border-t border-slate-800/80 flex items-center justify-between">
+    <a
+      href={lang === 'en' ? '/roles' : '/cs/roles'}
+      class="text-xs font-mono font-semibold text-cyan-400 hover:text-cyan-300 transition-colors"
+    >
+      {t.backToRoles}
+    </a>
+  </div>
+</Layout>

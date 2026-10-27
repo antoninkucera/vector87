@@ -440,6 +440,25 @@
                 "share_pct": { "type": "number" }
               }
             }
+          },
+          "sample_postings": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["job_id", "title", "company_name", "is_sp500", "location", "url"],
+              "properties": {
+                "job_id": { "type": "string" },
+                "title": { "type": "string" },
+                "company_name": { "type": "string" },
+                "is_sp500": { "type": "boolean" },
+                "location": { "type": "string" },
+                "country_code": { "type": ["string", "null"] },
+                "seniority": { "type": ["string", "null"] },
+                "work_mode": { "type": ["string", "null"] },
+                "url": { "type": "string" },
+                "posted_at": { "type": ["string", "null"] }
+              }
+            }
           }
         }
       }

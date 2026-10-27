@@ -956,6 +956,79 @@ def export_market_data(db_path: Path | None = None, output_path: Path | None = N
         for cat_id, sen, cnt in role_sen_rows:
             role_sen_by_cat.setdefault(cat_id, {})[sen] = int(cnt)
 
+        # Přednačtení vzorku reálných aktivních inzerátů pro detail role (SEO a prolinky)
+        sample_rows = con.execute(
+            """
+            WITH candidate_jobs AS (
+                SELECT 
+                    r.category_id,
+                    j.job_id,
+                    j.title_raw AS title,
+                    comp.company_name,
+                    comp.is_sp500,
+                    COALESCE(
+                        CASE 
+                            WHEN j.city IS NOT NULL AND j.city != '' THEN j.city || ', ' || COALESCE(j.country_code, '')
+                            ELSE j.country_code 
+                        END, 
+                        'Global / Unspecified'
+                    ) AS location,
+                    j.country_code,
+                    j.seniority,
+                    COALESCE(j.work_mode, 'Unspecified') AS work_mode,
+                    j.url,
+                    CAST(j.posted_at AS VARCHAR) AS posted_at,
+                    ROW_NUMBER() OVER (
+                        PARTITION BY r.category_id, comp.company_name 
+                        ORDER BY 
+                            CASE WHEN LOWER(j.title_raw) LIKE '%' || LOWER(REPLACE(REPLACE(cat.canonical_name, ' (AI/ML)', ''), ' / ', ' ')) || '%' THEN 0 ELSE 1 END,
+                            j.posted_at DESC NULLS LAST,
+                            j.job_id
+                    ) as comp_rn
+                FROM bridge_job_roles r
+                JOIN dim_job_categories cat ON r.category_id = cat.category_id
+                JOIN fact_jobs j ON r.job_id = j.job_id
+                JOIN dim_companies comp ON j.company_id = comp.company_id
+                WHERE j.is_active = TRUE AND j.url IS NOT NULL AND j.url != ''
+            ),
+            ranked_jobs AS (
+                SELECT 
+                    *,
+                    ROW_NUMBER() OVER (
+                        PARTITION BY category_id 
+                        ORDER BY 
+                            CASE WHEN is_sp500 = TRUE THEN 0 ELSE 1 END,
+                            CASE WHEN url LIKE '%greenhouse.io%' OR url LIKE '%lever.co%' OR url LIKE '%careers.google.com%' THEN 0 ELSE 1 END,
+                            comp_rn,
+                            posted_at DESC NULLS LAST
+                    ) as rn
+                FROM candidate_jobs
+                WHERE comp_rn = 1
+            )
+            SELECT category_id, job_id, title, company_name, is_sp500, location, country_code, seniority, work_mode, url, posted_at
+            FROM ranked_jobs
+            WHERE rn <= 8
+            ORDER BY category_id, rn
+            """
+        ).fetchall()
+        role_samples_by_cat: dict[str, list[dict[str, Any]]] = {}
+        for row in sample_rows:
+            cat_id, jid, jtitle, cname, sp500_flag, loc, ccode, sen, wm, jurl, pdate = row
+            role_samples_by_cat.setdefault(cat_id, []).append(
+                {
+                    "job_id": jid,
+                    "title": jtitle,
+                    "company_name": cname,
+                    "is_sp500": bool(sp500_flag),
+                    "location": loc,
+                    "country_code": ccode,
+                    "seniority": sen,
+                    "work_mode": wm,
+                    "url": jurl,
+                    "posted_at": pdate,
+                }
+            )
+
         roles_output: list[dict[str, Any]] = []
         for r in role_base_rows:
             cat_id, can_name, domain, track, job_cnt, sp500_cnt, cz_cnt, sen_plus, rem_pct = r
@@ -1039,6 +1112,7 @@ def export_market_data(db_path: Path | None = None, output_path: Path | None = N
                     "top_companies": role_comps_by_cat.get(cat_id, []),
                     "top_sectors": top_sectors,
                     "seniority_breakdown": sen_breakdown,
+                    "sample_postings": role_samples_by_cat.get(cat_id, []),
                 }
             )
 

@@ -9,7 +9,7 @@ Hosted on GitHub Pages (`https://github.com/antoninkucera/vector87`), fully stat
 - Data: pre-generated JSON committed into this repo
 
 ## Localization (i18n)
-- Two supported locales: **English (`en`, primary/default)** at root routes (`/`, `/roles`, `/cloud-tech`, `/academy`, `/about`) and **Czech (`cs`)** at `/cs/*` (`/cs/`, `/cs/roles`, `/cs/cloud-tech`, `/cs/academy`, `/cs/about`). Old `/gcp-hub` and `/cs/gcp-hub` routes redirect to the Cloud & Tech section.
+- Two supported locales: **English (`en`, primary/default)** at root routes (`/`, `/roles`, `/roles/[id]`, `/cloud-tech`, `/academy`, `/about`) and **Czech (`cs`)** at `/cs/*` (`/cs/`, `/cs/roles`, `/cs/roles/[id]`, `/cs/cloud-tech`, `/cs/academy`, `/cs/about`). Old `/gcp-hub` and `/cs/gcp-hub` routes redirect to the Cloud & Tech section.
 - Architecture follows Rule #10 (Generic base + delta): shared view components in `src/components/views/` render both languages using typed dictionaries in `src/i18n/ui.ts` and localized `en`/`cs` fields in `src/data/market-data.json`.
 
 ## Visual identity
@@ -33,7 +33,7 @@ so changes there are possible when explicitly agreed.
 
 ## Data contract & feature rules
 - **Time-series trajectories**: Included in the JSON contract (`time_series.snapshots`, `time_series.monthly_inflow`). Early snapshots reflect initial scraper expansion rather than organic market growth; the exporter marks `has_mature_history` so the UI can annotate or toggle historical views cleanly as data matures over subsequent months.
-- **Role analysis & synthesized job descriptions**: Each canonical role in `roles` includes a 2-paragraph executive synthesis (`synthesized_description`), separate top core/analytical skills (`top_skills`) vs. engineering/cloud/framework technologies (`top_technologies`), plus top hiring companies (`top_companies`) and S&P 500 sector distribution (`top_sectors`). The export script merges curated/LLM-generated role narratives from `pipeline/role_descriptions.json` with deterministic fallback synthesis when a new role appears.
+- **Role analysis & synthesized job descriptions**: Each canonical role in `roles` includes a 2-paragraph executive synthesis (`synthesized_description`), separate top core/analytical skills (`top_skills`) vs. engineering/cloud/framework technologies (`top_technologies`), plus top hiring companies (`top_companies`), S&P 500 sector distribution (`top_sectors`), and representative live postings (`sample_postings`) with direct ATS application links. Each role features a dedicated subpage (`/roles/[id]` and `/cs/roles/[id]`) with SEO schema.org `Occupation` markup and dynamically matched courses/certifications from `src/data/academy.ts`. The export script merges curated/LLM-generated role narratives from `pipeline/role_descriptions.json` with deterministic fallback synthesis when a new role appears.
 - **Workforce headcount & LinkedIn/Coresignal ratios**: Supported via `headcount_analytics` (sourced from `fact_headcount_snapshots` and `v_hiring_intensity` in DuckDB), tracking occupied data/AI seats vs. open job postings (`hiring_intensity_ratio_pct`).
 
 ## About author section
