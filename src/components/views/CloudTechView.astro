@@ -259,6 +259,29 @@ const cloudJsonLd = {
       />
     </div>
 
+    <!-- GCP In-Demand Roles Quick Links -->
+    <div class="mb-8 p-4 rounded-xl panel-surface border border-slate-800/80 flex flex-wrap items-center justify-between gap-3 text-xs font-mono">
+      <span class="text-slate-400 font-semibold">{lang === 'cs' ? 'Prozkoumat profily klíčových GCP rolí:' : 'Explore key GCP role profiles:'}</span>
+      <div class="flex flex-wrap gap-2">
+        {gcp_hub.top_gcp_roles.slice(0, 6).map((gRole: any) => {
+          const matched = (marketData.roles as any[]).find((r) => r.canonical_name.toLowerCase() === gRole.canonical_name.toLowerCase());
+          if (!matched) return null;
+          const slug = matched.category_id.replace(/_/g, '-');
+          const href = lang === 'en' ? `/roles/${slug}` : `/cs/roles/${slug}`;
+          return (
+            <a
+              href={href}
+              class="px-2.5 py-1 rounded-md bg-blue-500/10 text-blue-300 border border-blue-500/30 hover:bg-blue-500/20 hover:border-blue-400 transition-colors inline-flex items-center gap-1.5"
+            >
+              <span>{matched.canonical_name}</span>
+              <span class="text-[10px] text-slate-400 font-bold">({gRole.job_count})</span>
+              <span>→</span>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+
     <!-- GCP Detailed Services Cards -->
     <div class="mb-8">
       <h3 class="text-base font-bold text-white mb-4">{t.svcSectionTitle}</h3>

@@ -79,6 +79,10 @@ export const ui = {
       geoTitle: 'Geographic Market Distribution',
       geoBadge: 'TOP 8 MARKETS',
       longitudinalLabel: 'LONGITUDINAL STATUS:',
+      topRolesTag: '01.5 // CORE TALENT DEMAND',
+      topRolesTitle: 'Top In-Demand AI & Data Roles',
+      topRolesSub: 'Highest corporate hiring volume across S&P 500 enterprises with direct synthesized profiles and skill requirements',
+      viewAllRolesBtn: 'EXPLORE ALL 21 CANONICAL ROLES →',
 
       s2Tag: '02 // INFRASTRUCTURE & TOOLING',
       s2Title: 'Technology & Cloud Stack',
@@ -503,6 +507,10 @@ export const ui = {
       geoTitle: 'Geografická distribuce trhu',
       geoBadge: 'TOP 8 TRHŮ',
       longitudinalLabel: 'LONGITUDINÁLNÍ STATUS:',
+      topRolesTag: '01.5 // KLÍČOVÁ POPTÁVKA PO TALENTU',
+      topRolesTitle: 'Nejžádanější AI a datové role',
+      topRolesSub: 'Nejvyšší objem otevřených pozic v korporacích S&P 500 s přímým proklikem na profily a dovednosti',
+      viewAllRolesBtn: 'PROZKOUMAT VŠECH 21 KANONICKÝCH ROLÍ →',
 
       s2Tag: '02 // INFRASTRUKTURA & NÁSTROJE',
       s2Title: 'Technologický a cloudový stack',

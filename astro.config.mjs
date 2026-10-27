@@ -14,7 +14,7 @@ export default defineConfig({
           cs: 'cs',
         },
       },
-      filter: (page) => !page.includes('/gcp-hub'),
+      filter: (page) => !page.includes('/gcp-hub') && !page.includes('_'),
     }),
   ],
   i18n: {

@@ -3,12 +3,32 @@ import RoleDetailView from '../../components/views/RoleDetailView.astro';
 import marketData from '../../data/market-data.json';
 
 export async function getStaticPaths() {
-  return marketData.roles.map((role) => ({
-    params: { id: role.category_id },
-  }));
+  const paths: any[] = [];
+  for (const role of marketData.roles) {
+    const kebabSlug = role.category_id.replace(/_/g, '-');
+    paths.push({
+      params: { id: kebabSlug },
+      props: { roleId: role.category_id, isAlias: false },
+    });
+    paths.push({
+      params: { id: role.category_id },
+      props: { roleId: role.category_id, isAlias: true, targetSlug: kebabSlug },
+    });
+  }
+  return paths;
 }
 
-const { id } = Astro.params;
+interface Props {
+  roleId: string;
+  isAlias: boolean;
+  targetSlug?: string;
+}
+
+const { roleId, isAlias, targetSlug } = Astro.props;
+
+if (isAlias && targetSlug) {
+  return Astro.redirect(`/roles/${targetSlug}`, 301);
+}
 ---
 
-<RoleDetailView lang="en" roleId={id as string} />
+<RoleDetailView lang="en" roleId={roleId} />

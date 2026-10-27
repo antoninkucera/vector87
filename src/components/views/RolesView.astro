@@ -24,7 +24,7 @@ const rolesJsonLd = {
     '@type': 'ListItem',
     position: idx + 1,
     name: role.canonical_name,
-    url: `https://vector87.com${lang === 'en' ? `/roles/${role.category_id}` : `/cs/roles/${role.category_id}`}`,
+    url: `https://vector87.com${lang === 'en' ? `/roles/${role.category_id.replace(/_/g, '-')}` : `/cs/roles/${role.category_id.replace(/_/g, '-')}`}`,
   })),
 };
 ---
@@ -243,7 +243,7 @@ const rolesJsonLd = {
                 : ''}
             </p>
             <a
-              href={lang === 'en' ? `/roles/${role.category_id}` : `/cs/roles/${role.category_id}`}
+              href={lang === 'en' ? `/roles/${role.category_id.replace(/_/g, '-')}` : `/cs/roles/${role.category_id.replace(/_/g, '-')}`}
               class="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-xs font-mono font-semibold bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 hover:bg-cyan-500/25 hover:border-cyan-400 transition-colors shrink-0"
             >
               {t.viewDetailBtn}

@@ -17,6 +17,22 @@ const role = marketData.roles.find((r) => r.category_id === roleId);
 if (!role) {
   throw new Error(`Role ${roleId} not found in marketData.roles`);
 }
+const roleKebabSlug = role.category_id.replace(/_/g, '-');
+
+// Map technologies to cloud & tech stack sections for cross-linking
+const cloudTechLinkMap: Record<string, string> = {
+  AWS: '#hyperscalers',
+  Azure: '#hyperscalers',
+  GCP: '#gcp',
+  'Google Cloud': '#gcp',
+  BigQuery: '#gcp',
+  Dataform: '#gcp',
+  Looker: '#gcp',
+  Dataflow: '#gcp',
+  'Vertex AI': '#gcp',
+  Databricks: '#lakehouse',
+  Snowflake: '#lakehouse',
+};
 
 // Map domain to academy track
 const domainTrackMap: Record<string, string> = {
@@ -79,7 +95,7 @@ const roleDetailGraph = {
       responsibilities: role.synthesized_description[lang]?.[1] || role.synthesized_description.en[1],
       mainEntityOfPage: {
         '@type': 'WebPage',
-        '@id': `https://vector87.com${lang === 'en' ? `/roles/${role.category_id}` : `/cs/roles/${role.category_id}`}`,
+        '@id': `https://vector87.com${lang === 'en' ? `/roles/${roleKebabSlug}` : `/cs/roles/${roleKebabSlug}`}`,
       },
     },
     {
@@ -101,7 +117,7 @@ const roleDetailGraph = {
           '@type': 'ListItem',
           position: 3,
           name: role.canonical_name,
-          item: `https://vector87.com${lang === 'en' ? `/roles/${role.category_id}` : `/cs/roles/${role.category_id}`}`,
+          item: `https://vector87.com${lang === 'en' ? `/roles/${roleKebabSlug}` : `/cs/roles/${roleKebabSlug}`}`,
         },
       ],
     },
@@ -261,7 +277,17 @@ const roleDetailGraph = {
           {role.top_technologies.map((tech) => (
             <div class="space-y-1">
               <div class="flex items-center justify-between text-xs font-mono">
-                <span class="text-slate-200 font-semibold">{tech.skill_name}</span>
+                {cloudTechLinkMap[tech.skill_name] ? (
+                  <a
+                    href={`${lang === 'en' ? '/cloud-tech' : '/cs/cloud-tech'}${cloudTechLinkMap[tech.skill_name]}`}
+                    class="text-slate-200 font-semibold hover:text-cyan-300 transition-colors inline-flex items-center gap-1 group/tech"
+                  >
+                    <span>{tech.skill_name}</span>
+                    <span class="text-[10px] text-cyan-400 group-hover/tech:translate-x-0.5 transition-transform">↗</span>
+                  </a>
+                ) : (
+                  <span class="text-slate-200 font-semibold">{tech.skill_name}</span>
+                )}
                 <span class="text-blue-300 font-bold">{tech.penetration_pct}% ({tech.job_count} {t.positionsWord})</span>
               </div>
               <div class="w-full bg-slate-800/80 rounded-full h-2 overflow-hidden">
@@ -506,7 +532,7 @@ const roleDetailGraph = {
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {relatedRoles.map((relRole) => (
           <a
-            href={lang === 'en' ? `/roles/${relRole.category_id}` : `/cs/roles/${relRole.category_id}`}
+            href={lang === 'en' ? `/roles/${relRole.category_id.replace(/_/g, '-')}` : `/cs/roles/${relRole.category_id.replace(/_/g, '-')}`}
             class="p-4 rounded-xl panel-surface border border-slate-800 hover:border-cyan-500/40 transition-colors group block space-y-2"
           >
             <div class="flex items-center justify-between text-xs font-mono text-slate-400">

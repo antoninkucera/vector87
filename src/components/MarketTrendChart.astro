@@ -61,6 +61,33 @@ const chartPayload = JSON.stringify({
 
   <div class:list={['relative w-full', heightClass]}>
     <canvas id={chartId} data-v87-chart={chartPayload} aria-label={title}></canvas>
+    
+    <!-- Accessible Semantic Data Table for Search Crawlers (SEO) and Screen Readers -->
+    <div class="sr-only">
+      <table>
+        <caption>{title} {subtitle ? `— ${subtitle}` : ''}</caption>
+        <thead>
+          <tr>
+            <th scope="col">Metric / Technology</th>
+            {datasets.map((d) => (
+              <th scope="col">{d.label}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {labels.map((label, idx) => (
+            <tr>
+              <th scope="row">{label}</th>
+              {datasets.map((d) => (
+                <td>
+                  {d.data && d.data[idx] !== undefined ? `${d.data[idx]}${valueSuffix}` : '—'}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 

@@ -23,6 +23,7 @@ const {
 } = marketData;
 
 const topCompaniesSlice = market_vitality.top_hiring_companies.slice(0, 10);
+const topSpotlightRoles = marketData.roles.filter((r) => r.job_count > 0).slice(0, 6);
 
 const cloudLabels = [
   ...tech_cloud_stack.hyperscalers.map((h) => h.skill_name),
@@ -270,6 +271,66 @@ const dashboardJsonLd = {
           </p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- 01.5: TOP IN-DEMAND CANONICAL ROLES SPOTLIGHT -->
+  <section id="top-roles" class="mb-14 scroll-mt-20">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
+      <div>
+        <span class="text-xs font-mono uppercase tracking-widest text-cyan-400">{t.topRolesTag}</span>
+        <h2 class="text-2xl font-bold text-white tracking-tight mt-0.5">{t.topRolesTitle}</h2>
+        <p class="text-xs text-slate-400 mt-1">{t.topRolesSub}</p>
+      </div>
+      <a
+        href={getLocalePath(lang, 'roles')}
+        class="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-cyan-400 hover:text-cyan-300 transition-colors shrink-0"
+      >
+        {t.viewAllRolesBtn}
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {topSpotlightRoles.map((role) => {
+        const roleSlug = role.category_id.replace(/_/g, '-');
+        const roleHref = lang === 'en' ? `/roles/${roleSlug}` : `/cs/roles/${roleSlug}`;
+        return (
+          <a
+            href={roleHref}
+            class="group p-5 rounded-xl panel-surface border border-slate-800 hover:border-cyan-500/40 transition-all flex flex-col justify-between gap-4 hover:shadow-lg hover:shadow-cyan-500/5"
+          >
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-2">
+                <span class="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-300 border border-cyan-500/30">
+                  {role.domain}
+                </span>
+                <span class="text-xs font-mono font-bold text-cyan-300 group-hover:text-cyan-200">
+                  {role.job_count.toLocaleString('en-US')} {lang === 'cs' ? 'pozic' : 'jobs'}
+                </span>
+              </div>
+              <h3 class="text-lg font-bold text-white group-hover:text-cyan-300 transition-colors">
+                {role.canonical_name}
+              </h3>
+              <p class="text-xs text-slate-400 line-clamp-2 mt-2 leading-relaxed">
+                {role.synthesized_description[lang]?.[0] || role.synthesized_description.en[0]}
+              </p>
+            </div>
+
+            <div class="pt-3 border-t border-slate-800/80 flex flex-wrap gap-1.5 items-center justify-between">
+              <div class="flex flex-wrap gap-1">
+                {role.top_skills.slice(0, 3).map((sk) => (
+                  <span class="px-1.5 py-0.5 rounded text-[10px] font-mono bg-slate-900 text-slate-300 border border-slate-800">
+                    {sk.skill_name}
+                  </span>
+                ))}
+              </div>
+              <span class="text-xs font-mono text-cyan-400 font-semibold group-hover:translate-x-0.5 transition-transform">
+                →
+              </span>
+            </div>
+          </a>
+        );
+      })}
     </div>
   </section>
 
