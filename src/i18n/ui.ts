@@ -409,6 +409,7 @@ export const ui = {
         'Vector87 was born as an independent counterweight to the marketing hype surrounding artificial intelligence. Instead of repeating vendor claims or LinkedIn impressions, we track where S&P 500 enterprises actually put their money, measured through verified job posts, required engineering competencies, and shifts in organizational hierarchy.',
       ctaBlog: 'PERSONAL WEBSITE & BLOG (akucera.eu) ↗',
       ctaLinkedin: 'LINKEDIN PROFILE ↗',
+      ctaTwitter: 'X (@antkucera) ↗',
       ctaSubstack: 'SUBSTACK NEWSLETTER ↗',
       brandCardTitle: 'WHY VECTOR 87?',
       brandCardP1:
@@ -837,6 +838,7 @@ export const ui = {
         'Vector87.com jsem postavil jako nezávislou, daty podloženou protiváhu k marketingovému humbuku kolem umělé inteligence. Místo dojmů sleduji, kam firmy z indexu S&P 500 a technologičtí lídři skutečně investují peníze: jaké pozice otevírají, které technologie po uchazečích reálně vyžadují a jak se mění složení jejich týmů.',
       ctaBlog: 'OSOBNÍ WEB & BLOG (akucera.eu) ↗',
       ctaLinkedin: 'LINKEDIN PROFIL ↗',
+      ctaTwitter: 'X (@antkucera) ↗',
       ctaSubstack: 'SUBSTACK NEWSLETTER ↗',
       brandCardTitle: 'PROČ PRÁVĚ VECTOR 87?',
       brandCardP1:
