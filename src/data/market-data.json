@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-10-27T06:47:57Z",
+    "generated_at": "2026-10-27T10:02:43Z",
     "schema_version": "1.0.0",
     "latest_snapshot_date": "2026-10-26",
     "total_tracked_companies": 931,
@@ -234,8 +234,8 @@
         "share_pct": 0.22
       },
       {
-        "country_code": "RO",
-        "country_name": "Romania",
+        "country_code": "IT",
+        "country_name": "Italy",
         "region": "EU",
         "job_count": 7,
         "share_pct": 0.17
@@ -700,13 +700,13 @@
             "job_count": 25
           },
           {
-            "company_name": "MongoDB",
-            "sector": null,
+            "company_name": "General Motors",
+            "sector": "Consumer Discretionary",
             "job_count": 20
           },
           {
-            "company_name": "General Motors",
-            "sector": "Consumer Discretionary",
+            "company_name": "MongoDB",
+            "sector": null,
             "job_count": 20
           },
           {
@@ -771,13 +771,13 @@
             "job_count": 66
           },
           {
-            "company_name": "MongoDB",
-            "sector": null,
+            "company_name": "General Motors",
+            "sector": "Consumer Discretionary",
             "job_count": 20
           },
           {
-            "company_name": "General Motors",
-            "sector": "Consumer Discretionary",
+            "company_name": "MongoDB",
+            "sector": null,
             "job_count": 20
           },
           {
@@ -1474,8 +1474,8 @@
     "total_snapshots": 27610,
     "total_occupied_seats": 187585,
     "coverage_note": {
-      "en": "Workforce intelligence integration tracking 187,585 occupied Data & AI seats across 627 enterprises. Measures Hiring Intensity Ratio — open job postings relative to currently occupied team seats.",
-      "cs": "Telemetrie obsazených pozic sledující 187,585 zaměstnaných Data & AI expertů u 627 korporací. Měří Hiring Intensity Ratio — poměr otevřených inzerátů vůči aktuální velikosti týmů."
+      "en": "Workforce intelligence integration tracking 187,585 occupied Data & AI seats across 627 enterprises. Measures Hiring Intensity Ratio: open job postings relative to currently occupied team seats.",
+      "cs": "Telemetrie obsazených pozic sledující 187,585 zaměstnaných Data & AI expertů u 627 korporací. Měří Hiring Intensity Ratio: poměr otevřených inzerátů vůči aktuální velikosti týmů."
     },
     "macro_role_intensity": [
       {
@@ -2067,13 +2067,13 @@
       "senior_plus_pct": 63.8,
       "remote_pct": 15.0,
       "synthesized_description": {
-        "en": [
-          "The AI Developer represents the fastest-growing engineering profile across S&P 500 enterprises, sitting at the intersection of software engineering and applied artificial intelligence. Rather than training foundational models from scratch, these engineers focus on integrating Large Language Models (LLMs), designing agentic workflows (Agentic AI), and shipping production-grade RAG architectures directly into customer-facing and internal systems.",
-          "Organizations expect strong software engineering fundamentals in Python, TypeScript, or Java paired with the discipline required to operate probabilistic systems reliably — from prompt engineering and vector database management to automated evaluations (Evals), guardrails, and latency/cost optimization across cloud hyperscalers (AWS, GCP Vertex AI, Azure)."
-        ],
         "cs": [
-          "Role AI Developera představuje v současném korporátním prostředí S&P 500 nejrychleji rostoucí inženýrský profil na pomezí klasického softwarového vývoje a aplikované umělé inteligence. Namísto trénování základních modelů od nuly se tito specialisté soustředí na integraci foundation modelů (LLM), návrh agentních systémů (Agentic AI) a budování produkčních RAG architektur přímo do zákaznických i interních produktů.",
-          "Firmy od kandidátů očekávají silné softwarové základy v Pythonu nebo TypeScriptu/Javě kombinované se schopností řídit spolehlivost generativních systémů — od prompt engineeringu a správy vektorových databází až po evaluace (Evals), guardrails a kontrolu latence či nákladů v cloudu (AWS, GCP Vertex AI, Azure)."
+          "AI Developer představuje nejrychleji rostoucí technický profil v korporátním prostředí S&P 500. Stojí na pomezí klasického softwarového inženýrství a aplikované AI. Místo trénování základních modelů od nuly se soustředí na integraci hotových velkých jazykových modelů (LLM), návrh autonomních agentních postupů a stavbu produkčních architektur RAG přímo do zákaznických aplikací.",
+          "Firmy od kandidátů očekávají poctivé softwarové řemeslo v Pythonu nebo TypeScriptu, doplněné o schopnost zkrotit pravděpodobnostní chování modelů: od systematických evaluací (Evals) a guardrails až po hlídání latence a nákladů na cloudových platformách jako AWS, GCP Vertex AI nebo Azure."
+        ],
+        "en": [
+          "The AI Developer is the fastest-growing engineering profile across S&P 500 enterprises, positioned directly at the crossroads of software engineering and applied AI. Rather than training models from scratch, these engineers integrate Large Language Models (LLMs), build agentic workflows, and deploy production-grade RAG pipelines into products.",
+          "Companies look for solid software engineering skills in Python or TypeScript paired with the discipline to manage probabilistic systems: from automated evaluations (Evals) and guardrails to latency and cost control across AWS, GCP Vertex AI, and Azure."
         ]
       },
       "top_skills": [
@@ -2150,15 +2150,15 @@
           "penetration_pct": 15.8
         },
         {
-          "skill_id": "azure",
-          "skill_name": "Microsoft Azure",
+          "skill_id": "gcp",
+          "skill_name": "Google Cloud Platform",
           "category": "Cloud",
           "job_count": 237,
           "penetration_pct": 15.5
         },
         {
-          "skill_id": "gcp",
-          "skill_name": "Google Cloud Platform",
+          "skill_id": "azure",
+          "skill_name": "Microsoft Azure",
           "category": "Cloud",
           "job_count": 237,
           "penetration_pct": 15.5
@@ -2202,11 +2202,11 @@
           "job_count": 88
         },
         {
-          "company_name": "Anthropic",
+          "company_name": "Alphabet Inc. (Class C)",
           "job_count": 61
         },
         {
-          "company_name": "Alphabet Inc. (Class A)",
+          "company_name": "Anthropic",
           "job_count": 61
         },
         {
@@ -2214,7 +2214,7 @@
           "job_count": 61
         },
         {
-          "company_name": "Alphabet Inc. (Class C)",
+          "company_name": "Alphabet Inc. (Class A)",
           "job_count": 61
         }
       ],
@@ -2339,39 +2339,39 @@
           "posted_at": "2026-09-21"
         },
         {
-          "job_id": "fb32acb4214ebc61",
-          "title": "Embedded Software Engineer - AI Focus",
-          "company_name": "Illinois Tool Works",
+          "job_id": "0c4f5ff472c54936",
+          "title": "AI & Data Platform Engineer",
+          "company_name": "Global Payments",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
           "seniority": "Mid",
           "work_mode": "Unspecified",
-          "url": "https://careers.itw.com/us/en/job/ITWITWUSJR9697EXTERNALENUS",
+          "url": "https://tsys.wd1.myworkdayjobs.com/en-US/TSYS/job/ALPHARETTA-GEORGIA/AI---Data-Platform-Engineer_R0074577",
           "posted_at": "2026-10-21"
         },
         {
-          "job_id": "0a6c231d1db89577",
-          "title": "ATS Engineer, Senior (AI-Datacenter integration expertise desired)",
-          "company_name": "PG&E Corporation",
+          "job_id": "5abead163d5230da",
+          "title": "Senior QA Engineer, AI",
+          "company_name": "Intercontinental Exchange",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
           "seniority": "Senior",
           "work_mode": "Unspecified",
-          "url": "https://jobs.pge.com/job/danville/ats-engineer-senior-ai-datacenter-integration-expertise-desired/29673/101424922208",
+          "url": "https://careers.ice.com/jobs/12759",
           "posted_at": "2026-10-21"
         },
         {
-          "job_id": "0c5f0fa16d683a49",
-          "title": "HR & AI Systems Architect",
-          "company_name": "Fortive",
+          "job_id": "162047f3f172188c",
+          "title": "AI Engineer",
+          "company_name": "Everest Group",
           "is_sp500": true,
-          "location": "UK",
-          "country_code": "UK",
-          "seniority": "Staff / Principal",
-          "work_mode": "Unspecified",
-          "url": "https://fortive.eightfold.ai/careers?pid=893396008721&domain=fortive.com",
+          "location": "US",
+          "country_code": "US",
+          "seniority": "Mid",
+          "work_mode": "Hybrid",
+          "url": "https://everestre.wd5.myworkdayjobs.com/en-US/careers/job/Warren-NJ/AI-Engineer_R7315-2",
           "posted_at": "2026-10-21"
         }
       ]
@@ -2390,13 +2390,13 @@
       "senior_plus_pct": 58.8,
       "remote_pct": 21.5,
       "synthesized_description": {
-        "en": [
-          "The Data Engineer forms the infrastructural backbone of the entire data and AI ecosystem. Without reliable, governed, low-latency data pipelines, both executive BI and generative AI initiatives stall — making Data Engineering one of the most consistently demanded hands-on (IC) tracks on the market.",
-          "Employers standardize around production SQL and Python (or Scala/Java), distributed compute (Apache Spark, Databricks, Dataflow), and orchestration (Airflow, dbt). Focus is shifting toward cloud lakehouse architectures (Snowflake, BigQuery, AWS/Azure/GCP), data quality contracts, and preparing unstructured data for AI pipelines."
-        ],
         "cs": [
-          "Data Engineer tvoří infrastrukturní základ celého datového a AI ekosystému. Bez spolehlivých, čistých a nízkolatenčních datových toků zůstávají investice do analytiky i generativní AI nefunkční, což z datových inženýrů dělá jednu z nejstabilněji poptávaných hands-on (IC) rolí na trhu.",
-          "Standardem požadavků je suverénní zvládnutí SQL a Pythonu (či Scaly/Javy), distribuovaného zpracování dat (Apache Spark, Databricks, Dataflow) a orchestrace (Airflow, dbt). Důraz se přesouvá na spravované cloudové platformy (Snowflake, BigQuery, AWS/Azure/GCP), data governance, kvalitu dat a přípravu nestrukturovaných dat pro AI pipelines."
+          "Data Engineer staví a spravuje infrastrukturu, bez které moderní analytika ani umělá inteligence nemohou fungovat. Pokud chybí spolehlivé datové toky, správně vyčištěná data a dohled nad jejich kvalitou, jakékoliv snahy o pokročilý reporting nebo generativní AI rychle ztroskotají. Právě proto patří datoví inženýři dlouhodobě k nejžádanějším technickým profilům.",
+          "Dnešní datový inženýr uplatňuje přístup softwarového inženýrství: píše kód v Pythonu a SQL, navrhuje moderní sklady a Lakehouse architektury (BigQuery, Snowflake, Databricks) a spravuje tabulkové formáty jako Apache Iceberg či Delta Lake. Neobejde se bez orchestrace (Airflow, Dagster), správy verzí a testování datových kontraktů."
+        ],
+        "en": [
+          "The Data Engineer builds and maintains the data foundations required by modern analytics and AI systems. Without dependable data ingestion, clean transformation pipelines, and rigorous observability, reporting and machine learning projects stall. This keeps Data Engineering among the most consistently recruited technical tracks.",
+          "Modern data engineering applies software best practices: writing clean Python and SQL, designing cloud data warehouses and lakehouses (BigQuery, Snowflake, Databricks), and adopting table formats like Apache Iceberg and Delta Lake. Orchestration tools (Airflow, Dagster), version control, and data contract enforcement are core requirements."
         ]
       },
       "top_skills": [
@@ -2517,15 +2517,15 @@
       ],
       "top_companies": [
         {
+          "company_name": "Alphabet Inc. (Class C)",
+          "job_count": 62
+        },
+        {
           "company_name": "Google (Alphabet)",
           "job_count": 62
         },
         {
           "company_name": "Alphabet Inc. (Class A)",
-          "job_count": 62
-        },
-        {
-          "company_name": "Alphabet Inc. (Class C)",
           "job_count": 62
         },
         {
@@ -2674,27 +2674,27 @@
           "posted_at": null
         },
         {
-          "job_id": "14e23fb420724e96",
-          "title": "Data Engineer & Operations Analyst (F/H)",
-          "company_name": "Yum! Brands",
-          "is_sp500": true,
-          "location": "FR",
-          "country_code": "FR",
-          "seniority": "Mid",
-          "work_mode": "Unspecified",
-          "url": "https://eczd.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/5444",
-          "posted_at": "2026-10-21"
-        },
-        {
-          "job_id": "69bdeb3bb689b36c",
-          "title": "Systems Manager - GCP Data Engineering, Enterprise Data & Analytics",
-          "company_name": "Consolidated Edison",
+          "job_id": "7a13d8d67abf08f1",
+          "title": "Data Engineer",
+          "company_name": "News Corp (Class B)",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
-          "seniority": "Lead / Manager",
+          "seniority": "Mid",
           "work_mode": "Unspecified",
-          "url": "https://ejcu.fa.us6.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1035/job/1000265",
+          "url": "https://dowjones.wd1.myworkdayjobs.com/en-US/News_Corp_Careers/job/Bangalore/Data-Engineer_Job_Req_55384",
+          "posted_at": "2026-10-21"
+        },
+        {
+          "job_id": "2c02abe873c39c6a",
+          "title": "Senior Data Engineer",
+          "company_name": "W. W. Grainger",
+          "is_sp500": true,
+          "location": "US",
+          "country_code": "US",
+          "seniority": "Senior",
+          "work_mode": "Unspecified",
+          "url": "https://jobs.grainger.com/job/CHICAGO-Senior-Data-Engineer-IL-60661-4555/1412820700/",
           "posted_at": "2026-10-21"
         }
       ]
@@ -2713,13 +2713,13 @@
       "senior_plus_pct": 37.8,
       "remote_pct": 19.5,
       "synthesized_description": {
-        "en": [
-          "The Data Analyst remains the foundational pillar for democratizing data and driving Data-Informed decision-making across business units. In the modern data stack era, the role has shifted away from static spreadsheet assembly toward deep domain analytics, product and financial metric ownership, and operating over a governed Semantic Layer.",
-          "Core requirements center on advanced SQL and analytical data modeling paired with visualization platforms (Tableau, Power BI, Looker) and Python for statistical investigation. The highest leverage comes from analysts who bridge raw warehouse tables (Snowflake, BigQuery, Databricks) with strategic business context."
-        ],
         "cs": [
-          "Data Analyst zůstává páteřní rolí pro demokratizaci dat a rozhodování napříč byznysem (Data-Informed decision making). V éře moderního datového stacku se těžiště práce posouvá od rutinního skládání tabulek k hlubší doménové analytice, definici produktových a finančních metrik a práci nad sémantickou vrstvou (Semantic Layer).",
-          "Základním předpokladem je pokročilá znalost SQL a analytického modelování doplněná o vizualizační nástroje (Tableau, Power BI, Looker) a Python pro ad-hoc statistické šetření. Největší přidanou hodnotu dnes přinášejí analytici, kteří dokáží propojit surová data v cloudovém skladu (Snowflake, BigQuery, Databricks) s konkrétním obchodním kontextem."
+          "Data Analyst je klíčový člověk pro to, aby se ve firmě dělala rozhodnutí podložená reálnými čísly (Data-Informed decision making). Těžiště práce se dnes posunulo od ručního lepení tabulek k hlubšímu porozumění byznysu, definování smysluplných produktových metrik a práci se sjednocenou sémantickou vrstvou.",
+          "Základem zůstává pokročilé SQL a analytické modelování dat spolu s vizualizačními nástroji (Tableau, Power BI, Looker) a Pythonem pro detailnější zkoumání. Největší hodnotu přinášejí analytici, kteří dokážou data z cloudových skladů (Snowflake, BigQuery, Databricks) přeložit do konkrétních kroků pro vedení a produktové týmy."
+        ],
+        "en": [
+          "The Data Analyst remains central to helping organizations make decisions grounded in solid evidence. In modern data stacks, the focus has moved from ad-hoc spreadsheets to deep business domain knowledge, clean metric definition, and working with governed semantic layers.",
+          "Core expectations include advanced SQL and dimensional modeling, visualization platforms (Tableau, Power BI, Looker), and Python for exploratory analysis. High-impact analysts translate data in cloud warehouses (Snowflake, BigQuery, Databricks) into clear business direction."
         ]
       },
       "top_skills": [
@@ -2803,15 +2803,15 @@
           "penetration_pct": 2.4
         },
         {
-          "skill_id": "gcp",
-          "skill_name": "Google Cloud Platform",
+          "skill_id": "databricks",
+          "skill_name": "Databricks",
           "category": "Cloud",
           "job_count": 19,
           "penetration_pct": 1.9
         },
         {
-          "skill_id": "databricks",
-          "skill_name": "Databricks",
+          "skill_id": "gcp",
+          "skill_name": "Google Cloud Platform",
           "category": "Cloud",
           "job_count": 19,
           "penetration_pct": 1.9
@@ -2860,7 +2860,7 @@
           "job_count": 22
         },
         {
-          "company_name": "Freeport-McMoRan",
+          "company_name": "Mettler Toledo",
           "job_count": 15
         }
       ],
@@ -2961,27 +2961,15 @@
           "posted_at": null
         },
         {
-          "job_id": "7bfb1ee4f36fc420",
-          "title": "Senior Production Accounting Analyst",
-          "company_name": "EOG Resources",
-          "is_sp500": true,
-          "location": "US",
-          "country_code": "US",
-          "seniority": "Senior",
-          "work_mode": "Unspecified",
-          "url": "https://careers.eogresources.com/jobdetails.asp?jo_num=11358&apply=yes&",
-          "posted_at": "2026-10-21"
-        },
-        {
-          "job_id": "9f0020fd1f6e4850",
-          "title": "Financial Analyst - Real Estate Investments",
-          "company_name": "UDR, Inc.",
+          "job_id": "05eba2fb4730cd74",
+          "title": "Inventory Data Analyst",
+          "company_name": "Genuine Parts Company",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
           "seniority": "Mid",
           "work_mode": "Unspecified",
-          "url": "https://www.udr.com/careers/financial-analyst",
+          "url": "https://jobs.genpt.com/job/birmingham/inventory-data-analyst/505/101624434784",
           "posted_at": "2026-10-21"
         },
         {
@@ -2997,27 +2985,39 @@
           "posted_at": "2026-10-21"
         },
         {
-          "job_id": "0a24957c2aa0abb8",
-          "title": "Key Account Data Analyst",
-          "company_name": "Cooper Companies (The)",
+          "job_id": "7297683db0a807ac",
+          "title": "Rate Analyst-Sr. Rate Analyst",
+          "company_name": "Atmos Energy",
           "is_sp500": true,
-          "location": "UK",
-          "country_code": "UK",
-          "seniority": "Mid",
+          "location": "US",
+          "country_code": "US",
+          "seniority": "Senior",
           "work_mode": "Unspecified",
-          "url": "https://hcjy.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/12744",
+          "url": "https://atmosenergy.wd108.myworkdayjobs.com/External_Career_Site/job/Kentucky---Owensboro/Rate-Analyst-Sr-Rate-Analyst_JR14028",
           "posted_at": "2026-10-21"
         },
         {
-          "job_id": "07d7197e1ea921f4",
-          "title": "Custom Compliance Analyst",
-          "company_name": "Williams-Sonoma, Inc.",
+          "job_id": "0e0d46fa1ad6b52c",
+          "title": "Drilling Data Analyst",
+          "company_name": "Schlumberger",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
           "seniority": "Mid",
           "work_mode": "Unspecified",
-          "url": "https://ehac.fa.us6.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/6138",
+          "url": "https://slb.eightfold.ai/careers?pid=563499731589753&domain=slb.com",
+          "posted_at": "2026-10-21"
+        },
+        {
+          "job_id": "03bee7854ee39a6c",
+          "title": "Senior Data Analyst",
+          "company_name": "Global Payments",
+          "is_sp500": true,
+          "location": "US",
+          "country_code": "US",
+          "seniority": "Senior",
+          "work_mode": "Unspecified",
+          "url": "https://tsys.wd1.myworkdayjobs.com/en-US/TSYS/job/CINCINNATI-OHIO/Senior-Data-Analyst_R0075813",
           "posted_at": "2026-10-21"
         }
       ]
@@ -3036,13 +3036,13 @@
       "senior_plus_pct": 70.0,
       "remote_pct": 26.5,
       "synthesized_description": {
-        "en": [
-          "The Machine Learning Engineer translates experimental models into resilient, high-throughput production systems. Across S&P 500 job postings, demand centers on end-to-end ownership of the ML lifecycle — spanning feature pipelines, distributed training, fine-tuning, and low-latency inference at scale.",
-          "The technical stack is anchored by Python, PyTorch, and modern MLOps infrastructure (Docker, Kubernetes, MLflow, production observability). Increasingly, classical predictive ML and recommendation engines converge with LLM deployment and hybrid search architectures in the cloud."
-        ],
         "cs": [
-          "Machine Learning Engineer je klíčovým článkem, který přetavuje experimentální modely do robustních, škálovatelných produkčních systémů. V inzerátech S&P 500 firem dominuje důraz na end-to-end vlastnictví životního cyklu modelů — od přípravy feature pipelines přes distribuovaný trénink a fine-tuning až po nízkolatenční inference.",
-          "Technologickému profilu vévodí Python, PyTorch a ekosystém moderního MLOps (Docker, Kubernetes, MLflow, monitoring produkčních modelů). Stále častěji se prolíná klasické strojové učení (prediktivní modely, doporučovací systémy) s nasazováním LLM a hybridních vyhledávacích architektur v cloudovém prostředí."
+          "Machine Learning Engineer přenáší experimentální modely ze zápisníků do spolehlivého produkčního provozu. V inzerátech předních technologických firem dominuje požadavek na převzetí plné odpovědnosti za celý životní cyklus modelu: od přípravy trénovacích dat a pipeline přes ladění (fine-tuning) až po rychlé odbavování predikcí v reálném čase.",
+          "V technologické výbavě převažuje Python, PyTorch a MLOps nástroje jako Docker, Kubernetes, MLflow a monitoring kvality v reálném čase. Stále častěji se klasické strojové učení (doporučovací systémy, predikce chování) přirozeně propojuje s nasazováním velkých jazykových modelů v cloudu."
+        ],
+        "en": [
+          "The Machine Learning Engineer takes experimental models out of notebooks and puts them into reliable, production-ready services. Job postings emphasize end-to-end ownership of the ML lifecycle: building feature pipelines, distributed training, fine-tuning, and low-latency inference at scale.",
+          "The technical stack centers on Python, PyTorch, and MLOps fundamentals like Docker, Kubernetes, MLflow, and live model monitoring. Classical machine learning methods (recommenders, risk models) are now frequently combined with LLM serving in cloud environments."
         ]
       },
       "top_skills": [
@@ -3175,11 +3175,11 @@
           "job_count": 39
         },
         {
-          "company_name": "Alphabet Inc. (Class A)",
+          "company_name": "Alphabet Inc. (Class C)",
           "job_count": 39
         },
         {
-          "company_name": "Alphabet Inc. (Class C)",
+          "company_name": "Alphabet Inc. (Class A)",
           "job_count": 39
         },
         {
@@ -3248,18 +3248,6 @@
       ],
       "sample_postings": [
         {
-          "job_id": "83ea019423ad82ad",
-          "title": "Machine Learning Engineer",
-          "company_name": "Twilio",
-          "is_sp500": true,
-          "location": "IE",
-          "country_code": "IE",
-          "seniority": "Mid",
-          "work_mode": "Remote",
-          "url": "https://job-boards.greenhouse.io/twilio/jobs/7996774",
-          "posted_at": "2026-10-19"
-        },
-        {
           "job_id": "5370a0ddcbd24f76",
           "title": "Staff Machine Learning Engineer, Retrieval",
           "company_name": "Reddit",
@@ -3269,6 +3257,18 @@
           "seniority": "Staff / Principal",
           "work_mode": "Hybrid",
           "url": "https://job-boards.greenhouse.io/reddit/jobs/8178085",
+          "posted_at": "2026-10-19"
+        },
+        {
+          "job_id": "83ea019423ad82ad",
+          "title": "Machine Learning Engineer",
+          "company_name": "Twilio",
+          "is_sp500": true,
+          "location": "IE",
+          "country_code": "IE",
+          "seniority": "Mid",
+          "work_mode": "Remote",
+          "url": "https://job-boards.greenhouse.io/twilio/jobs/7996774",
           "posted_at": "2026-10-19"
         },
         {
@@ -3284,18 +3284,6 @@
           "posted_at": "2026-10-05"
         },
         {
-          "job_id": "5fa7da8e80ba5423",
-          "title": "Sr Machine Learning Engineer II",
-          "company_name": "Axon Enterprise",
-          "is_sp500": true,
-          "location": "US",
-          "country_code": "US",
-          "seniority": "Senior",
-          "work_mode": "Hybrid",
-          "url": "https://job-boards.greenhouse.io/axon/jobs/7788918003",
-          "posted_at": "2026-10-01"
-        },
-        {
           "job_id": "576647863c56c89a",
           "title": "Senior Machine Learning Engineer ",
           "company_name": "Air Products",
@@ -3305,6 +3293,18 @@
           "seniority": "Senior",
           "work_mode": "Unspecified",
           "url": "https://job-boards.greenhouse.io/air/jobs/4398322009",
+          "posted_at": "2026-10-01"
+        },
+        {
+          "job_id": "5fa7da8e80ba5423",
+          "title": "Sr Machine Learning Engineer II",
+          "company_name": "Axon Enterprise",
+          "is_sp500": true,
+          "location": "US",
+          "country_code": "US",
+          "seniority": "Senior",
+          "work_mode": "Hybrid",
+          "url": "https://job-boards.greenhouse.io/axon/jobs/7788918003",
           "posted_at": "2026-10-01"
         },
         {
@@ -3332,15 +3332,15 @@
           "posted_at": null
         },
         {
-          "job_id": "00cc75049e85ffa2",
-          "title": "Lead Risk Data Scientist & ML Engineer",
-          "company_name": "Global Payments",
+          "job_id": "fdaf1abfb31631f2",
+          "title": "Machine Learning Engineer",
+          "company_name": "Fox Corporation",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
-          "seniority": "Lead / Manager",
+          "seniority": "Mid",
           "work_mode": "Unspecified",
-          "url": "https://tsys.wd1.myworkdayjobs.com/en-US/TSYS/job/ALPHARETTA-GEORGIA/Lead-Risk-Data-Scientist---ML-Engineer_R0076441",
+          "url": "https://www.foxcareers.com/Search/JobDetail/R50031423/machine-learning-engineer-fox-corporation?pageLanguage=en-US",
           "posted_at": "2026-10-21"
         }
       ]
@@ -3359,13 +3359,13 @@
       "senior_plus_pct": 58.4,
       "remote_pct": 16.2,
       "synthesized_description": {
-        "en": [
-          "The Data Scientist role has sharpened considerably: enterprises are hiring fewer generalist data explorers and more specialists focused on causal inference, rigorous experimentation (A/B testing), optimization algorithms, and predictive modeling tied directly to revenue and risk.",
-          "Beyond fluency in Python, SQL, and statistical/ML libraries (scikit-learn, PyTorch, pandas), demand is rising for practitioners who combine econometric rigor with generative AI techniques to enrich unstructured datasets and communicate probabilistic trade-offs to executive stakeholders."
-        ],
         "cs": [
-          "Role Data Scientista se v posledních letech výrazně vyprofilovala: firmy méně hledají obecné průzkumníky dat a více specialisty na kauzální inferenci, pokročilé experimentování (A/B testování), optimalizační algoritmy a prediktivní modelování s přímým dopadem na výnosy či riziko.",
-          "Vedle suverénního ovládání Pythonu, SQL a statistických či ML knihoven (scikit-learn, PyTorch, pandas) roste poptávka po schopnosti využívat generativní AI a LLM pro obohacování nestrukturovaných dat. Klíčová je schopnost formulovat hypotézy a komunikovat složité pravděpodobnostní závěry směrem k produktu a managementu."
+          "Role Data Scientista prošla v posledních letech vystřízlivěním: firmy méně poptávají obecné experimentátory a mnohem více hledají specialisty na kauzální inferenci, rigorózní A/B testování, optimalizační algoritmy a prediktivní modely s jasným dopadem na zisk či řízení rizik.",
+          "Vedle jistoty v Pythonu, SQL a knihovnách jako scikit-learn nebo PyTorch roste význam produktového uvažování. Od seniorních data scientistů se čeká schopnost samostatně formulovat byznysový problém jako statistickou úlohu, obhájit metodiku před vedením a spolupracovat s inženýry na nasazení."
+        ],
+        "en": [
+          "The Data Scientist role has matured significantly: organizations now prioritize specialists in causal inference, rigorous experimentation (A/B testing), optimization algorithms, and predictive modeling tied to revenue and risk reduction over generic data exploration.",
+          "Beyond fluency in Python, SQL, and core statistical libraries like scikit-learn and PyTorch, business acumen is essential. Senior data scientists must frame open business problems as mathematical tasks, validate assumptions, and work with engineers to deploy solutions."
         ]
       },
       "top_skills": [
@@ -3463,15 +3463,15 @@
           "penetration_pct": 7.2
         },
         {
-          "skill_id": "tensorflow",
-          "skill_name": "TensorFlow",
+          "skill_id": "scikit_learn",
+          "skill_name": "scikit-learn",
           "category": "Framework",
           "job_count": 56,
           "penetration_pct": 6.5
         },
         {
-          "skill_id": "scikit_learn",
-          "skill_name": "scikit-learn",
+          "skill_id": "tensorflow",
+          "skill_name": "TensorFlow",
           "category": "Framework",
           "job_count": 56,
           "penetration_pct": 6.5
@@ -3486,7 +3486,7 @@
       ],
       "top_companies": [
         {
-          "company_name": "Alphabet Inc. (Class A)",
+          "company_name": "Google (Alphabet)",
           "job_count": 58
         },
         {
@@ -3494,7 +3494,7 @@
           "job_count": 58
         },
         {
-          "company_name": "Google (Alphabet)",
+          "company_name": "Alphabet Inc. (Class A)",
           "job_count": 58
         },
         {
@@ -3643,27 +3643,27 @@
           "posted_at": null
         },
         {
-          "job_id": "00cc75049e85ffa2",
-          "title": "Lead Risk Data Scientist & ML Engineer",
-          "company_name": "Global Payments",
+          "job_id": "2de233632150ec32",
+          "title": "Power Operations Quantitative Analyst",
+          "company_name": "WEC Energy Group",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
-          "seniority": "Lead / Manager",
+          "seniority": "Mid",
           "work_mode": "Unspecified",
-          "url": "https://tsys.wd1.myworkdayjobs.com/en-US/TSYS/job/ALPHARETTA-GEORGIA/Lead-Risk-Data-Scientist---ML-Engineer_R0076441",
+          "url": "https://www.wecenergygroup.com/careers/job/power-analyst",
           "posted_at": "2026-10-21"
         },
         {
-          "job_id": "bfdcb461375b765d",
-          "title": "Junior Data Scientist - GPO",
-          "company_name": "Mettler Toledo",
+          "job_id": "00b263034b84371c",
+          "title": "Data Scientist",
+          "company_name": "Intercontinental Exchange",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
-          "seniority": "Junior / Entry",
+          "seniority": "Mid",
           "work_mode": "Unspecified",
-          "url": "https://careers.mt.com/en_US/careers/JobDetail/1/23004",
+          "url": "https://careers.ice.com/jobs/13457",
           "posted_at": "2026-10-21"
         }
       ]
@@ -3682,13 +3682,13 @@
       "senior_plus_pct": 40.3,
       "remote_pct": 7.6,
       "synthesized_description": {
-        "en": [
-          "The Research Scientist (AI/ML) pushes algorithmic frontiers — developing novel neural architectures, multimodal systems, reinforcement learning methods, post-training alignment, and inference efficiency breakthroughs.",
-          "Heavily concentrated among frontier tech leaders, quantitative finance, and pharmaceutical R&D, the role requires deep theoretical grounding (often a Ph.D. or publication track record), mastery of PyTorch or JAX, and hands-on experience training large models across distributed GPU/TPU clusters."
-        ],
         "cs": [
-          "Research Scientist v oblasti AI/ML se zaměřuje na posouvání hranic algoritmických možností — od vývoje nových architektur neuronových sítí, multimodálních modelů a reinforcement learningu až po pokročilý post-training, zarovnání (alignment) a efektivitu inference.",
-          "Tato role je silně koncentrována v technologických lídrech, farmaceutickém výzkumu a kvantitativních financích. Vyžaduje hluboké teoretické zázemí (často Ph.D. nebo publikační historii), perfektní znalost PyTorche či JAXu a zkušenost s trénováním modelů na rozsáhlých GPU/TPU clusterech."
+          "Research Scientist v oblasti AI/ML se zaměřuje na výzkum a vývoj nových algoritmů: od návrhu neotřelých neuronových architektur a multimodálních modelů přes posilované učení (reinforcement learning) až po efektivnější techniky inference a zarovnání modelů s lidskými preferencemi.",
+          "Typickým profilem je doktorát (Ph.D.) v informatice nebo matematice, publikace na prestižních konferencích (NeurIPS, ICML, ICLR, CVPR) a schopnost převést teoretické koncepty do funkčního kódu v PyTorchu nebo JAXu na rozsáhlých GPU clusterech."
+        ],
+        "en": [
+          "The Research Scientist in AI/ML focuses on advancing core algorithmic frontiers: designing novel neural architectures, multimodal systems, reinforcement learning methods, and post-training alignment techniques.",
+          "The profile typically requires a Ph.D. in Computer Science or Mathematics, publications at top-tier conferences (NeurIPS, ICML, ICLR, CVPR), and the ability to turn theoretical breakthroughs into scalable code using PyTorch or JAX across distributed GPU clusters."
         ]
       },
       "top_skills": [
@@ -3793,15 +3793,15 @@
           "penetration_pct": 3.7
         },
         {
-          "skill_id": "huggingface_libs",
-          "skill_name": "Hugging Face Transformers",
+          "skill_id": "scikit_learn",
+          "skill_name": "scikit-learn",
           "category": "Framework",
           "job_count": 12,
           "penetration_pct": 3.2
         },
         {
-          "skill_id": "scikit_learn",
-          "skill_name": "scikit-learn",
+          "skill_id": "huggingface_libs",
+          "skill_name": "Hugging Face Transformers",
           "category": "Framework",
           "job_count": 12,
           "penetration_pct": 3.2
@@ -3809,11 +3809,11 @@
       ],
       "top_companies": [
         {
-          "company_name": "Alphabet Inc. (Class C)",
+          "company_name": "Alphabet Inc. (Class A)",
           "job_count": 44
         },
         {
-          "company_name": "Alphabet Inc. (Class A)",
+          "company_name": "Alphabet Inc. (Class C)",
           "job_count": 44
         },
         {
@@ -3825,11 +3825,11 @@
           "job_count": 43
         },
         {
-          "company_name": "OpenAI",
+          "company_name": "Amazon",
           "job_count": 17
         },
         {
-          "company_name": "Amazon",
+          "company_name": "OpenAI",
           "job_count": 17
         }
       ],
@@ -3918,27 +3918,15 @@
           "posted_at": "2026-10-01"
         },
         {
-          "job_id": "f46df96bbdabf05a",
-          "title": "Welding Research Engineer",
-          "company_name": "Illinois Tool Works",
+          "job_id": "30236374fb25b00e",
+          "title": "Senior Research Scientist / Engineer - Electronics R&D",
+          "company_name": "Linde plc",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
-          "seniority": "Mid",
+          "seniority": "Senior",
           "work_mode": "Unspecified",
-          "url": "https://careers.itw.com/us/en/job/ITWITWUSJR10079EXTERNALENUS",
-          "posted_at": "2026-10-21"
-        },
-        {
-          "job_id": "1bb86889a772995c",
-          "title": "Data Scientist, Global Quantitative Research",
-          "company_name": "Intercontinental Exchange",
-          "is_sp500": true,
-          "location": "US",
-          "country_code": "US",
-          "seniority": "Mid",
-          "work_mode": "Unspecified",
-          "url": "https://careers.ice.com/jobs/13447",
+          "url": "https://linde.csod.com/ux/ats/careersite/23/home/requisition/27301?c=linde",
           "posted_at": "2026-10-21"
         },
         {
@@ -3954,6 +3942,18 @@
           "posted_at": "2026-10-21"
         },
         {
+          "job_id": "1bb86889a772995c",
+          "title": "Data Scientist, Global Quantitative Research",
+          "company_name": "Intercontinental Exchange",
+          "is_sp500": true,
+          "location": "US",
+          "country_code": "US",
+          "seniority": "Mid",
+          "work_mode": "Unspecified",
+          "url": "https://careers.ice.com/jobs/13447",
+          "posted_at": "2026-10-21"
+        },
+        {
           "job_id": "ecf191a3b0691f1a",
           "title": "Intern - Quantitative Research, Principal Asset Allocation (Undergrad or Graduate - Summer 2027)",
           "company_name": "Principal Financial Group",
@@ -3966,27 +3966,27 @@
           "posted_at": "2026-10-21"
         },
         {
-          "job_id": "30236374fb25b00e",
-          "title": "Senior Research Scientist / Engineer - Electronics R&D",
-          "company_name": "Linde plc",
+          "job_id": "f46df96bbdabf05a",
+          "title": "Welding Research Engineer",
+          "company_name": "Illinois Tool Works",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
-          "seniority": "Senior",
+          "seniority": "Mid",
           "work_mode": "Unspecified",
-          "url": "https://linde.csod.com/ux/ats/careersite/23/home/requisition/27301?c=linde",
+          "url": "https://careers.itw.com/us/en/job/ITWITWUSJR10079EXTERNALENUS",
           "posted_at": "2026-10-21"
         },
         {
-          "job_id": "7b3c41524f0dec91",
-          "title": "Senior Toxicology Study Director (Senior Research Scientist)",
-          "company_name": "Charles River Laboratories",
+          "job_id": "e71e29d3f5888f08",
+          "title": "AI Applied Scientist",
+          "company_name": "Gen Digital",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
-          "seniority": "Executive",
-          "work_mode": "On-site",
-          "url": "https://jobs.criver.com/job/23661373/senior-toxicology-study-director-senior-research-scientist-reno-nv/",
+          "seniority": "Mid",
+          "work_mode": "Unspecified",
+          "url": "https://jobs.ashbyhq.com/gen-digital/c35bae67-de6c-45b7-b116-4c30a8c6ac73",
           "posted_at": "2026-10-20"
         }
       ]
@@ -4005,13 +4005,13 @@
       "senior_plus_pct": 98.4,
       "remote_pct": 26.5,
       "synthesized_description": {
-        "en": [
-          "The AI / Data Product Manager bridges technical model capabilities and measurable customer and business outcomes. They own product vision for data platforms and AI-powered workflows, prioritize roadmaps, and govern ROI under high technological uncertainty.",
-          "Successful candidates pair core product craft with technical literacy in LLMs, RAG, data quality, and evaluation frameworks. Rather than bolting AI onto every surface, they manage model constraints (hallucinations, latency, privacy, unit economics) and define clear adoption telemetry."
-        ],
         "cs": [
-          "AI / Data Product Manager přemosťuje propast mezi technickými možnostmi moderních modelů a reálnou hodnotou pro uživatele i byznys. Odpovídá za definici produktové vize datových platforem či AI funkcí, prioritizaci roadmapy a vyhodnocování návratnosti investic (ROI) v prostředí vysoké technologické nejistoty.",
-          "Úspěšní kandidáti kombinují produktové řemeslo s technickou gramotností v oblasti LLM, RAG, kvality dat a evaluačních metrik. Namísto slepého přidávání AI funkcí musí rozumět limitům modelů (halucinace, latence, soukromí dat, governance) a nastavovat jasné metriky adopce."
+          "AI Product Manager řídí vývoj produktů, jejichž jádro tvoří umělá inteligence a strojové učení. Na rozdíl od tradičního produktového managementu se musí vypořádat s pravděpodobnostní povahou AI výstupů, neustálým rizikem halucinací a specifickou ekonomikou tokenů a výpočetního výkonu.",
+          "Úspěšný AI PM rozumí možnostem moderních modelů (LLM, multimodální systémy, RAG), umí definovat metriky úspěšnosti (Evals, přesnost, latence) a dokáže najít rovnováhu mezi technologickým nadšením a skutečnou hodnotou pro uživatele."
+        ],
+        "en": [
+          "The AI Product Manager guides the strategy and delivery of products powered by machine learning and generative models. Unlike traditional software PMs, they must manage probabilistic behavior, handle output ambiguity, and balance inference costs with product value.",
+          "Strong candidates understand model capabilities (LLMs, multimodal architectures, RAG), establish clear evaluation frameworks (Evals, precision, latency), and align technical teams with genuine customer problems."
         ]
       },
       "top_skills": [
@@ -4074,16 +4074,16 @@
       ],
       "top_technologies": [
         {
-          "skill_id": "azure",
-          "skill_name": "Microsoft Azure",
-          "category": "Cloud",
+          "skill_id": "evals_observability",
+          "skill_name": "MLOps / Evals & Observability",
+          "category": "MLOps",
           "job_count": 17,
           "penetration_pct": 8.9
         },
         {
-          "skill_id": "evals_observability",
-          "skill_name": "MLOps / Evals & Observability",
-          "category": "MLOps",
+          "skill_id": "azure",
+          "skill_name": "Microsoft Azure",
+          "category": "Cloud",
           "job_count": 17,
           "penetration_pct": 8.9
         },
@@ -4136,19 +4136,19 @@
           "job_count": 18
         },
         {
-          "company_name": "Scale AI",
-          "job_count": 8
-        },
-        {
           "company_name": "Databricks",
           "job_count": 8
         },
         {
-          "company_name": "Datadog",
-          "job_count": 7
+          "company_name": "Scale AI",
+          "job_count": 8
         },
         {
           "company_name": "Workday, Inc.",
+          "job_count": 7
+        },
+        {
+          "company_name": "Datadog",
           "job_count": 7
         },
         {
@@ -4253,15 +4253,27 @@
           "posted_at": null
         },
         {
-          "job_id": "522a5093e4eabf05",
-          "title": "Staff Data Center Systems Product Manager",
-          "company_name": "Supermicro",
+          "job_id": "2a6e9ea8499addbf",
+          "title": "Senior Program Manager, NPI Solutions – AI Infrastructure",
+          "company_name": "Keysight Technologies",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
-          "seniority": "Staff / Principal",
+          "seniority": "Lead / Manager",
           "work_mode": "Unspecified",
-          "url": "https://jobs.supermicro.com/job/San-Jose-Staff-Data-Center-Systems-Product-Manager-Cali/1432248300/",
+          "url": "https://jobs.keysight.com/careers-home/jobs/54723",
+          "posted_at": "2026-10-21"
+        },
+        {
+          "job_id": "5b7dcb82fae03359",
+          "title": "Senior Technical Product Manager, Master Data Management (MDM) ",
+          "company_name": "Global Payments",
+          "is_sp500": true,
+          "location": "US",
+          "country_code": "US",
+          "seniority": "Lead / Manager",
+          "work_mode": "Unspecified",
+          "url": "https://tsys.wd1.myworkdayjobs.com/en-US/TSYS/job/ALPHARETTA-GEORGIA/MDM-Senior-Technical-Product-Manager_R0074608",
           "posted_at": "2026-10-21"
         },
         {
@@ -4277,15 +4289,15 @@
           "posted_at": "2026-10-21"
         },
         {
-          "job_id": "2a6e9ea8499addbf",
-          "title": "Senior Program Manager, NPI Solutions – AI Infrastructure",
-          "company_name": "Keysight Technologies",
+          "job_id": "522a5093e4eabf05",
+          "title": "Staff Data Center Systems Product Manager",
+          "company_name": "Supermicro",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
-          "seniority": "Lead / Manager",
+          "seniority": "Staff / Principal",
           "work_mode": "Unspecified",
-          "url": "https://jobs.keysight.com/careers-home/jobs/54723",
+          "url": "https://jobs.supermicro.com/job/San-Jose-Staff-Data-Center-Systems-Product-Manager-Cali/1432248300/",
           "posted_at": "2026-10-21"
         },
         {
@@ -4298,18 +4310,6 @@
           "seniority": "Lead / Manager",
           "work_mode": "Unspecified",
           "url": "https://fortive.eightfold.ai/careers?pid=893397712693&domain=fortive.com",
-          "posted_at": "2026-10-21"
-        },
-        {
-          "job_id": "5b7dcb82fae03359",
-          "title": "Senior Technical Product Manager, Master Data Management (MDM) ",
-          "company_name": "Global Payments",
-          "is_sp500": true,
-          "location": "US",
-          "country_code": "US",
-          "seniority": "Lead / Manager",
-          "work_mode": "Unspecified",
-          "url": "https://tsys.wd1.myworkdayjobs.com/en-US/TSYS/job/ALPHARETTA-GEORGIA/MDM-Senior-Technical-Product-Manager_R0074608",
           "posted_at": "2026-10-21"
         }
       ]
@@ -4328,13 +4328,13 @@
       "senior_plus_pct": 100.0,
       "remote_pct": 3.2,
       "synthesized_description": {
-        "en": [
-          "The Data Architect designs enterprise-wide strategies for data storage, integration, and governance so organizations can scale both mission-critical BI and compute-heavy AI workloads. Typically positioned at the Staff or Principal level, this role sets technical standards across engineering domains.",
-          "Requirements emphasize deep expertise in modern lakehouse and warehouse architectures (Snowflake, Databricks, BigQuery), dimensional and semantic modeling, and strict Data Governance (cataloging, lineage, security, and multi-cloud compliance across AWS, Azure, and GCP)."
-        ],
         "cs": [
-          "Data Architect navrhuje celopodnikovou strategii ukládání, integrace a správy dat tak, aby organizace dokázala bezpečně škálovat jak tradiční BI reporting, tak náročné AI/ML úlohy. Jde o vysoce seniorní roli (Staff/Principal úroveň), která definuje technologické standardy napříč týmy.",
-          "Požadavky zahrnují hlubokou expertízu v návrhu moderních data lakehouse a warehouse architektur (Snowflake, Databricks, BigQuery), datovém modelování, sémantických vrstvách a striktní Data Governance (katalogizace, lineage, bezpečnost v multi-cloud prostředí AWS, Azure či GCP)."
+          "Data Architect navrhuje celkovou koncepci podnikových dat: určuje, jak budou data proudit z provozních systémů přes analytické vrstvy až ke koncovým uživatelům. Rozhoduje o volbě technologií, datovém modelování, bezpečnosti a řízení přístupů napříč celou organizací.",
+          "Role vyžaduje hlubokou znalost moderních architektonických vzorů: od distribuovaných Lakehouse systémů (Databricks, Apache Iceberg) přes cloudové sklady (BigQuery, Snowflake) až po datové kontrakty a governance. Zkušený architekt dokáže své návrhy srozumitelně obhájit jak před inženýry, tak před vedením firmy."
+        ],
+        "en": [
+          "The Data Architect designs the structural blueprint for enterprise data: defining how information flows from operational systems through analytical tiers to end consumers. They establish standards for data modeling, platform selection, security, and governance across the company.",
+          "The position requires deep familiarity with modern architectural patterns: distributed lakehouses (Databricks, Apache Iceberg), cloud warehouses (BigQuery, Snowflake), and data contracts. An effective architect explains technical trade-offs clearly to both engineering leads and executive boards."
         ]
       },
       "top_skills": [
@@ -4467,7 +4467,7 @@
           "job_count": 21
         },
         {
-          "company_name": "Nvidia",
+          "company_name": "Teledyne Technologies",
           "job_count": 4
         },
         {
@@ -4475,7 +4475,7 @@
           "job_count": 4
         },
         {
-          "company_name": "Teledyne Technologies",
+          "company_name": "Nvidia",
           "job_count": 4
         }
       ],
@@ -4552,30 +4552,6 @@
           "posted_at": "2026-10-21"
         },
         {
-          "job_id": "901bcfb785a7eece",
-          "title": "Director, Data Architecture",
-          "company_name": "Phillips 66",
-          "is_sp500": true,
-          "location": "US",
-          "country_code": "US",
-          "seniority": "Executive",
-          "work_mode": "Unspecified",
-          "url": "https://careers.phillips66.com/job/Houston-Director%2C-Data-Architecture-TX-77042/1438487700/",
-          "posted_at": "2026-10-21"
-        },
-        {
-          "job_id": "44be88295bdf85fa",
-          "title": "Principal Solution Architect - Reporting & Analytics",
-          "company_name": "West Pharmaceutical Services",
-          "is_sp500": true,
-          "location": "US",
-          "country_code": "US",
-          "seniority": "Staff / Principal",
-          "work_mode": "Unspecified",
-          "url": "https://careers.westpharma.com/job/Exton-Principal-Solution-Architect-Reporting-&-Analytics-PA-19341/1435034033/",
-          "posted_at": "2026-10-21"
-        },
-        {
           "job_id": "f5cee9f78d2e107c",
           "title": "Data Architect",
           "company_name": "Willis Towers Watson",
@@ -4585,6 +4561,18 @@
           "seniority": "Staff / Principal",
           "work_mode": "Unspecified",
           "url": "https://eedu.fa.em3.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1003/job/202604321",
+          "posted_at": "2026-10-21"
+        },
+        {
+          "job_id": "901bcfb785a7eece",
+          "title": "Director, Data Architecture",
+          "company_name": "Phillips 66",
+          "is_sp500": true,
+          "location": "US",
+          "country_code": "US",
+          "seniority": "Executive",
+          "work_mode": "Unspecified",
+          "url": "https://careers.phillips66.com/job/Houston-Director%2C-Data-Architecture-TX-77042/1438487700/",
           "posted_at": "2026-10-21"
         },
         {
@@ -4600,6 +4588,18 @@
           "posted_at": "2026-10-21"
         },
         {
+          "job_id": "44be88295bdf85fa",
+          "title": "Principal Solution Architect - Reporting & Analytics",
+          "company_name": "West Pharmaceutical Services",
+          "is_sp500": true,
+          "location": "US",
+          "country_code": "US",
+          "seniority": "Staff / Principal",
+          "work_mode": "Unspecified",
+          "url": "https://careers.westpharma.com/job/Exton-Principal-Solution-Architect-Reporting-&-Analytics-PA-19341/1435034033/",
+          "posted_at": "2026-10-21"
+        },
+        {
           "job_id": "f5dab4760b6d8db9",
           "title": "Software/Solutions Architect – AI & Software Architecture, Visa Consulting and Analytics (VCA) — Tech Practice",
           "company_name": "Visa Inc.",
@@ -4612,15 +4612,15 @@
           "posted_at": "2026-10-19"
         },
         {
-          "job_id": "76ffcc1cf30f862f",
-          "title": "Enterprise Data Modeler / Data Architect",
-          "company_name": "Steris",
+          "job_id": "4bab79a566de0925",
+          "title": "Data Architect (US Citizenship Required)",
+          "company_name": "Teledyne Technologies",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
           "seniority": "Staff / Principal",
           "work_mode": "Unspecified",
-          "url": "https://www.linkedin.com/jobs/view/enterprise-data-modeler-data-architect-at-steris-4417796066",
+          "url": "https://www.linkedin.com/jobs/view/data-architect-us-citizenship-required-at-teledyne-technologies-incorporated-4477753102",
           "posted_at": "2026-10-19"
         },
         {
@@ -4651,13 +4651,13 @@
       "senior_plus_pct": 100.0,
       "remote_pct": 14.3,
       "synthesized_description": {
-        "en": [
-          "The BI / Analytics Manager leads teams of data and business intelligence analysts, ensuring executive and operational stakeholders have reliable, timely visibility into business performance. The role blends people leadership with ownership of the reporting architecture.",
-          "Beyond stakeholder management and coaching, candidates are expected to drive KPI taxonomy design, govern enterprise BI platforms (Power BI, Tableau, Looker), enforce a unified Semantic Layer, and integrate AI-assisted analytics responsibly."
-        ],
         "cs": [
-          "BI / Analytics Manager vede týmy datových a BI analytiků a garantuje, že management i operativní oddělení mají k dispozici spolehlivý, srozumitelný a včasný pohled na výkonnost firmy. Role spojuje people management s rolí architekta reportovacího ekosystému.",
-          "Kromě vedení lidí a komunikace se stakeholdery se očekává silný přesah do návrhu KPI stromů, správy BI platforem (Power BI, Tableau, Looker), prosazování jednotné sémantické vrstvy a postupného zapojování AI asistované analytiky do každodenního fungování firmy."
+          "BI & Analytics Manager vede tým analytiků a BI vývojářů. Zajišťuje, aby dodávané reporty a analýzy odpovídaly skutečným potřebám byznysu, určuje priority zadání a pomáhá svým lidem odborně i kariérně růst.",
+          "Pozice vyžaduje vyvážený mix technických znalostí (SQL, vizualizační platformy, datové modelování) a manažerských dovedností: schopnost efektivně komunikovat se stakeholdery napříč firmou a udržet pořádek v prioritách a datových metrikách."
+        ],
+        "en": [
+          "The BI & Analytics Manager leads teams of data analysts and BI developers, ensuring analytics deliverables directly address business priorities while mentoring team members in technical craft and career growth.",
+          "The position balances technical depth (SQL, BI platforms, dimensional modeling) with people leadership: managing stakeholder demands, maintaining metric consistency, and prioritizing delivery pipelines."
         ]
       },
       "top_skills": [
@@ -4711,8 +4711,8 @@
           "penetration_pct": 10.9
         },
         {
-          "skill_id": "llm",
-          "skill_name": "LLM / Large Language Models",
+          "skill_id": "genai",
+          "skill_name": "GenAI / Generative AI",
           "category": "AI/ML",
           "job_count": 7,
           "penetration_pct": 6.9
@@ -4727,15 +4727,15 @@
           "penetration_pct": 7.9
         },
         {
-          "skill_id": "bigquery",
-          "skill_name": "BigQuery",
+          "skill_id": "aws",
+          "skill_name": "AWS",
           "category": "Cloud",
           "job_count": 7,
           "penetration_pct": 6.9
         },
         {
-          "skill_id": "aws",
-          "skill_name": "AWS",
+          "skill_id": "bigquery",
+          "skill_name": "BigQuery",
           "category": "Cloud",
           "job_count": 7,
           "penetration_pct": 6.9
@@ -4755,9 +4755,9 @@
           "penetration_pct": 3.0
         },
         {
-          "skill_id": "dbt",
-          "skill_name": "dbt",
-          "category": "Framework",
+          "skill_id": "redshift",
+          "skill_name": "Amazon Redshift",
+          "category": "Cloud",
           "job_count": 2,
           "penetration_pct": 2.0
         },
@@ -4769,9 +4769,9 @@
           "penetration_pct": 2.0
         },
         {
-          "skill_id": "redshift",
-          "skill_name": "Amazon Redshift",
-          "category": "Cloud",
+          "skill_id": "dbt",
+          "skill_name": "dbt",
+          "category": "Framework",
           "job_count": 2,
           "penetration_pct": 2.0
         }
@@ -4798,7 +4798,7 @@
           "job_count": 4
         },
         {
-          "company_name": "Coherent Corp.",
+          "company_name": "Mettler Toledo",
           "job_count": 3
         }
       ],
@@ -4887,6 +4887,18 @@
           "posted_at": "2026-10-17"
         },
         {
+          "job_id": "8fb0c08e2c33b2d8",
+          "title": "Manager Leach Analytics",
+          "company_name": "Freeport-McMoRan",
+          "is_sp500": true,
+          "location": "US",
+          "country_code": "US",
+          "seniority": "Lead / Manager",
+          "work_mode": "Unspecified",
+          "url": "https://jobs.fcx.com/job/Phoenix-Manager-Leach-Analytics-AZ-85040/1441830300/",
+          "posted_at": "2026-10-21"
+        },
+        {
           "job_id": "d6f9981844bef28b",
           "title": "Sr. Manager, Retail Safety & Analytics",
           "company_name": "Genuine Parts Company",
@@ -4896,18 +4908,6 @@
           "seniority": "Lead / Manager",
           "work_mode": "Unspecified",
           "url": "https://jobs.genpt.com/job/atlanta/sr-manager-retail-safety-and-analytics/505/101313101760",
-          "posted_at": "2026-10-21"
-        },
-        {
-          "job_id": "d7b2c435a58ef32d",
-          "title": "Market Manager Sales international - Process Analytics",
-          "company_name": "Mettler Toledo",
-          "is_sp500": true,
-          "location": "US",
-          "country_code": "US",
-          "seniority": "Lead / Manager",
-          "work_mode": "Unspecified",
-          "url": "https://careers.mt.com/en_US/careers/JobDetail/1/22608",
           "posted_at": "2026-10-21"
         },
         {
@@ -4923,39 +4923,39 @@
           "posted_at": "2026-10-21"
         },
         {
-          "job_id": "69bdeb3bb689b36c",
-          "title": "Systems Manager - GCP Data Engineering, Enterprise Data & Analytics",
-          "company_name": "Consolidated Edison",
+          "job_id": "0b1f7cdb315e7e79",
+          "title": "Senior Manager, Analytics Engineering",
+          "company_name": "Fox Corporation",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
           "seniority": "Lead / Manager",
           "work_mode": "Unspecified",
-          "url": "https://ejcu.fa.us6.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1035/job/1000265",
+          "url": "https://www.foxcareers.com/Search/JobDetail/R50033531/senior-manager-analytics-engineering-fox-corporation?pageLanguage=en-US",
           "posted_at": "2026-10-21"
         },
         {
-          "job_id": "8fb0c08e2c33b2d8",
-          "title": "Manager Leach Analytics",
-          "company_name": "Freeport-McMoRan",
+          "job_id": "e5841da24ac284fe",
+          "title": "Manager of Data and Analytics",
+          "company_name": "Kinder Morgan",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
           "seniority": "Lead / Manager",
           "work_mode": "Unspecified",
-          "url": "https://jobs.fcx.com/job/Phoenix-Manager-Leach-Analytics-AZ-85040/1441830300/",
+          "url": "https://careers.kindermorgan.com/careers-home/jobs/5854",
           "posted_at": "2026-10-21"
         },
         {
-          "job_id": "668db286eaa17ec5",
-          "title": "Associate Manager, AIDM Analytics",
-          "company_name": "Yum! Brands",
+          "job_id": "af90b6df78c01c0b",
+          "title": "Senior Manager, Business Analytics",
+          "company_name": "Martin Marietta Materials",
           "is_sp500": true,
-          "location": "CA",
-          "country_code": "CA",
+          "location": "US",
+          "country_code": "US",
           "seniority": "Lead / Manager",
           "work_mode": "Unspecified",
-          "url": "https://eczd.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/5354",
+          "url": "https://jobs.jobvite.com/martinmarietta/job/oFrOAfwe",
           "posted_at": "2026-10-21"
         }
       ]
@@ -4974,13 +4974,13 @@
       "senior_plus_pct": 100.0,
       "remote_pct": 30.4,
       "synthesized_description": {
-        "en": [
-          "The Engineering Manager (AI/Data) leads engineering squads building core data platforms, ingestion pipelines, or production ML/AI services. They are accountable for technical quality, delivery predictability, system reliability, and engineer growth.",
-          "Employers require a strong prior hands-on background in data or ML engineering (Python, SQL, Spark, cloud architecture, MLOps) so the manager can guide architectural trade-offs, retire technical debt, and scale platform operations."
-        ],
         "cs": [
-          "Engineering Manager (AI/Data) stojí v čele inženýrských týmů budujících datové platformy, datové pipeline nebo produkční ML/AI systémy. Zodpovídá za technickou excelenci, stabilitu dodávek, architekturu řešení a kariérní růst jednotlivých inženýrů.",
-          "Od kandidátů se vyžaduje předchozí silná hands-on zkušenost v datovém nebo ML inženýrství (Python, SQL, Spark, cloudová architektura, MLOps), aby dokázali činit kvalifikovaná architektonická rozhodnutí, odstraňovat technický dluh a efektivně škálovat infrastrukturu."
+          "Engineering Manager (AI & Data) odpovídá za vedení technických týmů datových inženýrů, MLOps specialistů nebo AI vývojářů. Dohlíží na kvalitu kódu, architekturu systémů a hladký průběh projektů, přičemž aktivně odstraňuje překážky a rozvíjí své lidi.",
+          "Ideální kandidát má za sebou vlastní inženýrskou praxi, díky které rozumí technickým detailům i úskalím datových systémů, ale dnes se plně soustředí na organizaci práce, technické standardy a spolupráci s produktovým managementem."
+        ],
+        "en": [
+          "The Engineering Manager (AI & Data) leads engineering teams across data pipelines, MLOps, and applied AI. They oversee system reliability, code quality, and project delivery while unblocking engineers and supporting their career progression.",
+          "Effective managers combine prior engineering experience in distributed systems or ML with strong organizational skills, technical standard setting, and close alignment with product leadership."
         ]
       },
       "top_skills": [
@@ -5013,16 +5013,16 @@
           "penetration_pct": 19.1
         },
         {
-          "skill_id": "sql",
-          "skill_name": "SQL",
-          "category": "Programming",
+          "skill_id": "data_governance",
+          "skill_name": "Data Governance & Quality",
+          "category": "Business",
           "job_count": 13,
           "penetration_pct": 13.8
         },
         {
-          "skill_id": "data_governance",
-          "skill_name": "Data Governance & Quality",
-          "category": "Business",
+          "skill_id": "sql",
+          "skill_name": "SQL",
+          "category": "Programming",
           "job_count": 13,
           "penetration_pct": 13.8
         },
@@ -5109,19 +5109,19 @@
           "job_count": 6
         },
         {
-          "company_name": "Alphabet Inc. (Class C)",
-          "job_count": 4
-        },
-        {
-          "company_name": "Coinbase",
-          "job_count": 4
-        },
-        {
           "company_name": "Google (Alphabet)",
           "job_count": 4
         },
         {
           "company_name": "Alphabet Inc. (Class A)",
+          "job_count": 4
+        },
+        {
+          "company_name": "Alphabet Inc. (Class C)",
+          "job_count": 4
+        },
+        {
+          "company_name": "Coinbase",
           "job_count": 4
         }
       ],
@@ -5198,15 +5198,15 @@
           "posted_at": "2026-10-09"
         },
         {
-          "job_id": "69bdeb3bb689b36c",
-          "title": "Systems Manager - GCP Data Engineering, Enterprise Data & Analytics",
-          "company_name": "Consolidated Edison",
+          "job_id": "deb83fb7bcbadbf2",
+          "title": "Senior Manager, AI Engineering",
+          "company_name": "Global Payments",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
           "seniority": "Lead / Manager",
           "work_mode": "Unspecified",
-          "url": "https://ejcu.fa.us6.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1035/job/1000265",
+          "url": "https://tsys.wd1.myworkdayjobs.com/en-US/TSYS/job/ALPHARETTA-GEORGIA/Senior-Manager--AI-Engineering_R0072750",
           "posted_at": "2026-10-21"
         },
         {
@@ -5222,18 +5222,6 @@
           "posted_at": "2026-10-21"
         },
         {
-          "job_id": "deb83fb7bcbadbf2",
-          "title": "Senior Manager, AI Engineering",
-          "company_name": "Global Payments",
-          "is_sp500": true,
-          "location": "US",
-          "country_code": "US",
-          "seniority": "Lead / Manager",
-          "work_mode": "Unspecified",
-          "url": "https://tsys.wd1.myworkdayjobs.com/en-US/TSYS/job/ALPHARETTA-GEORGIA/Senior-Manager--AI-Engineering_R0072750",
-          "posted_at": "2026-10-21"
-        },
-        {
           "job_id": "4ec2d5ea674490e8",
           "title": "Manager, Enterprise Data Platform",
           "company_name": "Intercontinental Exchange",
@@ -5243,6 +5231,18 @@
           "seniority": "Lead / Manager",
           "work_mode": "Unspecified",
           "url": "https://careers.ice.com/jobs/13655",
+          "posted_at": "2026-10-21"
+        },
+        {
+          "job_id": "69bdeb3bb689b36c",
+          "title": "Systems Manager - GCP Data Engineering, Enterprise Data & Analytics",
+          "company_name": "Consolidated Edison",
+          "is_sp500": true,
+          "location": "US",
+          "country_code": "US",
+          "seniority": "Lead / Manager",
+          "work_mode": "Unspecified",
+          "url": "https://ejcu.fa.us6.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1035/job/1000265",
           "posted_at": "2026-10-21"
         },
         {
@@ -5297,13 +5297,13 @@
       "senior_plus_pct": 100.0,
       "remote_pct": 48.5,
       "synthesized_description": {
-        "en": [
-          "The Director / VP of Data & AI holds executive accountability for turning the data and AI organization from a cost center into a strategic growth engine. They lead multi-layered teams of engineers, scientists, and analysts, govern cloud budgets, and partner directly with C-suite leadership.",
-          "Companies seek leaders who combine architectural vision (cloud modernization, pragmatic GenAI and agentic adoption, enterprise data governance) with commercial execution, organizational design, and talent retention."
-        ],
         "cs": [
-          "Director / VP of Data & AI nese exekutivní odpovědnost za to, aby datová a AI organizace nebyla nákladovým střediskem, ale strategickým motorem růstu firmy. Řídí víceúrovňové týmy inženýrů, vědců a analytiků, spravuje rozpočty cloudové infrastruktury a přímo spolupracuje s C-level vedením.",
-          "Firmy hledají lídry, kteří dokáží spojit technologický nadhled (transformace na cloud, adopce GenAI a agentních workflow, enterprise data governance) s pragmatickým doručováním obchodních výsledků, budováním datové kultury a rozvojem talentu."
+          "Director / VP of Data & AI vede celou datovou a AI organizaci na strategické úrovni. Odpovídá za to, aby investice do technologií a lidí přinášely měřitelnou hodnotu byznysu, hlídá rozpočty na cloudové služby a formuje kulturu práce s daty ve firmě.",
+          "Klíčovou kompetencí je propojení technického světa s prioritami nejvyššího vedení: schopnost vysvětlit složité technologické volby jazykem financí a byznysových přínosů, přilákat zkušené lídry a udržet vysokou laťku inženýrské i etické odpovědnosti."
+        ],
+        "en": [
+          "The Director / VP of Data & AI leads the broader data and machine learning organization, ensuring technical investments translate into measurable business outcomes, managing cloud infrastructure budgets, and fostering data-informed decision-making.",
+          "Core skills involve bridging technology with executive priorities: articulating architectural trade-offs in financial and operational terms, hiring senior engineering leaders, and maintaining rigorous governance."
         ]
       },
       "top_skills": [
@@ -5373,13 +5373,6 @@
           "penetration_pct": 9.7
         },
         {
-          "skill_id": "spark",
-          "skill_name": "Apache Spark",
-          "category": "Framework",
-          "job_count": 7,
-          "penetration_pct": 7.5
-        },
-        {
           "skill_id": "aws",
           "skill_name": "AWS",
           "category": "Cloud",
@@ -5387,15 +5380,22 @@
           "penetration_pct": 7.5
         },
         {
-          "skill_id": "snowflake_db",
-          "skill_name": "Snowflake",
+          "skill_id": "spark",
+          "skill_name": "Apache Spark",
+          "category": "Framework",
+          "job_count": 7,
+          "penetration_pct": 7.5
+        },
+        {
+          "skill_id": "databricks",
+          "skill_name": "Databricks",
           "category": "Cloud",
           "job_count": 6,
           "penetration_pct": 6.5
         },
         {
-          "skill_id": "databricks",
-          "skill_name": "Databricks",
+          "skill_id": "snowflake_db",
+          "skill_name": "Snowflake",
           "category": "Cloud",
           "job_count": 6,
           "penetration_pct": 6.5
@@ -5408,16 +5408,16 @@
           "penetration_pct": 4.3
         },
         {
-          "skill_id": "vector_db",
-          "skill_name": "Vector Databases",
-          "category": "Database",
+          "skill_id": "gcp",
+          "skill_name": "Google Cloud Platform",
+          "category": "Cloud",
           "job_count": 2,
           "penetration_pct": 2.2
         },
         {
-          "skill_id": "vertex_ai",
-          "skill_name": "Vertex AI",
-          "category": "Cloud",
+          "skill_id": "kubernetes",
+          "skill_name": "Kubernetes",
+          "category": "MLOps",
           "job_count": 2,
           "penetration_pct": 2.2
         }
@@ -5436,7 +5436,7 @@
           "job_count": 4
         },
         {
-          "company_name": "Hartford (The)",
+          "company_name": "TE Connectivity",
           "job_count": 3
         },
         {
@@ -5509,6 +5509,18 @@
       ],
       "sample_postings": [
         {
+          "job_id": "93d31ef00f2af822",
+          "title": "VP, Technology and Data Solutions",
+          "company_name": "W. R. Berkley Corporation",
+          "is_sp500": true,
+          "location": "US",
+          "country_code": "US",
+          "seniority": "Executive",
+          "work_mode": "Unspecified",
+          "url": "https://careers-berkley.icims.com/jobs/14476/vp%2c-technology-and-data-solutions/job?in_iframe=1",
+          "posted_at": "2026-10-21"
+        },
+        {
           "job_id": "b6e74ce4725e6624",
           "title": "Vice President, Enterprise Data Strategy & Governance (Solventum)",
           "company_name": "Solventum",
@@ -5521,15 +5533,15 @@
           "posted_at": "2026-10-21"
         },
         {
-          "job_id": "bbdae63df65cf320",
-          "title": "Director of AI/ML Platforms",
-          "company_name": "Global Payments",
+          "job_id": "6a5b258b4f5dd719",
+          "title": "Vice President, Applied AI Science for Employee Benefits",
+          "company_name": "Hartford (The)",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
           "seniority": "Executive",
           "work_mode": "Hybrid",
-          "url": "https://tsys.wd1.myworkdayjobs.com/en-US/TSYS/job/ATLANTA-GEORGIA/Director-of-AI-ML-Platforms_R0074964",
+          "url": "https://thehartford.wd5.myworkdayjobs.com/en-US/Careers_External/job/Hartford-CT/Vice-President--Applied-AI-Science-for-EB--Ops--and-Customer_R2625965",
           "posted_at": "2026-10-21"
         },
         {
@@ -5545,6 +5557,30 @@
           "posted_at": "2026-10-21"
         },
         {
+          "job_id": "0ccaa44290577690",
+          "title": "Director, Market Intelligence & Commercial Analytics",
+          "company_name": "West Pharmaceutical Services",
+          "is_sp500": true,
+          "location": "US",
+          "country_code": "US",
+          "seniority": "Executive",
+          "work_mode": "Unspecified",
+          "url": "https://careers.westpharma.com/job/Exton-Director%2C-Market-Intelligence-&-Commercial-Analytics-PA-19341/1448603233/",
+          "posted_at": "2026-10-21"
+        },
+        {
+          "job_id": "06d6975481513a31",
+          "title": "Director, Data Center Marketing",
+          "company_name": "Supermicro",
+          "is_sp500": true,
+          "location": "US",
+          "country_code": "US",
+          "seniority": "Executive",
+          "work_mode": "Unspecified",
+          "url": "https://jobs.supermicro.com/job/San-Jose-Director%2C-Data-Center-Marketing-Cali/1439351600/",
+          "posted_at": "2026-10-21"
+        },
+        {
           "job_id": "c2bd64b4b075cef9",
           "title": "Director - Data, Analytics & AI",
           "company_name": "Veralto",
@@ -5557,51 +5593,15 @@
           "posted_at": "2026-10-21"
         },
         {
-          "job_id": "16ab8e79cf6093ab",
-          "title": "DIRECTOR, AI SDLC PERFORMANCE & INSIGHTS",
-          "company_name": "Willis Towers Watson",
+          "job_id": "bbdae63df65cf320",
+          "title": "Director of AI/ML Platforms",
+          "company_name": "Global Payments",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
           "seniority": "Executive",
-          "work_mode": "Unspecified",
-          "url": "https://eedu.fa.em3.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1003/job/202606402",
-          "posted_at": "2026-10-21"
-        },
-        {
-          "job_id": "32c4a747497c7ed6",
-          "title": "Director, Data Platforms Engineering",
-          "company_name": "Yum! Brands",
-          "is_sp500": true,
-          "location": "US",
-          "country_code": "US",
-          "seniority": "Executive",
-          "work_mode": "Unspecified",
-          "url": "https://eczd.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/5242",
-          "posted_at": "2026-10-21"
-        },
-        {
-          "job_id": "f9f0ec326117c291",
-          "title": "Director of Data Science",
-          "company_name": "Principal Financial Group",
-          "is_sp500": true,
-          "location": "US",
-          "country_code": "US",
-          "seniority": "Executive",
-          "work_mode": "Unspecified",
-          "url": "https://careers.principal.com/careers-home/jobs/52791",
-          "posted_at": "2026-10-21"
-        },
-        {
-          "job_id": "132b39cdbc865ae7",
-          "title": "Director, Insights & Analytics",
-          "company_name": "Fox Corporation",
-          "is_sp500": true,
-          "location": "US",
-          "country_code": "US",
-          "seniority": "Executive",
-          "work_mode": "Unspecified",
-          "url": "https://www.foxcareers.com/Search/JobDetail/R50034002/director-insights-analytics-fox-news-media?pageLanguage=en-US",
+          "work_mode": "Hybrid",
+          "url": "https://tsys.wd1.myworkdayjobs.com/en-US/TSYS/job/ATLANTA-GEORGIA/Director-of-AI-ML-Platforms_R0074964",
           "posted_at": "2026-10-21"
         }
       ]
@@ -5620,13 +5620,13 @@
       "senior_plus_pct": 38.0,
       "remote_pct": 28.6,
       "synthesized_description": {
-        "en": [
-          "The Analytics Engineer serves as the critical connective tissue between raw data infrastructure and business consumption. They bring software engineering rigor — Git version control, automated data quality assertions, documentation, and CI/CD — directly into the data transformation and semantic modeling layer.",
-          "The technical stack revolves around dbt (or Dataform in the Google Cloud ecosystem), advanced SQL, and cloud data platforms (Snowflake, BigQuery, Databricks). Their output is clean, modular, trustworthy data assets ready for self-service BI and AI agents."
-        ],
         "cs": [
-          "Analytics Engineer je klíčovou spojnicí mezi surovou datovou infrastrukturou a koncovou analytikou. Přináší softwarové inženýrské praktiky — verzování v Gitu, automatizované testy kvality dat, dokumentaci a CI/CD — přímo do vrstvy transformace dat a budování sémantických modelů.",
-          "Středobodem technologického stacku je dbt (či Dataform v ekosystému Google Cloud), pokročilé SQL a hluboká znalost cloudových databází (Snowflake, BigQuery, Databricks). Výsledkem práce jsou čisté, důvěryhodné a znovupoužitelné datové sady připravené pro samoobslužné BI i AI agenty."
+          "Analytics Engineer propojuje svět datové infrastruktury s potřebami analytiků a byznysu. Přenáší osvědčené inženýrské postupy, jako je verzování v Gitu, automatizované testování kvality dat, dokumentace a CI/CD, přímo do tvorby datových modelů a sémantických vrstev.",
+          "Srdcem jeho práce je pokročilé SQL v kombinaci s transformačními nástroji jako dbt nebo Google Cloud Dataform (SQLX). Analytics Engineer staví čisté, konzistentní a dobře popsané datové modely, ze kterých mohou analytici a manažeři bez obav čerpat jednotné metriky."
+        ],
+        "en": [
+          "The Analytics Engineer bridges raw data infrastructure and downstream business analytics. They bring software engineering practices, such as Git version control, automated testing, documentation, and CI/CD pipelines, directly into data modeling and semantic layer design.",
+          "The role relies on advanced SQL alongside transformation frameworks like dbt and Google Cloud Dataform (SQLX). Analytics Engineers produce clean, tested, and well-documented datasets so analysts and leaders can rely on trusted business metrics."
         ]
       },
       "top_skills": [
@@ -5652,15 +5652,15 @@
           "penetration_pct": 22.8
         },
         {
-          "skill_id": "ai_agents",
-          "skill_name": "AI Agents / Agentic AI",
+          "skill_id": "llm",
+          "skill_name": "LLM / Large Language Models",
           "category": "AI/ML",
           "job_count": 12,
           "penetration_pct": 13.0
         },
         {
-          "skill_id": "llm",
-          "skill_name": "LLM / Large Language Models",
+          "skill_id": "ai_agents",
+          "skill_name": "AI Agents / Agentic AI",
           "category": "AI/ML",
           "job_count": 12,
           "penetration_pct": 13.0
@@ -5738,9 +5738,9 @@
           "penetration_pct": 6.5
         },
         {
-          "skill_id": "bigquery",
-          "skill_name": "BigQuery",
-          "category": "Cloud",
+          "skill_id": "docker",
+          "skill_name": "Docker",
+          "category": "MLOps",
           "job_count": 4,
           "penetration_pct": 4.3
         }
@@ -5751,15 +5751,15 @@
           "job_count": 7
         },
         {
-          "company_name": "Booking Holdings",
-          "job_count": 4
-        },
-        {
           "company_name": "Delivery Hero",
           "job_count": 4
         },
         {
-          "company_name": "International SOS",
+          "company_name": "Booking Holdings",
+          "job_count": 4
+        },
+        {
+          "company_name": "Autodesk",
           "job_count": 2
         },
         {
@@ -5767,7 +5767,7 @@
           "job_count": 2
         },
         {
-          "company_name": "Lennar",
+          "company_name": "voize",
           "job_count": 2
         }
       ],
@@ -5783,12 +5783,12 @@
           "share_pct": 17.1
         },
         {
-          "sector": "Consumer Discretionary",
+          "sector": "Financials",
           "job_count": 7,
           "share_pct": 17.1
         },
         {
-          "sector": "Financials",
+          "sector": "Consumer Discretionary",
           "job_count": 7,
           "share_pct": 17.1
         },
@@ -5856,18 +5856,6 @@
           "posted_at": "2026-10-19"
         },
         {
-          "job_id": "5c3af682dd63a71d",
-          "title": "Digital Success Analytics Engineer",
-          "company_name": "Salesforce",
-          "is_sp500": true,
-          "location": "US",
-          "country_code": "US",
-          "seniority": "Mid",
-          "work_mode": "Unspecified",
-          "url": "https://salesforce.wd12.myworkdayjobs.com/en-US/External_Career_Site/job/Texas---Austin/Digital-Success-Analytics-Engineer_JR362928-1",
-          "posted_at": "2026-10-16"
-        },
-        {
           "job_id": "50bbef311c57781b",
           "title": "Data Analytics Engineer",
           "company_name": "Northern Trust",
@@ -5877,6 +5865,18 @@
           "seniority": "Mid",
           "work_mode": "Unspecified",
           "url": "https://www.linkedin.com/jobs/view/data-analytics-engineer-at-northern-trust-4443463238",
+          "posted_at": "2026-10-16"
+        },
+        {
+          "job_id": "5c3af682dd63a71d",
+          "title": "Digital Success Analytics Engineer",
+          "company_name": "Salesforce",
+          "is_sp500": true,
+          "location": "US",
+          "country_code": "US",
+          "seniority": "Mid",
+          "work_mode": "Unspecified",
+          "url": "https://salesforce.wd12.myworkdayjobs.com/en-US/External_Career_Site/job/Texas---Austin/Digital-Success-Analytics-Engineer_JR362928-1",
           "posted_at": "2026-10-16"
         },
         {
@@ -5943,13 +5943,13 @@
       "senior_plus_pct": 35.1,
       "remote_pct": 44.4,
       "synthesized_description": {
-        "en": [
-          "The BI Developer specializes in designing, building, and optimizing interactive dashboards, semantic data models, and automated reporting systems that turn enterprise data into actionable operational views.",
-          "Job requirements emphasize mastery of BI suites (Power BI including DAX, Tableau, Looker), performant SQL, and cloud data warehouses, with growing focus on dashboard UX, query cost optimization, and certified dataset governance."
-        ],
         "cs": [
-          "BI Developer se specializuje na návrh, vývoj a optimalizaci interaktivních dashboardů, datových modelů a automatizovaných reportů, které transformují podniková data do vizuálně přehledných výstupů pro každodenní řízení firmy.",
-          "Dominují požadavky na hlubokou znalost BI nástrojů (Power BI vč. DAX, Tableau, Looker), psaní výkonných SQL dotazů a práci s cloudovými datovými sklady. Roste důraz na UX datových výstupů, výkonnost dotazů nad velkými objemy dat a správu certifikovaných datových zdrojů."
+          "BI Developer navrhuje, vyvíjí a spravuje interaktivní dashboardy, analytické reporty a datové modely pro koncové uživatele v byznysu. Zaměřuje se na to, aby informace byly přehledné, rychle dostupné a metodicky správné.",
+          "Základem práce je vynikající znalost analytického SQL, datového modelování (hvězdicová schémata) a moderních BI platforem (Power BI, Tableau, Looker). Důležitá je také schopnost pochopit byznysové souvislosti a navrhnout vizualizace, které uživatelům usnadňují každodenní rozhodování."
+        ],
+        "en": [
+          "The BI Developer designs, builds, and maintains interactive dashboards, analytical reporting systems, and data models for business users. The role focuses on delivering clear, fast, and methodologically accurate insights.",
+          "Core skills include strong SQL, dimensional modeling (star schemas), and enterprise visualization platforms (Power BI, Tableau, Looker). Success depends on understanding business goals and presenting data so stakeholders can act on it quickly."
         ]
       },
       "top_skills": [
@@ -6019,15 +6019,15 @@
           "penetration_pct": 7.8
         },
         {
-          "skill_id": "aws",
-          "skill_name": "AWS",
+          "skill_id": "bigquery",
+          "skill_name": "BigQuery",
           "category": "Cloud",
           "job_count": 4,
           "penetration_pct": 5.2
         },
         {
-          "skill_id": "bigquery",
-          "skill_name": "BigQuery",
+          "skill_id": "aws",
+          "skill_name": "AWS",
           "category": "Cloud",
           "job_count": 4,
           "penetration_pct": 5.2
@@ -6054,16 +6054,16 @@
           "penetration_pct": 2.6
         },
         {
-          "skill_id": "spark",
-          "skill_name": "Apache Spark",
-          "category": "Framework",
+          "skill_id": "azure",
+          "skill_name": "Microsoft Azure",
+          "category": "Cloud",
           "job_count": 2,
           "penetration_pct": 2.6
         },
         {
-          "skill_id": "azure",
-          "skill_name": "Microsoft Azure",
-          "category": "Cloud",
+          "skill_id": "spark",
+          "skill_name": "Apache Spark",
+          "category": "Framework",
           "job_count": 2,
           "penetration_pct": 2.6
         }
@@ -6074,11 +6074,11 @@
           "job_count": 10
         },
         {
-          "company_name": "Dexcom",
+          "company_name": "Genuine Parts Company",
           "job_count": 3
         },
         {
-          "company_name": "Genuine Parts Company",
+          "company_name": "Dexcom",
           "job_count": 3
         },
         {
@@ -6086,11 +6086,11 @@
           "job_count": 2
         },
         {
-          "company_name": "Block, Inc.",
+          "company_name": "GSF Car Parts",
           "job_count": 2
         },
         {
-          "company_name": "Twilio",
+          "company_name": "Johnson Controls",
           "job_count": 2
         }
       ],
@@ -6111,12 +6111,12 @@
           "share_pct": 12.0
         },
         {
-          "sector": "Health Care",
+          "sector": "Financials",
           "job_count": 5,
           "share_pct": 10.0
         },
         {
-          "sector": "Financials",
+          "sector": "Health Care",
           "job_count": 5,
           "share_pct": 10.0
         }
@@ -6179,39 +6179,15 @@
           "posted_at": "2026-10-01"
         },
         {
-          "job_id": "0ffbfac04240e700",
-          "title": "Services Business Intelligence & Commercial Analytics Specialist, Advanced",
-          "company_name": "Keysight Technologies",
+          "job_id": "f774f6cb83575cb7",
+          "title": "APAC BI Consultant",
+          "company_name": "Cooper Companies (The)",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
           "seniority": "Mid",
           "work_mode": "Unspecified",
-          "url": "https://jobs.keysight.com/careers-home/jobs/54161",
-          "posted_at": "2026-10-21"
-        },
-        {
-          "job_id": "6fbf40a6980cc99f",
-          "title": "Business Intelligence (Sr.) Analyst - IT - Corporate Office (Austin, MN) / Eden Prairie, MN",
-          "company_name": "Hormel Foods",
-          "is_sp500": true,
-          "location": "US",
-          "country_code": "US",
-          "seniority": "Senior",
-          "work_mode": "Unspecified",
-          "url": "https://ekkh.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_2002/job/35965",
-          "posted_at": "2026-10-21"
-        },
-        {
-          "job_id": "2138ab291c14eb92",
-          "title": "Sr Business Intelligence Analyst - Risk",
-          "company_name": "Paychex",
-          "is_sp500": true,
-          "location": "US",
-          "country_code": "US",
-          "seniority": "Senior",
-          "work_mode": "Unspecified",
-          "url": "https://careers.paychex.com/careers-home/jobs/45252",
+          "url": "https://hcjy.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/11931",
           "posted_at": "2026-10-21"
         },
         {
@@ -6227,6 +6203,30 @@
           "posted_at": "2026-10-21"
         },
         {
+          "job_id": "0ffbfac04240e700",
+          "title": "Services Business Intelligence & Commercial Analytics Specialist, Advanced",
+          "company_name": "Keysight Technologies",
+          "is_sp500": true,
+          "location": "US",
+          "country_code": "US",
+          "seniority": "Mid",
+          "work_mode": "Unspecified",
+          "url": "https://jobs.keysight.com/careers-home/jobs/54161",
+          "posted_at": "2026-10-21"
+        },
+        {
+          "job_id": "2d2bea18e38833ba",
+          "title": "BI Data Analyst",
+          "company_name": "Genuine Parts Company",
+          "is_sp500": true,
+          "location": "US",
+          "country_code": "US",
+          "seniority": "Mid",
+          "work_mode": "Unspecified",
+          "url": "https://jobs.genpt.com/job/birmingham/bi-data-analyst/505/101313119872",
+          "posted_at": "2026-10-21"
+        },
+        {
           "job_id": "ddd5a2da6a162d0b",
           "title": "Regional Business Intelligence Analyst (Bogota, Colombia)",
           "company_name": "Fortive",
@@ -6239,15 +6239,15 @@
           "posted_at": "2026-10-21"
         },
         {
-          "job_id": "7b19b737c1eb4bb3",
-          "title": "WFM Business Intelligence Analyst",
-          "company_name": "Global Payments",
+          "job_id": "6fbf40a6980cc99f",
+          "title": "Business Intelligence (Sr.) Analyst - IT - Corporate Office (Austin, MN) / Eden Prairie, MN",
+          "company_name": "Hormel Foods",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
-          "seniority": "Mid",
+          "seniority": "Senior",
           "work_mode": "Unspecified",
-          "url": "https://tsys.wd1.myworkdayjobs.com/en-US/TSYS/job/QUEZON-CITY--PHILIPPINES/WFM-Business-Intelligence-Analyst_R0073013",
+          "url": "https://ekkh.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_2002/job/35965",
           "posted_at": "2026-10-21"
         }
       ]
@@ -6266,13 +6266,13 @@
       "senior_plus_pct": 98.6,
       "remote_pct": 25.0,
       "synthesized_description": {
-        "en": [
-          "The Team Lead (Data/AI) operates as a 'player-coach', combining direct hands-on contributions on critical architectural components with day-to-day technical leadership, code reviews, and mentoring of a focused engineering pod.",
-          "The role demands senior proficiency in core technologies (Python, SQL, cloud data and ML tooling) alongside the ability to decompose ambiguous business problems into crisp engineering milestones."
-        ],
         "cs": [
-          "Team Lead v oblasti Data/AI je typicky hybridní role ('player-coach'), která kombinuje přímou technickou práci na klíčových komponentách s každodenním technickým vedením menšího týmu specialistů, code reviews a mentoringem.",
-          "Vyžaduje vysokou senioritu v jádrových technologiích (Python, SQL, cloudové datové a ML nástroje) spojenou se schopností rozkládat komplexní byznysové zadání na inženýrské úkoly a hlídat kvalitu výstupů."
+          "Team Lead v oblasti Data & AI působí jako hrající kapitán menšího týmu inženýrů nebo analytiků. Tráví část času vlastním vývojem či architektonickým návrhem a současně koordinuje práci kolegů, vede code review a pomáhá řešit technické zádrhely.",
+          "Předpokladem pro tuto roli je vysoká technická zdatnost v datovém stacku podpořená empatií, schopností předávat zkušenosti méně zkušeným kolegům a udržovat tým v tempu i dobré náladě."
+        ],
+        "en": [
+          "The Team Lead in Data & AI serves as a player-coach for a focused group of engineers or analysts. They split time between hands-on engineering or architectural design and day-to-day team coordination, code reviews, and unblocking colleagues.",
+          "The role demands technical depth in data engineering or applied ML paired with mentoring skills, clear communication, and the ability to keep sprint deliveries on track."
         ]
       },
       "top_skills": [
@@ -6284,13 +6284,6 @@
           "penetration_pct": 21.9
         },
         {
-          "skill_id": "python",
-          "skill_name": "Python",
-          "category": "Programming",
-          "job_count": 11,
-          "penetration_pct": 15.1
-        },
-        {
           "skill_id": "data_governance",
           "skill_name": "Data Governance & Quality",
           "category": "Business",
@@ -6298,16 +6291,23 @@
           "penetration_pct": 15.1
         },
         {
-          "skill_id": "tableau",
-          "skill_name": "Tableau",
-          "category": "Business",
-          "job_count": 8,
-          "penetration_pct": 11.0
+          "skill_id": "python",
+          "skill_name": "Python",
+          "category": "Programming",
+          "job_count": 11,
+          "penetration_pct": 15.1
         },
         {
           "skill_id": "genai",
           "skill_name": "GenAI / Generative AI",
           "category": "AI/ML",
+          "job_count": 8,
+          "penetration_pct": 11.0
+        },
+        {
+          "skill_id": "tableau",
+          "skill_name": "Tableau",
+          "category": "Business",
           "job_count": 8,
           "penetration_pct": 11.0
         },
@@ -6326,9 +6326,9 @@
           "penetration_pct": 5.5
         },
         {
-          "skill_id": "rag",
-          "skill_name": "RAG (Retrieval-Augmented Generation)",
-          "category": "AI/ML",
+          "skill_id": "powerbi",
+          "skill_name": "Power BI",
+          "category": "Business",
           "job_count": 2,
           "penetration_pct": 2.7
         }
@@ -6405,15 +6405,15 @@
           "job_count": 10
         },
         {
-          "company_name": "TE Connectivity",
-          "job_count": 4
-        },
-        {
           "company_name": "Google (Alphabet)",
           "job_count": 4
         },
         {
-          "company_name": "Alphabet Inc. (Class A)",
+          "company_name": "TE Connectivity",
+          "job_count": 4
+        },
+        {
+          "company_name": "Alphabet Inc. (Class C)",
           "job_count": 4
         }
       ],
@@ -6478,30 +6478,6 @@
       ],
       "sample_postings": [
         {
-          "job_id": "3a5455a9dc0b7b20",
-          "title": "AI Software Engineering Lead",
-          "company_name": "Veralto",
-          "is_sp500": true,
-          "location": "US",
-          "country_code": "US",
-          "seniority": "Lead / Manager",
-          "work_mode": "Unspecified",
-          "url": "https://jobs.veralto.com/global/en/job/R10268260",
-          "posted_at": "2026-10-21"
-        },
-        {
-          "job_id": "2ac92d9e41b36e94",
-          "title": "Data Engineer Lead - Cloud Architecture",
-          "company_name": "Progressive Corporation",
-          "is_sp500": true,
-          "location": "US",
-          "country_code": "US",
-          "seniority": "Lead / Manager",
-          "work_mode": "Unspecified",
-          "url": "https://careers.progressive.com/job/data-engineer-lead",
-          "posted_at": "2026-10-21"
-        },
-        {
           "job_id": "a253aa88bdc3f9d8",
           "title": "Data and AI Solutions Sales Lead",
           "company_name": "Schlumberger",
@@ -6514,15 +6490,15 @@
           "posted_at": "2026-10-21"
         },
         {
-          "job_id": "75848324a1e151fe",
-          "title": "Data Privacy Delivery Lead",
-          "company_name": "Hartford (The)",
+          "job_id": "3a5455a9dc0b7b20",
+          "title": "AI Software Engineering Lead",
+          "company_name": "Veralto",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
           "seniority": "Lead / Manager",
           "work_mode": "Unspecified",
-          "url": "https://thehartford.wd5.myworkdayjobs.com/en-US/Careers_External/job/Hartford-CT/Data-Privacy-Delivery-Lead_R2627057",
+          "url": "https://jobs.veralto.com/global/en/job/R10268260",
           "posted_at": "2026-10-21"
         },
         {
@@ -6562,15 +6538,39 @@
           "posted_at": "2026-10-21"
         },
         {
-          "job_id": "ab70c6624d36fbbc",
-          "title": "FLEX Director, Digital Data Product Governance Lead",
-          "company_name": "Marriott International",
+          "job_id": "75848324a1e151fe",
+          "title": "Data Privacy Delivery Lead",
+          "company_name": "Hartford (The)",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
-          "seniority": "Executive",
+          "seniority": "Lead / Manager",
+          "work_mode": "Unspecified",
+          "url": "https://thehartford.wd5.myworkdayjobs.com/en-US/Careers_External/job/Hartford-CT/Data-Privacy-Delivery-Lead_R2627057",
+          "posted_at": "2026-10-21"
+        },
+        {
+          "job_id": "2ac92d9e41b36e94",
+          "title": "Data Engineer Lead - Cloud Architecture",
+          "company_name": "Progressive Corporation",
+          "is_sp500": true,
+          "location": "US",
+          "country_code": "US",
+          "seniority": "Lead / Manager",
+          "work_mode": "Unspecified",
+          "url": "https://careers.progressive.com/job/data-engineer-lead",
+          "posted_at": "2026-10-21"
+        },
+        {
+          "job_id": "1745eaa51d6571c2",
+          "title": "AVP - KYC Operations Artificial Intelligence (AI) Lead",
+          "company_name": "Citigroup",
+          "is_sp500": true,
+          "location": "US",
+          "country_code": "US",
+          "seniority": "Lead / Manager",
           "work_mode": "Hybrid",
-          "url": "https://careers.marriott.com/flex-director-digital-data-product-governance-lead/job/P1-6928384-0",
+          "url": "https://citi.wd5.myworkdayjobs.com/en-US/2/job/Mumbai-Maharashtra-India/AVP---KYC-Operations-AI-Lead_26977868",
           "posted_at": "2026-10-14"
         }
       ]
@@ -6589,13 +6589,13 @@
       "senior_plus_pct": 100.0,
       "remote_pct": 42.9,
       "synthesized_description": {
-        "en": [
-          "The Data Science / ML Manager guides teams of data scientists and ML engineers from problem formulation and experimentation through production deployment and business impact measurement.",
-          "The position requires both deep fluency in statistical modeling, experimentation, and modern AI paradigms (including LLMs and GenAI) and the leadership discipline to shield the team from ad-hoc noise while focusing on high-ROI initiatives."
-        ],
         "cs": [
-          "Data Science / ML Manager vede týmy datových vědců a ML inženýrů od fáze výzkumu a formulace problému až po nasazení modelů do produkce a měření jejich reálného obchodního přínosu.",
-          "Role vyžaduje jak hluboké porozumění statistickému modelování, experimentování a moderním AI přístupům (včetně LLM a GenAI), tak schopnost chránit tým před ad-hoc operativou a soustředit kapacity na projekty s nejvyšší strategickou návratností."
+          "Data Science Manager vede tým datových vědců a specialistů na strojové učení. Odpovídá za to, aby výzkumné a prediktivní projekty nezůstávaly jen u akademických pokusů, ale reálně pomáhaly byznysu a nacházely uplatnění v produkci.",
+          "Úspěch v této roli stojí na schopnosti posoudit proveditelnost matematických a statistických metod, nastavit rozumná očekávání u vedení firmy a propojit práci vědců s inženýrskými týmy, které zajišťují provoz systémů."
+        ],
+        "en": [
+          "The Data Science Manager leads teams of data scientists and machine learning practitioners, ensuring predictive and algorithmic initiatives deliver concrete business value rather than remaining academic exercises.",
+          "The position requires sound judgment in statistical methods, the ability to manage stakeholder expectations around uncertainty, and strong partnership with engineering teams handling production deployment."
         ]
       },
       "top_skills": [
@@ -6621,15 +6621,15 @@
           "penetration_pct": 21.8
         },
         {
-          "skill_id": "genai",
-          "skill_name": "GenAI / Generative AI",
+          "skill_id": "llm",
+          "skill_name": "LLM / Large Language Models",
           "category": "AI/ML",
           "job_count": 9,
           "penetration_pct": 16.4
         },
         {
-          "skill_id": "llm",
-          "skill_name": "LLM / Large Language Models",
+          "skill_id": "genai",
+          "skill_name": "GenAI / Generative AI",
           "category": "AI/ML",
           "job_count": 9,
           "penetration_pct": 16.4
@@ -6658,6 +6658,13 @@
       ],
       "top_technologies": [
         {
+          "skill_id": "spark",
+          "skill_name": "Apache Spark",
+          "category": "Framework",
+          "job_count": 3,
+          "penetration_pct": 5.5
+        },
+        {
           "skill_id": "evals_observability",
           "skill_name": "MLOps / Evals & Observability",
           "category": "MLOps",
@@ -6665,11 +6672,11 @@
           "penetration_pct": 5.5
         },
         {
-          "skill_id": "spark",
-          "skill_name": "Apache Spark",
-          "category": "Framework",
-          "job_count": 3,
-          "penetration_pct": 5.5
+          "skill_id": "azure",
+          "skill_name": "Microsoft Azure",
+          "category": "Cloud",
+          "job_count": 1,
+          "penetration_pct": 1.8
         },
         {
           "skill_id": "pytorch",
@@ -6681,13 +6688,6 @@
         {
           "skill_id": "databricks",
           "skill_name": "Databricks",
-          "category": "Cloud",
-          "job_count": 1,
-          "penetration_pct": 1.8
-        },
-        {
-          "skill_id": "azure",
-          "skill_name": "Microsoft Azure",
           "category": "Cloud",
           "job_count": 1,
           "penetration_pct": 1.8
@@ -6891,13 +6891,13 @@
       "senior_plus_pct": 60.7,
       "remote_pct": 0.0,
       "synthesized_description": {
-        "en": [
-          "The LLM / GenAI Engineer is a specialized engineering role dedicated to designing, tuning, and operating systems powered by Large Language Models — covering domain data curation, RAG, fine-tuning, and low-latency deployment.",
-          "The core stack pairs Python and PyTorch with agent/LLM orchestration frameworks (LangChain, LlamaIndex, LangGraph), vector databases, and rigorous evaluation & observability tooling to prevent quality regressions in production."
-        ],
         "cs": [
-          "LLM / GenAI Engineer je úzce specializovaná inženýrská role zaměřená výhradně na návrh, ladění a produkční provoz systémů postavených na velkých jazykových modelech. Řeší kompletní řetězec od přípravy doménových dat přes RAG a fine-tuning až po bezpečné nasazení.",
-          "Klíčovým stackem je Python, PyTorch, frameworky pro orchestraci agentů a LLM (LangChain, LlamaIndex, LangGraph), vektorové databáze a nástroje pro systematickou evaluaci (Evals & Observability), které brání degradaci kvality odpovědí v produkci."
+          "LLM / GenAI Engineer se úzce specializuje na návrh, ladění a spolehlivý provoz aplikací postavených na velkých jazykových modelech. Řeší přípravu specializovaných datových sad, architekturu RAG, fine-tuning modelů a optimalizaci latence při odbavování požadavků.",
+          "Na trhu práce je po těchto specialistech obrovská poptávka. Firmy hledají inženýry, kteří ovládají Python a moderní frameworky (LangChain, LlamaIndex), rozumí práci s vektorovými databázemi a dokážou zavést systematické testování kvality (Evals) pro omezení halucinací a nechtěných odpovědí v produkci."
+        ],
+        "en": [
+          "The LLM / GenAI Engineer specializes in designing, fine-tuning, and operating systems built around Large Language Models. Work focuses on domain dataset preparation, RAG architectures, model adaptation, and latency optimization for live traffic.",
+          "Market demand for this specialization is surging. Organizations prioritize engineers proficient in Python, modern orchestration frameworks (LangChain, LlamaIndex), vector databases, and evaluation frameworks (Evals) to minimize hallucinations and ensure production stability."
         ]
       },
       "top_skills": [
@@ -6944,16 +6944,16 @@
           "penetration_pct": 28.6
         },
         {
-          "skill_id": "fine_tuning",
-          "skill_name": "Fine-Tuning",
-          "category": "AI/ML",
+          "skill_id": "sql",
+          "skill_name": "SQL",
+          "category": "Programming",
           "job_count": 3,
           "penetration_pct": 10.7
         },
         {
-          "skill_id": "sql",
-          "skill_name": "SQL",
-          "category": "Programming",
+          "skill_id": "fine_tuning",
+          "skill_name": "Fine-Tuning",
+          "category": "AI/ML",
           "job_count": 3,
           "penetration_pct": 10.7
         }
@@ -6988,13 +6988,6 @@
           "penetration_pct": 14.3
         },
         {
-          "skill_id": "databricks",
-          "skill_name": "Databricks",
-          "category": "Cloud",
-          "job_count": 3,
-          "penetration_pct": 10.7
-        },
-        {
           "skill_id": "evals_observability",
           "skill_name": "MLOps / Evals & Observability",
           "category": "MLOps",
@@ -7002,16 +6995,23 @@
           "penetration_pct": 10.7
         },
         {
-          "skill_id": "scikit_learn",
-          "skill_name": "scikit-learn",
+          "skill_id": "databricks",
+          "skill_name": "Databricks",
+          "category": "Cloud",
+          "job_count": 3,
+          "penetration_pct": 10.7
+        },
+        {
+          "skill_id": "pandas",
+          "skill_name": "pandas",
           "category": "Framework",
           "job_count": 2,
           "penetration_pct": 7.1
         },
         {
-          "skill_id": "docker",
-          "skill_name": "Docker",
-          "category": "MLOps",
+          "skill_id": "tensorflow",
+          "skill_name": "TensorFlow",
+          "category": "Framework",
           "job_count": 2,
           "penetration_pct": 7.1
         }
@@ -7026,7 +7026,7 @@
           "job_count": 3
         },
         {
-          "company_name": "NXP Semiconductors",
+          "company_name": "GE Vernova",
           "job_count": 2
         },
         {
@@ -7038,7 +7038,7 @@
           "job_count": 2
         },
         {
-          "company_name": "GE Vernova",
+          "company_name": "NXP Semiconductors",
           "job_count": 2
         }
       ],
@@ -7214,13 +7214,13 @@
       "senior_plus_pct": 100.0,
       "remote_pct": 28.6,
       "synthesized_description": {
-        "en": [
-          "The Head of AI / Data oversees the end-to-end data and artificial intelligence agenda for a company or major business unit, defining long-term technical and organizational strategy, governance standards, and build-vs-buy platform decisions.",
-          "The role demands executive leadership, command of modern cloud and AI architectures, and the ability to align board-level stakeholders on AI economics, risk management, and measurable value creation."
-        ],
         "cs": [
-          "Head of AI / Data zastřešuje celkovou datovou a AI agendu společnosti nebo její klíčové divize. Definuje dlouhodobou technologickou i organizační vizi, nastavuje standardy data governance a rozhoduje o tom, kde firma vyvine vlastní modely a kde využije komerční platformy.",
-          "Pozice vyžaduje kombinaci strategického leadershipu, orientace v moderní cloudové a AI architektuře a schopnosti komunikovat na úrovni představenstva o příležitostech, rizicích i reálné ekonomice AI projektů."
+          "Head of AI / Data zastřešuje veškeré datové a AI aktivity ve společnosti nebo její hlavní divizi. Určuje dlouhodobé technologické směřování, nastavuje pravidla pro správu dat a rozhoduje o tom, jaké systémy firma vyvine interně a kde vsadí na hotová komerční řešení.",
+          "Pozice vyžaduje přirozenou autoritu, přehled v moderních cloudových a AI architekturách a schopnost otevřeně mluvit s vedením společnosti o reálných nákladech, rizicích i skutečném přínosu datových projektů."
+        ],
+        "en": [
+          "The Head of AI / Data sets the overarching data and AI strategy for an enterprise or major division. They define long-term technical architecture, governance policies, and build-versus-buy platform decisions.",
+          "The role demands executive leadership, a firm grasp of cloud and AI architectures, and the ability to discuss costs, risk management, and tangible business returns transparently with board members."
         ]
       },
       "top_skills": [
@@ -7232,15 +7232,15 @@
           "penetration_pct": 38.1
         },
         {
-          "skill_id": "ai_agents",
-          "skill_name": "AI Agents / Agentic AI",
+          "skill_id": "llm",
+          "skill_name": "LLM / Large Language Models",
           "category": "AI/ML",
           "job_count": 7,
           "penetration_pct": 33.3
         },
         {
-          "skill_id": "llm",
-          "skill_name": "LLM / Large Language Models",
+          "skill_id": "ai_agents",
+          "skill_name": "AI Agents / Agentic AI",
           "category": "AI/ML",
           "job_count": 7,
           "penetration_pct": 33.3
@@ -7251,6 +7251,13 @@
           "category": "AI/ML",
           "job_count": 5,
           "penetration_pct": 23.8
+        },
+        {
+          "skill_id": "powerbi",
+          "skill_name": "Power BI",
+          "category": "Business",
+          "job_count": 4,
+          "penetration_pct": 19.0
         },
         {
           "skill_id": "sql",
@@ -7267,16 +7274,9 @@
           "penetration_pct": 19.0
         },
         {
-          "skill_id": "powerbi",
-          "skill_name": "Power BI",
+          "skill_id": "excel",
+          "skill_name": "Excel",
           "category": "Business",
-          "job_count": 4,
-          "penetration_pct": 19.0
-        },
-        {
-          "skill_id": "rag",
-          "skill_name": "RAG (Retrieval-Augmented Generation)",
-          "category": "AI/ML",
           "job_count": 1,
           "penetration_pct": 4.8
         }
@@ -7290,9 +7290,9 @@
           "penetration_pct": 28.6
         },
         {
-          "skill_id": "spark",
-          "skill_name": "Apache Spark",
-          "category": "Framework",
+          "skill_id": "azure",
+          "skill_name": "Microsoft Azure",
+          "category": "Cloud",
           "job_count": 2,
           "penetration_pct": 9.5
         },
@@ -7304,6 +7304,13 @@
           "penetration_pct": 9.5
         },
         {
+          "skill_id": "spark",
+          "skill_name": "Apache Spark",
+          "category": "Framework",
+          "job_count": 2,
+          "penetration_pct": 9.5
+        },
+        {
           "skill_id": "gcp",
           "skill_name": "Google Cloud Platform",
           "category": "Cloud",
@@ -7311,15 +7318,8 @@
           "penetration_pct": 9.5
         },
         {
-          "skill_id": "azure",
-          "skill_name": "Microsoft Azure",
-          "category": "Cloud",
-          "job_count": 2,
-          "penetration_pct": 9.5
-        },
-        {
-          "skill_id": "ms_fabric",
-          "skill_name": "Microsoft Fabric",
+          "skill_id": "snowflake_db",
+          "skill_name": "Snowflake",
           "category": "Cloud",
           "job_count": 1,
           "penetration_pct": 4.8
@@ -7332,8 +7332,8 @@
           "penetration_pct": 4.8
         },
         {
-          "skill_id": "snowflake_db",
-          "skill_name": "Snowflake",
+          "skill_id": "ms_fabric",
+          "skill_name": "Microsoft Fabric",
           "category": "Cloud",
           "job_count": 1,
           "penetration_pct": 4.8
@@ -7341,27 +7341,27 @@
       ],
       "top_companies": [
         {
-          "company_name": "Synchrony Financial",
-          "job_count": 2
-        },
-        {
           "company_name": "Ares Management",
           "job_count": 2
         },
         {
-          "company_name": "Brown & Brown",
-          "job_count": 1
-        },
-        {
-          "company_name": "Pfizer",
-          "job_count": 1
+          "company_name": "Synchrony Financial",
+          "job_count": 2
         },
         {
           "company_name": "Prudential Financial",
           "job_count": 1
         },
         {
-          "company_name": "Everest Group",
+          "company_name": "Advanced Micro Devices",
+          "job_count": 1
+        },
+        {
+          "company_name": "CDW Corporation",
+          "job_count": 1
+        },
+        {
+          "company_name": "Franklin Resources",
           "job_count": 1
         }
       ],
@@ -7532,13 +7532,13 @@
       "senior_plus_pct": 66.7,
       "remote_pct": 0.0,
       "synthesized_description": {
-        "en": [
-          "The MLOps Engineer (often titled LLMOps or AI Platform Engineer) builds standardized infrastructure for training, versioning, deploying, and continuously monitoring machine learning and generative AI models in production.",
-          "Work centers on CI/CD automation for ML, container and cluster orchestration (Docker, Kubernetes), GPU/inference server optimization (Triton), feature stores, and observability pipelines for drift detection and automated evaluations."
-        ],
         "cs": [
-          "MLOps Engineer (často označovaný i jako LLMOps nebo AI Platform Engineer) buduje standardizovanou infrastrukturu pro trénování, verzování, nasazování a nepřetržité sledování strojového učení a generativních modelů v produkci.",
-          "Těžištěm práce je automatizace CI/CD pro ML, správa kontejnerů a clusterů (Docker, Kubernetes), optimalizace GPU/inferenčních serverů (Triton), správa feature stores a nasazení systémů pro observabilitu, detekci data driftu a vyhodnocování kvality modelů."
+          "MLOps Engineer (často také LLMOps nebo AI Platform Engineer) staví spolehlivé zázemí pro trénování, verzování, nasazování a sledování modelů strojového učení i generativní AI v produkčním provozu.",
+          "Hlavní náplní práce je automatizace procesů (CI/CD pro ML), správa kontejnerů a výpočetních clusterů (Docker, Kubernetes), optimalizace využití GPU (např. Triton Inference Server) a zavedení monitoringu pro včasné odhalení driftu dat a poklesu kvality odpovědí."
+        ],
+        "en": [
+          "The MLOps Engineer (frequently titled LLMOps or AI Platform Engineer) builds dependable infrastructure for training, versioning, deploying, and monitoring machine learning and generative models in production.",
+          "Key responsibilities include CI/CD automation for ML pipelines, container orchestration (Docker, Kubernetes), GPU utilization and inference optimization (such as Triton), and real-time monitoring to detect data drift and quality regressions."
         ]
       },
       "top_skills": [
@@ -7578,9 +7578,9 @@
           "penetration_pct": 20.0
         },
         {
-          "skill_id": "data_governance",
-          "skill_name": "Data Governance & Quality",
-          "category": "Business",
+          "skill_id": "sql",
+          "skill_name": "SQL",
+          "category": "Programming",
           "job_count": 2,
           "penetration_pct": 13.3
         },
@@ -7592,9 +7592,9 @@
           "penetration_pct": 13.3
         },
         {
-          "skill_id": "sql",
-          "skill_name": "SQL",
-          "category": "Programming",
+          "skill_id": "data_governance",
+          "skill_name": "Data Governance & Quality",
+          "category": "Business",
           "job_count": 2,
           "penetration_pct": 13.3
         }
@@ -7615,13 +7615,6 @@
           "penetration_pct": 40.0
         },
         {
-          "skill_id": "docker",
-          "skill_name": "Docker",
-          "category": "MLOps",
-          "job_count": 4,
-          "penetration_pct": 26.7
-        },
-        {
           "skill_id": "aws",
           "skill_name": "AWS",
           "category": "Cloud",
@@ -7629,16 +7622,23 @@
           "penetration_pct": 26.7
         },
         {
-          "skill_id": "pytorch",
-          "skill_name": "PyTorch",
-          "category": "Framework",
-          "job_count": 3,
-          "penetration_pct": 20.0
+          "skill_id": "docker",
+          "skill_name": "Docker",
+          "category": "MLOps",
+          "job_count": 4,
+          "penetration_pct": 26.7
         },
         {
           "skill_id": "azure",
           "skill_name": "Microsoft Azure",
           "category": "Cloud",
+          "job_count": 3,
+          "penetration_pct": 20.0
+        },
+        {
+          "skill_id": "airflow",
+          "skill_name": "Apache Airflow",
+          "category": "Framework",
           "job_count": 3,
           "penetration_pct": 20.0
         },
@@ -7650,9 +7650,9 @@
           "penetration_pct": 20.0
         },
         {
-          "skill_id": "airflow",
-          "skill_name": "Apache Airflow",
-          "category": "Framework",
+          "skill_id": "gcp",
+          "skill_name": "Google Cloud Platform",
+          "category": "Cloud",
           "job_count": 3,
           "penetration_pct": 20.0
         }
@@ -7667,11 +7667,11 @@
           "job_count": 2
         },
         {
-          "company_name": "TE Connectivity",
+          "company_name": "UnitedHealth Group",
           "job_count": 2
         },
         {
-          "company_name": "UnitedHealth Group",
+          "company_name": "TE Connectivity",
           "job_count": 2
         },
         {
@@ -7679,7 +7679,7 @@
           "job_count": 1
         },
         {
-          "company_name": "Deere & Company",
+          "company_name": "Gen Digital",
           "job_count": 1
         }
       ],
@@ -7695,17 +7695,17 @@
           "share_pct": 21.4
         },
         {
-          "sector": "Energy",
-          "job_count": 2,
-          "share_pct": 14.3
-        },
-        {
           "sector": "Health Care",
           "job_count": 2,
           "share_pct": 14.3
         },
         {
           "sector": "Communication Services",
+          "job_count": 2,
+          "share_pct": 14.3
+        },
+        {
+          "sector": "Energy",
           "job_count": 2,
           "share_pct": 14.3
         }
@@ -7855,35 +7855,35 @@
       "senior_plus_pct": 100.0,
       "remote_pct": 0.0,
       "synthesized_description": {
-        "en": [
-          "The Chief Data / AI Officer (CDO / CAIO) is the top C-suite executive accountable for transforming enterprise data and artificial intelligence into a durable competitive advantage, encompassing regulatory compliance and AI governance.",
-          "Candidates must demonstrate a track record of leading large-scale corporate transformations, scaling multi-disciplinary data organizations, and governing multi-year capital investments in cloud and AI infrastructure."
-        ],
         "cs": [
-          "Chief Data / AI Officer (CDO / CAIO) je nejvyšší exekutivní role v představenstvu (C-suite), která nese plnou odpovědnost za přeměnu dat a umělé inteligence v měřitelnou konkurenční výhodu celé korporace, včetně regulatorní shody a AI etiky.",
-          "Kandidáti musí prokázat zkušenost s řízením rozsáhlých podnikových transformací, budováním datových organizací o desítkách až stovkách lidí a strategickým řízením víceletých investic do cloudové a AI infrastruktury."
+          "Chief Data / AI Officer (CDO / CAIO) je člen nejužšího vedení společnosti, který nese konečnou odpovědnost za strategické využití dat a umělé inteligence pro posílení pozice firmy na trhu, včetně dodržování regulatorních a etických standardů.",
+          "Tato exekutivní role vyžaduje zkušenosti s vedením rozsáhlých transformací, schopnost řídit velké multidisciplinární týmy a strategicky plánovat víceleté rozpočty na cloudové i personální kapacity."
+        ],
+        "en": [
+          "The Chief Data / AI Officer (CDO / CAIO) is a C-suite executive accountable for leveraging data and artificial intelligence to strengthen the company's competitive standing, while ensuring regulatory compliance and ethical standards.",
+          "This executive post requires proven leadership in enterprise-scale transformations, building cross-functional organizations, and managing multi-year capital investments in cloud and AI infrastructure."
         ]
       },
       "top_skills": [],
       "top_technologies": [],
       "top_companies": [
         {
-          "company_name": "Berkshire Hathaway",
+          "company_name": "UnitedHealth Group",
           "job_count": 1
         },
         {
-          "company_name": "UnitedHealth Group",
+          "company_name": "Berkshire Hathaway",
           "job_count": 1
         }
       ],
       "top_sectors": [
         {
-          "sector": "Health Care",
+          "sector": "Financials",
           "job_count": 1,
           "share_pct": 50.0
         },
         {
-          "sector": "Financials",
+          "sector": "Health Care",
           "job_count": 1,
           "share_pct": 50.0
         }
@@ -7961,13 +7961,13 @@
       "senior_plus_pct": 100.0,
       "remote_pct": 0.0,
       "synthesized_description": {
-        "en": [
-          "The Computer Vision Engineer specializes in algorithms for image, video, and 3D spatial data (LiDAR, sensor fusion) powered by deep convolutional networks and visual/multimodal transformers.",
-          "Deployed across robotics, autonomous systems, industrial inspection, and medical imaging, the role requires strong Python and C++ skills, PyTorch, OpenCV, and model quantization/optimization for real-time or edge execution."
-        ],
         "cs": [
-          "Computer Vision Engineer se specializuje na algoritmy zpracování obrazu, videa a 3D prostorových dat (LiDAR, senzorická fúze) s využitím hlubokých neuronových sítí a vizuálních či multimodálních transformerů.",
-          "Uplatnění nachází v robotice, autonomních systémech, průmyslové kontrole kvality a medicínské diagnostice. Klíčová je znalost Pythonu, C++, PyTorche, OpenCV a optimalizace modelů pro běh v reálném čase či na edge zařízeních."
+          "Computer Vision Engineer vyvíjí algoritmy pro zpracování obrazu, videa a 3D prostorových dat (např. LiDAR) pomocí hlubokých neuronových sítí a moderních vizuálních či multimodálních modelů.",
+          "Své uplatnění nachází v robotice, autonomních vozidlech, automatizované kontrole výroby nebo medicíně. Podmínkou úspěchu je skvělá znalost Pythonu a C++, knihoven PyTorch a OpenCV a schopnost optimalizovat modely pro rychlý běh na specializovaném hardwaru nebo koncových (edge) zařízeních."
+        ],
+        "en": [
+          "The Computer Vision Engineer develops algorithms for processing imagery, video streams, and 3D spatial data using deep neural networks and multimodal vision models.",
+          "Applications span robotics, autonomous vehicles, automated visual inspection, and medical imaging. Essential requirements include solid Python and C++, PyTorch, OpenCV, and the ability to optimize models for real-time edge hardware."
         ]
       },
       "top_skills": [
@@ -8054,13 +8054,13 @@
       "senior_plus_pct": 0.0,
       "remote_pct": 0.0,
       "synthesized_description": {
-        "en": [
-          "The NLP Engineer focuses on algorithmic natural language processing — spanning entity extraction, document classification, and semantic search through modern transformer and large language model architectures.",
-          "Requirements combine computational linguistics and text processing fundamentals with production proficiency in Python, PyTorch, Hugging Face Transformers, and retrieval or conversational pipelines."
-        ],
         "cs": [
-          "NLP Engineer se věnuje algoritmickému zpracování přirozeného jazyka — od klasických úloh extrakce entit, klasifikace dokumentů a sémantického vyhledávání až po moderní architektury postavené na transformerech a velkých jazykových modelech.",
-          "Požadavky spojují znalost lingvistických principů a zpracování textu s praxí v Pythonu, PyTorchi, ekosystému Hugging Face Transformers a budování vyhledávacích či konverzačních pipeline."
+          "NLP Engineer se věnuje algoritmickému zpracování přirozeného jazyka: od úloh jako vyhledávání entit, klasifikace textu a sémantické prohledávání až po moderní architektury postavené na transformerech a velkých jazykových modelech.",
+          "Požadavky spojují porozumění lingvistickým principům se softwarovou praxí v Pythonu, PyTorchu a ekosystému Hugging Face. Zkušený NLP inženýr umí postavit stabilní vyhledávací či asistenční systémy, které bez problémů zvládají reálný uživatelský provoz."
+        ],
+        "en": [
+          "The NLP Engineer develops systems for natural language understanding: ranging from entity recognition, document classification, and semantic search to architectures built on transformers and large language models.",
+          "The role pairs computational linguistics fundamentals with practical software engineering in Python, PyTorch, and the Hugging Face ecosystem, focusing on robust search and language systems designed for live production workloads."
         ]
       },
       "top_skills": [],
@@ -8132,7 +8132,7 @@
           "SQL",
           "Python",
           "Snowflake",
-          "Google Cloud Platform"
+          "Data Governance & Quality"
         ]
       },
       {
@@ -8185,10 +8185,10 @@
         "penetration_in_gcp_pct": 0.3,
         "penetration_all_pct": 0.03,
         "top_paired_skills": [
-          "Kubernetes",
-          "Python",
-          "dbt",
-          "Java"
+          "Data Governance & Quality",
+          "BigQuery",
+          "Looker",
+          "Apache Spark"
         ]
       }
     ],
@@ -8218,11 +8218,11 @@
         "job_count": 29
       },
       {
-        "canonical_name": "AI / Data Product Manager",
+        "canonical_name": "Engineering Manager (AI/Data)",
         "job_count": 12
       },
       {
-        "canonical_name": "Engineering Manager (AI/Data)",
+        "canonical_name": "AI / Data Product Manager",
         "job_count": 12
       }
     ],
@@ -8273,8 +8273,8 @@
         "job_count": 14
       },
       {
-        "company_name": "Cisco",
-        "sector": "Information Technology",
+        "company_name": "Reddit",
+        "sector": "Communication Services",
         "job_count": 13
       }
     ]

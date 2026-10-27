@@ -1,4 +1,4 @@
-# Vector87.com — Quantitative Telemetry of the Global AI & Data Job Market
+# Vector87.com | Quantitative Telemetry of the Global AI & Data Job Market
 
 > Vector87.com is an open, static data and intelligence hub monitoring the direction of the AI, ML, Data Science, and Analytics job market across S&P 500 corporations, frontier technology leaders, and Europe. Data is aggregated directly from corporate ATS platforms into a local DuckDB analytical warehouse and exported into deterministic static JSON contracts.
 
@@ -13,32 +13,9 @@
 - [Market Dashboard](https://vector87.com/): Core telemetry covering vitality, cloud stack, S&P 500 sector heatmap, hierarchy ratios, and emerging technology signals.
 - [Czech Version / Česká verze](https://vector87.com/cs/): Kompletní zrcadlo v češtině.
 - [Role Analysis](https://vector87.com/roles): 21 canonical AI & Data roles with synthesized job descriptions, required competencies, and team expansion velocity.
-- [Cloud & Tech Stack](https://vector87.com/cloud-tech): Hyperscaler adoption index (AWS, GCP, Azure, Snowflake, Databricks) and tech stack penetration across enterprise jobs.
+- [Cloud & Tech Hub](https://vector87.com/cloud-tech): In-depth market telemetry across cloud ecosystems (AWS, Azure, GCP) and platforms (Databricks, Snowflake).
 - [Education Academy](https://vector87.com/academy): 3 structured learning tracks (Analytics Engineering, Cloud Data Engineering, Applied AI/LLMOps) and essential architectural literature.
 - [About Author](https://vector87.com/about): Background of Antonín Kučera (akucera.eu), project philosophy, and essays on Data-Informed leadership.
-
-### Canonical Role Profiles (Subpages)
-- [Data Engineer](https://vector87.com/roles/data-engineer)
-- [Machine Learning Engineer](https://vector87.com/roles/ml-engineer)
-- [Data Scientist](https://vector87.com/roles/data-scientist)
-- [Analytics Engineer](https://vector87.com/roles/analytics-engineer)
-- [AI Developer](https://vector87.com/roles/ai-developer)
-- [LLM Engineer](https://vector87.com/roles/llm-engineer)
-- [MLOps Engineer](https://vector87.com/roles/mlops-engineer)
-- [Data Analyst](https://vector87.com/roles/data-analyst)
-- [BI Developer](https://vector87.com/roles/bi-developer)
-- [Data Architect](https://vector87.com/roles/data-architect)
-- [Research Scientist](https://vector87.com/roles/research-scientist)
-- [AI Product Manager](https://vector87.com/roles/ai-product-manager)
-- [Computer Vision Engineer](https://vector87.com/roles/computer-vision-engineer)
-- [NLP Engineer](https://vector87.com/roles/nlp-engineer)
-- [Team Lead Data & AI](https://vector87.com/roles/team-lead-data-ai)
-- [Data Science Manager](https://vector87.com/roles/data-science-manager)
-- [BI & Analytics Manager](https://vector87.com/roles/bi-analytics-manager)
-- [Engineering Manager (Data/AI)](https://vector87.com/roles/engineering-manager-ai-data)
-- [Head of AI & Data](https://vector87.com/roles/head-of-ai-data)
-- [Director / VP Data & AI](https://vector87.com/roles/director-vp-data-ai)
-- [Chief Data & AI Officer](https://vector87.com/roles/chief-data-ai-officer)
 
 ## Machine-Readable Data Contracts
 - [JSON Schema](https://vector87.com/schema/market-data.schema.json): Formal draft 2020-12 schema specification.

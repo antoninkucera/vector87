@@ -838,10 +838,10 @@ def export_market_data(db_path: Path | None = None, output_path: Path | None = N
             "total_occupied_seats": total_occupied_seats,
             "coverage_note": {
                 "en": (
-                    f"Workforce intelligence integration tracking {total_occupied_seats:,} occupied Data & AI seats across {hc_tracked_comps} enterprises. Measures Hiring Intensity Ratio — open job postings relative to currently occupied team seats."
+                    f"Workforce intelligence integration tracking {total_occupied_seats:,} occupied Data & AI seats across {hc_tracked_comps} enterprises. Measures Hiring Intensity Ratio: open job postings relative to currently occupied team seats."
                 ),
                 "cs": (
-                    f"Telemetrie obsazených pozic sledující {total_occupied_seats:,} zaměstnaných Data & AI expertů u {hc_tracked_comps} korporací. Měří Hiring Intensity Ratio — poměr otevřených inzerátů vůči aktuální velikosti týmů."
+                    f"Telemetrie obsazených pozic sledující {total_occupied_seats:,} zaměstnaných Data & AI expertů u {hc_tracked_comps} korporací. Měří Hiring Intensity Ratio: poměr otevřených inzerátů vůči aktuální velikosti týmů."
                 ),
             },
             "macro_role_intensity": macro_role_intensity,
@@ -1257,7 +1257,7 @@ def generate_llms_txt(payload: dict[str, Any]) -> None:
     trend = payload["trend_radar"]
 
     # 1. llms.txt (Lehký přehledový manifest)
-    llms_txt = f"""# Vector87.com — Quantitative Telemetry of the Global AI & Data Job Market
+    llms_txt = f"""# Vector87.com | Quantitative Telemetry of the Global AI & Data Job Market
 
 > Vector87.com is an open, static data and intelligence hub monitoring the direction of the AI, ML, Data Science, and Analytics job market across S&P 500 corporations, frontier technology leaders, and Europe. Data is aggregated directly from corporate ATS platforms into a local DuckDB analytical warehouse and exported into deterministic static JSON contracts.
 
@@ -1272,7 +1272,7 @@ def generate_llms_txt(payload: dict[str, Any]) -> None:
 - [Market Dashboard](https://vector87.com/): Core telemetry covering vitality, cloud stack, S&P 500 sector heatmap, hierarchy ratios, and emerging technology signals.
 - [Czech Version / Česká verze](https://vector87.com/cs/): Kompletní zrcadlo v češtině.
 - [Role Analysis](https://vector87.com/roles): 21 canonical AI & Data roles with synthesized job descriptions, required competencies, and team expansion velocity.
-- [Google Cloud Hub](https://vector87.com/gcp-hub): Specialized telemetry for Google Cloud Platform (BigQuery, Vertex AI, Dataform, Looker, Dataflow).
+- [Cloud & Tech Hub](https://vector87.com/cloud-tech): In-depth market telemetry across cloud ecosystems (AWS, Azure, GCP) and platforms (Databricks, Snowflake).
 - [Education Academy](https://vector87.com/academy): 3 structured learning tracks (Analytics Engineering, Cloud Data Engineering, Applied AI/LLMOps) and essential architectural literature.
 - [About Author](https://vector87.com/about): Background of Antonín Kučera (akucera.eu), project philosophy, and essays on Data-Informed leadership.
 
@@ -1286,7 +1286,7 @@ def generate_llms_txt(payload: dict[str, Any]) -> None:
 
     # 2. llms-full.txt (Detailní datový a syntetický výtah pro AI agenty)
     full_lines = [
-        f"# Vector87.com — Complete Telemetry & Role Syntheses (Snapshot {meta['latest_snapshot_date']})",
+        f"# Vector87.com | Complete Telemetry & Role Syntheses (Snapshot {meta['latest_snapshot_date']})",
         "",
         "## 1. Executive Summary & Market Vitality",
         f"- Total Active AI & Data Jobs: {mv['total_ai_data_jobs']:,}",
@@ -1299,7 +1299,7 @@ def generate_llms_txt(payload: dict[str, Any]) -> None:
     ]
 
     for kw in trend["keywords"]:
-        full_lines.append(f"- **{kw['label']}** ({kw['category']}): {kw['job_count']:,} postings ({kw['penetration_pct']}% market penetration) — Stage: {kw['signal_stage']}")
+        full_lines.append(f"- **{kw['label']}** ({kw['category']}): {kw['job_count']:,} postings ({kw['penetration_pct']}% market penetration) | Stage: {kw['signal_stage']}")
 
     full_lines.extend([
         "",
@@ -1336,7 +1336,7 @@ def generate_llms_txt(payload: dict[str, Any]) -> None:
 
     full_lines.extend([
         "## 5. Author & Methodology",
-        "Author: Antonín Kučera (akucera.eu) — Data & BI Leader, Google Cloud & BigQuery specialist.",
+        "Author: Antonín Kučera (akucera.eu) | Data & BI Leader, Google Cloud & BigQuery specialist.",
         "Methodology: Continuous scraping of ATS endpoints across S&P 500, EU leaders, and consultancies; normalized through DuckDB regex taxonomies and point-in-time snapshotting.",
         "License: CC BY 4.0 Vector87.com / Antonín Kučera."
     ])

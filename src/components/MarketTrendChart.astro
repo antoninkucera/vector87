@@ -67,7 +67,7 @@ const chartPayload = JSON.stringify({
   <!-- Accessible Semantic Data Table for Search Crawlers (SEO) and Screen Readers (placed outside canvas container) -->
   <div class="sr-only">
     <table>
-      <caption>{title} {subtitle ? `— ${subtitle}` : ''}</caption>
+      <caption>{title} {subtitle ? `: ${subtitle}` : ''}</caption>
       <thead>
         <tr>
           <th scope="col">Metric / Technology</th>
@@ -82,7 +82,7 @@ const chartPayload = JSON.stringify({
             <th scope="row">{label}</th>
             {datasets.map((d) => (
               <td>
-                {d.data && d.data[idx] !== undefined ? `${d.data[idx]}${valueSuffix}` : '—'}
+                {d.data && d.data[idx] !== undefined ? `${d.data[idx]}${valueSuffix}` : '-'}
               </td>
             ))}
           </tr>

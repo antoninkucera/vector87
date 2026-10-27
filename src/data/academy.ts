@@ -59,8 +59,8 @@ export const ACADEMY_COURSES: AcademyCourse[] = [
     skills: ['BigQuery', 'GCP', 'Dataflow', 'Dataproc', 'Pub/Sub'],
     url: 'https://www.coursera.org/professional-certificates/gcp-data-engineering',
     duration: {
-      en: '2–3 months (6 hrs/week)',
-      cs: '2–3 měsíce (6 hod/týdně)',
+      en: '2-3 months (6 hrs/week)',
+      cs: '2-3 měsíce (6 hod/týdně)',
     },
     level: {
       en: 'Intermediate → Advanced',

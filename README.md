@@ -1,4 +1,4 @@
-# Vector87.com — Data & AI Job Market Telemetry Hub
+# Vector87.com | Data & AI Job Market Telemetry Hub
 
 Vector87.com is a high-speed static intelligence hub monitoring the global AI, ML, and Data job market across S&P 500 corporations, North America, and Europe.
 
