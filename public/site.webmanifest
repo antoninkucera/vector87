@@ -1,0 +1,16 @@
+{
+  "name": "Vector87",
+  "short_name": "Vector87",
+  "description": "Quantitative Intelligence Hub for the Global AI & Data Job Market",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#04070e",
+  "theme_color": "#04070e",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

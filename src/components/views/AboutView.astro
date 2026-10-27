@@ -8,9 +8,33 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = ui[lang].about;
+
+const aboutJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  dateCreated: '2026-10-26T00:00:00Z',
+  mainEntity: {
+    '@type': 'Person',
+    name: 'Antonín Kučera',
+    jobTitle: 'Data & BI Leader, Google Cloud & BigQuery Specialist',
+    url: 'https://akucera.eu',
+    sameAs: [
+      'https://akucera.eu',
+      'https://www.linkedin.com/in/antoninkucera/',
+      'https://github.com/antoninkucera',
+    ],
+    knowsAbout: [
+      'Google Cloud Platform',
+      'BigQuery',
+      'Analytics Engineering',
+      'Data Architecture',
+      'Business Intelligence',
+    ],
+  },
+};
 ---
 
-<Layout title={t.pageTitle} activeNav="about" lang={lang}>
+<Layout title={t.pageTitle} description={t.pageDescription} activeNav="about" lang={lang} jsonLd={aboutJsonLd}>
   <section class="mb-12 pb-8 border-b border-slate-800/80">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
       <div class="lg:col-span-8 space-y-4">

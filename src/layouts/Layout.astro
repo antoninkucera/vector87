@@ -8,6 +8,9 @@ interface Props {
   description?: string;
   activeNav?: NavKey;
   lang?: Locale;
+  ogType?: string;
+  ogImage?: string;
+  jsonLd?: Record<string, any> | Array<Record<string, any>>;
 }
 
 const {
@@ -15,6 +18,9 @@ const {
   activeNav = 'dashboard',
   title = ui[lang].meta.defaultTitle,
   description = ui[lang].meta.defaultDescription,
+  ogType = 'website',
+  ogImage = 'https://vector87.com/og-banner.png',
+  jsonLd,
 } = Astro.props;
 
 const t = ui[lang];
@@ -34,6 +40,7 @@ const csHref = currentPath.startsWith('/cs')
   ? currentPath
   : `/cs${currentPath === '/' ? '/' : currentPath}`;
 const homeHref = getLocalePath(lang, 'dashboard');
+const canonicalUrl = new URL(currentPath, 'https://vector87.com').href;
 
 const { meta, market_vitality } = marketData;
 ---
@@ -46,9 +53,40 @@ const { meta, market_vitality } = marketData;
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#04070e" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Alternate / Hreflang Tags -->
     <link rel="alternate" hreflang="en" href={`https://vector87.com${enHref}`} />
     <link rel="alternate" hreflang="cs" href={`https://vector87.com${csHref}`} />
     <link rel="alternate" hreflang="x-default" href={`https://vector87.com${enHref}`} />
+
+    <!-- Favicon & App Icons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:site_name" content="Vector87" />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:locale" content={lang === 'cs' ? 'cs_CZ' : 'en_US'} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter / X Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Structured Data JSON-LD -->
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

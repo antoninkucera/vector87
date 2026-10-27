@@ -17,9 +17,30 @@ const platformColors: Record<string, string> = {
   'Google Cloud': 'bg-cyan-500/10 text-cyan-300 border-cyan-500/30',
   'dbt Labs': 'bg-orange-500/10 text-orange-300 border-orange-500/30',
 };
+
+const academyJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: t.title,
+  description: t.pageDescription,
+  itemListElement: ACADEMY_COURSES.map((course, idx) => ({
+    '@type': 'ListItem',
+    position: idx + 1,
+    item: {
+      '@type': 'Course',
+      name: course.title,
+      description: course.description,
+      provider: {
+        '@type': 'Organization',
+        name: course.provider,
+      },
+      url: course.url,
+    },
+  })),
+};
 ---
 
-<Layout title={t.pageTitle} activeNav="academy" lang={lang}>
+<Layout title={t.pageTitle} description={t.pageDescription} activeNav="academy" lang={lang} jsonLd={academyJsonLd}>
   <!-- Hero Section -->
   <section class="mb-12 pb-8 border-b border-slate-800/80">
     <div class="max-w-4xl space-y-3">

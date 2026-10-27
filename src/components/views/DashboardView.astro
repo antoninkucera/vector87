@@ -58,9 +58,52 @@ const maxSectorSenCount = Math.max(
 );
 
 const sp500AdoptionPct = Math.round((market_vitality.sp500_hiring_companies / meta.sp500_tracked_companies) * 100);
+
+const dashboardJsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': 'https://vector87.com/#website',
+      url: 'https://vector87.com/',
+      name: 'Vector87',
+      description: t.pageDescription,
+      inLanguage: lang,
+    },
+    {
+      '@type': 'Organization',
+      '@id': 'https://vector87.com/#organization',
+      name: 'Vector87',
+      url: 'https://vector87.com/',
+      logo: 'https://vector87.com/favicon.svg',
+      founder: {
+        '@type': 'Person',
+        name: 'Antonín Kučera',
+        url: 'https://akucera.eu',
+      },
+    },
+    {
+      '@type': 'Dataset',
+      '@id': 'https://vector87.com/#dataset',
+      name: 'S&P 500 AI & Data Job Market Telemetry',
+      description: t.pageDescription,
+      url: 'https://vector87.com/',
+      creator: {
+        '@id': 'https://vector87.com/#organization',
+      },
+      temporalCoverage: meta.latest_snapshot_date,
+      spatialCoverage: 'Global, US, Europe',
+      variableMeasured: [
+        'AI/Data Hiring Intensity',
+        'Cloud Hyperscaler Adoption',
+        'Canonical Role Penetration',
+      ],
+    },
+  ],
+};
 ---
 
-<Layout title={t.pageTitle} activeNav="dashboard" lang={lang}>
+<Layout title={t.pageTitle} description={t.pageDescription} activeNav="dashboard" lang={lang} jsonLd={dashboardJsonLd}>
   <!-- Hero Header -->
   <section class="mb-10 pb-8 border-b border-slate-800/80">
     <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">

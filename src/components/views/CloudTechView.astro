@@ -27,9 +27,28 @@ const azureEco = ecosystems?.azure;
 const gcpEco = ecosystems?.gcp;
 const databricksEco = ecosystems?.databricks;
 const snowflakeEco = ecosystems?.snowflake_db;
+
+const cloudJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: lang === 'en' ? 'Dashboard' : 'Přehled',
+      item: `https://vector87.com${lang === 'en' ? '/' : '/cs/'}`,
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: t.title,
+      item: `https://vector87.com${lang === 'en' ? '/cloud-tech' : '/cs/cloud-tech'}`,
+    },
+  ],
+};
 ---
 
-<Layout title={t.pageTitle} activeNav="cloud" lang={lang}>
+<Layout title={t.pageTitle} description={t.pageDescription} activeNav="cloud" lang={lang} jsonLd={cloudJsonLd}>
   <!-- Hero Section -->
   <section class="mb-10 pb-8 border-b border-slate-800/80">
     <div class="max-w-4xl space-y-3">

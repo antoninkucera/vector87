@@ -48,6 +48,8 @@ export const ui = {
     },
     dashboard: {
       pageTitle: 'Vector87 — Market Dashboard | S&P 500 & Global Data/AI Job Telemetry',
+      pageDescription:
+        'Quantitative telemetry of the AI & Data job market across 500+ S&P 500 enterprises. Track hiring intensity, tech stacks, and workforce ratios.',
       heroBadge: 'VECTOR 87 // MARKET TELEMETRY',
       heroTitlePrefix: 'Direction and structure of demand in the ',
       heroTitleHighlight: 'AI & Data job market',
@@ -141,6 +143,8 @@ export const ui = {
     },
     roles: {
       pageTitle: 'Role Analysis — Vector87 | Synthesized AI & Data Job Profiles',
+      pageDescription:
+        'Explore 21 canonical AI, Data & ML engineering roles. Synthesized job requirements, top demanded skills, technologies, and corporate hiring leaders.',
       tag: '02 // TAXONOMY & REQUIREMENT SYNTHESIS',
       title: (count: number) => `AI & Data Role Analysis (${count} Canonical Profiles)`,
       subtitle:
@@ -206,6 +210,8 @@ export const ui = {
     },
     cloud: {
       pageTitle: 'Cloud Hyperscalers & Modern Data Platforms — Vector87 | Telemetry & Stack Analysis',
+      pageDescription:
+        'Cloud hyperscaler adoption index & tech stack telemetry. Market penetration of AWS, GCP, Azure, Snowflake, Databricks, and Python in enterprise data jobs.',
       tag: '03 // CLOUD & TECH ECOSYSTEM',
       title: 'Cloud Hyperscalers & Modern Data Platforms',
       subtitle:
@@ -294,6 +300,8 @@ export const ui = {
     },
     academy: {
       pageTitle: 'Education Academy & Learning Hub — Vector87',
+      pageDescription:
+        'Structured learning roadmaps and industry certifications for Data Engineers, Analytics Engineers, and Applied AI Specialists. Recommended literature & curricula.',
       tag: '04 // EDUCATION & APPLIED CURRICULUM',
       title: 'Education Academy & Industry Learning Hub',
       subtitle:
@@ -387,6 +395,8 @@ export const ui = {
     },
     about: {
       pageTitle: 'About the Author — Vector87 | Antonín Kučera (akucera.eu)',
+      pageDescription:
+        'Background and architectural philosophy of Antonín Kučera, creator of Vector87. Leading data initiatives, analytics engineering, and quantitative market research.',
       tag: '05 // AUTHOR & PROJECT PHILOSOPHY',
       roleSubtitle: 'Data & BI Leader • Google Cloud & BigQuery Specialist • Creator of Vector87',
       bioP1:
@@ -462,6 +472,8 @@ export const ui = {
     },
     dashboard: {
       pageTitle: 'Vector87 — Market Dashboard | S&P 500 & Globální telemetrie datového a AI trhu',
+      pageDescription:
+        'Kvantitativní telemetrie trhu práce v oblasti AI a dat napříč 500+ korporacemi S&P 500. Analýza hiring intensity, technologií a poměrů týmů.',
       heroBadge: 'VECTOR 87 // MARKET TELEMETRY',
       heroTitlePrefix: 'Směr a struktura poptávky na ',
       heroTitleHighlight: 'datovém a AI trhu',
@@ -555,6 +567,8 @@ export const ui = {
     },
     roles: {
       pageTitle: 'Analýza rolí — Vector87 | Syntetizované profily datových a AI pozic',
+      pageDescription:
+        'Analýza 21 klíčových AI, datových a ML rolí. Syntetizované požadavky trhu, nejžádanější technologie, dovednosti a přehled najímajících firem.',
       tag: '02 // TAXONOMIE & SYNTÉZA POŽADAVKŮ',
       title: (count: number) => `Analýza datových a AI rolí (${count} kanonických profilů)`,
       subtitle:
@@ -620,6 +634,8 @@ export const ui = {
     },
     cloud: {
       pageTitle: 'Cloudové platformy & Moderní Data Stack — Vector87 | Telemetrie a analýza technologií',
+      pageDescription:
+        'Tržní penetrace cloudových platforem a datových technologií. Telemetrie využití AWS, GCP, Azure, Snowflake, Databricks a Pythonu v podnikovém sektoru.',
       tag: '03 // CLOUDOVÝ & TECHNOLOGICKÝ EKOSYSTÉM',
       title: 'Cloudové platformy, hyperscalery & technologický stack',
       subtitle:
@@ -708,6 +724,8 @@ export const ui = {
     },
     academy: {
       pageTitle: 'Vzdělávací akademie & Vzdělávací Hub — Vector87',
+      pageDescription:
+        'Strukturované vzdělávací dráhy a certifikace pro Data Engineery, Analytics Engineery a AI specialisty. Doporučená odborná literatura a studijní plány.',
       tag: '04 // VZDĚLÁVÁNÍ & PRAKTICKÉ KURIKULUM',
       title: 'Vzdělávací akademie & Vzdělávací Hub',
       subtitle:
@@ -801,6 +819,8 @@ export const ui = {
     },
     about: {
       pageTitle: 'O autorovi — Vector87 | Antonín Kučera (akucera.eu)',
+      pageDescription:
+        'Profil a architektonická filozofie Antonína Kučery, tvůrce Vector87. Vedení datových iniciativ, analytics engineering a kvantitativní průzkum trhu.',
       tag: '05 // AUTOR & FILOZOFIE PROJEKTU',
       roleSubtitle: 'Data & BI Leader • Google Cloud & BigQuery Specialist • Autor projektu Vector87',
       bioP1:
