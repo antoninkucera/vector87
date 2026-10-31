@@ -38,6 +38,13 @@ const topTechSlice = tech_cloud_stack.top_technologies.slice(0, 12);
 const seniorityItems = hierarchy_shift.by_seniority;
 const radarItems = trend_radar.keywords;
 
+// Data pro Weekly Trajectory & Inflow Velocity
+const latestSnapshot = time_series.snapshots[time_series.snapshots.length - 1];
+const weeklyLabels = time_series.snapshots.map((s) => s.snapshot_week);
+const weeklyActiveJobs = time_series.snapshots.map((s) => s.active_jobs);
+const weeklyNewJobs = time_series.snapshots.map((s) => s.new_jobs);
+const weeklyInflowRatios = time_series.snapshots.map((s) => s.inflow_ratio_pct);
+
 // Data pro Headcount & Team Dynamics
 const macroRoles = headcount_analytics.macro_role_intensity.slice(0, 8);
 const macroLabels = macroRoles.map((r) => r.canonical_name.replace(' (AI/ML)', '').replace(' / Analyst', ''));
@@ -274,7 +281,96 @@ const dashboardJsonLd = {
     </div>
   </section>
 
-  <!-- 01.5: TOP IN-DEMAND CANONICAL ROLES SPOTLIGHT -->
+  <!-- 01.5: WEEKLY MARKET VELOCITY & INFLOW TRAJECTORY -->
+  <section id="weekly-velocity" class="mb-14 scroll-mt-20">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
+      <div>
+        <span class="text-xs font-mono uppercase tracking-widest text-cyan-400">{t.velocityTag}</span>
+        <h2 class="text-2xl font-bold text-white tracking-tight mt-0.5">{t.velocityTitle}</h2>
+        <p class="text-xs text-slate-400 mt-1">{t.velocitySub}</p>
+      </div>
+      <div class="flex items-center gap-2 font-mono text-xs">
+        <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-slate-300">
+          LATEST SNAPSHOT: <strong class="text-cyan-300">{latestSnapshot.snapshot_week}</strong>
+        </span>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+      <div class="lg:col-span-8">
+        <MarketTrendChart
+          chartId="chart-weekly-velocity"
+          title={t.chartVelocityTitle}
+          subtitle={t.chartVelocitySub}
+          badge="WEEKLY VELOCITY"
+          type="bar"
+          labels={weeklyLabels}
+          datasets={[
+            {
+              label: t.chartVelocityLabelStock,
+              data: weeklyActiveJobs,
+              backgroundColor: 'rgba(30, 41, 59, 0.85)',
+              borderColor: '#64748b',
+              borderWidth: 1,
+              borderRadius: 4,
+            },
+            {
+              label: t.chartVelocityLabelInflow,
+              data: weeklyNewJobs,
+              backgroundColor: 'rgba(34, 211, 238, 0.85)',
+              borderColor: '#22d3ee',
+              borderWidth: 1,
+              borderRadius: 4,
+            },
+          ]}
+          heightClass="h-72"
+        />
+      </div>
+
+      <div class="lg:col-span-4 flex flex-col gap-4">
+        <MarketTrendChart
+          chartId="chart-inflow-ratio"
+          title={t.chartInflowRatioTitle}
+          subtitle={t.chartInflowRatioSub}
+          badge="INFLOW RATE"
+          type="bar"
+          labels={weeklyLabels}
+          datasets={[
+            {
+              label: t.chartInflowRatioLabel,
+              data: weeklyInflowRatios,
+              backgroundColor: 'rgba(52, 211, 153, 0.75)',
+              borderColor: '#34d399',
+              borderWidth: 1,
+              borderRadius: 4,
+            },
+          ]}
+          valueSuffix="%"
+          heightClass="h-44"
+        />
+
+        <div class="grid grid-cols-2 gap-3">
+          <div class="p-4 rounded-xl panel-surface border border-slate-800">
+            <div class="text-[10px] font-mono uppercase text-slate-400 tracking-wider mb-1">{t.velocityMetricRate}</div>
+            <div class="text-2xl font-bold font-mono text-emerald-300">{latestSnapshot.inflow_ratio_pct}%</div>
+            <div class="text-[11px] text-slate-400 mt-0.5">{t.velocityMetricRateSub}</div>
+          </div>
+
+          <div class="p-4 rounded-xl panel-surface border border-slate-800">
+            <div class="text-[10px] font-mono uppercase text-slate-400 tracking-wider mb-1">{t.velocityMetricWoW}</div>
+            <div class="text-2xl font-bold font-mono text-cyan-300">
+              {latestSnapshot.wow_growth_pct !== null && latestSnapshot.wow_growth_pct !== undefined
+                ? `${latestSnapshot.wow_growth_pct > 0 ? '+' : ''}${latestSnapshot.wow_growth_pct}%`
+                : '—'}
+            </div>
+            <div class="text-[11px] text-slate-400 mt-0.5">{t.velocityMetricWoWSub}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 01.6: TOP IN-DEMAND CANONICAL ROLES SPOTLIGHT -->
   <section id="top-roles" class="mb-14 scroll-mt-20">
     <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
       <div>

@@ -602,16 +602,19 @@ def export_market_data(db_path: Path | None = None, output_path: Path | None = N
         ]
         trend_radar = {"keywords": trend_keywords}
 
-        # 6. Time Series (připraveno na budoucí měsíční/týdenní sběry)
+        # 6. Time Series (týdenní velocity index a snapshoty)
         snap_rows = con.execute(
             """
             SELECT
                 CAST(latest_date_in_week AS VARCHAR) AS snap_date,
                 snapshot_week,
                 active_jobs,
+                COALESCE(new_jobs, 0) AS new_jobs,
+                COALESCE(inflow_ratio_pct, 0.0) AS inflow_ratio_pct,
                 active_companies,
                 COALESCE(senior_plus_pct, 0.0),
-                COALESCE(remote_of_known_pct, 0.0)
+                COALESCE(remote_of_known_pct, 0.0),
+                wow_growth_pct
             FROM v_weekly_snapshots
             ORDER BY snapshot_week ASC
             """
@@ -622,9 +625,12 @@ def export_market_data(db_path: Path | None = None, output_path: Path | None = N
                 "snapshot_date": r[0],
                 "snapshot_week": r[1],
                 "active_jobs": int(r[2]),
-                "active_companies": int(r[3]),
-                "senior_plus_pct": float(r[4]),
-                "remote_of_known_pct": float(r[5]),
+                "new_jobs": int(r[3]),
+                "inflow_ratio_pct": float(r[4]),
+                "active_companies": int(r[5]),
+                "senior_plus_pct": float(r[6]),
+                "remote_of_known_pct": float(r[7]),
+                "wow_growth_pct": float(r[8]) if r[8] is not None else None,
             }
             for r in snap_rows
         ]

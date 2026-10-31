@@ -245,9 +245,12 @@
               "snapshot_date": { "type": "string" },
               "snapshot_week": { "type": "string" },
               "active_jobs": { "type": "integer" },
+              "new_jobs": { "type": "integer" },
+              "inflow_ratio_pct": { "type": "number" },
               "active_companies": { "type": "integer" },
               "senior_plus_pct": { "type": "number" },
-              "remote_of_known_pct": { "type": "number" }
+              "remote_of_known_pct": { "type": "number" },
+              "wow_growth_pct": { "type": ["number", "null"] }
             }
           }
         },
