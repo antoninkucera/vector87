@@ -28,8 +28,8 @@ country ranking (unique combination), and one person cannot sustain two sites' S
 - Brand meaning: precise mathematical sense (vector = direction of market development), clear analytical vision; "87" signals maturity.
 
 ## Data source and responsibilities
-Which repos and data feed the site, how they connect, and who owns what: `docs/architecture.md`
-(single source of truth — read it there, do not copy it here).
+Which repos and data feed the site, how they connect, and who owns what: `docs/architecture.md`.
+Internal product backlog, planned epics and ideas: `docs/internal/roadmap.md` (gitignored).
 Upstream repos (`ai_data_jobs`, `world_stats`) are not changed from this project unless explicitly agreed.
 
 Agent access: `ai_data_jobs` is added as an additional folder of this Antigravity project (read/write),
