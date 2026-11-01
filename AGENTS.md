@@ -4,6 +4,17 @@
 Vector87.com is a static data hub monitoring the AI/data job market (primarily S&P 500, later CZ/Europe).
 Hosted on GitHub Pages (`https://github.com/antoninkucera/vector87`), fully static (SSG).
 
+## Positioning: future tracker (agreed 2026-11-01, in progress)
+Vector87 expands from "current state of data jobs" to a general **future tracker** under the same brand.
+Why one brand: the name already means "direction of development", the jobs dataset becomes one input of the
+country ranking (unique combination), and one person cannot sustain two sites' SEO/social/maintenance.
+- **Audience**: digital professionals (data people, developers, etc.) who can work relatively location-independently
+  and ask where to live long-term, whether their current quality of life still pays off, and secondarily what the
+  risk of buying property abroad is.
+- **Scope**: a country ranking. No specific properties, listings or towns (that is a different niche, e.g. Filip Molčan's 11houses).
+- **Data**: produced in a separate repo `/Users/antonin.kucera/Projects/personal/world_stats` (agreed 2026-11-01).
+  Granularity, sources, responsibilities and open decisions live in its `AGENTS.md` — read them there, do not copy them here.
+
 ## Tech stack
 - Astro (static output), Tailwind CSS, Chart.js
 - Data: pre-generated JSON committed into this repo
