@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { ui, type Locale } from '../../i18n/ui';
-import { ACADEMY_COURSES, CERTIFICATIONS_LIST } from '../../data/academy';
+import { ACADEMY_COURSES, CERTIFICATIONS_LIST, FREE_AI_COURSES } from '../../data/academy';
 
 interface Props {
   lang: Locale;
@@ -18,6 +18,19 @@ const platformColors: Record<string, string> = {
   'dbt Labs': 'bg-orange-500/10 text-orange-300 border-orange-500/30',
 };
 
+const freeProviderColors: Record<string, string> = {
+  OpenAI: 'bg-emerald-500/10 text-emerald-300 border-emerald-500/30',
+  Anthropic: 'bg-amber-500/10 text-amber-300 border-amber-500/30',
+  Google: 'bg-blue-500/10 text-blue-300 border-blue-500/30',
+  'Hugging Face': 'bg-yellow-500/10 text-yellow-300 border-yellow-500/30',
+  Stanford: 'bg-red-500/10 text-red-300 border-red-500/30',
+  Harvard: 'bg-rose-500/10 text-rose-300 border-rose-500/30',
+  'DeepLearning.AI': 'bg-teal-500/10 text-teal-300 border-teal-500/30',
+  IBM: 'bg-indigo-500/10 text-indigo-300 border-indigo-500/30',
+  NVIDIA: 'bg-green-500/10 text-green-300 border-green-500/30',
+  Microsoft: 'bg-cyan-500/10 text-cyan-300 border-cyan-500/30',
+};
+
 const academyJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
@@ -28,11 +41,11 @@ const academyJsonLd = {
     position: idx + 1,
     item: {
       '@type': 'Course',
-      name: course.title,
-      description: course.description,
+      name: course.title[lang],
+      description: course.description[lang],
       provider: {
         '@type': 'Organization',
-        name: course.provider,
+        name: course.platform,
       },
       url: course.url,
     },
@@ -154,6 +167,72 @@ const academyJsonLd = {
                 class="px-3 py-1.5 rounded bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 font-bold hover:bg-cyan-400 hover:text-slate-950 transition-colors inline-flex items-center gap-1"
               >
                 {t.ctaEnroll}
+              </a>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </section>
+
+  <!-- Free Official AI & LLM Curricula (No Paywall) -->
+  <section class="mb-14">
+    <div class="mb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+      <div>
+        <h2 class="text-2xl font-bold text-white tracking-tight">{t.freeCoursesTitle}</h2>
+        <p class="text-xs font-mono text-slate-400 mt-1">{t.freeCoursesSubtitle}</p>
+      </div>
+      <span class="text-xs font-mono text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-2.5 py-1 rounded">
+        {t.freeBadge}
+      </span>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {FREE_AI_COURSES.map((course) => {
+        const badgeClass = freeProviderColors[course.provider] || 'bg-slate-800 text-slate-300 border-slate-700';
+        return (
+          <div class="panel-surface-interactive rounded-xl p-5 flex flex-col justify-between group">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class:list={['text-[11px] font-mono uppercase px-2.5 py-0.5 rounded border font-semibold', badgeClass]}>
+                  {course.provider}
+                </span>
+                <span class="text-[11px] font-mono text-emerald-400/90 font-semibold">
+                  {course.format[lang]}
+                </span>
+              </div>
+
+              <h3 class="text-base font-bold text-white group-hover:text-emerald-300 transition-colors leading-snug">
+                {course.title[lang]}
+              </h3>
+
+              <div class="mt-2.5 p-2 rounded bg-slate-900/90 border border-slate-800/80 text-[11px] font-mono text-slate-300 flex items-start gap-1.5">
+                <span class="text-emerald-400 mt-0.5">✦</span>
+                <span class="leading-tight">{course.marketSignal[lang]}</span>
+              </div>
+
+              <p class="text-xs text-slate-300 mt-3 leading-relaxed">
+                {course.description[lang]}
+              </p>
+
+              <div class="mt-4 flex flex-wrap gap-1.5">
+                {course.skills.map((skill) => (
+                  <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800/80 text-slate-300 border border-slate-700/60">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div class="mt-5 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs font-mono">
+              <span class="text-slate-400">{course.duration[lang]}</span>
+              <a
+                href={course.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="px-3 py-1.5 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 font-bold hover:bg-emerald-400 hover:text-slate-950 transition-colors inline-flex items-center gap-1"
+              >
+                {t.ctaFreeCourse}
               </a>
             </div>
           </div>
