@@ -8,7 +8,8 @@
     "dev": "ASTRO_TELEMETRY_DISABLED=1 astro dev",
     "build": "ASTRO_TELEMETRY_DISABLED=1 astro build",
     "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview",
-    "export:data": "/Users/antonin.kucera/Projects/personal/ai_data_jobs/.venv/bin/python pipeline/export_market_data.py"
+    "export:data": "/Users/antonin.kucera/Projects/personal/ai_data_jobs/.venv/bin/python pipeline/export_market_data.py",
+    "export:places": "/Users/antonin.kucera/Projects/personal/world_stats/.venv/bin/python pipeline/export_places_data.py"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",

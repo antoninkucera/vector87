@@ -4,10 +4,7 @@ Vector87.com is a high-speed static intelligence hub monitoring the global AI, M
 
 ## Architecture & Data Flow
 
-1. **Data Warehouse (`ai_data_jobs`)**: Scrapers and transformation pipelines populate a local DuckDB database (`db/jobs.duckdb`).
-2. **Contract (`schema/market-data.schema.json`)**: JSON Schema defining the exact payload expected by the static frontend.
-3. **Exporter (`pipeline/export_market_data.py`)**: Connects to DuckDB in `read_only=True` mode, computes all aggregations, merges synthesized role descriptions from `pipeline/role_descriptions.json`, validates against `schema/market-data.schema.json`, and writes `src/data/market-data.json`.
-4. **Static Frontend (`src/`)**: Astro + Tailwind CSS + Chart.js static site generator producing zero-backend HTML/CSS/JS bundles for GitHub Pages.
+See [docs/architecture.md](docs/architecture.md) — repos and data feeding the site, diagram, responsibilities and refresh cycle.
 
 ## Localization (i18n)
 

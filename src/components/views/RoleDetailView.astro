@@ -2,7 +2,8 @@
 import Layout from '../../layouts/Layout.astro';
 import marketData from '../../data/market-data.json';
 import { ACADEMY_COURSES, CERTIFICATIONS_LIST } from '../../data/academy';
-import { ui, type Locale } from '../../i18n/ui';
+import { OPPORTUNITY_MATRIX_DATA } from '../../data/opportunity-matrix';
+import { ui, getLocalePath, type Locale } from '../../i18n/ui';
 
 interface Props {
   lang: Locale;
@@ -73,6 +74,14 @@ const finalCerts = recommendedCerts.length > 0 ? recommendedCerts : CERTIFICATIO
 const relatedRoles = marketData.roles
   .filter((r) => r.domain === role.domain && r.category_id !== role.category_id)
   .slice(0, 4);
+
+// Top geographic destinations for this role
+const roleCountries = [
+  OPPORTUNITY_MATRIX_DATA.find((c) => c.iso3 === 'CAN')!,
+  OPPORTUNITY_MATRIX_DATA.find((c) => c.iso3 === 'CHE')!,
+  OPPORTUNITY_MATRIX_DATA.find((c) => c.iso3 === 'CZE')!,
+  OPPORTUNITY_MATRIX_DATA.find((c) => c.iso3 === 'USA')!,
+].filter(Boolean);
 
 const pageTitle =
   lang === 'cs'
@@ -425,6 +434,69 @@ const roleDetailGraph = {
         {t.noPostings}
       </div>
     )}
+  </section>
+
+  <!-- 03.5: GEOGRAPHIC OPPORTUNITY & LIVABILITY FOR THIS ROLE -->
+  <section class="mb-14 p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-slate-900/80 via-[#060a14] to-slate-900/80 border border-slate-800 shadow-xl space-y-6">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-slate-800/80 pb-6">
+      <div>
+        <span class="text-xs font-mono uppercase tracking-widest text-cyan-400">{t.geoRelocationTag}</span>
+        <h2 class="text-2xl font-bold text-white tracking-tight mt-1">{t.geoRelocationTitle}</h2>
+        <p class="text-xs sm:text-sm text-slate-400 mt-1 max-w-2xl">{t.geoRelocationSub}</p>
+      </div>
+      <a
+        href={getLocalePath(lang, 'places')}
+        class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-mono font-semibold bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 hover:bg-cyan-500/25 transition-colors shrink-0"
+      >
+        <span>{t.geoExplorePlacesBtn}</span>
+      </a>
+    </div>
+
+    <!-- Country Cards Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {roleCountries.map((c) => (
+        <a
+          href={`${getLocalePath(lang, 'places')}#country-${c.iso3}`}
+          class="group p-5 rounded-xl panel-surface border border-slate-800 hover:border-cyan-500/40 transition-all flex flex-col justify-between gap-4 hover:shadow-lg hover:shadow-cyan-500/5"
+        >
+          <div class="space-y-3">
+            <div class="flex items-center justify-between gap-2">
+              <span class="text-xs font-mono font-bold text-white group-hover:text-cyan-300 transition-colors">
+                {lang === 'cs' ? c.nameCs : c.name}
+                <span class="text-[10px] text-slate-500 font-normal ml-1">({c.iso3})</span>
+              </span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-cyan-500/10 text-cyan-300 border border-cyan-500/30">
+                {c.livability} / 100
+              </span>
+            </div>
+
+            <p class="text-xs text-slate-400 leading-relaxed line-clamp-3">
+              {lang === 'cs' ? c.highlightCs : c.highlightEn}
+            </p>
+
+            <div class="space-y-1.5 font-mono text-[11px] pt-1">
+              <div class="flex justify-between text-slate-400">
+                <span>{t.geoSafetyLabel}:</span>
+                <span class="text-slate-200 font-semibold">{c.safety ?? 'N/A'}</span>
+              </div>
+              <div class="flex justify-between text-slate-400">
+                <span>{t.geoHousingLabel}:</span>
+                <span class="text-slate-200 font-semibold">{c.housing ?? 'N/A'}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between text-[11px] font-mono">
+            <span class="text-cyan-400 font-semibold">
+              {t.relocationScoreLabel}: {c.easeOfRelocation} / 100
+            </span>
+            <span class="text-cyan-400 font-semibold group-hover:translate-x-0.5 transition-transform">
+              →
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
   </section>
 
   <!-- Recommended Skill Tracks & Certifications (Monetization & Internal linking) -->

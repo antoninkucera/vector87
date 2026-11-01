@@ -1,7 +1,9 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import MarketTrendChart from '../MarketTrendChart.astro';
+import OpportunityMatrixChart from '../OpportunityMatrixChart.astro';
 import marketData from '../../data/market-data.json';
+import { OPPORTUNITY_MATRIX_DATA, TOP_SPOTLIGHT_COUNTRIES } from '../../data/opportunity-matrix';
 import { ui, getLocalePath, type Locale } from '../../i18n/ui';
 
 interface Props {
@@ -138,6 +140,12 @@ const dashboardJsonLd = {
           class="px-4 py-2.5 rounded-lg bg-cyan-400 text-slate-950 font-mono text-xs font-bold hover:bg-cyan-300 transition-colors"
         >
           {t.ctaRoles}
+        </a>
+        <a
+          href={getLocalePath(lang, 'places')}
+          class="px-4 py-2.5 rounded-lg border border-emerald-500/40 bg-emerald-950/40 text-emerald-300 font-mono text-xs font-semibold hover:border-emerald-400 hover:text-emerald-200 transition-colors inline-flex items-center gap-1.5"
+        >
+          <span>{t.ctaPlaces}</span>
         </a>
         <a
           href={getLocalePath(lang, 'cloud')}
@@ -427,6 +435,80 @@ const dashboardJsonLd = {
           </a>
         );
       })}
+    </div>
+  </section>
+
+  <!-- 01.7: FUTURE TRACKER: OPPORTUNITY VS. LIVABILITY MATRIX -->
+  <section id="opportunity-matrix" class="mb-14 scroll-mt-20">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
+      <div>
+        <span class="text-xs font-mono uppercase tracking-widest text-emerald-400">{t.placesTeaserTag}</span>
+        <h2 class="text-2xl font-bold text-white tracking-tight mt-0.5">{t.placesTeaserTitle}</h2>
+        <p class="text-xs text-slate-400 mt-1 max-w-3xl leading-relaxed">{t.placesTeaserSub}</p>
+      </div>
+      <a
+        href={getLocalePath(lang, 'places')}
+        class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-mono font-semibold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/25 transition-colors shrink-0"
+      >
+        <span>{t.exploreAllPlacesBtn}</span>
+      </a>
+    </div>
+
+    <!-- 2D Matrix Chart -->
+    <div class="mb-6">
+      <OpportunityMatrixChart
+        chartId="chart-opportunity-matrix"
+        title={t.placesMatrixTitle}
+        subtitle={t.placesMatrixSub}
+        badge="FUTURE TRACKER"
+        lang={lang}
+        countries={OPPORTUNITY_MATRIX_DATA}
+      />
+    </div>
+
+    <!-- Spotlight Focus Destination Cards -->
+    <div class="space-y-3">
+      <div class="flex items-center justify-between">
+        <h3 class="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold">
+          {t.topDestinationsTitle}
+        </h3>
+        <span class="text-[11px] font-mono text-slate-500">
+          {t.topDestinationsSub}
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {TOP_SPOTLIGHT_COUNTRIES.map((c) => (
+          <a
+            href={`${getLocalePath(lang, 'places')}#country-${c.iso3}`}
+            class="group p-4 rounded-xl panel-surface border border-slate-800 hover:border-emerald-500/40 transition-all flex flex-col justify-between gap-3 hover:shadow-lg hover:shadow-emerald-500/5"
+          >
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-2">
+                <span class="text-xs font-mono font-bold text-white group-hover:text-emerald-300 transition-colors">
+                  {lang === 'cs' ? c.nameCs : c.name}
+                  <span class="text-[10px] text-slate-500 font-normal ml-1">({c.iso3})</span>
+                </span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500/10 text-emerald-300 border border-emerald-500/30">
+                  {c.livability} / 100
+                </span>
+              </div>
+              <p class="text-xs text-slate-400 leading-relaxed">
+                {lang === 'cs' ? c.highlightCs : c.highlightEn}
+              </p>
+            </div>
+
+            <div class="pt-2.5 border-t border-slate-800/80 flex items-center justify-between text-[11px] font-mono">
+              <span class="text-cyan-400 font-semibold">
+                {t.relocationScoreLabel}: {c.easeOfRelocation} / 100
+              </span>
+              <span class="text-emerald-400 font-semibold group-hover:translate-x-0.5 transition-transform">
+                {t.viewCountryOnMap}
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
     </div>
   </section>
 

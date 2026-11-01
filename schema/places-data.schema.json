@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vector87.com/schema/places-data.schema.json",
+  "title": "Vector87 Places & Country Ranking Data Contract",
+  "description": "Pre-generated dataset exported from World Stats DuckDB (world.duckdb) for Vector87 future tracker country ranking and interactive map.",
+  "type": "object",
+  "required": ["meta", "pillars", "countries"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["generated_at", "schema_version", "total_countries", "focus_countries_count", "sources"],
+      "properties": {
+        "generated_at": { "type": "string", "format": "date-time" },
+        "schema_version": { "type": "string" },
+        "total_countries": { "type": "integer" },
+        "focus_countries_count": { "type": "integer" },
+        "sources": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "pillars": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "name_cs", "description", "description_cs", "default_weight"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "name_cs": { "type": "string" },
+          "description": { "type": "string" },
+          "description_cs": { "type": "string" },
+          "default_weight": { "type": "number" }
+        }
+      }
+    },
+    "countries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "country_code_alpha3",
+          "country_code_alpha2",
+          "country_name",
+          "continent",
+          "is_focus_country",
+          "is_eu",
+          "pillar_scores"
+        ],
+        "properties": {
+          "country_code_alpha3": { "type": "string" },
+          "country_code_alpha2": { "type": "string" },
+          "country_name": { "type": "string" },
+          "continent": { "type": "string" },
+          "subregion": { "type": ["string", "null"] },
+          "is_focus_country": { "type": "boolean" },
+          "is_eu": { "type": "boolean" },
+          "has_regional_data": { "type": "boolean" },
+          "pillar_scores": {
+            "type": "object",
+            "required": ["safety", "housing", "economy", "governance", "composite_score"],
+            "properties": {
+              "safety": { "type": ["number", "null"] },
+              "housing": { "type": ["number", "null"] },
+              "economy": { "type": ["number", "null"] },
+              "governance": { "type": ["number", "null"] },
+              "ease_of_relocation": { "type": ["number", "null"] },
+              "composite_score": { "type": ["number", "null"] }
+            }
+          },
+          "indicators": {
+            "type": "object"
+          }
+        }
+      }
+    }
+  }
+}

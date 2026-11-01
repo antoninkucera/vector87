@@ -1,11 +1,12 @@
 export type Locale = 'en' | 'cs';
 
-export type NavKey = 'dashboard' | 'roles' | 'cloud' | 'academy' | 'about';
+export type NavKey = 'dashboard' | 'roles' | 'cloud' | 'places' | 'academy' | 'about';
 
 const PATH_MAP: Record<NavKey, string> = {
   dashboard: '/',
   roles: '/roles',
   cloud: '/cloud-tech',
+  places: '/places',
   academy: '/academy',
   about: '/about',
 };
@@ -27,8 +28,9 @@ export const ui = {
       dashboard: '01 / Market Dashboard',
       roles: '02 / Role Analysis',
       cloud: '03 / Cloud & Tech Stack',
-      academy: '04 / Education Academy',
-      about: '05 / About Author',
+      places: '04 / Places Index',
+      academy: '05 / Education Academy',
+      about: '06 / About Author',
       mainAria: 'Main navigation',
       mobileAria: 'Mobile navigation',
     },
@@ -58,6 +60,7 @@ export const ui = {
       ctaRoles: 'EXPLORE 21 ROLES →',
       ctaCloud: 'CLOUD & TECH STACK →',
       ctaGcp: 'CLOUD & TECH STACK →',
+      ctaPlaces: '04 // PLACES & LIVABILITY (NEW) →',
 
       s1Tag: '01 // PRIORITY METRIC',
       s1Title: 'Market Vitality & AI/Data Hiring Intensity',
@@ -97,6 +100,21 @@ export const ui = {
       topRolesTitle: 'Most In-Demand AI & Data Roles',
       topRolesSub: 'Highest hiring volume across S&P 500 firms with detailed skill requirements and profiles',
       viewAllRolesBtn: 'EXPLORE ALL 21 CANONICAL ROLES →',
+
+      placesTeaserTag: '01.7 // FUTURE TRACKER: RELOCATION VS. LIVABILITY MATRIX',
+      placesTeaserTitle: 'Where to Relocate: Legal Accessibility vs. Livability Quadrant',
+      placesTeaserSub:
+        'Cross-referencing work permit accessibility and visa friction with our composite livability index (Safety, Housing Affordability, Economic Power, Governance) across 27 focus destinations.',
+      placesMatrixTitle: 'Mobility & Livability Matrix: Work Authorization vs. Quality of Life',
+      placesMatrixSub: 'Ease of relocation score (0–100) vs. composite livability score (0–100)',
+      quadrantEasyWin: 'Easy Wins (Free Movement / Streamlined Visas + Top Livability)',
+      quadrantHighReward: 'High Friction / High Reward (Top Markets, Visa Quotas/Lottery)',
+      quadrantLifestyleHaven: 'Lifestyle & Remote Havens (Top Nomad Visas, Coastal Lifestyle)',
+      topDestinationsTitle: 'Spotlight Focus Destinations for Knowledge Workers',
+      topDestinationsSub: 'Balanced country profiles combining clear legal pathways with exceptional livability scores.',
+      exploreAllPlacesBtn: 'Explore 217 Countries & Interactive Map ↗',
+      viewCountryOnMap: 'View on map →',
+      relocationScoreLabel: 'Relocation Ease',
 
       s2Tag: '02 // INFRASTRUCTURE & TOOLING',
       s2Title: 'Technology & Cloud Stack',
@@ -219,6 +237,14 @@ export const ui = {
       educationTitle: 'Recommended Skill Tracks & Certifications',
       educationSub: 'Curated programs on Coursera, DataCamp and cloud providers aligned with these role requirements',
       exploreAcademyBtn: 'Explore Full Academy ↗',
+      geoRelocationTag: '03.5 // GEOGRAPHIC DEMAND & LIVING INDEX',
+      geoRelocationTitle: 'Top Locations & Livability for this Role',
+      geoRelocationSub:
+        'Cross-referencing enterprise demand for this role with composite livability, safety, and housing affordability across key global markets.',
+      geoScoreLabel: 'Livability Score',
+      geoSafetyLabel: 'Safety & Peace',
+      geoHousingLabel: 'Housing & Affordability',
+      geoExplorePlacesBtn: 'Open Full 217-Country Livability Ranking ↗',
       postingsTitle: 'Live Enterprise Job Postings',
       postingsSub: 'Sample of active postings directly from corporate ATS boards',
       applyBtn: 'View Job on Career Portal ↗',
@@ -458,6 +484,36 @@ export const ui = {
         },
       ],
     },
+    places: {
+      pageTitle: 'Vector87 | Future Tracker — Country Ranking & Places Index',
+      pageDescription:
+        'Quantitative country ranking for location-independent digital and tech professionals: safety, housing affordability, prosperity, and institutional stability.',
+      heroBadge: 'VECTOR 87 // FUTURE TRACKER',
+      heroTitlePrefix: 'Where to live, work and position capital: ',
+      heroTitleHighlight: 'Country Ranking & Places Index',
+      heroDescription:
+        'A transparent, data-grounded index evaluating 217 world countries and 27 prioritized focus destinations. Combining verified data from the World Bank, Eurostat, and the Global Peace Index with customizable pillar weights.',
+      mapTitle: 'Interactive World Map',
+      mapSubtitle: 'Hover to inspect global metrics; click to focus country profile.',
+      rankingTitle: 'Focus Countries Ranking',
+      rankingSubtitle: 'Adjust pillar weights below to recalculate composite scores in real-time.',
+      pillars: {
+        safety: 'Safety & Security',
+        housing: 'Housing Affordability',
+        economy: 'Economy & Prosperity',
+        governance: 'Governance & Institutions',
+      },
+      metrics: {
+        compositeScore: 'Composite Score',
+        gdpPpp: 'GDP per capita (PPP)',
+        lifeExpectancy: 'Life Expectancy',
+        peaceIndex: 'Global Peace Index',
+        priceLevel: 'Price Level (EU=100)',
+        housingOverburden: 'Housing Cost Overburden',
+        ruleOfLaw: 'Rule of Law',
+        resetWeights: 'Reset Default Weights',
+      },
+    },
   },
 
   cs: {
@@ -470,8 +526,9 @@ export const ui = {
       dashboard: '01 / Market Dashboard',
       roles: '02 / Analýza rolí',
       cloud: '03 / Cloud & Technologie',
-      academy: '04 / Vzdělávací akademie',
-      about: '05 / O autorovi',
+      places: '04 / Země a lokality',
+      academy: '05 / Vzdělávací akademie',
+      about: '06 / O autorovi',
       mainAria: 'Hlavní navigace',
       mobileAria: 'Mobilní navigace',
     },
@@ -501,6 +558,7 @@ export const ui = {
       ctaRoles: 'ANALÝZA 21 ROLÍ →',
       ctaCloud: 'CLOUD & TECHNOLOGIE →',
       ctaGcp: 'CLOUD & TECHNOLOGIE →',
+      ctaPlaces: '04 // ZEMĚ A KVALITA ŽIVOTA (NEW) →',
 
       s1Tag: '01 // PRIORITNÍ METRIKA',
       s1Title: 'Aktivita trhu a podíl AI/Data pozic',
@@ -540,6 +598,21 @@ export const ui = {
       topRolesTitle: 'Nejžádanější AI a datové role',
       topRolesSub: 'Nejvyšší objem otevřených pozic v korporacích S&P 500 s přímým proklikem na profily a dovednosti',
       viewAllRolesBtn: 'PROZKOUMAT VŠECH 21 KANONICKÝCH ROLÍ →',
+
+      placesTeaserTag: '01.7 // FUTURE TRACKER: DOSTUPNOST PŘESUNU VS. ŽIVOTNÍ ÚROVEŇ',
+      placesTeaserTitle: 'Kam se přesunout: Právní dostupnost a víza vs. Kvalita života',
+      placesTeaserSub:
+        'Propojení snadnosti získání pracovního povolení a svobody pohybu s naším indexem kvality života (bezpečnost, dostupnost bydlení, kupní síla, právní stát) napříč 27 klíčovými destinacemi.',
+      placesMatrixTitle: 'Matice mobility a životní úrovně: Vízová dostupnost vs. Kvalita života',
+      placesMatrixSub: 'Index snadnosti přesunu a práce (0–100) vs. kompozitní skóre kvality života (0–100)',
+      quadrantEasyWin: 'Easy Wins (Volný pohyb / Rychlá víza + Špičková kvalita života)',
+      quadrantHighReward: 'High Friction / High Reward (Obří trhy, ale vízové kvóty/loterie)',
+      quadrantLifestyleHaven: 'Lifestyle & Remote ráje (Dostupná nomádská víza, skvělé klima)',
+      topDestinationsTitle: 'Doporučené destinace pro technologické a znalostní experty',
+      topDestinationsSub: 'Vyvážené profily zemí kombinující snadný legální přesun s vysokým standardem života.',
+      exploreAllPlacesBtn: 'Prozkoumat všech 217 zemí a interaktivní mapu ↗',
+      viewCountryOnMap: 'Zobrazit na mapě →',
+      relocationScoreLabel: 'Dostupnost přesunu',
 
       s2Tag: '02 // INFRASTRUKTURA & NÁSTROJE',
       s2Title: 'Technologický a cloudový stack',
@@ -662,6 +735,14 @@ export const ui = {
       educationTitle: 'Doporučené vzdělávací dráhy & certifikace',
       educationSub: 'Výběrové kurzy na Coursera, DataCampu a oficiální certifikace odpovídající požadavkům této role',
       exploreAcademyBtn: 'Zobrazit celou sekci Academy ↗',
+      geoRelocationTag: '03.5 // GEOGRAFICKÁ POPTÁVKA A KVALITA ŽIVOTA',
+      geoRelocationTitle: 'Kde se této roli daří nejlépe: Příležitosti vs. Životní úroveň',
+      geoRelocationSub:
+        'Srovnání klíčových trhů poptávajících tuto specializaci s indexy bezpečnosti, dostupnosti bydlení a celkové kvality života pro remote i mobilní experty.',
+      geoScoreLabel: 'Index kvality života',
+      geoSafetyLabel: 'Bezpečnost a mír',
+      geoHousingLabel: 'Dostupnost bydlení',
+      geoExplorePlacesBtn: 'Otevřít kompletní žebříček 217 zemí světa ↗',
       postingsTitle: 'Reálné otevřené pozice v korporacích',
       postingsSub: 'Reprezentativní vzorek aktivních inzerátů přímo z firemních kariérních portálů',
       applyBtn: 'Otevřít inzerát na kariérním webu ↗',
@@ -900,6 +981,36 @@ export const ui = {
           href: 'https://antoninkucera.substack.com/p/bigquery-overview-a-new-navigation-hub-in-the-complex-analytics-platform',
         },
       ],
+    },
+    places: {
+      pageTitle: 'Vector87 | Future Tracker — Žebříček zemí a index lokalit',
+      pageDescription:
+        'Kvantitativní žebříček zemí pro lidi z technologií a digitálu: bezpečnost, dostupnost bydlení, životní úroveň a právní stát.',
+      heroBadge: 'VECTOR 87 // FUTURE TRACKER',
+      heroTitlePrefix: 'Kde žít, pracovat a směřovat budoucnost: ',
+      heroTitleHighlight: 'Žebříček zemí a index lokalit',
+      heroDescription:
+        'Transparentní datový index hodnotící 217 zemí světa a 27 prioritních evropských i zámořských destinací. Spojuje ověřená data Světové banky, Eurostatu a Global Peace Indexu s možností nastavení vlastních vah.',
+      mapTitle: 'Interaktivní mapa světa',
+      mapSubtitle: 'Přejetím myší zobrazíte metriky země, kliknutím otevřete detail.',
+      rankingTitle: 'Žebříček prioritních zemí',
+      rankingSubtitle: 'Posuvníky níže můžete upravit váhy pilířů a přepočítat pořadí v reálném čase.',
+      pillars: {
+        safety: 'Bezpečnost a stabilita',
+        housing: 'Dostupnost bydlení',
+        economy: 'Ekonomika a prosperita',
+        governance: 'Instituce a právní stát',
+      },
+      metrics: {
+        compositeScore: 'Celkové skóre',
+        gdpPpp: 'HDP na obyvatele (PPP)',
+        lifeExpectancy: 'Naděje dožití',
+        peaceIndex: 'Index globálního míru',
+        priceLevel: 'Cenová hladina (EU=100)',
+        housingOverburden: 'Přetížení výdaji na bydlení',
+        ruleOfLaw: 'Právní stát',
+        resetWeights: 'Obnovit výchozí váhy',
+      },
     },
   },
 } as const;
