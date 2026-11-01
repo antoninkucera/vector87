@@ -28,16 +28,9 @@ country ranking (unique combination), and one person cannot sustain two sites' S
 - Brand meaning: precise mathematical sense (vector = direction of market development), clear analytical vision; "87" signals maturity.
 
 ## Data source and responsibilities
-The data lives in a separate project: `/Users/antonin.kucera/Projects/personal/ai_data_jobs`
-(DuckDB `db/jobs.duckdb`, model described in its `docs/data-model.md` and `db/schema.sql` — read those, do not copy them here).
-
-| What | Where | Why |
-|---|---|---|
-| DuckDB + scraping/transform pipeline | `ai_data_jobs` (unchanged by this project unless explicitly agreed) | that is where data is produced |
-| JSON contract (JSON Schema) | `vector87_com/schema/` | the frontend defines what it expects |
-| Export script DuckDB -> JSON | `vector87_com/pipeline/`, DB path from env var, DB opened read-only | contract + exporter + consumer in one place |
-| Generated JSON | committed in `vector87_com/src/data/` | GitHub Pages CI cannot reach the local DuckDB |
-| Agent instructions | each repo has its own `AGENTS.md`; this file references the data project docs instead of duplicating them | single source of truth |
+Which repos and data feed the site, how they connect, and who owns what: `docs/architecture.md`
+(single source of truth — read it there, do not copy it here).
+Upstream repos (`ai_data_jobs`, `world_stats`) are not changed from this project unless explicitly agreed.
 
 Agent access: `ai_data_jobs` is added as an additional folder of this Antigravity project (read/write),
 so changes there are possible when explicitly agreed.
