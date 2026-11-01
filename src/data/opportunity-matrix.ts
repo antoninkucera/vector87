@@ -7,13 +7,21 @@ export interface OpportunityCountry {
   nameCs: string;
   easeOfRelocation: number;
   livability: number;
+  activeJobs: number;
+  hiringCompanies: number;
+  topRoles: string[];
+  topRolesFormattedEn: string;
+  topRolesFormattedCs: string;
   safety: number | null;
   housing: number | null;
   economy: number | null;
   governance: number | null;
+  thrivingScore: number;
   quadrant: 'easy_win' | 'high_reward' | 'lifestyle_haven';
   relocationNoteEn: string;
   relocationNoteCs: string;
+  techNoteEn: string;
+  techNoteCs: string;
   highlightEn: string;
   highlightCs: string;
 }
@@ -46,6 +54,19 @@ const COUNTRY_NAMES_CS: Record<string, string> = {
   HUN: 'Maďarsko',
   LUX: 'Lucembursko',
   SVK: 'Slovensko',
+};
+
+const ROLE_NAMES: Record<string, { en: string; cs: string }> = {
+  ai_developer: { en: 'AI Developer', cs: 'AI Developer' },
+  data_engineer: { en: 'Data Engineer', cs: 'Datový inženýr' },
+  data_scientist: { en: 'Data Scientist', cs: 'Data Scientist' },
+  data_analyst: { en: 'Data Analyst', cs: 'Datový analytik' },
+  ml_engineer: { en: 'ML Engineer', cs: 'Machine Learning inženýr' },
+  research_scientist: { en: 'Research Scientist', cs: 'Research Scientist' },
+  data_architect: { en: 'Data Architect', cs: 'Datový architekt' },
+  analytics_engineer: { en: 'Analytics Engineer', cs: 'Analytics Engineer' },
+  llm_engineer: { en: 'LLM Engineer', cs: 'LLM / GenAI inženýr' },
+  mlops_engineer: { en: 'MLOps Engineer', cs: 'MLOps inženýr' },
 };
 
 const RELOCATION_NOTES: Record<string, { en: string; cs: string }> = {
@@ -159,6 +180,49 @@ const RELOCATION_NOTES: Record<string, { en: string; cs: string }> = {
   },
 };
 
+const TECH_NOTES: Record<string, { en: string; cs: string }> = {
+  CZE: {
+    en: '190 open roles across 129 enterprise firms; premier Central European data engineering hub.',
+    cs: '190 otevřených rolí ve 129 firmách; přední středoevropský uzel pro dataře a AI inženýry.',
+  },
+  DEU: {
+    en: '230 open roles across 112 firms; massive industrial AI, automotive, and enterprise cloud market.',
+    cs: '230 otevřených rolí ve 112 firmách; silný průmyslový AI a cloudový trh se silnou poptávkou.',
+  },
+  USA: {
+    en: '6,203 open roles across 722 enterprise firms; unrivaled AI venture capital and compensation.',
+    cs: '6 203 otevřených rolí v 722 korporacích; globální centrum AI inovací a nejvyšších mezd.',
+  },
+  CAN: {
+    en: '779 open roles across 113 firms; major North American tech hub with vibrant AI research.',
+    cs: '779 otevřených rolí ve 113 firmách; druhý největší anglosaský trh s předním AI výzkumem.',
+  },
+  GBR: {
+    en: '346 open roles across 142 firms; leading European AI research clusters (DeepMind, Cambridge).',
+    cs: '346 otevřených rolí ve 142 firmách; klíčové evropské AI centrum s vysokou koncentrací korporací.',
+  },
+  IRL: {
+    en: '59 open roles across 27 tech giants; European operational HQ for hyperscalers.',
+    cs: '59 otevřených rolí ve 27 korporacích; evropská centrála hyperscalerů a špičková kupní síla.',
+  },
+  CHE: {
+    en: '26 open roles across 10 top firms; world-class AI research labs (Zurich) with premier salaries.',
+    cs: '26 otevřených rolí v 10 špičkových firmách; prémiové AI laboratoře (Curych) s nejvyššími platy.',
+  },
+  NLD: {
+    en: '25 open roles across 12 firms; international tech ecosystem with high English fluency.',
+    cs: '25 otevřených rolí ve 12 firmách; mezinárodní technologická scéna v Amsterdamu.',
+  },
+  ESP: {
+    en: '97 open roles across 27 firms; booming hub for remote engineers and tech nomads.',
+    cs: '97 otevřených rolí ve 27 firmách; rychle rostoucí tech uzel pro nomády a remote inženýry.',
+  },
+  POL: {
+    en: '113 open roles across 37 firms; large pool of elite competitive programmers and engineers.',
+    cs: '113 otevřených rolí ve 37 firmách; obrovský pool špičkových softwarových inženýrů.',
+  },
+};
+
 export const OPPORTUNITY_MATRIX_DATA: OpportunityCountry[] = (placesData.countries as any[])
   .filter((c) => c.is_focus_country && c.pillar_scores?.composite_score && c.pillar_scores?.ease_of_relocation)
   .map((c) => {
@@ -166,11 +230,27 @@ export const OPPORTUNITY_MATRIX_DATA: OpportunityCountry[] = (placesData.countri
     const iso2 = c.country_code_alpha2;
     const livability = c.pillar_scores.composite_score;
     const easeOfRelocation = c.pillar_scores.ease_of_relocation;
+    const tm = c.tech_market || {};
+    const activeJobs = tm.active_jobs ?? 1;
+    const hiringCompanies = tm.hiring_companies ?? 1;
+    const rawRoles = (tm.top_roles as string[]) || [];
 
-    // Quadrant logic:
-    // 1. high_reward: Relocation barriers/quotas (< 80) but high livability / compensation (USA, CAN, GBR)
-    // 2. easy_win: High Relocation Ease (>= 85) + Top-tier Livability (>= 75)
-    // 3. lifestyle_haven: High Relocation Ease (>= 85) + Lifestyle appeal (Mediterranean/Eastern EU)
+    const formattedRolesEn = rawRoles
+      .map((r) => ROLE_NAMES[r]?.en || r.replace(/_/g, ' '))
+      .slice(0, 3)
+      .join(', ');
+    const formattedRolesCs = rawRoles
+      .map((r) => ROLE_NAMES[r]?.cs || r.replace(/_/g, ' '))
+      .slice(0, 3)
+      .join(', ');
+
+    // Normalized Market Score based on active jobs (log-scaled 0 - 100)
+    // log(1) = 0, log(6203) = ~8.73
+    const marketScore = Math.min(100, Math.round((Math.log(activeJobs) / Math.log(6500)) * 100));
+
+    // Thriving Score: Weighted blend of Market Vitality (35%), Livability (40%), and Ease of Relocation (25%)
+    const thrivingScore = Math.round(marketScore * 0.35 + livability * 0.40 + easeOfRelocation * 0.25);
+
     let quadrant: 'easy_win' | 'high_reward' | 'lifestyle_haven' = 'lifestyle_haven';
     if (easeOfRelocation < 80) {
       quadrant = 'high_reward';
@@ -180,9 +260,14 @@ export const OPPORTUNITY_MATRIX_DATA: OpportunityCountry[] = (placesData.countri
       quadrant = 'lifestyle_haven';
     }
 
-    const notes = RELOCATION_NOTES[iso3] || {
+    const relocNotes = RELOCATION_NOTES[iso3] || {
       en: 'Standard European work authorization and mobility rights.',
       cs: 'Standardní evropská pracovní a pobytová práva.',
+    };
+
+    const techNotes = TECH_NOTES[iso3] || {
+      en: `${activeJobs} active open AI/Data roles across ${hiringCompanies} enterprise employers.`,
+      cs: `${activeJobs} aktivních AI/Data pozic napříč ${hiringCompanies} korporátními zaměstnavateli.`,
     };
 
     return {
@@ -192,19 +277,27 @@ export const OPPORTUNITY_MATRIX_DATA: OpportunityCountry[] = (placesData.countri
       nameCs: COUNTRY_NAMES_CS[iso3] || c.country_name,
       easeOfRelocation,
       livability,
+      activeJobs,
+      hiringCompanies,
+      topRoles: rawRoles,
+      topRolesFormattedEn: formattedRolesEn || 'AI & Data Engineering',
+      topRolesFormattedCs: formattedRolesCs || 'AI & Datové inženýrství',
       safety: c.pillar_scores.safety ?? null,
       housing: c.pillar_scores.housing ?? null,
       economy: c.pillar_scores.economy ?? null,
       governance: c.pillar_scores.governance ?? null,
+      thrivingScore,
       quadrant,
-      relocationNoteEn: notes.en,
-      relocationNoteCs: notes.cs,
-      highlightEn: notes.en,
-      highlightCs: notes.cs,
+      relocationNoteEn: relocNotes.en,
+      relocationNoteCs: relocNotes.cs,
+      techNoteEn: techNotes.en,
+      techNoteCs: techNotes.cs,
+      highlightEn: `${techNotes.en} ${relocNotes.en}`,
+      highlightCs: `${techNotes.cs} ${relocNotes.cs}`,
     };
   })
-  .sort((a, b) => b.livability - a.livability);
+  .sort((a, b) => b.thrivingScore - a.thrivingScore);
 
 export const TOP_SPOTLIGHT_COUNTRIES = OPPORTUNITY_MATRIX_DATA.filter((c) =>
-  ['CHE', 'CAN', 'CZE', 'ESP', 'NLD', 'USA'].includes(c.iso3)
-);
+  ['CZE', 'CAN', 'CHE', 'DEU', 'ESP', 'USA', 'IRL', 'NLD'].includes(c.iso3)
+).sort((a, b) => b.thrivingScore - a.thrivingScore);

@@ -17,6 +17,7 @@ import httpx
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
 DEFAULT_WORLD_DB_PATH = Path("/Users/antonin.kucera/Projects/personal/world_stats/db/world.duckdb")
+DEFAULT_JOBS_DB_PATH = Path("/Users/antonin.kucera/Projects/personal/ai_data_jobs/db/jobs.duckdb")
 SCHEMA_PATH = ROOT_DIR / "schema" / "places-data.schema.json"
 OUTPUT_PATH = ROOT_DIR / "src" / "data" / "places-data.json"
 MAP_PATHS_OUTPUT = ROOT_DIR / "src" / "data" / "world-map-paths.json"
@@ -77,10 +78,75 @@ def generate_world_map_svg_paths() -> dict[str, str]:
 
 
 
+def load_tech_jobs_metrics(jobs_db_path: Path) -> dict[str, dict[str, Any]]:
+    """Načte telemetrii otevřených pozic a zaměstnavatelů z jobs.duckdb pro focus země."""
+    if not jobs_db_path.exists():
+        print(f"Warning: jobs.duckdb not found at {jobs_db_path}, skipping live job telemetry.")
+        return {}
+
+    print(f"Connecting to jobs DB {jobs_db_path} (read-only)...")
+    con = duckdb.connect(str(jobs_db_path), read_only=True)
+    try:
+        ISO2_TO_ISO3 = {
+            "US": "USA", "CA": "CAN", "UK": "GBR", "DE": "DEU", "CZ": "CZE",
+            "PL": "POL", "ES": "ESP", "FR": "FRA", "IE": "IRL", "PT": "PRT",
+            "IT": "ITA", "CH": "CHE", "SE": "SWE", "NL": "NLD", "RO": "ROU",
+            "BE": "BEL", "LU": "LUX", "GR": "GRC", "FI": "FIN", "AT": "AUT",
+            "LT": "LTU", "BG": "BGR", "NO": "NOR", "SK": "SVK", "DK": "DNK",
+            "HU": "HUN", "HR": "HRV"
+        }
+
+        # Počty aktivních pozic a zaměstnavatelů
+        counts = con.execute("""
+            SELECT 
+                country_code,
+                count(*) FILTER (WHERE is_active = TRUE) AS active_jobs,
+                count(DISTINCT company_id) AS hiring_companies
+            FROM fact_jobs
+            WHERE country_code IS NOT NULL
+            GROUP BY country_code
+        """).fetchall()
+
+        # Top 3 kategorie pozic na zemi
+        top_cats_rows = con.execute("""
+            SELECT 
+                j.country_code,
+                r.category_id,
+                count(*) AS cnt
+            FROM fact_jobs j
+            JOIN bridge_job_roles r ON j.job_id = r.job_id
+            WHERE j.is_active = TRUE AND j.country_code IS NOT NULL
+            GROUP BY j.country_code, r.category_id
+            ORDER BY j.country_code, cnt DESC
+        """).fetchall()
+
+        from collections import defaultdict
+        cats_by_country = defaultdict(list)
+        for c_code, cat_id, _ in top_cats_rows:
+            if len(cats_by_country[c_code]) < 3:
+                cats_by_country[c_code].append(cat_id)
+
+        res = {}
+        for c_code, active_j, hiring_c in counts:
+            iso3 = ISO2_TO_ISO3.get(c_code, c_code)
+            res[iso3] = {
+                "active_jobs": int(active_j),
+                "hiring_companies": int(hiring_c),
+                "top_roles": cats_by_country.get(c_code, []),
+            }
+        print(f"Loaded live AI/Data jobs telemetry for {len(res)} countries from jobs.duckdb.")
+        return res
+    finally:
+        con.close()
+
+
 def export_places_data() -> None:
     db_path = Path(os.environ.get("WORLD_STATS_DB_PATH", str(DEFAULT_WORLD_DB_PATH)))
     if not db_path.exists():
         raise FileNotFoundError(f"World Stats DuckDB database not found at {db_path}")
+
+    jobs_db_path = Path(os.environ.get("AI_DATA_JOBS_DB_PATH", str(DEFAULT_JOBS_DB_PATH)))
+    tech_metrics = load_tech_jobs_metrics(jobs_db_path)
 
     print(f"Connecting to {db_path} (read-only)...")
     con = duckdb.connect(str(db_path), read_only=True)
@@ -176,6 +242,7 @@ def export_places_data() -> None:
                     "ease_of_relocation": round(reloc_raw, 1) if reloc_raw is not None else None,
                     "composite_score": composite,
                 },
+                "tech_market": tech_metrics.get(c_a3),
                 "indicators": ind_by_country.get(c_a3, {}),
             })
 
@@ -188,7 +255,13 @@ def export_places_data() -> None:
             "schema_version": "1.0.0",
             "total_countries": len(countries_list),
             "focus_countries_count": focus_count,
-            "sources": ["World Bank Open Data", "Eurostat", "Institute for Economics & Peace", "Vector87 Policy & Mobility Index"],
+            "sources": [
+                "World Bank Open Data",
+                "Eurostat",
+                "Institute for Economics & Peace",
+                "Vector87 Policy & Mobility Index",
+                "Vector87 Enterprise Job Telemetry (ai_data_jobs)",
+            ],
         },
         "pillars": PILLARS,
         "countries": countries_list,

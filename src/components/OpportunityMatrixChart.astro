@@ -15,10 +15,13 @@ const {
   chartId,
   title,
   subtitle,
-  badge = 'OPPORTUNITY MATRIX',
+  badge = 'FUTURE TRACKER',
   lang,
   countries,
 } = Astro.props;
+
+// Radius helper based on AI/Data jobs volume
+const calcRadius = (jobs: number) => Math.max(5, Math.min(22, Math.round(4 + Math.sqrt(jobs) * 0.24)));
 
 // Split into 3 visual groups for distinct colors and legend
 const easyWins = countries
@@ -26,10 +29,15 @@ const easyWins = countries
   .map((c) => ({
     x: c.easeOfRelocation,
     y: c.livability,
+    r: calcRadius(c.activeJobs),
     name: lang === 'cs' ? c.nameCs : c.name,
     iso3: c.iso3,
     easeOfRelocation: c.easeOfRelocation,
     livability: c.livability,
+    activeJobs: c.activeJobs,
+    hiringCompanies: c.hiringCompanies,
+    topRoles: lang === 'cs' ? c.topRolesFormattedCs : c.topRolesFormattedEn,
+    thrivingScore: c.thrivingScore,
     safety: c.safety,
     housing: c.housing,
     economy: c.economy,
@@ -41,10 +49,15 @@ const highReward = countries
   .map((c) => ({
     x: c.easeOfRelocation,
     y: c.livability,
+    r: calcRadius(c.activeJobs),
     name: lang === 'cs' ? c.nameCs : c.name,
     iso3: c.iso3,
     easeOfRelocation: c.easeOfRelocation,
     livability: c.livability,
+    activeJobs: c.activeJobs,
+    hiringCompanies: c.hiringCompanies,
+    topRoles: lang === 'cs' ? c.topRolesFormattedCs : c.topRolesFormattedEn,
+    thrivingScore: c.thrivingScore,
     safety: c.safety,
     housing: c.housing,
     economy: c.economy,
@@ -56,10 +69,15 @@ const lifestyleHavens = countries
   .map((c) => ({
     x: c.easeOfRelocation,
     y: c.livability,
+    r: calcRadius(c.activeJobs),
     name: lang === 'cs' ? c.nameCs : c.name,
     iso3: c.iso3,
     easeOfRelocation: c.easeOfRelocation,
     livability: c.livability,
+    activeJobs: c.activeJobs,
+    hiringCompanies: c.hiringCompanies,
+    topRoles: lang === 'cs' ? c.topRolesFormattedCs : c.topRolesFormattedEn,
+    thrivingScore: c.thrivingScore,
     safety: c.safety,
     housing: c.housing,
     economy: c.economy,
@@ -73,25 +91,45 @@ const labels = {
       : 'Easy Wins (Free Movement + Top Livability)',
   highReward:
     lang === 'cs'
-      ? 'High Friction / High Reward (Globální giganti, ale vízové kvóty)'
+      ? 'High Friction / High Reward (Globální giganti, vízové kvóty)'
       : 'High Friction / High Reward (Top Markets, Visa Quotas)',
   lifestyleHaven:
     lang === 'cs'
       ? 'Lifestyle & Remote Havens (Maximální nomádská dostupnost, klima)'
       : 'Lifestyle & Remote Havens (Top Nomad Visas, Coastal)',
-  xAxis:
+  modeRelocation:
+    lang === 'cs'
+      ? 'Mobility & Livability (Bubliny = Objem AI/Data trhu)'
+      : 'Mobility & Livability (Bubble = AI/Data Market Size)',
+  modeMarket:
+    lang === 'cs'
+      ? 'AI/Data Poptávka vs. Životní úroveň (Log osa)'
+      : 'AI/Data Demand vs. Livability (Log Scale)',
+  xAxisReloc:
     lang === 'cs'
       ? 'Snadnost přesunu a pracovní povolení (0–100)'
       : 'Ease of Relocation & Work Permit Index (0–100)',
+  xAxisJobs:
+    lang === 'cs'
+      ? 'Aktivní otevřené AI/Data pozice v korporacích (log osa)'
+      : 'Active Enterprise AI/Data Openings (Log Scale)',
   yAxis:
     lang === 'cs'
       ? 'Index kvality života & stability (0–100)'
       : 'Composite Livability & Stability Score (0–100)',
+  jobsWord: lang === 'cs' ? 'pozic' : 'roles',
+  firmsWord: lang === 'cs' ? 'firem' : 'firms',
   relocWord: lang === 'cs' ? 'Přesun & víza' : 'Relocation Ease',
   scoreWord: lang === 'cs' ? 'Kvalita života' : 'Livability Score',
+  thrivingWord: lang === 'cs' ? 'AI Thriving Index' : 'AI Thriving Index',
+  rolesWord: lang === 'cs' ? 'Klíčové role' : 'Top Roles',
   safetyWord: lang === 'cs' ? 'Bezpečnost' : 'Safety',
   housingWord: lang === 'cs' ? 'Bydlení' : 'Housing',
   economyWord: lang === 'cs' ? 'Ekonomika' : 'Economy',
+  bubbleNote:
+    lang === 'cs'
+      ? 'Velikost bubliny odpovídá objemu otevřených AI/Data pozic v korporátních ATS systémech.'
+      : 'Bubble diameter represents active AI/Data postings across enterprise corporate ATS boards.',
 };
 
 const payload = JSON.stringify({
@@ -103,8 +141,6 @@ const payload = JSON.stringify({
       backgroundColor: 'rgba(16, 185, 129, 0.85)',
       borderColor: '#10b981',
       borderWidth: 1.5,
-      pointRadius: 7,
-      pointHoverRadius: 10,
     },
     {
       label: labels.highReward,
@@ -112,8 +148,6 @@ const payload = JSON.stringify({
       backgroundColor: 'rgba(6, 182, 212, 0.85)',
       borderColor: '#06b6d4',
       borderWidth: 1.5,
-      pointRadius: 8,
-      pointHoverRadius: 11,
     },
     {
       label: labels.lifestyleHaven,
@@ -121,15 +155,13 @@ const payload = JSON.stringify({
       backgroundColor: 'rgba(129, 140, 248, 0.75)',
       borderColor: '#818cf8',
       borderWidth: 1.5,
-      pointRadius: 6,
-      pointHoverRadius: 9,
     },
   ],
 });
 ---
 
 <div class="panel-surface rounded-xl p-5 flex flex-col justify-between border border-slate-800">
-  <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-3 mb-4">
+  <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
     <div>
       <div class="flex items-center gap-2">
         <h3 class="text-sm font-semibold text-white tracking-tight">{title}</h3>
@@ -141,6 +173,26 @@ const payload = JSON.stringify({
       </div>
       {subtitle && <p class="text-xs text-slate-400 mt-0.5">{subtitle}</p>}
     </div>
+
+    <!-- Dual Mode Toggle -->
+    <div class="inline-flex p-1 bg-slate-900 border border-slate-800 rounded-lg text-xs font-mono shrink-0">
+      <button
+        type="button"
+        id={`${chartId}-btn-reloc`}
+        class="px-3 py-1 rounded-md transition-all font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30"
+        data-mode="relocation"
+      >
+        {labels.modeRelocation}
+      </button>
+      <button
+        type="button"
+        id={`${chartId}-btn-market`}
+        class="px-3 py-1 rounded-md transition-all text-slate-400 hover:text-white"
+        data-mode="market"
+      >
+        {labels.modeMarket}
+      </button>
+    </div>
   </div>
 
   <!-- Dedicated Chart Container for Responsive Chart.js Canvas -->
@@ -149,24 +201,29 @@ const payload = JSON.stringify({
   </div>
 
   <!-- Quadrant Explanation Footnotes -->
-  <div class="mt-4 pt-3 border-t border-slate-800/80 grid grid-cols-1 sm:grid-cols-3 gap-2 text-[11px] font-mono">
-    <div class="flex items-center gap-2 text-slate-300">
-      <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 shrink-0"></span>
-      <span class="text-slate-400">
-        <strong class="text-emerald-300">Easy Wins:</strong> {lang === 'cs' ? 'Švýcarsko, Nizozemsko, Rakousko, Česko, Irsko, Skandinávie' : 'Switzerland, Netherlands, Austria, Czechia, Ireland, Nordics'}
-      </span>
+  <div class="mt-4 pt-3 border-t border-slate-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[11px] font-mono">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 flex-1">
+      <div class="flex items-center gap-2 text-slate-300">
+        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 shrink-0"></span>
+        <span class="text-slate-400">
+          <strong class="text-emerald-300">Easy Wins:</strong> {lang === 'cs' ? 'Švýcarsko, Nizozemsko, Rakousko, Česko, Irsko, Skandinávie' : 'Switzerland, Netherlands, Austria, Czechia, Ireland, Nordics'}
+        </span>
+      </div>
+      <div class="flex items-center gap-2 text-slate-300">
+        <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 shrink-0"></span>
+        <span class="text-slate-400">
+          <strong class="text-cyan-300">High Friction / High Reward:</strong> {lang === 'cs' ? 'USA (6 203 pozic, loterie H-1B), Kanada (779), UK (346)' : 'USA (6.2k jobs, H-1B lottery), Canada (779), UK (346)'}
+        </span>
+      </div>
+      <div class="flex items-center gap-2 text-slate-300">
+        <span class="w-2.5 h-2.5 rounded-full bg-indigo-400 shrink-0"></span>
+        <span class="text-slate-400">
+          <strong class="text-indigo-300">Lifestyle Havens:</strong> {lang === 'cs' ? 'Španělsko (97 rolí, Beckham Law), Portugalsko (D8 vízum)' : 'Spain (97 jobs, Beckham Law), Portugal (D8 visa)'}
+        </span>
+      </div>
     </div>
-    <div class="flex items-center gap-2 text-slate-300">
-      <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 shrink-0"></span>
-      <span class="text-slate-400">
-        <strong class="text-cyan-300">High Friction / High Reward:</strong> {lang === 'cs' ? 'USA (H-1B loterie), Kanada (Express Entry), UK' : 'USA (H-1B lottery), Canada (Express Entry), UK'}
-      </span>
-    </div>
-    <div class="flex items-center gap-2 text-slate-300">
-      <span class="w-2.5 h-2.5 rounded-full bg-indigo-400 shrink-0"></span>
-      <span class="text-slate-400">
-        <strong class="text-indigo-300">Lifestyle Havens:</strong> {lang === 'cs' ? 'Španělsko (Beckham Law), Portugalsko (D8), Chorvatsko' : 'Spain (Beckham Law), Portugal (D8), Croatia'}
-      </span>
+    <div class="text-[10px] text-slate-500 font-mono italic sm:text-right shrink-0">
+      💡 {labels.bubbleNote}
     </div>
   </div>
 
@@ -179,7 +236,8 @@ const payload = JSON.stringify({
           <th scope="col">Country</th>
           <th scope="col">Ease of Relocation</th>
           <th scope="col">Livability Score</th>
-          <th scope="col">Quadrant</th>
+          <th scope="col">Active AI/Data Jobs</th>
+          <th scope="col">AI Thriving Score</th>
         </tr>
       </thead>
       <tbody>
@@ -188,7 +246,8 @@ const payload = JSON.stringify({
             <th scope="row">{c.name}</th>
             <td>{c.easeOfRelocation}</td>
             <td>{c.livability}</td>
-            <td>{c.quadrant}</td>
+            <td>{c.activeJobs}</td>
+            <td>{c.thrivingScore}</td>
           </tr>
         ))}
       </tbody>
@@ -213,9 +272,10 @@ const payload = JSON.stringify({
 
         const cfg = JSON.parse(raw);
         const labels = cfg.labels;
+        let currentMode: 'relocation' | 'market' = 'relocation';
 
-        new Chart(canvas, {
-          type: 'scatter',
+        const chart = new Chart(canvas, {
+          type: 'bubble',
           data: {
             datasets: cfg.datasets,
           },
@@ -250,11 +310,14 @@ const payload = JSON.stringify({
                   label: (ctx) => {
                     const rawItem = ctx.raw as any;
                     if (!rawItem) return '';
+                    const jobsStr = rawItem.activeJobs?.toLocaleString('en-US') ?? '1';
                     return [
-                      ` • ${labels.relocWord}: ${rawItem.easeOfRelocation} / 100`,
-                      ` • ${labels.scoreWord}: ${rawItem.livability} / 100`,
-                      ` • ${labels.safetyWord}: ${rawItem.safety ?? 'N/A'} | ${labels.housingWord}: ${rawItem.housing ?? 'N/A'}`,
-                      ` • Vízový režim: ${rawItem.note}`,
+                      ` • 🔥 AI & Data trh: ${jobsStr} ${labels.jobsWord} (${rawItem.hiringCompanies ?? 1} ${labels.firmsWord})`,
+                      ` • 🌟 ${labels.thrivingWord}: ${rawItem.thrivingScore} / 100`,
+                      ` • 💼 ${labels.rolesWord}: ${rawItem.topRoles}`,
+                      ` • 🛂 ${labels.relocWord}: ${rawItem.easeOfRelocation} / 100`,
+                      ` • 🏡 ${labels.scoreWord}: ${rawItem.livability} / 100 (${labels.safetyWord}: ${rawItem.safety ?? '—'} | ${labels.housingWord}: ${rawItem.housing ?? '—'})`,
+                      ` • Poznámka: ${rawItem.note}`,
                     ];
                   },
                 },
@@ -262,6 +325,7 @@ const payload = JSON.stringify({
             },
             scales: {
               x: {
+                type: 'linear',
                 min: 25,
                 max: 105,
                 grid: {
@@ -275,7 +339,7 @@ const payload = JSON.stringify({
                 },
                 title: {
                   display: true,
-                  text: labels.xAxis,
+                  text: labels.xAxisReloc,
                   color: '#64748b',
                   font: { family: "'JetBrains Mono', monospace", size: 11 },
                 },
@@ -301,6 +365,60 @@ const payload = JSON.stringify({
             },
           },
         });
+
+        // Setup Mode Switching
+        const btnReloc = document.getElementById(`${canvas.id}-btn-reloc`);
+        const btnMarket = document.getElementById(`${canvas.id}-btn-market`);
+
+        function updateMode(mode: 'relocation' | 'market') {
+          if (mode === currentMode) return;
+          currentMode = mode;
+
+          if (mode === 'relocation') {
+            btnReloc?.classList.add('bg-emerald-500/20', 'text-emerald-300', 'border', 'border-emerald-500/30');
+            btnReloc?.classList.remove('text-slate-400');
+            btnMarket?.classList.remove('bg-emerald-500/20', 'text-emerald-300', 'border', 'border-emerald-500/30');
+            btnMarket?.classList.add('text-slate-400');
+
+            chart.options.scales!.x!.type = 'linear';
+            (chart.options.scales!.x as any).min = 25;
+            (chart.options.scales!.x as any).max = 105;
+            chart.options.scales!.x!.title!.text = labels.xAxisReloc;
+            chart.options.scales!.x!.ticks!.callback = (v: any) => `${v}`;
+
+            chart.data.datasets.forEach((ds: any) => {
+              ds.data.forEach((p: any) => {
+                p.x = p.easeOfRelocation;
+              });
+            });
+          } else {
+            btnMarket?.classList.add('bg-emerald-500/20', 'text-emerald-300', 'border', 'border-emerald-500/30');
+            btnMarket?.classList.remove('text-slate-400');
+            btnReloc?.classList.remove('bg-emerald-500/20', 'text-emerald-300', 'border', 'border-emerald-500/30');
+            btnReloc?.classList.add('text-slate-400');
+
+            chart.options.scales!.x!.type = 'logarithmic';
+            (chart.options.scales!.x as any).min = 1;
+            (chart.options.scales!.x as any).max = 7500;
+            chart.options.scales!.x!.title!.text = labels.xAxisJobs;
+            chart.options.scales!.x!.ticks!.callback = (val: any) => {
+              if ([1, 10, 50, 100, 500, 1000, 5000].includes(Number(val))) {
+                return Number(val).toLocaleString('en-US');
+              }
+              return null;
+            };
+
+            chart.data.datasets.forEach((ds: any) => {
+              ds.data.forEach((p: any) => {
+                p.x = Math.max(1, p.activeJobs);
+              });
+            });
+          }
+          chart.update();
+        }
+
+        btnReloc?.addEventListener('click', () => updateMode('relocation'));
+        btnMarket?.addEventListener('click', () => updateMode('market'));
       } catch (err) {
         console.error('Error initializing Opportunity Matrix chart on', canvas.id, err);
       }
