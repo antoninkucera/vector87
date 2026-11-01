@@ -12,18 +12,28 @@ const { lang } = Astro.props;
 const t = ui[lang].places;
 
 const { meta, pillars, countries } = placesData;
-const focusCountries = countries.filter((c) => c.is_focus_country);
+
+// Seřazení všech 217 zemí podle výchozího kompozitního skóre
+const allCountries = [...countries];
+allCountries.sort((a, b) => (b.pillar_scores.composite_score ?? 0) - (a.pillar_scores.composite_score ?? 0));
 const allCountriesMap = Object.fromEntries(countries.map((c) => [c.country_code_alpha3, c]));
 
-// Seřazení výchozího pořadí
-focusCountries.sort((a, b) => (b.pillar_scores.composite_score ?? 0) - (a.pillar_scores.composite_score ?? 0));
+// Pomocná funkce pro určení barvy podle skóre
+function getScoreColor(score: number | null | undefined): string {
+  if (score === null || score === undefined) return '#1e293b';
+  if (score >= 80) return '#10b981'; // emerald
+  if (score >= 70) return '#06b6d4'; // cyan
+  if (score >= 60) return '#3b82f6'; // blue
+  if (score >= 50) return '#6366f1'; // indigo
+  return '#475569'; // slate
+}
 
 const placesJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
   name: t.pageTitle,
   description: t.pageDescription,
-  itemListElement: focusCountries.map((c, idx) => ({
+  itemListElement: allCountries.slice(0, 30).map((c, idx) => ({
     '@type': 'ListItem',
     position: idx + 1,
     name: c.country_name,
@@ -61,12 +71,12 @@ const placesJsonLd = {
     <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-4 sm:p-6 shadow-2xl backdrop-blur-sm relative overflow-hidden">
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4 pb-4 border-b border-slate-800/60">
         <div>
-          <span class="text-xs font-mono uppercase tracking-widest text-cyan-400">CHOROPLETH TELEMETRY</span>
+          <span class="text-xs font-mono uppercase tracking-widest text-cyan-400">GLOBAL CHOROPLETH TELEMETRY</span>
           <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight">{t.mapTitle}</h2>
           <p class="text-xs sm:text-sm text-slate-400">{t.mapSubtitle}</p>
         </div>
         <!-- Map Legend -->
-        <div class="flex items-center gap-3 text-xs font-mono text-slate-400 bg-slate-950/80 px-3 py-2 rounded-lg border border-slate-800">
+        <div class="flex flex-wrap items-center gap-3 text-xs font-mono text-slate-400 bg-slate-950/80 px-3 py-2 rounded-lg border border-slate-800">
           <span>SCORE:</span>
           <div class="flex items-center gap-1">
             <span class="w-3 h-3 rounded bg-emerald-500/80 inline-block"></span>
@@ -74,15 +84,19 @@ const placesJsonLd = {
           </div>
           <div class="flex items-center gap-1">
             <span class="w-3 h-3 rounded bg-cyan-500/80 inline-block"></span>
-            <span>75-79</span>
+            <span>70-79</span>
+          </div>
+          <div class="flex items-center gap-1">
+            <span class="w-3 h-3 rounded bg-blue-500/80 inline-block"></span>
+            <span>60-69</span>
           </div>
           <div class="flex items-center gap-1">
             <span class="w-3 h-3 rounded bg-indigo-500/80 inline-block"></span>
-            <span>&lt;75</span>
+            <span>50-59</span>
           </div>
           <div class="flex items-center gap-1">
-            <span class="w-3 h-3 rounded bg-slate-800 inline-block"></span>
-            <span>Global Baseline</span>
+            <span class="w-3 h-3 rounded bg-slate-600 inline-block"></span>
+            <span>&lt;50</span>
           </div>
         </div>
       </div>
@@ -101,13 +115,7 @@ const placesJsonLd = {
               const country = allCountriesMap[iso3];
               const isFocus = country?.is_focus_country;
               const score = country?.pillar_scores?.composite_score;
-
-              let fillColor = '#1e293b'; // default neutral
-              if (isFocus && score !== null && score !== undefined) {
-                if (score >= 80) fillColor = '#10b981'; // emerald
-                else if (score >= 75) fillColor = '#06b6d4'; // cyan
-                else fillColor = '#6366f1'; // indigo
-              }
+              const fillColor = getScoreColor(score);
 
               return (
                 <path
@@ -115,7 +123,9 @@ const placesJsonLd = {
                   id={`map-${iso3}`}
                   data-iso3={iso3}
                   class={`country-path transition-all duration-150 cursor-pointer stroke-[#070b14] stroke-[0.5] ${
-                    isFocus ? 'opacity-90 hover:opacity-100 hover:stroke-cyan-300 hover:stroke-[1.5]' : 'opacity-40 hover:opacity-75 hover:stroke-slate-500'
+                    isFocus
+                      ? 'opacity-95 hover:opacity-100 hover:stroke-cyan-300 hover:stroke-[1.5]'
+                      : 'opacity-70 hover:opacity-100 hover:stroke-slate-400 hover:stroke-[1.2]'
                   }`}
                   fill={fillColor}
                 />
@@ -159,22 +169,27 @@ const placesJsonLd = {
     </div>
   </section>
 
-  <!-- 3. Dynamic Weight Customizer -->
+  <!-- 3. Dynamic Weight Customizer (Always Sums to 100%) -->
   <section class="mb-10">
     <div class="bg-slate-900/40 border border-slate-800 rounded-xl p-5 sm:p-6 backdrop-blur-sm">
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
         <div>
-          <span class="text-xs font-mono uppercase tracking-widest text-cyan-400">CUSTOMIZABLE METHODOLOGY</span>
+          <span class="text-xs font-mono uppercase tracking-widest text-cyan-400">BALANCED METHODOLOGY (SUM = 100%)</span>
           <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight">{t.rankingTitle}</h2>
           <p class="text-xs sm:text-sm text-slate-400">{t.rankingSubtitle}</p>
         </div>
-        <button
-          id="btn-reset-weights"
-          type="button"
-          class="self-start sm:self-auto px-3 py-1.5 rounded-lg border border-slate-700 hover:border-cyan-500/50 bg-slate-800/60 hover:bg-slate-800 text-xs font-mono text-slate-300 hover:text-cyan-400 transition-colors cursor-pointer"
-        >
-          ↺ {t.metrics.resetWeights}
-        </button>
+        <div class="flex items-center gap-3">
+          <div class="text-xs font-mono text-slate-400 bg-slate-950 px-2.5 py-1 rounded border border-slate-800">
+            TOTAL: <span id="val-weight-total" class="font-bold text-cyan-400">100%</span>
+          </div>
+          <button
+            id="btn-reset-weights"
+            type="button"
+            class="px-3 py-1.5 rounded-lg border border-slate-700 hover:border-cyan-500/50 bg-slate-800/60 hover:bg-slate-800 text-xs font-mono text-slate-300 hover:text-cyan-400 transition-colors cursor-pointer"
+          >
+            ↺ {t.metrics.resetWeights}
+          </button>
+        </div>
       </div>
 
       <!-- Sliders Grid -->
@@ -193,7 +208,7 @@ const placesJsonLd = {
             min="0"
             max="100"
             value="25"
-            step="5"
+            step="1"
             class="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-400"
           />
           <p class="text-[11px] text-slate-400 mt-2 line-clamp-2">
@@ -215,7 +230,7 @@ const placesJsonLd = {
             min="0"
             max="100"
             value="25"
-            step="5"
+            step="1"
             class="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-amber-400"
           />
           <p class="text-[11px] text-slate-400 mt-2 line-clamp-2">
@@ -237,7 +252,7 @@ const placesJsonLd = {
             min="0"
             max="100"
             value="25"
-            step="5"
+            step="1"
             class="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-cyan-400"
           />
           <p class="text-[11px] text-slate-400 mt-2 line-clamp-2">
@@ -259,7 +274,7 @@ const placesJsonLd = {
             min="0"
             max="100"
             value="25"
-            step="5"
+            step="1"
             class="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-indigo-400"
           />
           <p class="text-[11px] text-slate-400 mt-2 line-clamp-2">
@@ -270,38 +285,44 @@ const placesJsonLd = {
     </div>
   </section>
 
-  <!-- 4. Ranking Table -->
+  <!-- 4. Ranking Table of All Countries -->
   <section class="mb-16">
     <div class="bg-slate-900/60 border border-slate-800 rounded-xl overflow-hidden shadow-xl">
       <!-- Search & Filters -->
-      <div class="p-4 bg-slate-950/80 border-b border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div class="relative w-full sm:w-72">
+      <div class="p-4 bg-slate-950/80 border-b border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="relative w-full md:w-80">
           <input
             type="text"
             id="input-country-search"
-            placeholder={lang === 'cs' ? 'Filtrovat podle země nebo kódu...' : 'Filter by country or ISO code...'}
+            placeholder={lang === 'cs' ? 'Hledat zemi nebo kód...' : 'Search country or code...'}
             class="w-full px-3 py-1.5 pl-8 bg-slate-900 border border-slate-700/80 rounded-lg text-xs font-mono text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400"
           />
           <span class="absolute left-2.5 top-2 text-slate-500 text-xs">🔍</span>
         </div>
 
-        <div class="flex items-center gap-1.5 text-xs font-mono overflow-x-auto w-full sm:w-auto pb-1 sm:pb-0">
-          <button data-filter="all" class="filter-btn px-3 py-1 rounded-md bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
-            ALL ({meta.focus_countries_count})
+        <div class="flex items-center gap-1.5 text-xs font-mono overflow-x-auto w-full md:w-auto pb-1 md:pb-0">
+          <button data-filter="all" class="filter-btn px-3 py-1 rounded-md bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 whitespace-nowrap">
+            ALL ({meta.total_countries})
           </button>
-          <button data-filter="eu" class="filter-btn px-3 py-1 rounded-md bg-slate-800/80 text-slate-400 hover:text-white border border-slate-700/60">
-            EU (22)
+          <button data-filter="focus" class="filter-btn px-3 py-1 rounded-md bg-slate-800/80 text-slate-400 hover:text-white border border-slate-700/60 whitespace-nowrap">
+            FOCUS ({meta.focus_countries_count})
           </button>
-          <button data-filter="noneu" class="filter-btn px-3 py-1 rounded-md bg-slate-800/80 text-slate-400 hover:text-white border border-slate-700/60">
-            NON-EU EUROPE (3)
+          <button data-filter="eu" class="filter-btn px-3 py-1 rounded-md bg-slate-800/80 text-slate-400 hover:text-white border border-slate-700/60 whitespace-nowrap">
+            EU
           </button>
-          <button data-filter="americas" class="filter-btn px-3 py-1 rounded-md bg-slate-800/80 text-slate-400 hover:text-white border border-slate-700/60">
-            AMERICAS (2)
+          <button data-filter="europe" class="filter-btn px-3 py-1 rounded-md bg-slate-800/80 text-slate-400 hover:text-white border border-slate-700/60 whitespace-nowrap">
+            EUROPE
+          </button>
+          <button data-filter="americas" class="filter-btn px-3 py-1 rounded-md bg-slate-800/80 text-slate-400 hover:text-white border border-slate-700/60 whitespace-nowrap">
+            AMERICAS
+          </button>
+          <button data-filter="asia" class="filter-btn px-3 py-1 rounded-md bg-slate-800/80 text-slate-400 hover:text-white border border-slate-700/60 whitespace-nowrap">
+            ASIA
           </button>
         </div>
       </div>
 
-      <!-- Table -->
+      <!-- Table Header & Body -->
       <div class="overflow-x-auto">
         <table class="w-full text-left border-collapse text-xs">
           <thead>
@@ -317,19 +338,20 @@ const placesJsonLd = {
             </tr>
           </thead>
           <tbody id="ranking-tbody" class="divide-y divide-slate-800/60 font-mono">
-            {focusCountries.map((country, idx) => {
+            {allCountries.map((country, idx) => {
               const scores = country.pillar_scores;
               const comp = scores.composite_score ?? 0;
-              let badgeColor = 'bg-indigo-950 text-indigo-300 border-indigo-700/50';
+              let badgeColor = 'bg-slate-800/80 text-slate-300 border-slate-700/50';
               if (comp >= 80) badgeColor = 'bg-emerald-950 text-emerald-300 border-emerald-700/50';
-              else if (comp >= 75) badgeColor = 'bg-cyan-950 text-cyan-300 border-cyan-700/50';
-
-              const ind = country.indicators as Record<string, any>;
+              else if (comp >= 70) badgeColor = 'bg-cyan-950 text-cyan-300 border-cyan-700/50';
+              else if (comp >= 60) badgeColor = 'bg-blue-950 text-blue-300 border-blue-700/50';
+              else if (comp >= 50) badgeColor = 'bg-indigo-950 text-indigo-300 border-indigo-700/50';
 
               return (
                 <tr
                   class="country-row hover:bg-slate-800/40 transition-colors cursor-pointer group"
                   data-iso3={country.country_code_alpha3}
+                  data-focus={country.is_focus_country ? 'true' : 'false'}
                   data-eu={country.is_eu ? 'true' : 'false'}
                   data-continent={country.continent}
                 >
@@ -339,6 +361,11 @@ const placesJsonLd = {
                   <td class="py-3.5 px-4 font-sans font-medium text-white flex items-center gap-2">
                     <span class="font-mono text-xs text-slate-400">{country.country_code_alpha2}</span>
                     <span>{country.country_name}</span>
+                    {country.is_focus_country && (
+                      <span class="text-[9px] font-mono px-1.5 py-0.2 rounded bg-cyan-950/80 border border-cyan-600/40 text-cyan-300">
+                        FOCUS
+                      </span>
+                    )}
                     {country.is_eu && (
                       <span class="text-[9px] font-mono px-1.5 py-0.2 rounded bg-blue-950/70 border border-blue-700/40 text-blue-300">
                         EU
@@ -385,12 +412,12 @@ const placesJsonLd = {
       </div>
     </div>
     <p class="text-[11px] text-slate-600 leading-relaxed">
-      Normalization: Min-Max scaled to [0, 100] with 1st/99th percentile winsorization. Composite scores are dynamically computed client-side with user-defined weights. Job market indicators from corporate career portals will be added after country-level scraper expansion.
+      Normalization: Min-Max scaled to [0, 100] with 1st/99th percentile winsorization. Composite scores are dynamically computed client-side with user-defined weights (always strictly summing to 100%).
     </p>
   </footer>
 </Layout>
 
-<!-- Client Script: Interactive Map & Live Dynamic Weight Re-ranking -->
+<!-- Client Script: Interactive Map & Live Linked 100% Sliders -->
 <script is:inline define:vars={{ countriesData: countries }}>
   const countries = countriesData;
   const countriesMap = new Map(countries.map(c => [c.country_code_alpha3, c]));
@@ -408,7 +435,7 @@ const placesJsonLd = {
   const svg = document.getElementById('world-map-svg');
 
   document.querySelectorAll('.country-path').forEach(path => {
-    path.addEventListener('mouseenter', (e) => {
+    path.addEventListener('mouseenter', () => {
       const iso3 = path.getAttribute('data-iso3');
       const c = countriesMap.get(iso3);
       if (!c) return;
@@ -421,8 +448,10 @@ const placesJsonLd = {
         ttScore.textContent = `${score.toFixed(1)} / 100`;
         ttScore.className = `px-2 py-0.5 rounded font-mono font-bold text-xs ${
           score >= 80 ? 'bg-emerald-950 text-emerald-300 border border-emerald-700/50' :
-          score >= 75 ? 'bg-cyan-950 text-cyan-300 border border-cyan-700/50' :
-          'bg-indigo-950 text-indigo-300 border border-indigo-700/50'
+          score >= 70 ? 'bg-cyan-950 text-cyan-300 border border-cyan-700/50' :
+          score >= 60 ? 'bg-blue-950 text-blue-300 border border-blue-700/50' :
+          score >= 50 ? 'bg-indigo-950 text-indigo-300 border border-indigo-700/50' :
+          'bg-slate-800 text-slate-300 border border-slate-700'
         }`;
         ttScore.style.display = 'inline-block';
       } else {
@@ -455,38 +484,88 @@ const placesJsonLd = {
       const row = document.querySelector(`.country-row[data-iso3="${iso3}"]`);
       if (row) {
         row.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        row.classList.add('bg-cyan-950/50');
-        setTimeout(() => row.classList.remove('bg-cyan-950/50'), 1500);
+        row.classList.add('bg-cyan-950/60');
+        setTimeout(() => row.classList.remove('bg-cyan-950/60'), 1800);
       }
     });
   });
 
-  // 2. Dynamic Weight Sliders & Live Recalculation
-  const sliderSafety = document.getElementById('slider-safety');
-  const sliderHousing = document.getElementById('slider-housing');
-  const sliderEcon = document.getElementById('slider-economy');
-  const sliderGov = document.getElementById('slider-governance');
+  // 2. Linked Sliders Always Summing to 100%
+  const sliders = {
+    safety: document.getElementById('slider-safety'),
+    housing: document.getElementById('slider-housing'),
+    economy: document.getElementById('slider-economy'),
+    governance: document.getElementById('slider-governance')
+  };
 
-  const valSafety = document.getElementById('val-weight-safety');
-  const valHousing = document.getElementById('val-weight-housing');
-  const valEcon = document.getElementById('val-weight-economy');
-  const valGov = document.getElementById('val-weight-governance');
+  const valLabels = {
+    safety: document.getElementById('val-weight-safety'),
+    housing: document.getElementById('val-weight-housing'),
+    economy: document.getElementById('val-weight-economy'),
+    governance: document.getElementById('val-weight-governance')
+  };
 
+  const totalLabel = document.getElementById('val-weight-total');
   const btnReset = document.getElementById('btn-reset-weights');
   const tbody = document.getElementById('ranking-tbody');
 
-  function recalculate() {
-    const wSafe = parseFloat(sliderSafety.value);
-    const wHouse = parseFloat(sliderHousing.value);
-    const wEcon = parseFloat(sliderEcon.value);
-    const wGov = parseFloat(sliderGov.value);
+  let currentWeights = { safety: 25, housing: 25, economy: 25, governance: 25 };
 
-    valSafety.textContent = `${wSafe}%`;
-    valHousing.textContent = `${wHouse}%`;
-    valEcon.textContent = `${wEcon}%`;
-    valGov.textContent = `${wGov}%`;
+  function adjustWeights(changedKey, newVal) {
+    newVal = Math.max(0, Math.min(100, Math.round(newVal)));
+    const oldVal = currentWeights[changedKey];
+    const delta = newVal - oldVal;
+    if (delta === 0) return;
 
-    const totalWeight = wSafe + wHouse + wEcon + wGov;
+    const otherKeys = Object.keys(currentWeights).filter(k => k !== changedKey);
+    const otherSum = otherKeys.reduce((acc, k) => acc + currentWeights[k], 0);
+
+    if (otherSum === 0 && delta > 0) {
+      sliders[changedKey].value = oldVal;
+      return;
+    }
+
+    currentWeights[changedKey] = newVal;
+
+    if (otherSum === 0) {
+      const part = Math.abs(delta) / otherKeys.length;
+      otherKeys.forEach(k => currentWeights[k] = Math.round(part));
+    } else {
+      let remainingToDistribute = -delta;
+      otherKeys.forEach(k => {
+        const share = currentWeights[k] / otherSum;
+        const change = Math.round(remainingToDistribute * share);
+        currentWeights[k] = Math.max(0, currentWeights[k] + change);
+      });
+    }
+
+    // Korekce zaokrouhlení pro striktní součet 100
+    let currentSum = Object.values(currentWeights).reduce((a, b) => a + b, 0);
+    let diff = 100 - currentSum;
+    if (diff !== 0) {
+      const candidateKeys = otherKeys.filter(k => currentWeights[k] + diff >= 0);
+      if (candidateKeys.length > 0) {
+        candidateKeys.sort((a, b) => currentWeights[b] - currentWeights[a]);
+        currentWeights[candidateKeys[0]] += diff;
+      }
+    }
+
+    // Aktualizace UI posuvníků a popisek
+    Object.keys(currentWeights).forEach(k => {
+      sliders[k].value = currentWeights[k];
+      valLabels[k].textContent = `${currentWeights[k]}%`;
+    });
+    totalLabel.textContent = `${Object.values(currentWeights).reduce((a, b) => a + b, 0)}%`;
+
+    applyWeightsToData();
+  }
+
+  function applyWeightsToData() {
+    const wSafe = currentWeights.safety;
+    const wHouse = currentWeights.housing;
+    const wEcon = currentWeights.economy;
+    const wGov = currentWeights.governance;
+
     const rows = Array.from(document.querySelectorAll('.country-row'));
 
     rows.forEach(row => {
@@ -523,39 +602,50 @@ const placesJsonLd = {
 
       if (score >= 80) {
         scoreCell.className = 'inline-block px-2.5 py-0.5 rounded font-bold border score-cell bg-emerald-950 text-emerald-300 border-emerald-700/50';
-      } else if (score >= 75) {
+      } else if (score >= 70) {
         scoreCell.className = 'inline-block px-2.5 py-0.5 rounded font-bold border score-cell bg-cyan-950 text-cyan-300 border-cyan-700/50';
-      } else {
+      } else if (score >= 60) {
+        scoreCell.className = 'inline-block px-2.5 py-0.5 rounded font-bold border score-cell bg-blue-950 text-blue-300 border-blue-700/50';
+      } else if (score >= 50) {
         scoreCell.className = 'inline-block px-2.5 py-0.5 rounded font-bold border score-cell bg-indigo-950 text-indigo-300 border-indigo-700/50';
+      } else {
+        scoreCell.className = 'inline-block px-2.5 py-0.5 rounded font-bold border score-cell bg-slate-800 text-slate-300 border-slate-700';
       }
 
-      // Update map fill
+      // Aktualizace barvy země na mapě
       const mapPath = document.getElementById(`map-${iso3}`);
       if (mapPath) {
         if (score >= 80) mapPath.setAttribute('fill', '#10b981');
-        else if (score >= 75) mapPath.setAttribute('fill', '#06b6d4');
-        else mapPath.setAttribute('fill', '#6366f1');
+        else if (score >= 70) mapPath.setAttribute('fill', '#06b6d4');
+        else if (score >= 60) mapPath.setAttribute('fill', '#3b82f6');
+        else if (score >= 50) mapPath.setAttribute('fill', '#6366f1');
+        else mapPath.setAttribute('fill', '#475569');
       }
     });
 
-    // Re-sort table rows
+    // Seřazení řádků podle nového skóre
     rows.sort((a, b) => parseFloat(b.dataset.currentScore) - parseFloat(a.dataset.currentScore));
-    rows.forEach((r, idx) => {
-      r.querySelector('.rank-cell').textContent = idx + 1;
+    let visibleRank = 1;
+    rows.forEach(r => {
+      r.querySelector('.rank-cell').textContent = visibleRank++;
       tbody.appendChild(r);
     });
   }
 
-  [sliderSafety, sliderHousing, sliderEcon, sliderGov].forEach(s => {
-    s.addEventListener('input', recalculate);
+  Object.keys(sliders).forEach(k => {
+    sliders[k].addEventListener('input', (e) => {
+      adjustWeights(k, parseFloat(e.target.value));
+    });
   });
 
   btnReset.addEventListener('click', () => {
-    sliderSafety.value = 25;
-    sliderHousing.value = 25;
-    sliderEcon.value = 25;
-    sliderGov.value = 25;
-    recalculate();
+    currentWeights = { safety: 25, housing: 25, economy: 25, governance: 25 };
+    Object.keys(currentWeights).forEach(k => {
+      sliders[k].value = 25;
+      valLabels[k].textContent = '25%';
+    });
+    totalLabel.textContent = '100%';
+    applyWeightsToData();
   });
 
   // 3. Search & Filter Bar
@@ -565,19 +655,29 @@ const placesJsonLd = {
 
   function filterTable() {
     const query = searchInput.value.toLowerCase().trim();
+    let visibleIdx = 1;
+
     document.querySelectorAll('.country-row').forEach(row => {
       const iso3 = row.getAttribute('data-iso3').toLowerCase();
       const text = row.textContent.toLowerCase();
+      const isFocus = row.getAttribute('data-focus') === 'true';
       const isEu = row.getAttribute('data-eu') === 'true';
       const continent = row.getAttribute('data-continent');
 
       let matchesFilter = true;
-      if (currentFilter === 'eu') matchesFilter = isEu;
-      else if (currentFilter === 'noneu') matchesFilter = !isEu && continent === 'Europe';
+      if (currentFilter === 'focus') matchesFilter = isFocus;
+      else if (currentFilter === 'eu') matchesFilter = isEu;
+      else if (currentFilter === 'europe') matchesFilter = continent === 'Europe';
       else if (currentFilter === 'americas') matchesFilter = continent === 'Americas';
+      else if (currentFilter === 'asia') matchesFilter = continent === 'Asia';
 
       const matchesQuery = !query || text.includes(query) || iso3.includes(query);
-      row.style.display = (matchesFilter && matchesQuery) ? '' : 'none';
+      const isVisible = matchesFilter && matchesQuery;
+      row.style.display = isVisible ? '' : 'none';
+
+      if (isVisible) {
+        row.querySelector('.rank-cell').textContent = visibleIdx++;
+      }
     });
   }
 
@@ -586,9 +686,9 @@ const placesJsonLd = {
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       filterBtns.forEach(b => {
-        b.className = 'filter-btn px-3 py-1 rounded-md bg-slate-800/80 text-slate-400 hover:text-white border border-slate-700/60';
+        b.className = 'filter-btn px-3 py-1 rounded-md bg-slate-800/80 text-slate-400 hover:text-white border border-slate-700/60 whitespace-nowrap';
       });
-      btn.className = 'filter-btn px-3 py-1 rounded-md bg-cyan-500/20 text-cyan-300 border border-cyan-500/30';
+      btn.className = 'filter-btn px-3 py-1 rounded-md bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 whitespace-nowrap';
       currentFilter = btn.getAttribute('data-filter');
       filterTable();
     });
