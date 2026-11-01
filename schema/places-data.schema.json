@@ -71,6 +71,17 @@
           },
           "indicators": {
             "type": "object"
+          },
+          "tech_market": {
+            "type": ["object", "null"],
+            "properties": {
+              "active_jobs": { "type": "integer" },
+              "hiring_companies": { "type": "integer" },
+              "top_roles": {
+                "type": "array",
+                "items": { "type": "string" }
+              }
+            }
           }
         }
       }

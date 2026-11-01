@@ -490,17 +490,30 @@ const dashboardJsonLd = {
                   <span class="text-[10px] text-slate-500 font-normal ml-1">({c.iso3})</span>
                 </span>
                 <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500/10 text-emerald-300 border border-emerald-500/30">
-                  {c.livability} / 100
+                  Thriving: {c.thrivingScore} / 100
                 </span>
               </div>
+
+              <!-- Tech Telemetry Badge -->
+              <div class="mb-2 px-2.5 py-1.5 rounded-lg bg-slate-900/90 border border-slate-800 text-[11px] font-mono flex items-center justify-between">
+                <span class="text-cyan-300 font-semibold">
+                  🔥 {c.activeJobs.toLocaleString('en-US')} {lang === 'cs' ? 'AI/Data pozic' : 'AI/Data roles'}
+                </span>
+                <span class="text-slate-400 text-[10px]">
+                  ({c.hiringCompanies} {lang === 'cs' ? 'firem' : 'firms'})
+                </span>
+              </div>
+
               <p class="text-xs text-slate-400 leading-relaxed">
                 {lang === 'cs' ? c.highlightCs : c.highlightEn}
               </p>
             </div>
 
             <div class="pt-2.5 border-t border-slate-800/80 flex items-center justify-between text-[11px] font-mono">
-              <span class="text-cyan-400 font-semibold">
-                {t.relocationScoreLabel}: {c.easeOfRelocation} / 100
+              <span class="text-slate-400">
+                {t.relocationScoreLabel}: <strong class="text-emerald-300">{c.easeOfRelocation}</strong>
+                <span class="text-slate-600 mx-1">•</span>
+                Život: <strong class="text-white">{c.livability}</strong>
               </span>
               <span class="text-emerald-400 font-semibold group-hover:translate-x-0.5 transition-transform">
                 {t.viewCountryOnMap}

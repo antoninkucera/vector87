@@ -101,12 +101,13 @@ export const ui = {
       topRolesSub: 'Highest hiring volume across S&P 500 firms with detailed skill requirements and profiles',
       viewAllRolesBtn: 'EXPLORE ALL 21 CANONICAL ROLES →',
 
-      placesTeaserTag: '01.7 // FUTURE TRACKER: RELOCATION VS. LIVABILITY MATRIX',
-      placesTeaserTitle: 'Where to Relocate: Legal Accessibility vs. Livability Quadrant',
+      placesTeaserTag: '01.7 // FUTURE TRACKER: AI/DATA OPPORTUNITY & LIVABILITY',
+      placesTeaserTitle: 'Where AI & Data Talent Thrives: Opportunity, Livability & Relocation Matrix',
       placesTeaserSub:
-        'Cross-referencing work permit accessibility and visa friction with our composite livability index (Safety, Housing Affordability, Economic Power, Governance) across 27 focus destinations.',
-      placesMatrixTitle: 'Mobility & Livability Matrix: Work Authorization vs. Quality of Life',
-      placesMatrixSub: 'Ease of relocation score (0–100) vs. composite livability score (0–100)',
+        'Cross-referencing live enterprise AI/data hiring volume with our composite livability index (Safety, Housing, Economy, Governance) and legal work authorization friction across 27 destinations.',
+      placesMatrixTitle: 'Future Tracker Quadrant: AI/Data Opportunity vs. Livability & Legal Mobility',
+      placesMatrixSub:
+        'Interactive dual-mode matrix: Switch between legal mobility and log-scale enterprise AI/data market size. Bubble diameter represents active postings.',
       quadrantEasyWin: 'Easy Wins (Free Movement / Streamlined Visas + Top Livability)',
       quadrantHighReward: 'High Friction / High Reward (Top Markets, Visa Quotas/Lottery)',
       quadrantLifestyleHaven: 'Lifestyle & Remote Havens (Top Nomad Visas, Coastal Lifestyle)',
@@ -603,12 +604,13 @@ export const ui = {
       topRolesSub: 'Nejvyšší objem otevřených pozic v korporacích S&P 500 s přímým proklikem na profily a dovednosti',
       viewAllRolesBtn: 'PROZKOUMAT VŠECH 21 KANONICKÝCH ROLÍ →',
 
-      placesTeaserTag: '01.7 // FUTURE TRACKER: DOSTUPNOST PŘESUNU VS. ŽIVOTNÍ ÚROVEŇ',
-      placesTeaserTitle: 'Kam se přesunout: Právní dostupnost a víza vs. Kvalita života',
+      placesTeaserTag: '01.7 // FUTURE TRACKER: PŘÍLEŽITOSTI PRO AI/DATA & ŽIVOTNÍ ÚROVEŇ',
+      placesTeaserTitle: 'Kde se datařům a AI lidem daří nejlépe: Příležitosti, Životní úroveň a Přesun',
       placesTeaserSub:
-        'Propojení snadnosti získání pracovního povolení a svobody pohybu s naším indexem kvality života (bezpečnost, dostupnost bydlení, kupní síla, právní stát) napříč 27 klíčovými destinacemi.',
-      placesMatrixTitle: 'Matice mobility a životní úrovně: Vízová dostupnost vs. Kvalita života',
-      placesMatrixSub: 'Index snadnosti přesunu a práce (0–100) vs. kompozitní skóre kvality života (0–100)',
+        'Propojení živých dat o otevřených AI a datových pozicích z korporátních ATS s naším kompozitním indexem kvality života (bezpečnost, dostupné bydlení, kupní síla, právní stát) a snadností legálního přesunu napříč 27 destinacemi.',
+      placesMatrixTitle: 'Kvadrant Future Tracker: Příležitosti pro AI & dataře vs. Kvalita života a víza',
+      placesMatrixSub:
+        'Interaktivní duální matice: Přepínejte mezi právní dostupností a objemem AI/Data pozic na trhu práce. Velikost bublin vyjadřuje objem otevřených pozic.',
       quadrantEasyWin: 'Easy Wins (Volný pohyb / Rychlá víza + Špičková kvalita života)',
       quadrantHighReward: 'High Friction / High Reward (Obří trhy, ale vízové kvóty/loterie)',
       quadrantLifestyleHaven: 'Lifestyle & Remote ráje (Dostupná nomádská víza, skvělé klima)',

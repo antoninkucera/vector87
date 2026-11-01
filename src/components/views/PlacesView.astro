@@ -167,6 +167,10 @@ const placesJsonLd = {
               <span class="text-slate-400">Population:</span>
               <span id="tooltip-pop" class="text-white font-medium"></span>
             </div>
+            <div id="tooltip-tech-row" class="flex justify-between text-slate-300 pt-1.5 border-t border-slate-800/80 hidden">
+              <span class="text-slate-400">AI & Data Jobs:</span>
+              <span id="tooltip-jobs" class="text-cyan-300 font-semibold"></span>
+            </div>
           </div>
         </div>
       </div>
@@ -436,6 +440,8 @@ const placesJsonLd = {
   const ttRol = document.getElementById('tooltip-rol');
   const ttReloc = document.getElementById('tooltip-reloc');
   const ttPop = document.getElementById('tooltip-pop');
+  const ttTechRow = document.getElementById('tooltip-tech-row');
+  const ttJobs = document.getElementById('tooltip-jobs');
 
   const svg = document.getElementById('world-map-svg');
 
@@ -469,6 +475,14 @@ const placesJsonLd = {
       ttRol.textContent = ind.rule_of_law?.raw_value ? ind.rule_of_law.raw_value.toFixed(2) : 'N/A';
       ttReloc.textContent = c.pillar_scores?.ease_of_relocation !== null && c.pillar_scores?.ease_of_relocation !== undefined ? `${c.pillar_scores.ease_of_relocation} / 100` : 'N/A';
       ttPop.textContent = ind.population?.raw_value ? (ind.population.raw_value / 1e6).toFixed(1) + ' M' : 'N/A';
+
+      const tm = c.tech_market;
+      if (tm && tm.active_jobs) {
+        ttJobs.textContent = `${tm.active_jobs.toLocaleString('en-US')} (${tm.hiring_companies} firem)`;
+        ttTechRow?.classList.remove('hidden');
+      } else {
+        ttTechRow?.classList.add('hidden');
+      }
 
       tooltip.classList.remove('hidden');
     });
