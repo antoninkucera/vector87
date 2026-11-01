@@ -1,11 +1,12 @@
 export type Locale = 'en' | 'cs';
 
-export type NavKey = 'dashboard' | 'roles' | 'cloud' | 'academy' | 'about';
+export type NavKey = 'dashboard' | 'roles' | 'cloud' | 'places' | 'academy' | 'about';
 
 const PATH_MAP: Record<NavKey, string> = {
   dashboard: '/',
   roles: '/roles',
   cloud: '/cloud-tech',
+  places: '/places',
   academy: '/academy',
   about: '/about',
 };
@@ -27,8 +28,9 @@ export const ui = {
       dashboard: '01 / Market Dashboard',
       roles: '02 / Role Analysis',
       cloud: '03 / Cloud & Tech Stack',
-      academy: '04 / Education Academy',
-      about: '05 / About Author',
+      places: '04 / Places Index',
+      academy: '05 / Education Academy',
+      about: '06 / About Author',
       mainAria: 'Main navigation',
       mobileAria: 'Mobile navigation',
     },
@@ -458,6 +460,36 @@ export const ui = {
         },
       ],
     },
+    places: {
+      pageTitle: 'Vector87 | Future Tracker — Country Ranking & Places Index',
+      pageDescription:
+        'Quantitative country ranking for location-independent digital and tech professionals: safety, housing affordability, prosperity, and institutional stability.',
+      heroBadge: 'VECTOR 87 // FUTURE TRACKER',
+      heroTitlePrefix: 'Where to live, work and position capital: ',
+      heroTitleHighlight: 'Country Ranking & Places Index',
+      heroDescription:
+        'A transparent, data-grounded index evaluating 217 world countries and 27 prioritized focus destinations. Combining verified data from the World Bank, Eurostat, and the Global Peace Index with customizable pillar weights.',
+      mapTitle: 'Interactive World Map',
+      mapSubtitle: 'Hover to inspect global metrics; click to focus country profile.',
+      rankingTitle: 'Focus Countries Ranking',
+      rankingSubtitle: 'Adjust pillar weights below to recalculate composite scores in real-time.',
+      pillars: {
+        safety: 'Safety & Security',
+        housing: 'Housing Affordability',
+        economy: 'Economy & Prosperity',
+        governance: 'Governance & Institutions',
+      },
+      metrics: {
+        compositeScore: 'Composite Score',
+        gdpPpp: 'GDP per capita (PPP)',
+        lifeExpectancy: 'Life Expectancy',
+        peaceIndex: 'Global Peace Index',
+        priceLevel: 'Price Level (EU=100)',
+        housingOverburden: 'Housing Cost Overburden',
+        ruleOfLaw: 'Rule of Law',
+        resetWeights: 'Reset Default Weights',
+      },
+    },
   },
 
   cs: {
@@ -470,8 +502,9 @@ export const ui = {
       dashboard: '01 / Market Dashboard',
       roles: '02 / Analýza rolí',
       cloud: '03 / Cloud & Technologie',
-      academy: '04 / Vzdělávací akademie',
-      about: '05 / O autorovi',
+      places: '04 / Země a lokality',
+      academy: '05 / Vzdělávací akademie',
+      about: '06 / O autorovi',
       mainAria: 'Hlavní navigace',
       mobileAria: 'Mobilní navigace',
     },
@@ -900,6 +933,36 @@ export const ui = {
           href: 'https://antoninkucera.substack.com/p/bigquery-overview-a-new-navigation-hub-in-the-complex-analytics-platform',
         },
       ],
+    },
+    places: {
+      pageTitle: 'Vector87 | Future Tracker — Žebříček zemí a index lokalit',
+      pageDescription:
+        'Kvantitativní žebříček zemí pro lidi z technologií a digitálu: bezpečnost, dostupnost bydlení, životní úroveň a právní stát.',
+      heroBadge: 'VECTOR 87 // FUTURE TRACKER',
+      heroTitlePrefix: 'Kde žít, pracovat a směřovat budoucnost: ',
+      heroTitleHighlight: 'Žebříček zemí a index lokalit',
+      heroDescription:
+        'Transparentní datový index hodnotící 217 zemí světa a 27 prioritních evropských i zámořských destinací. Spojuje ověřená data Světové banky, Eurostatu a Global Peace Indexu s možností nastavení vlastních vah.',
+      mapTitle: 'Interaktivní mapa světa',
+      mapSubtitle: 'Přejetím myší zobrazíte metriky země, kliknutím otevřete detail.',
+      rankingTitle: 'Žebříček prioritních zemí',
+      rankingSubtitle: 'Posuvníky níže můžete upravit váhy pilířů a přepočítat pořadí v reálném čase.',
+      pillars: {
+        safety: 'Bezpečnost a stabilita',
+        housing: 'Dostupnost bydlení',
+        economy: 'Ekonomika a prosperita',
+        governance: 'Instituce a právní stát',
+      },
+      metrics: {
+        compositeScore: 'Celkové skóre',
+        gdpPpp: 'HDP na obyvatele (PPP)',
+        lifeExpectancy: 'Naděje dožití',
+        peaceIndex: 'Index globálního míru',
+        priceLevel: 'Cenová hladina (EU=100)',
+        housingOverburden: 'Přetížení výdaji na bydlení',
+        ruleOfLaw: 'Právní stát',
+        resetWeights: 'Obnovit výchozí váhy',
+      },
     },
   },
 } as const;
