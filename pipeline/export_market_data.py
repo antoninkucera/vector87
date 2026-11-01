@@ -193,13 +193,12 @@ def export_market_data(db_path: Path | None = None, output_path: Path | None = N
             for r in top_comp_rows
         ]
 
-        sp500_distinct_jobs = int(
+        total_distinct_jobs = int(
             con.execute(
                 """
                 SELECT COUNT(DISTINCT j.url)
                 FROM fact_jobs j
-                JOIN dim_companies c ON j.company_id = c.company_id
-                WHERE j.is_active = TRUE AND c.is_sp500 = TRUE
+                WHERE j.is_active = TRUE
                 """
             ).fetchone()[0]
         )
@@ -215,12 +214,12 @@ def export_market_data(db_path: Path | None = None, output_path: Path | None = N
             FROM fact_jobs j
             JOIN dim_companies c ON j.company_id = c.company_id
             LEFT JOIN dim_countries d ON j.country_code = d.country_code
-            WHERE j.is_active = TRUE AND j.country_code IS NOT NULL AND c.is_sp500 = TRUE
+            WHERE j.is_active = TRUE AND j.country_code IS NOT NULL
             GROUP BY 1, 2, 3
             ORDER BY cnt DESC
             LIMIT 12
             """,
-            [sp500_distinct_jobs],
+            [total_distinct_jobs],
         ).fetchall()
 
         regional_breakdown = [
