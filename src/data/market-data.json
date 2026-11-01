@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-11-01T18:13:17Z",
+    "generated_at": "2026-11-01T18:21:58Z",
     "schema_version": "1.0.0",
     "latest_snapshot_date": "2026-11-01",
     "total_tracked_companies": 3318,
@@ -119,15 +119,6 @@
         "ai_intensity_pct": 4.25
       },
       {
-        "company_id": "state_street_lu",
-        "company_name": "State Street Bank Luxembourg",
-        "is_sp500": false,
-        "sector": null,
-        "ai_data_jobs": 51,
-        "total_active_jobs": 1087,
-        "ai_intensity_pct": 4.69
-      },
-      {
         "company_id": "advanced_micro_devices",
         "company_name": "Advanced Micro Devices",
         "is_sp500": true,
@@ -135,6 +126,15 @@
         "ai_data_jobs": 51,
         "total_active_jobs": 1264,
         "ai_intensity_pct": 4.03
+      },
+      {
+        "company_id": "state_street_lu",
+        "company_name": "State Street Bank Luxembourg",
+        "is_sp500": false,
+        "sector": null,
+        "ai_data_jobs": 51,
+        "total_active_jobs": 1087,
+        "ai_intensity_pct": 4.69
       },
       {
         "company_id": "snowflake",
@@ -160,85 +160,85 @@
         "country_code": "US",
         "country_name": "United States",
         "region": "Americas",
-        "job_count": 3360,
-        "share_pct": 83.83
+        "job_count": 5009,
+        "share_pct": 74.53
       },
       {
         "country_code": "CA",
         "country_name": "Canada",
         "region": "Americas",
-        "job_count": 362,
-        "share_pct": 9.03
+        "job_count": 533,
+        "share_pct": 7.93
       },
       {
         "country_code": "UK",
         "country_name": "United Kingdom",
         "region": "UK",
-        "job_count": 79,
-        "share_pct": 1.97
-      },
-      {
-        "country_code": "PL",
-        "country_name": "Poland",
-        "region": "EU",
-        "job_count": 45,
-        "share_pct": 1.12
-      },
-      {
-        "country_code": "IE",
-        "country_name": "Ireland",
-        "region": "EU",
-        "job_count": 29,
-        "share_pct": 0.72
-      },
-      {
-        "country_code": "ES",
-        "country_name": "Spain",
-        "region": "EU",
-        "job_count": 26,
-        "share_pct": 0.65
-      },
-      {
-        "country_code": "CZ",
-        "country_name": "Czech Republic",
-        "region": "EU",
-        "job_count": 16,
-        "share_pct": 0.4
+        "job_count": 305,
+        "share_pct": 4.54
       },
       {
         "country_code": "DE",
         "country_name": "Germany",
         "region": "EU",
-        "job_count": 15,
-        "share_pct": 0.37
+        "job_count": 226,
+        "share_pct": 3.36
+      },
+      {
+        "country_code": "CZ",
+        "country_name": "Czech Republic",
+        "region": "EU",
+        "job_count": 190,
+        "share_pct": 2.83
+      },
+      {
+        "country_code": "PL",
+        "country_name": "Poland",
+        "region": "EU",
+        "job_count": 100,
+        "share_pct": 1.49
       },
       {
         "country_code": "FR",
         "country_name": "France",
         "region": "EU",
-        "job_count": 14,
-        "share_pct": 0.35
+        "job_count": 65,
+        "share_pct": 0.97
+      },
+      {
+        "country_code": "ES",
+        "country_name": "Spain",
+        "region": "EU",
+        "job_count": 64,
+        "share_pct": 0.95
+      },
+      {
+        "country_code": "IE",
+        "country_name": "Ireland",
+        "region": "EU",
+        "job_count": 51,
+        "share_pct": 0.76
+      },
+      {
+        "country_code": "IT",
+        "country_name": "Italy",
+        "region": "EU",
+        "job_count": 27,
+        "share_pct": 0.4
       },
       {
         "country_code": "NL",
         "country_name": "Netherlands",
         "region": "EU",
-        "job_count": 13,
-        "share_pct": 0.32
+        "job_count": 23,
+        "share_pct": 0.34
       },
       {
-        "country_code": "PT",
-        "country_name": "Portugal",
+        "country_code": "RO",
+        "country_name": "Romania",
         "region": "EU",
-        "job_count": 9,
-        "share_pct": 0.22
-      },
-      {
-        "country_code": "CH",
-        "country_name": "Switzerland",
-        "region": "Europe Non-EU",
-        "job_count": 7,
-        "share_pct": 0.17
+        "job_count": 20,
+        "share_pct": 0.3
       }
     ]
   },
@@ -624,14 +624,19 @@
             "job_count": 21
           },
           {
+            "company_name": "Roche Group",
+            "sector": null,
+            "job_count": 21
+          },
+          {
             "company_name": "Barclays",
             "sector": null,
             "job_count": 21
           },
           {
-            "company_name": "Roche Group",
-            "sector": null,
-            "job_count": 21
+            "company_name": "Hewlett Packard Enterprise",
+            "sector": "Information Technology",
+            "job_count": 20
           },
           {
             "company_name": "State Street Bank Luxembourg",
@@ -641,11 +646,6 @@
           {
             "company_name": "MongoDB",
             "sector": null,
-            "job_count": 20
-          },
-          {
-            "company_name": "Hewlett Packard Enterprise",
-            "sector": "Information Technology",
             "job_count": 20
           }
         ],
@@ -700,13 +700,13 @@
             "job_count": 25
           },
           {
-            "company_name": "General Motors",
-            "sector": "Consumer Discretionary",
+            "company_name": "MongoDB",
+            "sector": null,
             "job_count": 20
           },
           {
-            "company_name": "MongoDB",
-            "sector": null,
+            "company_name": "General Motors",
+            "sector": "Consumer Discretionary",
             "job_count": 20
           },
           {
@@ -720,7 +720,7 @@
             "job_count": 17
           },
           {
-            "company_name": "Johnson Controls",
+            "company_name": "United Parcel Service",
             "sector": "Industrials",
             "job_count": 16
           }
@@ -862,18 +862,18 @@
             "job_count": 14
           },
           {
-            "company_name": "State Street Bank Luxembourg",
-            "sector": null,
-            "job_count": 13
-          },
-          {
             "company_name": "Anheuser-Busch InBev",
             "sector": null,
             "job_count": 13
           },
           {
-            "company_name": "Celonis",
+            "company_name": "State Street Bank Luxembourg",
             "sector": null,
+            "job_count": 13
+          },
+          {
+            "company_name": "NXP Semiconductors",
+            "sector": "Information Technology",
             "job_count": 11
           }
         ],
@@ -933,22 +933,22 @@
             "job_count": 13
           },
           {
-            "company_name": "Databricks",
-            "sector": null,
-            "job_count": 12
-          },
-          {
             "company_name": "Booking Holdings",
             "sector": "Consumer Discretionary",
             "job_count": 12
           },
           {
-            "company_name": "Block, Inc.",
+            "company_name": "Databricks",
+            "sector": null,
+            "job_count": 12
+          },
+          {
+            "company_name": "Citigroup",
             "sector": "Financials",
             "job_count": 9
           },
           {
-            "company_name": "State Street Bank Luxembourg",
+            "company_name": "Roche Group",
             "sector": null,
             "job_count": 9
           }
@@ -2220,19 +2220,19 @@
           "job_count": 88
         },
         {
-          "company_name": "Alphabet Inc. (Class C)",
-          "job_count": 61
-        },
-        {
-          "company_name": "Alphabet Inc. (Class A)",
-          "job_count": 61
-        },
-        {
           "company_name": "Anthropic",
           "job_count": 61
         },
         {
+          "company_name": "Alphabet Inc. (Class C)",
+          "job_count": 61
+        },
+        {
           "company_name": "Google (Alphabet)",
+          "job_count": 61
+        },
+        {
+          "company_name": "Alphabet Inc. (Class A)",
           "job_count": 61
         }
       ],
@@ -2357,39 +2357,39 @@
           "posted_at": "2026-09-21"
         },
         {
-          "job_id": "f691b5a1b1fc31f7",
-          "title": "Lead SEO & AI Search Strategist",
-          "company_name": "Lennox International",
-          "is_sp500": true,
-          "location": "US",
-          "country_code": "US",
-          "seniority": "Lead / Manager",
-          "work_mode": "Unspecified",
-          "url": "https://uscareers-lennox.icims.com/jobs/54581/lead-seo-%26-ai-search-strategist/job?in_iframe=1",
-          "posted_at": "2026-10-21"
-        },
-        {
-          "job_id": "204d7ba7c0a0de28",
-          "title": "Principal Engineer - AI Platform",
-          "company_name": "W. R. Berkley Corporation",
+          "job_id": "ada9db9892c8c711",
+          "title": "Cybersecurity AI Architect",
+          "company_name": "ON Semiconductor",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
           "seniority": "Staff / Principal",
           "work_mode": "Unspecified",
-          "url": "https://careers-berkley.icims.com/jobs/12459/principal-engineer---ai-platform/job?in_iframe=1",
+          "url": "https://hctz.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/2505429",
           "posted_at": "2026-10-21"
         },
         {
-          "job_id": "14c63c2ef14e93d9",
-          "title": "Principal Engineer GenAI",
-          "company_name": "Genuine Parts Company",
+          "job_id": "2da14c52778e13a1",
+          "title": "Sr. Software Engineer - Agentic AI",
+          "company_name": "Supermicro",
           "is_sp500": true,
-          "location": "PL",
-          "country_code": "PL",
-          "seniority": "Staff / Principal",
+          "location": "US",
+          "country_code": "US",
+          "seniority": "Senior",
           "work_mode": "Unspecified",
-          "url": "https://jobs.genpt.com/job/krakow/principal-engineer-genai/505/101313115824",
+          "url": "https://jobs.supermicro.com/job/San-Jose-Sr_-Software-Engineer-Agentic-AI-Cali/1430201100/",
+          "posted_at": "2026-10-21"
+        },
+        {
+          "job_id": "5abead163d5230da",
+          "title": "Senior QA Engineer, AI",
+          "company_name": "Intercontinental Exchange",
+          "is_sp500": true,
+          "location": "US",
+          "country_code": "US",
+          "seniority": "Senior",
+          "work_mode": "Unspecified",
+          "url": "https://careers.ice.com/jobs/12759",
           "posted_at": "2026-10-21"
         }
       ]
@@ -2656,63 +2656,63 @@
           "posted_at": null
         },
         {
-          "job_id": "60f1027e5f6afe9c",
-          "title": "Senior Business Analyst - IT",
-          "company_name": "Wynn Resorts",
-          "is_sp500": true,
-          "location": "US",
-          "country_code": "US",
-          "seniority": "Senior",
-          "work_mode": "Unspecified",
-          "url": "https://wam-iabkey.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_2/job/2254",
-          "posted_at": "2026-10-21"
-        },
-        {
-          "job_id": "05546e9d1d192732",
-          "title": "Senior Process Automation Technician",
-          "company_name": "Freeport-McMoRan",
-          "is_sp500": true,
-          "location": "US",
-          "country_code": "US",
-          "seniority": "Senior",
-          "work_mode": "Unspecified",
-          "url": "https://jobs.fcx.com/job/Claypool-Senior-Process-Automation-Technician-AZ-85532/1423697800/",
-          "posted_at": "2026-10-21"
-        },
-        {
-          "job_id": "483ce900f82440f8",
-          "title": "Digital Operations Specialist I",
-          "company_name": "Fox Corporation",
+          "job_id": "58e6c68057465364",
+          "title": "Corporate Pricing Analyst",
+          "company_name": "ON Semiconductor",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
           "seniority": "Mid",
           "work_mode": "Unspecified",
-          "url": "https://www.foxcareers.com/Search/JobDetail/R50034029/digital-operations-specialist-i-fox-corporation?pageLanguage=en-US",
+          "url": "https://hctz.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/2506569",
           "posted_at": "2026-10-21"
         },
         {
-          "job_id": "1f35b86a0fa87796",
-          "title": "Sr Compliance Analyst - Privacy",
-          "company_name": "Paychex",
+          "job_id": "139c4253567c20be",
+          "title": "GTG Intern - Business Systems Analyst",
+          "company_name": "W. W. Grainger",
+          "is_sp500": true,
+          "location": "US",
+          "country_code": "US",
+          "seniority": "Junior / Entry",
+          "work_mode": "Unspecified",
+          "url": "https://jobs.grainger.com/job/CHICAGO-GTG-Intern-Business-Systems-Analyst-IL-60654-4203/1419931200/",
+          "posted_at": "2026-10-21"
+        },
+        {
+          "job_id": "2a59c33eb7d4120a",
+          "title": "Senior Systems Analyst",
+          "company_name": "Hubbell Incorporated",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
           "seniority": "Senior",
           "work_mode": "Unspecified",
-          "url": "https://careers.paychex.com/careers-home/jobs/45680",
+          "url": "https://careers.hubbell.com/job/Greenville-Senior-Systems-Analyst-SC-29615/1427941700/",
           "posted_at": "2026-10-21"
         },
         {
-          "job_id": "19d3cbc46ea9a112",
-          "title": "Gas Supply Planning Analyst",
-          "company_name": "PPL Corporation",
+          "job_id": "602086350aa6643b",
+          "title": "Senior Category Development Analyst - Retail Sales Analytics - Wakefern/Wegmans - Home Office (Edison, NJ)",
+          "company_name": "Hormel Foods",
+          "is_sp500": true,
+          "location": "US",
+          "country_code": "US",
+          "seniority": "Senior",
+          "work_mode": "Hybrid",
+          "url": "https://ekkh.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_2002/job/36173",
+          "posted_at": "2026-10-21"
+        },
+        {
+          "job_id": "9f0020fd1f6e4850",
+          "title": "Financial Analyst - Real Estate Investments",
+          "company_name": "UDR, Inc.",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
           "seniority": "Mid",
           "work_mode": "Unspecified",
-          "url": "https://careers.pplweb.com/careers-home/jobs/13818",
+          "url": "https://www.udr.com/careers/financial-analyst",
           "posted_at": "2026-10-21"
         }
       ]
@@ -2800,16 +2800,16 @@
       ],
       "top_technologies": [
         {
-          "skill_id": "aws",
-          "skill_name": "AWS",
-          "category": "Cloud",
+          "skill_id": "spark",
+          "skill_name": "Apache Spark",
+          "category": "Framework",
           "job_count": 277,
           "penetration_pct": 22.3
         },
         {
-          "skill_id": "spark",
-          "skill_name": "Apache Spark",
-          "category": "Framework",
+          "skill_id": "aws",
+          "skill_name": "AWS",
+          "category": "Cloud",
           "job_count": 277,
           "penetration_pct": 22.3
         },
@@ -3015,27 +3015,27 @@
           "posted_at": null
         },
         {
-          "job_id": "c9585853deb8ccee",
-          "title": "Sr Platform Engineer",
-          "company_name": "CMS Energy",
+          "job_id": "0ec1cff1b5bbec8d",
+          "title": "CCaaS Platform Engineer III (Genesys technology)",
+          "company_name": "Paychex",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
           "seniority": "Senior",
           "work_mode": "Unspecified",
-          "url": "https://careers.consumersenergy.com/job/JACKSON-Sr-Platform-Engineer-MI/1425719000/",
+          "url": "https://careers.paychex.com/careers-home/jobs/46751",
           "posted_at": "2026-10-21"
         },
         {
-          "job_id": "ed9f064c776e1439",
-          "title": "Integration Platform Engineer II",
-          "company_name": "Freeport-McMoRan",
+          "job_id": "12b45aa05c6d5303",
+          "title": "Data Engineer",
+          "company_name": "Mettler Toledo",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
           "seniority": "Mid",
           "work_mode": "Unspecified",
-          "url": "https://jobs.fcx.com/job/Phoenix-Integration-Platform-Engineer-II-AZ-85004-2121/1441603100/",
+          "url": "https://careers.mt.com/en_US/careers/JobDetail/1/22983",
           "posted_at": "2026-10-21"
         }
       ]
@@ -3185,11 +3185,11 @@
           "job_count": 58
         },
         {
-          "company_name": "Alphabet Inc. (Class A)",
+          "company_name": "Google (Alphabet)",
           "job_count": 58
         },
         {
-          "company_name": "Google (Alphabet)",
+          "company_name": "Alphabet Inc. (Class A)",
           "job_count": 58
         },
         {
@@ -3338,15 +3338,15 @@
           "posted_at": null
         },
         {
-          "job_id": "360c1ab25cabf68a",
-          "title": "Staff Software Engineer/Data Scientist",
-          "company_name": "Hartford (The)",
+          "job_id": "e974a8326d5001be",
+          "title": "Data Scientist, Intern",
+          "company_name": "Keysight Technologies",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
-          "seniority": "Staff / Principal",
-          "work_mode": "Hybrid",
-          "url": "https://thehartford.wd5.myworkdayjobs.com/en-US/Careers_External/job/India-GCC-Puppalaguda-Village/Staff-Software-Engineer-Data-Scientist_R2625750",
+          "seniority": "Junior / Entry",
+          "work_mode": "Unspecified",
+          "url": "https://jobs.keysight.com/careers-home/jobs/54570",
           "posted_at": "2026-10-21"
         },
         {
@@ -3512,15 +3512,15 @@
           "job_count": 67
         },
         {
+          "company_name": "Google (Alphabet)",
+          "job_count": 39
+        },
+        {
           "company_name": "Alphabet Inc. (Class A)",
           "job_count": 39
         },
         {
           "company_name": "Alphabet Inc. (Class C)",
-          "job_count": 39
-        },
-        {
-          "company_name": "Google (Alphabet)",
           "job_count": 39
         },
         {
@@ -3673,15 +3673,15 @@
           "posted_at": null
         },
         {
-          "job_id": "c6e0ebe870286afc",
-          "title": "Sr. Software Engineer - AI/ML",
-          "company_name": "Supermicro",
+          "job_id": "3e6490437086227d",
+          "title": "Device Modeling AI/ML Software Engineer",
+          "company_name": "Keysight Technologies",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
-          "seniority": "Senior",
+          "seniority": "Mid",
           "work_mode": "Unspecified",
-          "url": "https://jobs.supermicro.com/job/San-Jose-Sr_-Software-Engineer-AIML-Cali/1430199300/",
+          "url": "https://jobs.keysight.com/careers-home/jobs/54629",
           "posted_at": "2026-10-21"
         }
       ]
@@ -3868,12 +3868,12 @@
           "share_pct": 8.6
         },
         {
-          "sector": "Industrials",
+          "sector": "Health Care",
           "job_count": 16,
           "share_pct": 6.3
         },
         {
-          "sector": "Health Care",
+          "sector": "Industrials",
           "job_count": 16,
           "share_pct": 6.3
         }
@@ -3936,27 +3936,15 @@
           "posted_at": "2026-10-01"
         },
         {
-          "job_id": "30236374fb25b00e",
-          "title": "Senior Research Scientist / Engineer - Electronics R&D",
-          "company_name": "Linde plc",
+          "job_id": "f46df96bbdabf05a",
+          "title": "Welding Research Engineer",
+          "company_name": "Illinois Tool Works",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
-          "seniority": "Senior",
+          "seniority": "Mid",
           "work_mode": "Unspecified",
-          "url": "https://linde.csod.com/ux/ats/careersite/23/home/requisition/27301?c=linde",
-          "posted_at": "2026-10-21"
-        },
-        {
-          "job_id": "ecf191a3b0691f1a",
-          "title": "Intern - Quantitative Research, Principal Asset Allocation (Undergrad or Graduate - Summer 2027)",
-          "company_name": "Principal Financial Group",
-          "is_sp500": true,
-          "location": "US",
-          "country_code": "US",
-          "seniority": "Staff / Principal",
-          "work_mode": "Unspecified",
-          "url": "https://careers.principal.com/careers-home/jobs/52721",
+          "url": "https://careers.itw.com/us/en/job/ITWITWUSJR10079EXTERNALENUS",
           "posted_at": "2026-10-21"
         },
         {
@@ -3972,15 +3960,15 @@
           "posted_at": "2026-10-21"
         },
         {
-          "job_id": "f46df96bbdabf05a",
-          "title": "Welding Research Engineer",
-          "company_name": "Illinois Tool Works",
+          "job_id": "ecf191a3b0691f1a",
+          "title": "Intern - Quantitative Research, Principal Asset Allocation (Undergrad or Graduate - Summer 2027)",
+          "company_name": "Principal Financial Group",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
-          "seniority": "Mid",
+          "seniority": "Staff / Principal",
           "work_mode": "Unspecified",
-          "url": "https://careers.itw.com/us/en/job/ITWITWUSJR10079EXTERNALENUS",
+          "url": "https://careers.principal.com/careers-home/jobs/52721",
           "posted_at": "2026-10-21"
         },
         {
@@ -3996,15 +3984,27 @@
           "posted_at": "2026-10-21"
         },
         {
-          "job_id": "e71e29d3f5888f08",
-          "title": "AI Applied Scientist",
-          "company_name": "Gen Digital",
+          "job_id": "30236374fb25b00e",
+          "title": "Senior Research Scientist / Engineer - Electronics R&D",
+          "company_name": "Linde plc",
+          "is_sp500": true,
+          "location": "US",
+          "country_code": "US",
+          "seniority": "Senior",
+          "work_mode": "Unspecified",
+          "url": "https://linde.csod.com/ux/ats/careersite/23/home/requisition/27301?c=linde",
+          "posted_at": "2026-10-21"
+        },
+        {
+          "job_id": "9a001f033b9fad47",
+          "title": "Ops Research Scientist II",
+          "company_name": "FedEx",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
           "seniority": "Mid",
           "work_mode": "Unspecified",
-          "url": "https://jobs.ashbyhq.com/gen-digital/c35bae67-de6c-45b7-b116-4c30a8c6ac73",
+          "url": "https://www.linkedin.com/jobs/view/ops-research-scientist-ii-at-fedex-freight-4480441649",
           "posted_at": "2026-10-20"
         }
       ]
@@ -4154,11 +4154,11 @@
           "job_count": 18
         },
         {
-          "company_name": "Scale AI",
+          "company_name": "Databricks",
           "job_count": 8
         },
         {
-          "company_name": "Databricks",
+          "company_name": "Scale AI",
           "job_count": 8
         },
         {
@@ -4186,12 +4186,12 @@
           "share_pct": 19.3
         },
         {
-          "sector": "Financials",
+          "sector": "Communication Services",
           "job_count": 19,
           "share_pct": 12.7
         },
         {
-          "sector": "Communication Services",
+          "sector": "Financials",
           "job_count": 19,
           "share_pct": 12.7
         },
@@ -4271,15 +4271,15 @@
           "posted_at": null
         },
         {
-          "job_id": "522a5093e4eabf05",
-          "title": "Staff Data Center Systems Product Manager",
-          "company_name": "Supermicro",
+          "job_id": "256b649e00d12ff4",
+          "title": "Product Manager, AI Solutions",
+          "company_name": "Veralto",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
-          "seniority": "Staff / Principal",
+          "seniority": "Lead / Manager",
           "work_mode": "Unspecified",
-          "url": "https://jobs.supermicro.com/job/San-Jose-Staff-Data-Center-Systems-Product-Manager-Cali/1432248300/",
+          "url": "https://jobs.veralto.com/global/en/job/R10267792",
           "posted_at": "2026-10-21"
         },
         {
@@ -4295,6 +4295,18 @@
           "posted_at": "2026-10-21"
         },
         {
+          "job_id": "522a5093e4eabf05",
+          "title": "Staff Data Center Systems Product Manager",
+          "company_name": "Supermicro",
+          "is_sp500": true,
+          "location": "US",
+          "country_code": "US",
+          "seniority": "Staff / Principal",
+          "work_mode": "Unspecified",
+          "url": "https://jobs.supermicro.com/job/San-Jose-Staff-Data-Center-Systems-Product-Manager-Cali/1432248300/",
+          "posted_at": "2026-10-21"
+        },
+        {
           "job_id": "3cb02e8989107b94",
           "title": "Senior Product Manager, Data Center Applications",
           "company_name": "Fortive",
@@ -4304,18 +4316,6 @@
           "seniority": "Lead / Manager",
           "work_mode": "Unspecified",
           "url": "https://fortive.eightfold.ai/careers?pid=893397712693&domain=fortive.com",
-          "posted_at": "2026-10-21"
-        },
-        {
-          "job_id": "256b649e00d12ff4",
-          "title": "Product Manager, AI Solutions",
-          "company_name": "Veralto",
-          "is_sp500": true,
-          "location": "US",
-          "country_code": "US",
-          "seniority": "Lead / Manager",
-          "work_mode": "Unspecified",
-          "url": "https://jobs.veralto.com/global/en/job/R10267792",
           "posted_at": "2026-10-21"
         },
         {
@@ -4489,11 +4489,11 @@
           "job_count": 4
         },
         {
-          "company_name": "Stripe",
+          "company_name": "Teledyne Technologies",
           "job_count": 4
         },
         {
-          "company_name": "Teledyne Technologies",
+          "company_name": "Stripe",
           "job_count": 4
         }
       ],
@@ -4558,39 +4558,15 @@
       ],
       "sample_postings": [
         {
-          "job_id": "da6e946c0ae94d3e",
-          "title": "Senior Data Architect",
-          "company_name": "Veralto",
+          "job_id": "44be88295bdf85fa",
+          "title": "Principal Solution Architect - Reporting & Analytics",
+          "company_name": "West Pharmaceutical Services",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
           "seniority": "Staff / Principal",
           "work_mode": "Unspecified",
-          "url": "https://jobs.veralto.com/global/en/job/R10268712",
-          "posted_at": "2026-10-21"
-        },
-        {
-          "job_id": "73f0ec76e362c885",
-          "title": "Lead Architect - Data Network",
-          "company_name": "Lennox International",
-          "is_sp500": true,
-          "location": "US",
-          "country_code": "US",
-          "seniority": "Staff / Principal",
-          "work_mode": "Unspecified",
-          "url": "https://indiacareers-lennox.icims.com/jobs/52021/lead-architect---data-network/job?in_iframe=1",
-          "posted_at": "2026-10-21"
-        },
-        {
-          "job_id": "901bcfb785a7eece",
-          "title": "Director, Data Architecture",
-          "company_name": "Phillips 66",
-          "is_sp500": true,
-          "location": "US",
-          "country_code": "US",
-          "seniority": "Executive",
-          "work_mode": "Unspecified",
-          "url": "https://careers.phillips66.com/job/Houston-Director%2C-Data-Architecture-TX-77042/1438487700/",
+          "url": "https://careers.westpharma.com/job/Exton-Principal-Solution-Architect-Reporting-&-Analytics-PA-19341/1435034033/",
           "posted_at": "2026-10-21"
         },
         {
@@ -4606,27 +4582,51 @@
           "posted_at": "2026-10-21"
         },
         {
-          "job_id": "44be88295bdf85fa",
-          "title": "Principal Solution Architect - Reporting & Analytics",
-          "company_name": "West Pharmaceutical Services",
+          "job_id": "da6e946c0ae94d3e",
+          "title": "Senior Data Architect",
+          "company_name": "Veralto",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
           "seniority": "Staff / Principal",
           "work_mode": "Unspecified",
-          "url": "https://careers.westpharma.com/job/Exton-Principal-Solution-Architect-Reporting-&-Analytics-PA-19341/1435034033/",
+          "url": "https://jobs.veralto.com/global/en/job/R10268712",
           "posted_at": "2026-10-21"
         },
         {
-          "job_id": "c720a4429c8c2e20",
-          "title": "Lead Data Architect",
-          "company_name": "Domino's",
+          "job_id": "901bcfb785a7eece",
+          "title": "Director, Data Architecture",
+          "company_name": "Phillips 66",
+          "is_sp500": true,
+          "location": "US",
+          "country_code": "US",
+          "seniority": "Executive",
+          "work_mode": "Unspecified",
+          "url": "https://careers.phillips66.com/job/Houston-Director%2C-Data-Architecture-TX-77042/1438487700/",
+          "posted_at": "2026-10-21"
+        },
+        {
+          "job_id": "73f0ec76e362c885",
+          "title": "Lead Architect - Data Network",
+          "company_name": "Lennox International",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
           "seniority": "Staff / Principal",
           "work_mode": "Unspecified",
-          "url": "https://jobs.smartrecruiters.com/dominos/744000156355804",
+          "url": "https://indiacareers-lennox.icims.com/jobs/52021/lead-architect---data-network/job?in_iframe=1",
+          "posted_at": "2026-10-21"
+        },
+        {
+          "job_id": "4bab79a566de0925",
+          "title": "Data Architect (US Citizenship Required)",
+          "company_name": "Teledyne Technologies",
+          "is_sp500": true,
+          "location": "US",
+          "country_code": "US",
+          "seniority": "Staff / Principal",
+          "work_mode": "Unspecified",
+          "url": "https://www.linkedin.com/jobs/view/data-architect-us-citizenship-required-at-teledyne-technologies-incorporated-4477753102",
           "posted_at": "2026-10-19"
         },
         {
@@ -4642,15 +4642,15 @@
           "posted_at": "2026-10-19"
         },
         {
-          "job_id": "76ffcc1cf30f862f",
-          "title": "Enterprise Data Modeler / Data Architect",
-          "company_name": "Steris",
+          "job_id": "c720a4429c8c2e20",
+          "title": "Lead Data Architect",
+          "company_name": "Domino's",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
           "seniority": "Staff / Principal",
           "work_mode": "Unspecified",
-          "url": "https://www.linkedin.com/jobs/view/enterprise-data-modeler-data-architect-at-steris-4417796066",
+          "url": "https://jobs.smartrecruiters.com/dominos/744000156355804",
           "posted_at": "2026-10-19"
         }
       ]
@@ -4773,15 +4773,15 @@
           "penetration_pct": 7.1
         },
         {
-          "skill_id": "azure",
-          "skill_name": "Microsoft Azure",
+          "skill_id": "gcp",
+          "skill_name": "Google Cloud Platform",
           "category": "Cloud",
           "job_count": 10,
           "penetration_pct": 5.5
         },
         {
-          "skill_id": "gcp",
-          "skill_name": "Google Cloud Platform",
+          "skill_id": "azure",
+          "skill_name": "Microsoft Azure",
           "category": "Cloud",
           "job_count": 10,
           "penetration_pct": 5.5
@@ -4804,11 +4804,11 @@
           "job_count": 22
         },
         {
-          "company_name": "AstraZeneca (Gothenburg R&D)",
+          "company_name": "AstraZeneca",
           "job_count": 17
         },
         {
-          "company_name": "AstraZeneca",
+          "company_name": "AstraZeneca (Gothenburg R&D)",
           "job_count": 17
         },
         {
@@ -4881,63 +4881,39 @@
       ],
       "sample_postings": [
         {
-          "job_id": "c2bd64b4b075cef9",
-          "title": "Director - Data, Analytics & AI",
-          "company_name": "Veralto",
+          "job_id": "32c4a747497c7ed6",
+          "title": "Director, Data Platforms Engineering",
+          "company_name": "Yum! Brands",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
           "seniority": "Executive",
           "work_mode": "Unspecified",
-          "url": "https://jobs.veralto.com/global/en/job/R10268777",
+          "url": "https://eczd.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/5242",
           "posted_at": "2026-10-21"
         },
         {
-          "job_id": "165af8efbc1c0fe0",
-          "title": "Vice President, Reinsurance Data, Analytics & Business Performance",
-          "company_name": "Everest Group",
+          "job_id": "bbdae63df65cf320",
+          "title": "Director of AI/ML Platforms",
+          "company_name": "Global Payments",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
           "seniority": "Executive",
           "work_mode": "Hybrid",
-          "url": "https://everestre.wd5.myworkdayjobs.com/en-US/careers/job/Warren-NJ/Vice-President--Reinsurance-Data--Analytics---Business-Performance_R7350-1",
+          "url": "https://tsys.wd1.myworkdayjobs.com/en-US/TSYS/job/ATLANTA-GEORGIA/Director-of-AI-ML-Platforms_R0074964",
           "posted_at": "2026-10-21"
         },
         {
-          "job_id": "93d31ef00f2af822",
-          "title": "VP, Technology and Data Solutions",
-          "company_name": "W. R. Berkley Corporation",
+          "job_id": "0ccaa44290577690",
+          "title": "Director, Market Intelligence & Commercial Analytics",
+          "company_name": "West Pharmaceutical Services",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
           "seniority": "Executive",
           "work_mode": "Unspecified",
-          "url": "https://careers-berkley.icims.com/jobs/14476/vp%2c-technology-and-data-solutions/job?in_iframe=1",
-          "posted_at": "2026-10-21"
-        },
-        {
-          "job_id": "b6e74ce4725e6624",
-          "title": "Vice President, Enterprise Data Strategy & Governance (Solventum)",
-          "company_name": "Solventum",
-          "is_sp500": true,
-          "location": "US",
-          "country_code": "US",
-          "seniority": "Executive",
-          "work_mode": "Unspecified",
-          "url": "https://healthcare.wd1.myworkdayjobs.com/en-US/private/job/Remote---Minnesota/Vice-President--Enterprise-Data-Strategy---Governance--Solventum-_R01131775",
-          "posted_at": "2026-10-21"
-        },
-        {
-          "job_id": "16ab8e79cf6093ab",
-          "title": "DIRECTOR, AI SDLC PERFORMANCE & INSIGHTS",
-          "company_name": "Willis Towers Watson",
-          "is_sp500": true,
-          "location": "US",
-          "country_code": "US",
-          "seniority": "Executive",
-          "work_mode": "Unspecified",
-          "url": "https://eedu.fa.em3.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1003/job/202606402",
+          "url": "https://careers.westpharma.com/job/Exton-Director%2C-Market-Intelligence-&-Commercial-Analytics-PA-19341/1448603233/",
           "posted_at": "2026-10-21"
         },
         {
@@ -4953,6 +4929,18 @@
           "posted_at": "2026-10-21"
         },
         {
+          "job_id": "b6e74ce4725e6624",
+          "title": "Vice President, Enterprise Data Strategy & Governance (Solventum)",
+          "company_name": "Solventum",
+          "is_sp500": true,
+          "location": "US",
+          "country_code": "US",
+          "seniority": "Executive",
+          "work_mode": "Unspecified",
+          "url": "https://healthcare.wd1.myworkdayjobs.com/en-US/private/job/Remote---Minnesota/Vice-President--Enterprise-Data-Strategy---Governance--Solventum-_R01131775",
+          "posted_at": "2026-10-21"
+        },
+        {
           "job_id": "06d6975481513a31",
           "title": "Director, Data Center Marketing",
           "company_name": "Supermicro",
@@ -4965,15 +4953,27 @@
           "posted_at": "2026-10-21"
         },
         {
-          "job_id": "0ccaa44290577690",
-          "title": "Director, Market Intelligence & Commercial Analytics",
-          "company_name": "West Pharmaceutical Services",
+          "job_id": "93d31ef00f2af822",
+          "title": "VP, Technology and Data Solutions",
+          "company_name": "W. R. Berkley Corporation",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
           "seniority": "Executive",
           "work_mode": "Unspecified",
-          "url": "https://careers.westpharma.com/job/Exton-Director%2C-Market-Intelligence-&-Commercial-Analytics-PA-19341/1448603233/",
+          "url": "https://careers-berkley.icims.com/jobs/14476/vp%2c-technology-and-data-solutions/job?in_iframe=1",
+          "posted_at": "2026-10-21"
+        },
+        {
+          "job_id": "16ab8e79cf6093ab",
+          "title": "DIRECTOR, AI SDLC PERFORMANCE & INSIGHTS",
+          "company_name": "Willis Towers Watson",
+          "is_sp500": true,
+          "location": "US",
+          "country_code": "US",
+          "seniority": "Executive",
+          "work_mode": "Unspecified",
+          "url": "https://eedu.fa.em3.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1003/job/202606402",
           "posted_at": "2026-10-21"
         }
       ]
@@ -5003,16 +5003,16 @@
       },
       "top_skills": [
         {
-          "skill_id": "python",
-          "skill_name": "Python",
-          "category": "Programming",
+          "skill_id": "data_governance",
+          "skill_name": "Data Governance & Quality",
+          "category": "Business",
           "job_count": 47,
           "penetration_pct": 29.9
         },
         {
-          "skill_id": "data_governance",
-          "skill_name": "Data Governance & Quality",
-          "category": "Business",
+          "skill_id": "python",
+          "skill_name": "Python",
+          "category": "Programming",
           "job_count": 47,
           "penetration_pct": 29.9
         },
@@ -5068,16 +5068,16 @@
           "penetration_pct": 17.2
         },
         {
-          "skill_id": "spark",
-          "skill_name": "Apache Spark",
-          "category": "Framework",
+          "skill_id": "evals_observability",
+          "skill_name": "MLOps / Evals & Observability",
+          "category": "MLOps",
           "job_count": 16,
           "penetration_pct": 10.2
         },
         {
-          "skill_id": "evals_observability",
-          "skill_name": "MLOps / Evals & Observability",
-          "category": "MLOps",
+          "skill_id": "spark",
+          "skill_name": "Apache Spark",
+          "category": "Framework",
           "job_count": 16,
           "penetration_pct": 10.2
         },
@@ -5110,8 +5110,8 @@
           "penetration_pct": 5.1
         },
         {
-          "skill_id": "redshift",
-          "skill_name": "Amazon Redshift",
+          "skill_id": "databricks",
+          "skill_name": "Databricks",
           "category": "Cloud",
           "job_count": 7,
           "penetration_pct": 4.5
@@ -5165,7 +5165,7 @@
           "share_pct": 7.0
         },
         {
-          "sector": "Industrials",
+          "sector": "Information Technology",
           "job_count": 4,
           "share_pct": 5.6
         }
@@ -5204,15 +5204,15 @@
       ],
       "sample_postings": [
         {
-          "job_id": "3a5455a9dc0b7b20",
-          "title": "AI Software Engineering Lead",
-          "company_name": "Veralto",
+          "job_id": "2ac92d9e41b36e94",
+          "title": "Data Engineer Lead - Cloud Architecture",
+          "company_name": "Progressive Corporation",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
           "seniority": "Lead / Manager",
           "work_mode": "Unspecified",
-          "url": "https://jobs.veralto.com/global/en/job/R10268260",
+          "url": "https://careers.progressive.com/job/data-engineer-lead",
           "posted_at": "2026-10-21"
         },
         {
@@ -5228,27 +5228,15 @@
           "posted_at": "2026-10-21"
         },
         {
-          "job_id": "75848324a1e151fe",
-          "title": "Data Privacy Delivery Lead",
-          "company_name": "Hartford (The)",
+          "job_id": "a253aa88bdc3f9d8",
+          "title": "Data and AI Solutions Sales Lead",
+          "company_name": "Schlumberger",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
           "seniority": "Lead / Manager",
           "work_mode": "Unspecified",
-          "url": "https://thehartford.wd5.myworkdayjobs.com/en-US/Careers_External/job/Hartford-CT/Data-Privacy-Delivery-Lead_R2627057",
-          "posted_at": "2026-10-21"
-        },
-        {
-          "job_id": "2ac92d9e41b36e94",
-          "title": "Data Engineer Lead - Cloud Architecture",
-          "company_name": "Progressive Corporation",
-          "is_sp500": true,
-          "location": "US",
-          "country_code": "US",
-          "seniority": "Lead / Manager",
-          "work_mode": "Unspecified",
-          "url": "https://careers.progressive.com/job/data-engineer-lead",
+          "url": "https://slb.eightfold.ai/careers?pid=563499734288023&domain=slb.com",
           "posted_at": "2026-10-21"
         },
         {
@@ -5264,6 +5252,30 @@
           "posted_at": "2026-10-21"
         },
         {
+          "job_id": "3a5455a9dc0b7b20",
+          "title": "AI Software Engineering Lead",
+          "company_name": "Veralto",
+          "is_sp500": true,
+          "location": "US",
+          "country_code": "US",
+          "seniority": "Lead / Manager",
+          "work_mode": "Unspecified",
+          "url": "https://jobs.veralto.com/global/en/job/R10268260",
+          "posted_at": "2026-10-21"
+        },
+        {
+          "job_id": "75848324a1e151fe",
+          "title": "Data Privacy Delivery Lead",
+          "company_name": "Hartford (The)",
+          "is_sp500": true,
+          "location": "US",
+          "country_code": "US",
+          "seniority": "Lead / Manager",
+          "work_mode": "Unspecified",
+          "url": "https://thehartford.wd5.myworkdayjobs.com/en-US/Careers_External/job/Hartford-CT/Data-Privacy-Delivery-Lead_R2627057",
+          "posted_at": "2026-10-21"
+        },
+        {
           "job_id": "a893ebf03edb7a7c",
           "title": "Third-Party Data Management Lead",
           "company_name": "Everest Group",
@@ -5276,27 +5288,15 @@
           "posted_at": "2026-10-21"
         },
         {
-          "job_id": "a253aa88bdc3f9d8",
-          "title": "Data and AI Solutions Sales Lead",
-          "company_name": "Schlumberger",
+          "job_id": "ab70c6624d36fbbc",
+          "title": "FLEX Director, Digital Data Product Governance Lead",
+          "company_name": "Marriott International",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
-          "seniority": "Lead / Manager",
-          "work_mode": "Unspecified",
-          "url": "https://slb.eightfold.ai/careers?pid=563499734288023&domain=slb.com",
-          "posted_at": "2026-10-21"
-        },
-        {
-          "job_id": "1745eaa51d6571c2",
-          "title": "AVP - KYC Operations Artificial Intelligence (AI) Lead",
-          "company_name": "Citigroup",
-          "is_sp500": true,
-          "location": "US",
-          "country_code": "US",
-          "seniority": "Lead / Manager",
+          "seniority": "Executive",
           "work_mode": "Hybrid",
-          "url": "https://citi.wd5.myworkdayjobs.com/en-US/2/job/Mumbai-Maharashtra-India/AVP---KYC-Operations-AI-Lead_26977868",
+          "url": "https://careers.marriott.com/flex-director-digital-data-product-governance-lead/job/P1-6928384-0",
           "posted_at": "2026-10-14"
         }
       ]
@@ -5419,16 +5419,16 @@
           "penetration_pct": 3.1
         },
         {
-          "skill_id": "dbt",
-          "skill_name": "dbt",
-          "category": "Framework",
+          "skill_id": "azure",
+          "skill_name": "Microsoft Azure",
+          "category": "Cloud",
           "job_count": 4,
           "penetration_pct": 3.1
         },
         {
-          "skill_id": "azure",
-          "skill_name": "Microsoft Azure",
-          "category": "Cloud",
+          "skill_id": "dbt",
+          "skill_name": "dbt",
+          "category": "Framework",
           "job_count": 4,
           "penetration_pct": 3.1
         },
@@ -5446,7 +5446,7 @@
           "job_count": 6
         },
         {
-          "company_name": "Abbott Laboratories",
+          "company_name": "Amgen",
           "job_count": 5
         },
         {
@@ -5454,7 +5454,7 @@
           "job_count": 5
         },
         {
-          "company_name": "Amgen",
+          "company_name": "Abbott Laboratories",
           "job_count": 5
         },
         {
@@ -5551,18 +5551,6 @@
           "posted_at": "2026-10-17"
         },
         {
-          "job_id": "af90b6df78c01c0b",
-          "title": "Senior Manager, Business Analytics",
-          "company_name": "Martin Marietta Materials",
-          "is_sp500": true,
-          "location": "US",
-          "country_code": "US",
-          "seniority": "Lead / Manager",
-          "work_mode": "Unspecified",
-          "url": "https://jobs.jobvite.com/martinmarietta/job/oFrOAfwe",
-          "posted_at": "2026-10-21"
-        },
-        {
           "job_id": "2f9b6dc808f2996e",
           "title": "Senior Manager, Data and Analytics",
           "company_name": "Fortive",
@@ -5575,27 +5563,51 @@
           "posted_at": "2026-10-21"
         },
         {
-          "job_id": "18925068ef025c50",
-          "title": "Manager – Data & Analytics - Operations",
-          "company_name": "Lennox International",
+          "job_id": "70ee95bba98544fd",
+          "title": "IT Manager - Manufacturing Data and Analytics",
+          "company_name": "Linde plc",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
           "seniority": "Lead / Manager",
           "work_mode": "Unspecified",
-          "url": "https://indiacareers-lennox.icims.com/jobs/55608/manager-%e2%80%93-data-%26-analytics---operations/job?in_iframe=1",
+          "url": "https://linde.csod.com/ux/ats/careersite/23/home/requisition/33379?c=linde",
           "posted_at": "2026-10-21"
         },
         {
-          "job_id": "d7b2c435a58ef32d",
-          "title": "Market Manager Sales international - Process Analytics",
-          "company_name": "Mettler Toledo",
+          "job_id": "e5841da24ac284fe",
+          "title": "Manager of Data and Analytics",
+          "company_name": "Kinder Morgan",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
           "seniority": "Lead / Manager",
           "work_mode": "Unspecified",
-          "url": "https://careers.mt.com/en_US/careers/JobDetail/1/22608",
+          "url": "https://careers.kindermorgan.com/careers-home/jobs/5854",
+          "posted_at": "2026-10-21"
+        },
+        {
+          "job_id": "39e9d01ac249188a",
+          "title": "Manager Data & Analytics - Corporate Office (Austin, MN) /Eden Prairie, MN",
+          "company_name": "Hormel Foods",
+          "is_sp500": true,
+          "location": "US",
+          "country_code": "US",
+          "seniority": "Lead / Manager",
+          "work_mode": "Unspecified",
+          "url": "https://ekkh.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_2002/job/35866",
+          "posted_at": "2026-10-21"
+        },
+        {
+          "job_id": "33c8f3687773e546",
+          "title": "Manager, Marketing Analytics",
+          "company_name": "Paychex",
+          "is_sp500": true,
+          "location": "US",
+          "country_code": "US",
+          "seniority": "Lead / Manager",
+          "work_mode": "Unspecified",
+          "url": "https://careers.paychex.com/careers-home/jobs/46104",
           "posted_at": "2026-10-21"
         },
         {
@@ -5608,18 +5620,6 @@
           "seniority": "Lead / Manager",
           "work_mode": "Unspecified",
           "url": "https://jobs.fcx.com/job/Phoenix-Manager-Leach-Analytics-AZ-85040/1441830300/",
-          "posted_at": "2026-10-21"
-        },
-        {
-          "job_id": "0b1f7cdb315e7e79",
-          "title": "Senior Manager, Analytics Engineering",
-          "company_name": "Fox Corporation",
-          "is_sp500": true,
-          "location": "US",
-          "country_code": "US",
-          "seniority": "Lead / Manager",
-          "work_mode": "Unspecified",
-          "url": "https://www.foxcareers.com/Search/JobDetail/R50033531/senior-manager-analytics-engineering-fox-corporation?pageLanguage=en-US",
           "posted_at": "2026-10-21"
         }
       ]
@@ -5796,17 +5796,17 @@
           "share_pct": 26.8
         },
         {
+          "sector": "Financials",
+          "job_count": 7,
+          "share_pct": 17.1
+        },
+        {
           "sector": "Information Technology",
           "job_count": 7,
           "share_pct": 17.1
         },
         {
           "sector": "Consumer Discretionary",
-          "job_count": 7,
-          "share_pct": 17.1
-        },
-        {
-          "sector": "Financials",
           "job_count": 7,
           "share_pct": 17.1
         },
@@ -5922,18 +5922,6 @@
           "posted_at": "2026-10-14"
         },
         {
-          "job_id": "15bceb13e3c8d466",
-          "title": "Analytics Engineer Intern",
-          "company_name": "Coinbase",
-          "is_sp500": true,
-          "location": "US",
-          "country_code": "US",
-          "seniority": "Junior / Entry",
-          "work_mode": "Hybrid",
-          "url": "https://www.coinbase.com/careers/positions/8175471?gh_jid=8175471",
-          "posted_at": "2026-10-13"
-        },
-        {
           "job_id": "862a07dea5589086",
           "title": "Senior Wafer Process Analytics Engineer",
           "company_name": "Seagate Technology",
@@ -5943,6 +5931,18 @@
           "seniority": "Senior",
           "work_mode": "Unspecified",
           "url": "https://www.linkedin.com/jobs/view/senior-wafer-process-analytics-engineer-at-seagate-technology-4473688559",
+          "posted_at": "2026-10-13"
+        },
+        {
+          "job_id": "15bceb13e3c8d466",
+          "title": "Analytics Engineer Intern",
+          "company_name": "Coinbase",
+          "is_sp500": true,
+          "location": "US",
+          "country_code": "US",
+          "seniority": "Junior / Entry",
+          "work_mode": "Hybrid",
+          "url": "https://www.coinbase.com/careers/positions/8175471?gh_jid=8175471",
           "posted_at": "2026-10-13"
         }
       ]
@@ -5979,16 +5979,16 @@
           "penetration_pct": 27.2
         },
         {
-          "skill_id": "python",
-          "skill_name": "Python",
-          "category": "Programming",
+          "skill_id": "llm",
+          "skill_name": "LLM / Large Language Models",
+          "category": "AI/ML",
           "job_count": 23,
           "penetration_pct": 22.3
         },
         {
-          "skill_id": "llm",
-          "skill_name": "LLM / Large Language Models",
-          "category": "AI/ML",
+          "skill_id": "python",
+          "skill_name": "Python",
+          "category": "Programming",
           "job_count": 23,
           "penetration_pct": 22.3
         },
@@ -6030,16 +6030,16 @@
       ],
       "top_technologies": [
         {
-          "skill_id": "evals_observability",
-          "skill_name": "MLOps / Evals & Observability",
-          "category": "MLOps",
+          "skill_id": "spark",
+          "skill_name": "Apache Spark",
+          "category": "Framework",
           "job_count": 19,
           "penetration_pct": 18.4
         },
         {
-          "skill_id": "spark",
-          "skill_name": "Apache Spark",
-          "category": "Framework",
+          "skill_id": "evals_observability",
+          "skill_name": "MLOps / Evals & Observability",
+          "category": "MLOps",
           "job_count": 19,
           "penetration_pct": 18.4
         },
@@ -6185,18 +6185,6 @@
           "posted_at": "2026-10-09"
         },
         {
-          "job_id": "0b1f7cdb315e7e79",
-          "title": "Senior Manager, Analytics Engineering",
-          "company_name": "Fox Corporation",
-          "is_sp500": true,
-          "location": "US",
-          "country_code": "US",
-          "seniority": "Lead / Manager",
-          "work_mode": "Unspecified",
-          "url": "https://www.foxcareers.com/Search/JobDetail/R50033531/senior-manager-analytics-engineering-fox-corporation?pageLanguage=en-US",
-          "posted_at": "2026-10-21"
-        },
-        {
           "job_id": "deb83fb7bcbadbf2",
           "title": "Senior Manager, AI Engineering",
           "company_name": "Global Payments",
@@ -6209,15 +6197,15 @@
           "posted_at": "2026-10-21"
         },
         {
-          "job_id": "69bdeb3bb689b36c",
-          "title": "Systems Manager - GCP Data Engineering, Enterprise Data & Analytics",
-          "company_name": "Consolidated Edison",
+          "job_id": "0b1f7cdb315e7e79",
+          "title": "Senior Manager, Analytics Engineering",
+          "company_name": "Fox Corporation",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
           "seniority": "Lead / Manager",
           "work_mode": "Unspecified",
-          "url": "https://ejcu.fa.us6.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1035/job/1000265",
+          "url": "https://www.foxcareers.com/Search/JobDetail/R50033531/senior-manager-analytics-engineering-fox-corporation?pageLanguage=en-US",
           "posted_at": "2026-10-21"
         },
         {
@@ -6233,16 +6221,16 @@
           "posted_at": "2026-10-21"
         },
         {
-          "job_id": "4b16e9c9badebabf",
-          "title": "Senior Engineering Manager - Agent Platform, AI Platform",
-          "company_name": "Netflix",
+          "job_id": "69bdeb3bb689b36c",
+          "title": "Systems Manager - GCP Data Engineering, Enterprise Data & Analytics",
+          "company_name": "Consolidated Edison",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
           "seniority": "Lead / Manager",
           "work_mode": "Unspecified",
-          "url": "https://explore.jobs.netflix.net/careers/job/790317607391",
-          "posted_at": "2026-10-19"
+          "url": "https://ejcu.fa.us6.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1035/job/1000265",
+          "posted_at": "2026-10-21"
         },
         {
           "job_id": "e7f8225f931b7bfe",
@@ -6254,6 +6242,18 @@
           "seniority": "Lead / Manager",
           "work_mode": "Unspecified",
           "url": "https://trimble.wd1.myworkdayjobs.com/en-US/trimblecareers/job/UK---Newcastle/Agentic-AI-Engineering-Manager_R57731",
+          "posted_at": "2026-10-19"
+        },
+        {
+          "job_id": "4b16e9c9badebabf",
+          "title": "Senior Engineering Manager - Agent Platform, AI Platform",
+          "company_name": "Netflix",
+          "is_sp500": true,
+          "location": "US",
+          "country_code": "US",
+          "seniority": "Lead / Manager",
+          "work_mode": "Unspecified",
+          "url": "https://explore.jobs.netflix.net/careers/job/790317607391",
           "posted_at": "2026-10-19"
         },
         {
@@ -6381,9 +6381,9 @@
           "penetration_pct": 5.2
         },
         {
-          "skill_id": "bigquery",
-          "skill_name": "BigQuery",
-          "category": "Cloud",
+          "skill_id": "spark",
+          "skill_name": "Apache Spark",
+          "category": "Framework",
           "job_count": 4,
           "penetration_pct": 4.2
         },
@@ -6395,9 +6395,9 @@
           "penetration_pct": 4.2
         },
         {
-          "skill_id": "spark",
-          "skill_name": "Apache Spark",
-          "category": "Framework",
+          "skill_id": "bigquery",
+          "skill_name": "BigQuery",
+          "category": "Cloud",
           "job_count": 4,
           "penetration_pct": 4.2
         },
@@ -6427,11 +6427,11 @@
           "job_count": 3
         },
         {
-          "company_name": "Block, Inc.",
+          "company_name": "GEICO",
           "job_count": 2
         },
         {
-          "company_name": "Criteo",
+          "company_name": "Thales Group",
           "job_count": 2
         }
       ],
@@ -6452,12 +6452,12 @@
           "share_pct": 12.0
         },
         {
-          "sector": "Health Care",
+          "sector": "Financials",
           "job_count": 5,
           "share_pct": 10.0
         },
         {
-          "sector": "Financials",
+          "sector": "Health Care",
           "job_count": 5,
           "share_pct": 10.0
         }
@@ -6532,6 +6532,18 @@
           "posted_at": "2026-10-21"
         },
         {
+          "job_id": "23b473db8740a772",
+          "title": "Sr. Software Engineer - Sr. BI Engineer",
+          "company_name": "Williams-Sonoma, Inc.",
+          "is_sp500": true,
+          "location": "US",
+          "country_code": "US",
+          "seniority": "Senior",
+          "work_mode": "Unspecified",
+          "url": "https://ehac.fa.us6.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/20676",
+          "posted_at": "2026-10-21"
+        },
+        {
           "job_id": "2138ab291c14eb92",
           "title": "Sr Business Intelligence Analyst - Risk",
           "company_name": "Paychex",
@@ -6544,39 +6556,27 @@
           "posted_at": "2026-10-21"
         },
         {
-          "job_id": "7b19b737c1eb4bb3",
-          "title": "WFM Business Intelligence Analyst",
-          "company_name": "Global Payments",
+          "job_id": "f774f6cb83575cb7",
+          "title": "APAC BI Consultant",
+          "company_name": "Cooper Companies (The)",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
           "seniority": "Mid",
           "work_mode": "Unspecified",
-          "url": "https://tsys.wd1.myworkdayjobs.com/en-US/TSYS/job/QUEZON-CITY--PHILIPPINES/WFM-Business-Intelligence-Analyst_R0073013",
+          "url": "https://hcjy.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/11931",
           "posted_at": "2026-10-21"
         },
         {
-          "job_id": "6fbf40a6980cc99f",
-          "title": "Business Intelligence (Sr.) Analyst - IT - Corporate Office (Austin, MN) / Eden Prairie, MN",
-          "company_name": "Hormel Foods",
+          "job_id": "0ffbfac04240e700",
+          "title": "Services Business Intelligence & Commercial Analytics Specialist, Advanced",
+          "company_name": "Keysight Technologies",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
-          "seniority": "Senior",
+          "seniority": "Mid",
           "work_mode": "Unspecified",
-          "url": "https://ekkh.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_2002/job/35965",
-          "posted_at": "2026-10-21"
-        },
-        {
-          "job_id": "23b473db8740a772",
-          "title": "Sr. Software Engineer - Sr. BI Engineer",
-          "company_name": "Williams-Sonoma, Inc.",
-          "is_sp500": true,
-          "location": "US",
-          "country_code": "US",
-          "seniority": "Senior",
-          "work_mode": "Unspecified",
-          "url": "https://ehac.fa.us6.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/20676",
+          "url": "https://jobs.keysight.com/careers-home/jobs/54161",
           "posted_at": "2026-10-21"
         },
         {
@@ -6711,23 +6711,23 @@
           "penetration_pct": 5.1
         },
         {
-          "skill_id": "vector_db",
-          "skill_name": "Vector Databases",
-          "category": "Database",
-          "job_count": 3,
-          "penetration_pct": 3.8
-        },
-        {
-          "skill_id": "databricks",
-          "skill_name": "Databricks",
-          "category": "Cloud",
-          "job_count": 3,
-          "penetration_pct": 3.8
-        },
-        {
           "skill_id": "gcp",
           "skill_name": "Google Cloud Platform",
           "category": "Cloud",
+          "job_count": 3,
+          "penetration_pct": 3.8
+        },
+        {
+          "skill_id": "bigquery",
+          "skill_name": "BigQuery",
+          "category": "Cloud",
+          "job_count": 3,
+          "penetration_pct": 3.8
+        },
+        {
+          "skill_id": "vector_db",
+          "skill_name": "Vector Databases",
+          "category": "Database",
           "job_count": 3,
           "penetration_pct": 3.8
         }
@@ -6738,15 +6738,15 @@
           "job_count": 8
         },
         {
+          "company_name": "Alphabet Inc. (Class A)",
+          "job_count": 6
+        },
+        {
           "company_name": "Google (Alphabet)",
           "job_count": 6
         },
         {
           "company_name": "Alphabet Inc. (Class C)",
-          "job_count": 6
-        },
-        {
-          "company_name": "Alphabet Inc. (Class A)",
           "job_count": 6
         },
         {
@@ -7020,13 +7020,6 @@
           "penetration_pct": 17.1
         },
         {
-          "skill_id": "pytorch",
-          "skill_name": "PyTorch",
-          "category": "Framework",
-          "job_count": 4,
-          "penetration_pct": 11.4
-        },
-        {
           "skill_id": "evals_observability",
           "skill_name": "MLOps / Evals & Observability",
           "category": "MLOps",
@@ -7034,11 +7027,11 @@
           "penetration_pct": 11.4
         },
         {
-          "skill_id": "databricks",
-          "skill_name": "Databricks",
-          "category": "Cloud",
-          "job_count": 3,
-          "penetration_pct": 8.6
+          "skill_id": "pytorch",
+          "skill_name": "PyTorch",
+          "category": "Framework",
+          "job_count": 4,
+          "penetration_pct": 11.4
         },
         {
           "skill_id": "aws",
@@ -7048,8 +7041,15 @@
           "penetration_pct": 8.6
         },
         {
-          "skill_id": "pandas",
-          "skill_name": "pandas",
+          "skill_id": "databricks",
+          "skill_name": "Databricks",
+          "category": "Cloud",
+          "job_count": 3,
+          "penetration_pct": 8.6
+        },
+        {
+          "skill_id": "llama_index",
+          "skill_name": "LlamaIndex",
           "category": "Framework",
           "job_count": 2,
           "penetration_pct": 5.7
@@ -7069,7 +7069,7 @@
           "job_count": 3
         },
         {
-          "company_name": "Citigroup",
+          "company_name": "NXP Semiconductors",
           "job_count": 2
         },
         {
@@ -7077,7 +7077,7 @@
           "job_count": 2
         },
         {
-          "company_name": "NXP Semiconductors",
+          "company_name": "GE Vernova",
           "job_count": 2
         }
       ],
@@ -7306,15 +7306,15 @@
           "penetration_pct": 14.7
         },
         {
-          "skill_id": "r",
-          "skill_name": "R",
+          "skill_id": "python",
+          "skill_name": "Python",
           "category": "Programming",
           "job_count": 4,
           "penetration_pct": 11.8
         },
         {
-          "skill_id": "python",
-          "skill_name": "Python",
+          "skill_id": "r",
+          "skill_name": "R",
           "category": "Programming",
           "job_count": 4,
           "penetration_pct": 11.8
@@ -7350,13 +7350,6 @@
           "penetration_pct": 5.9
         },
         {
-          "skill_id": "spark",
-          "skill_name": "Apache Spark",
-          "category": "Framework",
-          "job_count": 2,
-          "penetration_pct": 5.9
-        },
-        {
           "skill_id": "databricks",
           "skill_name": "Databricks",
           "category": "Cloud",
@@ -7364,11 +7357,11 @@
           "penetration_pct": 5.9
         },
         {
-          "skill_id": "snowflake_db",
-          "skill_name": "Snowflake",
-          "category": "Cloud",
-          "job_count": 1,
-          "penetration_pct": 2.9
+          "skill_id": "spark",
+          "skill_name": "Apache Spark",
+          "category": "Framework",
+          "job_count": 2,
+          "penetration_pct": 5.9
         },
         {
           "skill_id": "ms_fabric",
@@ -7376,13 +7369,16 @@
           "category": "Cloud",
           "job_count": 1,
           "penetration_pct": 2.9
+        },
+        {
+          "skill_id": "snowflake_db",
+          "skill_name": "Snowflake",
+          "category": "Cloud",
+          "job_count": 1,
+          "penetration_pct": 2.9
         }
       ],
       "top_companies": [
-        {
-          "company_name": "AstraZeneca (Gothenburg R&D)",
-          "job_count": 2
-        },
         {
           "company_name": "State Street Bank Luxembourg",
           "job_count": 2
@@ -7396,11 +7392,15 @@
           "job_count": 2
         },
         {
+          "company_name": "AstraZeneca (Gothenburg R&D)",
+          "job_count": 2
+        },
+        {
           "company_name": "AstraZeneca",
           "job_count": 2
         },
         {
-          "company_name": "Robinhood Markets",
+          "company_name": "Nasdaq, Inc.",
           "job_count": 1
         }
       ],
@@ -7520,18 +7520,6 @@
           "posted_at": "2026-10-12"
         },
         {
-          "job_id": "e8d129b99a3bb2e1",
-          "title": "Head of Data & AI",
-          "company_name": "CDW Corporation",
-          "is_sp500": true,
-          "location": "UK",
-          "country_code": "UK",
-          "seniority": "Executive",
-          "work_mode": "Hybrid",
-          "url": "https://cdw.wd5.myworkdayjobs.com/en-US/careers/job/London----GBR/Head-of-Data---AI_R26_00002705-1",
-          "posted_at": "2026-10-07"
-        },
-        {
           "job_id": "24fcf98c3823ae1b",
           "title": "Sr Director Head of Data Science Services",
           "company_name": "Johnson & Johnson",
@@ -7541,6 +7529,18 @@
           "seniority": "Executive",
           "work_mode": "Remote",
           "url": "https://www.careers.jnj.com/en/jobs/r-080971/sr-director-head-of-data-science-services/",
+          "posted_at": "2026-10-07"
+        },
+        {
+          "job_id": "e8d129b99a3bb2e1",
+          "title": "Head of Data & AI",
+          "company_name": "CDW Corporation",
+          "is_sp500": true,
+          "location": "UK",
+          "country_code": "UK",
+          "seniority": "Executive",
+          "work_mode": "Hybrid",
+          "url": "https://cdw.wd5.myworkdayjobs.com/en-US/careers/job/London----GBR/Head-of-Data---AI_R26_00002705-1",
           "posted_at": "2026-10-07"
         },
         {
@@ -7617,16 +7617,16 @@
           "penetration_pct": 17.4
         },
         {
-          "skill_id": "data_governance",
-          "skill_name": "Data Governance & Quality",
-          "category": "Business",
+          "skill_id": "rag",
+          "skill_name": "RAG (Retrieval-Augmented Generation)",
+          "category": "AI/ML",
           "job_count": 3,
           "penetration_pct": 13.0
         },
         {
-          "skill_id": "rag",
-          "skill_name": "RAG (Retrieval-Augmented Generation)",
-          "category": "AI/ML",
+          "skill_id": "data_governance",
+          "skill_name": "Data Governance & Quality",
+          "category": "Business",
           "job_count": 3,
           "penetration_pct": 13.0
         },
@@ -7698,14 +7698,6 @@
       ],
       "top_companies": [
         {
-          "company_name": "UnitedHealth Group",
-          "job_count": 2
-        },
-        {
-          "company_name": "TE Connectivity",
-          "job_count": 2
-        },
-        {
           "company_name": "United Parcel Service",
           "job_count": 2
         },
@@ -7714,11 +7706,19 @@
           "job_count": 2
         },
         {
-          "company_name": "InPost (Integer.pl)",
+          "company_name": "UnitedHealth Group",
+          "job_count": 2
+        },
+        {
+          "company_name": "TE Connectivity",
+          "job_count": 2
+        },
+        {
+          "company_name": "Doctolib",
           "job_count": 1
         },
         {
-          "company_name": "Oura Health (Oura Ring)",
+          "company_name": "Deere & Company",
           "job_count": 1
         }
       ],
@@ -7739,12 +7739,12 @@
           "share_pct": 14.3
         },
         {
-          "sector": "Health Care",
+          "sector": "Communication Services",
           "job_count": 2,
           "share_pct": 14.3
         },
         {
-          "sector": "Communication Services",
+          "sector": "Health Care",
           "job_count": 2,
           "share_pct": 14.3
         }
@@ -7907,7 +7907,7 @@
       "top_technologies": [],
       "top_companies": [
         {
-          "company_name": "Version 1",
+          "company_name": "Berkshire Hathaway",
           "job_count": 1
         },
         {
@@ -7919,7 +7919,7 @@
           "job_count": 1
         },
         {
-          "company_name": "Berkshire Hathaway",
+          "company_name": "Version 1",
           "job_count": 1
         }
       ],
@@ -8244,8 +8244,8 @@
         "top_paired_skills": [
           "Python",
           "BigQuery",
-          "SQL",
-          "Google Cloud Platform"
+          "Google Cloud Platform",
+          "SQL"
         ]
       },
       {
@@ -8256,10 +8256,10 @@
         "penetration_in_gcp_pct": 0.2,
         "penetration_all_pct": 0.03,
         "top_paired_skills": [
-          "Java",
-          "Looker",
-          "Apache Spark",
-          "SQL"
+          "Kubernetes",
+          "Data Governance & Quality",
+          "BigQuery",
+          "Java"
         ]
       }
     ],
@@ -8334,12 +8334,12 @@
         "job_count": 16
       },
       {
-        "company_name": "Cloudflare",
+        "company_name": "State Street Bank Luxembourg",
         "sector": null,
         "job_count": 15
       },
       {
-        "company_name": "State Street Bank Luxembourg",
+        "company_name": "Cloudflare",
         "sector": null,
         "job_count": 15
       },
