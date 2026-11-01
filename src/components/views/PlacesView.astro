@@ -160,6 +160,10 @@ const placesJsonLd = {
               <span id="tooltip-rol" class="text-white font-medium"></span>
             </div>
             <div class="flex justify-between text-slate-300">
+              <span class="text-slate-400">Relocation Ease:</span>
+              <span id="tooltip-reloc" class="text-emerald-400 font-semibold"></span>
+            </div>
+            <div class="flex justify-between text-slate-300">
               <span class="text-slate-400">Population:</span>
               <span id="tooltip-pop" class="text-white font-medium"></span>
             </div>
@@ -430,6 +434,7 @@ const placesJsonLd = {
   const ttGdp = document.getElementById('tooltip-gdp');
   const ttPeace = document.getElementById('tooltip-peace');
   const ttRol = document.getElementById('tooltip-rol');
+  const ttReloc = document.getElementById('tooltip-reloc');
   const ttPop = document.getElementById('tooltip-pop');
 
   const svg = document.getElementById('world-map-svg');
@@ -462,6 +467,7 @@ const placesJsonLd = {
       ttGdp.textContent = ind.gdp_pc_ppp?.raw_value ? `$${Math.round(ind.gdp_pc_ppp.raw_value).toLocaleString('en-US')}` : 'N/A';
       ttPeace.textContent = ind.peace_index?.raw_value ? ind.peace_index.raw_value.toFixed(2) : 'N/A';
       ttRol.textContent = ind.rule_of_law?.raw_value ? ind.rule_of_law.raw_value.toFixed(2) : 'N/A';
+      ttReloc.textContent = c.pillar_scores?.ease_of_relocation !== null && c.pillar_scores?.ease_of_relocation !== undefined ? `${c.pillar_scores.ease_of_relocation} / 100` : 'N/A';
       ttPop.textContent = ind.population?.raw_value ? (ind.population.raw_value / 1e6).toFixed(1) + ' M' : 'N/A';
 
       tooltip.classList.remove('hidden');

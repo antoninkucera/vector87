@@ -65,6 +65,7 @@
               "housing": { "type": ["number", "null"] },
               "economy": { "type": ["number", "null"] },
               "governance": { "type": ["number", "null"] },
+              "ease_of_relocation": { "type": ["number", "null"] },
               "composite_score": { "type": ["number", "null"] }
             }
           },

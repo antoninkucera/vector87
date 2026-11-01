@@ -196,7 +196,9 @@ def export_places_data() -> None:
                 norm_political_stability,
                 norm_gov_effectiveness,
                 norm_price_level_index,
-                norm_housing_cost_overburden
+                norm_housing_cost_overburden,
+                ease_of_relocation,
+                norm_ease_of_relocation
             FROM v_country_profiles
             ORDER BY is_focus_country DESC, country_name ASC
         """).fetchall()
@@ -207,7 +209,8 @@ def export_places_data() -> None:
         for row in profiles:
             (
                 c_a3, c_a2, c_name, continent, subregion, is_focus, is_eu, has_reg,
-                norm_gdp, norm_le, norm_peace, norm_rol, norm_ps, norm_ge, norm_pli, norm_hco
+                norm_gdp, norm_le, norm_peace, norm_rol, norm_ps, norm_ge, norm_pli, norm_hco,
+                reloc_raw, reloc_norm
             ) = row
 
             if is_focus:
@@ -246,6 +249,7 @@ def export_places_data() -> None:
                     "housing": housing_score,
                     "economy": economy_score,
                     "governance": gov_score,
+                    "ease_of_relocation": round(reloc_raw, 1) if reloc_raw is not None else None,
                     "composite_score": composite,
                 },
                 "indicators": ind_by_country.get(c_a3, {}),
@@ -260,7 +264,7 @@ def export_places_data() -> None:
             "schema_version": "1.0.0",
             "total_countries": len(countries_list),
             "focus_countries_count": focus_count,
-            "sources": ["World Bank Open Data", "Eurostat", "Institute for Economics & Peace"],
+            "sources": ["World Bank Open Data", "Eurostat", "Institute for Economics & Peace", "Vector87 Policy & Mobility Index"],
         },
         "pillars": PILLARS,
         "countries": countries_list,

@@ -21,56 +21,74 @@ const {
 } = Astro.props;
 
 // Split into 3 visual groups for distinct colors and legend
-const dreamHubs = countries
-  .filter((c) => c.quadrant === 'dream')
+const easyWins = countries
+  .filter((c) => c.quadrant === 'easy_win')
   .map((c) => ({
-    x: c.jobs,
+    x: c.easeOfRelocation,
     y: c.livability,
     name: lang === 'cs' ? c.nameCs : c.name,
     iso3: c.iso3,
-    jobs: c.jobs,
+    easeOfRelocation: c.easeOfRelocation,
     livability: c.livability,
     safety: c.safety,
     housing: c.housing,
     economy: c.economy,
+    note: lang === 'cs' ? c.relocationNoteCs : c.relocationNoteEn,
   }));
 
-const volumeGiants = countries
-  .filter((c) => c.quadrant === 'power')
+const highReward = countries
+  .filter((c) => c.quadrant === 'high_reward')
   .map((c) => ({
-    x: c.jobs,
+    x: c.easeOfRelocation,
     y: c.livability,
     name: lang === 'cs' ? c.nameCs : c.name,
     iso3: c.iso3,
-    jobs: c.jobs,
+    easeOfRelocation: c.easeOfRelocation,
     livability: c.livability,
     safety: c.safety,
     housing: c.housing,
     economy: c.economy,
+    note: lang === 'cs' ? c.relocationNoteCs : c.relocationNoteEn,
   }));
 
 const lifestyleHavens = countries
-  .filter((c) => c.quadrant === 'haven' || c.quadrant === 'developing')
+  .filter((c) => c.quadrant === 'lifestyle_haven')
   .map((c) => ({
-    x: c.jobs,
+    x: c.easeOfRelocation,
     y: c.livability,
     name: lang === 'cs' ? c.nameCs : c.name,
     iso3: c.iso3,
-    jobs: c.jobs,
+    easeOfRelocation: c.easeOfRelocation,
     livability: c.livability,
     safety: c.safety,
     housing: c.housing,
     economy: c.economy,
+    note: lang === 'cs' ? c.relocationNoteCs : c.relocationNoteEn,
   }));
 
 const labels = {
-  dream: lang === 'cs' ? 'Dream Hubs (Vysoká poptávka + Špičková kvalita života)' : 'Dream Hubs (High Hiring + High Livability)',
-  power: lang === 'cs' ? 'Objemoví giganti (Maximální trh, vyšší tlak/náklady)' : 'Volume Giants (Maximum Openings + High Pressure)',
-  haven: lang === 'cs' ? 'Lifestyle & Remote ráje (Vysoký komfort, menší trh)' : 'Lifestyle & Remote Havens (High Livability)',
-  xAxis: lang === 'cs' ? 'Aktivní otevřené AI/Data pozice (logaritmická osa)' : 'Active AI/Data Job Postings (Logarithmic Scale)',
-  yAxis: lang === 'cs' ? 'Index kvality života & stability (0–100)' : 'Composite Livability & Stability Score (0–100)',
-  jobsWord: lang === 'cs' ? 'pozic' : 'jobs',
-  scoreWord: lang === 'cs' ? 'Skóre života' : 'Livability Score',
+  easyWin:
+    lang === 'cs'
+      ? 'Easy Wins (Volný pohyb + Špičková kvalita života)'
+      : 'Easy Wins (Free Movement + Top Livability)',
+  highReward:
+    lang === 'cs'
+      ? 'High Friction / High Reward (Globální giganti, ale vízové kvóty)'
+      : 'High Friction / High Reward (Top Markets, Visa Quotas)',
+  lifestyleHaven:
+    lang === 'cs'
+      ? 'Lifestyle & Remote Havens (Maximální nomádská dostupnost, klima)'
+      : 'Lifestyle & Remote Havens (Top Nomad Visas, Coastal)',
+  xAxis:
+    lang === 'cs'
+      ? 'Snadnost přesunu a pracovní povolení (0–100)'
+      : 'Ease of Relocation & Work Permit Index (0–100)',
+  yAxis:
+    lang === 'cs'
+      ? 'Index kvality života & stability (0–100)'
+      : 'Composite Livability & Stability Score (0–100)',
+  relocWord: lang === 'cs' ? 'Přesun & víza' : 'Relocation Ease',
+  scoreWord: lang === 'cs' ? 'Kvalita života' : 'Livability Score',
   safetyWord: lang === 'cs' ? 'Bezpečnost' : 'Safety',
   housingWord: lang === 'cs' ? 'Bydlení' : 'Housing',
   economyWord: lang === 'cs' ? 'Ekonomika' : 'Economy',
@@ -80,8 +98,8 @@ const payload = JSON.stringify({
   labels,
   datasets: [
     {
-      label: labels.dream,
-      data: dreamHubs,
+      label: labels.easyWin,
+      data: easyWins,
       backgroundColor: 'rgba(16, 185, 129, 0.85)',
       borderColor: '#10b981',
       borderWidth: 1.5,
@@ -89,8 +107,8 @@ const payload = JSON.stringify({
       pointHoverRadius: 10,
     },
     {
-      label: labels.power,
-      data: volumeGiants,
+      label: labels.highReward,
+      data: highReward,
       backgroundColor: 'rgba(6, 182, 212, 0.85)',
       borderColor: '#06b6d4',
       borderWidth: 1.5,
@@ -98,7 +116,7 @@ const payload = JSON.stringify({
       pointHoverRadius: 11,
     },
     {
-      label: labels.haven,
+      label: labels.lifestyleHaven,
       data: lifestyleHavens,
       backgroundColor: 'rgba(129, 140, 248, 0.75)',
       borderColor: '#818cf8',
@@ -116,7 +134,7 @@ const payload = JSON.stringify({
       <div class="flex items-center gap-2">
         <h3 class="text-sm font-semibold text-white tracking-tight">{title}</h3>
         {badge && (
-          <span class="px-2 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider bg-cyan-500/10 text-cyan-300 border border-cyan-500/30">
+          <span class="px-2 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider bg-emerald-500/10 text-emerald-300 border border-emerald-500/30">
             {badge}
           </span>
         )}
@@ -135,31 +153,31 @@ const payload = JSON.stringify({
     <div class="flex items-center gap-2 text-slate-300">
       <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 shrink-0"></span>
       <span class="text-slate-400">
-        <strong class="text-emerald-300">Dream Hubs:</strong> {lang === 'cs' ? 'Např. Kanada, Irsko, Švýcarsko, Nizozemsko, Česko' : 'e.g. Canada, Ireland, Switzerland, Netherlands, Czechia'}
+        <strong class="text-emerald-300">Easy Wins:</strong> {lang === 'cs' ? 'Švýcarsko, Nizozemsko, Rakousko, Česko, Irsko, Skandinávie' : 'Switzerland, Netherlands, Austria, Czechia, Ireland, Nordics'}
       </span>
     </div>
     <div class="flex items-center gap-2 text-slate-300">
       <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 shrink-0"></span>
       <span class="text-slate-400">
-        <strong class="text-cyan-300">Volume Giants:</strong> {lang === 'cs' ? 'USA a Spojené království (obrovský trh)' : 'US & UK (massive hiring volume)'}
+        <strong class="text-cyan-300">High Friction / High Reward:</strong> {lang === 'cs' ? 'USA (H-1B loterie), Kanada (Express Entry), UK' : 'USA (H-1B lottery), Canada (Express Entry), UK'}
       </span>
     </div>
     <div class="flex items-center gap-2 text-slate-300">
       <span class="w-2.5 h-2.5 rounded-full bg-indigo-400 shrink-0"></span>
       <span class="text-slate-400">
-        <strong class="text-indigo-300">Lifestyle Havens:</strong> {lang === 'cs' ? 'Rakousko, Portugalsko, Švédsko, Norsko, Španělsko' : 'Austria, Portugal, Sweden, Norway, Spain'}
+        <strong class="text-indigo-300">Lifestyle Havens:</strong> {lang === 'cs' ? 'Španělsko (Beckham Law), Portugalsko (D8), Chorvatsko' : 'Spain (Beckham Law), Portugal (D8), Croatia'}
       </span>
     </div>
   </div>
 
-  <!-- Accessible Semantic Data Table for SEO Crawlers & Screen Readers -->
+  <!-- Accessible Table Fallback for Screen Readers -->
   <div class="sr-only">
     <table>
-      <caption>{title} - {subtitle}</caption>
+      <caption>{title}</caption>
       <thead>
         <tr>
           <th scope="col">Country</th>
-          <th scope="col">Active AI/Data Jobs</th>
+          <th scope="col">Ease of Relocation</th>
           <th scope="col">Livability Score</th>
           <th scope="col">Quadrant</th>
         </tr>
@@ -168,7 +186,7 @@ const payload = JSON.stringify({
         {countries.map((c) => (
           <tr>
             <th scope="row">{c.name}</th>
-            <td>{c.jobs}</td>
+            <td>{c.easeOfRelocation}</td>
             <td>{c.livability}</td>
             <td>{c.quadrant}</td>
           </tr>
@@ -219,7 +237,7 @@ const payload = JSON.stringify({
                 backgroundColor: 'rgba(6, 9, 17, 0.96)',
                 titleColor: '#f8fafc',
                 bodyColor: '#e2e8f0',
-                borderColor: 'rgba(34, 211, 238, 0.4)',
+                borderColor: 'rgba(16, 185, 129, 0.4)',
                 borderWidth: 1,
                 padding: 12,
                 titleFont: { family: "'Inter', sans-serif", size: 13, weight: 'bold' },
@@ -232,11 +250,11 @@ const payload = JSON.stringify({
                   label: (ctx) => {
                     const rawItem = ctx.raw as any;
                     if (!rawItem) return '';
-                    const jobsStr = rawItem.jobs.toLocaleString('en-US');
                     return [
-                      ` • ${labels.xAxis}: ${jobsStr} ${labels.jobsWord}`,
+                      ` • ${labels.relocWord}: ${rawItem.easeOfRelocation} / 100`,
                       ` • ${labels.scoreWord}: ${rawItem.livability} / 100`,
                       ` • ${labels.safetyWord}: ${rawItem.safety ?? 'N/A'} | ${labels.housingWord}: ${rawItem.housing ?? 'N/A'}`,
+                      ` • Vízový režim: ${rawItem.note}`,
                     ];
                   },
                 },
@@ -244,21 +262,16 @@ const payload = JSON.stringify({
             },
             scales: {
               x: {
-                type: 'logarithmic',
-                min: 1,
-                max: 7000,
+                min: 25,
+                max: 105,
                 grid: {
                   color: 'rgba(148, 163, 184, 0.08)',
                 },
                 ticks: {
                   color: '#94a3b8',
                   font: { family: "'JetBrains Mono', monospace", size: 10 },
-                  callback: (value) => {
-                    if ([1, 10, 50, 100, 500, 1000, 5000].includes(Number(value))) {
-                      return Number(value).toLocaleString('en-US');
-                    }
-                    return null;
-                  },
+                  stepSize: 10,
+                  callback: (value) => `${value}`,
                 },
                 title: {
                   display: true,
