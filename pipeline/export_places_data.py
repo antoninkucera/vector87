@@ -66,90 +66,14 @@ def mean_of_valid(values: list[float | None]) -> float | None:
 
 def generate_world_map_svg_paths() -> dict[str, str]:
     """Generuje a cachuje SVG path stringy pro mapu světa v equirectangular projekci (960x500)."""
-    if MAP_PATHS_OUTPUT.exists():
-        with open(MAP_PATHS_OUTPUT, "r", encoding="utf-8") as f:
-            return json.load(f)
+    if not MAP_PATHS_OUTPUT.exists():
+        import subprocess
+        print("[Places Exporter] Generating SVG map paths via scripts/generate-map-paths.mjs...")
+        script_path = ROOT_DIR / "scripts" / "generate-map-paths.mjs"
+        subprocess.run(["node", str(script_path)], check=True)
 
-    print("Fetching world topology (world-110m) and ISO codes...")
-    topo_url = "https://unpkg.com/world-atlas@2.0.2/countries-110m.json"
-    iso_url = "https://raw.githubusercontent.com/lukes/ISO-3166-Countries-with-Regional-Codes/master/all/all.json"
-
-    with httpx.Client(timeout=30.0) as client:
-        topo = client.get(topo_url).json()
-        iso_list = client.get(iso_url).json()
-
-    num_to_a3 = {item["country-code"].zfill(3): item["alpha-3"] for item in iso_list}
-    # Kosovo manuální doplnění
-    num_to_a3["-99"] = "XKX"
-
-    scale = topo["transform"]["scale"]
-    translate = topo["transform"]["translate"]
-    arcs = topo["arcs"]
-
-    def decode_arc(arc_idx: int) -> list[tuple[float, float]]:
-        raw_arc = arcs[~arc_idx] if arc_idx < 0 else arcs[arc_idx]
-        pts = []
-        x, y = 0, 0
-        for dx, dy in raw_arc:
-            x += dx
-            y += dy
-            pts.append((x * scale[0] + translate[0], y * scale[1] + translate[1]))
-        if arc_idx < 0:
-            pts.reverse()
-        return pts
-
-    def project(lon: float, lat: float, w: float = 960.0, h: float = 500.0) -> str:
-        # Equirectangular (Plate Carrée) projekce se středem na Greenwici
-        # Oříznutí pólů pro čistší poměr stran
-        lat_clamped = max(-84.0, min(84.0, lat))
-        px = round((lon + 180.0) * (w / 360.0), 1)
-        py = round((90.0 - lat_clamped) * (h / 180.0), 1)
-        return f"{px},{py}"
-
-    paths: dict[str, str] = {}
-    for idx, c in enumerate(topo["objects"]["countries"]["geometries"]):
-        raw_id = str(c.get("id", f"c_{idx}")).zfill(3)
-        iso3 = num_to_a3.get(raw_id)
-        if not iso3:
-            continue
-
-        geom_type = c["type"]
-        c_arcs = c["arcs"]
-        parts = []
-
-        if geom_type == "Polygon":
-            for ring in c_arcs:
-                ring_pts = []
-                for a_idx in ring:
-                    decoded = decode_arc(a_idx)
-                    if ring_pts and decoded:
-                        ring_pts.extend(decoded[1:])
-                    else:
-                        ring_pts.extend(decoded)
-                if ring_pts:
-                    parts.append("M" + "L".join(project(p[0], p[1]) for p in ring_pts) + "Z")
-        elif geom_type == "MultiPolygon":
-            for poly in c_arcs:
-                for ring in poly:
-                    ring_pts = []
-                    for a_idx in ring:
-                        decoded = decode_arc(a_idx)
-                        if ring_pts and decoded:
-                            ring_pts.extend(decoded[1:])
-                        else:
-                            ring_pts.extend(decoded)
-                    if ring_pts:
-                        parts.append("M" + "L".join(project(p[0], p[1]) for p in ring_pts) + "Z")
-
-        if parts:
-            paths[iso3] = " ".join(parts)
-
-    MAP_PATHS_OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-    with open(MAP_PATHS_OUTPUT, "w", encoding="utf-8") as f:
-        json.dump(paths, f, ensure_ascii=False)
-
-    print(f"Saved {len(paths)} projected country paths to {MAP_PATHS_OUTPUT}.")
-    return paths
+    with open(MAP_PATHS_OUTPUT, "r", encoding="utf-8") as f:
+        return json.load(f)
 
 
 
