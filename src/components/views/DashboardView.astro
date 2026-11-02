@@ -466,6 +466,90 @@ const dashboardJsonLd = {
       />
     </div>
 
+    <!-- Methodology Explainer: Decoded Indices -->
+    <div class="mb-8 p-5 rounded-xl bg-slate-900/60 border border-slate-800">
+      <div class="flex items-center gap-2 mb-1.5">
+        <span class="text-xs font-mono uppercase tracking-widest text-emerald-400">
+          {t.indicesExplainerTag}
+        </span>
+      </div>
+      <h3 class="text-sm font-semibold text-white mb-1">
+        {t.indicesExplainerTitle}
+      </h3>
+      <p class="text-xs text-slate-400 mb-4 leading-relaxed max-w-3xl">
+        {t.indicesExplainerSub}
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <!-- 1. AI Thriving Index -->
+        <div class="p-3.5 rounded-lg bg-slate-950/70 border border-slate-800/90 space-y-1.5 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-xs font-mono font-bold text-emerald-300">
+                🌟 {t.indexThrivingName}
+              </span>
+              <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-bold">
+                0–100
+              </span>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              {t.indexThrivingDef}
+            </p>
+          </div>
+          <div class="pt-2 border-t border-slate-800/80 text-[11px] font-mono text-slate-400 space-y-0.5">
+            <div>• <strong class="text-cyan-300 font-semibold">35 %</strong> {t.indexThrivingPartMarket}</div>
+            <div>• <strong class="text-emerald-300 font-semibold">40 %</strong> {t.indexThrivingPartLife}</div>
+            <div>• <strong class="text-indigo-300 font-semibold">25 %</strong> {t.indexThrivingPartReloc}</div>
+          </div>
+        </div>
+
+        <!-- 2. Livability & Stability -->
+        <div class="p-3.5 rounded-lg bg-slate-950/70 border border-slate-800/90 space-y-1.5 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-xs font-mono font-bold text-white">
+                🏡 {t.indexLivabilityName}
+              </span>
+              <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700 font-bold">
+                0–100
+              </span>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              {t.indexLivabilityDef}
+            </p>
+          </div>
+          <div class="pt-2 border-t border-slate-800/80 text-[11px] font-mono text-slate-400 space-y-0.5">
+            <div>• <strong>25 %</strong> {t.indexLifeSafe}</div>
+            <div>• <strong>25 %</strong> {t.indexLifeHouse}</div>
+            <div>• <strong>25 %</strong> {t.indexLifeEcon}</div>
+            <div>• <strong>25 %</strong> {t.indexLifeGov}</div>
+          </div>
+        </div>
+
+        <!-- 3. Ease of Relocation -->
+        <div class="p-3.5 rounded-lg bg-slate-950/70 border border-slate-800/90 space-y-1.5 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-xs font-mono font-bold text-cyan-300">
+                🛂 {t.indexRelocationName}
+              </span>
+              <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 font-bold">
+                0–100
+              </span>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              {t.indexRelocationDef}
+            </p>
+          </div>
+          <div class="pt-2 border-t border-slate-800/80 text-[11px] font-mono text-slate-400 space-y-0.5">
+            <div>• <strong class="text-emerald-400 font-semibold">90–98:</strong> {t.indexRelocTierEu}</div>
+            <div>• <strong class="text-cyan-400 font-semibold">75–85:</strong> {t.indexRelocTierPoints}</div>
+            <div>• <strong class="text-amber-400 font-semibold">30–40:</strong> {t.indexRelocTierLottery}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Spotlight Focus Destination Cards -->
     <div class="space-y-3">
       <div class="flex items-center justify-between">

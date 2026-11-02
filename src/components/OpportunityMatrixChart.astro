@@ -117,15 +117,17 @@ const labels = {
     lang === 'cs'
       ? 'Index kvality života & stability (0–100)'
       : 'Composite Livability & Stability Score (0–100)',
-  jobsWord: lang === 'cs' ? 'pozic' : 'roles',
-  firmsWord: lang === 'cs' ? 'firem' : 'firms',
-  relocWord: lang === 'cs' ? 'Přesun & víza' : 'Relocation Ease',
+  marketWord: lang === 'cs' ? 'AI & Data trh' : 'AI & Data Market',
+  jobsWord: lang === 'cs' ? 'otevřených pozic' : 'roles',
+  firmsWord: lang === 'cs' ? 'zaměstnavatelů' : 'employers',
+  relocWord: lang === 'cs' ? 'Dostupnost přesunu' : 'Relocation Ease',
   scoreWord: lang === 'cs' ? 'Kvalita života' : 'Livability Score',
-  thrivingWord: lang === 'cs' ? 'AI Thriving Index' : 'AI Thriving Index',
+  thrivingWord: lang === 'cs' ? 'Index uplatnění (AI Thriving)' : 'AI Thriving Index',
   rolesWord: lang === 'cs' ? 'Klíčové role' : 'Top Roles',
   safetyWord: lang === 'cs' ? 'Bezpečnost' : 'Safety',
   housingWord: lang === 'cs' ? 'Bydlení' : 'Housing',
   economyWord: lang === 'cs' ? 'Ekonomika' : 'Economy',
+  noteWord: lang === 'cs' ? 'Vízový režim' : 'Visa & Mobility',
   bubbleNote:
     lang === 'cs'
       ? 'Velikost bubliny odpovídá objemu otevřených AI/Data pozic v korporátních ATS systémech.'
@@ -312,12 +314,12 @@ const payload = JSON.stringify({
                     if (!rawItem) return '';
                     const jobsStr = rawItem.activeJobs?.toLocaleString('en-US') ?? '1';
                     return [
-                      ` • 🔥 AI & Data trh: ${jobsStr} ${labels.jobsWord} (${rawItem.hiringCompanies ?? 1} ${labels.firmsWord})`,
+                      ` • 🔥 ${labels.marketWord}: ${jobsStr} ${labels.jobsWord} (${rawItem.hiringCompanies ?? 1} ${labels.firmsWord})`,
                       ` • 🌟 ${labels.thrivingWord}: ${rawItem.thrivingScore} / 100`,
                       ` • 💼 ${labels.rolesWord}: ${rawItem.topRoles}`,
                       ` • 🛂 ${labels.relocWord}: ${rawItem.easeOfRelocation} / 100`,
                       ` • 🏡 ${labels.scoreWord}: ${rawItem.livability} / 100 (${labels.safetyWord}: ${rawItem.safety ?? '—'} | ${labels.housingWord}: ${rawItem.housing ?? '—'})`,
-                      ` • Poznámka: ${rawItem.note}`,
+                      ` • ℹ️ ${labels.noteWord}: ${rawItem.note}`,
                     ];
                   },
                 },
@@ -326,7 +328,7 @@ const payload = JSON.stringify({
             scales: {
               x: {
                 type: 'linear',
-                min: 25,
+                min: 0,
                 max: 105,
                 grid: {
                   color: 'rgba(148, 163, 184, 0.08)',
@@ -334,7 +336,7 @@ const payload = JSON.stringify({
                 ticks: {
                   color: '#94a3b8',
                   font: { family: "'JetBrains Mono', monospace", size: 10 },
-                  stepSize: 10,
+                  stepSize: 20,
                   callback: (value) => `${value}`,
                 },
                 title: {
@@ -345,15 +347,15 @@ const payload = JSON.stringify({
                 },
               },
               y: {
-                min: 55,
-                max: 90,
+                min: 0,
+                max: 100,
                 grid: {
                   color: 'rgba(148, 163, 184, 0.08)',
                 },
                 ticks: {
                   color: '#cbd5e1',
                   font: { family: "'JetBrains Mono', monospace", size: 10 },
-                  stepSize: 5,
+                  stepSize: 20,
                 },
                 title: {
                   display: true,
@@ -381,8 +383,10 @@ const payload = JSON.stringify({
             btnMarket?.classList.add('text-slate-400');
 
             chart.options.scales!.x!.type = 'linear';
-            (chart.options.scales!.x as any).min = 25;
+            (chart.options.scales!.x as any).min = 0;
             (chart.options.scales!.x as any).max = 105;
+            (chart.options.scales!.y as any).min = 0;
+            (chart.options.scales!.y as any).max = 100;
             chart.options.scales!.x!.title!.text = labels.xAxisReloc;
             chart.options.scales!.x!.ticks!.callback = (v: any) => `${v}`;
 
@@ -400,6 +404,8 @@ const payload = JSON.stringify({
             chart.options.scales!.x!.type = 'logarithmic';
             (chart.options.scales!.x as any).min = 1;
             (chart.options.scales!.x as any).max = 7500;
+            (chart.options.scales!.y as any).min = 0;
+            (chart.options.scales!.y as any).max = 100;
             chart.options.scales!.x!.title!.text = labels.xAxisJobs;
             chart.options.scales!.x!.ticks!.callback = (val: any) => {
               if ([1, 10, 50, 100, 500, 1000, 5000].includes(Number(val))) {
