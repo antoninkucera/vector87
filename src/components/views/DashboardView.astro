@@ -137,9 +137,15 @@ const dashboardJsonLd = {
       <div class="flex flex-wrap gap-3 shrink-0">
         <a
           href={getLocalePath(lang, 'roles')}
-          class="px-4 py-2.5 rounded-lg bg-cyan-400 text-slate-950 font-mono text-xs font-bold hover:bg-cyan-300 transition-colors"
+          class="px-4 py-2.5 rounded-lg bg-cyan-400 text-slate-950 font-mono text-xs font-bold hover:bg-cyan-300 transition-colors shadow-lg shadow-cyan-950/50"
         >
           {t.ctaRoles}
+        </a>
+        <a
+          href="#vitality"
+          class="px-4 py-2.5 rounded-lg border border-slate-700 bg-slate-900/90 text-slate-200 font-mono text-xs font-semibold hover:border-cyan-400/50 hover:text-cyan-300 transition-colors"
+        >
+          {t.ctaMarket}
         </a>
         <a
           href={getLocalePath(lang, 'places')}
@@ -147,12 +153,35 @@ const dashboardJsonLd = {
         >
           <span>{t.ctaPlaces}</span>
         </a>
-        <a
-          href={getLocalePath(lang, 'cloud')}
-          class="px-4 py-2.5 rounded-lg border border-slate-700 bg-slate-900/90 text-slate-200 font-mono text-xs font-semibold hover:border-cyan-400/50 hover:text-cyan-300 transition-colors"
-        >
-          {t.ctaCloud}
-        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- KEY TAKEAWAYS / EXECUTIVE HIGHLIGHTS -->
+  <section class="mb-12">
+    <div class="mb-5">
+      <span class="text-xs font-mono uppercase tracking-widest text-cyan-400">EXECUTIVE BRIEF</span>
+      <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight mt-0.5">{t.takeawaysTitle}</h2>
+      <p class="text-xs text-slate-400 mt-1">{t.takeawaysSub}</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="p-5 rounded-xl panel-surface border border-slate-800 space-y-2 border-l-2 border-l-cyan-400">
+        <span class="text-[10px] font-mono uppercase tracking-wider text-cyan-400 font-semibold">{t.takeaway1Tag}</span>
+        <h3 class="text-base font-bold text-white">{t.takeaway1Title}</h3>
+        <p class="text-xs text-slate-300 leading-relaxed font-sans">{t.takeaway1Desc}</p>
+      </div>
+
+      <div class="p-5 rounded-xl panel-surface border border-slate-800 space-y-2 border-l-2 border-l-blue-400">
+        <span class="text-[10px] font-mono uppercase tracking-wider text-blue-400 font-semibold">{t.takeaway2Tag}</span>
+        <h3 class="text-base font-bold text-white">{t.takeaway2Title}</h3>
+        <p class="text-xs text-slate-300 leading-relaxed font-sans">{t.takeaway2Desc}</p>
+      </div>
+
+      <div class="p-5 rounded-xl panel-surface border border-slate-800 space-y-2 border-l-2 border-l-emerald-400">
+        <span class="text-[10px] font-mono uppercase tracking-wider text-emerald-400 font-semibold">{t.takeaway3Tag}</span>
+        <h3 class="text-base font-bold text-white">{t.takeaway3Title}</h3>
+        <p class="text-xs text-slate-300 leading-relaxed font-sans">{t.takeaway3Desc}</p>
       </div>
     </div>
   </section>
@@ -365,17 +394,32 @@ const dashboardJsonLd = {
           </div>
 
           <div class="p-4 rounded-xl panel-surface border border-slate-800">
-            <div class="text-[10px] font-mono uppercase text-slate-400 tracking-wider mb-1">{t.velocityMetricWoW}</div>
+            <div class="text-[10px] font-mono uppercase text-slate-400 tracking-wider mb-1">
+              {!time_series.has_mature_history
+                ? (lang === 'cs' ? 'Růst pokrytí (Baseline)' : 'Coverage Expansion (Baseline)')
+                : t.velocityMetricWoW}
+            </div>
             <div class="text-2xl font-bold font-mono text-cyan-300">
               {latestSnapshot.wow_growth_pct !== null && latestSnapshot.wow_growth_pct !== undefined
                 ? `${latestSnapshot.wow_growth_pct > 0 ? '+' : ''}${latestSnapshot.wow_growth_pct}%`
                 : '—'}
             </div>
-            <div class="text-[11px] text-slate-400 mt-0.5">{t.velocityMetricWoWSub}</div>
+            <div class="text-[11px] text-slate-400 mt-0.5">
+              {!time_series.has_mature_history
+                ? (lang === 'cs' ? 'zapojování ATS zdrojů v Q4 2026' : 'onboarding ATS sources in Q4 2026')
+                : t.velocityMetricWoWSub}
+            </div>
           </div>
         </div>
       </div>
     </div>
+
+    {!time_series.has_mature_history && (
+      <div class="mt-4 p-3 rounded-lg bg-slate-900/60 border border-slate-800 text-[11px] font-mono text-slate-400 flex items-start gap-2">
+        <span class="text-cyan-400 font-bold shrink-0">{lang === 'cs' ? 'ℹ POZNÁMKA K DATŮM:' : 'ℹ DATA NOTE:'}</span>
+        <span>{time_series.status_note[lang]}</span>
+      </div>
+    )}
   </section>
 
   <!-- 01.6: TOP IN-DEMAND CANONICAL ROLES SPOTLIGHT -->
@@ -992,6 +1036,77 @@ const dashboardJsonLd = {
             );
           })}
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: METHODOLOGY & DATA TRANSPARENCY -->
+  <section id="methodology" class="mb-14 scroll-mt-20 pt-8 border-t border-slate-800/80">
+    <div class="mb-6">
+      <span class="text-xs font-mono uppercase tracking-widest text-cyan-400">
+        {lang === 'cs' ? 'TRANSPARENTNOST & METODIKA' : 'METHODOLOGY & DATA INTEGRITY'}
+      </span>
+      <h2 class="text-2xl font-bold text-white tracking-tight mt-0.5">
+        {lang === 'cs' ? 'Jak data sbíráme a co z nich lze vyvodit' : 'How we collect data and how to interpret findings'}
+      </h2>
+      <p class="text-xs text-slate-400 mt-1">
+        {lang === 'cs'
+          ? 'Otevřené vysvětlení zdrojů, deduplikace, klasifikace rolí a metodických omezení.'
+          : 'Open documentation of data sourcing, deduplication, taxonomy mapping, and sample boundaries.'}
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-xs font-sans">
+      <!-- 1. Coverage & 508 Constituents -->
+      <div class="p-5 rounded-xl panel-surface border border-slate-800 space-y-2">
+        <div class="flex items-center gap-2 text-cyan-300 font-mono text-[11px] font-bold">
+          <span>01</span>
+          <span>{lang === 'cs' ? 'POKRYTÍ FIREM A S&P 500' : 'S&P 500 & COVERAGE'}</span>
+        </div>
+        <p class="text-slate-300 leading-relaxed">
+          {lang === 'cs'
+            ? 'Sledujeme kariérní portály korporací indexu S&P 500 (503 akciových titulů reprezentujících 500 společností), technologických scaleupů a vybraných evropských lídrů. Víceemisní firmy (např. Alphabet Class A a C) sdílejí jednotnou kariérní identitu Google a jsou deduplikovány.'
+            : 'We monitor corporate career portals of the S&P 500 index (503 equity tickers representing 500 unique corporate issuers), scaleups, and European index leaders. Multi-class companies (e.g., Alphabet Class A & C) share a unified employer identity and are deduplicated.'}
+        </p>
+      </div>
+
+      <!-- 2. Direct ATS Extraction -->
+      <div class="p-5 rounded-xl panel-surface border border-slate-800 space-y-2">
+        <div class="flex items-center gap-2 text-emerald-300 font-mono text-[11px] font-bold">
+          <span>02</span>
+          <span>{lang === 'cs' ? 'PŘÍMÝ SBĚR Z ATS' : 'DIRECT ATS EXTRACTION'}</span>
+        </div>
+        <p class="text-slate-300 leading-relaxed">
+          {lang === 'cs'
+            ? 'Data nepocházejí z agregátorů třetích stran, ale přímo z primárních ATS systémů (Workday, Greenhouse, Lever, SmartRecruiters, Taleo a vlastní kariérní weby firem). Každý záznam má ověřenou unikátní URL a datum zachycení.'
+            : 'Data is extracted directly from primary applicant tracking systems (Workday, Greenhouse, Lever, SmartRecruiters, Taleo, custom career portals) rather than resold job boards. Each position is validated by unique application URL and timestamp.'}
+        </p>
+      </div>
+
+      <!-- 3. Taxonomy & Skills Extraction -->
+      <div class="p-5 rounded-xl panel-surface border border-slate-800 space-y-2">
+        <div class="flex items-center gap-2 text-purple-300 font-mono text-[11px] font-bold">
+          <span>03</span>
+          <span>{lang === 'cs' ? 'TAXONOMIE & DOVEDNOSTI' : 'ROLE TAXONOMY & SKILLS'}</span>
+        </div>
+        <p class="text-slate-300 leading-relaxed">
+          {lang === 'cs'
+            ? 'Názvy inzerátů mapujeme na 21 kanonických rolí s deterministickým párováním dovedností podle ontologie dim_skills. Zmínka technologie v inzerátu vyjadřuje formální požadavek zaměstnavatele, nikoliv reálný tržní podíl instalované báze v produkci.'
+            : 'Job titles map to 21 canonical role profiles with deterministic skill ontology matching. Technology frequency reflects explicit employer requirements in job postings, not internal production market share or architectural purity.'}
+        </p>
+      </div>
+
+      <!-- 4. Limitations & Baselines -->
+      <div class="p-5 rounded-xl panel-surface border border-slate-800 space-y-2">
+        <div class="flex items-center gap-2 text-amber-300 font-mono text-[11px] font-bold">
+          <span>04</span>
+          <span>{lang === 'cs' ? 'OMEZENÍ & INICIAČNÍ FÁZE' : 'LIMITATIONS & BASELINE'}</span>
+        </div>
+        <p class="text-slate-300 leading-relaxed">
+          {lang === 'cs'
+            ? 'Longitudinální časové řady jsou v iniciační fázi (Q4 2026), kdy růst snapshotů odráží postupné zapojování nových firemních portálů. Inzeráty navíc mohou zaměstnavatelé průběžně uzavírat před dalším sběrem dat.'
+            : 'Longitudinal time-series reflect our initial baseline onboarding phase (Q4 2026), where snapshot growth measures pipeline expansion across enterprise portals. Live ATS links may close or expire between periodic ingestion cycles.'}
+        </p>
       </div>
     </div>
   </section>

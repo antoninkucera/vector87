@@ -88,9 +88,11 @@ const pageTitle =
     ? `${role.canonical_name}: Požadavky trhu, dovednosti & inzeráty | Vector87`
     : `${role.canonical_name}: Market Demand, Skills & Live Postings | Vector87`;
 
+const topSkillsSummary = role.top_skills.slice(0, 3).map((s) => s.skill_name).join(', ');
 const metaDescription =
-  role.synthesized_description[lang]?.[0] ||
-  `Quantitative market telemetry and skill requirements for ${role.canonical_name} across S&P 500 corporations.`;
+  lang === 'cs'
+    ? `${role.canonical_name}: Přehled klíčových dovedností (${topSkillsSummary}), reálné inzeráty firem a tržní požadavky na Vector87.`
+    : `${role.canonical_name}: Essential skills (${topSkillsSummary}), hiring corporations, live job postings, and market profile on Vector87.`;
 
 const roleDetailGraph = {
   '@context': 'https://schema.org',
@@ -175,6 +177,38 @@ const roleDetailGraph = {
       <p class="text-base sm:text-lg text-slate-300 leading-relaxed font-light">
         {role.synthesized_description[lang][0]}
       </p>
+
+      <!-- Quick Executive Answer / Search Intent Box -->
+      <div class="p-4 rounded-xl bg-slate-900/70 border border-slate-800/90 text-xs text-slate-300 space-y-2">
+        <div class="font-semibold text-white flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+          <span>
+            {lang === 'cs'
+              ? `Stručný přehled: Co obnáší ${role.canonical_name} a co firmy požadují?`
+              : `Executive Summary: What does a ${role.canonical_name} do and what is required?`}
+          </span>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1 text-[11px] font-mono text-slate-400">
+          <div>
+            <span class="text-slate-500 uppercase block text-[10px]">{lang === 'cs' ? 'Klíčové dovednosti' : 'Top Skills'}:</span>
+            <span class="text-cyan-300 font-medium">
+              {role.top_skills.slice(0, 3).map((s) => s.skill_name).join(', ')}
+            </span>
+          </div>
+          <div>
+            <span class="text-slate-500 uppercase block text-[10px]">{lang === 'cs' ? 'Hlavní stack' : 'Tech Stack'}:</span>
+            <span class="text-emerald-300 font-medium">
+              {role.top_technologies.slice(0, 3).map((t) => t.skill_name).join(', ')}
+            </span>
+          </div>
+          <div>
+            <span class="text-slate-500 uppercase block text-[10px]">{lang === 'cs' ? 'Přední zaměstnavatelé' : 'Top Employers'}:</span>
+            <span class="text-slate-200">
+              {role.top_companies.slice(0, 3).map((c) => c.company_name).join(', ')}
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- KPI Grid -->
@@ -216,7 +250,7 @@ const roleDetailGraph = {
       <div class="p-4 rounded-xl panel-surface border border-slate-800">
         <div class="text-[10px] font-mono uppercase text-slate-400 tracking-wider mb-1">{t.kpiExpansion}</div>
         <div class="text-2xl font-bold font-mono text-purple-300">
-          {role.expansion_index_pct ? `+${role.expansion_index_pct}%` : 'N/A'}
+          {role.expansion_index_pct ? `${role.expansion_index_pct}%` : 'N/A'}
         </div>
         <div class="text-[11px] text-slate-400 mt-0.5">{t.kpiExpansionSub}</div>
       </div>
@@ -377,9 +411,16 @@ const roleDetailGraph = {
   <section class="mb-12">
     <div class="mb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
       <div>
-        <span class="text-xs font-mono uppercase tracking-widest text-cyan-400">03 // LIVE ATS SPECIMENS</span>
+        <span class="text-xs font-mono uppercase tracking-widest text-cyan-400">
+          {lang === 'cs' ? 'UKÁZKY REÁLNÝCH POZIC' : 'ACTIVE ENTERPRISE OPENINGS'}
+        </span>
         <h2 class="text-2xl font-bold text-white tracking-tight mt-1">{t.postingsTitle}</h2>
         <p class="text-xs sm:text-sm text-slate-400 mt-1">{t.postingsSub}</p>
+        <p class="text-[11px] text-slate-500 mt-0.5">
+          {lang === 'cs'
+            ? '⚡ Ukázka inzerátů zachycených při posledním sběru dat. Portály zaměstnavatelů mohou nabídky průběžně uzavírat či archivovat.'
+            : '⚡ Representative postings captured during the latest pipeline run. Employer ATS portals may close or expire listings dynamically.'}
+        </p>
       </div>
       <span class="text-xs font-mono text-slate-400">
         {role.sample_postings?.length || 0} {lang === 'cs' ? 'aktivních pozic' : 'active openings'}

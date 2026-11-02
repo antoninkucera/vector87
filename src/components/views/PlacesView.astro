@@ -13,9 +13,15 @@ const t = ui[lang].places;
 
 const { meta, pillars, countries } = placesData;
 
-// Seřazení všech 217 zemí podle výchozího kompozitního skóre
+// Seřazení všech 217 zemí podle výchozího kompozitního skóre (nekompletní data N/A na konec)
 const allCountries = [...countries];
-allCountries.sort((a, b) => (b.pillar_scores.composite_score ?? 0) - (a.pillar_scores.composite_score ?? 0));
+allCountries.sort((a, b) => {
+  const scoreA = a.pillar_scores.composite_score;
+  const scoreB = b.pillar_scores.composite_score;
+  if (scoreA === null || scoreA === undefined) return 1;
+  if (scoreB === null || scoreB === undefined) return -1;
+  return scoreB - scoreA;
+});
 const allCountriesMap = Object.fromEntries(countries.map((c) => [c.country_code_alpha3, c]));
 
 // Pomocná funkce pro určení barvy podle skóre
@@ -213,6 +219,7 @@ const placesJsonLd = {
           <input
             type="range"
             id="slider-safety"
+            aria-label={t.pillars.safety}
             min="0"
             max="100"
             value="25"
@@ -235,6 +242,7 @@ const placesJsonLd = {
           <input
             type="range"
             id="slider-housing"
+            aria-label={t.pillars.housing}
             min="0"
             max="100"
             value="25"
@@ -257,6 +265,7 @@ const placesJsonLd = {
           <input
             type="range"
             id="slider-economy"
+            aria-label={t.pillars.economy}
             min="0"
             max="100"
             value="25"
@@ -279,6 +288,7 @@ const placesJsonLd = {
           <input
             type="range"
             id="slider-governance"
+            aria-label={t.pillars.governance}
             min="0"
             max="100"
             value="25"
@@ -396,25 +406,25 @@ const placesJsonLd = {
 
         <div class="flex items-center gap-1.5 text-xs font-mono overflow-x-auto w-full md:w-auto pb-1 md:pb-0">
           <button data-filter="all" class="filter-btn px-3 py-1 rounded-md bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 whitespace-nowrap">
-            ALL ({meta.total_countries})
+            {t.filterAll} ({meta.total_countries})
           </button>
           <button data-filter="focus" class="filter-btn px-3 py-1 rounded-md bg-slate-800/80 text-slate-400 hover:text-white border border-slate-700/60 whitespace-nowrap">
-            FOCUS ({meta.focus_countries_count})
+            {t.filterFocus} ({meta.focus_countries_count})
           </button>
           <button data-filter="tech" class="filter-btn px-3 py-1 rounded-md bg-slate-800/80 text-slate-400 hover:text-white border border-slate-700/60 whitespace-nowrap">
             🔥 {t.techJobsFilterLabel}
           </button>
           <button data-filter="eu" class="filter-btn px-3 py-1 rounded-md bg-slate-800/80 text-slate-400 hover:text-white border border-slate-700/60 whitespace-nowrap">
-            EU
+            {t.filterEu}
           </button>
           <button data-filter="europe" class="filter-btn px-3 py-1 rounded-md bg-slate-800/80 text-slate-400 hover:text-white border border-slate-700/60 whitespace-nowrap">
-            EUROPE
+            {t.filterEurope}
           </button>
           <button data-filter="americas" class="filter-btn px-3 py-1 rounded-md bg-slate-800/80 text-slate-400 hover:text-white border border-slate-700/60 whitespace-nowrap">
-            AMERICAS
+            {t.filterAmericas}
           </button>
           <button data-filter="asia" class="filter-btn px-3 py-1 rounded-md bg-slate-800/80 text-slate-400 hover:text-white border border-slate-700/60 whitespace-nowrap">
-            ASIA
+            {t.filterAsia}
           </button>
         </div>
       </div>
@@ -424,27 +434,31 @@ const placesJsonLd = {
         <table class="w-full text-left border-collapse text-xs">
           <thead>
             <tr class="bg-slate-950/90 border-b border-slate-800 font-mono text-slate-400 uppercase tracking-wider text-[11px]">
-              <th class="py-3 px-4 w-12 text-center">#</th>
-              <th class="py-3 px-4">Country</th>
-              <th class="py-3 px-4 text-center">Score</th>
-              <th class="py-3 px-4 text-right">{t.colTechJobs}</th>
-              <th class="py-3 px-4 text-right">{t.colRelocation}</th>
-              <th class="py-3 px-4 text-right">Safety</th>
-              <th class="py-3 px-4 text-right">Housing</th>
-              <th class="py-3 px-4 text-right">Economy</th>
-              <th class="py-3 px-4 text-right">Governance</th>
-              <th class="py-3 px-4 text-center w-10"></th>
+              <th scope="col" class="py-3 px-4 w-12 text-center" title="Rank">{t.thRank}</th>
+              <th scope="col" class="py-3 px-4">{t.thCountry}</th>
+              <th scope="col" class="py-3 px-4 text-center">{t.thScore}</th>
+              <th scope="col" class="py-3 px-4 text-right">{t.colTechJobs}</th>
+              <th scope="col" class="py-3 px-4 text-right">{t.colRelocation}</th>
+              <th scope="col" class="py-3 px-4 text-right">{t.thSafety}</th>
+              <th scope="col" class="py-3 px-4 text-right">{t.thHousing}</th>
+              <th scope="col" class="py-3 px-4 text-right">{t.thEconomy}</th>
+              <th scope="col" class="py-3 px-4 text-right">{t.thGovernance}</th>
+              <th scope="col" class="py-3 px-4 text-center w-10" title={t.thDetails}><span class="sr-only">{t.thDetails}</span></th>
             </tr>
           </thead>
           <tbody id="ranking-tbody" class="divide-y divide-slate-800/60 font-mono">
             {allCountries.map((country, idx) => {
               const scores = country.pillar_scores;
-              const comp = scores.composite_score ?? 0;
-              let badgeColor = 'bg-slate-800/80 text-slate-300 border-slate-700/50';
-              if (comp >= 80) badgeColor = 'bg-emerald-950 text-emerald-300 border-emerald-700/50';
-              else if (comp >= 70) badgeColor = 'bg-cyan-950 text-cyan-300 border-cyan-700/50';
-              else if (comp >= 60) badgeColor = 'bg-blue-950 text-blue-300 border-blue-700/50';
-              else if (comp >= 50) badgeColor = 'bg-indigo-950 text-indigo-300 border-indigo-700/50';
+              const hasScore = scores.composite_score !== null && scores.composite_score !== undefined;
+              const comp = hasScore ? scores.composite_score! : null;
+              let badgeColor = 'bg-slate-900 text-slate-500 border-slate-800';
+              if (comp !== null) {
+                if (comp >= 80) badgeColor = 'bg-emerald-950 text-emerald-300 border-emerald-700/50';
+                else if (comp >= 70) badgeColor = 'bg-cyan-950 text-cyan-300 border-cyan-700/50';
+                else if (comp >= 60) badgeColor = 'bg-blue-950 text-blue-300 border-blue-700/50';
+                else if (comp >= 50) badgeColor = 'bg-indigo-950 text-indigo-300 border-indigo-700/50';
+                else badgeColor = 'bg-slate-800/80 text-slate-300 border-slate-700/50';
+              }
 
               return (
                 <tr
@@ -454,9 +468,10 @@ const placesJsonLd = {
                   data-eu={country.is_eu ? 'true' : 'false'}
                   data-tech={country.tech_market?.active_jobs ? 'true' : 'false'}
                   data-continent={country.continent}
+                  data-current-score={comp !== null ? comp : -1}
                 >
                   <td class="py-3.5 px-4 text-center font-bold text-slate-500 rank-cell group-hover:text-cyan-400">
-                    {idx + 1}
+                    {hasScore ? idx + 1 : '—'}
                   </td>
                   <td class="py-3.5 px-4 font-sans font-medium text-white flex items-center gap-2">
                     <span class="font-mono text-xs text-slate-400">{country.country_code_alpha2}</span>
@@ -474,7 +489,7 @@ const placesJsonLd = {
                   </td>
                   <td class="py-3.5 px-4 text-center">
                     <span class={`inline-block px-2.5 py-0.5 rounded font-bold border score-cell ${badgeColor}`}>
-                      {comp.toFixed(1)}
+                      {comp !== null ? comp.toFixed(1) : 'N/A'}
                     </span>
                   </td>
                   <td class="py-3.5 px-4 text-right font-mono">
@@ -705,46 +720,66 @@ const placesJsonLd = {
       const s = c.pillar_scores;
       let weightedSum = 0;
       let activeWeight = 0;
+      let validPillarsCount = 0;
 
-      if (s.safety !== null && wSafe > 0) {
-        weightedSum += s.safety * wSafe;
-        activeWeight += wSafe;
+      if (s.safety !== null) {
+        validPillarsCount++;
+        if (wSafe > 0) {
+          weightedSum += s.safety * wSafe;
+          activeWeight += wSafe;
+        }
       }
-      if (s.housing !== null && wHouse > 0) {
-        weightedSum += s.housing * wHouse;
-        activeWeight += wHouse;
+      if (s.housing !== null) {
+        validPillarsCount++;
+        if (wHouse > 0) {
+          weightedSum += s.housing * wHouse;
+          activeWeight += wHouse;
+        }
       }
-      if (s.economy !== null && wEcon > 0) {
-        weightedSum += s.economy * wEcon;
-        activeWeight += wEcon;
+      if (s.economy !== null) {
+        validPillarsCount++;
+        if (wEcon > 0) {
+          weightedSum += s.economy * wEcon;
+          activeWeight += wEcon;
+        }
       }
-      if (s.governance !== null && wGov > 0) {
-        weightedSum += s.governance * wGov;
-        activeWeight += wGov;
+      if (s.governance !== null) {
+        validPillarsCount++;
+        if (wGov > 0) {
+          weightedSum += s.governance * wGov;
+          activeWeight += wGov;
+        }
       }
 
-      const score = activeWeight > 0 ? (weightedSum / activeWeight) : 0;
-      row.dataset.currentScore = score;
+      const hasValidScore = validPillarsCount >= 3 && activeWeight > 0;
+      const score = hasValidScore ? (weightedSum / activeWeight) : null;
+      row.dataset.currentScore = score !== null ? score : -1;
 
       const scoreCell = row.querySelector('.score-cell');
-      scoreCell.textContent = score.toFixed(1);
 
-      if (score >= 80) {
-        scoreCell.className = 'inline-block px-2.5 py-0.5 rounded font-bold border score-cell bg-emerald-950 text-emerald-300 border-emerald-700/50';
-      } else if (score >= 70) {
-        scoreCell.className = 'inline-block px-2.5 py-0.5 rounded font-bold border score-cell bg-cyan-950 text-cyan-300 border-cyan-700/50';
-      } else if (score >= 60) {
-        scoreCell.className = 'inline-block px-2.5 py-0.5 rounded font-bold border score-cell bg-blue-950 text-blue-300 border-blue-700/50';
-      } else if (score >= 50) {
-        scoreCell.className = 'inline-block px-2.5 py-0.5 rounded font-bold border score-cell bg-indigo-950 text-indigo-300 border-indigo-700/50';
+      if (score === null) {
+        scoreCell.textContent = 'N/A';
+        scoreCell.className = 'inline-block px-2.5 py-0.5 rounded font-bold border score-cell bg-slate-900 text-slate-500 border-slate-800';
       } else {
-        scoreCell.className = 'inline-block px-2.5 py-0.5 rounded font-bold border score-cell bg-slate-800 text-slate-300 border-slate-700';
+        scoreCell.textContent = score.toFixed(1);
+        if (score >= 80) {
+          scoreCell.className = 'inline-block px-2.5 py-0.5 rounded font-bold border score-cell bg-emerald-950 text-emerald-300 border-emerald-700/50';
+        } else if (score >= 70) {
+          scoreCell.className = 'inline-block px-2.5 py-0.5 rounded font-bold border score-cell bg-cyan-950 text-cyan-300 border-cyan-700/50';
+        } else if (score >= 60) {
+          scoreCell.className = 'inline-block px-2.5 py-0.5 rounded font-bold border score-cell bg-blue-950 text-blue-300 border-blue-700/50';
+        } else if (score >= 50) {
+          scoreCell.className = 'inline-block px-2.5 py-0.5 rounded font-bold border score-cell bg-indigo-950 text-indigo-300 border-indigo-700/50';
+        } else {
+          scoreCell.className = 'inline-block px-2.5 py-0.5 rounded font-bold border score-cell bg-slate-800 text-slate-300 border-slate-700';
+        }
       }
 
       // Aktualizace barvy země na mapě
       const mapPath = document.getElementById(`map-${iso3}`);
       if (mapPath) {
-        if (score >= 80) mapPath.setAttribute('fill', '#10b981');
+        if (score === null) mapPath.setAttribute('fill', '#1e293b');
+        else if (score >= 80) mapPath.setAttribute('fill', '#10b981');
         else if (score >= 70) mapPath.setAttribute('fill', '#06b6d4');
         else if (score >= 60) mapPath.setAttribute('fill', '#3b82f6');
         else if (score >= 50) mapPath.setAttribute('fill', '#6366f1');
@@ -756,7 +791,8 @@ const placesJsonLd = {
     rows.sort((a, b) => parseFloat(b.dataset.currentScore) - parseFloat(a.dataset.currentScore));
     let visibleRank = 1;
     rows.forEach(r => {
-      r.querySelector('.rank-cell').textContent = visibleRank++;
+      const isScored = parseFloat(r.dataset.currentScore) >= 0;
+      r.querySelector('.rank-cell').textContent = isScored ? visibleRank++ : '—';
       tbody.appendChild(r);
     });
   }

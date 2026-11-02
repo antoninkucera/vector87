@@ -904,13 +904,22 @@ def export_market_data(db_path: Path | None = None, output_path: Path | None = N
         for cat_id, sid, sname, scat, cnt in role_skill_rows:
             role_skills_by_cat.setdefault(cat_id, []).append((sid, sname, scat, int(cnt)))
 
-        # Přednačtení top firem pro role
+        # Přednačtení top firem pro role (s deduplikací a sjednocením entit/tříd akcií např. Alphabet)
         role_comp_rows = con.execute(
             """
             SELECT
                 r.category_id,
-                comp.company_name,
-                COUNT(DISTINCT r.job_id) AS cnt
+                CASE 
+                    WHEN comp.company_id IN ('alphabet', 'alphabet_class_a', 'alphabet_class_c', 'google') THEN 'Google (Alphabet)'
+                    WHEN comp.company_id IN ('shell_nl', 'shell_uk') THEN 'Shell'
+                    WHEN comp.company_id IN ('astrazeneca_se', 'astrazeneca_uk') THEN 'AstraZeneca'
+                    WHEN comp.company_id IN ('ing_group', 'ing_belgium') THEN 'ING Group'
+                    WHEN comp.company_id IN ('aviva_ireland', 'aviva_uk') THEN 'Aviva'
+                    WHEN comp.company_id IN ('tietoevry', 'tietoevry_no') THEN 'Tietoevry'
+                    WHEN comp.company_id IN ('news_corp_class_a', 'news_corp_class_b') THEN 'News Corp'
+                    ELSE comp.company_name
+                END AS company_name,
+                COUNT(DISTINCT j.url) AS cnt
             FROM bridge_job_roles r
             JOIN fact_jobs j ON r.job_id = j.job_id
             JOIN dim_companies comp ON j.company_id = comp.company_id
@@ -969,7 +978,16 @@ def export_market_data(db_path: Path | None = None, output_path: Path | None = N
                     r.category_id,
                     j.job_id,
                     j.title_raw AS title,
-                    comp.company_name,
+                    CASE 
+                        WHEN comp.company_id IN ('alphabet', 'alphabet_class_a', 'alphabet_class_c', 'google') THEN 'Google (Alphabet)'
+                        WHEN comp.company_id IN ('shell_nl', 'shell_uk') THEN 'Shell'
+                        WHEN comp.company_id IN ('astrazeneca_se', 'astrazeneca_uk') THEN 'AstraZeneca'
+                        WHEN comp.company_id IN ('ing_group', 'ing_belgium') THEN 'ING Group'
+                        WHEN comp.company_id IN ('aviva_ireland', 'aviva_uk') THEN 'Aviva'
+                        WHEN comp.company_id IN ('tietoevry', 'tietoevry_no') THEN 'Tietoevry'
+                        WHEN comp.company_id IN ('news_corp_class_a', 'news_corp_class_b') THEN 'News Corp'
+                        ELSE comp.company_name
+                    END AS company_name,
                     comp.is_sp500,
                     COALESCE(
                         CASE 
@@ -984,7 +1002,17 @@ def export_market_data(db_path: Path | None = None, output_path: Path | None = N
                     j.url,
                     CAST(j.posted_at AS VARCHAR) AS posted_at,
                     ROW_NUMBER() OVER (
-                        PARTITION BY r.category_id, comp.company_name 
+                        PARTITION BY r.category_id, 
+                            CASE 
+                                WHEN comp.company_id IN ('alphabet', 'alphabet_class_a', 'alphabet_class_c', 'google') THEN 'Google (Alphabet)'
+                                WHEN comp.company_id IN ('shell_nl', 'shell_uk') THEN 'Shell'
+                                WHEN comp.company_id IN ('astrazeneca_se', 'astrazeneca_uk') THEN 'AstraZeneca'
+                                WHEN comp.company_id IN ('ing_group', 'ing_belgium') THEN 'ING Group'
+                                WHEN comp.company_id IN ('aviva_ireland', 'aviva_uk') THEN 'Aviva'
+                                WHEN comp.company_id IN ('tietoevry', 'tietoevry_no') THEN 'Tietoevry'
+                                WHEN comp.company_id IN ('news_corp_class_a', 'news_corp_class_b') THEN 'News Corp'
+                                ELSE comp.company_name
+                            END
                         ORDER BY 
                             CASE WHEN LOWER(j.title_raw) LIKE '%' || LOWER(REPLACE(REPLACE(cat.canonical_name, ' (AI/ML)', ''), ' / ', ' ')) || '%' THEN 0 ELSE 1 END,
                             j.posted_at DESC NULLS LAST,

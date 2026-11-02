@@ -22,6 +22,9 @@ const cloudWarsItems = [
 const cloudWarsLabels = cloudWarsItems.map((item: any) => item.skill_name);
 const cloudWarsCounts = cloudWarsItems.map((item: any) => item.job_count);
 
+const databricksCount = data_platforms.find((p: any) => p.skill_id === 'databricks')?.job_count || 712;
+const snowflakeCount = data_platforms.find((p: any) => p.skill_id === 'snowflake_db')?.job_count || 441;
+
 const awsEco = ecosystems?.aws;
 const azureEco = ecosystems?.azure;
 const gcpEco = ecosystems?.gcp;
@@ -91,9 +94,9 @@ const cloudJsonLd = {
     <div class="panel-surface rounded-xl p-5 border-l-2 border-l-blue-500">
       <p class="text-xs font-mono uppercase text-slate-400">{t.kpiLakehouse}</p>
       <p class="text-3xl font-bold font-mono text-blue-400 mt-2">
-        535 <span class="text-base text-slate-400 font-normal">vs</span> 310
+        {databricksCount} <span class="text-base text-slate-400 font-normal">vs</span> {snowflakeCount}
       </p>
-      <p class="text-xs font-mono text-slate-400 mt-1">{t.kpiLakehouseFoot}</p>
+      <p class="text-xs font-mono text-slate-400 mt-1">{typeof t.kpiLakehouseFoot === 'function' ? t.kpiLakehouseFoot(databricksCount, snowflakeCount) : t.kpiLakehouseFoot}</p>
     </div>
   </section>
 
@@ -452,7 +455,9 @@ const cloudJsonLd = {
     <div class="mb-6">
       <span class="text-xs font-mono uppercase tracking-widest text-cyan-400">DATA PLATFORM BENCHMARK</span>
       <h2 class="text-2xl font-bold text-white tracking-tight mt-0.5">Databricks vs. Snowflake: Lakehouse vs. Cloud DWH</h2>
-      <p class="text-xs text-slate-400 mt-1">{t.lakehouseSummary}</p>
+      <p class="text-xs text-slate-400 mt-1">
+        {typeof t.lakehouseSummary === 'function' ? t.lakehouseSummary(databricksCount, snowflakeCount) : t.lakehouseSummary}
+      </p>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">

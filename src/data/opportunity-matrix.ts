@@ -180,46 +180,46 @@ const RELOCATION_NOTES: Record<string, { en: string; cs: string }> = {
   },
 };
 
-const TECH_NOTES: Record<string, { en: string; cs: string }> = {
+const TECH_NOTES_QUAL: Record<string, { en: string; cs: string }> = {
   CZE: {
-    en: '190 open roles across 129 enterprise firms; premier Central European data engineering hub.',
-    cs: '190 otevřených rolí ve 129 firmách; přední středoevropský uzel pro dataře a AI inženýry.',
+    en: 'premier Central European data engineering hub.',
+    cs: 'přední středoevropský uzel pro dataře a AI inženýry.',
   },
   DEU: {
-    en: '230 open roles across 112 firms; massive industrial AI, automotive, and enterprise cloud market.',
-    cs: '230 otevřených rolí ve 112 firmách; silný průmyslový AI a cloudový trh se silnou poptávkou.',
+    en: 'massive industrial AI, automotive, and enterprise cloud market.',
+    cs: 'silný průmyslový AI a cloudový trh se silnou poptávkou.',
   },
   USA: {
-    en: '6,203 open roles across 722 enterprise firms; unrivaled AI venture capital and compensation.',
-    cs: '6 203 otevřených rolí v 722 korporacích; globální centrum AI inovací a nejvyšších mezd.',
+    en: 'unrivaled AI venture capital, tech ecosystems, and compensation.',
+    cs: 'globální centrum AI inovací, venture kapitálu a nejvyšších mezd.',
   },
   CAN: {
-    en: '779 open roles across 113 firms; major North American tech hub with vibrant AI research.',
-    cs: '779 otevřených rolí ve 113 firmách; druhý největší anglosaský trh s předním AI výzkumem.',
+    en: 'major North American tech hub with vibrant AI research (Toronto, Montreal).',
+    cs: 'druhý největší anglosaský trh s předním AI výzkumem (Toronto, Montreal).',
   },
   GBR: {
-    en: '346 open roles across 142 firms; leading European AI research clusters (DeepMind, Cambridge).',
-    cs: '346 otevřených rolí ve 142 firmách; klíčové evropské AI centrum s vysokou koncentrací korporací.',
+    en: 'leading European AI research clusters (DeepMind, Cambridge).',
+    cs: 'klíčové evropské AI centrum s vysokou koncentrací korporací.',
   },
   IRL: {
-    en: '59 open roles across 27 tech giants; European operational HQ for hyperscalers.',
-    cs: '59 otevřených rolí ve 27 korporacích; evropská centrála hyperscalerů a špičková kupní síla.',
+    en: 'European operational HQ for hyperscalers and top purchasing power.',
+    cs: 'evropská centrála hyperscalerů a špičková kupní síla.',
   },
   CHE: {
-    en: '26 open roles across 10 top firms; world-class AI research labs (Zurich) with premier salaries.',
-    cs: '26 otevřených rolí v 10 špičkových firmách; prémiové AI laboratoře (Curych) s nejvyššími platy.',
+    en: 'world-class AI research labs (Zurich) with premier salaries.',
+    cs: 'prémiové AI laboratoře (Curych) s nejvyššími platy v Evropě.',
   },
   NLD: {
-    en: '25 open roles across 12 firms; international tech ecosystem with high English fluency.',
-    cs: '25 otevřených rolí ve 12 firmách; mezinárodní technologická scéna v Amsterdamu.',
+    en: 'international tech ecosystem with high English fluency.',
+    cs: 'mezinárodní technologická scéna v Amsterdamu.',
   },
   ESP: {
-    en: '97 open roles across 27 firms; booming hub for remote engineers and tech nomads.',
-    cs: '97 otevřených rolí ve 27 firmách; rychle rostoucí tech uzel pro nomády a remote inženýry.',
+    en: 'booming hub for remote engineers and tech nomads.',
+    cs: 'rychle rostoucí tech uzel pro nomády a remote inženýry.',
   },
   POL: {
-    en: '113 open roles across 37 firms; large pool of elite competitive programmers and engineers.',
-    cs: '113 otevřených rolí ve 37 firmách; obrovský pool špičkových softwarových inženýrů.',
+    en: 'large pool of elite competitive programmers and engineers.',
+    cs: 'obrovský pool špičkových softwarových inženýrů.',
   },
 };
 
@@ -265,9 +265,14 @@ export const OPPORTUNITY_MATRIX_DATA: OpportunityCountry[] = (placesData.countri
       cs: 'Standardní evropská pracovní a pobytová práva.',
     };
 
-    const techNotes = TECH_NOTES[iso3] || {
-      en: `${activeJobs} active open AI/Data roles across ${hiringCompanies} enterprise employers.`,
-      cs: `${activeJobs} aktivních AI/Data pozic napříč ${hiringCompanies} korporátními zaměstnavateli.`,
+    const qual = TECH_NOTES_QUAL[iso3];
+    const techNotes = {
+      en: qual
+        ? `${activeJobs.toLocaleString('en-US')} open roles across ${hiringCompanies} firms; ${qual.en}`
+        : `${activeJobs.toLocaleString('en-US')} active open AI/Data roles across ${hiringCompanies} enterprise employers.`,
+      cs: qual
+        ? `${activeJobs.toLocaleString('en-US')} otevřených rolí v ${hiringCompanies} firmách; ${qual.cs}`
+        : `${activeJobs.toLocaleString('en-US')} aktivních AI/Data pozic napříč ${hiringCompanies} korporátními zaměstnavateli.`,
     };
 
     return {

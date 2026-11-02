@@ -96,11 +96,11 @@ def load_tech_jobs_metrics(jobs_db_path: Path) -> dict[str, dict[str, Any]]:
             "HU": "HUN", "HR": "HRV"
         }
 
-        # Počty aktivních pozic a zaměstnavatelů
+        # Počty aktivních pozic a zaměstnavatelů (striktně deduplikováno podle unikátních URL inzerátů)
         counts = con.execute("""
             SELECT 
                 country_code,
-                count(*) FILTER (WHERE is_active = TRUE) AS active_jobs,
+                COUNT(DISTINCT url) FILTER (WHERE is_active = TRUE) AS active_jobs,
                 count(DISTINCT company_id) AS hiring_companies
             FROM fact_jobs
             WHERE country_code IS NOT NULL
@@ -212,7 +212,7 @@ def export_places_data() -> None:
             economy_score = mean_of_valid([norm_gdp, norm_le])
             gov_score = mean_of_valid([norm_rol, norm_ge])
 
-            # Kompozitní skóre pro defaultní váhy (rovnoměrně přes dostupné pilíře)
+            # Kompozitní skóre pro defaultní váhy (pouze pokud jsou k dispozici alespoň 3 pilíře ze 4)
             available_scores = []
             if safety_score is not None:
                 available_scores.append(safety_score)
@@ -223,7 +223,12 @@ def export_places_data() -> None:
             if gov_score is not None:
                 available_scores.append(gov_score)
 
-            composite = round(sum(available_scores) / len(available_scores), 1) if available_scores else None
+            # Ochrana před zkreslením u mikrostátů (např. Gibraltar s pouze 1 pilířem má skóre N/A)
+            composite = (
+                round(sum(available_scores) / len(available_scores), 1)
+                if len(available_scores) >= 3
+                else None
+            )
 
             countries_list.append({
                 "country_code_alpha3": c_a3,
