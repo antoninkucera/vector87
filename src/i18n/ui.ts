@@ -117,6 +117,33 @@ export const ui = {
       viewCountryOnMap: 'View on map →',
       relocationScoreLabel: 'Relocation Ease',
 
+      indicesExplainerTag: '01.75 // METHODOLOGY: THREE COMPOSITE INDICES DECODED',
+      indicesExplainerTitle: 'Understanding the Metrics: How We Measure Where AI & Data Talent Thrives',
+      indicesExplainerSub:
+        'Our ranking combines enterprise career page telemetry from ai_data_jobs with public macroeconomic and institutional data from world_stats (World Bank, Eurostat, IEP).',
+      indexThrivingName: 'AI Thriving Index',
+      indexThrivingDef:
+        'Composite score indicating where tech & AI experts enjoy the best harmony of career opportunity, life quality, and legal freedom.',
+      indexThrivingPartMarket: 'AI/Data market volume & enterprise hiring density',
+      indexThrivingPartLife: 'Livability score (Safety, Housing, Economy, Governance)',
+      indexThrivingPartReloc: 'Ease of relocation and work authorization',
+      indexLivabilityName: 'Composite Livability Score',
+      indexLivabilityDef:
+        'Overall quality of life and institutional stability across four balanced public data pillars (customizable below).',
+      indexLifeSafe: 'Safety & Security (Global Peace Index, WGI)',
+      indexLifeHouse: 'Housing Affordability (Eurostat burden & price level)',
+      indexLifeEcon: 'Economy & Prosperity (GDP PPP per capita, longevity)',
+      indexLifeGov: 'Governance & Rule of Law (World Bank WGI)',
+      indexRelocationName: 'Ease of Relocation',
+      indexRelocationDef:
+        'Evaluation of legal barriers, visa friction, and work authorization pathways for international knowledge workers.',
+      indexRelocTierEu: 'EU/EEA freedom of movement & digital nomad visas',
+      indexRelocTierPoints: 'Bilateral & fast-track points systems (CH, UK, CAN)',
+      indexRelocTierLottery: 'Strict employer quotas & visa lotteries (e.g. US H-1B)',
+      techJobsFilterLabel: 'AI/DATA JOBS (27)',
+      colTechJobs: 'AI/Data Jobs',
+      colRelocation: 'Relocation',
+
       s2Tag: '02 // INFRASTRUCTURE & TOOLING',
       s2Title: 'Technology & Cloud Stack',
       s2Sub: 'Adoption of hyperscalers (AWS, GCP, Azure), modern data platforms, and core libraries',
@@ -619,6 +646,33 @@ export const ui = {
       exploreAllPlacesBtn: 'Prozkoumat všech 217 zemí a interaktivní mapu ↗',
       viewCountryOnMap: 'Zobrazit na mapě →',
       relocationScoreLabel: 'Dostupnost přesunu',
+
+      indicesExplainerTag: '01.75 // METODIKA: TŘI KOMPOZITNÍ INDEXY PŘEHLEDNĚ',
+      indicesExplainerTitle: 'Jak číst metriky: Kde se AI vývojářům a datovým expertům daří nejlépe',
+      indicesExplainerSub:
+        'Náš žebříček spojuje reálná data z korporátních kariérních portálů (ai_data_jobs) s makroekonomickými a institucionálními daty Světové banky, Eurostatu a IEP (world_stats).',
+      indexThrivingName: 'AI Thriving Index',
+      indexThrivingDef:
+        'Souhrnné skóre uplatnění: kde mají dataři a AI specialisté nejlepší poměr pracovních nabídek, životního standardu a právní svobody.',
+      indexThrivingPartMarket: 'Poptávka na trhu práce & hustota nabírajících korporací',
+      indexThrivingPartLife: 'Index kvality života (bezpečí, bydlení, kupní síla, právní stát)',
+      indexThrivingPartReloc: 'Snadnost legálního přesunu a pracovní povolení',
+      indexLivabilityName: 'Kvalita života (Livability Score)',
+      indexLivabilityDef:
+        'Životní standard napříč 4 pilíři veřejných statistik (na stránce /places s plně nastavitelnými vahami).',
+      indexLifeSafe: 'Bezpečnost & geopolitický klid (Global Peace Index, WGI)',
+      indexLifeHouse: 'Dostupnost bydlení & cenová hladina (Eurostat)',
+      indexLifeEcon: 'Ekonomika & kupní síla (HDP PPP na obyvatele, dožití)',
+      indexLifeGov: 'Právní stát & kvalita institucí (Světová banka WGI)',
+      indexRelocationName: 'Dostupnost přesunu (Ease of Relocation)',
+      indexRelocationDef:
+        'Míra byrokratických a právních bariér pro získání práce a legálního pobytu pro technologické experty.',
+      indexRelocTierEu: 'EU/EHP volný pohyb osob & digitální nomádská víza',
+      indexRelocTierPoints: 'Bilaterální dohody & bodové systémy (CH, UK, Kanada)',
+      indexRelocTierLottery: 'Přísné kvóty a loterie vázané na sponzoring (např. USA H-1B)',
+      techJobsFilterLabel: 'AI/DATA POZICE (27)',
+      colTechJobs: 'AI/Data trh',
+      colRelocation: 'Přesun & víza',
 
       s2Tag: '02 // INFRASTRUKTURA & NÁSTROJE',
       s2Title: 'Technologický a cloudový stack',

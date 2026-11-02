@@ -156,19 +156,19 @@ const placesJsonLd = {
               <span id="tooltip-peace" class="text-white font-medium"></span>
             </div>
             <div class="flex justify-between text-slate-300">
-              <span class="text-slate-400">Rule of Law:</span>
+              <span class="text-slate-400">{lang === 'cs' ? 'Právní stát (WGI):' : 'Rule of Law:'}</span>
               <span id="tooltip-rol" class="text-white font-medium"></span>
             </div>
             <div class="flex justify-between text-slate-300">
-              <span class="text-slate-400">Relocation Ease:</span>
+              <span class="text-slate-400">{lang === 'cs' ? 'Dostupnost přesunu:' : 'Relocation Ease:'}</span>
               <span id="tooltip-reloc" class="text-emerald-400 font-semibold"></span>
             </div>
             <div class="flex justify-between text-slate-300">
-              <span class="text-slate-400">Population:</span>
+              <span class="text-slate-400">{lang === 'cs' ? 'Populace:' : 'Population:'}</span>
               <span id="tooltip-pop" class="text-white font-medium"></span>
             </div>
             <div id="tooltip-tech-row" class="flex justify-between text-slate-300 pt-1.5 border-t border-slate-800/80 hidden">
-              <span class="text-slate-400">AI & Data Jobs:</span>
+              <span class="text-slate-400">{lang === 'cs' ? 'AI & Data trh:' : 'AI & Data Jobs:'}</span>
               <span id="tooltip-jobs" class="text-cyan-300 font-semibold"></span>
             </div>
           </div>
@@ -293,6 +293,92 @@ const placesJsonLd = {
     </div>
   </section>
 
+  <!-- Methodology Explainer: Decoded Indices -->
+  <section class="mb-10">
+    <div class="p-5 rounded-xl bg-slate-900/60 border border-slate-800">
+      <div class="flex items-center gap-2 mb-1.5">
+        <span class="text-xs font-mono uppercase tracking-widest text-emerald-400">
+          {t.indicesExplainerTag}
+        </span>
+      </div>
+      <h3 class="text-sm font-semibold text-white mb-1">
+        {t.indicesExplainerTitle}
+      </h3>
+      <p class="text-xs text-slate-400 mb-4 leading-relaxed max-w-3xl">
+        {t.indicesExplainerSub}
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <!-- 1. AI Thriving Index -->
+        <div class="p-3.5 rounded-lg bg-slate-950/70 border border-slate-800/90 space-y-1.5 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-xs font-mono font-bold text-emerald-300">
+                🌟 {t.indexThrivingName}
+              </span>
+              <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-bold">
+                0–100
+              </span>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              {t.indexThrivingDef}
+            </p>
+          </div>
+          <div class="pt-2 border-t border-slate-800/80 text-[11px] font-mono text-slate-400 space-y-0.5">
+            <div>• <strong class="text-cyan-300 font-semibold">35 %</strong> {t.indexThrivingPartMarket}</div>
+            <div>• <strong class="text-emerald-300 font-semibold">40 %</strong> {t.indexThrivingPartLife}</div>
+            <div>• <strong class="text-indigo-300 font-semibold">25 %</strong> {t.indexThrivingPartReloc}</div>
+          </div>
+        </div>
+
+        <!-- 2. Livability & Stability -->
+        <div class="p-3.5 rounded-lg bg-slate-950/70 border border-slate-800/90 space-y-1.5 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-xs font-mono font-bold text-white">
+                🏡 {t.indexLivabilityName}
+              </span>
+              <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700 font-bold">
+                0–100
+              </span>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              {t.indexLivabilityDef}
+            </p>
+          </div>
+          <div class="pt-2 border-t border-slate-800/80 text-[11px] font-mono text-slate-400 space-y-0.5">
+            <div>• <strong>25 %</strong> {t.indexLifeSafe}</div>
+            <div>• <strong>25 %</strong> {t.indexLifeHouse}</div>
+            <div>• <strong>25 %</strong> {t.indexLifeEcon}</div>
+            <div>• <strong>25 %</strong> {t.indexLifeGov}</div>
+          </div>
+        </div>
+
+        <!-- 3. Ease of Relocation -->
+        <div class="p-3.5 rounded-lg bg-slate-950/70 border border-slate-800/90 space-y-1.5 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-xs font-mono font-bold text-cyan-300">
+                🛂 {t.indexRelocationName}
+              </span>
+              <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 font-bold">
+                0–100
+              </span>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              {t.indexRelocationDef}
+            </p>
+          </div>
+          <div class="pt-2 border-t border-slate-800/80 text-[11px] font-mono text-slate-400 space-y-0.5">
+            <div>• <strong class="text-emerald-400 font-semibold">90–98:</strong> {t.indexRelocTierEu}</div>
+            <div>• <strong class="text-cyan-400 font-semibold">75–85:</strong> {t.indexRelocTierPoints}</div>
+            <div>• <strong class="text-amber-400 font-semibold">30–40:</strong> {t.indexRelocTierLottery}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- 4. Ranking Table of All Countries -->
   <section class="mb-16">
     <div class="bg-slate-900/60 border border-slate-800 rounded-xl overflow-hidden shadow-xl">
@@ -314,6 +400,9 @@ const placesJsonLd = {
           </button>
           <button data-filter="focus" class="filter-btn px-3 py-1 rounded-md bg-slate-800/80 text-slate-400 hover:text-white border border-slate-700/60 whitespace-nowrap">
             FOCUS ({meta.focus_countries_count})
+          </button>
+          <button data-filter="tech" class="filter-btn px-3 py-1 rounded-md bg-slate-800/80 text-slate-400 hover:text-white border border-slate-700/60 whitespace-nowrap">
+            🔥 {t.techJobsFilterLabel}
           </button>
           <button data-filter="eu" class="filter-btn px-3 py-1 rounded-md bg-slate-800/80 text-slate-400 hover:text-white border border-slate-700/60 whitespace-nowrap">
             EU
@@ -338,6 +427,8 @@ const placesJsonLd = {
               <th class="py-3 px-4 w-12 text-center">#</th>
               <th class="py-3 px-4">Country</th>
               <th class="py-3 px-4 text-center">Score</th>
+              <th class="py-3 px-4 text-right">{t.colTechJobs}</th>
+              <th class="py-3 px-4 text-right">{t.colRelocation}</th>
               <th class="py-3 px-4 text-right">Safety</th>
               <th class="py-3 px-4 text-right">Housing</th>
               <th class="py-3 px-4 text-right">Economy</th>
@@ -361,6 +452,7 @@ const placesJsonLd = {
                   data-iso3={country.country_code_alpha3}
                   data-focus={country.is_focus_country ? 'true' : 'false'}
                   data-eu={country.is_eu ? 'true' : 'false'}
+                  data-tech={country.tech_market?.active_jobs ? 'true' : 'false'}
                   data-continent={country.continent}
                 >
                   <td class="py-3.5 px-4 text-center font-bold text-slate-500 rank-cell group-hover:text-cyan-400">
@@ -384,6 +476,22 @@ const placesJsonLd = {
                     <span class={`inline-block px-2.5 py-0.5 rounded font-bold border score-cell ${badgeColor}`}>
                       {comp.toFixed(1)}
                     </span>
+                  </td>
+                  <td class="py-3.5 px-4 text-right font-mono">
+                    {country.tech_market?.active_jobs ? (
+                      <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-semibold bg-cyan-950/80 border border-cyan-600/40 text-cyan-300">
+                        🔥 {country.tech_market.active_jobs.toLocaleString('en-US')}
+                      </span>
+                    ) : (
+                      <span class="text-slate-600 text-xs">—</span>
+                    )}
+                  </td>
+                  <td class="py-3.5 px-4 text-right font-mono">
+                    {scores.ease_of_relocation !== null ? (
+                      <span class="text-emerald-400 font-semibold">{scores.ease_of_relocation}</span>
+                    ) : (
+                      <span class="text-slate-600 text-xs">—</span>
+                    )}
                   </td>
                   <td class="py-3.5 px-4 text-right text-slate-300 score-safety">
                     {scores.safety !== null ? scores.safety.toFixed(1) : '—'}
@@ -426,7 +534,7 @@ const placesJsonLd = {
 </Layout>
 
 <!-- Client Script: Interactive Map & Live Linked 100% Sliders -->
-<script is:inline define:vars={{ countriesData: countries }}>
+<script is:inline define:vars={{ countriesData: countries, pageLang: lang }}>
   const countries = countriesData;
   const countriesMap = new Map(countries.map(c => [c.country_code_alpha3, c]));
 
@@ -478,7 +586,8 @@ const placesJsonLd = {
 
       const tm = c.tech_market;
       if (tm && tm.active_jobs) {
-        ttJobs.textContent = `${tm.active_jobs.toLocaleString('en-US')} (${tm.hiring_companies} firem)`;
+        const firmsWord = pageLang === 'cs' ? 'zaměstnavatelů' : 'employers';
+        ttJobs.textContent = `${tm.active_jobs.toLocaleString('en-US')} (${tm.hiring_companies} ${firmsWord})`;
         ttTechRow?.classList.remove('hidden');
       } else {
         ttTechRow?.classList.add('hidden');
@@ -682,10 +791,12 @@ const placesJsonLd = {
       const text = row.textContent.toLowerCase();
       const isFocus = row.getAttribute('data-focus') === 'true';
       const isEu = row.getAttribute('data-eu') === 'true';
+      const isTech = row.getAttribute('data-tech') === 'true';
       const continent = row.getAttribute('data-continent');
 
       let matchesFilter = true;
       if (currentFilter === 'focus') matchesFilter = isFocus;
+      else if (currentFilter === 'tech') matchesFilter = isTech;
       else if (currentFilter === 'eu') matchesFilter = isEu;
       else if (currentFilter === 'europe') matchesFilter = continent === 'Europe';
       else if (currentFilter === 'americas') matchesFilter = continent === 'Americas';
