@@ -47,6 +47,7 @@ export const ui = {
       subtitle: 'Analytical Telemetry Hub',
       description:
         'Independent data hub tracking global demand for data and AI specialists across S&P 500 firms and Europe. Powered by a local DuckDB pipeline and Astro.',
+      methodology: 'Methodology',
       privacyPolicy: 'Privacy Policy',
       contact: 'Contact',
     },
@@ -115,9 +116,9 @@ export const ui = {
       velocityMetricRateSub: 'of open roles are fresh weekly intake',
       velocityMetricWoW: 'Coverage Expansion (Baseline)',
       velocityMetricWoWSub: 'onboarding of enterprise ATS portals',
-      topRolesTag: 'IN-DEMAND ROLES',
-      topRolesTitle: 'Most In-Demand AI & Data Roles',
-      topRolesSub: 'Highest hiring volume across S&P 500 firms with detailed skill requirements and profiles',
+      topRolesTag: 'ROLE TAXONOMY',
+      topRolesTitle: 'Most Frequent AI & Data Roles in Tracked Sample',
+      topRolesSub: 'Highest hiring volume across enterprise firms with detailed skill requirements and profiles',
       viewAllRolesBtn: 'EXPLORE ALL 21 CANONICAL ROLES →',
 
       placesTeaserTag: 'FUTURE TRACKER: OPPORTUNITY & LIVABILITY',
@@ -272,9 +273,9 @@ export const ui = {
       synthesisTitle: 'What this role looks like in practice',
       synthesisSub: 'SUMMARY FROM ACTIVE JOB POSTINGS',
       skillsTitle: 'Core Domain Competencies',
-      skillsSub: 'Methodologies & technical foundations (% penetration)',
+      skillsSub: 'Recognized mentions in detailed job postings (≥500 chars)',
       techTitle: 'Platforms, Frameworks & Tooling',
-      techSub: 'Infrastructure & tooling demanded in job specs (% penetration)',
+      techSub: 'Infrastructure & tooling recognized in detailed job postings (≥500 chars)',
       seniorityTitle: 'Seniority Level Breakdown',
       senioritySub: 'Corporate hierarchy distribution',
       companiesTitle: 'Top Hiring Enterprises',
@@ -629,6 +630,32 @@ export const ui = {
       filterAsia: 'ASIA',
       incompleteData: 'Insufficient Data (N/A)',
     },
+    methodology: {
+      pageTitle: 'Methodology, Data Integrity & Measurement Rules | Vector87',
+      pageDescription:
+        'Complete methodology of Vector87: unit definitions, primary vs. categorical roles, skill extraction heuristics, deduplication, and S&P 500 corpus coverage.',
+      tag: 'METHODOLOGY & DATA INTEGRITY',
+      title: 'Methodology & Data Measurement Rules',
+      lastUpdated: 'November 2026',
+      intro:
+        'Vector87 monitors active job postings across enterprise corporations (primarily S&P 500, supplemented by European index leaders and tech scaleups). Each snapshot includes a collection timestamp, source scope, and validation state. Below is our complete measurement framework to ensure transparency, reproducibility, and rigorous data integrity.',
+      s1Title: '1. Base Unit: Deduplicated Job Records vs. Hires',
+      s1Text:
+        'The fundamental base unit of Vector87 is a unique active job posting record in our database after applied deduplication. One posting does not necessarily equal one future hire: a single corporate requisition may cover multiple open headcounts, represent continuous evergreen hiring, or occasionally share vacancies across multiple recruitment URLs. Active counts measure open market signals, not the total number of individuals hired.',
+      s2Title: '2. Role Taxonomy: Primary Roles vs. Multilabel Categories',
+      s2Text:
+        'To ensure additive mathematical accuracy on aggregate dashboards, every job posting is mapped to exactly one primary canonical role (such that the sum across all primary roles equals 100% of unique jobs). For granular competency exploration, we also track multilabel categories where a single hybrid position (e.g., "Senior AI & Data Engineer") may match multiple related categories. When inspecting categorical totals, percentages reflect cross-category presence and can sum to more than 100%.',
+      s3Title: '3. Skill Extraction: Recognized Mentions in Detailed Descriptions',
+      s3Text:
+        'Skill and technology frequencies represent recognized text mentions, not guaranteed mandatory requirements or internal enterprise production adoption. Our baseline skill analysis is computed over postings with detailed descriptions (≥500 characters) to avoid skewing ratios with brief placeholder titles. Technology mentions in job requirements indicate formal applicant criteria, which may encompass evaluation, exploration, or legacy maintenance.',
+      s4Title: '4. S&P 500 Corpus & Employer Entity Deduplication',
+      s4Text:
+        'Our corporate universe tracks 500 unique corporate issuers of the S&P 500 index (representing 503 equity tickers). Multi-share class corporations (such as Alphabet Class A & C, Berkshire Hathaway Class A & B, News Corp) share a unified employer identity and are deduplicated to prevent artificial doubling of job counts. Supplemental layers include European market leaders and selected technology scaleups.',
+      s5Title: '5. Deduplication, Timestamps & Lifecycle Tracking',
+      s5Text:
+        'Job postings are tracked directly from primary corporate Applicant Tracking Systems (Workday, Greenhouse, Lever, SmartRecruiters, Taleo, custom career APIs). We record initial discovery (first_seen), continuous activity verification (last_verified_active), and requisition closing. A newly discovered requisition is not automatically an identically newly posted vacancy; longitudinal trend comparisons rely on mature multi-month cohorts to isolate true hiring momentum from pipeline expansion.',
+      ctaHome: '← Back to Dashboard',
+    },
     privacy: {
       pageTitle: 'Privacy Policy & Terms | Vector87',
       pageDescription: 'Privacy policy, data protection, analytics, and affiliate transparency on Vector87.com.',
@@ -678,6 +705,7 @@ export const ui = {
       subtitle: 'Analytical Telemetry Hub',
       description:
         'Nezávislý datový projekt mapující reálnou poptávku po datových a AI specialistech v S&P 500 a Evropě. Postaveno na lokální DuckDB pipeline a Astro SSG.',
+      methodology: 'Metodika',
       privacyPolicy: 'Zásady soukromí',
       contact: 'Kontakt',
     },
@@ -746,9 +774,9 @@ export const ui = {
       velocityMetricRateSub: 'otevřených rolí tvoří čerstvé týdenní inzeráty',
       velocityMetricWoW: 'Růst pokrytí databáze (iniciační fáze)',
       velocityMetricWoWSub: 'postupné zapojování podnikových ATS zdrojů',
-      topRolesTag: 'NEJŽÁDANĚJŠÍ ROLE',
-      topRolesTitle: 'Nejžádanější AI a datové role',
-      topRolesSub: 'Nejvyšší objem otevřených pozic v korporacích S&P 500 s přímým proklikem na profily a dovednosti',
+      topRolesTag: 'PŘEHLED ROLÍ',
+      topRolesTitle: 'Nejčetnější AI a datové role ve sledovaném vzorku',
+      topRolesSub: 'Role s nejvyšším objemem inzerátů ve sledovaných korporacích s přímým proklikem na profily a dovednosti',
       viewAllRolesBtn: 'PROZKOUMAT VŠECH 21 KANONICKÝCH ROLÍ →',
 
       placesTeaserTag: 'FUTURE TRACKER: PŘÍLEŽITOSTI PRO AI/DATA & ŽIVOTNÍ ÚROVEŇ',
@@ -903,9 +931,9 @@ export const ui = {
       synthesisTitle: 'Co tato role obnáší v praxi',
       synthesisSub: 'PŘEHLED Z INZERÁTŮ',
       skillsTitle: 'Klíčové odborné dovednosti',
-      skillsSub: 'Metodologie a doménové základy (% penetrace)',
+      skillsSub: 'Četnost rozpoznaných zmínek v inzerátech s popisem (≥ 500 znaků)',
       techTitle: 'Platformy, frameworky a nástroje',
-      techSub: 'Technologický stack vyžadovaný v zadáních (% penetrace)',
+      techSub: 'Technologický stack rozpoznaný v inzerátech s popisem (≥ 500 znaků)',
       seniorityTitle: 'Rozdělení podle seniority',
       senioritySub: 'Zastoupení úrovní zkušeností od juniorů po vedení',
       companiesTitle: 'Přední zaměstnavatelé',
@@ -1259,6 +1287,32 @@ export const ui = {
       filterAmericas: 'AMERIKA',
       filterAsia: 'ASIE',
       incompleteData: 'Nedostatek dat (N/A)',
+    },
+    methodology: {
+      pageTitle: 'Metodika, integrita dat a architektura sběru | Vector87',
+      pageDescription:
+        'Podrobná metodika Vector87: definice základní jednotky, primární role vs. kategorie, extrakce dovedností, deduplikace a vymezení vzorku firem.',
+      tag: 'METODIKA A INTEGRITA DAT',
+      title: 'Metodika a pravidla měření dat',
+      lastUpdated: 'Listopad 2026',
+      intro:
+        'Vector87 sleduje otevřené pracovní inzeráty velkých korporátních zaměstnavatelů (především indexu S&P 500, doplněného o evropské lídry a technologické scaleupy). Každý snapshot má jasné datum, rozsah zdrojů a informaci o úspěšném načtení. Zde uvádíme přesná pravidla měření, definice ukazatelů a limity dat pro zachování maximální důvěryhodnosti.',
+      s1Title: '1. Základní jednotka: Záznam inzerátu v databázi (nikoli počet zaměstnanců)',
+      s1Text:
+        'Základní jednotkou je unikátní záznam pracovního inzerátu po aplikované deduplikaci. Jeden inzerát nemusí odpovídat právě jednomu budoucímu zaměstnanci: může zastupovat více otevřených míst na stejné pozici, být dlouhodobě otevřenou pozicí (evergreen) nebo sdílet stejnou pozici napříč více kariérními URL. Počty pozic na webu vyjadřují počet zachycených inzertních signálů, nikoliv přesný počet nově nastupujících lidí.',
+      s2Title: '2. Klasifikace rolí: Primární role vs. víceznačné kategorie',
+      s2Text:
+        'Pro celkové součty a aditivní rozdělení trhu přiřazujeme každému inzerátu právě jednu primární roli (součet všech primárních rolí se rovná přesně 100 % unikátních inzerátů). Pro hlubší průzkum kompetencí evidujeme i širší víceznačné kategorie, kde hybridní inzerát (např. „Senior AI & Data Engineer“) může spadat do více příbuzných rolí současně. Součet přiřazení v kategoriích proto logicky přesahuje celkový počet inzerátů a jejich podíly se nesčítají do 100 %.',
+      s3Title: '3. Četnost dovedností: Rozpoznané zmínky v popisech ≥ 500 znaků',
+      s3Text:
+        'Četnost technologií a dovedností vyjadřuje rozpoznané textové zmínky v inzerátech, nikoliv zaručené povinné požadavky ani reálný podíl technologie v produkci firmy. Výchozí analýza dovedností je počítána z inzerátů s popisem délky alespoň 500 znaků, aby nedocházelo ke zkreslení inzeráty s pouhým titulkem. Zmínka technologie navíc může znamenat požadavek na znalost alternativy či migrace, nikoliv výhradní interní stack.',
+      s4Title: '4. Sledovaný vzorek: S&P 500 a deduplikace zaměstnavatelů',
+      s4Text:
+        'Sledujeme 500 unikátních emitentů indexu S&P 500 (odpovídajících 503 burzovním tickerům). Společnosti s více třídami akcií (např. Alphabet Class A a C, Berkshire Hathaway, News Corp) sdílejí jednotnou kariérní identitu zaměstnavatele a jsou v datech sloučeny, aby nedocházelo k umělému zdvojování nabídek. Doplňkově sledujeme vybrané evropské indexové lídry a technologické scaleupy.',
+      s5Title: '5. Životní cyklus inzerátu, časové řady a limity',
+      s5Text:
+        'Data stahujeme přímo z podnikových ATS systémů (Workday, Greenhouse, Lever, SmartRecruiters, Taleo a proprietární kariérní portály). U každé nabídky evidujeme datum prvního zachycení (first_seen), průběžné ověřování dostupnosti a ukončení inzerátu. Nově objevený inzerát není automaticky nově vypsanou pozicí; longitudinální srovnání vyžadují uzavřené víceměsíční kohorty, které oddělí skutečný pohyb trhu od postupného rozšiřování databáze.',
+      ctaHome: '← Zpět na úvodní stránku',
     },
     privacy: {
       pageTitle: 'Zásady ochrany soukromí | Vector87',

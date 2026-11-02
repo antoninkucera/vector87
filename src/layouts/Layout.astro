@@ -269,6 +269,9 @@ const { meta, market_vitality } = marketData;
           </p>
         </div>
         <div class="flex flex-wrap items-center gap-5 font-mono text-xs">
+          <a href={lang === 'en' ? '/methodology' : '/cs/methodology'} class="hover:text-cyan-300 transition-colors">
+            {t.footer.methodology}
+          </a>
           <a href={lang === 'en' ? '/privacy' : '/cs/privacy'} class="hover:text-cyan-300 transition-colors">
             {t.footer.privacyPolicy}
           </a>
