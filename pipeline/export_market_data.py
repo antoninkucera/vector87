@@ -855,6 +855,7 @@ def export_market_data(db_path: Path | None = None, output_path: Path | None = N
         }
 
         # 8. Analýza rolí (21 kanonických rolí + 2-odstavcová syntéza + skills + tech + firmy + odvětví)
+        # Rozlišujeme primární role (title_normalized, přesně 100% součet) a širší multilabel kategorii
         role_base_rows = con.execute(
             """
             SELECT
@@ -862,17 +863,19 @@ def export_market_data(db_path: Path | None = None, output_path: Path | None = N
                 c.canonical_name,
                 c.domain,
                 c.track,
-                COUNT(DISTINCT r.job_id) AS job_cnt,
-                COUNT(DISTINCT CASE WHEN comp.is_sp500 = TRUE THEN r.job_id END) AS sp500_cnt,
-                COUNT(DISTINCT CASE WHEN j.country_code = 'CZ' THEN r.job_id END) AS cz_cnt,
+                COUNT(DISTINCT CASE WHEN j.title_normalized = c.canonical_name THEN j.job_id END) AS primary_job_cnt,
+                COUNT(DISTINCT r.job_id) AS category_job_cnt,
+                COUNT(DISTINCT CASE WHEN LENGTH(COALESCE(j.description_raw, '')) >= 500 THEN r.job_id END) AS full_desc_cnt,
+                COUNT(DISTINCT CASE WHEN comp.is_sp500 = TRUE AND j.title_normalized = c.canonical_name THEN j.job_id END) AS sp500_prim_cnt,
+                COUNT(DISTINCT CASE WHEN j.country_code = 'CZ' AND j.title_normalized = c.canonical_name THEN j.job_id END) AS cz_prim_cnt,
                 ROUND(
-                    100.0 * COUNT(DISTINCT CASE WHEN j.seniority IN ('Senior', 'Staff / Principal', 'Lead / Manager', 'Executive') THEN r.job_id END)
-                    / NULLIF(COUNT(DISTINCT r.job_id), 0),
+                    100.0 * COUNT(DISTINCT CASE WHEN j.seniority IN ('Senior', 'Staff / Principal', 'Lead / Manager', 'Executive') AND j.title_normalized = c.canonical_name THEN j.job_id END)
+                    / NULLIF(COUNT(DISTINCT CASE WHEN j.title_normalized = c.canonical_name THEN j.job_id END), 0),
                     1
                 ) AS senior_plus_pct,
                 ROUND(
-                    100.0 * COUNT(DISTINCT CASE WHEN j.work_mode = 'Remote' THEN r.job_id END)
-                    / NULLIF(COUNT(DISTINCT CASE WHEN j.work_mode IS NOT NULL AND j.work_mode != 'Unspecified' THEN r.job_id END), 0),
+                    100.0 * COUNT(DISTINCT CASE WHEN j.work_mode = 'Remote' AND j.title_normalized = c.canonical_name THEN j.job_id END)
+                    / NULLIF(COUNT(DISTINCT CASE WHEN j.work_mode IS NOT NULL AND j.work_mode != 'Unspecified' AND j.title_normalized = c.canonical_name THEN j.job_id END), 0),
                     1
                 ) AS remote_pct
             FROM dim_job_categories c
@@ -880,11 +883,11 @@ def export_market_data(db_path: Path | None = None, output_path: Path | None = N
             LEFT JOIN fact_jobs j ON r.job_id = j.job_id AND j.is_active = TRUE
             LEFT JOIN dim_companies comp ON j.company_id = comp.company_id
             GROUP BY 1, 2, 3, 4
-            ORDER BY job_cnt DESC, c.canonical_name ASC
+            ORDER BY primary_job_cnt DESC, c.canonical_name ASC
             """
         ).fetchall()
 
-        # Přednačtení skillů pro role
+        # Přednačtení skillů pro role (spočteno pro inzeráty s podrobným popisem >= 500 znaků i celkem)
         role_skill_rows = con.execute(
             """
             SELECT
@@ -892,23 +895,25 @@ def export_market_data(db_path: Path | None = None, output_path: Path | None = N
                 s.skill_id,
                 s.skill_name,
                 s.category,
-                COUNT(DISTINCT bs.job_id) AS cnt
+                COUNT(DISTINCT bs.job_id) AS cnt_all,
+                COUNT(DISTINCT CASE WHEN LENGTH(COALESCE(j.description_raw, '')) >= 500 THEN bs.job_id END) AS cnt_full_desc
             FROM bridge_job_roles r
+            JOIN fact_jobs j ON r.job_id = j.job_id AND j.is_active = TRUE
             JOIN bridge_job_skills bs ON r.job_id = bs.job_id
             JOIN dim_skills s ON bs.skill_id = s.skill_id
             GROUP BY 1, 2, 3, 4
-            ORDER BY 1, cnt DESC
+            ORDER BY 1, cnt_full_desc DESC, cnt_all DESC
             """
         ).fetchall()
-        role_skills_by_cat: dict[str, list[tuple[str, str, str, int]]] = {}
-        for cat_id, sid, sname, scat, cnt in role_skill_rows:
-            role_skills_by_cat.setdefault(cat_id, []).append((sid, sname, scat, int(cnt)))
+        role_skills_by_cat: dict[str, list[tuple[str, str, str, int, int]]] = {}
+        for cat_id, sid, sname, scat, cnt_all, cnt_desc in role_skill_rows:
+            role_skills_by_cat.setdefault(cat_id, []).append((sid, sname, scat, int(cnt_all), int(cnt_desc)))
 
         # Přednačtení top firem pro role (s deduplikací a sjednocením entit/tříd akcií např. Alphabet)
         role_comp_rows = con.execute(
             """
             SELECT
-                r.category_id,
+                c.category_id,
                 CASE 
                     WHEN comp.company_id IN ('alphabet', 'alphabet_class_a', 'alphabet_class_c', 'google') THEN 'Google (Alphabet)'
                     WHEN comp.company_id IN ('shell_nl', 'shell_uk') THEN 'Shell'
@@ -920,8 +925,8 @@ def export_market_data(db_path: Path | None = None, output_path: Path | None = N
                     ELSE comp.company_name
                 END AS company_name,
                 COUNT(DISTINCT j.url) AS cnt
-            FROM bridge_job_roles r
-            JOIN fact_jobs j ON r.job_id = j.job_id
+            FROM dim_job_categories c
+            JOIN fact_jobs j ON j.title_normalized = c.canonical_name
             JOIN dim_companies comp ON j.company_id = comp.company_id
             WHERE j.is_active = TRUE
             GROUP BY 1, 2
@@ -938,11 +943,11 @@ def export_market_data(db_path: Path | None = None, output_path: Path | None = N
         role_sec_rows = con.execute(
             """
             SELECT
-                r.category_id,
+                c.category_id,
                 comp.sp500_sector,
-                COUNT(DISTINCT r.job_id) AS cnt
-            FROM bridge_job_roles r
-            JOIN fact_jobs j ON r.job_id = j.job_id
+                COUNT(DISTINCT j.job_id) AS cnt
+            FROM dim_job_categories c
+            JOIN fact_jobs j ON j.title_normalized = c.canonical_name
             JOIN dim_companies comp ON j.company_id = comp.company_id
             WHERE j.is_active = TRUE AND comp.is_sp500 = TRUE AND comp.sp500_sector IS NOT NULL
             GROUP BY 1, 2
@@ -957,11 +962,11 @@ def export_market_data(db_path: Path | None = None, output_path: Path | None = N
         role_sen_rows = con.execute(
             """
             SELECT
-                r.category_id,
+                c.category_id,
                 j.seniority,
-                COUNT(DISTINCT r.job_id) AS cnt
-            FROM bridge_job_roles r
-            JOIN fact_jobs j ON r.job_id = j.job_id
+                COUNT(DISTINCT j.job_id) AS cnt
+            FROM dim_job_categories c
+            JOIN fact_jobs j ON j.title_normalized = c.canonical_name
             WHERE j.is_active = TRUE AND j.seniority IS NOT NULL
             GROUP BY 1, 2
             """
@@ -1064,9 +1069,23 @@ def export_market_data(db_path: Path | None = None, output_path: Path | None = N
 
         roles_output: list[dict[str, Any]] = []
         for r in role_base_rows:
-            cat_id, can_name, domain, track, job_cnt, sp500_cnt, cz_cnt, sen_plus, rem_pct = r
-            job_cnt = int(job_cnt)
-            denom = max(job_cnt, 1)
+            (
+                cat_id,
+                can_name,
+                domain,
+                track,
+                primary_job_cnt,
+                cat_job_cnt,
+                full_desc_cnt,
+                sp500_cnt,
+                cz_cnt,
+                sen_plus,
+                rem_pct,
+            ) = r
+            primary_job_cnt = int(primary_job_cnt)
+            cat_job_cnt = int(cat_job_cnt)
+            full_desc_cnt = int(full_desc_cnt)
+            denom_desc = full_desc_cnt if full_desc_cnt > 0 else max(cat_job_cnt, 1)
 
             raw_items = role_skills_by_cat.get(cat_id, [])
             top_skills_list = [
@@ -1074,10 +1093,13 @@ def export_market_data(db_path: Path | None = None, output_path: Path | None = N
                     "skill_id": sid,
                     "skill_name": sname,
                     "category": scat,
-                    "job_count": cnt,
-                    "penetration_pct": round(100.0 * cnt / denom, 1),
+                    "job_count": cnt_desc if full_desc_cnt > 0 else cnt_all,
+                    "penetration_pct": round(100.0 * (cnt_desc if full_desc_cnt > 0 else cnt_all) / denom_desc, 1),
+                    "job_count_all": cnt_all,
+                    "penetration_all_pct": round(100.0 * cnt_all / max(cat_job_cnt, 1), 1),
+                    "job_count_full_desc": cnt_desc,
                 }
-                for sid, sname, scat, cnt in raw_items
+                for sid, sname, scat, cnt_all, cnt_desc in raw_items
                 if scat in SKILL_CATEGORIES
             ][:8]
 
@@ -1086,10 +1108,13 @@ def export_market_data(db_path: Path | None = None, output_path: Path | None = N
                     "skill_id": sid,
                     "skill_name": sname,
                     "category": scat,
-                    "job_count": cnt,
-                    "penetration_pct": round(100.0 * cnt / denom, 1),
+                    "job_count": cnt_desc if full_desc_cnt > 0 else cnt_all,
+                    "penetration_pct": round(100.0 * (cnt_desc if full_desc_cnt > 0 else cnt_all) / denom_desc, 1),
+                    "job_count_all": cnt_all,
+                    "penetration_all_pct": round(100.0 * cnt_all / max(cat_job_cnt, 1), 1),
+                    "job_count_full_desc": cnt_desc,
                 }
-                for sid, sname, scat, cnt in raw_items
+                for sid, sname, scat, cnt_all, cnt_desc in raw_items
                 if scat in TECH_CATEGORIES
             ][:8]
 
@@ -1099,10 +1124,10 @@ def export_market_data(db_path: Path | None = None, output_path: Path | None = N
                 or len(narrative.get("en", [])) != 2
                 or len(narrative.get("cs", [])) != 2
             ):
-                narrative = build_fallback_description(can_name, domain, job_cnt, top_skills_list, top_tech_list)
+                narrative = build_fallback_description(can_name, domain, primary_job_cnt, top_skills_list, top_tech_list)
 
             sec_tuples = role_secs_by_cat.get(cat_id, [])
-            sec_denom = max(sp500_cnt, 1)
+            sec_denom = max(int(sp500_cnt), 1)
             top_sectors = [
                 {
                     "sector": sec,
@@ -1113,17 +1138,18 @@ def export_market_data(db_path: Path | None = None, output_path: Path | None = N
             ]
 
             sen_map_for_role = role_sen_by_cat.get(cat_id, {})
+            sen_denom = max(primary_job_cnt, 1)
             sen_breakdown = [
                 {
                     "seniority": lvl,
                     "job_count": sen_map_for_role.get(lvl, 0),
-                    "share_pct": round(100.0 * sen_map_for_role.get(lvl, 0) / denom, 1) if job_cnt > 0 else 0.0,
+                    "share_pct": round(100.0 * sen_map_for_role.get(lvl, 0) / sen_denom, 1) if primary_job_cnt > 0 else 0.0,
                 }
                 for lvl in SENIORITY_ORDER
             ]
 
             occ_count = occupied_by_role.get(cat_id)
-            exp_index = round(100.0 * job_cnt / occ_count, 1) if (occ_count and occ_count > 0) else None
+            exp_index = round(100.0 * primary_job_cnt / occ_count, 1) if (occ_count and occ_count > 0) else None
 
             roles_output.append(
                 {
@@ -1131,8 +1157,11 @@ def export_market_data(db_path: Path | None = None, output_path: Path | None = N
                     "canonical_name": can_name,
                     "domain": domain,
                     "track": track,
-                    "job_count": job_cnt,
-                    "market_share_pct": round(100.0 * job_cnt / max(total_jobs, 1), 2),
+                    "job_count": primary_job_cnt,
+                    "market_share_pct": round(100.0 * primary_job_cnt / max(total_jobs, 1), 2),
+                    "category_job_count": cat_job_cnt,
+                    "full_desc_jobs_count": full_desc_cnt,
+                    "desc_coverage_pct": round(100.0 * full_desc_cnt / max(cat_job_cnt, 1), 1),
                     "sp500_job_count": int(sp500_cnt),
                     "cz_job_count": int(cz_cnt),
                     "occupied_seats": occ_count,

@@ -216,7 +216,15 @@ const roleDetailGraph = {
       <div class="p-4 rounded-xl panel-surface border border-slate-800">
         <div class="text-[10px] font-mono uppercase text-slate-400 tracking-wider mb-1">{t.kpiOpenJobs}</div>
         <div class="text-2xl font-bold font-mono text-cyan-300">{role.job_count.toLocaleString('en-US')}</div>
-        <div class="text-[11px] text-slate-400 mt-0.5">{t.kpiOpenJobsSub}</div>
+        <div class="text-[11px] text-slate-400 mt-0.5">
+          {role.category_job_count && role.category_job_count > role.job_count ? (
+            <span title={lang === 'cs' ? 'Celkem v kategorii včetně sekundárních shod v multilabelingu' : 'Total postings matching this role category including cross-discipline matches'}>
+              {role.category_job_count.toLocaleString('en-US')} {lang === 'cs' ? 'v kategorii' : 'in category'}
+            </span>
+          ) : (
+            t.kpiOpenJobsSub
+          )}
+        </div>
       </div>
 
       <div class="p-4 rounded-xl panel-surface border border-slate-800">
@@ -280,7 +288,10 @@ const roleDetailGraph = {
           <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
           <span>{t.skillsTitle}</span>
         </div>
-        <p class="text-xs text-slate-400 mt-1">{t.skillsSub}</p>
+        <p class="text-xs text-slate-400 mt-1">
+          {t.skillsSub}
+          {role.full_desc_jobs_count ? ` (${role.full_desc_jobs_count.toLocaleString('en-US')} ${lang === 'cs' ? 'pozic se vzorkem požadavků' : 'postings with detailed text'})` : ''}
+        </p>
       </div>
 
       {role.top_skills.length > 0 ? (
@@ -312,7 +323,10 @@ const roleDetailGraph = {
           <span class="w-2 h-2 rounded-full bg-blue-400"></span>
           <span>{t.techTitle}</span>
         </div>
-        <p class="text-xs text-slate-400 mt-1">{t.techSub}</p>
+        <p class="text-xs text-slate-400 mt-1">
+          {t.techSub}
+          {role.full_desc_jobs_count ? ` (${role.full_desc_jobs_count.toLocaleString('en-US')} ${lang === 'cs' ? 'pozic se vzorkem požadavků' : 'postings with detailed text'})` : ''}
+        </p>
       </div>
 
       {role.top_technologies.length > 0 ? (

@@ -358,6 +358,9 @@
           "domain",
           "track",
           "job_count",
+          "category_job_count",
+          "full_desc_jobs_count",
+          "desc_coverage_pct",
           "market_share_pct",
           "sp500_job_count",
           "cz_job_count",
@@ -376,6 +379,9 @@
           "domain": { "type": "string" },
           "track": { "type": "string" },
           "job_count": { "type": "integer" },
+          "category_job_count": { "type": "integer" },
+          "full_desc_jobs_count": { "type": "integer" },
+          "desc_coverage_pct": { "type": "number" },
           "market_share_pct": { "type": "number" },
           "sp500_job_count": { "type": "integer" },
           "cz_job_count": { "type": "integer" },
@@ -546,7 +552,10 @@
         "skill_name": { "type": "string" },
         "category": { "type": "string" },
         "job_count": { "type": "integer" },
-        "penetration_pct": { "type": "number" }
+        "penetration_pct": { "type": "number" },
+        "job_count_all": { "type": "integer" },
+        "penetration_all_pct": { "type": "number" },
+        "job_count_full_desc": { "type": "integer" }
       }
     }
   }
