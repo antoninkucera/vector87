@@ -56,6 +56,13 @@ const aboutJsonLd = {
 
         <div class="pt-3 flex flex-wrap gap-3">
           <a
+            href="mailto:antonio.kucera@gmail.com"
+            class="px-4 py-2.5 rounded-lg bg-emerald-400 text-slate-950 font-mono text-xs font-bold hover:bg-emerald-300 transition-colors inline-flex items-center gap-1.5"
+          >
+            <span>✉</span>
+            <span>{t.ctaEmail}</span>
+          </a>
+          <a
             href="https://akucera.eu"
             target="_blank"
             rel="noopener noreferrer"
@@ -90,17 +97,33 @@ const aboutJsonLd = {
         </div>
       </div>
 
-      <div class="lg:col-span-4 panel-surface rounded-xl p-6 space-y-4 border-t-2 border-t-cyan-400">
-        <div class="flex items-center justify-between">
-          <span class="font-mono text-xs uppercase text-cyan-400">{t.brandCardTitle}</span>
-          <span class="font-mono text-xs text-slate-500">EST. 1987 // TELEMETRY</span>
+      <div class="lg:col-span-4 space-y-5">
+        <div class="panel-surface rounded-xl p-6 space-y-4 border-t-2 border-t-cyan-400">
+          <div class="flex items-center justify-between">
+            <span class="font-mono text-xs uppercase text-cyan-400">{t.brandCardTitle}</span>
+            <span class="font-mono text-xs text-slate-500">EST. 1987 // TELEMETRY</span>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            {t.brandCardP1}
+          </p>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            {t.brandCardP2}
+          </p>
         </div>
-        <p class="text-xs text-slate-300 leading-relaxed">
-          {t.brandCardP1}
-        </p>
-        <p class="text-xs text-slate-300 leading-relaxed">
-          {t.brandCardP2}
-        </p>
+
+        <div id="contact" class="p-5 rounded-xl bg-slate-900/90 border border-slate-800 space-y-2.5">
+          <span class="text-[10px] font-mono uppercase tracking-widest text-emerald-400">{t.partnershipTag}</span>
+          <h3 class="text-sm font-bold text-white">{t.partnershipTitle}</h3>
+          <p class="text-xs text-slate-300 leading-relaxed">{t.partnershipDesc}</p>
+          <div class="pt-2">
+            <a
+              href="mailto:antonio.kucera@gmail.com"
+              class="text-xs font-mono text-cyan-300 hover:text-cyan-200 font-semibold underline break-all"
+            >
+              antonio.kucera@gmail.com
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </section>

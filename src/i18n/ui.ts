@@ -47,6 +47,8 @@ export const ui = {
       subtitle: 'Analytical Telemetry Hub',
       description:
         'Independent data hub tracking global demand for data and AI specialists across S&P 500 firms and Europe. Powered by a local DuckDB pipeline and Astro.',
+      privacyPolicy: 'Privacy Policy',
+      contact: 'Contact',
     },
     dashboard: {
       pageTitle: 'Vector87 | S&P 500 AI & Data Job Market Dashboard',
@@ -409,14 +411,31 @@ export const ui = {
       ctaFreeCourse: 'Start Free Course ↗',
       ctaCertGuide: 'Certification Blueprint ↗',
       ctaBook: 'View on Amazon ↗',
-      freeBadge: 'NO PAYWALL',
-      sponsorDisclaimer: 'Vector87 recommends exclusively industry-verified curricula. Outbound links may support this independent platform through partner affiliate programs at no extra cost to you.',
+      freeBadge: 'NO PAYWALL / FREE',
+      partnerBadge: 'PARTNER LINK',
+      sponsorDisclaimer: 'Vector87 recommends exclusively industry-verified curricula. Outbound links to paid platforms (Coursera, DataCamp, Amazon) may support this independent platform through partner affiliate programs at no extra cost to you.',
+      affiliateNoticeBadge: 'AFFILIATE & PARTNER DISCLOSURE',
+      affiliateNoticeTitle: 'Transparency in Educational Recommendations',
+      affiliateNoticeText:
+        'To support the independent operations and compute costs of Vector87, outbound links to paid learning platforms (such as Coursera, DataCamp, Amazon) are affiliate partner links. If you choose to enroll or purchase through them, we may earn a referral commission at no additional cost to you. We recommend exclusively verified programs aligned with real job postings. Free official curricula are completely non-commercial and unmonetized.',
+      curationTag: 'METHODOLOGY & PRACTITIONER VETTING',
+      curationTitle: 'How We Select & Verify Educational Programs',
+      curationSub: 'Grounding educational recommendations in empirical employer demand and 15+ years of data engineering practice',
+      curationPillar1Title: 'Empirical Skill Alignment',
+      curationPillar1Text:
+        'Every course and certification directly addresses core technology requirements identified in our telemetry of thousands of enterprise job postings (Python, SQL, distributed systems, BigQuery, dbt, RAG/LLM architectures).',
+      curationPillar2Title: 'Practitioner-Tested Curricula',
+      curationPillar2Text:
+        'Selected by Antonín Kučera (15+ years in data & BI leadership, Google Cloud / BigQuery specialist). We recommend programs we have either personally completed, certified in, or that are published directly by engineering teams at Google Cloud, DeepLearning.AI, OpenAI, Anthropic, and dbt Labs.',
+      curationPillar3Title: 'Zero-Cost Official Alternatives',
+      curationPillar3Text:
+        'We believe career growth should not depend on commercial paywalls. For every commercial track, we curate completely free, world-class official university and research curricula (Stanford, Harvard, OpenAI Academy, Hugging Face).',
       tracks: [
         {
           code: 'TRACK 01',
           title: 'Analytics & Modern BI Engineering',
           level: 'Foundational → Senior IC',
-          marketMetric: 'SQL & Semantic Layer required in 46% of analytical positions',
+          marketMetric: 'SQL & Semantic Layer form the fundamental core of analytical roles',
           focus:
             'Transitioning from ad-hoc reporting to engineering-grade analytics, semantic layers, and Data-Informed decision-making.',
           modules: [
@@ -430,7 +449,7 @@ export const ui = {
           code: 'TRACK 02',
           title: 'Cloud Data Engineering & Lakehouse Architecture',
           level: 'Mid → Staff / Architect',
-          marketMetric: 'Python & Cloud Lakehouse infrastructure required in 62% of data openings',
+          marketMetric: 'Python, SQL & Cloud Lakehouse architectures dominate modern data engineering openings',
           focus:
             'Building scalable data platforms, distributed ingestion/transformation pipelines, and resilient infrastructure.',
           modules: [
@@ -500,6 +519,12 @@ export const ui = {
       ctaLinkedin: 'LINKEDIN PROFILE ↗',
       ctaTwitter: 'X (@antkucera) ↗',
       ctaSubstack: 'SUBSTACK NEWSLETTER ↗',
+      ctaEmail: 'SEND EMAIL (antonio.kucera@gmail.com) ↗',
+      partnershipTag: 'PARTNERSHIPS & CONTACT',
+      partnershipTitle: 'Direct Contact & Partnerships',
+      partnershipDesc:
+        'For corporate partnerships, educational collaboration, data inquiries, speaking engagements, or editorial questions, feel free to reach out directly.',
+      contactEmail: 'antonio.kucera@gmail.com',
       brandCardTitle: 'WHY VECTOR 87?',
       brandCardP1:
         'Vector represents mathematical direction and magnitude: capturing where the data and AI job market is genuinely heading.',
@@ -604,6 +629,24 @@ export const ui = {
       filterAsia: 'ASIA',
       incompleteData: 'Insufficient Data (N/A)',
     },
+    privacy: {
+      pageTitle: 'Privacy Policy & Terms | Vector87',
+      pageDescription: 'Privacy policy, data protection, analytics, and affiliate transparency on Vector87.com.',
+      tag: 'LEGAL & PRIVACY',
+      title: 'Privacy Policy & Affiliate Disclosure',
+      lastUpdated: 'November 2026',
+      intro: 'Vector87.com is an independent static data telemetry hub created and operated by Antonín Kučera. We respect your privacy and process data transparently in full compliance with the General Data Protection Regulation (GDPR).',
+      s1Title: '1. Data We Collect & Static Hosting',
+      s1Text: 'Vector87 is a static website generated via Astro and hosted on GitHub Pages. We do not require user accounts, do not store personal profiles, and do not process passwords or financial transaction information.',
+      s2Title: '2. Analytics Telemetry (Google Analytics 4)',
+      s2Text: 'We use Google Analytics 4 to collect aggregated, anonymized website traffic telemetry (page views, browser type, rough geography) to understand which roles and skills visitors find most useful. IP addresses are anonymized by default.',
+      s3Title: '3. Outbound Links & Affiliate Disclosure',
+      s3Text: 'Vector87 participates in affiliate partner programs with selected educational platforms (such as Coursera, DataCamp, and Amazon). Outbound links to commercial courses or books may contain referral codes. If you enroll or make a purchase through these links, the partner service may use attribution cookies in accordance with their respective privacy policies, and Vector87 may receive a referral commission at zero additional cost to you. Free university and research curricula (OpenAI, Anthropic, Harvard, Stanford) are completely unmonetized.',
+      s4Title: '4. Your GDPR Rights & Contact',
+      s4Text: 'Under GDPR, you have the right to request information about any personal data processing, request correction, or request erasure. For any privacy inquiries, partnership questions, or data corrections, contact:',
+      contactEmail: 'antonio.kucera@gmail.com',
+      ctaHome: '← Back to Home',
+    },
   },
 
   cs: {
@@ -635,6 +678,8 @@ export const ui = {
       subtitle: 'Analytical Telemetry Hub',
       description:
         'Nezávislý datový projekt mapující reálnou poptávku po datových a AI specialistech v S&P 500 a Evropě. Postaveno na lokální DuckDB pipeline a Astro SSG.',
+      privacyPolicy: 'Zásady soukromí',
+      contact: 'Kontakt',
     },
     dashboard: {
       pageTitle: 'Vector87 | Přehled trhu práce v AI a datech (S&P 500)',
@@ -998,13 +1043,30 @@ export const ui = {
       ctaCertGuide: 'Detail certifikace ↗',
       ctaBook: 'Zobrazit na Amazonu ↗',
       freeBadge: 'ZDARMA / BEZ PAYWALLU',
-      sponsorDisclaimer: 'Doporučuji výhradně prověřené vzdělávací materiály, ze kterých sám čerpám. Některé externí odkazy mohou být zapojeny do partnerských programů bez jakéhokoliv navýšení ceny pro vás.',
+      partnerBadge: 'PARTNERSKÝ ODKAZ',
+      sponsorDisclaimer: 'Doporučuji výhradně prověřené vzdělávací materiály, ze kterých sám čerpám. Některé externí odkazy na placené platformy (Coursera, DataCamp, Amazon) mohou být zapojeny do partnerských programů bez jakéhokoliv navýšení ceny pro vás.',
+      affiliateNoticeBadge: 'TRANSPARENTNOST A PARTNERSKÉ ODKAZY',
+      affiliateNoticeTitle: 'Transparentní označení partnerských odkazů (Affiliate Disclosure)',
+      affiliateNoticeText:
+        'Pro zajištění nezávislého provozu a výpočetních nákladů platformy Vector87 jsou některé externí odkazy na komerční vzdělávací platformy (Coursera, DataCamp, Amazon) partnerské. Pokud se přes ně zapíšete nebo nakoupíte, můžeme získat provizi na podporu provozu stránek, aniž by vás to stálo cokoliv navíc. Doporučujeme pouze prověřené programy odpovídající reálným požadavkům trhu. Bezplatná kurikula jsou 100% nekomerční.',
+      curationTag: 'METODIKA A VÝBĚR KURZŮ',
+      curationTitle: 'Jak vzdělávací programy vybíráme a ověřujeme',
+      curationSub: 'Propojení doporučení s reálnou poptávkou zaměstnavatelů a 15+ lety inženýrské praxe',
+      curationPillar1Title: 'Přímá shoda s inzerovanými dovednostmi',
+      curationPillar1Text:
+        'Každý doporučený kurz i certifikace přímo pokrývá klíčové technologie a nástroje, které dominují požadavkům v naší analýze tisíců inzerátů (Python, SQL, distribuované systémy, BigQuery, dbt, RAG/LLM architektury).',
+      curationPillar2Title: 'Ověření z reálné inženýrské praxe',
+      curationPillar2Text:
+        'Výběr sestavuje Antonín Kučera (15+ let zkušeností s vedením datových a BI týmů, specialista na Google Cloud a BigQuery). Doporučujeme kurikula, kterými jsme sami prošli, složili v nich certifikace, nebo která vydávají přímo vývojové týmy (Google Cloud, DeepLearning.AI, OpenAI, Anthropic, dbt Labs).',
+      curationPillar3Title: 'Plnohodnotné bezplatné alternativy',
+      curationPillar3Text:
+        'Vzdělávání by nemělo narážet na komerční bariéry. Pro každou oblast proto vybíráme a na stejnou úroveň stavíme oficiální bezplatné kurzy přímo od předních laboratoří a univerzit (Stanford, Harvard, OpenAI Academy, Hugging Face).',
       tracks: [
         {
           code: 'DRÁHA 01',
           title: 'Analytics & Modern BI Engineering',
           level: 'Od základů po Senior IC',
-          marketMetric: 'SQL a sémantická vrstva se objevují v 46 % analytických pozic',
+          marketMetric: 'SQL a sémantická vrstva tvoří základní pilíř analytických a BI rolí',
           focus:
             'Přechod od ad-hoc reportingu k inženýrsky pojaté analytice, verzování modelů a rozhodování založenému na datech s lidským kontextem.',
           modules: [
@@ -1018,7 +1080,7 @@ export const ui = {
           code: 'DRÁHA 02',
           title: 'Cloud Data Engineering & Lakehouse Architecture',
           level: 'Mid až Principal / Architekt',
-          marketMetric: 'Python a cloudová infrastruktura jsou v 62 % datových nabídek',
+          marketMetric: 'Python, SQL a cloudové lakehouse platformy dominují inženýrským datovým nabídkám',
           focus:
             'Stavba škálovatelných datových platforem, spolehlivých pipeline a odolné infrastruktury.',
           modules: [
@@ -1032,7 +1094,7 @@ export const ui = {
           code: 'DRÁHA 03',
           title: 'Applied AI, LLM Systems & Agentic Engineering',
           level: 'Mid až Principal AI Engineer',
-          marketMetric: 'Nejrychleji rostoucí oblast na trhu: zájem o GenAI a agenty roste trojciferným tempem',
+          marketMetric: 'Nejrychleji rostoucí oblast poptávky: prudký nárůst požadavků na RAG, LLMOps a autonomní agenty',
           focus:
             'Návrh, testování a provoz reálných aplikací postavených na jazykových modelech a autonomních agentech.',
           modules: [
@@ -1088,6 +1150,12 @@ export const ui = {
       ctaLinkedin: 'LINKEDIN PROFIL ↗',
       ctaTwitter: 'X (@antkucera) ↗',
       ctaSubstack: 'SUBSTACK NEWSLETTER ↗',
+      ctaEmail: 'NAPSAT E-MAIL (antonio.kucera@gmail.com) ↗',
+      partnershipTag: 'PARTNERSTVÍ & KONTAKT',
+      partnershipTitle: 'Přímý kontakt & partnerství',
+      partnershipDesc:
+        'Pro firemní spolupráci, vzdělávací partnerství, datové dotazy, přednášky nebo novinářské otázky mě můžete kontaktovat napřímo.',
+      contactEmail: 'antonio.kucera@gmail.com',
       brandCardTitle: 'PROČ PRÁVĚ VECTOR 87?',
       brandCardP1:
         'Vector představuje směr a velikost: v našem pojetí trajektorii, jakou se vyvíjí globální trh datových a AI pozic.',
@@ -1191,6 +1259,24 @@ export const ui = {
       filterAmericas: 'AMERIKA',
       filterAsia: 'ASIE',
       incompleteData: 'Nedostatek dat (N/A)',
+    },
+    privacy: {
+      pageTitle: 'Zásady ochrany soukromí | Vector87',
+      pageDescription: 'Zásady ochrany osobních údajů, analytika a transparentnost partnerských programů na Vector87.com.',
+      tag: 'PRÁVNÍ INFORMACE & SOUKROMÍ',
+      title: 'Zásady ochrany osobních údajů a transparentnost',
+      lastUpdated: 'Listopad 2026',
+      intro: 'Vector87.com je nezávislý statický datový hub vytvořený a provozovaný Antonínem Kučerou. K ochraně vašeho soukromí přistupujeme s maximální odpovědností a v souladu s nařízením GDPR.',
+      s1Title: '1. Zpracování dat a statický hosting',
+      s1Text: 'Vector87 je plně statický web vygenerovaný pomocí Astro a hostovaný na infrastruktuře GitHub Pages. Web nevyžaduje registraci uživatelů, nevede uživatelské databáze a nezpracovává žádné přístupové ani platební údaje.',
+      s2Title: '2. Analytika návštěvnosti (Google Analytics 4)',
+      s2Text: 'Pro anonymizované měření návštěvnosti využíváme Google Analytics 4. Sledujeme agregovaná data (zobrazení stránek, typ prohlížeče, země) pro pochopení, které analýzy a role jsou pro čtenáře nejužitečnější. IP adresy jsou v souladu s evropskými standardy anonymizovány.',
+      s3Title: '3. Externí odkazy a transparentnost partnerství (Affiliate)',
+      s3Text: 'Vector87 je zapojen do partnerských programů vybraných vzdělávacích platforem (např. Coursera, DataCamp, Amazon). Odkazy na tyto komerční kurzy a literaturu mohou obsahovat identifikační kód partnera. Pokud se přes ně zapíšete nebo nakoupíte, platforma může uložit své cookies a Vector87 může obdržet provizi na podporu provozu a výpočetních nákladů, aniž by to pro vás znamenalo jakékoliv navýšení ceny. Oficiální univerzitní a laboratorní kurikula (OpenAI, Anthropic, Harvard, Stanford) jsou zcela nekomerční.',
+      s4Title: '4. Vaše práva dle GDPR a kontakt',
+      s4Text: 'Dle GDPR máte právo na informace o zpracování, opravu či výmaz údajů. S jakýmikoliv dotazy k ochraně osobních údajů, partnerství nebo připomínkám k datům se můžete obrátit přímo na provozovatele:',
+      contactEmail: 'antonio.kucera@gmail.com',
+      ctaHome: '← Zpět na úvodní stránku',
     },
   },
 } as const;

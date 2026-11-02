@@ -1,0 +1,95 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { ui, type Locale } from '../../i18n/ui';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = ui[lang].privacy;
+
+const privacyJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: t.pageTitle,
+  description: t.pageDescription,
+  publisher: {
+    '@type': 'Person',
+    name: 'Antonín Kučera',
+    url: 'https://akucera.eu',
+  },
+};
+---
+
+<Layout title={t.pageTitle} description={t.pageDescription} activeNav="about" lang={lang} jsonLd={privacyJsonLd}>
+  <div class="max-w-4xl mx-auto py-4">
+    <!-- Header -->
+    <header class="mb-10 pb-6 border-b border-slate-800/80">
+      <span class="text-xs font-mono uppercase tracking-widest text-cyan-400">{t.tag}</span>
+      <h1 class="text-3xl sm:text-4xl font-bold text-white tracking-tight mt-2">
+        {t.title}
+      </h1>
+      <p class="text-xs font-mono text-slate-400 mt-2">
+        LAST UPDATED: {t.lastUpdated} // OPERATOR: ANTONÍN KUČERA (AKUCERA.EU)
+      </p>
+    </header>
+
+    <!-- Intro Card -->
+    <div class="mb-10 p-5 sm:p-6 rounded-xl bg-slate-900/60 border border-slate-800 text-sm text-slate-300 leading-relaxed">
+      {t.intro}
+    </div>
+
+    <!-- Privacy & Disclosure Sections -->
+    <div class="space-y-8">
+      <!-- Section 1 -->
+      <section class="panel-surface rounded-xl p-6 border-t-2 border-t-cyan-400 space-y-3">
+        <h2 class="text-lg font-bold text-white tracking-tight">{t.s1Title}</h2>
+        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+          {t.s1Text}
+        </p>
+      </section>
+
+      <!-- Section 2 -->
+      <section class="panel-surface rounded-xl p-6 border-t-2 border-t-emerald-400 space-y-3">
+        <h2 class="text-lg font-bold text-white tracking-tight">{t.s2Title}</h2>
+        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+          {t.s2Text}
+        </p>
+      </section>
+
+      <!-- Section 3 -->
+      <section class="panel-surface rounded-xl p-6 border-t-2 border-t-amber-400 space-y-3">
+        <h2 class="text-lg font-bold text-white tracking-tight">{t.s3Title}</h2>
+        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+          {t.s3Text}
+        </p>
+      </section>
+
+      <!-- Section 4 -->
+      <section class="panel-surface rounded-xl p-6 border-t-2 border-t-purple-400 space-y-3">
+        <h2 class="text-lg font-bold text-white tracking-tight">{t.s4Title}</h2>
+        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+          {t.s4Text}
+        </p>
+        <div class="pt-2">
+          <a
+            href={`mailto:${t.contactEmail}`}
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-cyan-500/15 border border-cyan-500/30 text-cyan-300 font-mono text-xs font-semibold hover:bg-cyan-500/25 transition-colors"
+          >
+            <span>✉</span>
+            <span>{t.contactEmail}</span>
+          </a>
+        </div>
+      </section>
+    </div>
+
+    <!-- Navigation Back -->
+    <div class="mt-12 pt-6 border-t border-slate-800/80 flex items-center justify-between text-xs font-mono">
+      <a href={lang === 'en' ? '/' : '/cs/'} class="text-cyan-400 hover:text-cyan-300 font-semibold">
+        {t.ctaHome}
+      </a>
+      <span class="text-slate-500">VECTOR87.COM // INDEPENDENT TELEMETRY</span>
+    </div>
+  </div>
+</Layout>

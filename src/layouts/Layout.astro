@@ -269,6 +269,13 @@ const { meta, market_vitality } = marketData;
           </p>
         </div>
         <div class="flex flex-wrap items-center gap-5 font-mono text-xs">
+          <a href={lang === 'en' ? '/privacy' : '/cs/privacy'} class="hover:text-cyan-300 transition-colors">
+            {t.footer.privacyPolicy}
+          </a>
+          <a href="mailto:antonio.kucera@gmail.com" class="hover:text-cyan-300 transition-colors">
+            {t.footer.contact}
+          </a>
+          <span class="text-slate-700">|</span>
           <a href={enHref} class:list={[lang === 'en' ? 'text-cyan-300 font-semibold' : 'hover:text-cyan-300']}>
             EN
           </a>

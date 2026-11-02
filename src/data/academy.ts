@@ -80,8 +80,8 @@ export const ACADEMY_COURSES: AcademyCourse[] = [
     platform: 'Coursera',
     trackId: 'data-engineering',
     title: {
-      en: 'Google Cloud Professional Data Engineer Specialization',
-      cs: 'Google Cloud Professional Data Engineer Specializace',
+      en: 'Google Cloud Professional Data Engineer Professional Certificate',
+      cs: 'Google Cloud Professional Data Engineer Profesionální certifikát',
     },
     skills: ['BigQuery', 'GCP', 'Dataflow', 'Dataproc', 'Pub/Sub'],
     url: 'https://www.coursera.org/professional-certificates/gcp-data-engineering',
@@ -94,8 +94,8 @@ export const ACADEMY_COURSES: AcademyCourse[] = [
       cs: 'Středně pokročilý → Pokročilý',
     },
     marketSignal: {
-      en: '#1 Cloud Data Engineering track in S&P 500 telemetry',
-      cs: '#1 cloudová specializace v datech S&P 500 inzerátů',
+      en: 'Google Cloud & BigQuery rank among the top enterprise cloud requirements in job postings',
+      cs: 'Google Cloud a BigQuery patří k nejžádanějším podnikovým cloudovým technologiím v inzerátech',
     },
     description: {
       en: 'Official curriculum by Google Cloud covering large-scale data processing with BigQuery, streaming pipelines with Dataflow, and modern lakehouse architecture.',
@@ -121,8 +121,8 @@ export const ACADEMY_COURSES: AcademyCourse[] = [
       cs: 'Základní → Středně pokročilý',
     },
     marketSignal: {
-      en: 'Python & SQL required in 74% of enterprise data engineering positions',
-      cs: 'Python a SQL jsou vyžadovány v 74 % podnikových datových rolí',
+      en: 'Python and SQL represent the two primary required languages across data engineering job postings',
+      cs: 'Python a SQL představují dva nejčastěji poptávané základní jazyky u inženýrských datových pozic',
     },
     description: {
       en: 'Interactive, browser-based coding track covering robust data pipelines, PostgreSQL, unit testing, software design patterns for data, and PySpark fundamentals.',
@@ -148,8 +148,8 @@ export const ACADEMY_COURSES: AcademyCourse[] = [
       cs: 'Středně pokročilý',
     },
     marketSignal: {
-      en: 'LLM & Generative AI skills grew +310% YoY across top tier tech employers',
-      cs: 'Poptávka po LLM a GenAI vzrostla o +310 % meziročně',
+      en: 'LLM fine-tuning, PEFT, and model alignment are high-priority capabilities across enterprise AI teams',
+      cs: 'Práce s LLM, fine-tuning a alignment modelů patří k nejžádanějším schopnostem v týmech podnikové AI',
     },
     description: {
       en: 'Created by Andrew Ng and AWS: practical engineering foundations of transformer architectures, pre-training, instruction fine-tuning, and alignment evaluation in production.',
@@ -175,8 +175,8 @@ export const ACADEMY_COURSES: AcademyCourse[] = [
       cs: 'Základní → Pokročilý analytik',
     },
     marketSignal: {
-      en: 'dbt penetration surged to 28% in modern data warehouse stacks',
-      cs: 'Penetrace dbt v moderních cloudových skladech dosahuje 28 %',
+      en: 'dbt and modern modular SQL transformations define the benchmark for analytics engineering',
+      cs: 'dbt a modulární SQL transformace představují oborový standard pro pozice analytics engineer',
     },
     description: {
       en: 'Bridge the gap between raw data analysis and software-grade transformations. Learn modular dimensional modeling, automated testing assertions, and Git-driven CI/CD.',
@@ -188,26 +188,26 @@ export const ACADEMY_COURSES: AcademyCourse[] = [
     platform: 'Coursera',
     trackId: 'applied-ai',
     title: {
-      en: 'Applied AI & Autonomous Agents Specialization',
-      cs: 'Specializace Aplikovaná AI a Autonomní Agenti',
+      en: 'IBM RAG and Agentic AI Professional Certificate',
+      cs: 'IBM RAG a Agentic AI Profesionální certifikát',
     },
     skills: ['AI Agents', 'RAG', 'Vector DB', 'LangChain', 'Python'],
-    url: 'https://www.coursera.org/specializations/applied-artifical-intelligence-ibm-watson-systems',
+    url: 'https://www.coursera.org/professional-certificates/ibm-rag-and-agentic-ai',
     duration: {
-      en: '3 months (4 hrs/week)',
-      cs: '3 měsíce (4 hod/týdně)',
+      en: '3-4 months (4 hrs/week)',
+      cs: '3-4 měsíce (4 hod/týdně)',
     },
     level: {
       en: 'Intermediate → Advanced',
       cs: 'Středně pokročilý → Pokročilý',
     },
     marketSignal: {
-      en: 'Autonomous Agents & Vector Search signal stage: Scaling in enterprise R&D',
-      cs: 'Agentic AI a vektorové databáze jsou v dynamické fázi Scaling',
+      en: 'RAG pipelines, vector retrieval, and autonomous agent frameworks are high-growth enterprise architecture skills',
+      cs: 'RAG architektury, vektorové vyhledávání a autonomní agenti tvoří klíčovou růstovou oblast v podnikovém vývoji',
     },
     description: {
-      en: 'Hands-on projects covering retrieval-augmented generation (RAG), vector embeddings, multi-agent frameworks, and deterministic tool use for enterprise applications.',
-      cs: 'Praktické projekty zaměřené na RAG architektury, embeddingy ve vektorových databázích, agentní workflows a řízené volání API.',
+      en: 'Hands-on curriculum by IBM covering retrieval-augmented generation (RAG), vector embeddings, multi-agent frameworks (LangGraph, CrewAI), and production tool use.',
+      cs: 'Praktické kurikulum od IBM zaměřené na RAG architektury, embeddingy ve vektorových databázích, agentní workflows (LangGraph, CrewAI) a řízené volání nástrojů.',
     },
   },
   {
@@ -229,8 +229,8 @@ export const ACADEMY_COURSES: AcademyCourse[] = [
       cs: 'Základní → Středně pokročilý',
     },
     marketSignal: {
-      en: 'Business-critical telemetry: 52% of organizations require executive data translation',
-      cs: '52 % firem požaduje schopnost překládat telemetrii do exekutivního rozhodování',
+      en: 'Power BI, Tableau, and executive dashboard storytelling are core requirements across business intelligence roles',
+      cs: 'Power BI, Tableau a schopnost předávat vhled vedení firmy jsou základem pro Business Intelligence role',
     },
     description: {
       en: 'Master executive KPI design, dashboard performance tuning, cohort retention analysis, and stakeholder storytelling using industry-standard BI suites.',
@@ -353,8 +353,8 @@ export const CERTIFICATIONS_LIST: CertificationItem[] = [
       cs: 'Senior / Staff architekt',
     },
     marketValue: {
-      en: '#1 fastest growing lakehouse credential in enterprise data teams',
-      cs: '#1 nejrychleji rostoucí certifikace pro lakehouse platformy',
+      en: 'Industry-standard credential for enterprise Lakehouse and Apache Spark deployments',
+      cs: 'Uznávaná oborová certifikace pro platformu Databricks Lakehouse a Apache Spark',
     },
     summary: {
       en: 'Validates mastery of streaming, batch ETL, Unity Catalog governance, and production Lakehouse architectures with Delta Lake and Spark.',
