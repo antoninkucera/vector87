@@ -975,7 +975,7 @@ def export_market_data(db_path: Path | None = None, output_path: Path | None = N
         for cat_id, sen, cnt in role_sen_rows:
             role_sen_by_cat.setdefault(cat_id, {})[sen] = int(cnt)
 
-        # Přednačtení vzorku reálných aktivních inzerátů pro detail role (SEO a prolinky)
+        # Přednačtení vzorku reálných aktivních inzerátů pro detail role (stratifikováno napříč zeměmi a regiony)
         sample_rows = con.execute(
             """
             WITH candidate_jobs AS (
@@ -1002,12 +1002,14 @@ def export_market_data(db_path: Path | None = None, output_path: Path | None = N
                         'Global / Unspecified'
                     ) AS location,
                     j.country_code,
+                    COALESCE(d.country_name, j.country_code) AS country_name,
+                    COALESCE(d.region, 'Other') AS region,
                     j.seniority,
                     COALESCE(j.work_mode, 'Unspecified') AS work_mode,
                     j.url,
                     CAST(j.posted_at AS VARCHAR) AS posted_at,
                     ROW_NUMBER() OVER (
-                        PARTITION BY r.category_id, 
+                        PARTITION BY r.category_id, j.country_code,
                             CASE 
                                 WHEN comp.company_id IN ('alphabet', 'alphabet_class_a', 'alphabet_class_c', 'google') THEN 'Google (Alphabet)'
                                 WHEN comp.company_id IN ('shell_nl', 'shell_uk') THEN 'Shell'
@@ -1022,36 +1024,49 @@ def export_market_data(db_path: Path | None = None, output_path: Path | None = N
                             CASE WHEN LOWER(j.title_raw) LIKE '%' || LOWER(REPLACE(REPLACE(cat.canonical_name, ' (AI/ML)', ''), ' / ', ' ')) || '%' THEN 0 ELSE 1 END,
                             j.posted_at DESC NULLS LAST,
                             j.job_id
-                    ) as comp_rn
+                    ) as comp_country_rn
                 FROM bridge_job_roles r
                 JOIN dim_job_categories cat ON r.category_id = cat.category_id
                 JOIN fact_jobs j ON r.job_id = j.job_id
                 JOIN dim_companies comp ON j.company_id = comp.company_id
+                LEFT JOIN dim_countries d ON j.country_code = d.country_code
                 WHERE j.is_active = TRUE AND j.url IS NOT NULL AND j.url != ''
             ),
-            ranked_jobs AS (
+            country_ranked AS (
                 SELECT 
                     *,
                     ROW_NUMBER() OVER (
-                        PARTITION BY category_id 
+                        PARTITION BY category_id, country_code
                         ORDER BY 
                             CASE WHEN is_sp500 = TRUE THEN 0 ELSE 1 END,
                             CASE WHEN url LIKE '%greenhouse.io%' OR url LIKE '%lever.co%' OR url LIKE '%careers.google.com%' THEN 0 ELSE 1 END,
-                            comp_rn,
+                            comp_country_rn,
                             posted_at DESC NULLS LAST
-                    ) as rn
+                    ) as country_rn
                 FROM candidate_jobs
-                WHERE comp_rn = 1
+                WHERE comp_country_rn = 1
+            ),
+            final_sample AS (
+                SELECT *,
+                    ROW_NUMBER() OVER (
+                        PARTITION BY category_id
+                        ORDER BY
+                            country_rn,
+                            CASE WHEN country_code = 'CZ' THEN 0 WHEN region = 'EU' THEN 1 WHEN region = 'UK' THEN 2 WHEN region = 'Europe Non-EU' THEN 3 ELSE 4 END,
+                            posted_at DESC NULLS LAST
+                    ) as overall_rn
+                FROM country_ranked
+                WHERE country_rn <= 5
             )
-            SELECT category_id, job_id, title, company_name, is_sp500, location, country_code, seniority, work_mode, url, posted_at
-            FROM ranked_jobs
-            WHERE rn <= 8
-            ORDER BY category_id, rn
+            SELECT category_id, job_id, title, company_name, is_sp500, location, country_code, country_name, region, seniority, work_mode, url, posted_at
+            FROM final_sample
+            WHERE overall_rn <= 50
+            ORDER BY category_id, overall_rn
             """
         ).fetchall()
         role_samples_by_cat: dict[str, list[dict[str, Any]]] = {}
         for row in sample_rows:
-            cat_id, jid, jtitle, cname, sp500_flag, loc, ccode, sen, wm, jurl, pdate = row
+            cat_id, jid, jtitle, cname, sp500_flag, loc, ccode, cname_country, reg, sen, wm, jurl, pdate = row
             role_samples_by_cat.setdefault(cat_id, []).append(
                 {
                     "job_id": jid,
@@ -1060,6 +1075,8 @@ def export_market_data(db_path: Path | None = None, output_path: Path | None = N
                     "is_sp500": bool(sp500_flag),
                     "location": loc,
                     "country_code": ccode,
+                    "country_name": cname_country,
+                    "region": reg,
                     "seniority": sen,
                     "work_mode": wm,
                     "url": jurl,
