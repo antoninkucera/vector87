@@ -462,6 +462,8 @@
                 "is_sp500": { "type": "boolean" },
                 "location": { "type": "string" },
                 "country_code": { "type": ["string", "null"] },
+                "country_name": { "type": ["string", "null"] },
+                "region": { "type": ["string", "null"] },
                 "seniority": { "type": ["string", "null"] },
                 "work_mode": { "type": ["string", "null"] },
                 "url": { "type": "string" },
