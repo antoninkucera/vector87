@@ -80,6 +80,26 @@
               "top_roles": {
                 "type": "array",
                 "items": { "type": "string" }
+              },
+              "sample_jobs": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["job_id", "title", "company_name", "url"],
+                  "properties": {
+                    "job_id": { "type": "string" },
+                    "title": { "type": "string" },
+                    "company_name": { "type": "string" },
+                    "is_sp500": { "type": "boolean" },
+                    "city": { "type": ["string", "null"] },
+                    "seniority": { "type": ["string", "null"] },
+                    "work_mode": { "type": ["string", "null"] },
+                    "url": { "type": "string" },
+                    "posted_at": { "type": ["string", "null"] },
+                    "category_id": { "type": ["string", "null"] },
+                    "role_name": { "type": ["string", "null"] }
+                  }
+                }
               }
             }
           }
