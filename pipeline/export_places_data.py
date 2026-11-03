@@ -126,6 +126,72 @@ def load_tech_jobs_metrics(jobs_db_path: Path) -> dict[str, dict[str, Any]]:
             if len(cats_by_country[c_code]) < 3:
                 cats_by_country[c_code].append(cat_id)
 
+        # Reprezentativní aktivní inzeráty s přímým URL (až 5 nejlepších zástupců různých firem)
+        sample_jobs_rows = con.execute("""
+            WITH candidate_jobs AS (
+                SELECT 
+                    j.country_code,
+                    j.job_id,
+                    j.title_raw AS title,
+                    c.company_name,
+                    c.is_sp500,
+                    j.city,
+                    j.seniority,
+                    j.work_mode,
+                    j.url,
+                    CAST(j.posted_at AS VARCHAR) AS posted_at,
+                    r.category_id,
+                    cat.canonical_name AS role_name,
+                    ROW_NUMBER() OVER (
+                        PARTITION BY j.country_code, 
+                            CASE 
+                                WHEN c.company_name ILIKE '%Alphabet%' OR c.company_name ILIKE '%Google%' THEN 'Google'
+                                ELSE c.company_name 
+                            END
+                        ORDER BY j.posted_at DESC NULLS LAST
+                    ) AS comp_rn
+                FROM fact_jobs j
+                LEFT JOIN dim_companies c ON j.company_id = c.company_id
+                LEFT JOIN bridge_job_roles r ON j.job_id = r.job_id
+                LEFT JOIN dim_job_categories cat ON r.category_id = cat.category_id
+                WHERE j.is_active = TRUE AND j.url IS NOT NULL AND j.url != '' AND j.country_code IS NOT NULL
+            ),
+            ranked_jobs AS (
+                SELECT 
+                    *,
+                    ROW_NUMBER() OVER (
+                        PARTITION BY country_code 
+                        ORDER BY 
+                            CASE WHEN is_sp500 = TRUE THEN 0 ELSE 1 END,
+                            CASE WHEN url LIKE '%greenhouse.io%' OR url LIKE '%lever.co%' OR url LIKE '%careers.google.com%' THEN 0 ELSE 1 END,
+                            comp_rn,
+                            posted_at DESC NULLS LAST
+                    ) AS rn
+                FROM candidate_jobs
+                WHERE comp_rn = 1
+            )
+            SELECT country_code, job_id, title, company_name, is_sp500, city, seniority, work_mode, url, posted_at, category_id, role_name
+            FROM ranked_jobs
+            WHERE rn <= 5
+            ORDER BY country_code, rn
+        """).fetchall()
+
+        sample_jobs_by_country = defaultdict(list)
+        for (c_code, jid, title, cname, sp500_flag, city, sen, wm, url, pdate, cat_id, rname) in sample_jobs_rows:
+            sample_jobs_by_country[c_code].append({
+                "job_id": jid,
+                "title": title,
+                "company_name": cname or "Enterprise Employer",
+                "is_sp500": bool(sp500_flag),
+                "city": city,
+                "seniority": sen,
+                "work_mode": wm,
+                "url": url,
+                "posted_at": pdate,
+                "category_id": cat_id,
+                "role_name": rname or (cat_id.replace("_", " ").title() if cat_id else None),
+            })
+
         res = {}
         for c_code, active_j, hiring_c in counts:
             iso3 = ISO2_TO_ISO3.get(c_code, c_code)
@@ -133,6 +199,7 @@ def load_tech_jobs_metrics(jobs_db_path: Path) -> dict[str, dict[str, Any]]:
                 "active_jobs": int(active_j),
                 "hiring_companies": int(hiring_c),
                 "top_roles": cats_by_country.get(c_code, []),
+                "sample_jobs": sample_jobs_by_country.get(c_code, []),
             }
         print(f"Loaded live AI/Data jobs telemetry for {len(res)} countries from jobs.duckdb.")
         return res
