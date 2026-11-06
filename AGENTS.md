@@ -20,7 +20,7 @@ country ranking (unique combination), and one person cannot sustain two sites' S
 - Data: pre-generated JSON committed into this repo
 
 ## Localization (i18n)
-- Two supported locales: **English (`en`, primary/default)** at root routes (`/`, `/roles`, `/roles/[id]`, `/cloud-tech`, `/academy`, `/about`) and **Czech (`cs`)** at `/cs/*` (`/cs/`, `/cs/roles`, `/cs/roles/[id]`, `/cs/cloud-tech`, `/cs/academy`, `/cs/about`). Old `/gcp-hub` and `/cs/gcp-hub` routes redirect to the Cloud & Tech section.
+- Two supported locales: **English (`en`, primary/default)** at root routes (`/`, `/roles`, `/roles/[id]`, `/cloud-tech`, `/academy`, `/academy/podcasts`, `/about`) and **Czech (`cs`)** at `/cs/*` (`/cs/`, `/cs/roles`, `/cs/roles/[id]`, `/cs/cloud-tech`, `/cs/academy`, `/cs/academy/podcasts`, `/cs/about`). Old `/gcp-hub` and `/cs/gcp-hub` routes redirect to the Cloud & Tech section.
 - Architecture follows Rule #10 (Generic base + delta): shared view components in `src/components/views/` render both languages using typed dictionaries in `src/i18n/ui.ts` and localized `en`/`cs` fields in `src/data/market-data.json`.
 
 ## Visual identity
@@ -40,6 +40,7 @@ so changes there are possible when explicitly agreed.
 - **Role analysis & synthesized job descriptions**: Each canonical role in `roles` includes a 2-paragraph executive synthesis (`synthesized_description`), separate top core/analytical skills (`top_skills`) vs. engineering/cloud/framework technologies (`top_technologies`), plus top hiring companies (`top_companies`), S&P 500 sector distribution (`top_sectors`), and representative live postings (`sample_postings`) with direct ATS application links. Each role features a dedicated subpage (`/roles/[id]` and `/cs/roles/[id]`) with SEO schema.org `Occupation` markup and dynamically matched courses/certifications from `src/data/academy.ts`. The export script merges curated/LLM-generated role narratives from `pipeline/role_descriptions.json` with deterministic fallback synthesis when a new role appears.
 - **Workforce headcount & LinkedIn/Coresignal ratios**: Supported via `headcount_analytics` (sourced from `fact_headcount_snapshots` and `v_hiring_intensity` in DuckDB), tracking occupied data/AI seats vs. open job postings (`hiring_intensity_ratio_pct`).
 - **Places & Relocation Opportunity Quadrant (agreed 2026-11-01)**: Evaluates countries on a 2D matrix: Composite Quality of Life / Opportunity Score (Y-axis) vs. Ease of Relocation / Legal Friction (X-axis, e.g. EU free movement vs. US/CH visa barrier) to classify destinations into Easy Wins, High Friction/High Reward, Low Barrier/Low Reward, and Avoid.
+- **Podcasts & Media Radar (agreed 2026-11-06)**: Sourced from `podcast_curator` via `src/data/podcasts-data.json`. Sub-section under Academy at `/academy/podcasts` and `/cs/academy/podcasts`, featuring 31 monitored shows/channels, 500 categorized episodes, Gemini executive summaries, interactive category/platform/topic filtering, and direct links to Spotify and YouTube. Integrated into Role profiles (`/roles/[id]`) for domain-specific topic mesh.
 
 
 ## About author section

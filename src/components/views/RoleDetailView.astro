@@ -949,6 +949,29 @@ const roleDetailGraph = {
         </div>
       ))}
     </div>
+
+    <!-- Audio & Video Radar Deep-Dive Callout -->
+    <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <span class="w-8 h-8 rounded-lg bg-cyan-950/80 border border-cyan-800/60 text-cyan-400 flex items-center justify-center shrink-0 font-mono text-xs">
+          ♪
+        </span>
+        <div>
+          <p class="text-xs font-semibold text-white">
+            {lang === 'cs' ? 'Audio & Video radar: Poslechněte si podcasty a rozhovory k tématu' : 'Audio & Video Radar: Technical podcasts and shows for this domain'}
+          </p>
+          <p class="text-[11px] font-mono text-slate-400">
+            {lang === 'cs' ? 'Exekutivní AI shrnutí 500+ epizod ze Spotify a YouTube' : 'Executive AI summaries across 500+ episodes from Spotify & YouTube'}
+          </p>
+        </div>
+      </div>
+      <a
+        href={lang === 'cs' ? '/cs/academy/podcasts' : '/academy/podcasts'}
+        class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono font-semibold bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 hover:bg-cyan-500/20 transition-colors shrink-0"
+      >
+        <span>{lang === 'cs' ? 'Podcasty a pořady ↗' : 'Podcasts & Shows ↗'}</span>
+      </a>
+    </div>
   </section>
 
   <!-- Related Roles in Domain -->
