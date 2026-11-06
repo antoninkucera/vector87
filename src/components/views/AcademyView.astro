@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import AcademySubNav from '../academy/AcademySubNav.astro';
 import { ui, type Locale } from '../../i18n/ui';
 import { ACADEMY_COURSES, CERTIFICATIONS_LIST, FREE_AI_COURSES } from '../../data/academy';
 
@@ -66,6 +67,9 @@ const academyJsonLd = {
       </p>
     </div>
   </section>
+
+  <!-- Sub-navigation between Courses and Podcasts -->
+  <AcademySubNav lang={lang} active="courses" />
 
   <!-- Course Selection & Verification Methodology -->
   <section class="mb-14 p-6 sm:p-8 rounded-xl panel-surface border-t-2 border-t-cyan-400">

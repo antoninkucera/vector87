@@ -13,6 +13,9 @@ flowchart LR
     subgraph WS["world_stats (repo, planned)"]
         WS_SRC["Public country/region indicators (World Bank, Eurostat, OECD, ...)"] --> WS_DB[("db/world.duckdb")]
     end
+    subgraph PC["podcast_curator (repo)"]
+        PC_SRC["Spotify RSS/API & YouTube Channels"] --> PC_TAG["Gemini 2.0 AI Tagging & Summaries"] --> PC_JSON["src/data/podcasts-data.json"]
+    end
     subgraph V87["vector87_com (repo)"]
         EXP["pipeline/export_market_data.py"] --> JSON["src/data/market-data.json"]
         DESC["pipeline/role_descriptions.json"] --> EXP
@@ -21,6 +24,7 @@ flowchart LR
         ACAD["src/data/academy.ts (hand-curated)"] --> SITE["Astro static site"]
         JSON --> SITE
         WS_JSON --> SITE
+        PC_JSON --> SITE
     end
     ADJ_DB -- "read-only, VECTOR87_DB_PATH" --> EXP
     WS_DB -. "read-only (planned)" .-> WS_EXP
@@ -37,6 +41,7 @@ Solid lines exist today; dashed lines are planned or manual.
 |---|---|---|
 | Job postings: scraping, transform, DuckDB `db/jobs.duckdb` | `ai_data_jobs` — model in its `docs/data-model.md` and `db/schema.sql` | that is where job data is produced |
 | Country/region indicators, DuckDB `db/world.duckdb` | `world_stats` — scope and sources in its `AGENTS.md` | different domain and cadence than job scraping |
+| Podcasts & tech media: scraping, Gemini tagging, JSON export | `podcast_curator` | dedicated pipeline for Spotify/YouTube multimedia ingestion & AI summaries |
 | JSON contracts (JSON Schema) | `vector87_com/schema/` | the frontend defines what it expects |
 | Exporters DuckDB -> JSON | `vector87_com/pipeline/`, DB path from env var, DB opened read-only | contract + exporter + consumer in one place |
 | Combining job data with country indicators | the Vector87 exporter, not either data repo | neither data repo depends on the other |
