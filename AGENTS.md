@@ -48,4 +48,5 @@ Content is sourced from https://akucera.eu (bio, links, Substack articles).
 
 ## Git & Workflow Conventions
 - **Proactive Push Prompts**: After completing any major milestone, feature block, or logical chunk of work (and committing the changes locally), always proactively ask the user for confirmation to push the commits to the remote repository (GitHub / GitLab).
+- **Automated PR Creation**: After the user approves pushing a feature branch, automatically create the Pull Request via GitHub CLI (`gh pr create --title ... --body ...`) with structured bullet points instead of only returning a browser URL.
 
