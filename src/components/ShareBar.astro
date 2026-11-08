@@ -1,0 +1,176 @@
+---
+import type { Locale } from '../i18n/ui';
+
+interface Props {
+  lang: Locale;
+  title: string;
+  sourceUrl?: string;
+  subtitle?: string;
+  className?: string;
+}
+
+const { lang, title, sourceUrl, subtitle, className = '' } = Astro.props;
+
+const currentYear = 2026;
+const resolvedUrl = sourceUrl || `https://vector87.com`;
+const encodedUrl = encodeURIComponent(resolvedUrl);
+const encodedTitle = encodeURIComponent(title);
+const encodedTweet = encodeURIComponent(`${title} — via @vector87 telemetry`);
+
+const linkedinShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`;
+const twitterShareUrl = `https://twitter.com/intent/tweet?text=${encodedTweet}&url=${encodedUrl}`;
+const redditShareUrl = `https://reddit.com/submit?url=${encodedUrl}&title=${encodedTitle}`;
+
+const t = {
+  en: {
+    badge: 'SHARE TELEMETRY',
+    heading: 'Share this empirical analysis',
+    sub: subtitle || 'Share verified market data and talent telemetry with your professional network.',
+    linkedin: 'Share on LinkedIn',
+    twitter: 'Post on X',
+    reddit: 'Share on Reddit',
+    copyLink: 'Copy Link',
+    copiedToast: '✓ Direct link copied to clipboard!',
+    citeToggle: 'Need formal academic citation? (APA / BibTeX)',
+    apaCitation: `Kučera, A. (${currentYear}). ${title}. Vector87 Global AI & Data Job Market Telemetry. Retrieved from ${resolvedUrl}`,
+  },
+  cs: {
+    badge: 'SDÍLET ANALÝZU',
+    heading: 'Sdílejte tuto analýzu a data',
+    sub: subtitle || 'Pomozte šířit ověřená data o pracovním trhu a dovednostech se svou profesní sítí.',
+    linkedin: 'Sdílet na LinkedIn',
+    twitter: 'Publikovat na X',
+    reddit: 'Sdílet na Reddit',
+    copyLink: 'Kopírovat odkaz',
+    copiedToast: '✓ Odkaz na analýzu zkopírován do schránky!',
+    citeToggle: 'Potřebujete formální akademickou citaci? (APA / BibTeX)',
+    apaCitation: `Kučera, A. (${currentYear}). ${title}. Vector87 Global AI & Data Job Market Telemetry. Dostupné z: ${resolvedUrl}`,
+  },
+}[lang];
+---
+
+<div class:list={['p-5 sm:p-6 rounded-2xl bg-slate-900/50 border border-slate-800/90 backdrop-blur-sm shadow-xl', className]}>
+  <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+    <!-- Header info -->
+    <div>
+      <div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[10px] font-mono uppercase bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 mb-1.5 font-semibold">
+        <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+        <span>{t.badge}</span>
+      </div>
+      <h3 class="text-base font-bold text-white tracking-tight">{t.heading}</h3>
+      <p class="text-xs text-slate-400 mt-0.5 leading-relaxed max-w-xl">{t.sub}</p>
+    </div>
+
+    <!-- Social Action Buttons -->
+    <div class="flex flex-wrap items-center gap-2 sm:gap-2.5 shrink-0">
+      <!-- LinkedIn -->
+      <a
+        href={linkedinShareUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold bg-[#0a66c2]/15 hover:bg-[#0a66c2] text-[#38bdf8] hover:text-white border border-[#0a66c2]/40 hover:border-[#0a66c2] transition-all shadow-sm group"
+        aria-label="Share on LinkedIn"
+      >
+        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+          <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+        </svg>
+        <span>{t.linkedin}</span>
+      </a>
+
+      <!-- X / Twitter -->
+      <a
+        href={twitterShareUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-800/80 hover:bg-white text-slate-200 hover:text-black border border-slate-700/80 hover:border-white transition-all shadow-sm group"
+        aria-label="Share on X"
+      >
+        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+        </svg>
+        <span>{t.twitter}</span>
+      </a>
+
+      <!-- Reddit -->
+      <a
+        href={redditShareUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold bg-[#ff4500]/10 hover:bg-[#ff4500] text-orange-400 hover:text-white border border-[#ff4500]/30 hover:border-[#ff4500] transition-all shadow-sm group"
+        aria-label="Share on Reddit"
+      >
+        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+          <path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .616-.32 1.157-.798 1.464.015.15.023.303.023.456 0 2.37-2.797 4.292-6.248 4.292-3.45 0-6.248-1.922-6.248-4.292 0-.153.008-.306.023-.456-.478-.307-.798-.848-.798-1.464 0-.968.786-1.754 1.754-1.754.477 0 .899.182 1.207.491 1.194-.856 2.85-1.418 4.674-1.488l.8-3.747 2.597.547a1.25 1.25 0 0 1 1.248-.056z"/>
+        </svg>
+        <span>{t.reddit}</span>
+      </a>
+
+      <!-- Copy Direct Link Button -->
+      <button
+        type="button"
+        class="v87-copy-share-url-btn inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold font-mono bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border border-cyan-500/40 hover:border-cyan-400 transition-all cursor-pointer shadow-sm"
+        data-url={resolvedUrl}
+        data-msg={t.copiedToast}
+      >
+        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+        </svg>
+        <span>{t.copyLink}</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Discreet Expandable Citation Footnote -->
+  <div class="mt-4 pt-3.5 border-t border-slate-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[11px] font-mono text-slate-500">
+    <details class="cursor-pointer group">
+      <summary class="hover:text-cyan-400 transition-colors list-none flex items-center gap-1.5">
+        <span class="group-open:rotate-90 transition-transform">▸</span>
+        <span>{t.citeToggle}</span>
+      </summary>
+      <div class="mt-2.5 p-3 rounded-lg bg-slate-950/80 border border-slate-800 text-slate-300 font-mono text-[11px] select-all leading-relaxed">
+        {t.apaCitation}
+      </div>
+    </details>
+
+    <div class="flex items-center gap-3 shrink-0">
+      <a
+        href="https://creativecommons.org/licenses/by/4.0/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hover:text-cyan-400 transition-colors"
+      >
+        CC BY 4.0 Open Telemetry
+      </a>
+      <span class="text-slate-700 hidden sm:inline">•</span>
+      <span class="text-slate-500 hidden sm:inline">vector87.com</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { showExportToast } from '../utils/telemetryExport';
+
+  function initShareButtons() {
+    document.querySelectorAll<HTMLButtonElement>('.v87-copy-share-url-btn').forEach((btn) => {
+      if (btn.getAttribute('data-v87-bound')) return;
+      btn.setAttribute('data-v87-bound', 'true');
+
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const url = btn.getAttribute('data-url') || window.location.href;
+        const msg = btn.getAttribute('data-msg') || '✓ Link copied to clipboard!';
+
+        navigator.clipboard.writeText(url).then(() => {
+          showExportToast(msg);
+        });
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initShareButtons);
+  } else {
+    initShareButtons();
+  }
+  document.addEventListener('astro:page-load', initShareButtons);
+</script>

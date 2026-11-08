@@ -50,6 +50,28 @@ const bulletsB = diagramBullets?.right[lang] || uniqueB.slice(0, 3).map((i) => i
   <!-- ==================== 1. HERO VENN DIAGRAM (AUTHENTIC SOLID DISCS) ==================== -->
   <div class="relative w-full rounded-3xl bg-[#040814] border border-slate-800/90 p-4 sm:p-8 lg:p-10 shadow-2xl overflow-hidden">
     
+    <!-- Header Toolbar: Badge & Share Action -->
+    <div class="flex items-center justify-between gap-3 mb-4 text-xs font-mono">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+        <span class="text-slate-400 uppercase tracking-widest text-[11px] font-bold">
+          {lang === 'cs' ? 'Vennův diagram kompetencí' : 'Competency Venn Diagram'}
+        </span>
+      </div>
+      <div class="flex items-center gap-2">
+        <button
+          type="button"
+          class="v87-venn-share-btn px-2.5 py-1 rounded-lg text-slate-400 hover:text-cyan-300 hover:bg-slate-800/80 border border-slate-800 hover:border-slate-700 transition-all cursor-pointer flex items-center gap-1.5 text-[11px]"
+          data-title={`${nameA} vs. ${nameB}`}
+        >
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+          </svg>
+          <span>{lang === 'cs' ? 'Sdílet srovnání' : 'Share Comparison'}</span>
+        </button>
+      </div>
+    </div>
+
     <!-- Desktop / Tablet Venn Diagram (>= md) -->
     <div class="hidden md:block relative max-w-4xl mx-auto">
       <svg
@@ -346,3 +368,27 @@ const bulletsB = diagramBullets?.right[lang] || uniqueB.slice(0, 3).map((i) => i
   </div>
 
 </div>
+
+<script>
+  import { copyLinkToClipboard } from '../utils/telemetryExport';
+
+  function initVennShareButtons() {
+    document.querySelectorAll<HTMLButtonElement>('.v87-venn-share-btn').forEach((btn) => {
+      if (btn.getAttribute('data-v87-bound')) return;
+      btn.setAttribute('data-v87-bound', 'true');
+
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const isCs = window.location.pathname.startsWith('/cs');
+        copyLinkToClipboard(undefined, isCs ? 'cs' : 'en');
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initVennShareButtons);
+  } else {
+    initVennShareButtons();
+  }
+  document.addEventListener('astro:page-load', initVennShareButtons);
+</script>
