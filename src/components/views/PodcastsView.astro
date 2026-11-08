@@ -27,6 +27,10 @@ const totalEpisodes = episodes.length;
 const spotifyShowsCount = sources.filter((s) => s.external_url?.includes('spotify.com')).length;
 const youtubeChannelsCount = sources.filter((s) => s.external_url?.includes('youtube.com')).length;
 
+// Initial batch size rendered in SSR HTML to stay well under Googlebot 2MB cutoff
+const INITIAL_BATCH_SIZE = 24;
+const initialEpisodes = episodes.slice(0, INITIAL_BATCH_SIZE);
+
 // Extract unique episode categories
 const uniqueCategories = Array.from(
   new Set(episodes.map((e) => e.category).filter(Boolean))
@@ -267,7 +271,7 @@ const podcastsJsonLd = {
         <p class="text-xs font-mono text-slate-400 mt-1">{t.recentEpisodesSubtitle}</p>
       </div>
       <div class="text-xs font-mono text-slate-400" id="results-count">
-        {lang === 'cs' ? `Zobrazeno ${totalEpisodes} z ${totalEpisodes} epizod` : `Showing ${totalEpisodes} of ${totalEpisodes} episodes`}
+        {lang === 'cs' ? `Zobrazeno ${initialEpisodes.length} z ${totalEpisodes} epizod` : `Showing ${initialEpisodes.length} of ${totalEpisodes} episodes`}
       </div>
     </div>
 
@@ -357,9 +361,9 @@ const podcastsJsonLd = {
       </div>
     </div>
 
-    <!-- Episodes Grid -->
+    <!-- Episodes Grid (SSR renders initial 24 episodes for crawlability & ultra-light HTML payload) -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="episodes-container">
-      {episodes.map((ep) => {
+      {initialEpisodes.map((ep) => {
         const isSpotify = ep.external_url?.includes('spotify.com');
         const releaseFormatted = formatDate(ep.release_date);
         const durationFormatted = formatDuration(ep.duration_ms);
@@ -481,6 +485,28 @@ const podcastsJsonLd = {
       })}
     </div>
 
+    <!-- Load More Button -->
+    <div id="load-more-container" class="mt-10 flex justify-center">
+      <button
+        type="button"
+        id="load-more-btn"
+        class="px-6 py-2.5 rounded-lg text-xs font-mono font-semibold bg-cyan-500/15 text-cyan-300 border border-cyan-500/40 hover:bg-cyan-500/25 transition-all cursor-pointer"
+      >
+        {t.loadMore}
+      </button>
+    </div>
+
+    <!-- Hidden metadata for client script -->
+    <div
+      id="podcasts-meta"
+      class="hidden"
+      data-lang={lang}
+      data-duration-min={t.durationMin}
+      data-listen-spotify={t.listenOnSpotify}
+      data-watch-youtube={t.watchOnYouTube}
+      data-total-episodes={totalEpisodes}
+    ></div>
+
     <!-- No Results State -->
     <div id="no-results-state" class="hidden panel-surface rounded-xl p-12 text-center border border-slate-800 my-8">
       <div class="w-12 h-12 rounded-full bg-slate-900 border border-slate-800 text-slate-400 flex items-center justify-center mx-auto mb-3 font-mono text-xl">
@@ -523,23 +549,34 @@ const podcastsJsonLd = {
 </Layout>
 
 <script is:inline>
-  // Interactive Filtering and Search Logic
+  // Progressive Client-Side Hydration, Paging & Filtering
   document.addEventListener('DOMContentLoaded', () => {
+    const metaEl = document.getElementById('podcasts-meta');
+    const lang = metaEl ? metaEl.getAttribute('data-lang') || 'en' : 'en';
+    const durationMinText = metaEl ? metaEl.getAttribute('data-duration-min') || 'min' : 'min';
+    const listenSpotifyText = metaEl ? metaEl.getAttribute('data-listen-spotify') || 'Listen on Spotify ↗' : 'Listen on Spotify ↗';
+    const watchYouTubeText = metaEl ? metaEl.getAttribute('data-watch-youtube') || 'Watch on YouTube ↗' : 'Watch on YouTube ↗';
+    const isCs = lang === 'cs';
+
     const searchInput = document.getElementById('episode-search-input');
     const platformBtns = document.querySelectorAll('.platform-btn');
     const categoryBtns = document.querySelectorAll('.category-btn');
-    const topicBtns = document.querySelectorAll('.topic-quick-btn, .topic-inline-pill');
-    const episodeCards = document.querySelectorAll('.episode-card');
+    const episodesContainer = document.getElementById('episodes-container');
     const resultsCountEl = document.getElementById('results-count');
     const noResultsEl = document.getElementById('no-results-state');
     const resetBtn = document.getElementById('reset-filters-btn');
+    const loadMoreContainer = document.getElementById('load-more-container');
+    const loadMoreBtn = document.getElementById('load-more-btn');
 
+    const BATCH_SIZE = 24;
     let currentPlatform = 'all';
     let currentCategory = 'all';
     let currentSearch = '';
-    const totalCount = episodeCards.length;
+    let renderedCount = BATCH_SIZE;
+    let allEpisodes = null;
+    let filteredEpisodes = [];
 
-    // Check URL search parameters on load (e.g. ?category=... or ?search=...)
+    // Parse URL search parameters on initial load
     const urlParams = new URLSearchParams(window.location.search);
     const initialCategory = urlParams.get('category');
     const initialSearch = urlParams.get('search');
@@ -552,44 +589,191 @@ const podcastsJsonLd = {
       if (searchInput) searchInput.value = initialSearch;
     }
 
-    function applyFilters() {
-      let visibleCount = 0;
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
 
-      episodeCards.forEach((card) => {
-        const cardPlatform = card.getAttribute('data-platform') || '';
-        const cardCategory = card.getAttribute('data-category') || '';
-        const cardSearchText = card.getAttribute('data-search') || '';
+    function formatDate(dateStr) {
+      if (!dateStr) return '';
+      try {
+        const d = new Date(dateStr);
+        return d.toLocaleDateString(isCs ? 'cs-CZ' : 'en-US', {
+          year: 'numeric',
+          month: 'short',
+          day: 'numeric',
+        });
+      } catch {
+        return dateStr;
+      }
+    }
 
-        const matchesPlatform = currentPlatform === 'all' || cardPlatform === currentPlatform;
-        const matchesCategory = currentCategory === 'all' || cardCategory === currentCategory;
-        const matchesSearch = !currentSearch || cardSearchText.includes(currentSearch);
+    function formatDuration(ms) {
+      if (!ms || ms <= 0) return isCs ? 'Video epizoda' : 'Video Episode';
+      const minutes = Math.round(ms / 60000);
+      return `${minutes} ${durationMinText}`;
+    }
 
-        if (matchesPlatform && matchesCategory && matchesSearch) {
-          card.classList.remove('hidden');
-          visibleCount++;
-        } else {
-          card.classList.add('hidden');
-        }
-      });
+    function createCardHtml(ep) {
+      const isSpotify = ep.external_url && ep.external_url.includes('spotify.com');
+      const releaseFormatted = formatDate(ep.release_date);
+      const durationFormatted = formatDuration(ep.duration_ms);
+      const textContent = isCs ? ep.summary || ep.description : ep.description || ep.summary;
 
-      // Update counters
+      const topicsHtml = (ep.topics && ep.topics.length > 0)
+        ? `<div class="mt-3.5 flex flex-wrap gap-1">
+            ${ep.topics.slice(0, 4).map((t) => `
+              <button type="button" class="topic-inline-pill text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800/70 text-slate-300 border border-slate-700/60 hover:border-cyan-400/60 hover:text-cyan-300 transition-colors" data-topic="${escapeHtml(t)}">
+                #${escapeHtml(t)}
+              </button>
+            `).join('')}
+          </div>`
+        : '';
+
+      const matchBadge = (ep.relevance_score && ep.relevance_score >= 0.85)
+        ? `<span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-amber-500/10 text-amber-300 border border-amber-500/20">★ ${Math.round(ep.relevance_score * 100)}% Match</span>`
+        : '';
+
+      const summaryBox = textContent
+        ? `<div class="mt-3 p-3 rounded-lg bg-slate-900/80 border border-slate-800/80">
+            <span class="text-[10px] font-mono text-cyan-400/80 block mb-1.5 font-semibold uppercase tracking-wider">
+              ${isCs ? '✦ AI Shrnutí (Gemini):' : '✦ Key Insights:'}
+            </span>
+            <p class="text-xs text-slate-300 leading-relaxed ${!isCs ? 'line-clamp-4' : ''}">
+              ${escapeHtml(textContent)}
+            </p>
+          </div>`
+        : '';
+
+      return `
+        <article
+          class="episode-card panel-surface-interactive rounded-xl p-5 flex flex-col justify-between group border border-slate-800/80 hover:border-cyan-500/40 transition-all"
+          data-platform="${isSpotify ? 'spotify' : 'youtube'}"
+          data-category="${escapeHtml(ep.category || '')}"
+        >
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="text-[10px] font-mono uppercase px-2 py-0.5 rounded border font-semibold flex items-center gap-1.5 ${isSpotify ? 'bg-emerald-500/10 text-emerald-300 border-emerald-500/30' : 'bg-rose-500/10 text-rose-300 border-rose-500/30'}">
+                <span class="w-1.5 h-1.5 rounded-full ${isSpotify ? 'bg-emerald-400' : 'bg-rose-400'}"></span>
+                <span>${isSpotify ? 'Spotify' : 'YouTube'}</span>
+              </span>
+              <div class="flex items-center gap-2 text-[11px] font-mono text-slate-400">
+                <span>${escapeHtml(durationFormatted)}</span>
+                ${releaseFormatted ? `<span>• ${escapeHtml(releaseFormatted)}</span>` : ''}
+              </div>
+            </div>
+
+            <div class="text-xs font-mono font-semibold text-cyan-400/90 mb-1 truncate">
+              ${escapeHtml(ep.show_name || '')}
+            </div>
+
+            <h3 class="text-base font-bold text-white group-hover:text-cyan-300 transition-colors leading-snug line-clamp-2">
+              <a href="${escapeHtml(ep.external_url || '#')}" target="_blank" rel="noopener noreferrer" class="hover:underline">
+                ${escapeHtml(ep.title || '')}
+              </a>
+            </h3>
+
+            <div class="mt-2.5 flex items-center gap-2">
+              <span class="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-slate-900 text-slate-300 border border-slate-800">
+                ${escapeHtml(ep.category || '')}
+              </span>
+              ${matchBadge}
+            </div>
+
+            ${summaryBox}
+            ${topicsHtml}
+          </div>
+
+          <div class="mt-5 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs font-mono">
+            <span class="text-slate-400 text-[11px] truncate max-w-[120px]">
+              ${escapeHtml(ep.keywords?.[0] || ep.category || '')}
+            </span>
+            <a href="${escapeHtml(ep.external_url || '#')}" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded font-bold transition-colors inline-flex items-center gap-1.5 ${isSpotify ? 'bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 hover:bg-emerald-400 hover:text-slate-950' : 'bg-rose-500/10 border border-rose-500/30 text-rose-300 hover:bg-rose-400 hover:text-slate-950'}">
+              <span>${isSpotify ? listenSpotifyText : watchYouTubeText}</span>
+            </a>
+          </div>
+        </article>
+      `;
+    }
+
+    function updateResultsUI() {
+      const totalMatching = filteredEpisodes.length;
+      const countToShow = Math.min(renderedCount, totalMatching);
+
       if (resultsCountEl) {
-        const isCs = document.documentElement.lang === 'cs';
         resultsCountEl.textContent = isCs
-          ? `Zobrazeno ${visibleCount} z ${totalCount} epizod`
-          : `Showing ${visibleCount} of ${totalCount} episodes`;
+          ? `Zobrazeno ${countToShow} z ${totalMatching} epizod`
+          : `Showing ${countToShow} of ${totalMatching} episodes`;
       }
 
-      // No results toggle
       if (noResultsEl) {
-        if (visibleCount === 0) {
+        if (totalMatching === 0) {
           noResultsEl.classList.remove('hidden');
         } else {
           noResultsEl.classList.add('hidden');
         }
       }
 
-      // Update Active Button Styles
+      if (loadMoreContainer) {
+        if (countToShow >= totalMatching || totalMatching === 0) {
+          loadMoreContainer.classList.add('hidden');
+        } else {
+          loadMoreContainer.classList.remove('hidden');
+        }
+      }
+    }
+
+    function renderBatch(append = false) {
+      if (!episodesContainer) return;
+      const startIndex = append ? renderedCount - BATCH_SIZE : 0;
+      const endIndex = Math.min(renderedCount, filteredEpisodes.length);
+      const batch = filteredEpisodes.slice(startIndex, endIndex);
+
+      const html = batch.map(createCardHtml).join('');
+      if (append) {
+        episodesContainer.insertAdjacentHTML('beforeend', html);
+      } else {
+        episodesContainer.innerHTML = html;
+      }
+
+      updateResultsUI();
+    }
+
+    function applyFilters() {
+      if (!allEpisodes) return;
+
+      filteredEpisodes = allEpisodes.filter((ep) => {
+        const isSpotify = ep.external_url && ep.external_url.includes('spotify.com');
+        const platform = isSpotify ? 'spotify' : 'youtube';
+        if (currentPlatform !== 'all' && platform !== currentPlatform) return false;
+        if (currentCategory !== 'all' && ep.category !== currentCategory) return false;
+
+        if (currentSearch) {
+          const haystack = [
+            ep.title || '',
+            ep.show_name || '',
+            ep.category || '',
+            (ep.topics || []).join(' '),
+            (ep.keywords || []).join(' '),
+            ep.summary || '',
+            ep.description || '',
+          ].join(' ').toLowerCase();
+
+          if (!haystack.includes(currentSearch)) return false;
+        }
+
+        return true;
+      });
+
+      renderedCount = BATCH_SIZE;
+      renderBatch(false);
+
+      // Update button active styling
       platformBtns.forEach((btn) => {
         const p = btn.getAttribute('data-platform');
         if (p === currentPlatform) {
@@ -609,7 +793,34 @@ const podcastsJsonLd = {
       });
     }
 
-    // Search input handler
+    // Load full dataset in background
+    fetch('/data/podcasts.json')
+      .then((r) => r.json())
+      .then((data) => {
+        allEpisodes = data.episodes || [];
+        filteredEpisodes = allEpisodes;
+
+        // If URL params exist or user typed before fetch completed:
+        if (currentPlatform !== 'all' || currentCategory !== 'all' || currentSearch) {
+          applyFilters();
+        } else {
+          updateResultsUI();
+        }
+      })
+      .catch((err) => {
+        console.error('Failed to load podcasts data:', err);
+      });
+
+    // Load More click handler
+    if (loadMoreBtn) {
+      loadMoreBtn.addEventListener('click', () => {
+        if (!allEpisodes) return;
+        renderedCount += BATCH_SIZE;
+        renderBatch(true);
+      });
+    }
+
+    // Live search input
     if (searchInput) {
       searchInput.addEventListener('input', (e) => {
         currentSearch = (e.target.value || '').trim().toLowerCase();
@@ -617,7 +828,7 @@ const podcastsJsonLd = {
       });
     }
 
-    // Platform switcher handler
+    // Platform switcher
     platformBtns.forEach((btn) => {
       btn.addEventListener('click', () => {
         currentPlatform = btn.getAttribute('data-platform') || 'all';
@@ -625,7 +836,7 @@ const podcastsJsonLd = {
       });
     });
 
-    // Category switcher handler
+    // Category switcher
     categoryBtns.forEach((btn) => {
       btn.addEventListener('click', () => {
         currentCategory = btn.getAttribute('data-category') || 'all';
@@ -633,11 +844,12 @@ const podcastsJsonLd = {
       });
     });
 
-    // Topic quick pill click handler
-    topicBtns.forEach((btn) => {
-      btn.addEventListener('click', (e) => {
+    // Topic quick pills (using event delegation for SSR + dynamic cards)
+    document.addEventListener('click', (e) => {
+      const topicBtn = e.target.closest('.topic-quick-btn, .topic-inline-pill');
+      if (topicBtn) {
         e.preventDefault();
-        const topic = btn.getAttribute('data-topic');
+        const topic = topicBtn.getAttribute('data-topic');
         if (topic) {
           currentSearch = topic.toLowerCase();
           if (searchInput) searchInput.value = topic;
@@ -645,10 +857,10 @@ const podcastsJsonLd = {
           const feedEl = document.getElementById('episodes-feed');
           if (feedEl) feedEl.scrollIntoView({ behavior: 'smooth' });
         }
-      });
+      }
     });
 
-    // Reset button handler
+    // Reset button
     if (resetBtn) {
       resetBtn.addEventListener('click', () => {
         currentPlatform = 'all';
@@ -658,8 +870,5 @@ const podcastsJsonLd = {
         applyFilters();
       });
     }
-
-    // Initial render
-    applyFilters();
   });
 </script>

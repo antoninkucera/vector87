@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "source": "Vector87 Podcast Ingestion Pipeline",
     "total_sources": 31,
-    "total_episodes": 507
+    "total_episodes": 513
   },
   "sources": [
     {
@@ -17,7 +17,7 @@
       "total_episodes": 232,
       "image_url": "https://i.scdn.co/image/ab6765630000ba8a5208343f71ab0730df9a14b8",
       "external_url": "https://open.spotify.com/show/6D5jY1VodQqSVnDYsVJWJt",
-      "updated_at": "2026-11-06 11:50:46.956800"
+      "updated_at": "2026-11-08 09:00:13.574609"
     },
     {
       "id": "57AJ6GiMDPVBLGRqvjeoz6",
@@ -30,7 +30,7 @@
       "total_episodes": 322,
       "image_url": "https://i.scdn.co/image/ab6765630000ba8afce233722273798fa1d05a5c",
       "external_url": "https://open.spotify.com/show/57AJ6GiMDPVBLGRqvjeoz6",
-      "updated_at": "2026-11-06 11:50:44.507215"
+      "updated_at": "2026-11-08 09:00:09.867113"
     },
     {
       "id": "2MAi0BvDc6GTFvKFPXnkCL",
@@ -43,7 +43,7 @@
       "total_episodes": 504,
       "image_url": "https://i.scdn.co/image/ab6765630000ba8a563ebb538d297875b10114b7",
       "external_url": "https://open.spotify.com/show/2MAi0BvDc6GTFvKFPXnkCL",
-      "updated_at": "2026-11-06 11:50:47.387250"
+      "updated_at": "2026-11-08 09:00:14.246998"
     },
     {
       "id": "1JdkD0ZoZ52KjwdR0b1WoT",
@@ -56,7 +56,7 @@
       "total_episodes": 331,
       "image_url": "https://i.scdn.co/image/ab6765630000ba8a5569819b983784216bdd4ca6",
       "external_url": "https://open.spotify.com/show/1JdkD0ZoZ52KjwdR0b1WoT",
-      "updated_at": "2026-11-06 11:50:45.495010"
+      "updated_at": "2026-11-08 09:00:11.190680"
     },
     {
       "id": "UCBKM3HATRILZyG9jGNJKGXQ",
@@ -69,7 +69,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/channel/UCBKM3HATRILZyG9jGNJKGXQ",
-      "updated_at": "2026-11-06 11:51:09.532013"
+      "updated_at": "2026-11-08 09:00:16.174874"
     },
     {
       "id": "UCrXSVX9a1mj8l0CMLwKgMVw",
@@ -82,7 +82,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/channel/UCrXSVX9a1mj8l0CMLwKgMVw",
-      "updated_at": "2026-11-06 11:50:59.934522"
+      "updated_at": "2026-11-08 09:00:15.632306"
     },
     {
       "id": "UCXUPKJO5MZQN11PqgIvyuvQ",
@@ -95,7 +95,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/channel/UCXUPKJO5MZQN11PqgIvyuvQ",
-      "updated_at": "2026-11-06 11:51:09.200699"
+      "updated_at": "2026-11-08 09:00:15.981472"
     },
     {
       "id": "UCrDwWp7EBBv4NwvScIpBDOA",
@@ -108,7 +108,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/channel/UCrDwWp7EBBv4NwvScIpBDOA",
-      "updated_at": "2026-11-06 11:50:47.552456"
+      "updated_at": "2026-11-08 09:00:14.560225"
     },
     {
       "id": "2OJXB8v32CrKbbsv9Uq2vn",
@@ -121,7 +121,7 @@
       "total_episodes": 56,
       "image_url": "https://i.scdn.co/image/ab6765630000ba8a4895ec65f1c3c38cafe45d6d",
       "external_url": "https://open.spotify.com/show/2OJXB8v32CrKbbsv9Uq2vn",
-      "updated_at": "2026-11-06 11:50:46.549461"
+      "updated_at": "2026-11-08 09:00:13.063147"
     },
     {
       "id": "UCGZdaRgswLfee5hDWCG-_0g",
@@ -134,7 +134,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/channel/UCGZdaRgswLfee5hDWCG-_0g",
-      "updated_at": "2026-11-06 11:51:09.356016"
+      "updated_at": "2026-11-08 09:00:16.066917"
     },
     {
       "id": "2iLvljRGVVIGlJshT5vNDS",
@@ -147,7 +147,7 @@
       "total_episodes": 521,
       "image_url": "https://i.scdn.co/image/ab6765630000ba8a6e142b927c02a883ee855611",
       "external_url": "https://open.spotify.com/show/2iLvljRGVVIGlJshT5vNDS",
-      "updated_at": "2026-11-06 11:50:45.104419"
+      "updated_at": "2026-11-08 09:00:10.627409"
     },
     {
       "id": "UC3bSfMzhHjeX_tFdte1esgQ",
@@ -160,7 +160,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/channel/UC3bSfMzhHjeX_tFdte1esgQ",
-      "updated_at": "2026-11-06 11:51:09.648970"
+      "updated_at": "2026-11-08 09:00:16.326314"
     },
     {
       "id": "1BZN7H3ikovSejhwQTzNm4",
@@ -173,7 +173,7 @@
       "total_episodes": 612,
       "image_url": "https://i.scdn.co/image/ab6765630000ba8a2e312df484c4b50c03addd9b",
       "external_url": "https://open.spotify.com/show/1BZN7H3ikovSejhwQTzNm4",
-      "updated_at": "2026-11-06 11:50:43.377460"
+      "updated_at": "2026-11-08 09:00:08.170252"
     },
     {
       "id": "UCAq9f7jFEA7Mtl3qOZy2h1A",
@@ -186,7 +186,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/channel/UCAq9f7jFEA7Mtl3qOZy2h1A",
-      "updated_at": "2026-11-06 11:50:56.587929"
+      "updated_at": "2026-11-08 09:00:15.281947"
     },
     {
       "id": "02yJXEJAJiQ0Vm2AO9Xj6X",
@@ -199,7 +199,7 @@
       "total_episodes": 300,
       "image_url": "https://i.scdn.co/image/ab6765630000ba8a5f4712b441fcd4135ca7452c",
       "external_url": "https://open.spotify.com/show/02yJXEJAJiQ0Vm2AO9Xj6X",
-      "updated_at": "2026-11-06 11:50:43.806295"
+      "updated_at": "2026-11-08 09:00:08.943337"
     },
     {
       "id": "UCQli51lMp-oW0gUHrcIj0jA",
@@ -212,7 +212,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/channel/UCQli51lMp-oW0gUHrcIj0jA",
-      "updated_at": "2026-11-06 11:51:09.797482"
+      "updated_at": "2026-11-08 09:00:16.483973"
     },
     {
       "id": "1ZEwpdbarrLDlkeAfoHjtj",
@@ -225,7 +225,7 @@
       "total_episodes": 35,
       "image_url": "https://i.scdn.co/image/ab6765630000ba8ad61a0145e42da811a1943c42",
       "external_url": "https://open.spotify.com/show/1ZEwpdbarrLDlkeAfoHjtj",
-      "updated_at": "2026-11-06 11:50:45.794181"
+      "updated_at": "2026-11-08 09:00:11.807136"
     },
     {
       "id": "UCJS9pqu9BzkAMNTmzNMNhvg",
@@ -238,7 +238,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/channel/UCJS9pqu9BzkAMNTmzNMNhvg",
-      "updated_at": "2026-11-06 11:50:47.630883"
+      "updated_at": "2026-11-08 09:00:14.805860"
     },
     {
       "id": "UC_x5XG1OV2P6uZZ5FSM9Ttw",
@@ -251,7 +251,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/channel/UC_x5XG1OV2P6uZZ5FSM9Ttw",
-      "updated_at": "2026-11-06 11:50:56.156653"
+      "updated_at": "2026-11-08 09:00:14.943732"
     },
     {
       "id": "UCFp1vaKzpfvoGai0vE5VJ0w",
@@ -264,7 +264,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/channel/UCFp1vaKzpfvoGai0vE5VJ0w",
-      "updated_at": "2026-11-06 11:51:09.992662"
+      "updated_at": "2026-11-08 09:00:16.653626"
     },
     {
       "id": "UCC-lyoTfSrcJzA1ab3APAgw",
@@ -277,7 +277,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/channel/UCC-lyoTfSrcJzA1ab3APAgw",
-      "updated_at": "2026-11-06 11:50:59.989526"
+      "updated_at": "2026-11-08 09:00:15.706492"
     },
     {
       "id": "UCXZCJLdBC09xxGZ6gcdrc6A",
@@ -290,7 +290,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/channel/UCXZCJLdBC09xxGZ6gcdrc6A",
-      "updated_at": "2026-11-06 11:51:10.187437"
+      "updated_at": "2026-11-08 09:00:16.862211"
     },
     {
       "id": "1LaCr5TFAgYPK5qHjP3XDp",
@@ -303,7 +303,7 @@
       "total_episodes": 381,
       "image_url": "https://i.scdn.co/image/ab6765630000ba8a355eceddea89633108675df4",
       "external_url": "https://open.spotify.com/show/1LaCr5TFAgYPK5qHjP3XDp",
-      "updated_at": "2026-11-06 11:50:46.210416"
+      "updated_at": "2026-11-08 09:00:12.449094"
     },
     {
       "id": "search:Felipe Hoffa BigQuery",
@@ -316,7 +316,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/results?search_query=Felipe+Hoffa+BigQuery",
-      "updated_at": "2026-11-06 11:51:15.516313"
+      "updated_at": "2026-11-08 09:00:21.352053"
     },
     {
       "id": "search:Lak Lakshmanan data engineering",
@@ -329,7 +329,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/results?search_query=Lak+Lakshmanan+data+engineering",
-      "updated_at": "2026-11-06 11:51:18.426329"
+      "updated_at": "2026-11-08 09:00:22.159236"
     },
     {
       "id": "search:google cloud dataform bigquery deep dive",
@@ -342,7 +342,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/results?search_query=google+cloud+dataform+bigquery+deep+dive",
-      "updated_at": "2026-11-06 11:51:14.989399"
+      "updated_at": "2026-11-08 09:00:17.069949"
     },
     {
       "id": "UCmLGJ3VYBcfRaWbP6JLJcpA",
@@ -355,7 +355,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/channel/UCmLGJ3VYBcfRaWbP6JLJcpA",
-      "updated_at": "2026-11-06 11:50:56.353199"
+      "updated_at": "2026-11-08 09:00:15.097503"
     },
     {
       "id": "1n8P7ZSgfVLVJ3GegxPat1",
@@ -368,7 +368,7 @@
       "total_episodes": 1043,
       "image_url": "https://i.scdn.co/image/ab6765630000ba8afceea1b76d40bb25f1cea453",
       "external_url": "https://open.spotify.com/show/1n8P7ZSgfVLVJ3GegxPat1",
-      "updated_at": "2026-11-06 11:50:44.129665"
+      "updated_at": "2026-11-08 09:00:09.435101"
     },
     {
       "id": "2ReJKUbDtcom5U0GgpOlAz",
@@ -381,7 +381,7 @@
       "total_episodes": 320,
       "image_url": "https://i.scdn.co/image/ab6765630000ba8a5269a259a4ef259d0211ecd1",
       "external_url": "https://open.spotify.com/show/2ReJKUbDtcom5U0GgpOlAz",
-      "updated_at": "2026-11-06 11:50:43.028230"
+      "updated_at": "2026-11-08 09:00:07.294334"
     },
     {
       "id": "UCEnwiDW2rOCQJnF18CEGemg",
@@ -394,7 +394,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/channel/UCEnwiDW2rOCQJnF18CEGemg",
-      "updated_at": "2026-11-06 11:51:09.030095"
+      "updated_at": "2026-11-08 09:00:15.846182"
     },
     {
       "id": "UCVpBwKK-ecMEV75y1dYLE5w",
@@ -407,10 +407,38 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/channel/UCVpBwKK-ecMEV75y1dYLE5w",
-      "updated_at": "2026-11-06 11:50:59.709054"
+      "updated_at": "2026-11-08 09:00:15.494604"
     }
   ],
   "episodes": [
+    {
+      "id": "yt:Ar5zQnD-VkE",
+      "show_id": "UCJS9pqu9BzkAMNTmzNMNhvg",
+      "show_name": "Google Cloud Tech",
+      "title": "Gemini Flash vs. Pro vs. Flash-Lite: How do you pick the right model for speed, cost, and reasoning?",
+      "description": "A quick guide to choosing between Gemini Flash-Lite, Gemini Flash, and Gemini Pro based on latency, cost, and task complexity. Learn more: https://g.dev/ai/gemini-api-models\n\n(Note: We generated this explainer as part of an AI video experiment. Let us know in the comments if this quick format works for you.)",
+      "release_date": "2026-11-07",
+      "duration_ms": null,
+      "external_url": "https://www.youtube.com/watch?v=Ar5zQnD-VkE",
+      "category": "Machine Learning & AI",
+      "summary": "Tato epizoda představuje rychlého průvodce výběrem správného modelu rodiny Gemini, včetně variant Flash-Lite, Flash a Pro. Dozvíte se, jak optimálně vyvážit latenci, finanční náklady a složitost úloh pro vaše projekty.",
+      "topics": [
+        "Large Language Models",
+        "Model Selection",
+        "AI Cost Optimization",
+        "Latency and Performance"
+      ],
+      "keywords": [
+        "Gemini Flash",
+        "Gemini Pro",
+        "Gemini Flash-Lite",
+        "Google Cloud",
+        "AI API",
+        "LLM evaluation"
+      ],
+      "relevance_score": 0.85,
+      "ingested_at": "2026-11-07 09:00:36.855503"
+    },
     {
       "id": "yt:vm4iXq8E5KU",
       "show_id": "UCJS9pqu9BzkAMNTmzNMNhvg",
@@ -440,6 +468,99 @@
       ],
       "relevance_score": 0.95,
       "ingested_at": "2026-11-06 11:50:51.260665"
+    },
+    {
+      "id": "0TFEDSKntVd88vp8YRh0Yg",
+      "show_id": "1n8P7ZSgfVLVJ3GegxPat1",
+      "show_name": "Super Data Science: ML & AI Podcast with Jon Krohn",
+      "title": "1042: Building for the Agent-Native App Store, with Salesforce’s Tyler Carlson",
+      "description": "#Sponsored, SVP, Head of Product, AgentExchange and Partner Experience, Tyler Carlson, returns to talk to Jon Krohn about building for an agent-native app store. Since Tyler’s last appearance in Episode 956, Salesforce has gone headless, opening its data, workflow and permissions infrastructure through APIs and MCP servers so that customers and partners can build their own personalized interfaces on top. AgentExchange now brings Salesforce and Slack apps, agents, skills, plugins, and MCPs together in one unified marketplace, built to serve human buyers as well as the AI agents searching on their behalf. Hear Tyler’s framework for the new software stack, how Salesforce tests skills and plugins across Claude, Codex, Cursor and other AI tools, and his advice for AI practitioners who want to reach Salesforce’s customer base in this Feature Friday. Additional materials: ⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠⁠www.superdatascience.com/1042⁠⁠⁠⁠  Interested in sponsoring a SuperDataScience Podcast episode? Email natalie@superdatascience.com for sponsorship information.⁠⁠⁠  In this episode you will learn:      (01:19) Salesforce’s headless strategy      (07:49) How SaaStr runs on three executives and an army of agents      (10:17) Why AppExchange became AgentExchange      (20:47) Why skills and plugins are the new apps      (23:03) The Claudeforce partnership and testing across AI tools  ",
+      "release_date": "2026-11-06",
+      "duration_ms": 2178432,
+      "external_url": "https://open.spotify.com/episode/0TFEDSKntVd88vp8YRh0Yg",
+      "category": "Machine Learning & AI",
+      "summary": "Tyler Carlson ze společnosti Salesforce rozebírá přechod na headless architekturu a transformaci AppExchange na AgentExchange, jednotné tržiště pro AI agenty, pluginy a aplikace. Dozvíte se, jak nová softwarová stacková strategie slouží lidským uživatelům i autonomním agentům.",
+      "topics": [
+        "AI Agents",
+        "Headless Architecture",
+        "App Stores",
+        "API Infrastructure",
+        "Enterprise Software"
+      ],
+      "keywords": [
+        "Salesforce",
+        "AgentExchange",
+        "MCP",
+        "APIs",
+        "Slack",
+        "Claude",
+        "AI Agents",
+        "SaaS"
+      ],
+      "relevance_score": 0.92,
+      "ingested_at": "2026-11-07 09:00:28.422257"
+    },
+    {
+      "id": "yt:IW5XI2_1ctI",
+      "show_id": "UCJS9pqu9BzkAMNTmzNMNhvg",
+      "show_name": "Google Cloud Tech",
+      "title": "Grounding agents in your trusted semantic models using Knowledge Catalog",
+      "description": "To learn more about Knowledge Catalog connectors → https://g.dev/cloud/connectors\n\nSee how Google Cloud Knowledge Catalog automatically indexes semantic layers across LookML, BigQuery Graph, dbt MetricFlow, Databricks Unity Catalog, Snowflake, and SAP - giving AI agents the business context and semantics they need to deliver governed, accurate answers whilst saving cost and reduce latency.\n\nWhat along and see in this demo:\n* *Dynamic Context Graphs:* Visually explore how data assets, semantic models, schemas, joins, lineage, and governance connect across your organization.\n* *Side-by-Side AI Agent Comparison:* Watch a Knowledge Catalog grounded agent go head-to-head against a baseline control agent - producing accurate SQL with certified business logic in just 3 tool calls, cutting latency and token usage by ~67%.\n\n#Gemini #GoogleCloud #KnowledgeCatalog #AgentContext\n\nSpeaker: Haengeun Chi\nProducts Mentioned: Knowledge Catalog",
+      "release_date": "2026-11-06",
+      "duration_ms": null,
+      "external_url": "https://www.youtube.com/watch?v=IW5XI2_1ctI",
+      "category": "Machine Learning & AI",
+      "summary": "Epizoda představuje Google Cloud Knowledge Catalog, který propojuje sémantické vrstvy dat s AI agenty pro zajištění přesných a řízených odpovědí. Ukazuje, jak využití kontextových grafů a certifikované obchodní logiky výrazně snižuje latenci a náklady na provoz LLM.",
+      "topics": [
+        "AI Agents",
+        "Semantic Layer",
+        "Data Governance",
+        "Knowledge Management",
+        "Generative AI"
+      ],
+      "keywords": [
+        "Google Cloud",
+        "Knowledge Catalog",
+        "Gemini",
+        "BigQuery",
+        "dbt MetricFlow",
+        "LookML",
+        "Data Lineage",
+        "LLM Grounding"
+      ],
+      "relevance_score": 0.95,
+      "ingested_at": "2026-11-07 09:01:39.735645"
+    },
+    {
+      "id": "yt:hJOwOkLHRN0",
+      "show_id": "UCXZCJLdBC09xxGZ6gcdrc6A",
+      "show_name": "OpenAI",
+      "title": "LifeVal: Measuring AI progress on the tasks that matter in everyday life.",
+      "description": "For AGI to benefit all of humanity, it should help people with the everyday tasks that matter most to them. \n\nSo we built LifeVal, a new benchmark shaped by feedback from thousands of ChatGPT users on where they most want help from a personal assistant—from finding childcare to accessing government services and managing personal finances.\n\nOver the past year, we’ve used LifeVal to measure and improve how well our models handle these everyday tasks.\n\n\nhttps://openai.com/index/lifeval/",
+      "release_date": "2026-11-06",
+      "duration_ms": null,
+      "external_url": "https://www.youtube.com/watch?v=hJOwOkLHRN0",
+      "category": "Machine Learning & AI",
+      "summary": "OpenAI představuje benchmark LifeVal, který hodnotí schopnost AI modelů asistovat lidem při řešení praktických každodenních úkolů. Cílem je zajistit, aby vývoj AGI směřoval k reálnému přínosu pro běžný život uživatelů.",
+      "topics": [
+        "AI Benchmarking",
+        "AGI Development",
+        "Human-AI Interaction",
+        "Model Evaluation",
+        "Personal Assistant AI"
+      ],
+      "keywords": [
+        "LifeVal",
+        "OpenAI",
+        "ChatGPT",
+        "AGI",
+        "Model Evaluation",
+        "AI Benchmarks",
+        "User Feedback",
+        "Task Automation"
+      ],
+      "relevance_score": 0.95,
+      "ingested_at": "2026-11-07 09:05:28.918168"
     },
     {
       "id": "26emWeQ2txPX0J5Ch8MF00",
@@ -15413,6 +15534,68 @@
       ],
       "relevance_score": 0.85,
       "ingested_at": "2026-11-06 11:51:18.422346"
+    },
+    {
+      "id": "yt:3dMSI-UDFfA",
+      "show_id": "search:google cloud dataform bigquery deep dive",
+      "show_name": "TechTrapture (google cloud dataform bigquery deep dive)",
+      "title": "Google Cloud Dataflow Explained | Create Your First Data Pipeline (GCS to BigQuery)",
+      "description": "",
+      "release_date": null,
+      "duration_ms": null,
+      "external_url": "https://www.youtube.com/watch?v=3dMSI-UDFfA",
+      "category": "Data Engineering",
+      "summary": "Praktický průvodce službou Google Cloud Dataflow, který vás provede vytvořením prvního datového pipeline pro přesun dat z GCS do BigQuery. Epizoda vysvětluje základní principy streamování a dávkového zpracování v prostředí GCP.",
+      "topics": [
+        "Data Pipelines",
+        "Cloud Computing",
+        "ETL/ELT",
+        "Data Processing",
+        "Google Cloud Platform"
+      ],
+      "keywords": [
+        "Google Cloud Dataflow",
+        "Apache Beam",
+        "BigQuery",
+        "GCS",
+        "Cloud Storage",
+        "Data Engineering",
+        "GCP",
+        "Batch Processing"
+      ],
+      "relevance_score": 0.95,
+      "ingested_at": "2026-11-08 09:00:20.254202"
+    },
+    {
+      "id": "yt:Unbx59eHL5I",
+      "show_id": "search:google cloud dataform bigquery deep dive",
+      "show_name": "TechTrapture (google cloud dataform bigquery deep dive)",
+      "title": "Create a Streaming Data Pipeline with Google Cloud Dataflow : Pub/Sub to BigQuery",
+      "description": "",
+      "release_date": null,
+      "duration_ms": null,
+      "external_url": "https://www.youtube.com/watch?v=Unbx59eHL5I",
+      "category": "Data Engineering",
+      "summary": "Tato epizoda poskytuje praktický návod na vytvoření real-time datového pipeline pomocí Google Cloud Dataflow, který propojuje službu Pub/Sub s datovým skladem BigQuery. Zaměřuje se na efektivní zpracování streamovaných dat v cloudu a jejich následnou analytickou využitelnost.",
+      "topics": [
+        "Data Engineering",
+        "Real-time Streaming",
+        "Cloud Computing",
+        "Data Pipelines",
+        "Cloud Architecture"
+      ],
+      "keywords": [
+        "Google Cloud",
+        "Dataflow",
+        "Pub/Sub",
+        "BigQuery",
+        "Apache Beam",
+        "Streaming",
+        "GCP",
+        "ETL"
+      ],
+      "relevance_score": 0.95,
+      "ingested_at": "2026-11-08 09:00:21.346316"
     }
   ]
 }

@@ -1,7 +1,10 @@
 User-agent: *
 Allow: /
 
-# Direct AI Agents & LLM crawlers to structured context
+# Sitemaps
 Sitemap: https://vector87.com/sitemap-index.xml
+Sitemap: https://vector87.com/sitemap.xml
+
+# Direct AI Agents & LLM crawlers to structured context
 LLM-Data: https://vector87.com/llms.txt
 LLM-Full: https://vector87.com/llms-full.txt
