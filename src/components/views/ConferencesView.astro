@@ -75,6 +75,10 @@ const countryFlags: Record<string, string> = {
   FR: '🇫🇷',
   DE: '🇩🇪',
   ES: '🇪🇸',
+  SE: '🇸🇪',
+  AT: '🇦🇹',
+  RS: '🇷🇸',
+  CA: '🇨🇦',
 };
 
 // Schema.org Event JSON-LD markup
@@ -162,6 +166,36 @@ const conferencesJsonLd = {
       <span class="text-xs font-mono text-slate-400">{lang === 'cs' ? 'Otevřené přihlášky (CFP)' : 'Open Call for Papers'}</span>
       <div class="text-2xl font-bold text-emerald-400 font-mono mt-1">{openCfpCount}</div>
       <span class="text-[11px] text-emerald-400/80 font-mono mt-1">{lang === 'cs' ? 'Přednášejte na akcích 🎤' : 'Submit your talk 🎤'}</span>
+    </div>
+  </section>
+
+  <!-- Authoritative Calendar Sources & Community Portals -->
+  <section class="mb-8 p-4 sm:p-5 rounded-xl bg-slate-900/60 border border-slate-800 text-xs font-mono text-slate-400 flex flex-col md:flex-row md:items-center justify-between gap-3">
+    <div class="flex items-center gap-2">
+      <span class="text-cyan-400">🔗</span>
+      <span class="font-semibold text-slate-300">{lang === 'cs' ? 'Doporučené primární agregátory a odpočty CFP:' : 'Primary Tracking Sources & Paper Deadlines:'}</span>
+    </div>
+    <div class="flex flex-wrap items-center gap-2 text-[11px]">
+      <a href="https://aideadlines.org/" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-md bg-slate-800 hover:bg-slate-700 text-cyan-300 transition-colors inline-flex items-center gap-1">
+        <span>AI Deadlines (aideadlines.org)</span>
+        <span>↗</span>
+      </a>
+      <a href="https://github.com/floodsung/ML-Conferences" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors inline-flex items-center gap-1">
+        <span>Awesome ML Conferences</span>
+        <span>↗</span>
+      </a>
+      <a href="https://worldsummit.ai/" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors inline-flex items-center gap-1">
+        <span>World Summit AI</span>
+        <span>↗</span>
+      </a>
+      <a href="https://datapointprague.cz/" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors inline-flex items-center gap-1">
+        <span>Data Point Prague</span>
+        <span>↗</span>
+      </a>
+      <a href="https://www.mlmu.cz/" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors inline-flex items-center gap-1">
+        <span>MLMU.cz</span>
+        <span>↗</span>
+      </a>
     </div>
   </section>
 
