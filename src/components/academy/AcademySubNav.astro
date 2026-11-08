@@ -3,7 +3,7 @@ import { ui, type Locale } from '../../i18n/ui';
 
 interface Props {
   lang: Locale;
-  active: 'courses' | 'podcasts';
+  active: 'courses' | 'podcasts' | 'analyzer';
 }
 
 const { lang, active } = Astro.props;
@@ -11,6 +11,7 @@ const t = ui[lang].academy.subNav;
 
 const coursesHref = lang === 'cs' ? '/cs/academy' : '/academy';
 const podcastsHref = lang === 'cs' ? '/cs/academy/podcasts' : '/academy/podcasts';
+const analyzerHref = lang === 'cs' ? '/cs/academy/analyzer' : '/academy/analyzer';
 ---
 
 <nav aria-label="Academy sub-navigation" class="mb-10 flex flex-wrap items-center gap-2 border-b border-slate-800/80 pb-4">
@@ -42,8 +43,23 @@ const podcastsHref = lang === 'cs' ? '/cs/academy/podcasts' : '/academy/podcasts
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z" />
     </svg>
     <span>{t.podcasts}</span>
+  </a>
+
+  <a
+    href={analyzerHref}
+    class:list={[
+      'px-4 py-2 rounded-lg text-xs font-mono font-semibold transition-all inline-flex items-center gap-2',
+      active === 'analyzer'
+        ? 'bg-cyan-500/15 text-cyan-300 border border-cyan-500/40 shadow-sm shadow-cyan-950/50'
+        : 'bg-slate-900/80 text-slate-400 border border-slate-800 hover:border-slate-700 hover:text-slate-200',
+    ]}
+  >
+    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+    </svg>
+    <span>{t.analyzer}</span>
     <span class="px-1.5 py-0.5 rounded text-[10px] font-mono bg-cyan-950 text-cyan-300 border border-cyan-800/60 font-bold">
-      NEW
+      INTERACTIVE
     </span>
   </a>
 </nav>

@@ -71,6 +71,34 @@ const academyJsonLd = {
   <!-- Sub-navigation between Courses and Podcasts -->
   <AcademySubNav lang={lang} active="courses" />
 
+  <!-- Skill Gap Analyzer Feature Callout Banner -->
+  <section class="mb-12 p-6 sm:p-7 rounded-xl bg-gradient-to-r from-cyan-950/40 via-slate-900 to-indigo-950/40 border border-cyan-500/40 shadow-lg flex flex-col md:flex-row md:items-center justify-between gap-6">
+    <div class="space-y-2 max-w-2xl">
+      <div class="flex items-center gap-2">
+        <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 font-bold uppercase tracking-wider">
+          {lang === 'cs' ? 'NOVÁ INTERAKTIVNÍ KALKULAČKA' : 'NEW INTERACTIVE CALCULATOR'}
+        </span>
+        <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>
+      </div>
+      <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight">
+        {t.analyzerCalloutTitle}
+      </h2>
+      <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-light">
+        {t.analyzerCalloutSubtitle}
+      </p>
+    </div>
+
+    <div class="shrink-0">
+      <a
+        href={lang === 'cs' ? '/cs/academy/analyzer' : '/academy/analyzer'}
+        class="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-slate-950 text-xs font-mono font-bold transition-all shadow-md shadow-cyan-950/50 hover:shadow-cyan-500/30 group"
+      >
+        <span>{t.analyzerCalloutCta}</span>
+        <span class="transition-transform group-hover:translate-x-1">→</span>
+      </a>
+    </div>
+  </section>
+
   <!-- Course Selection & Verification Methodology -->
   <section class="mb-14 p-6 sm:p-8 rounded-xl panel-surface border-t-2 border-t-cyan-400">
     <div class="max-w-3xl mb-6">

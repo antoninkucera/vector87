@@ -822,6 +822,578 @@ export const COMPARISONS_CATALOG: ComparisonDefinition[] = [
       },
     ],
   },
+
+  // 5. Data Engineer vs. Data Scientist
+  {
+    slug: 'data-engineer-vs-data-scientist',
+    type: 'role',
+    entityAId: 'data_engineer',
+    entityBId: 'data_scientist',
+    aliases: ['data-scientist-vs-data-engineer'],
+    title: {
+      en: 'Data Engineer vs. Data Scientist: Infrastructure vs. Models',
+      cs: 'Data Engineer vs. Data Scientist: Stavba infrastruktury vs. prediktivní modely',
+    },
+    subtitle: {
+      en: 'An empirical comparison of job posting requirements across enterprise employers: distributed data systems, ETL/ELT pipelines, and machine learning boundaries.',
+      cs: 'Empirické srovnání požadavků z tisíců inzerátů: distribuované systémy, datová potrubí vs. trénování a nasazování modelů.',
+    },
+    executiveSummary: {
+      en: [
+        'Data Engineers and Data Scientists represent the two foundational pillars of enterprise data maturity. Data Engineers build, orchestrate, and maintain high-throughput pipelines, distributed compute frameworks, and governed lakehouse platforms. Data Scientists build upon that reliable data foundation to develop statistical models, machine learning algorithms, and predictive experiments.',
+        'While both roles demonstrate high demand for Python and SQL, their operational focus differs drastically. Data Engineers function primarily as backend distributed systems engineers (Apache Spark, Kafka, Airflow, dbt, cloud warehouses). In contrast, Data Scientists require deep competency in statistical inference, experimental design (A/B testing), machine learning libraries (scikit-learn, XGBoost, PyTorch), and model evaluation.',
+      ],
+      cs: [
+        'Data Engineer a Data Scientist představují dva základní pilíře moderních datových týmů. Data Engineer navrhuje, staví a provozuje vysoce propustná datová potrubí, distribuované výpočty a bezpečné cloudové sklady. Data Scientist nad touto spolehlivou datovou základnou vytváří statistické modely, algoritmy strojového učení a predikce budoucího vývoje.',
+        'Ačkoli obě role intenzivně vyžadují Python a SQL, jejich zaměření se zásadně liší. Data Engineer funguje jako backendový systémový inženýr se zaměřením na distribuované výpočty (Apache Spark, Kafka, Airflow, dbt a cloudové sklady). Data Scientist se naproti tomu soustředí na matematické modelování, testování hypotéz (A/B testy), trénování modelů (scikit-learn, PyTorch) a evaluaci výstupů.',
+      ],
+    },
+    diagramBullets: {
+      left: {
+        en: [
+          'Distributed compute frameworks (Apache Spark, PySpark)',
+          'Automated pipeline orchestration (Airflow, dbt)',
+          'Cloud lakehouse infrastructure (AWS S3, Databricks, Snowflake)',
+        ],
+        cs: [
+          'Distribuované výpočty a engine (Apache Spark, PySpark)',
+          'Automatizovaná orchestrace datových potrubí (Airflow, dbt)',
+          'Infrastruktura cloudových skladů a jezer (S3, Databricks, Snowflake)',
+        ],
+      },
+      shared: {
+        en: [
+          'Core programming in Python & advanced SQL querying',
+          'Data governance, schema evolution & pipeline quality audits',
+          'Cloud platform infrastructure (AWS, Azure, GCP)',
+        ],
+        cs: [
+          'Základní programování v Pythonu a pokročilý jazyk SQL',
+          'Správa datové kvality, datová schémata a governance',
+          'Práce v cloudových prostředích (AWS, Azure, GCP)',
+        ],
+      },
+      right: {
+        en: [
+          'Supervised & unsupervised Machine Learning (scikit-learn, XGBoost)',
+          'Deep Learning & neural architectures (PyTorch, TensorFlow)',
+          'Statistical inference, hypothesis testing & A/B experiment design',
+        ],
+        cs: [
+          'Trénování modelů strojového učení (scikit-learn, XGBoost)',
+          'Hluboké neuronové sítě a výpočty na GPU (PyTorch, TensorFlow)',
+          'Statistická inference, testování hypotéz a návrh A/B experimentů',
+        ],
+      },
+    },
+    uniqueA: [
+      {
+        name: 'Distributed Compute & Spark',
+        detail: {
+          en: 'Scaling in-memory transformations and streaming jobs over petabyte-scale datasets.',
+          cs: 'Škálování distribuovaných transformací a streamingových úloh v paměti nad velkými daty.',
+        },
+      },
+      {
+        name: 'ELT Pipeline Orchestration (Airflow / dbt)',
+        detail: {
+          en: 'Building version-controlled DAG dependencies, automated tests, and fault-tolerant scheduling.',
+          cs: 'Tvorba verzovaných DAG závislostí v Airflow, testování datových modelů a spolehlivý scheduling.',
+        },
+      },
+      {
+        name: 'Event Streaming & Messaging (Kafka)',
+        detail: {
+          en: 'Decoupling event producers from analytical consumers with low-latency pub/sub streaming.',
+          cs: 'Nízko-latenční zachytávání a distribuce událostí v reálném čase mezi mikroslužbami a skladem.',
+        },
+      },
+    ],
+    shared: [
+      {
+        name: 'Python for Data Architecture',
+        detail: {
+          en: 'Demanded in over 66% of Data Engineer and 89% of Data Scientist postings.',
+          cs: 'Vyžadováno u více než 66 % inzerátů Data Engineerů a 89 % Data Scientistů.',
+        },
+      },
+      {
+        name: 'Advanced Relational SQL',
+        detail: {
+          en: 'Foundational analytical language required across virtually all enterprise positions.',
+          cs: 'Základní dotazovací jazyk vyžadovaný u naprosté většiny otevřených pozic obou rolí.',
+        },
+      },
+      {
+        name: 'Data Governance & Quality Standards',
+        detail: {
+          en: 'Ensuring schema consistency, handling missing values, and validating data contracts.',
+          cs: 'Garantování integrity dat, audit chybějících hodnot a dodržování datových kontraktů.',
+        },
+      },
+    ],
+    uniqueB: [
+      {
+        name: 'Machine Learning & Predictive Modeling',
+        detail: {
+          en: 'Formulating classification, regression, and clustering algorithms to optimize business KPIs.',
+          cs: 'Formulace klasifikačních a regresních algoritmů pro optimalizaci byznysových procesů.',
+        },
+      },
+      {
+        name: 'Statistical Experimentation & A/B Testing',
+        detail: {
+          en: 'Calculating sample sizes, power analysis, and establishing causal significance.',
+          cs: 'Výpočet velikosti vzorků, testování statistické významnosti a měření kauzálního dopadu změn.',
+        },
+      },
+      {
+        name: 'Deep Learning & Neural Networks',
+        detail: {
+          en: 'Designing neural architectures for NLP, computer vision, and generative foundation models.',
+          cs: 'Návrh a fine-tuning neuronových sítí pro zpracování textu, obrazu a generativní modely.',
+        },
+      },
+    ],
+    careerTransition: {
+      title: {
+        en: 'Bridging the Engineering and Science Gap',
+        cs: 'Kariérní přechod mezi Data Engineeringem a Data Science',
+      },
+      advice: {
+        en: [
+          'If transitioning from Data Engineering to Data Science: Focus on applied mathematics, statistical hypothesis testing, and standard ML evaluation metrics (ROC-AUC, RMSE, Precision/Recall) rather than just model syntax.',
+          'If transitioning from Data Science to Data Engineering: Deepen software engineering rigor — study containerization (Docker), distributed systems theory (CAP, Spark shuffle bottlenecks), and modular CI/CD deployment pipelines.',
+        ],
+        cs: [
+          'Při přechodu z Data Engineeringu k Data Science: Zaměřte se na aplikovanou matematiku, statistické testování hypotéz a metriky evaluace modelů (ROC-AUC, Precision/Recall), nikoli pouze na syntaxi knihoven.',
+          'Při přechodu z Data Science k Data Engineeringu: Posilte softwarové inženýrství — zvládněte kontejnerizaci (Docker), architekturu distribuovaných systémů (Spark bottlenecky) a CI/CD nasazování datových modelů.',
+        ],
+      },
+      recommendedCourseIds: ['coursera-ibm-ai-engineering', 'datacamp-data-engineer-python', 'gcp-data-eng-spec'],
+      recommendedCertIds: ['cert-databricks-de', 'cert-gcp-pde'],
+    },
+  },
+
+  // 6. BigQuery vs. Snowflake
+  {
+    slug: 'bigquery-vs-snowflake',
+    type: 'technology',
+    entityAId: 'bigquery',
+    entityBId: 'snowflake',
+    aliases: ['snowflake-vs-bigquery'],
+    title: {
+      en: 'BigQuery vs. Snowflake: Real Enterprise Market Demand',
+      cs: 'BigQuery vs. Snowflake: Reálná poptávka a souboj cloudových skladů',
+    },
+    subtitle: {
+      en: 'An empirical comparison of the two leading enterprise cloud data warehouses across S&P 500 postings: Google Cloud serverless slot economics vs. Snowflake multi-cloud virtual warehouses.',
+      cs: 'Empirické srovnání dvou předních cloudových platforem na základě inzerátů firem S&P 500: serverless slotová ekonomika v BigQuery vs. virtuální sklady a multi-cloud u Snowflake.',
+    },
+    executiveSummary: {
+      en: [
+        'The competition between Google BigQuery and Snowflake is one of the most strategic architectural choices in enterprise data infrastructure. BigQuery is a truly serverless, multi-tenant analytical engine deeply embedded within Google Cloud Platform, offering unified compute across storage, analytics, and Vertex AI with zero virtual machine management.',
+        'Snowflake pioneered independent multi-cluster shared data architecture across all three major clouds (AWS, Azure, GCP). In analyzed enterprise job postings, Snowflake leads in broad multi-cloud corporate adoption (527 postings), while BigQuery (207 postings) is heavily anchored in enterprises with strategic commitments to Google Cloud, advanced AI/ML integration, and streaming ingestion.',
+      ],
+      cs: [
+        'Souboj mezi Google BigQuery a Snowflake představuje jedno z nejvýznamnějších strategických rozhodnutí při stavbě moderní podnikové datové platformy. BigQuery nabízí plně serverless architekturu hluboce integrovanou do Google Cloud Platform, která spojuje analytické dotazování, strojové učení v BigQuery ML a modely Gemini bez nutnosti správy virtuálních serverů.',
+        'Snowflake definoval standard pro nezávislý multi-cloudový datový sklad s odděleným výpočetním výkonem nad všemi třemi hyperscalery (AWS, Azure, GCP). V analyzovaných podnikových inzerátech vede Snowflake v celkovém zastoupení (527 pozic), zatímco BigQuery (207 pozic) je silně zastoupeno u firem strategicky postavených na ekosystému Google Cloud a přímém napojení na pokročilé AI/ML služby.',
+      ],
+    },
+    diagramBullets: {
+      left: {
+        en: [
+          'Pure serverless slot management (Standard, Enterprise & Enterprise Plus)',
+          'Native in-warehouse machine learning & Vertex AI Gemini invocation',
+          'Zero-infrastructure streaming buffer & BigLake Iceberg federation',
+        ],
+        cs: [
+          'Čistě serverless slotová správa (Standard, Enterprise a Enterprise Plus)',
+          'Nativní strojové učení BigQuery ML a přímé volání modelů Gemini přes SQL',
+          'Nativní streaming buffer bez infrastruktury a BigLake federace nad Icebergem',
+        ],
+      },
+      shared: {
+        en: [
+          'Full separation of cloud storage from elastic analytical compute',
+          'Standard ANSI SQL compliance, complex window functions & CTEs',
+          'Apache Iceberg open table format support & enterprise access governance',
+        ],
+        cs: [
+          'Úplné oddělení cloudového úložiště od škálovatelného výpočetního výkonu',
+          'Plná podpora standardního ANSI SQL, analytických funkcí a CTE',
+          'Podpora otevřeného formátu Apache Iceberg a centralizovaná správa přístupů',
+        ],
+      },
+      right: {
+        en: [
+          'Independent Virtual Warehouses with instant T-shirt sizing (XS to 6XL)',
+          'Identical operational experience natively across AWS, Azure, and GCP',
+          'Snowflake Marketplace & zero-copy cross-organization data sharing',
+        ],
+        cs: [
+          'Nezávislé virtuální sklady s okamžitým škálováním (velikosti XS až 6XL)',
+          'Identický provoz a správa nativně napříč AWS, Azure i GCP',
+          'Snowflake Marketplace a okamžité sdílení živých dat bez kopírování',
+        ],
+      },
+    },
+    uniqueA: [
+      {
+        name: 'Serverless Dynamic Slots & BigQuery Editions',
+        detail: {
+          en: 'No cluster provisioning; queries execute across shared slot pools with autoscaling baseline reservations.',
+          cs: 'Žádné spouštění clusterů; dotazy běží nad sdíleným poolem slotů s automatickým škálováním a rezervacemi.',
+        },
+      },
+      {
+        name: 'Native BigQuery ML & Vertex AI Integration',
+        detail: {
+          en: 'Train regressions, k-means, and invoke Gemini LLMs directly within SQL statements without moving data.',
+          cs: 'Trénování modelů a přímé volání LLM modelů Gemini přímo v SQL dotazech bez nutnosti přesouvat data ven.',
+        },
+      },
+      {
+        name: 'Built-in Dataform Orchestration',
+        detail: {
+          en: 'Native SQLX transformation framework built directly into the BigQuery console with zero operational cost.',
+          cs: 'Nativní orchestrace v SQLX přímo v konzoli BigQuery s nulovými licenčními náklady navíc.',
+        },
+      },
+    ],
+    shared: [
+      {
+        name: 'Decoupled Storage & Compute Architecture',
+        detail: {
+          en: 'Store petabytes indefinitely at object storage rates while scaling query compute dynamically.',
+          cs: 'Dlouhodobé ukládání petabajtů dat za nízké ceny s dynamickým škálováním výpočetního výkonu.',
+        },
+      },
+      {
+        name: 'Modern Open Table Formats (Apache Iceberg)',
+        detail: {
+          en: 'Both platforms read and write Iceberg metadata, preventing proprietary storage lock-in.',
+          cs: 'Obě platformy podporují otevřené tabulky Apache Iceberg bez vendor lock-inu na úrovni úložiště.',
+        },
+      },
+      {
+        name: 'Governed Enterprise Analytics & BI Support',
+        detail: {
+          en: 'Direct high-speed native connectors for Looker, Tableau, Power BI, and dbt.',
+          cs: 'Rychlé nativní konektory pro Looker, Tableau, Power BI i transformační framework dbt.',
+        },
+      },
+    ],
+    uniqueB: [
+      {
+        name: 'Independent Virtual Warehouses (T-Shirt Sizing)',
+        detail: {
+          en: 'Isolate departments and workloads onto dedicated compute clusters that auto-suspend when idle.',
+          cs: 'Oddělení oddělení a pipeline do vlastních výpočetních warehouse s automatickým uspáním při nečinnosti.',
+        },
+      },
+      {
+        name: 'Multi-Cloud Portability (AWS / Azure / GCP)',
+        detail: {
+          en: 'Deploy identical data architectures across multiple cloud providers with unified billing and governance.',
+          cs: 'Identická správa a migrace datových skladů napříč všemi třemi hlavními cloudy.',
+        },
+      },
+      {
+        name: 'Secure Data Sharing & Snowflake Marketplace',
+        detail: {
+          en: 'Query third-party financial and market datasets live without setting up ETL extraction pipelines.',
+          cs: 'Okamžitý přístup k externím datovým sadám na trhu bez nutnosti stavět integrační pipeline.',
+        },
+      },
+    ],
+  },
+
+  // 7. BI Developer vs. Data Analyst
+  {
+    slug: 'bi-developer-vs-data-analyst',
+    type: 'role',
+    entityAId: 'bi_developer',
+    entityBId: 'data_analyst',
+    aliases: ['data-analyst-vs-bi-developer'],
+    title: {
+      en: 'BI Developer vs. Data Analyst: Architecture vs. Business Insights',
+      cs: 'BI Developer vs. Data Analyst: Sémantická architektura vs. byznysová analýza',
+    },
+    subtitle: {
+      en: 'Enterprise dimensional modeling, DAX tabular structures, and semantic layers vs. ad-hoc exploratory analysis, KPI trees, and executive storytelling.',
+      cs: 'Rozdíl mezi tvorbou dimenzionálních modelů (DAX, LookML, ETL) a ad-hoc interpretací metrik pro strategická rozhodnutí managementu.',
+    },
+    executiveSummary: {
+      en: [
+        'While often categorized under the same business intelligence umbrella, BI Developers and Data Analysts fulfill complementary responsibilities. The BI Developer acts as an analytics software engineer: they design dimensional schemas (star schemas), optimize semantic layers (LookML, Power BI semantic models, Tabular cubes), and write complex DAX calculations to ensure consistent enterprise-wide metric definitions.',
+        'The Data Analyst acts as an investigative business partner: they query those governed data models to analyze trends, discover operational bottlenecks, build ad-hoc scenario forecasts in Excel/Python, and present actionable findings to executive leadership. In enterprise postings, Data Analyst has broader overall demand (1,593 postings), while BI Developer positions (121 postings) specialize in governed infrastructure.',
+      ],
+      cs: [
+        'Ačkoli bývají obě role často řazeny pod pojem business intelligence, v podnikové praxi plní odlišné úkoly. BI Developer funguje jako inženýr analytických systémů: navrhuje dimenzionální schémata (hvězdicová schémata), staví sémantické vrstvy (LookML, Power BI tabular modely) a píše pokročilé DAX kalkulace pro jednotnou definici metrik napříč firmou.',
+        'Data Analyst vystupuje jako strategický partner byznysu: využívá připravené datové modely pro zkoumání trendů, odhalování propadů v tržbách, ad-hoc modelování scénářů v Excelu či Pythonu a prezentaci doporučení pro vedení. V inzerátech má Data Analyst výrazně širší poptávku (1 593 inzerátů), zatímco BI Developer (121 inzerátů) je úzce specializovanou inženýrskou rolí.',
+      ],
+    },
+    diagramBullets: {
+      left: {
+        en: [
+          'Dimensional modeling & schema design (Star / Snowflake schemas)',
+          'Advanced DAX, Tabular models & calculation groups',
+          'Governed semantic layer engineering (LookML, Power BI Semantic Models)',
+        ],
+        cs: [
+          'Dimenzionální modelování skladů (hvězdicová schémata)',
+          'Pokročilé DAX vzorce, kalkulační skupiny a Tabular modely',
+          'Vývoj sémantické vrstvy a centralizovaných metrik (LookML, Power BI)',
+        ],
+      },
+      shared: {
+        en: [
+          'Enterprise SQL querying, window functions & relational joins',
+          'Executive dashboard development in Power BI & Tableau',
+          'Data governance, metric definitions & reporting QA',
+        ],
+        cs: [
+          'Podnikové SQL dotazování, analytické funkce a spojování tabulek',
+          'Tvorba manažerských přehledů a dashboardů v Power BI a Tableau',
+          'Datová governance, správa definic klíčových metrik a kontrola kvality',
+        ],
+      },
+      right: {
+        en: [
+          'Ad-hoc exploratory data analysis (EDA) & business hypothesis testing',
+          'Python (Pandas) & advanced Excel scenario modeling',
+          'Customer cohort analysis, funnel drop-off & KPI root-cause audits',
+        ],
+        cs: [
+          'Ad-hoc analýzy, testování byznysových hypotéz a hledání příčin výkyvů',
+          'Práce v Pythonu (Pandas) a pokročilé finanční modelování v Excelu',
+          'Kohortové analýzy zákazníků, konverzní trychtýře a prezentace pro management',
+        ],
+      },
+    },
+    uniqueA: [
+      {
+        name: 'Advanced DAX & Tabular Optimization',
+        detail: {
+          en: 'Writing high-performance measure formulations, filter context manipulation, and row-level security (RLS).',
+          cs: 'Optimalizace výkonu měřítek v DAX, práce s kontextem filtrů a řízení přístupových práv (RLS).',
+        },
+      },
+      {
+        name: 'Dimensional Modeling (Kimball Methodology)',
+        detail: {
+          en: 'Architecting fact and dimension tables, slowly changing dimensions (SCD), and conformed dimensions.',
+          cs: 'Návrh faktových a dimenzionálních tabulek, pomalu se měnících dimenzí (SCD) a modelování schémat.',
+        },
+      },
+      {
+        name: 'Governed Semantic Layer Maintenance',
+        detail: {
+          en: 'Centralizing metric logic into single-source-of-truth semantic models (LookML, Power BI datasets).',
+          cs: 'Sjednocení logiky výpočtu metrik do centrální sémantické vrstvy eliminující duplicitní definice.',
+        },
+      },
+    ],
+    shared: [
+      {
+        name: 'Enterprise SQL Proficiency',
+        detail: {
+          en: 'Demanded in 85.6% of BI Developer and 55.0% of Data Analyst job postings.',
+          cs: 'Vyžadováno u 85,6 % inzerátů BI Developerů a 55,0 % pozic Data Analystů.',
+        },
+      },
+      {
+        name: 'Power BI & Tableau Platforms',
+        detail: {
+          en: 'The two dominant BI visualization platforms across S&P 500 enterprises.',
+          cs: 'Dvě dominantní vizualizační platformy v podnikovém reportingu velkých korporací.',
+        },
+      },
+      {
+        name: 'Stakeholder Metric Alignment',
+        detail: {
+          en: 'Translating strategic business objectives into verified, deterministic reporting metrics.',
+          cs: 'Převod strategických byznysových cílů do spolehlivých a ověřitelných reportů.',
+        },
+      },
+    ],
+    uniqueB: [
+      {
+        name: 'Exploratory & Ad-Hoc Data Analysis',
+        detail: {
+          en: 'Investigating unexpected business fluctuations, margin drops, and customer behavior shifts.',
+          cs: 'Zkoumání nečekaných výkyvů v tržbách, poklesu marží a změn v chování zákazníků.',
+        },
+      },
+      {
+        name: 'Python (Pandas) & Excel Modeling',
+        detail: {
+          en: 'Flexible exploratory data cleaning, rapid prototyping, and financial forecasting.',
+          cs: 'Rychlé prototypování analýz, čištění dat v Pandas a finanční modelování scénářů.',
+        },
+      },
+      {
+        name: 'Executive Storytelling & Decision Framing',
+        detail: {
+          en: 'Synthesizing complex multi-source data into concise narrative presentations for leadership.',
+          cs: 'Shrnutí komplexních dat do srozumitelných prezentací pro vedení a navrhování konkrétních kroků.',
+        },
+      },
+    ],
+    careerTransition: {
+      title: {
+        en: 'Evolution from Analyst to BI Architect',
+        cs: 'Kariérní růst od analytika k BI architektovi',
+      },
+      advice: {
+        en: [
+          'For Data Analysts moving into BI Development: Deepen your understanding of data warehousing principles — master Kimball star schemas, calculation groups, and tabular engine internals (VertiPaq) rather than relying on flat reporting tables.',
+          'For BI Developers aiming for strategic Data Analyst roles: Strengthen business acumen, exploratory Python scripting, and executive communication to present actionable insights rather than purely maintaining dashboard infrastructure.',
+        ],
+        cs: [
+          'Pro Data Analysty směřující k BI Developmentu: Zvládněte principy datového modelování — hvězdicová schémata podle Kimballa, kalkulační skupiny a fungování tabular enginu (VertiPaq), místo spoléhání se na ploché tabulky.',
+          'Pro BI Developery směřující ke strategické analytice: Posilte byznysové myšlení, práci v Pythonu a prezentační dovednosti pro vedení, abyste byli vnímáni jako partneři byznysu, nejen správci dashboardů.',
+        ],
+      },
+      recommendedCourseIds: ['datacamp-bi-data-analyst', 'coursera-google-data-analytics'],
+      recommendedCertIds: ['cert-dbt-dev'],
+    },
+  },
+
+  // 8. dbt vs. Dataform
+  {
+    slug: 'dbt-vs-dataform',
+    type: 'technology',
+    entityAId: 'dbt',
+    entityBId: 'dataform',
+    aliases: ['dataform-vs-dbt'],
+    title: {
+      en: 'dbt vs. Dataform: Modern Analytics Engineering Frameworks',
+      cs: 'dbt vs. Dataform: Nástroje pro moderní analytics engineering',
+    },
+    subtitle: {
+      en: 'Multi-cloud ecosystem ubiquity (dbt) versus serverless Google BigQuery native orchestration (Dataform SQLX) in corporate job postings.',
+      cs: 'Srovnání otevřeného multi-cloudového standardu (dbt) s nativním serverless orchestrátorem v Google BigQuery (Dataform SQLX).',
+    },
+    executiveSummary: {
+      en: [
+        'The emergence of analytics engineering replaced fragile stored procedures and legacy ETL tools with version-controlled, tested, and modular SQL transformation workflows. dbt (data build tool) established itself as the ubiquitous industry benchmark across Snowflake, Databricks, BigQuery, and Redshift with a massive community and rich package ecosystem.',
+        'Google Cloud acquired and integrated Dataform as a first-class, fully serverless service inside BigQuery. Built on SQLX (SQL extended with JavaScript), Dataform provides zero-infrastructure Git-integrated transformations at no additional licensing cost, creating a compelling choice for pure Google Cloud environments.',
+      ],
+      cs: [
+        'Nástup disciplíny analytics engineeringu nahradil křehké uložené procedury verzovanými, testovanými a modulárními SQL pipeline. Nástroj dbt (data build tool) se etabloval jako nezpochybnitelný průmyslový standard napříč platformami Snowflake, Databricks, BigQuery i Redshift s obrovskou globální komunitou a balíčkovým systémem.',
+        'Google Cloud naproti tomu integroval Dataform jako nativní serverless službu přímo do BigQuery. Postavený na syntaxi SQLX (SQL rozšířené o bloky JavaScriptu) nabízí verzování v Gitu a závislosti modelů s nulovou správou serverů a bez dodatečných licenčních poplatků, což z něj dělá přirozenou volbu pro organizace stavějící primárně na ekosystému Google Cloud.',
+      ],
+    },
+    diagramBullets: {
+      left: {
+        en: [
+          'Cross-warehouse portability (Snowflake, Databricks, Redshift, BigQuery)',
+          'Jinja templating & rich package manager ecosystem (dbt-utils, codegen)',
+          'Independent dbt Cloud platform & standalone metric semantic layer',
+        ],
+        cs: [
+          'Přenositelnost napříč sklady (Snowflake, Databricks, Redshift, BigQuery)',
+          'Jinja šablony a bohatý balíčkový ekosystém (dbt-utils, codegen)',
+          'Samostatná platforma dbt Cloud a nezávislá sémantická vrstva',
+        ],
+      },
+      shared: {
+        en: [
+          'SQL-first in-warehouse transformation (ELT paradigm)',
+          'Git-based version control & pull request CI/CD workflows',
+          'Automated data quality assertions & DAG dependency lineage',
+        ],
+        cs: [
+          'Transformace dat přímo uvnitř skladu na bázi SQL (ELT přístup)',
+          'Verzování modelů v Gitu a zapojení do CI/CD pipeline přes pull requesty',
+          'Automatizované testování kvality dat a strom závislostí modelů (DAG)',
+        ],
+      },
+      right: {
+        en: [
+          'Native serverless service inside BigQuery (zero setup overhead & free)',
+          'SQLX syntax allowing inline JavaScript logic within SQL definitions',
+          'Seamless Google Cloud IAM access governance & Workload Identity',
+        ],
+        cs: [
+          'Nativní serverless služba uvnitř BigQuery (žádná instalace a nulová licence)',
+          'Syntaxe SQLX umožňující psát bloky JavaScriptu přímo v SQL souborech',
+          'Přímé propojení s Google Cloud IAM a bezpečnostním modelem GCP',
+        ],
+      },
+    },
+    uniqueA: [
+      {
+        name: 'Multi-Cloud Warehouse Portability',
+        detail: {
+          en: 'Write transformation models that can target Snowflake, BigQuery, Databricks, or PostgreSQL with minimal dialect changes.',
+          cs: 'Možnost provozovat datové modely identicky nad Snowflake, BigQuery, Databricks i Redshiftem.',
+        },
+      },
+      {
+        name: 'Jinja Templating & Package Manager',
+        detail: {
+          en: 'Leverage community packages like dbt-utils for complex SQL generation, deduplication macros, and surrogate keys.',
+          cs: 'Využití komunitních balíčků (např. dbt-utils) pro generování SQL maker, náhradních klíčů a deduplikací.',
+        },
+      },
+      {
+        name: 'Ubiquitous Market Demand & Ecosystem',
+        detail: {
+          en: 'Demanded in over 52% of Analytics Engineer job postings across enterprise corporations.',
+          cs: 'Vyžadováno u více než 52 % inzerátů Analytics Engineerů v předních korporacích.',
+        },
+      },
+    ],
+    shared: [
+      {
+        name: 'SQL-First Transformation (ELT)',
+        detail: {
+          en: 'Transform data directly in the warehouse using performant distributed compute rather than external ETL engines.',
+          cs: 'Transformace dat přímo v datovém skladu s využitím jeho výpočetní síly namísto externích ETL nástrojů.',
+        },
+      },
+      {
+        name: 'Git Version Control & CI/CD Testing',
+        detail: {
+          en: 'Treat data transformations like production software code with branch reviews and automated regression tests.',
+          cs: 'Správa transformací jako softwarového kódu s revizemi v Gitu a automatickými testy kvality.',
+        },
+      },
+      {
+        name: 'DAG Dependency Graph & Lineage',
+        detail: {
+          en: 'Automatic resolution of model dependencies using ref() statements, ensuring correct execution order.',
+          cs: 'Automatické sestavení stromu závislostí modelů, které garantuje správné pořadí běhu transformací.',
+        },
+      },
+    ],
+    uniqueB: [
+      {
+        name: 'Native BigQuery Integration & Zero Licensing',
+        detail: {
+          en: 'Built into Google Cloud Console with no additional server costs, third-party accounts, or orchestrators required.',
+          cs: 'Přímo v konzoli Google Cloud bez nutnosti platit licence externím službám nebo spravovat servery.',
+        },
+      },
+      {
+        name: 'SQLX Syntax with Inline JavaScript',
+        detail: {
+          en: 'Execute JavaScript functions directly within SQL model files for dynamic configuration and declaration.',
+          cs: 'Možnost definovat pomocné JavaScript funkce přímo v těle SQL souboru pro dynamickou konfiguraci.',
+        },
+      },
+      {
+        name: 'Seamless GCP IAM Security Model',
+        detail: {
+          en: 'Leverages Google Cloud service accounts, secrets manager, and service-to-service IAM permissions natively.',
+          cs: 'Využití servisních účtů Google Cloud a centrální správy oprávnění bez nutnosti ukládat hesla.',
+        },
+      },
+    ],
+  },
 ];
 
 /**
