@@ -828,6 +828,10 @@ const i18nConfig = {
           b.className = 'country-role-filter-btn px-3 py-1.5 rounded-md text-xs font-mono font-medium transition-all shrink-0 cursor-pointer bg-slate-900 text-slate-400 border border-slate-800 hover:border-slate-700 hover:text-slate-200';
         }
       });
+      setTimeout(() => {
+        const el = document.getElementById('jobs-market');
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 150);
     }
   }
 

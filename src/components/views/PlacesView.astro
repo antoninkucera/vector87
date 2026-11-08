@@ -588,27 +588,21 @@ const placesJsonLd = {
                           {country.tech_market?.roles_breakdown && country.tech_market.roles_breakdown.length > 0 && (
                             <div class="space-y-1.5 pb-1">
                               <div class="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-thin">
-                                <button
-                                  type="button"
-                                  class="country-role-pill px-2.5 py-1 rounded text-xs font-mono font-medium transition-all shrink-0 cursor-pointer bg-cyan-500/20 text-cyan-300 border border-cyan-500/40"
-                                  data-iso3={country.country_code_alpha3}
-                                  data-iso2={country.country_code_alpha2.toLowerCase()}
-                                  data-role="all"
+                                <a
+                                  href={countryDetailHref || '#'}
+                                  class="px-2.5 py-1 rounded text-xs font-mono font-medium transition-all shrink-0 bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 hover:bg-cyan-500/30"
                                 >
                                   {t.expandAllRolesPill} ({country.tech_market.active_jobs || country.tech_market.roles_breakdown.reduce((acc: number, r: any) => acc + r.count, 0)})
-                                </button>
+                                </a>
                                 {country.tech_market.roles_breakdown.map((rb: any) => (
-                                  <button
-                                    type="button"
-                                    class="country-role-pill px-2.5 py-1 rounded text-xs font-mono font-medium transition-all shrink-0 cursor-pointer bg-slate-900 text-slate-400 border border-slate-800 hover:border-slate-700 hover:text-slate-200"
-                                    data-iso3={country.country_code_alpha3}
-                                    data-iso2={country.country_code_alpha2.toLowerCase()}
-                                    data-role={rb.category_id}
+                                  <a
+                                    href={countryDetailHref ? `${countryDetailHref}#role=${rb.category_id}` : '#'}
+                                    class="px-2.5 py-1 rounded text-xs font-mono font-medium transition-all shrink-0 bg-slate-900 text-slate-400 border border-slate-800 hover:border-slate-700 hover:text-slate-200"
                                     title={`${rb.role_name}: ${rb.count} ${lang === 'cs' ? 'pozic' : 'vacancies'}`}
                                   >
                                     <span>{rb.role_name}</span>
                                     <span class="ml-1 opacity-70 text-[10px]">({rb.count})</span>
-                                  </button>
+                                  </a>
                                 ))}
                               </div>
                             </div>
@@ -677,17 +671,15 @@ const placesJsonLd = {
                                   })}
                                 </div>
 
-                                {country.tech_market?.active_jobs && country.tech_market.active_jobs > (country.tech_market.sample_jobs?.length || 0) && (
-                                  <button
-                                    type="button"
-                                    class="btn-load-all-jobs w-full py-2.5 px-4 rounded-lg bg-cyan-950/40 border border-cyan-500/40 hover:bg-cyan-500/20 hover:border-cyan-400 text-cyan-300 font-mono text-xs font-semibold flex items-center justify-center gap-2 transition-colors cursor-pointer"
-                                    data-iso3={country.country_code_alpha3}
-                                    data-iso2={country.country_code_alpha2.toLowerCase()}
-                                    data-count={country.tech_market.active_jobs}
-                                    data-country-name={country.country_name}
+                                {countryDetailHref && (
+                                  <a
+                                    href={countryDetailHref}
+                                    class="w-full py-2.5 px-4 rounded-lg bg-cyan-950/40 border border-cyan-500/40 hover:bg-cyan-500/20 hover:border-cyan-400 text-cyan-300 font-mono text-xs font-semibold flex items-center justify-center gap-2 transition-colors shadow-sm"
                                   >
-                                    <span>⚡ {t.expandBrowseAllJobs.replace('{count}', country.tech_market.active_jobs.toString()).replace('{country}', country.country_name)}</span>
-                                  </button>
+                                    <span>⚡ {country.tech_market?.active_jobs 
+                                      ? t.expandBrowseAllJobs.replace('{count}', country.tech_market.active_jobs.toString()).replace('{country}', country.country_name)
+                                      : (lang === 'cs' ? `Zobrazit profil ${country.country_name} →` : `View ${country.country_name} profile →`)}</span>
+                                  </a>
                                 )}
                               </>
                             ) : country.is_focus_country ? (
@@ -1522,22 +1514,7 @@ const placesJsonLd = {
       return;
     }
 
-    const quickFilterBtn = e.target.closest('.country-role-quick-filter');
-    if (quickFilterBtn) {
-      const iso3 = quickFilterBtn.getAttribute('data-iso3');
-      const iso2 = quickFilterBtn.getAttribute('data-iso2');
-      const role = quickFilterBtn.getAttribute('data-role');
-      if (iso3) activateCountryJobsExplorer(iso3, iso2, role);
-      return;
-    }
-
-    const loadAllBtn = e.target.closest('.btn-load-all-jobs');
-    if (loadAllBtn) {
-      const iso3 = loadAllBtn.getAttribute('data-iso3');
-      const iso2 = loadAllBtn.getAttribute('data-iso2');
-      if (iso3) activateCountryJobsExplorer(iso3, iso2, 'all');
-      return;
-    }
+    // Any additional drawer click events can be handled here
   });
 
   // 6. Deep Linking & URL Hash / Parameter Navigation
