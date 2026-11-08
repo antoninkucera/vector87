@@ -868,6 +868,11 @@ export const ui = {
       browseAllJobsBtn: 'Browse all {count} vacancies in {country} →',
       otherDestinationsTitle: 'Explore Other Destinations & Tech Hubs',
       otherDestinationsSub: 'Compare livability scores and career opportunities across monitored destinations.',
+      jobsRoadmapTitle: 'Live Data & AI Job Telemetry: Planned Coverage',
+      jobsRoadmapSub: 'Real-time corporate ATS telemetry is currently tracked for 29 focus tech hubs. Requisitions for {country} are scheduled for upcoming scraping expansions.',
+      exploreRegionalJobs: 'Explore live tech jobs in {continent} →',
+      regionalNeighborsTitle: 'Related Destinations & Tech Hubs in {region}',
+      regionalNeighborsSub: 'Compare institutional quality, purchasing power, and data opportunities across neighboring markets.',
     },
     methodology: {
       pageTitle: 'Methodology, Data Integrity & Measurement Rules | Vector87',
@@ -1799,6 +1804,11 @@ export const ui = {
       browseAllJobsBtn: 'Procházet všech {count} nabídek v zemi {country} →',
       otherDestinationsTitle: 'Prozkoumat další země & tech centra',
       otherDestinationsSub: 'Srovnejte skóre životní úrovně a kariérní příležitosti v dalších sledovaných zemích.',
+      jobsRoadmapTitle: 'Sběr nabídek Data & AI práce: Plánovaná expanze',
+      jobsRoadmapSub: 'Živou telemetrii z podnikových ATS systémů aktuálně sledujeme pro 29 klíčových center. Sběr inzerátů pro zemi {country} je zařazen do další etapy rozšiřování pipeline.',
+      exploreRegionalJobs: 'Prozkoumat aktivní nabídky v regionu {continent} →',
+      regionalNeighborsTitle: 'Příbuzné země a tech centra v regionu {region}',
+      regionalNeighborsSub: 'Srovnejte institucionální kvalitu, životní úroveň a příležitosti v sousedních zemích.',
     },
     methodology: {
       pageTitle: 'Metodika, integrita dat a architektura sběru | Vector87',

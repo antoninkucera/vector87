@@ -492,18 +492,7 @@ const placesJsonLd = {
                     </td>
                     <td class="py-3.5 px-4 font-sans font-medium text-white flex items-center gap-2">
                       <span class="font-mono text-xs text-slate-400">{country.country_code_alpha2}</span>
-                      {countryDetailHref ? (
-                        <a
-                          href={countryDetailHref}
-                          class="hover:text-cyan-300 transition-colors inline-flex items-center gap-1 font-semibold group/cname"
-                          title={lang === 'cs' ? `Zobrazit samostatný profil země ${country.country_name}` : `View country hub for ${country.country_name}`}
-                        >
-                          <span>{country.country_name}</span>
-                          <span class="text-[10px] text-cyan-400 opacity-60 group-hover/cname:opacity-100 transition-opacity">↗</span>
-                        </a>
-                      ) : (
-                        <span>{country.country_name}</span>
-                      )}
+                      <span>{country.country_name}</span>
                       {country.is_focus_country && (
                         <span class="text-[9px] font-mono px-1.5 py-0.2 rounded bg-cyan-950/80 border border-cyan-600/40 text-cyan-300">
                           FOCUS
@@ -585,10 +574,10 @@ const placesJsonLd = {
                               {countryDetailHref && (
                                 <a
                                   href={countryDetailHref}
-                                  class="inline-flex items-center gap-1 px-2.5 py-1 rounded text-xs font-mono font-semibold bg-cyan-950/80 text-cyan-300 border border-cyan-700/50 hover:bg-cyan-900/80 transition-colors"
+                                  class="inline-flex items-center gap-1.5 px-3 py-1 rounded text-xs font-mono font-bold bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 hover:bg-cyan-500/30 hover:border-cyan-300 transition-all shadow-sm shrink-0"
                                   title={lang === 'cs' ? `Otevřít samostatný profil země ${country.country_name}` : `Open full country profile for ${country.country_name}`}
                                 >
-                                  <span>{lang === 'cs' ? 'Detail země' : 'Country Hub'}</span>
+                                  <span>{lang === 'cs' ? `Profil ${country.country_name}` : `${country.country_name} Profile`}</span>
                                   <span>→</span>
                                 </a>
                               )}
@@ -702,12 +691,34 @@ const placesJsonLd = {
                                 )}
                               </>
                             ) : country.is_focus_country ? (
-                              <div class="p-4 rounded-lg bg-slate-900/50 border border-slate-800 text-xs font-mono text-slate-400">
-                                {t.expandNoVacancies}
+                              <div class="p-4 rounded-lg bg-slate-900/50 border border-slate-800 text-xs font-mono text-slate-400 space-y-3">
+                                <p>{t.expandNoVacancies}</p>
+                                {countryDetailHref && (
+                                  <div>
+                                    <a
+                                      href={countryDetailHref}
+                                      class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-mono font-semibold bg-cyan-950 text-cyan-300 border border-cyan-700/50 hover:bg-cyan-900 transition-colors"
+                                    >
+                                      <span>{lang === 'cs' ? `Zobrazit profil ${country.country_name}` : `View ${country.country_name} Profile`}</span>
+                                      <span>→</span>
+                                    </a>
+                                  </div>
+                                )}
                               </div>
                             ) : (
-                              <div class="p-4 rounded-lg bg-slate-900/50 border border-slate-800 text-xs font-mono text-slate-400">
-                                {t.expandNonFocusHub}
+                              <div class="p-4 rounded-lg bg-slate-900/50 border border-slate-800 text-xs font-mono text-slate-400 space-y-3">
+                                <p>{t.expandNonFocusHub}</p>
+                                {countryDetailHref && (
+                                  <div>
+                                    <a
+                                      href={countryDetailHref}
+                                      class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-mono font-semibold bg-cyan-950 text-cyan-300 border border-cyan-700/50 hover:bg-cyan-900 transition-colors"
+                                    >
+                                      <span>{lang === 'cs' ? `Zobrazit profil ${country.country_name}` : `View ${country.country_name} Profile`}</span>
+                                      <span>→</span>
+                                    </a>
+                                  </div>
+                                )}
                               </div>
                             )}
                           </div>
@@ -844,6 +855,22 @@ const placesJsonLd = {
                               </span>
                             </div>
                           </div>
+
+                          <!-- Dedicated Country Page Link -->
+                          {countryDetailHref && (
+                            <div class="pt-2 border-t border-slate-800/80 flex items-center justify-between font-mono text-xs">
+                              <span class="text-slate-500 text-[11px]">
+                                {lang === 'cs' ? 'Kompletní národní profil:' : 'Full national profile:'}
+                              </span>
+                              <a
+                                href={countryDetailHref}
+                                class="inline-flex items-center gap-1 text-cyan-400 hover:text-cyan-300 hover:underline font-semibold"
+                              >
+                                <span>{lang === 'cs' ? `Otevřít celou stránku ${country.country_name}` : `View full ${country.country_name} page`}</span>
+                                <span>→</span>
+                              </a>
+                            </div>
+                          )}
 
                         </div>
                       </div>

@@ -4,11 +4,12 @@ import path from 'node:path';
 import Layout from '../../layouts/Layout.astro';
 import placesData from '../../data/places-data.json';
 import {
-  TARGET_COUNTRIES,
+  ALL_COUNTRIES_META,
   getCountryMeta,
   getCountryData,
   getCountryConferences,
   getCountrySalaryContext,
+  getRegionalNeighbors,
   type CountryMeta,
 } from '../../data/places';
 import { ui, getLocalePath, type Locale } from '../../i18n/ui';
@@ -26,7 +27,7 @@ const placesNav = ui[lang].places;
 
 const countryMeta = getCountryMeta(countrySlug);
 if (!countryMeta) {
-  throw new Error(`Country slug ${countrySlug} not found in TARGET_COUNTRIES`);
+  throw new Error(`Country slug ${countrySlug} not found in ALL_COUNTRIES_META`);
 }
 
 const country = getCountryData(countryMeta.alpha3);
@@ -36,6 +37,7 @@ if (!country) {
 
 const countryName = lang === 'cs' ? countryMeta.nameCs : countryMeta.nameEn;
 const flag = countryMeta.flag;
+const hasLiveJobs = country.tech_market?.active_jobs && country.tech_market.active_jobs > 0;
 
 // 1. Ranking & Livability metrics
 const sortedCountries = [...placesData.countries].sort((a, b) => {
@@ -99,10 +101,8 @@ const conferences = getCountryConferences(countryMeta.alpha2);
 // 4. Salary & Purchasing Power Context
 const salaryContext = getCountrySalaryContext(countryMeta.alpha2);
 
-// 5. Related Destination Countries
-const otherDestinations = TARGET_COUNTRIES.filter(
-  (tc) => tc.alpha3 !== countryMeta.alpha3 && (tc.slug === 'czechia' || tc.slug === 'germany' || tc.slug === 'switzerland' || tc.slug === 'united-kingdom' || tc.slug === 'united-states' || tc.slug === 'poland' || tc.slug === 'netherlands')
-).slice(0, 4);
+// 5. Related Destination Countries from Same Region
+const otherDestinations = getRegionalNeighbors(countryMeta.alpha3, 4);
 
 // 6. JSON-LD Structured Data
 const jsonLd = {
@@ -310,61 +310,83 @@ const i18nConfig = {
       </div>
     </div>
 
-    <!-- Role Breakdown Filter Pills Bar -->
-    {country.tech_market?.roles_breakdown && country.tech_market.roles_breakdown.length > 0 && (
-      <div class="space-y-2">
-        <div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-thin">
-          <button
-            type="button"
-            class="country-role-filter-btn px-3 py-1.5 rounded-md text-xs font-mono font-medium transition-all shrink-0 cursor-pointer bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 shadow-sm"
-            data-role="all"
+    {hasLiveJobs ? (
+      <>
+        <!-- Role Breakdown Filter Pills Bar -->
+        {country.tech_market?.roles_breakdown && country.tech_market.roles_breakdown.length > 0 && (
+          <div class="space-y-2">
+            <div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-thin">
+              <button
+                type="button"
+                class="country-role-filter-btn px-3 py-1.5 rounded-md text-xs font-mono font-medium transition-all shrink-0 cursor-pointer bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 shadow-sm"
+                data-role="all"
+              >
+                {t.allRoles} ({country.tech_market.active_jobs || country.tech_market.roles_breakdown.reduce((acc: number, r: any) => acc + r.count, 0)})
+              </button>
+              {country.tech_market.roles_breakdown.map((rb: any) => (
+                <button
+                  type="button"
+                  class="country-role-filter-btn px-3 py-1.5 rounded-md text-xs font-mono font-medium transition-all shrink-0 cursor-pointer bg-slate-900 text-slate-400 border border-slate-800 hover:border-slate-700 hover:text-slate-200"
+                  data-role={rb.category_id}
+                >
+                  <span>{rb.role_name}</span>
+                  <span class="ml-1 opacity-70 text-[10px]">({rb.count})</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <!-- Dynamic Jobs Explorer Panel -->
+        <div id="country-jobs-explorer" class="p-4 sm:p-6 rounded-2xl bg-slate-950/80 border border-slate-800 space-y-4 shadow-xl">
+          <!-- Toolbar: Instant Search & Counter -->
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 rounded-xl bg-slate-900/90 border border-slate-800">
+            <div class="relative flex-1">
+              <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-sm">🔍</span>
+              <input
+                id="input-jobs-search"
+                type="text"
+                placeholder={t.searchPlaceholder}
+                class="w-full pl-9 pr-4 py-2 bg-slate-950 border border-slate-800 rounded-lg text-xs sm:text-sm font-mono text-slate-200 placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition-colors"
+              />
+            </div>
+            <div class="flex items-center justify-between sm:justify-end gap-3 text-xs font-mono text-slate-400">
+              <span id="jobs-count-badge" class="text-xs text-cyan-300 font-semibold"></span>
+              <button
+                id="btn-clear-search"
+                type="button"
+                class="hidden text-xs text-slate-400 hover:text-white underline cursor-pointer"
+              >
+                {t.resetFilter}
+              </button>
+            </div>
+          </div>
+
+          <!-- Scrollable List of Jobs -->
+          <div id="jobs-list-container" class="space-y-3 max-h-[640px] overflow-y-auto pr-1 custom-scrollbar">
+            <!-- Rendered client-side via embedded jobs data -->
+          </div>
+        </div>
+      </>
+    ) : (
+      <div class="p-8 sm:p-12 rounded-2xl bg-slate-900/50 border border-slate-800 space-y-4 text-center max-w-2xl mx-auto shadow-inner">
+        <span class="text-4xl block">📡</span>
+        <h3 class="text-lg sm:text-xl font-bold text-white tracking-tight">
+          {t.jobsRoadmapTitle}
+        </h3>
+        <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+          {t.jobsRoadmapSub.replace('{country}', countryName)}
+        </p>
+        <div class="pt-2 flex items-center justify-center gap-3 flex-wrap">
+          <a
+            href={getLocalePath(lang, 'places')}
+            class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-mono font-semibold bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 hover:bg-cyan-500/30 transition-all"
           >
-            {t.allRoles} ({country.tech_market.active_jobs || country.tech_market.roles_breakdown.reduce((acc: number, r: any) => acc + r.count, 0)})
-          </button>
-          {country.tech_market.roles_breakdown.map((rb: any) => (
-            <button
-              type="button"
-              class="country-role-filter-btn px-3 py-1.5 rounded-md text-xs font-mono font-medium transition-all shrink-0 cursor-pointer bg-slate-900 text-slate-400 border border-slate-800 hover:border-slate-700 hover:text-slate-200"
-              data-role={rb.category_id}
-            >
-              <span>{rb.role_name}</span>
-              <span class="ml-1 opacity-70 text-[10px]">({rb.count})</span>
-            </button>
-          ))}
+            <span>{t.exploreRegionalJobs.replace('{continent}', country.continent)}</span>
+          </a>
         </div>
       </div>
     )}
-
-    <!-- Dynamic Jobs Explorer Panel -->
-    <div id="country-jobs-explorer" class="p-4 sm:p-6 rounded-2xl bg-slate-950/80 border border-slate-800 space-y-4 shadow-xl">
-      <!-- Toolbar: Instant Search & Counter -->
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 rounded-xl bg-slate-900/90 border border-slate-800">
-        <div class="relative flex-1">
-          <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-sm">🔍</span>
-          <input
-            id="input-jobs-search"
-            type="text"
-            placeholder={t.searchPlaceholder}
-            class="w-full pl-9 pr-4 py-2 bg-slate-950 border border-slate-800 rounded-lg text-xs sm:text-sm font-mono text-slate-200 placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition-colors"
-          />
-        </div>
-        <div class="flex items-center justify-between sm:justify-end gap-3 text-xs font-mono text-slate-400">
-          <span id="jobs-count-badge" class="text-xs text-cyan-300 font-semibold"></span>
-          <button
-            id="btn-clear-search"
-            type="button"
-            class="hidden text-xs text-slate-400 hover:text-white underline cursor-pointer"
-          >
-            {t.resetFilter}
-          </button>
-        </div>
-      </div>
-
-      <!-- Scrollable List of Jobs -->
-      <div id="jobs-list-container" class="space-y-3 max-h-[640px] overflow-y-auto pr-1 custom-scrollbar">
-        <!-- Rendered client-side via embedded jobs data -->
-      </div>
-    </div>
   </section>
 
   <!-- 03. LOCAL TECH ECOSYSTEM & KEY EMPLOYERS -->
@@ -556,15 +578,24 @@ const i18nConfig = {
     </div>
   </section>
 
-  <!-- 06. OTHER DESTINATIONS & HUBS -->
+  <!-- 06. OTHER DESTINATIONS & REGIONAL INTERLINKING -->
   <section class="mb-14 space-y-6">
-    <div class="border-b border-slate-800 pb-4">
-      <h2 class="text-2xl font-bold text-white tracking-tight">
-        {t.otherDestinationsTitle}
-      </h2>
-      <p class="text-xs sm:text-sm text-slate-400 mt-1">
-        {t.otherDestinationsSub}
-      </p>
+    <div class="border-b border-slate-800 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+      <div>
+        <h2 class="text-2xl font-bold text-white tracking-tight">
+          {t.regionalNeighborsTitle.replace('{region}', country.continent)}
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-400 mt-1">
+          {t.regionalNeighborsSub}
+        </p>
+      </div>
+      <a
+        href={getLocalePath(lang, 'places')}
+        class="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-cyan-400 hover:text-cyan-300 hover:underline shrink-0"
+      >
+        <span>{lang === 'cs' ? 'Zpět na srovnávací žebříček zemí' : 'Back to country ranking'}</span>
+        <span>→</span>
+      </a>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">

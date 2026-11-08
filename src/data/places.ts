@@ -1,6 +1,6 @@
 import placesData from './places-data.json';
 import { CONFERENCES_DATA, type ConferenceItem } from './conferences';
-import { SALARY_MARKET_CONFIG, PURCHASING_POWER_DATA, type PurchasingPowerComparison } from './salaries';
+import { SALARY_MARKET_CONFIG, PURCHASING_POWER_DATA } from './salaries';
 
 export interface CountryMeta {
   alpha2: string;
@@ -9,59 +9,297 @@ export interface CountryMeta {
   aliases: string[];
   nameEn: string;
   nameCs: string;
+  continent: string;
+  subregion?: string;
   flag: string;
 }
 
-export const TARGET_COUNTRIES: CountryMeta[] = [
-  { alpha2: 'AT', alpha3: 'AUT', slug: 'austria', aliases: ['at', 'aut'], nameEn: 'Austria', nameCs: 'Rakousko', flag: '🇦🇹' },
-  { alpha2: 'BE', alpha3: 'BEL', slug: 'belgium', aliases: ['be', 'bel'], nameEn: 'Belgium', nameCs: 'Belgie', flag: '🇧🇪' },
-  { alpha2: 'BG', alpha3: 'BGR', slug: 'bulgaria', aliases: ['bg', 'bgr'], nameEn: 'Bulgaria', nameCs: 'Bulharsko', flag: '🇧🇬' },
-  { alpha2: 'CA', alpha3: 'CAN', slug: 'canada', aliases: ['ca', 'can'], nameEn: 'Canada', nameCs: 'Kanada', flag: '🇨🇦' },
-  { alpha2: 'HR', alpha3: 'HRV', slug: 'croatia', aliases: ['hr', 'hrv'], nameEn: 'Croatia', nameCs: 'Chorvatsko', flag: '🇭🇷' },
-  { alpha2: 'CZ', alpha3: 'CZE', slug: 'czechia', aliases: ['cz', 'cze', 'czech-republic'], nameEn: 'Czechia', nameCs: 'Česko', flag: '🇨🇿' },
-  { alpha2: 'DK', alpha3: 'DNK', slug: 'denmark', aliases: ['dk', 'dnk'], nameEn: 'Denmark', nameCs: 'Dánsko', flag: '🇩🇰' },
-  { alpha2: 'FI', alpha3: 'FIN', slug: 'finland', aliases: ['fi', 'fin'], nameEn: 'Finland', nameCs: 'Finsko', flag: '🇫🇮' },
-  { alpha2: 'FR', alpha3: 'FRA', slug: 'france', aliases: ['fr', 'fra'], nameEn: 'France', nameCs: 'Francie', flag: '🇫🇷' },
-  { alpha2: 'DE', alpha3: 'DEU', slug: 'germany', aliases: ['de', 'deu'], nameEn: 'Germany', nameCs: 'Německo', flag: '🇩🇪' },
-  { alpha2: 'GR', alpha3: 'GRC', slug: 'greece', aliases: ['gr', 'grc'], nameEn: 'Greece', nameCs: 'Řecko', flag: '🇬🇷' },
-  { alpha2: 'HU', alpha3: 'HUN', slug: 'hungary', aliases: ['hu', 'hun'], nameEn: 'Hungary', nameCs: 'Maďarsko', flag: '🇭🇺' },
-  { alpha2: 'IE', alpha3: 'IRL', slug: 'ireland', aliases: ['ie', 'irl'], nameEn: 'Ireland', nameCs: 'Irsko', flag: '🇮🇪' },
-  { alpha2: 'IT', alpha3: 'ITA', slug: 'italy', aliases: ['it', 'ita'], nameEn: 'Italy', nameCs: 'Itálie', flag: '🇮🇹' },
-  { alpha2: 'LT', alpha3: 'LTU', slug: 'lithuania', aliases: ['lt', 'ltu'], nameEn: 'Lithuania', nameCs: 'Litva', flag: '🇱🇹' },
-  { alpha2: 'LU', alpha3: 'LUX', slug: 'luxembourg', aliases: ['lu', 'lux'], nameEn: 'Luxembourg', nameCs: 'Lucembursko', flag: '🇱🇺' },
-  { alpha2: 'NL', alpha3: 'NLD', slug: 'netherlands', aliases: ['nl', 'nld'], nameEn: 'Netherlands', nameCs: 'Nizozemsko', flag: '🇳🇱' },
-  { alpha2: 'NO', alpha3: 'NOR', slug: 'norway', aliases: ['no', 'nor'], nameEn: 'Norway', nameCs: 'Norsko', flag: '🇳🇴' },
-  { alpha2: 'PL', alpha3: 'POL', slug: 'poland', aliases: ['pl', 'pol'], nameEn: 'Poland', nameCs: 'Polsko', flag: '🇵🇱' },
-  { alpha2: 'PT', alpha3: 'PRT', slug: 'portugal', aliases: ['pt', 'prt'], nameEn: 'Portugal', nameCs: 'Portugalsko', flag: '🇵🇹' },
-  { alpha2: 'RO', alpha3: 'ROU', slug: 'romania', aliases: ['ro', 'rou'], nameEn: 'Romania', nameCs: 'Rumunsko', flag: '🇷🇴' },
-  { alpha2: 'SK', alpha3: 'SVK', slug: 'slovakia', aliases: ['sk', 'svk', 'slovak-republic'], nameEn: 'Slovakia', nameCs: 'Slovensko', flag: '🇸🇰' },
-  { alpha2: 'ES', alpha3: 'ESP', slug: 'spain', aliases: ['es', 'esp'], nameEn: 'Spain', nameCs: 'Španělsko', flag: '🇪🇸' },
-  { alpha2: 'SE', alpha3: 'SWE', slug: 'sweden', aliases: ['se', 'swe'], nameEn: 'Sweden', nameCs: 'Švédsko', flag: '🇸🇪' },
-  { alpha2: 'CH', alpha3: 'CHE', slug: 'switzerland', aliases: ['ch', 'che'], nameEn: 'Switzerland', nameCs: 'Švýcarsko', flag: '🇨🇭' },
-  { alpha2: 'GB', alpha3: 'GBR', slug: 'united-kingdom', aliases: ['uk', 'gbr', 'gb'], nameEn: 'United Kingdom', nameCs: 'Velká Británie', flag: '🇬🇧' },
-  { alpha2: 'US', alpha3: 'USA', slug: 'united-states', aliases: ['us', 'usa'], nameEn: 'United States', nameCs: 'USA', flag: '🇺🇸' },
-  { alpha2: 'BR', alpha3: 'BRA', slug: 'brazil', aliases: ['br', 'bra'], nameEn: 'Brazil', nameCs: 'Brazílie', flag: '🇧🇷' },
-  { alpha2: 'IN', alpha3: 'IND', slug: 'india', aliases: ['in', 'ind'], nameEn: 'India', nameCs: 'Indie', flag: '🇮🇳' },
-];
+const CUSTOM_SLUGS: Record<string, string> = {
+  CZ: 'czechia',
+  GB: 'united-kingdom',
+  US: 'united-states',
+  SK: 'slovakia',
+  MO: 'macao',
+  CD: 'dr-congo',
+  CG: 'congo',
+  CI: 'ivory-coast',
+  CV: 'cape-verde',
+  LA: 'laos',
+  RU: 'russia',
+  SY: 'syria',
+  TZ: 'tanzania',
+  VE: 'venezuela',
+  VN: 'vietnam',
+  IR: 'iran',
+  BO: 'bolivia',
+  BN: 'brunei',
+  FM: 'micronesia',
+  MD: 'moldova',
+  KP: 'north-korea',
+  KR: 'south-korea',
+};
+
+const CUSTOM_ALIASES: Record<string, string[]> = {
+  CZ: ['cz', 'cze', 'czech-republic'],
+  GB: ['uk', 'gbr', 'gb'],
+  US: ['us', 'usa', 'united-states'],
+  SK: ['sk', 'svk', 'slovak-republic'],
+  DE: ['de', 'deu'],
+  FR: ['fr', 'fra'],
+  ES: ['es', 'esp'],
+  IT: ['it', 'ita'],
+  PL: ['pl', 'pol'],
+  AT: ['at', 'aut'],
+  CH: ['ch', 'che'],
+  NL: ['nl', 'nld'],
+  CA: ['ca', 'can'],
+  IE: ['ie', 'irl'],
+  SE: ['se', 'swe'],
+  NO: ['no', 'nor'],
+  DK: ['dk', 'dnk'],
+  FI: ['fi', 'fin'],
+  JP: ['jp', 'jpn'],
+  AU: ['au', 'aus'],
+  NZ: ['nz', 'nzl'],
+  MO: ['mo', 'mac', 'macau'],
+  AD: ['ad', 'and'],
+  SM: ['sm', 'smr'],
+  SG: ['sg', 'sgp'],
+  IN: ['in', 'ind'],
+  BR: ['br', 'bra'],
+};
+
+const CZECH_NAME_MAP: Record<string, string> = {
+  AD: 'Andorra',
+  AE: 'Spojené arabské emiráty',
+  AF: 'Afghánistán',
+  AL: 'Albánie',
+  AM: 'Arménie',
+  AO: 'Angola',
+  AR: 'Argentina',
+  AT: 'Rakousko',
+  AU: 'Austrálie',
+  AZ: 'Ázerbájdžán',
+  BA: 'Bosna a Hercegovina',
+  BD: 'Bangladéš',
+  BE: 'Belgie',
+  BF: 'Burkina Faso',
+  BG: 'Bulharsko',
+  BH: 'Bahrajn',
+  BI: 'Burundi',
+  BJ: 'Benin',
+  BM: 'Bermudy',
+  BN: 'Brunej',
+  BO: 'Bolívie',
+  BR: 'Brazílie',
+  BS: 'Bahamy',
+  BT: 'Bhútán',
+  BW: 'Botswana',
+  BY: 'Bělorusko',
+  BZ: 'Belize',
+  CA: 'Kanada',
+  CD: 'Demokratická republika Kongo',
+  CF: 'Středoafrická republika',
+  CG: 'Kongo',
+  CH: 'Švýcarsko',
+  CI: 'Pobřeží slonoviny',
+  CL: 'Chile',
+  CM: 'Kamerun',
+  CN: 'Čína',
+  CO: 'Kolumbie',
+  CR: 'Kostarika',
+  CU: 'Kuba',
+  CV: 'Kapverdy',
+  CY: 'Kypr',
+  CZ: 'Česko',
+  DE: 'Německo',
+  DK: 'Dánsko',
+  DO: 'Dominikánská republika',
+  DZ: 'Alžírsko',
+  EC: 'Ekvádor',
+  EE: 'Estonsko',
+  EG: 'Egypt',
+  ES: 'Španělsko',
+  ET: 'Etiopie',
+  FI: 'Finsko',
+  FJ: 'Fidži',
+  FR: 'Francie',
+  GA: 'Gabon',
+  GB: 'Velká Británie',
+  GE: 'Gruzie',
+  GH: 'Ghana',
+  GM: 'Gambie',
+  GN: 'Guinea',
+  GR: 'Řecko',
+  GT: 'Guatemala',
+  HK: 'Hongkong',
+  HN: 'Honduras',
+  HR: 'Chorvatsko',
+  HT: 'Haiti',
+  HU: 'Maďarsko',
+  ID: 'Indonésie',
+  IE: 'Irsko',
+  IL: 'Izrael',
+  IN: 'Indie',
+  IQ: 'Irák',
+  IR: 'Írán',
+  IS: 'Island',
+  IT: 'Itálie',
+  JM: 'Jamajka',
+  JO: 'Jordánsko',
+  JP: 'Japonsko',
+  KE: 'Keňa',
+  KG: 'Kyrgyzstán',
+  KH: 'Kambodža',
+  KP: 'Severní Korea',
+  KR: 'Jižní Korea',
+  KW: 'Kuvajt',
+  KZ: 'Kazachstán',
+  LA: 'Laos',
+  LB: 'Libanon',
+  LI: 'Lichtenštejnsko',
+  LK: 'Srí Lanka',
+  LR: 'Libérie',
+  LT: 'Litva',
+  LU: 'Lucembursko',
+  LV: 'Lotyšsko',
+  LY: 'Libye',
+  MA: 'Maroko',
+  MC: 'Monako',
+  MD: 'Moldavsko',
+  ME: 'Černá Hora',
+  MG: 'Madagaskar',
+  MK: 'Severní Makedonie',
+  ML: 'Mali',
+  MM: 'Myanmar',
+  MN: 'Mongolsko',
+  MO: 'Macao',
+  MT: 'Malta',
+  MU: 'Mauricius',
+  MV: 'Maledivy',
+  MW: 'Malawi',
+  MX: 'Mexiko',
+  MY: 'Malajsie',
+  MZ: 'Mosambik',
+  NA: 'Namibie',
+  NE: 'Niger',
+  NG: 'Nigérie',
+  NI: 'Nikaragua',
+  NL: 'Nizozemsko',
+  NO: 'Norsko',
+  NP: 'Nepál',
+  NZ: 'Nový Zéland',
+  OM: 'Omán',
+  PA: 'Panama',
+  PE: 'Peru',
+  PG: 'Papua-Nová Guinea',
+  PH: 'Filipíny',
+  PK: 'Pákistán',
+  PL: 'Polsko',
+  PR: 'Portoriko',
+  PS: 'Palestina',
+  PT: 'Portugalsko',
+  PY: 'Paraguay',
+  QA: 'Katar',
+  RO: 'Rumunsko',
+  RS: 'Srbsko',
+  RU: 'Rusko',
+  RW: 'Rwanda',
+  SA: 'Saúdská Arábie',
+  SD: 'Súdán',
+  SE: 'Švédsko',
+  SG: 'Singapur',
+  SI: 'Slovinsko',
+  SK: 'Slovensko',
+  SL: 'Sierra Leone',
+  SM: 'San Marino',
+  SN: 'Senegal',
+  SO: 'Somálsko',
+  SR: 'Surinam',
+  SV: 'Salvador',
+  SY: 'Sýrie',
+  TH: 'Thajsko',
+  TJ: 'Tádžikistán',
+  TM: 'Turkmenistán',
+  TN: 'Tunisko',
+  TR: 'Turecko',
+  TT: 'Trinidad a Tobago',
+  TW: 'Tchaj-wan',
+  TZ: 'Tanzanie',
+  UA: 'Ukrajina',
+  UG: 'Uganda',
+  US: 'USA',
+  UY: 'Uruguay',
+  UZ: 'Uzbekistán',
+  VA: 'Vatikán',
+  VE: 'Venezuela',
+  VN: 'Vietnam',
+  YE: 'Jemen',
+  ZA: 'Jihoafrická republika',
+  ZM: 'Zambie',
+  ZW: 'Zimbabwe',
+};
+
+function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/[\s_-]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
 
 export function getCountryFlag(code?: string | null): string {
   if (!code) return '🌐';
   const c = code.toUpperCase();
   if (c === 'UK' || c === 'GB') return '🇬🇧';
-  const match = TARGET_COUNTRIES.find((tc) => tc.alpha2 === c || tc.alpha3 === c);
-  if (match) return match.flag;
-  if (code.length === 2) {
+  if (c.length === 2) {
     const offset = 127397;
     return String.fromCodePoint(c.charCodeAt(0) + offset, c.charCodeAt(1) + offset);
   }
   return '🌐';
 }
 
+// Build complete catalog for all 217 countries in places-data.json
+export const ALL_COUNTRIES_META: CountryMeta[] = (placesData.countries as any[]).map((c) => {
+  const a2 = c.country_code_alpha2;
+  const a3 = c.country_code_alpha3;
+  const slug = CUSTOM_SLUGS[a2] || slugify(c.country_name);
+  const aliasesSet = new Set<string>();
+
+  aliasesSet.add(a2.toLowerCase());
+  aliasesSet.add(a3.toLowerCase());
+  if (CUSTOM_ALIASES[a2]) {
+    for (const ca of CUSTOM_ALIASES[a2]) aliasesSet.add(ca.toLowerCase());
+  }
+  aliasesSet.delete(slug);
+
+  return {
+    alpha2: a2,
+    alpha3: a3,
+    slug,
+    aliases: Array.from(aliasesSet),
+    nameEn: c.country_name,
+    nameCs: CZECH_NAME_MAP[a2] || c.country_name,
+    continent: c.continent,
+    subregion: c.subregion,
+    flag: getCountryFlag(a2),
+  };
+});
+
+const COUNTRY_BY_SLUG = new Map<string, CountryMeta>();
+for (const cm of ALL_COUNTRIES_META) {
+  COUNTRY_BY_SLUG.set(cm.slug, cm);
+  COUNTRY_BY_SLUG.set(cm.alpha2.toLowerCase(), cm);
+  COUNTRY_BY_SLUG.set(cm.alpha3.toLowerCase(), cm);
+  for (const alias of cm.aliases) {
+    COUNTRY_BY_SLUG.set(alias.toLowerCase(), cm);
+  }
+}
+
 export function getCountryMeta(slugOrCode: string): CountryMeta | undefined {
-  const q = slugOrCode.toLowerCase().trim();
-  return TARGET_COUNTRIES.find(
-    (c) => c.slug === q || c.alpha2.toLowerCase() === q || c.alpha3.toLowerCase() === q || c.aliases.includes(q)
-  );
+  if (!slugOrCode) return undefined;
+  return COUNTRY_BY_SLUG.get(slugOrCode.toLowerCase().trim());
 }
 
 export function getCountryData(alpha3: string) {
@@ -95,24 +333,53 @@ export function getCountrySalaryContext(countryCode: string) {
   };
 }
 
+export function getRegionalNeighbors(alpha3: string, limit = 4): CountryMeta[] {
+  const target = ALL_COUNTRIES_META.find((c) => c.alpha3 === alpha3);
+  if (!target) return [];
+
+  const allCountriesDataMap = new Map((placesData.countries as any[]).map((c) => [c.country_code_alpha3, c]));
+
+  const candidates = ALL_COUNTRIES_META.filter((c) => c.alpha3 !== alpha3 && c.continent === target.continent);
+
+  // Score candidates: same subregion + has tech jobs + high composite score
+  candidates.sort((a, b) => {
+    const da = allCountriesDataMap.get(a.alpha3);
+    const db = allCountriesDataMap.get(b.alpha3);
+
+    const sameSubA = a.subregion === target.subregion ? 1 : 0;
+    const sameSubB = b.subregion === target.subregion ? 1 : 0;
+    if (sameSubA !== sameSubB) return sameSubB - sameSubA;
+
+    const jobsA = (da?.tech_market?.active_jobs || 0) > 0 ? 1 : 0;
+    const jobsB = (db?.tech_market?.active_jobs || 0) > 0 ? 1 : 0;
+    if (jobsA !== jobsB) return jobsB - jobsA;
+
+    const scoreA = da?.pillar_scores?.composite_score ?? -1;
+    const scoreB = db?.pillar_scores?.composite_score ?? -1;
+    return scoreB - scoreA;
+  });
+
+  return candidates.slice(0, limit);
+}
+
 export function getAllCountryStaticPaths() {
   const paths: any[] = [];
-  for (const tc of TARGET_COUNTRIES) {
-    const cData = getCountryData(tc.alpha3);
+  for (const cm of ALL_COUNTRIES_META) {
+    const cData = getCountryData(cm.alpha3);
     if (!cData) continue;
 
     // Canonical primary slug
     paths.push({
-      params: { id: tc.slug },
-      props: { countryMeta: tc, countryData: cData, isAlias: false },
+      params: { id: cm.slug },
+      props: { countryMeta: cm, countryData: cData, isAlias: false },
     });
 
     // Aliases with 301 redirects to canonical
-    for (const alias of tc.aliases) {
-      if (alias !== tc.slug) {
+    for (const alias of cm.aliases) {
+      if (alias !== cm.slug) {
         paths.push({
           params: { id: alias },
-          props: { countryMeta: tc, countryData: cData, isAlias: true, targetSlug: tc.slug },
+          props: { countryMeta: cm, countryData: cData, isAlias: true, targetSlug: cm.slug },
         });
       }
     }
