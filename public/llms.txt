@@ -2,17 +2,18 @@
 
 > Vector87.com is an open, static data and intelligence hub monitoring the direction of the AI, ML, Data Science, and Analytics job market across S&P 500 corporations, frontier technology leaders, and Europe. Data is aggregated directly from corporate ATS platforms into a local DuckDB analytical warehouse and exported into deterministic static JSON contracts.
 
-## Core Market Telemetry (Snapshot: 2026-11-01)
-- **Active AI & Data Job Postings**: 7,983
-- **S&P 500 AI/Data Postings**: 4,522 (1.09% of total corporate hiring pool)
+## Core Market Telemetry (Snapshot: 2026-11-08)
+- **Active AI & Data Job Postings**: 8,516
+- **S&P 500 AI/Data Postings**: 4,532 (1.1% of total corporate hiring pool)
 - **S&P 500 Enterprise Coverage**: 472 hiring / 508 tracked firms
-- **Tracked Occupied Workforce (Headcount)**: 187,585 data/AI team seats across 627 enterprises
-- **Hands-on (IC) to Management Ratio**: 11.8 : 1 (92.2% IC vs 7.8% Management)
+- **Tracked Occupied Workforce (Headcount)**: 187,585 data/AI team seats across 1900 enterprises
+- **Hands-on (IC) to Management Ratio**: 12.6 : 1 (92.66% IC vs 7.34% Management)
 
 ## Key Pages & Endpoints
 - [Market Dashboard](https://vector87.com/): Core telemetry covering vitality, cloud stack, S&P 500 sector heatmap, hierarchy ratios, and emerging technology signals.
 - [Czech Version / Česká verze](https://vector87.com/cs/): Kompletní zrcadlo v češtině.
 - [Role Analysis](https://vector87.com/roles): 21 canonical AI & Data roles with synthesized job descriptions, required competencies, and team expansion velocity.
+- [Technologies & Platforms](https://vector87.com/technologies): In-depth market telemetry across 20 core data and AI technologies (BigQuery, Databricks, Snowflake, Python, SQL, dbt, Spark, GCP).
 - [Cloud & Tech Hub](https://vector87.com/cloud-tech): In-depth market telemetry across cloud ecosystems (AWS, Azure, GCP) and platforms (Databricks, Snowflake).
 - [Education Academy](https://vector87.com/academy): 3 structured learning tracks (Analytics Engineering, Cloud Data Engineering, Applied AI/LLMOps) and essential architectural literature.
 - [About Author](https://vector87.com/about): Background of Antonín Kučera (akucera.eu), project philosophy, and essays on Data-Informed leadership.

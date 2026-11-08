@@ -20,7 +20,7 @@ country ranking (unique combination), and one person cannot sustain two sites' S
 - Data: pre-generated JSON committed into this repo
 
 ## Localization (i18n)
-- Two supported locales: **English (`en`, primary/default)** at root routes (`/`, `/roles`, `/roles/[id]`, `/cloud-tech`, `/academy`, `/academy/podcasts`, `/about`) and **Czech (`cs`)** at `/cs/*` (`/cs/`, `/cs/roles`, `/cs/roles/[id]`, `/cs/cloud-tech`, `/cs/academy`, `/cs/academy/podcasts`, `/cs/about`). Old `/gcp-hub` and `/cs/gcp-hub` routes redirect to the Cloud & Tech section.
+- Two supported locales: **English (`en`, primary/default)** at root routes (`/`, `/roles`, `/roles/[id]`, `/technologies`, `/technologies/[id]`, `/cloud-tech`, `/academy`, `/academy/podcasts`, `/about`) and **Czech (`cs`)** at `/cs/*` (`/cs/`, `/cs/roles`, `/cs/roles/[id]`, `/cs/technologies`, `/cs/technologies/[id]`, `/cs/cloud-tech`, `/cs/academy`, `/cs/academy/podcasts`, `/cs/about`). Old `/gcp-hub` and `/cs/gcp-hub` routes redirect to the Cloud & Tech section.
 - Architecture follows Rule #10 (Generic base + delta): shared view components in `src/components/views/` render both languages using typed dictionaries in `src/i18n/ui.ts` and localized `en`/`cs` fields in `src/data/market-data.json`.
 
 ## Visual identity
@@ -45,6 +45,15 @@ so changes there are possible when explicitly agreed.
 
 ## About author section
 Content is sourced from https://akucera.eu (bio, links, Substack articles).
+
+## URL Architecture, Sitemap & LLMs.txt Synchronization
+- **Automated Sitemap Generation**: The site uses the `@astrojs/sitemap` integration configured in `astro.config.mjs`. Every static page generated during `npm run build` is automatically discovered and included in `dist/sitemap-0.xml` and `dist/sitemap-index.xml` with bidirectional `xhtml:link` hreflang tags for English (`en`) and Czech (`cs`).
+- **Sitemap Index Protocol**: `public/sitemap.xml` references `https://vector87.com/sitemap-0.xml` and is indexed via `public/robots.txt`. Never hand-craft static XML lists of URLs in `public/`; let `@astrojs/sitemap` generate it deterministically on build.
+- **Rule for URL / Page Changes**: Whenever adding, modifying, or removing routes/URLs:
+  1. Add/modify the page in `src/pages/` (and its `src/pages/cs/` mirror).
+  2. Ensure the path is registered in `src/i18n/ui.ts` (`PATH_MAP` and navigation dictionaries).
+  3. Update `pipeline/export_market_data.py` (`generate_llms_txt()`) and `public/llms.txt` / `public/llms-full.txt` so AI agents and search crawlers discover the new endpoints.
+  4. Always run `npm run build` to verify that `@astrojs/sitemap` successfully compiles the updated sitemap XML without errors and that the page count reflects the change.
 
 ## Git & Workflow Conventions
 - **Proactive Push Prompts**: After completing any major milestone, feature block, or logical chunk of work (and committing the changes locally), always proactively ask the user for confirmation to push the commits to the remote repository (GitHub / GitLab).

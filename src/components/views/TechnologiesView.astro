@@ -1,0 +1,243 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getAllTechnologies, type TechnologyResolved } from '../../data/technologies';
+import { ui, getLocalePath, type Locale } from '../../i18n/ui';
+import NewsletterCta from '../NewsletterCta.astro';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = ui[lang].technologies;
+const homeHref = getLocalePath(lang, 'dashboard');
+
+const allTechnologies = getAllTechnologies();
+const totalTechJobs = allTechnologies.reduce((sum, t) => sum + t.jobCount, 0);
+
+// Category Color Map
+const categoryColorMap: Record<string, { bg: string; text: string; border: string }> = {
+  cloud: { bg: 'bg-sky-500/10', text: 'text-sky-400', border: 'border-sky-500/30' },
+  'data-platform': { bg: 'bg-emerald-500/10', text: 'text-emerald-400', border: 'border-emerald-500/30' },
+  programming: { bg: 'bg-amber-500/10', text: 'text-amber-400', border: 'border-amber-500/30' },
+  'ai-ml': { bg: 'bg-purple-500/10', text: 'text-purple-400', border: 'border-purple-500/30' },
+  'bi-analytics': { bg: 'bg-cyan-500/10', text: 'text-cyan-400', border: 'border-cyan-500/30' },
+  framework: { bg: 'bg-indigo-500/10', text: 'text-indigo-400', border: 'border-indigo-500/30' },
+  mlops: { bg: 'bg-teal-500/10', text: 'text-teal-400', border: 'border-teal-500/30' },
+};
+
+const categoryLabels: Record<string, { en: string; cs: string }> = {
+  all: { en: 'All Technologies', cs: 'Všechny technologie' },
+  'data-platform': { en: 'Data Platforms & Lakehouse', cs: 'Datové platformy & Lakehouse' },
+  cloud: { en: 'Cloud Hyperscalers', cs: 'Cloudové platformy' },
+  programming: { en: 'Programming & SQL', cs: 'Programování a SQL' },
+  'ai-ml': { en: 'AI & Machine Learning', cs: 'AI & Strojové učení' },
+  'bi-analytics': { en: 'BI & Analytics', cs: 'BI & Sémantická vrstva' },
+  framework: { en: 'Frameworks & Tools', cs: 'Frameworky a nástroje' },
+  mlops: { en: 'MLOps & Containers', cs: 'MLOps a kontejnery' },
+};
+
+const categories = ['all', 'data-platform', 'cloud', 'programming', 'ai-ml', 'bi-analytics', 'framework', 'mlops'];
+
+const pageTitle = lang === 'en'
+  ? 'Enterprise AI & Data Stack Technologies | Vector87 Market Telemetry'
+  : 'Technologie a datové platformy v inzerátech | Vector87 Telemetrie';
+
+const pageDescription = lang === 'en'
+  ? `Explore real enterprise demand for ${allTechnologies.length} core data and AI technologies: BigQuery, Databricks, Snowflake, Python, SQL, dbt, Spark, and GCP across active job postings.`
+  : `Prozkoumejte reálnou poptávku po ${allTechnologies.length} klíčových technologiích v AI a datech: BigQuery, Databricks, Snowflake, Python, SQL, dbt, Spark a GCP podle inzerátů firem.`;
+---
+
+<Layout
+  lang={lang}
+  activeNav="technologies"
+  title={pageTitle}
+  description={pageDescription}
+>
+  <main class="min-h-screen bg-[#04070e] pb-24">
+    <!-- Breadcrumb -->
+    <div class="border-b border-slate-800/80 bg-[#060911]/60 backdrop-blur-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+        <nav class="flex items-center gap-2 text-xs font-mono text-slate-400" aria-label="Breadcrumb">
+          <a href={homeHref} class="hover:text-cyan-300 transition-colors">{ui[lang].technologyDetail.breadcrumbHome}</a>
+          <span class="text-slate-600">/</span>
+          <span class="text-slate-200 font-semibold">{t.breadcrumbTitle || (lang === 'en' ? 'Technologies' : 'Technologie')}</span>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Hero Header -->
+    <section class="relative pt-12 pb-14 border-b border-slate-800/80 overflow-hidden bg-gradient-to-b from-slate-900/40 via-transparent to-transparent">
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(14,165,233,0.12),rgba(255,255,255,0))] pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full text-xs font-mono font-medium border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 mb-4">
+          <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+          {t.heroBadge}
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+          {t.title}
+        </h1>
+        <p class="text-base sm:text-lg text-slate-300 max-w-3xl mt-3 leading-relaxed">
+          {t.subtitle}
+        </p>
+
+        <!-- Global Summary Chips -->
+        <div class="flex flex-wrap items-center gap-4 mt-8 pt-6 border-t border-slate-800/80 text-xs font-mono text-slate-400">
+          <div>
+            <strong class="text-white text-sm">{allTechnologies.length}</strong> {lang === 'en' ? 'Tracked Technologies' : 'Sledovaných technologií'}
+          </div>
+          <span class="text-slate-700">•</span>
+          <div>
+            <strong class="text-cyan-300 text-sm">{totalTechJobs.toLocaleString()}</strong> {lang === 'en' ? 'Total Skill Mentions' : 'Zmínek v inzerátech'}
+          </div>
+          <span class="text-slate-700">•</span>
+          <div>
+            <span class="text-emerald-400 font-semibold">{lang === 'en' ? 'Live Telemetry' : 'Živá telemetrie'}</span> ({lang === 'en' ? 'Weekly Snapshot' : 'Týdenní snapshot'})
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Category Filter -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+      <div class="flex flex-wrap items-center gap-2 pb-6 border-b border-slate-800/80">
+        {categories.map((catKey) => (
+          <button
+            type="button"
+            data-category-btn={catKey}
+            class={`px-3.5 py-1.5 rounded-lg text-xs font-mono transition-all border ${
+              catKey === 'all'
+                ? 'bg-cyan-500/20 text-cyan-300 border-cyan-500/40 font-semibold active-filter'
+                : 'bg-slate-900/60 text-slate-400 border-slate-800 hover:border-slate-700 hover:text-slate-200'
+            }`}
+          >
+            {categoryLabels[catKey][lang]}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <!-- Technology Cards Grid -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="tech-grid">
+        {allTechnologies.map((tech) => {
+          const catStyle = categoryColorMap[tech.category] || categoryColorMap['cloud'];
+          const detailHref = `${lang === 'en' ? '/technologies' : '/cs/technologies'}/${tech.id}`;
+
+          return (
+            <article
+              data-category={tech.category}
+              class="tech-card group flex flex-col justify-between p-6 rounded-2xl bg-slate-900/40 hover:bg-slate-900/80 border border-slate-800/80 hover:border-cyan-500/40 transition-all duration-200 shadow-lg hover:shadow-cyan-950/20"
+            >
+              <div>
+                <!-- Header: Category & Rank -->
+                <div class="flex items-center justify-between gap-2 mb-3">
+                  <span class={`inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono font-medium border ${catStyle.bg} ${catStyle.text} ${catStyle.border}`}>
+                    {tech.category.toUpperCase()}
+                  </span>
+                  <span class="text-xs font-mono text-slate-500">
+                    Rank #{tech.rank}
+                  </span>
+                </div>
+
+                <!-- Title & Author Highlight -->
+                <div class="flex items-baseline justify-between gap-2 mb-2">
+                  <h2 class="text-xl font-bold text-white group-hover:text-cyan-300 transition-colors">
+                    <a href={detailHref} class="focus:outline-none">
+                      {tech.name}
+                    </a>
+                  </h2>
+                  {tech.authorNotes && (
+                    <span class="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-mono font-bold bg-cyan-500/20 text-cyan-300 border border-cyan-400/30">
+                      E-E-A-T
+                    </span>
+                  )}
+                </div>
+
+                <!-- KPI Badges -->
+                <div class="flex items-center gap-3 my-3 text-xs font-mono">
+                  <span class="px-2 py-1 rounded bg-slate-800 text-white font-bold">
+                    {tech.jobCount.toLocaleString()} {lang === 'en' ? 'jobs' : 'inzerátů'}
+                  </span>
+                  <span class="text-cyan-400 font-bold">
+                    {tech.penetrationPct}% {lang === 'en' ? 'penetration' : 'trhu'}
+                  </span>
+                </div>
+
+                <!-- Description Snippet -->
+                <p class="text-xs text-slate-300 line-clamp-3 leading-relaxed mt-2">
+                  {tech.description[lang][0]}
+                </p>
+
+                <!-- Top Roles Demanding This -->
+                {tech.topRoles.length > 0 && (
+                  <div class="mt-4 pt-3 border-t border-slate-800/80">
+                    <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-1.5">
+                      {lang === 'en' ? 'Top Demanding Roles:' : 'Nejčastěji požadováno u rolí:'}
+                    </div>
+                    <div class="flex flex-wrap gap-1.5">
+                      {tech.topRoles.slice(0, 3).map((r) => (
+                        <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono text-slate-300 bg-slate-800/80 border border-slate-700/60">
+                          {r.roleName} ({r.penetrationPct}%)
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <!-- Footer CTA Link -->
+              <div class="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs font-mono">
+                <a
+                  href={detailHref}
+                  class="inline-flex items-center gap-1.5 text-cyan-400 hover:text-cyan-300 font-semibold group-hover:translate-x-0.5 transition-all"
+                >
+                  <span>{t.exploreDetail}</span>
+                </a>
+                <span class="text-slate-600">→</span>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </div>
+
+    <!-- Newsletter CTA -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
+      <NewsletterCta lang={lang} />
+    </div>
+  </main>
+</Layout>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const filterButtons = document.querySelectorAll('[data-category-btn]');
+    const cards = document.querySelectorAll('.tech-card');
+
+    filterButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const cat = btn.getAttribute('data-category-btn');
+
+        // Toggle active button style
+        filterButtons.forEach((b) => {
+          b.classList.remove('bg-cyan-500/20', 'text-cyan-300', 'border-cyan-500/40', 'font-semibold', 'active-filter');
+          b.classList.add('bg-slate-900/60', 'text-slate-400', 'border-slate-800');
+        });
+        btn.classList.remove('bg-slate-900/60', 'text-slate-400', 'border-slate-800');
+        btn.classList.add('bg-cyan-500/20', 'text-cyan-300', 'border-cyan-500/40', 'font-semibold', 'active-filter');
+
+        // Filter cards
+        cards.forEach((card) => {
+          const cardCat = card.getAttribute('data-category');
+          if (cat === 'all' || cardCat === cat) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  });
+</script>

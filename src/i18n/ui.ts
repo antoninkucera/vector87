@@ -1,10 +1,11 @@
 export type Locale = 'en' | 'cs';
 
-export type NavKey = 'dashboard' | 'roles' | 'cloud' | 'places' | 'academy' | 'about';
+export type NavKey = 'dashboard' | 'roles' | 'technologies' | 'cloud' | 'places' | 'academy' | 'about';
 
 const PATH_MAP: Record<NavKey, string> = {
   dashboard: '/',
   roles: '/roles',
+  technologies: '/technologies',
   cloud: '/cloud-tech',
   places: '/places',
   academy: '/academy',
@@ -27,6 +28,7 @@ export const ui = {
     nav: {
       dashboard: 'Dashboard',
       roles: 'Roles',
+      technologies: 'Technologies',
       cloud: 'Cloud & Tech',
       places: 'Places',
       academy: 'Academy',
@@ -76,7 +78,7 @@ export const ui = {
       takeaway2Tag: 'INFRASTRUCTURE',
       takeaway2Title: 'Lakehouse & Multi-Cloud Dominance',
       takeaway2Desc:
-        'Hyperscalers (AWS, Azure, GCP) remain ubiquitous, but Lakehouse platforms (Databricks with 712 postings vs. Snowflake with 441) and dbt/Dataform define modern architectures.',
+        'Hyperscalers (AWS, Azure, GCP) remain ubiquitous, but Lakehouse platforms (Databricks with 706 postings vs. Snowflake with 440) and dbt/Dataform define modern architectures.',
       takeaway3Tag: 'FLEXIBILITY',
       takeaway3Title: 'Remote Tolerance & Global Relocation',
       takeaway3Desc:
@@ -315,6 +317,33 @@ export const ui = {
       relatedRolesTitle: 'Related Roles in Domain',
       backToRoles: '← Back to All Roles',
     },
+    technologies: {
+      breadcrumbTitle: 'Technologies',
+      heroBadge: '03 // STACK & PLATFORMS',
+      title: 'Enterprise AI & Data Stack Intelligence',
+      subtitle:
+        'Direct telemetry on which technologies, cloud platforms, and data tools companies actually require across active job postings.',
+      exploreDetail: 'Explore Deep-Dive & Roles',
+    },
+    technologyDetail: {
+      breadcrumbHome: 'Home',
+      breadcrumbTech: 'Technologies',
+      compareWithLabel: 'Head-to-Head Comparisons:',
+      kpiJobs: 'Active Job Postings',
+      kpiJobsSub: 'demanding this technology',
+      kpiPenetration: 'Market Penetration',
+      kpiPenetrationSub: 'of all analyzed AI & data jobs',
+      kpiRank: 'Market Position',
+      kpiRankSub: (total: number) => `among top ${total} enterprise technologies`,
+      sectionRoles: 'Roles Demanding This Technology',
+      sectionRolesSub: 'Canonical roles ranked by penetration percentage of this technology in job requirements.',
+      sectionPaired: 'Frequently Paired Technologies & Skills',
+      sectionPairedSub: 'Co-occurring skills appearing together with this technology in job postings.',
+      sectionCompanies: 'Top Hiring Companies',
+      sectionCompaniesSub: 'Enterprises with open postings actively requiring this stack.',
+      sectionAcademy: 'Recommended Learning & Certifications',
+      sectionAcademySub: 'Industry certifications and courses aligned with this technology.',
+    },
     cloud: {
       pageTitle: 'Cloud Platforms & Data Stack | Vector87',
       pageDescription:
@@ -322,7 +351,7 @@ export const ui = {
       tag: '03 // CLOUD & TECH ECOSYSTEM',
       title: 'Cloud Hyperscalers & Modern Data Platforms',
       subtitle:
-        'Comparative telemetry tracking adoption, market share, and enterprise hiring across the Big 3 Hyperscalers (AWS, Azure, GCP) and leading modern data platforms (Databricks, Snowflake, BigQuery, Redshift, Microsoft Fabric).',
+        'Comparative telemetry tracking job posting demand across the Big 3 Hyperscalers (AWS, Azure, GCP) and leading modern data platforms (Databricks, Snowflake, BigQuery, Redshift, Microsoft Fabric).',
       kpiTotalCloud: 'Total Cloud Openings',
       kpiTotalCloudFoot: 'Active job postings explicitly requiring cloud infrastructure',
       kpiMulticloud: 'Multi-Cloud Coexistence',
@@ -752,6 +781,7 @@ export const ui = {
     nav: {
       dashboard: 'Přehled trhu',
       roles: 'Analýza rolí',
+      technologies: 'Technologie',
       cloud: 'Cloud & Tech',
       places: 'Místa k životu',
       academy: 'Akademie',
@@ -801,7 +831,7 @@ export const ui = {
       takeaway2Tag: 'INFRASTRUKTURA',
       takeaway2Title: 'Dominance Lakehouse a Multi-Cloudu',
       takeaway2Desc:
-        'Hyperscalery (AWS, Azure, GCP) zůstávají standardem, ale moderní architektury formují Lakehouse platformy (Databricks 712 pozic vs. Snowflake 441) a SQLX/Dataform.',
+        'Hyperscalery (AWS, Azure, GCP) zůstávají standardem, ale moderní architektury formují Lakehouse platformy (Databricks 706 pozic vs. Snowflake 440) a SQLX/Dataform.',
       takeaway3Tag: 'FLEXIBILITA',
       takeaway3Title: 'Otevřenost k remote a relokaci',
       takeaway3Desc:
@@ -1040,6 +1070,33 @@ export const ui = {
       relatedRolesTitle: 'Související role v doméně',
       backToRoles: '← Zpět na přehled rolí',
     },
+    technologies: {
+      breadcrumbTitle: 'Technologie',
+      heroBadge: '03 // STACK & PLATFORMY',
+      title: 'Katalog technologií a datových platforem',
+      subtitle:
+        'Živá telemetrie mapující, které technologie, cloudové platformy a datové nástroje zaměstnavatelé reálně vyžadují v otevřených inzerátech.',
+      exploreDetail: 'Zobrazit detail technologie a role',
+    },
+    technologyDetail: {
+      breadcrumbHome: 'Domů',
+      breadcrumbTech: 'Technologie',
+      compareWithLabel: 'Přímá srovnání:',
+      kpiJobs: 'Aktivní inzeráty',
+      kpiJobsSub: 'vyžadující tuto technologii',
+      kpiPenetration: 'Podíl na trhu',
+      kpiPenetrationSub: 'ze všech sledovaných AI a datových pozic',
+      kpiRank: 'Pozice na trhu',
+      kpiRankSub: (total: number) => `mezi top ${total} podnikovými technologiemi`,
+      sectionRoles: 'Které role tuto technologii vyžadují',
+      sectionRolesSub: 'Kanonické role seřazené podle procentuálního zastoupení této technologie v požadavcích.',
+      sectionPaired: 'Nejčastěji párované technologie a dovednosti',
+      sectionPairedSub: 'Dovednosti a nástroje, které se v inzerátech objevují nejčastěji společně.',
+      sectionCompanies: 'Nejčastěji najímající společnosti',
+      sectionCompaniesSub: 'Společnosti s otevřenými inzeráty v tomto technologickém stacku.',
+      sectionAcademy: 'Doporučené vzdělávání a certifikace',
+      sectionAcademySub: 'Oficiální průmyslové certifikace a kurzy odpovídající této technologii.',
+    },
     cloud: {
       pageTitle: 'Cloudové platformy a datový stack | Vector87',
       pageDescription:
@@ -1047,7 +1104,7 @@ export const ui = {
       tag: '03 // CLOUDOVÝ & TECHNOLOGICKÝ EKOSYSTÉM',
       title: 'Cloudové platformy, hyperscalery a technologický stack',
       subtitle:
-        'Srovnání tržního podílu a poptávky napříč velkou trojkou hyperscalerů (AWS, Azure, GCP) i moderními datovými platformami (Databricks, Snowflake, BigQuery, Redshift, Microsoft Fabric).',
+        'Srovnání poptávky a zastoupení v inzerátech napříč velkou trojkou hyperscalerů (AWS, Azure, GCP) i moderními datovými platformami (Databricks, Snowflake, BigQuery, Redshift, Microsoft Fabric).',
       kpiTotalCloud: 'Otevřené cloudové pozice',
       kpiTotalCloudFoot: 'Aktivní inzeráty explicitně vyžadující cloudovou infrastrukturu',
       kpiMulticloud: 'Multi-Cloud koexistence',
@@ -1094,7 +1151,7 @@ export const ui = {
           summary:
             'Základní analytický motor na GCP. V podnikových architekturách dominuje díky oddělení výpočetní kapacity od úložiště, nativní podpoře Apache Iceberg přes BigLake a přímému volání modelů přímo ze SQL (BigQuery ML).',
           linkLabel: 'Architektura BigQuery na Substacku ↗',
-          href: 'https://antoninkucera.substack.com/p/bigquery-overview-a-new-navigation-hub-in-the-complex-analytics-platform',
+          href: 'https://antoninkucera.substack.com/p/bigquery-overview-novy-rozcestnik-v-komplexnim-svete-dat',
         },
         {
           service: 'Vertex AI & Agent Builder',
@@ -1295,11 +1352,11 @@ export const ui = {
           href: 'https://antoninkucera.substack.com/p/no-blueprint-exists-why-ai-made-me-double-down-on-being-data-informed',
         },
         {
-          title: 'BigQuery Overview: A New Navigation Hub in the Complex analytics platform',
+          title: 'BigQuery Overview: Nový rozcestník v komplexním světě datové platformy',
           topic: 'Cloudová datová architektura',
           summary:
             'Praktický průvodce architekturou BigQuery: od správy datasetů a slotové ekonomiky až po stavbu spolehlivých analytických pipeline v ekosystému Google Cloud.',
-          href: 'https://antoninkucera.substack.com/p/bigquery-overview-a-new-navigation-hub-in-the-complex-analytics-platform',
+          href: 'https://antoninkucera.substack.com/p/bigquery-overview-novy-rozcestnik-v-komplexnim-svete-dat',
         },
       ],
     },

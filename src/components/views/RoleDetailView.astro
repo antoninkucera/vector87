@@ -4,6 +4,8 @@ import marketData from '../../data/market-data.json';
 import { ACADEMY_COURSES, CERTIFICATIONS_LIST } from '../../data/academy';
 import { OPPORTUNITY_MATRIX_DATA } from '../../data/opportunity-matrix';
 import { ui, getLocalePath, type Locale } from '../../i18n/ui';
+import { getTechnology } from '../../data/technologies';
+import NewsletterCta from '../NewsletterCta.astro';
 
 interface Props {
   lang: Locale;
@@ -385,7 +387,20 @@ const roleDetailGraph = {
           {role.top_skills.map((sk) => (
             <div class="space-y-1">
               <div class="flex items-center justify-between text-xs font-mono">
-                <span class="text-slate-200 font-semibold">{sk.skill_name}</span>
+                {(() => {
+                  const resolved = getTechnology(sk.skill_id || sk.skill_name);
+                  return resolved ? (
+                    <a
+                      href={`${lang === 'en' ? '/technologies' : '/cs/technologies'}/${resolved.id}`}
+                      class="text-slate-200 font-semibold hover:text-cyan-300 transition-colors inline-flex items-center gap-1 group/skill"
+                    >
+                      <span>{sk.skill_name}</span>
+                      <span class="text-[10px] text-cyan-400 group-hover/skill:translate-x-0.5 transition-transform">↗</span>
+                    </a>
+                  ) : (
+                    <span class="text-slate-200 font-semibold">{sk.skill_name}</span>
+                  );
+                })()}
                 <span class="text-cyan-300 font-bold">{sk.penetration_pct}% ({sk.job_count} {t.positionsWord})</span>
               </div>
               <div class="w-full bg-slate-800/80 rounded-full h-2 overflow-hidden">
@@ -420,17 +435,24 @@ const roleDetailGraph = {
           {role.top_technologies.map((tech) => (
             <div class="space-y-1">
               <div class="flex items-center justify-between text-xs font-mono">
-                {cloudTechLinkMap[tech.skill_name] ? (
-                  <a
-                    href={`${lang === 'en' ? '/cloud-tech' : '/cs/cloud-tech'}${cloudTechLinkMap[tech.skill_name]}`}
-                    class="text-slate-200 font-semibold hover:text-cyan-300 transition-colors inline-flex items-center gap-1 group/tech"
-                  >
-                    <span>{tech.skill_name}</span>
-                    <span class="text-[10px] text-cyan-400 group-hover/tech:translate-x-0.5 transition-transform">↗</span>
-                  </a>
-                ) : (
-                  <span class="text-slate-200 font-semibold">{tech.skill_name}</span>
-                )}
+                {(() => {
+                  const resolved = getTechnology(tech.skill_id || tech.skill_name);
+                  const href = resolved
+                    ? `${lang === 'en' ? '/technologies' : '/cs/technologies'}/${resolved.id}`
+                    : (cloudTechLinkMap[tech.skill_name] ? `${lang === 'en' ? '/cloud-tech' : '/cs/cloud-tech'}${cloudTechLinkMap[tech.skill_name]}` : null);
+                  
+                  return href ? (
+                    <a
+                      href={href}
+                      class="text-slate-200 font-semibold hover:text-cyan-300 transition-colors inline-flex items-center gap-1 group/tech"
+                    >
+                      <span>{tech.skill_name}</span>
+                      <span class="text-[10px] text-cyan-400 group-hover/tech:translate-x-0.5 transition-transform">↗</span>
+                    </a>
+                  ) : (
+                    <span class="text-slate-200 font-semibold">{tech.skill_name}</span>
+                  );
+                })()}
                 <span class="text-blue-300 font-bold">{tech.penetration_pct}% ({tech.job_count} {t.positionsWord})</span>
               </div>
               <div class="w-full bg-slate-800/80 rounded-full h-2 overflow-hidden">
@@ -972,6 +994,11 @@ const roleDetailGraph = {
         <span>{lang === 'cs' ? 'Podcasty a pořady ↗' : 'Podcasts & Shows ↗'}</span>
       </a>
     </div>
+  </section>
+
+  <!-- Newsletter Capture Callout -->
+  <section class="mb-14">
+    <NewsletterCta lang={lang} topic={role.canonical_name} />
   </section>
 
   <!-- Related Roles in Domain -->
