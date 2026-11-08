@@ -1,0 +1,929 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import AcademySubNav from '../academy/AcademySubNav.astro';
+import ShareBar from '../ShareBar.astro';
+import { ui, type Locale } from '../../i18n/ui';
+import {
+  SKILLS_TAXONOMY,
+  SKILL_CATEGORIES,
+  PRESET_PROFILES,
+  getAnalyzerPayload,
+  findCoursesForSkills,
+} from '../../data/skillGap';
+import { ACADEMY_COURSES, FREE_AI_COURSES, CERTIFICATIONS_LIST } from '../../data/academy';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = ui[lang].analyzer;
+
+const payload = getAnalyzerPayload();
+
+// Pre-serialize learning items so the client-side engine can match missing skills instantly
+const learningCatalog = {
+  courses: ACADEMY_COURSES.map((c) => ({
+    id: c.id,
+    platform: c.platform,
+    title: c.title[lang],
+    duration: c.duration[lang],
+    level: c.level[lang],
+    url: c.url,
+    skills: c.skills,
+  })),
+  freeCourses: FREE_AI_COURSES.map((f) => ({
+    id: f.id,
+    provider: f.provider,
+    title: f.title[lang],
+    duration: f.duration[lang],
+    format: f.format[lang],
+    url: f.url,
+    skills: f.skills,
+  })),
+  certifications: CERTIFICATIONS_LIST.map((cert) => ({
+    id: cert.id,
+    title: cert.title,
+    issuer: cert.issuer,
+    level: cert.level[lang],
+    url: cert.url,
+    skills: cert.skills,
+  })),
+};
+
+const analyzerJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: t.title,
+  description: t.pageDescription,
+  applicationCategory: 'EducationalApplication',
+  operatingSystem: 'All',
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD',
+  },
+};
+---
+
+<Layout
+  title={t.pageTitle}
+  description={t.pageDescription}
+  activeNav="academy"
+  lang={lang}
+  jsonLd={analyzerJsonLd}
+>
+  <!-- Hero Header -->
+  <section class="mb-10 pb-8 border-b border-slate-800/80">
+    <div class="max-w-4xl space-y-3">
+      <span class="text-xs font-mono uppercase tracking-widest text-cyan-400">{t.tag}</span>
+      <h1 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+        {t.title}
+      </h1>
+      <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
+        {t.subtitle}
+      </p>
+    </div>
+  </section>
+
+  <!-- Sub-navigation between Courses, Podcasts, and Analyzer -->
+  <AcademySubNav lang={lang} active="analyzer" />
+
+  <!-- Presets: Quick Starters -->
+  <section class="mb-8 p-5 sm:p-6 rounded-xl panel-surface border border-slate-800/90 shadow-sm">
+    <div class="flex items-center gap-2 mb-3">
+      <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+      <h2 class="text-xs font-mono uppercase tracking-wider text-slate-300 font-semibold">
+        {t.presetsLabel}
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2.5">
+      {PRESET_PROFILES.map((preset) => (
+        <button
+          type="button"
+          class="preset-btn text-left p-3 rounded-lg bg-slate-900/80 hover:bg-slate-800/90 border border-slate-800 hover:border-cyan-500/50 transition-all group flex flex-col justify-between"
+          data-preset-id={preset.id}
+          data-skills={JSON.stringify(preset.skillIds)}
+        >
+          <div>
+            <div class="flex items-center gap-2 text-sm font-bold text-white group-hover:text-cyan-300 transition-colors">
+              <span class="text-base">{preset.icon}</span>
+              <span>{preset.title[lang]}</span>
+            </div>
+            <p class="text-[11px] text-slate-400 mt-1 line-clamp-2 leading-snug">
+              {preset.subtitle[lang]}
+            </p>
+          </div>
+          <div class="mt-2.5 flex items-center gap-1 text-[10px] font-mono text-cyan-400/80 group-hover:text-cyan-300">
+            <span>{lang === 'cs' ? 'Aktivovat profil' : 'Load profile'}</span>
+            <span class="transition-transform group-hover:translate-x-0.5">→</span>
+          </div>
+        </button>
+      ))}
+    </div>
+  </section>
+
+  <!-- Interactive Skill Selector -->
+  <section class="mb-12 p-5 sm:p-7 rounded-xl panel-surface border border-slate-800/90 shadow-lg">
+    <!-- Toolbar -->
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-slate-800/80">
+      <div class="flex-1 max-w-md relative">
+        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-500">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </div>
+        <input
+          type="search"
+          id="skill-search-input"
+          placeholder={t.filterSkillsPlaceholder}
+          class="w-full pl-9 pr-3 py-2 bg-slate-900/90 border border-slate-700/80 rounded-lg text-xs font-mono text-slate-200 placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-colors"
+        />
+      </div>
+
+      <div class="flex flex-wrap items-center gap-3 text-xs font-mono">
+        <div class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+          <span id="selected-count-badge" class="font-bold text-cyan-300">0</span>
+          <span>{t.selectedSkillsCount}</span>
+        </div>
+
+        <button
+          type="button"
+          id="btn-select-all"
+          class="px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-white border border-slate-800 hover:border-slate-700 transition-colors"
+        >
+          {t.selectAll}
+        </button>
+
+        <button
+          type="button"
+          id="btn-clear-all"
+          class="px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-white border border-slate-800 hover:border-slate-700 transition-colors"
+        >
+          {t.clearAll}
+        </button>
+      </div>
+    </div>
+
+    <!-- Category Filter Tabs -->
+    <div class="flex flex-wrap items-center gap-1.5 py-4 border-b border-slate-800/80">
+      <button
+        type="button"
+        class="cat-filter-btn px-3 py-1 rounded-full text-xs font-mono font-medium transition-all bg-cyan-500/20 text-cyan-300 border border-cyan-500/40"
+        data-cat="all"
+      >
+        {t.showAllSkills}
+      </button>
+      {SKILL_CATEGORIES.map((cat) => (
+        <button
+          type="button"
+          class="cat-filter-btn px-3 py-1 rounded-full text-xs font-mono font-medium transition-all bg-slate-900 text-slate-400 border border-slate-800 hover:border-slate-700 hover:text-slate-200"
+          data-cat={cat.id}
+        >
+          {t.categories[cat.id]}
+        </button>
+      ))}
+    </div>
+
+    <!-- Skill Chips Grid -->
+    <div id="skills-grid" class="pt-5 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2">
+      {SKILLS_TAXONOMY.map((skill) => (
+        <button
+          type="button"
+          class="skill-chip text-left p-2.5 rounded-lg text-xs font-mono border transition-all flex items-center justify-between gap-1.5 bg-slate-900/60 text-slate-400 border-slate-800 hover:border-slate-700 hover:text-slate-200"
+          data-skill-id={skill.id}
+          data-skill-category={skill.category}
+          data-skill-name={skill.name.toLowerCase()}
+          data-market-name={skill.marketName}
+        >
+          <span class="truncate font-medium">{skill.name}</span>
+          <span class="chip-check text-cyan-400 hidden shrink-0">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg>
+          </span>
+        </button>
+      ))}
+    </div>
+    <div id="skills-empty-search" class="hidden py-8 text-center text-xs font-mono text-slate-500">
+      {t.emptySearchResults} "<span id="empty-query-text"></span>"
+    </div>
+  </section>
+
+  <!-- Results Dashboard -->
+  <section id="results-section" class="mb-14">
+    <!-- Section Heading -->
+    <div class="mb-6">
+      <span class="text-xs font-mono uppercase tracking-widest text-cyan-400">{t.topMatchesBadge}</span>
+      <h2 class="text-2xl font-bold text-white tracking-tight mt-1">{t.resultsTitle}</h2>
+      <p class="text-xs sm:text-sm text-slate-400 mt-1">{t.resultsSub}</p>
+    </div>
+
+    <!-- Empty State: No Skills Selected -->
+    <div id="empty-state-card" class="p-8 sm:p-12 rounded-xl panel-surface border border-dashed border-slate-800 text-center space-y-4">
+      <div class="w-12 h-12 rounded-full bg-slate-900 border border-slate-800 text-cyan-400 flex items-center justify-center mx-auto text-xl">
+        ⚡
+      </div>
+      <div class="max-w-md mx-auto space-y-1">
+        <h3 class="text-base font-bold text-white">{lang === 'cs' ? 'Zatím jste nevybrali žádné dovednosti' : 'No skills selected yet'}</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          {t.noSkillsSelected}
+        </p>
+      </div>
+      <div class="pt-2">
+        <button
+          type="button"
+          class="preset-quick-trigger px-4 py-2 rounded-lg bg-cyan-500/15 text-cyan-300 border border-cyan-500/40 text-xs font-mono font-semibold hover:bg-cyan-500/25 transition-all inline-flex items-center gap-2"
+          data-preset-id="analytics_engineer"
+          data-skills={JSON.stringify(PRESET_PROFILES[1].skillIds)}
+        >
+          <span>✨ {lang === 'cs' ? 'Vyzkoušet profil: Analytics Engineer' : 'Try sample: Analytics Engineer'}</span>
+          <span>→</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Active Results Container -->
+    <div id="active-results-container" class="hidden space-y-10">
+      <!-- Top 3 Best Fit Hero Cards -->
+      <div class="space-y-3">
+        <div class="flex items-center justify-between text-xs font-mono text-slate-400">
+          <span class="text-cyan-300 font-semibold uppercase">{t.topMatchesBadge}</span>
+          <span id="matching-summary-text" class="text-slate-500"></span>
+        </div>
+        <div id="top-matches-grid" class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <!-- Dynamically populated by client JS -->
+        </div>
+      </div>
+
+      <!-- Ranked List of All Roles -->
+      <div class="space-y-4 pt-4 border-t border-slate-800/80">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <h3 class="text-lg font-bold text-white tracking-tight">
+            {t.allRolesHeading}
+          </h3>
+          <span class="text-xs font-mono text-slate-400">
+            {lang === 'cs' ? 'Kliknutím na roli rozbalíte detail mezery a kurzy' : 'Click any role to inspect missing skills & courses'}
+          </span>
+        </div>
+
+        <div id="all-roles-container" class="space-y-3">
+          <!-- Dynamically populated by client JS -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Sharing Bar -->
+  <section class="mb-14">
+    <ShareBar
+      lang={lang}
+      title={t.pageTitle}
+      subtitle={t.pageDescription}
+      sourceUrl={`https://vector87.com${lang === 'en' ? '' : '/cs'}/academy/analyzer`}
+    />
+  </section>
+
+  <!-- Pass structured payload to client-side JS safely -->
+  <script type="application/json" id="analyzer-roles-data" set:html={JSON.stringify(payload)} />
+  <script type="application/json" id="analyzer-learning-data" set:html={JSON.stringify(learningCatalog)} />
+</Layout>
+
+<script define:vars={{ lang, t }}>
+  document.addEventListener('DOMContentLoaded', () => {
+    const rolesDataEl = document.getElementById('analyzer-roles-data');
+    const learningDataEl = document.getElementById('analyzer-learning-data');
+    if (!rolesDataEl || !learningDataEl) return;
+
+    let payload = null;
+    let learningCatalog = null;
+    try {
+      payload = JSON.parse(rolesDataEl.textContent || '{}');
+      learningCatalog = JSON.parse(learningDataEl.textContent || '{}');
+    } catch (e) {
+      console.error('Failed to parse analyzer data', e);
+      return;
+    }
+
+    const { taxonomy, roles, presets } = payload;
+    const selectedSkills = new Set();
+    let currentCategoryFilter = 'all';
+    let currentSearchQuery = '';
+
+    // UI Elements
+    const searchInput = document.getElementById('skill-search-input');
+    const selectedBadge = document.getElementById('selected-count-badge');
+    const btnSelectAll = document.getElementById('btn-select-all');
+    const btnClearAll = document.getElementById('btn-clear-all');
+    const catButtons = document.querySelectorAll('.cat-filter-btn');
+    const skillChips = document.querySelectorAll('.skill-chip');
+    const emptySearchMsg = document.getElementById('skills-empty-search');
+    const emptyQueryText = document.getElementById('empty-query-text');
+    const emptyStateCard = document.getElementById('empty-state-card');
+    const activeResultsContainer = document.getElementById('active-results-container');
+    const topMatchesGrid = document.getElementById('top-matches-grid');
+    const allRolesContainer = document.getElementById('all-roles-container');
+    const matchingSummaryText = document.getElementById('matching-summary-text');
+    const presetBtns = document.querySelectorAll('.preset-btn, .preset-quick-trigger');
+
+    // Create fast lookup map from taxonomy ID to skill definition
+    const taxonomyById = new Map();
+    taxonomy.forEach((s) => taxonomyById.set(s.id, s));
+
+    // Matching engine
+    function calculateMatches() {
+      if (selectedSkills.size === 0) {
+        emptyStateCard.classList.remove('hidden');
+        activeResultsContainer.classList.add('hidden');
+        return;
+      }
+
+      emptyStateCard.classList.add('hidden');
+      activeResultsContainer.classList.remove('hidden');
+
+      // Set of user market-facing skill names
+      const userMarketNames = new Set();
+      selectedSkills.forEach((id) => {
+        const s = taxonomyById.get(id);
+        if (s && s.marketName) {
+          userMarketNames.add(s.marketName.toLowerCase());
+        }
+      });
+
+      const calculatedRoles = roles.map((role) => {
+        let totalWeight = 0;
+        let matchedWeight = 0;
+        const matched = [];
+        const missing = [];
+
+        role.requirements.forEach((req) => {
+          const reqLower = req.name.toLowerCase();
+          const weight = Math.max(req.penetration || 10, 10);
+          totalWeight += weight;
+
+          const isMatched = userMarketNames.has(reqLower);
+
+          if (isMatched) {
+            matchedWeight += weight;
+            matched.push(req);
+          } else {
+            missing.push(req);
+          }
+        });
+
+        const score = totalWeight > 0 ? Math.round((matchedWeight / totalWeight) * 100) : 0;
+
+        return {
+          ...role,
+          score,
+          matched,
+          missing,
+        };
+      });
+
+      // Sort by score descending, then by jobCount descending
+      calculatedRoles.sort((a, b) => {
+        if (b.score !== a.score) return b.score - a.score;
+        return b.jobCount - a.jobCount;
+      });
+
+      renderResults(calculatedRoles);
+    }
+
+    // Render Results
+    function renderResults(rankedRoles) {
+      const top3 = rankedRoles.slice(0, 3);
+      if (matchingSummaryText) {
+        matchingSummaryText.textContent = `${rankedRoles.length} ${t.positionsWord || 'roles evaluated'}`;
+      }
+
+      // Render Top 3 Hero Cards
+      if (topMatchesGrid) {
+        topMatchesGrid.innerHTML = top3
+          .map((role, idx) => {
+            const isTop = idx === 0;
+            const borderStyle = isTop
+              ? 'border-cyan-500/60 bg-gradient-to-b from-cyan-950/20 to-slate-900/90 shadow-cyan-950/30'
+              : 'border-slate-800 bg-slate-900/80';
+
+            const scoreColor =
+              role.score >= 80
+                ? 'text-emerald-400'
+                : role.score >= 50
+                ? 'text-cyan-400'
+                : 'text-amber-400';
+
+            const barColor =
+              role.score >= 80
+                ? 'bg-emerald-400'
+                : role.score >= 50
+                ? 'bg-cyan-400'
+                : 'bg-amber-400';
+
+            const badgeLabel =
+              role.score >= 80
+                ? t.matchLevelReady
+                : role.score >= 50
+                ? t.matchLevelNear
+                : t.matchLevelFoundational;
+
+            return `
+              <div class="rounded-xl p-5 border ${borderStyle} flex flex-col justify-between transition-all hover:border-cyan-500/40 shadow-lg">
+                <div class="space-y-3">
+                  <div class="flex items-center justify-between text-xs font-mono">
+                    <span class="px-2 py-0.5 rounded font-bold ${isTop ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/30' : 'bg-slate-800 text-slate-400'}">
+                      #0${idx + 1} BEST FIT
+                    </span>
+                    <span class="text-slate-400 font-mono text-[11px]">${role.domain}</span>
+                  </div>
+
+                  <div>
+                    <h3 class="text-xl font-bold text-white tracking-tight">
+                      ${role.canonicalName}
+                    </h3>
+                    <div class="flex items-center gap-2 text-xs font-mono text-slate-400 mt-1">
+                      <span>${role.track}</span>
+                      <span>•</span>
+                      <span class="text-slate-300 font-semibold">${role.jobCount} ${t.positionsWord || 'postings'}</span>
+                    </div>
+                  </div>
+
+                  <!-- Score meter -->
+                  <div class="pt-2">
+                    <div class="flex items-baseline justify-between text-xs font-mono mb-1.5">
+                      <span class="${scoreColor} font-bold text-lg">${role.score}%</span>
+                      <span class="text-[11px] text-slate-400">${badgeLabel}</span>
+                    </div>
+                    <div class="h-2 w-full bg-slate-800 rounded-full overflow-hidden">
+                      <div class="h-full ${barColor} rounded-full transition-all duration-500" style="width: ${role.score}%;"></div>
+                    </div>
+                  </div>
+
+                  <!-- Quick Stats -->
+                  <div class="grid grid-cols-2 gap-2 pt-2 text-xs font-mono">
+                    <div class="p-2 rounded bg-slate-950/60 border border-slate-800/80">
+                      <span class="text-emerald-400 block font-bold text-sm">✓ ${role.matched.length}</span>
+                      <span class="text-[10px] text-slate-400">${t.matchedSkills}</span>
+                    </div>
+                    <div class="p-2 rounded bg-slate-950/60 border border-slate-800/80">
+                      <span class="text-amber-400 block font-bold text-sm">⚡ ${role.missing.length}</span>
+                      <span class="text-[10px] text-slate-400">${t.missingSkills}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="pt-4 mt-4 border-t border-slate-800/80 flex items-center justify-between">
+                  <a
+                    href="${lang === 'cs' ? '/cs/roles/' : '/roles/'}${role.slug}"
+                    class="text-xs font-mono font-semibold text-cyan-300 hover:text-cyan-200 transition-colors inline-flex items-center gap-1"
+                  >
+                    <span>${lang === 'cs' ? 'Detail pozice' : 'Role profile'}</span>
+                    <span>→</span>
+                  </a>
+                  <button
+                    type="button"
+                    class="toggle-role-details text-xs font-mono text-slate-400 hover:text-white transition-colors"
+                    data-target-id="${role.id}"
+                  >
+                    ${t.expandDetails} ↓
+                  </button>
+                </div>
+              </div>
+            `;
+          })
+          .join('');
+      }
+
+      // Render All Roles Ranked
+      if (allRolesContainer) {
+        allRolesContainer.innerHTML = rankedRoles
+          .map((role, idx) => {
+            const scoreColor =
+              role.score >= 80
+                ? 'text-emerald-400'
+                : role.score >= 50
+                ? 'text-cyan-400'
+                : 'text-amber-400';
+
+            const barColor =
+              role.score >= 80
+                ? 'bg-emerald-400'
+                : role.score >= 50
+                ? 'bg-cyan-400'
+                : 'bg-amber-400';
+
+            // Find matching courses for top missing skills
+            const missingNames = role.missing.map((m) => m.name.toLowerCase());
+            const matchedCourses = learningCatalog.courses.filter((c) =>
+              c.skills.some((sk) =>
+                missingNames.some((mn) => mn.includes(sk.toLowerCase()) || sk.toLowerCase().includes(mn))
+              )
+            ).slice(0, 2);
+
+            const matchedFree = learningCatalog.freeCourses.filter((f) =>
+              f.skills.some((sk) =>
+                missingNames.some((mn) => mn.includes(sk.toLowerCase()) || sk.toLowerCase().includes(mn))
+              )
+            ).slice(0, 1);
+
+            return `
+              <div class="role-result-card rounded-xl border border-slate-800 bg-slate-900/60 hover:bg-slate-900/90 transition-all overflow-hidden" id="card-${role.id}">
+                <!-- Header / Summary Bar -->
+                <div class="p-4 sm:p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 cursor-pointer toggle-role-row" data-target-id="${role.id}">
+                  <div class="flex items-center gap-3 min-w-0">
+                    <span class="text-xs font-mono text-slate-500 w-6 text-right font-semibold">#${idx + 1}</span>
+                    <div>
+                      <h4 class="text-base font-bold text-white group-hover:text-cyan-300 transition-colors">
+                        ${role.canonicalName}
+                      </h4>
+                      <div class="flex items-center gap-2 text-xs font-mono text-slate-400 mt-0.5">
+                        <span class="px-1.5 py-0.2 rounded bg-slate-800 text-slate-300 text-[10px]">${role.track}</span>
+                        <span>•</span>
+                        <span>${role.domain}</span>
+                        <span>•</span>
+                        <span>${role.jobCount} ${t.positionsWord || 'postings'}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Progress meter -->
+                  <div class="flex items-center gap-4 shrink-0">
+                    <div class="w-32 sm:w-44 text-right">
+                      <div class="flex items-baseline justify-between text-xs font-mono mb-1">
+                        <span class="${scoreColor} font-bold text-sm">${role.score}%</span>
+                        <span class="text-[10px] text-slate-400">${role.matched.length} / ${role.requirements.length} skills</span>
+                      </div>
+                      <div class="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
+                        <div class="h-full ${barColor} rounded-full" style="width: ${role.score}%;"></div>
+                      </div>
+                    </div>
+
+                    <button
+                      type="button"
+                      class="chevron-btn p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-all"
+                      aria-label="Toggle details"
+                    >
+                      <svg class="w-4 h-4 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Expandable Details Drawer -->
+                <div class="role-details-drawer hidden border-t border-slate-800/80 p-5 bg-slate-950/70 space-y-6" id="details-${role.id}">
+                  <!-- Description -->
+                  ${
+                    role.description && role.description[lang]
+                      ? `<p class="text-xs text-slate-300 leading-relaxed font-light">${role.description[lang][0]}</p>`
+                      : ''
+                  }
+
+                  <!-- 2 Column Breakdown: Matched vs Missing -->
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Matched Skills -->
+                    <div class="space-y-2">
+                      <div class="flex items-center justify-between text-xs font-mono font-semibold text-emerald-400">
+                        <span class="flex items-center gap-1.5">
+                          <span>✓</span>
+                          <span>${t.matchedSkills} (${role.matched.length})</span>
+                        </span>
+                      </div>
+                      <div class="flex flex-wrap gap-1.5">
+                        ${
+                          role.matched.length > 0
+                            ? role.matched
+                                .map(
+                                  (m) => `
+                                  <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 flex items-center gap-1">
+                                    <span>✓</span>
+                                    <span>${m.name}</span>
+                                    ${m.penetration ? `<span class="text-[10px] text-emerald-400/70">(${m.penetration}%)</span>` : ''}
+                                  </span>
+                                `
+                                )
+                                .join('')
+                            : `<span class="text-xs font-mono text-slate-500">${lang === 'cs' ? 'Zatím žádné' : 'None yet'}</span>`
+                        }
+                      </div>
+                    </div>
+
+                    <!-- Missing Skills (The Gap) -->
+                    <div class="space-y-2">
+                      <div class="flex items-center justify-between text-xs font-mono font-semibold text-amber-400">
+                        <span class="flex items-center gap-1.5">
+                          <span>⚡</span>
+                          <span>${t.missingSkills} (${role.missing.length})</span>
+                        </span>
+                        <span class="text-[10px] text-slate-400 font-normal">${t.criticalImpact}</span>
+                      </div>
+                      <div class="flex flex-wrap gap-1.5">
+                        ${
+                          role.missing.length > 0
+                            ? role.missing
+                                .map(
+                                  (m) => `
+                                  <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-amber-500/10 text-amber-300 border border-amber-500/30 flex items-center gap-1">
+                                    <span>+</span>
+                                    <span>${m.name}</span>
+                                    ${m.penetration ? `<span class="text-[10px] text-amber-400/80 font-bold">(${m.penetration}%)</span>` : ''}
+                                  </span>
+                                `
+                                )
+                                .join('')
+                            : `<span class="text-xs font-mono text-emerald-400">🎉 ${lang === 'cs' ? '100% shoda! Žádná mezera' : '100% Match! No skill gap.'}</span>`
+                        }
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Recommended Courses to Close the Gap -->
+                  ${
+                    matchedCourses.length > 0 || matchedFree.length > 0
+                      ? `
+                    <div class="pt-4 border-t border-slate-800/80 space-y-3">
+                      <span class="text-xs font-mono font-semibold text-cyan-300 uppercase tracking-wider block">
+                        ${t.recommendedCourses}
+                      </span>
+                      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+                        ${matchedCourses
+                          .map(
+                            (c) => `
+                          <a
+                            href="${c.url}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="p-3 rounded-lg bg-slate-900 border border-slate-800 hover:border-cyan-500/50 transition-all group flex flex-col justify-between"
+                          >
+                            <div class="space-y-1">
+                              <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-cyan-950 text-cyan-300 border border-cyan-800/50 font-semibold">
+                                ${c.platform}
+                              </span>
+                              <h5 class="text-xs font-bold text-white group-hover:text-cyan-300 transition-colors line-clamp-2 mt-1">
+                                ${c.title}
+                              </h5>
+                            </div>
+                            <div class="mt-2 pt-2 border-t border-slate-800/60 flex items-center justify-between text-[10px] font-mono text-slate-400">
+                              <span>${c.duration}</span>
+                              <span class="text-cyan-400">↗</span>
+                            </div>
+                          </a>
+                        `
+                          )
+                          .join('')}
+
+                        ${matchedFree
+                          .map(
+                            (f) => `
+                          <a
+                            href="${f.url}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="p-3 rounded-lg bg-slate-900 border border-emerald-500/20 hover:border-emerald-500/50 transition-all group flex flex-col justify-between"
+                          >
+                            <div class="space-y-1">
+                              <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-800/50 font-semibold">
+                                ${f.provider} • FREE
+                              </span>
+                              <h5 class="text-xs font-bold text-white group-hover:text-emerald-300 transition-colors line-clamp-2 mt-1">
+                                ${f.title}
+                              </h5>
+                            </div>
+                            <div class="mt-2 pt-2 border-t border-slate-800/60 flex items-center justify-between text-[10px] font-mono text-slate-400">
+                              <span>${f.duration}</span>
+                              <span class="text-emerald-400">↗</span>
+                            </div>
+                          </a>
+                        `
+                          )
+                          .join('')}
+                      </div>
+                    </div>
+                  `
+                      : ''
+                  }
+
+                  <!-- Action Bar -->
+                  <div class="pt-3 flex flex-wrap items-center justify-between gap-3">
+                    <a
+                      href="${lang === 'cs' ? '/cs/roles/' : '/roles/'}${role.slug}"
+                      class="px-4 py-2 rounded-lg bg-cyan-500/15 text-cyan-300 border border-cyan-500/40 text-xs font-mono font-semibold hover:bg-cyan-500/25 transition-all inline-flex items-center gap-1.5"
+                    >
+                      <span>${t.viewRoleDetails}</span>
+                    </a>
+
+                    <div class="text-[11px] font-mono text-slate-400">
+                      <span>${t.sp500Share}: <strong class="text-slate-200">${role.sp500JobCount}</strong></span>
+                      <span class="mx-2">•</span>
+                      <span>${t.seniorityRatio}: <strong class="text-slate-200">${role.seniorPlusPct}%</strong></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            `;
+          })
+          .join('');
+      }
+
+      // Re-attach drawer toggle listeners
+      attachDrawerListeners();
+    }
+
+    // Attach drawer expansion handlers
+    function attachDrawerListeners() {
+      document.querySelectorAll('.toggle-role-row, .toggle-role-details').forEach((trigger) => {
+        trigger.addEventListener('click', (e) => {
+          // Avoid triggering when clicking child link or button inside row
+          if (e.target.closest('a')) return;
+
+          const roleId = trigger.getAttribute('data-target-id');
+          if (!roleId) return;
+
+          const drawer = document.getElementById(`details-${roleId}`);
+          const card = document.getElementById(`card-${roleId}`);
+          if (!drawer) return;
+
+          const isHidden = drawer.classList.contains('hidden');
+          if (isHidden) {
+            drawer.classList.remove('hidden');
+            if (card) {
+              const chevron = card.querySelector('.chevron-btn svg');
+              if (chevron) chevron.classList.add('rotate-180');
+              card.classList.add('border-cyan-500/40');
+            }
+          } else {
+            drawer.classList.add('hidden');
+            if (card) {
+              const chevron = card.querySelector('.chevron-btn svg');
+              if (chevron) chevron.classList.remove('rotate-180');
+              card.classList.remove('border-cyan-500/40');
+            }
+          }
+        });
+      });
+    }
+
+    // Update Chip Visuals
+    function updateChipState(chip, isSelected) {
+      const checkIcon = chip.querySelector('.chip-check');
+      if (isSelected) {
+        chip.className =
+          'skill-chip text-left p-2.5 rounded-lg text-xs font-mono border transition-all flex items-center justify-between gap-1.5 bg-cyan-500/15 text-cyan-200 border-cyan-500/50 shadow-sm shadow-cyan-950/40 font-semibold';
+        if (checkIcon) checkIcon.classList.remove('hidden');
+      } else {
+        chip.className =
+          'skill-chip text-left p-2.5 rounded-lg text-xs font-mono border transition-all flex items-center justify-between gap-1.5 bg-slate-900/60 text-slate-400 border-slate-800 hover:border-slate-700 hover:text-slate-200 font-normal';
+        if (checkIcon) checkIcon.classList.add('hidden');
+      }
+    }
+
+    function syncUI() {
+      // Update counter
+      if (selectedBadge) {
+        selectedBadge.textContent = selectedSkills.size.toString();
+      }
+
+      // Update chips
+      skillChips.forEach((chip) => {
+        const id = chip.getAttribute('data-skill-id');
+        if (id) {
+          updateChipState(chip, selectedSkills.has(id));
+        }
+      });
+
+      calculateMatches();
+    }
+
+    // Filter Chips by Category and Search
+    function filterChips() {
+      let visibleCount = 0;
+
+      skillChips.forEach((chip) => {
+        const cat = chip.getAttribute('data-skill-category');
+        const name = chip.getAttribute('data-skill-name') || '';
+
+        const matchesCat = currentCategoryFilter === 'all' || cat === currentCategoryFilter;
+        const matchesSearch = !currentSearchQuery || name.includes(currentSearchQuery);
+
+        if (matchesCat && matchesSearch) {
+          chip.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          chip.classList.add('hidden');
+        }
+      });
+
+      if (emptySearchMsg) {
+        if (visibleCount === 0) {
+          emptySearchMsg.classList.remove('hidden');
+          if (emptyQueryText) emptyQueryText.textContent = currentSearchQuery;
+        } else {
+          emptySearchMsg.classList.add('hidden');
+        }
+      }
+    }
+
+    // Event: Click Skill Chip
+    skillChips.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        const id = chip.getAttribute('data-skill-id');
+        if (!id) return;
+
+        if (selectedSkills.has(id)) {
+          selectedSkills.delete(id);
+        } else {
+          selectedSkills.add(id);
+        }
+
+        syncUI();
+      });
+    });
+
+    // Event: Click Preset Profile
+    presetBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const rawSkills = btn.getAttribute('data-skills');
+        if (!rawSkills) return;
+
+        try {
+          const ids = JSON.parse(rawSkills);
+          selectedSkills.clear();
+          ids.forEach((id) => selectedSkills.add(id));
+          syncUI();
+
+          // Smooth scroll down to results
+          const resEl = document.getElementById('results-section');
+          if (resEl) resEl.scrollIntoView({ behavior: 'smooth' });
+        } catch (e) {
+          console.error('Failed to parse preset skills', e);
+        }
+      });
+    });
+
+    // Event: Select All visible
+    if (btnSelectAll) {
+      btnSelectAll.addEventListener('click', () => {
+        skillChips.forEach((chip) => {
+          if (!chip.classList.contains('hidden')) {
+            const id = chip.getAttribute('data-skill-id');
+            if (id) selectedSkills.add(id);
+          }
+        });
+        syncUI();
+      });
+    }
+
+    // Event: Clear All
+    if (btnClearAll) {
+      btnClearAll.addEventListener('click', () => {
+        selectedSkills.clear();
+        syncUI();
+      });
+    }
+
+    // Event: Category Filters
+    catButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        catButtons.forEach((b) => {
+          b.className =
+            'cat-filter-btn px-3 py-1 rounded-full text-xs font-mono font-medium transition-all bg-slate-900 text-slate-400 border border-slate-800 hover:border-slate-700 hover:text-slate-200';
+        });
+
+        btn.className =
+          'cat-filter-btn px-3 py-1 rounded-full text-xs font-mono font-medium transition-all bg-cyan-500/20 text-cyan-300 border border-cyan-500/40';
+
+        currentCategoryFilter = btn.getAttribute('data-cat') || 'all';
+        filterChips();
+      });
+    });
+
+    // Event: Search Input
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        currentSearchQuery = (e.target.value || '').trim().toLowerCase();
+        filterChips();
+      });
+    }
+
+    // Check URL parameters for preset or prefilled skills
+    const urlParams = new URLSearchParams(window.location.search);
+    const presetParam = urlParams.get('preset');
+    const skillsParam = urlParams.get('skills');
+
+    if (presetParam) {
+      const p = presets.find((pr) => pr.id === presetParam);
+      if (p) {
+        p.skillIds.forEach((id) => selectedSkills.add(id));
+      }
+    } else if (skillsParam) {
+      skillsParam.split(',').forEach((id) => {
+        const cleanId = id.trim();
+        if (taxonomyById.has(cleanId)) selectedSkills.add(cleanId);
+      });
+    }
+
+    syncUI();
+  });
+</script>

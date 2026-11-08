@@ -1351,10 +1351,12 @@ def generate_llms_txt(payload: dict[str, Any]) -> None:
 - [Market Dashboard](https://vector87.com/): Core market data covering vitality, cloud stack, S&P 500 sector heatmap, hierarchy ratios, and emerging technology signals.
 - [Czech Version / Česká verze](https://vector87.com/cs/): Kompletní zrcadlo v češtině.
 - [Role Analysis](https://vector87.com/roles): 21 canonical AI & Data roles with synthesized job descriptions, required competencies, and team expansion velocity.
-- [Role & Tech Comparisons](https://vector87.com/compare): Head-to-head empirical comparisons and Venn diagrams (Data Analyst vs Data Scientist, Data Analyst vs Data Engineer, Databricks vs Snowflake).
+- [Role & Tech Comparisons](https://vector87.com/compare): Head-to-head empirical comparisons and Venn diagrams (Data Analyst vs Data Scientist, Data Analyst vs Data Engineer, Data Engineer vs Data Scientist, Databricks vs Snowflake, BigQuery vs Snowflake, BI Developer vs Data Analyst, dbt vs Dataform).
 - [Technologies & Platforms](https://vector87.com/technologies): In-depth market demand across 20 core data and AI technologies (BigQuery, Databricks, Snowflake, Python, SQL, dbt, Spark, GCP).
 - [Cloud & Tech Hub](https://vector87.com/cloud-tech): In-depth market demand across cloud ecosystems (AWS, Azure, GCP) and platforms (Databricks, Snowflake).
 - [Education Academy](https://vector87.com/academy): 3 structured learning tracks (Analytics Engineering, Cloud Data Engineering, Applied AI/LLMOps) and essential architectural literature.
+- [Skill Gap Analyzer](https://vector87.com/academy/analyzer): Interactive career calculator matching your tech stack against 21 canonical roles and recommending targeted courses.
+- [Podcasts & Media Radar](https://vector87.com/academy/podcasts): Monitored shows, episodes, and executive summaries across data engineering and AI.
 - [About Author](https://vector87.com/about): Background of Antonín Kučera (akucera.eu), project philosophy, and essays on Data-Informed leadership.
 
 ## Machine-Readable Data Contracts
