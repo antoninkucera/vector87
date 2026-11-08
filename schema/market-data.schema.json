@@ -117,6 +117,24 @@
               "jaccard_pct": { "type": "number" }
             }
           }
+        },
+        "agent_frameworks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["skill_id", "name", "paradigm", "summary", "job_count", "penetration_pct", "share_of_agent_jobs_pct", "top_companies", "sample_postings"],
+            "properties": {
+              "skill_id": { "type": "string" },
+              "name": { "type": "string" },
+              "paradigm": { "type": "string" },
+              "summary": { "type": "string" },
+              "job_count": { "type": "integer" },
+              "penetration_pct": { "type": "number" },
+              "share_of_agent_jobs_pct": { "type": "number" },
+              "top_companies": { "type": "array" },
+              "sample_postings": { "type": "array" }
+            }
+          }
         }
       }
     },

@@ -44,6 +44,18 @@ export interface TechnologyRoleMatch {
   jobCount: number;
 }
 
+export interface AgentFrameworkMetric {
+  skillId: string;
+  name: string;
+  paradigm: string;
+  summary: string;
+  jobCount: number;
+  penetrationPct: number;
+  shareOfAgentJobsPct: number;
+  topCompanies: Array<{ companyName: string; sector?: string | null; jobCount: number }>;
+  samplePostings: Array<{ title: string; companyName: string; countryCode: string; url: string }>;
+}
+
 export interface TechnologyResolved {
   id: string;
   name: string;
@@ -70,6 +82,7 @@ export interface TechnologyResolved {
   topCompanies: Array<{ companyName: string; sector?: string | null; jobCount: number }>;
   recommendedCourses: AcademyCourse[];
   recommendedCerts: CertificationItem[];
+  agentFrameworks?: AgentFrameworkMetric[];
 }
 
 export const TECHNOLOGIES_CATALOG: TechnologyDefinition[] = [
@@ -472,6 +485,30 @@ export const TECHNOLOGIES_CATALOG: TechnologyDefinition[] = [
         'V inzerátech se poptávka soustředí na agentní orchestrátory (LangGraph, CrewAI, AutoGen), spolehlivost volání nástrojů (Function Calling), evaluační smyčky a deterministická bezpečnostní pravidla (guardrails).',
       ],
     },
+    authorNotes: {
+      en: {
+        title: 'From Fragile Prompts to Deterministic State Machines',
+        lead: 'The initial wave of LLM apps relied on linear chains, which reliably break down when tasks exceed 3 steps. The production industry has pivoted to stateful graph execution and multi-agent delegation.',
+        paragraphs: [
+          'In production systems, autonomous agents cannot run on pure probabilistic hope. The steep rise of LangGraph in enterprise job postings (220+ active roles, surging 30x since mid-2026) proves that software teams treat agents as state machines: cyclic graphs with clear persistence, checkpointing, and deterministic branching.',
+          'Meanwhile, multi-agent frameworks like CrewAI and AutoGen dominate complex business automation where tasks split naturally into specialized personas (e.g. researcher, coder, auditor). For enterprise teams on the Microsoft/Azure stack, Semantic Kernel provides the essential bridge between traditional C#/Python services and agentic planning.',
+        ],
+        links: [
+          { label: 'Autonomous Agents in Production Architecture', href: 'https://akucera.eu' },
+        ],
+      },
+      cs: {
+        title: 'Od křehkých promptů k deterministickým stavovým automatům',
+        lead: 'První vlna aplikací stavěla na lineárních řetězcích (chains), které v praxi selhávají, jakmile proces přesáhne 3 kroky. Produkční svět proto přešel k řízení stavu v grafech a víceagentní spolupráci.',
+        paragraphs: [
+          'V produkčním prostředí nemohou autonomní agenti fungovat na bázi pouhé pravděpodobnosti. Rychlý růst poptávky po LangGraphu v enterprise inzerátech (přes 220 aktivních pozic a strmý skok během podzimu 2026) ukazuje, že týmy přistupují k agentům jako ke stavovým automatům: cyklickým grafům s perzistencí, checkpointingem a deterministickým větvením.',
+          'Současně frameworky jako CrewAI a AutoGen dominují ve scénářích, kde se byznysová úloha přirozeně dělí na specializované role (výzkumník, programátor, revizor kódu). Pro podniky na Microsoft ekosystému pak klíčové pojítko tvoří Semantic Kernel propojující nativní kód se schopnostmi modelů.',
+        ],
+        links: [
+          { label: 'Autonomní agenti v produkční architektuře', href: 'https://akucera.eu' },
+        ],
+      },
+    },
     comparisons: [
       { targetSlug: 'llm', targetName: 'Large Language Models' },
       { targetSlug: 'rag', targetName: 'RAG' },
@@ -730,6 +767,32 @@ export function getTechnology(slugOrAlias: string): TechnologyResolved | null {
     cert.skills.some((sk) => techSearchWords.some((w) => sk.toLowerCase().includes(w) || w.includes(sk.toLowerCase())))
   ).slice(0, 2);
 
+  // 7. Agent Frameworks (if inspecting AI Agents)
+  const rawFrameworks = (marketData.tech_cloud_stack as any)?.agent_frameworks || [];
+  const agentFrameworks: AgentFrameworkMetric[] =
+    def.id === 'ai-agents'
+      ? rawFrameworks.map((f: any) => ({
+          skillId: f.skill_id,
+          name: f.name,
+          paradigm: f.paradigm,
+          summary: f.summary,
+          jobCount: f.job_count,
+          penetrationPct: f.penetration_pct,
+          shareOfAgentJobsPct: f.share_of_agent_jobs_pct,
+          topCompanies: (f.top_companies || []).map((c: any) => ({
+            companyName: c.company_name,
+            sector: c.sector,
+            jobCount: c.job_count,
+          })),
+          samplePostings: (f.sample_postings || []).map((p: any) => ({
+            title: p.title,
+            companyName: p.company_name,
+            countryCode: p.country_code,
+            url: p.url,
+          })),
+        }))
+      : [];
+
   return {
     id: def.id,
     name: def.name,
@@ -748,6 +811,7 @@ export function getTechnology(slugOrAlias: string): TechnologyResolved | null {
     topCompanies,
     recommendedCourses,
     recommendedCerts,
+    agentFrameworks: agentFrameworks.length > 0 ? agentFrameworks : undefined,
   };
 }
 
