@@ -1,0 +1,104 @@
+---
+import { ui, type Locale } from '../i18n/ui';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = ui[lang].cookies;
+const privacyHref = lang === 'cs' ? '/cs/privacy' : '/privacy';
+---
+
+<aside
+  id="cookie-consent-banner"
+  aria-label={lang === 'cs' ? 'Souhlas s cookies' : 'Cookie Consent'}
+  class="hidden fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 max-w-sm sm:max-w-md p-4 sm:p-5 rounded-xl panel-surface border border-slate-700/80 shadow-2xl bg-slate-950/95 backdrop-blur-md text-xs transition-opacity duration-300"
+>
+  <div class="flex items-start gap-3">
+    <div class="w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 flex items-center justify-center shrink-0 font-mono text-sm">
+      🍪
+    </div>
+    <div class="space-y-2">
+      <div class="flex items-center justify-between">
+        <h3 class="font-bold text-white text-sm tracking-tight">{t.title}</h3>
+        <span class="text-[10px] font-mono uppercase text-cyan-400 bg-cyan-500/10 border border-cyan-500/30 px-1.5 py-0.5 rounded">
+          Opt-in
+        </span>
+      </div>
+      <p class="text-slate-300 leading-relaxed text-[11px] sm:text-xs">
+        {t.text}{' '}
+        <a href={privacyHref} class="text-cyan-400 hover:underline">
+          {t.privacyLink}
+        </a>.
+      </p>
+      <div class="pt-2 flex items-center gap-2">
+        <button
+          type="button"
+          id="cookie-accept-btn"
+          class="px-3.5 py-1.5 rounded-lg text-xs font-mono font-semibold bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 hover:bg-cyan-500/30 transition-colors cursor-pointer"
+        >
+          {t.accept}
+        </button>
+        <button
+          type="button"
+          id="cookie-decline-btn"
+          class="px-3 py-1.5 rounded-lg text-xs font-mono font-semibold bg-slate-900 text-slate-400 border border-slate-800 hover:border-slate-700 hover:text-slate-200 transition-colors cursor-pointer"
+        >
+          {t.decline}
+        </button>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const banner = document.getElementById('cookie-consent-banner');
+    const acceptBtn = document.getElementById('cookie-accept-btn');
+    const declineBtn = document.getElementById('cookie-decline-btn');
+    const settingsBtns = document.querySelectorAll('.cookie-settings-trigger');
+
+    if (!banner) return;
+
+    let consent = null;
+    try {
+      consent = localStorage.getItem('v87_consent');
+    } catch (e) {}
+
+    // Show banner only if no consent decision was recorded yet
+    if (consent === null) {
+      banner.classList.remove('hidden');
+    }
+
+    function setConsent(choice) {
+      try {
+        localStorage.setItem('v87_consent', choice);
+      } catch (e) {}
+
+      if (typeof window.gtag === 'function') {
+        window.gtag('consent', 'update', {
+          analytics_storage: choice === 'granted' ? 'granted' : 'denied',
+        });
+      }
+
+      banner.classList.add('hidden');
+    }
+
+    if (acceptBtn) {
+      acceptBtn.addEventListener('click', () => setConsent('granted'));
+    }
+
+    if (declineBtn) {
+      declineBtn.addEventListener('click', () => setConsent('denied'));
+    }
+
+    // Allow re-opening from footer
+    settingsBtns.forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        banner.classList.remove('hidden');
+      });
+    });
+  });
+</script>
