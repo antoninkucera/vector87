@@ -15,127 +15,160 @@ const { lang, nameA, nameB, uniqueA, shared, uniqueB } = Astro.props;
 
 const t = {
   en: {
-    uniqueAHeading: 'Unique Focus & Tooling',
-    sharedTitle: 'Shared Analytical Core',
-    sharedSub: 'Enterprise Overlap',
-    uniqueBHeading: 'Unique Focus & Tooling',
-    colAFootnote: 'Distinct reporting & business logic profile',
-    colSharedFootnote: 'Foundational baseline demanded across both roles',
-    colBFootnote: 'Distinct algorithmic & predictive engineering profile',
+    uniqueAHeading: `Unique to ${nameA}`,
+    sharedTitle: 'Shared Core',
+    sharedSub: 'Intersection',
+    uniqueBHeading: `Unique to ${nameB}`,
+    legendA: 'Distinct business & reporting focus',
+    legendShared: 'Baseline demanded across both profiles',
+    legendB: 'Distinct algorithmic & predictive engineering focus',
   },
   cs: {
-    uniqueAHeading: 'Specifické dovednosti a nástroje',
-    sharedTitle: 'Společný analytický průnik',
-    sharedSub: 'Podnikový přesah',
-    uniqueBHeading: 'Specifické dovednosti a nástroje',
-    colAFootnote: 'Specifický profil pro reporting a byznysové rozhodování',
-    colSharedFootnote: 'Společný technologický základ vyžadovaný u obou rolí',
-    colBFootnote: 'Specifický profil pro prediktivní modelování a algoritmy',
+    uniqueAHeading: `Specifické pro ${nameA}`,
+    sharedTitle: 'Společný základ',
+    sharedSub: 'Průnik dovedností',
+    uniqueBHeading: `Specifické pro ${nameB}`,
+    legendA: 'Specifické pro reporting a byznysová rozhodnutí',
+    legendShared: 'Společný základ vyžadovaný u obou rolí',
+    legendB: 'Specifické pro prediktivní modelování a algoritmy',
   },
 }[lang];
 ---
 
-<div class="relative w-full rounded-3xl bg-slate-950/90 border border-slate-800/90 p-5 sm:p-7 lg:p-9 shadow-2xl overflow-hidden">
+<div class="w-full max-w-5xl mx-auto my-6">
   
-  <!-- Atmospheric Desktop/Tablet Venn Diagram Background Geometry -->
-  <div class="hidden md:block absolute inset-0 pointer-events-none select-none overflow-hidden" aria-hidden="true">
-    <div class="relative w-full h-full flex items-center justify-center">
-      
-      <!-- Circle A (Left) -->
-      <div 
-        class="absolute w-[440px] h-[440px] lg:w-[500px] lg:h-[500px] rounded-full -translate-x-[26%] bg-sky-950/25 border-2 border-sky-500/35 shadow-[0_0_60px_rgba(14,165,233,0.12)]"
-      >
-        <!-- Subtle internal radar ring -->
-        <div class="absolute inset-8 rounded-full border border-sky-500/10 border-dashed"></div>
-      </div>
-
-      <!-- Circle B (Right) -->
-      <div 
-        class="absolute w-[440px] h-[440px] lg:w-[500px] lg:h-[500px] rounded-full translate-x-[26%] bg-emerald-950/25 border-2 border-emerald-500/35 shadow-[0_0_60px_rgba(16,185,129,0.12)]"
-      >
-        <!-- Subtle internal radar ring -->
-        <div class="absolute inset-8 rounded-full border border-emerald-500/10 border-dashed"></div>
-      </div>
-
-      <!-- Center Overlap Lens (Venn Intersection Highlight) -->
-      <div 
-        class="absolute w-[220px] lg:w-[260px] h-[360px] lg:h-[420px] rounded-[100px] bg-gradient-to-b from-indigo-500/15 via-indigo-500/10 to-indigo-500/15 border-x border-indigo-400/30 shadow-[0_0_40px_rgba(99,102,241,0.15)] backdrop-blur-[1px]"
-      ></div>
-
-    </div>
-  </div>
-
-  <!-- Content Layer: Perfectly Aligned 3-Column Grid -->
-  <div class="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+  <!-- ==================== DESKTOP & TABLET: TRUE VENN DIAGRAM (>= md) ==================== -->
+  <div class="hidden md:block relative min-h-[580px] rounded-3xl bg-[#060913] border border-slate-800/80 p-6 lg:p-8 overflow-hidden shadow-2xl">
     
-    <!-- ==================== COLUMN 1: UNIQUE TO A ==================== -->
-    <div class="flex flex-col justify-between p-5 rounded-2xl bg-slate-900/40 md:bg-transparent border border-sky-500/25 md:border-none">
-      <div>
-        <!-- Column Header -->
-        <div class="text-center mb-5">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold bg-sky-500/20 text-sky-300 border border-sky-400/40 shadow-sm shadow-sky-950/30">
+    <!-- SVG Venn Geometry Background (Authentic Overlapping Circles + Exact Lens) -->
+    <div class="absolute inset-0 pointer-events-none select-none" aria-hidden="true">
+      <svg viewBox="0 0 960 580" class="w-full h-full" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <!-- Circle A Gradient (Deep Navy / Sky) -->
+          <radialGradient id="vennGradLeft" cx="35%" cy="45%" r="65%">
+            <stop offset="0%" stop-color="#0284c7" stop-opacity="0.32" />
+            <stop offset="60%" stop-color="#0369a1" stop-opacity="0.18" />
+            <stop offset="100%" stop-color="#082f49" stop-opacity="0.25" />
+          </radialGradient>
+
+          <!-- Circle B Gradient (Deep Emerald / Mint) -->
+          <radialGradient id="vennGradRight" cx="65%" cy="45%" r="65%">
+            <stop offset="0%" stop-color="#10b981" stop-opacity="0.28" />
+            <stop offset="60%" stop-color="#047857" stop-opacity="0.16" />
+            <stop offset="100%" stop-color="#022c22" stop-opacity="0.25" />
+          </radialGradient>
+
+          <!-- Intersection Lens Gradient (Indigo / Cyan blend) -->
+          <radialGradient id="vennGradLens" cx="50%" cy="50%" r="60%">
+            <stop offset="0%" stop-color="#6366f1" stop-opacity="0.38" />
+            <stop offset="65%" stop-color="#4f46e5" stop-opacity="0.22" />
+            <stop offset="100%" stop-color="#1e1b4b" stop-opacity="0.35" />
+          </radialGradient>
+
+          <!-- Glow Filter -->
+          <filter id="vennGlow" x="-10%" y="-10%" width="120%" height="120%">
+            <feGaussianBlur stdDeviation="12" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+          </filter>
+        </defs>
+
+        <!-- Circle A: Center (340, 290), Radius 255 -->
+        <circle
+          cx="340"
+          cy="290"
+          r="255"
+          fill="url(#vennGradLeft)"
+          stroke="#38bdf8"
+          stroke-width="2.5"
+          stroke-opacity="0.75"
+        />
+
+        <!-- Circle B: Center (620, 290), Radius 255 -->
+        <circle
+          cx="620"
+          cy="290"
+          r="255"
+          fill="url(#vennGradRight)"
+          stroke="#34d399"
+          stroke-width="2.5"
+          stroke-opacity="0.75"
+        />
+
+        <!-- Exact Intersection Lens Path (where the two circles overlap between x=365 and x=595) -->
+        <path
+          d="M 480,78 A 255,255 0 0,1 480,502 A 255,255 0 0,1 480,78 Z"
+          fill="url(#vennGradLens)"
+          stroke="#818cf8"
+          stroke-width="2"
+          stroke-opacity="0.85"
+        />
+      </svg>
+    </div>
+
+    <!-- Content 3-Column Grid Layer (Direct typography, no rectangular cards) -->
+    <div class="relative z-10 grid grid-cols-3 gap-4 lg:gap-6 h-full items-start pt-4">
+      
+      <!-- ==================== ZONE 1: UNIQUE TO A (LEFT CIRCLE) ==================== -->
+      <div class="flex flex-col h-full max-w-[280px] lg:max-w-[295px] mr-auto pl-2 lg:pl-4">
+        <!-- Zone Header -->
+        <div class="mb-6 text-left">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold bg-sky-500/20 text-sky-200 border border-sky-400/50 shadow-sm shadow-sky-950/40">
             <span class="w-2 h-2 rounded-full bg-sky-400"></span>
             <span>{nameA}</span>
           </div>
-          <div class="text-[11px] font-mono text-sky-400/80 mt-1.5 uppercase tracking-wider font-semibold">
+          <div class="text-[11px] font-mono text-sky-400/80 mt-1 uppercase tracking-wider font-semibold">
             {t.uniqueAHeading}
           </div>
         </div>
 
-        <!-- Competency Cards -->
-        <div class="space-y-3">
+        <!-- Clean Bulleted Items directly on circle background -->
+        <ul class="space-y-4">
           {uniqueA.map((item) => (
-            <div class="p-3.5 rounded-xl bg-slate-900/80 border border-sky-500/30 backdrop-blur-md transition-all hover:border-sky-400/60 hover:shadow-md hover:shadow-sky-950/30">
-              <div class="flex items-center justify-between gap-2 mb-1">
-                <span class="text-xs sm:text-sm font-bold text-white font-mono flex items-center gap-1.5">
-                  <span class="text-sky-400 font-bold">•</span>
+            <li class="group">
+              <div class="flex items-baseline justify-between gap-2">
+                <span class="text-xs lg:text-sm font-bold text-white font-mono flex items-center gap-1.5 group-hover:text-sky-300 transition-colors">
+                  <span class="text-sky-400 text-base leading-none">•</span>
                   <span>{item.name}</span>
                 </span>
                 {item.pctA !== undefined && (
-                  <span class="px-2 py-0.5 rounded text-[11px] font-mono font-bold bg-sky-500/20 text-sky-300 shrink-0 border border-sky-500/30">
+                  <span class="px-1.5 py-0.5 rounded text-[10px] font-mono font-bold bg-sky-500/25 text-sky-200 border border-sky-400/30 shrink-0">
                     {item.pctA}%
                   </span>
                 )}
               </div>
-              <p class="text-xs text-slate-300 leading-relaxed mt-1 pl-3.5">
+              <p class="text-[11px] text-slate-300 leading-relaxed mt-1 pl-3.5">
                 {item.detail[lang]}
               </p>
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
 
-      <div class="mt-5 pt-3 border-t border-sky-500/20 text-[11px] font-mono text-sky-400/60 text-center">
-        {t.colAFootnote}
-      </div>
-    </div>
-
-    <!-- ==================== COLUMN 2: INTERSECTION (SHARED) ==================== -->
-    <div class="flex flex-col justify-between p-5 rounded-2xl bg-indigo-950/20 md:bg-transparent border border-indigo-500/35 md:border-none shadow-lg shadow-indigo-950/20 md:shadow-none">
-      <div>
-        <!-- Column Header -->
-        <div class="text-center mb-5">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold bg-indigo-500/30 text-indigo-200 border border-indigo-400/50 shadow-md shadow-indigo-950/40">
+      <!-- ==================== ZONE 2: INTERSECTION (CENTER LENS) ==================== -->
+      <div class="flex flex-col h-full max-w-[220px] lg:max-w-[240px] mx-auto text-center px-1">
+        <!-- Zone Header -->
+        <div class="mb-6">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold bg-indigo-500/30 text-indigo-200 border border-indigo-400/60 shadow-md shadow-indigo-950/50">
             <span class="w-2 h-2 rounded-full bg-indigo-400 animate-pulse"></span>
             <span>{t.sharedTitle}</span>
           </div>
-          <div class="text-[11px] font-mono text-indigo-300/80 mt-1.5 uppercase tracking-wider font-semibold">
+          <div class="text-[11px] font-mono text-indigo-300/80 mt-1 uppercase tracking-wider font-semibold">
             {t.sharedSub}
           </div>
         </div>
 
-        <!-- Competency Cards -->
-        <div class="space-y-3">
+        <!-- Clean Bulleted Items inside intersection lens -->
+        <ul class="space-y-4 text-left">
           {shared.map((item) => (
-            <div class="p-3.5 rounded-xl bg-slate-900/90 border border-indigo-500/40 backdrop-blur-md transition-all hover:border-indigo-400/70 hover:shadow-md hover:shadow-indigo-950/40">
-              <div class="flex items-center justify-between gap-2 mb-1">
-                <span class="text-xs sm:text-sm font-bold text-white font-mono flex items-center gap-1.5">
-                  <span class="text-indigo-400 font-bold">✓</span>
+            <li class="group">
+              <div class="flex items-baseline justify-between gap-1.5">
+                <span class="text-xs lg:text-sm font-bold text-white font-mono flex items-center gap-1.5 group-hover:text-indigo-200 transition-colors">
+                  <span class="text-indigo-400 text-sm leading-none">✓</span>
                   <span>{item.name}</span>
                 </span>
-                <div class="flex items-center gap-1 shrink-0 font-mono text-[10px] sm:text-[11px]">
+                <div class="flex items-center gap-1 shrink-0 font-mono text-[10px]">
                   {item.pctA !== undefined && (
-                    <span class="px-1.5 py-0.5 rounded font-bold bg-sky-500/20 text-sky-300 border border-sky-500/30" title={`${nameA}: ${item.pctA}%`}>
+                    <span class="px-1 py-0.5 rounded font-bold bg-sky-500/20 text-sky-300" title={`${nameA}: ${item.pctA}%`}>
                       {item.pctA}%
                     </span>
                   )}
@@ -143,66 +176,161 @@ const t = {
                     <span class="text-slate-500 font-bold">/</span>
                   )}
                   {item.pctB !== undefined && (
-                    <span class="px-1.5 py-0.5 rounded font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30" title={`${nameB}: ${item.pctB}%`}>
+                    <span class="px-1 py-0.5 rounded font-bold bg-emerald-500/20 text-emerald-300" title={`${nameB}: ${item.pctB}%`}>
                       {item.pctB}%
                     </span>
                   )}
                 </div>
               </div>
-              <p class="text-xs text-slate-300 leading-relaxed mt-1 pl-3.5">
+              <p class="text-[11px] text-slate-300 leading-relaxed mt-1 pl-3.5">
                 {item.detail[lang]}
               </p>
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
 
-      <div class="mt-5 pt-3 border-t border-indigo-500/20 text-[11px] font-mono text-indigo-300/70 text-center">
-        {t.colSharedFootnote}
-      </div>
-    </div>
-
-    <!-- ==================== COLUMN 3: UNIQUE TO B ==================== -->
-    <div class="flex flex-col justify-between p-5 rounded-2xl bg-slate-900/40 md:bg-transparent border border-emerald-500/25 md:border-none">
-      <div>
-        <!-- Column Header -->
-        <div class="text-center mb-5">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 shadow-sm shadow-emerald-950/30">
+      <!-- ==================== ZONE 3: UNIQUE TO B (RIGHT CIRCLE) ==================== -->
+      <div class="flex flex-col h-full max-w-[280px] lg:max-w-[295px] ml-auto pr-2 lg:pr-4 text-left">
+        <!-- Zone Header -->
+        <div class="mb-6 text-left">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold bg-emerald-500/20 text-emerald-200 border border-emerald-400/50 shadow-sm shadow-emerald-950/40">
             <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
             <span>{nameB}</span>
           </div>
-          <div class="text-[11px] font-mono text-emerald-400/80 mt-1.5 uppercase tracking-wider font-semibold">
+          <div class="text-[11px] font-mono text-emerald-400/80 mt-1 uppercase tracking-wider font-semibold">
             {t.uniqueBHeading}
           </div>
         </div>
 
-        <!-- Competency Cards -->
-        <div class="space-y-3">
+        <!-- Clean Bulleted Items directly on circle background -->
+        <ul class="space-y-4">
           {uniqueB.map((item) => (
-            <div class="p-3.5 rounded-xl bg-slate-900/80 border border-emerald-500/30 backdrop-blur-md transition-all hover:border-emerald-400/60 hover:shadow-md hover:shadow-emerald-950/30">
-              <div class="flex items-center justify-between gap-2 mb-1">
-                <span class="text-xs sm:text-sm font-bold text-white font-mono flex items-center gap-1.5">
-                  <span class="text-emerald-400 font-bold">•</span>
+            <li class="group">
+              <div class="flex items-baseline justify-between gap-2">
+                <span class="text-xs lg:text-sm font-bold text-white font-mono flex items-center gap-1.5 group-hover:text-emerald-300 transition-colors">
+                  <span class="text-emerald-400 text-base leading-none">•</span>
                   <span>{item.name}</span>
                 </span>
                 {item.pctB !== undefined && (
-                  <span class="px-2 py-0.5 rounded text-[11px] font-mono font-bold bg-emerald-500/20 text-emerald-300 shrink-0 border border-emerald-500/30">
+                  <span class="px-1.5 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500/25 text-emerald-200 border border-emerald-400/30 shrink-0">
                     {item.pctB}%
                   </span>
                 )}
               </div>
-              <p class="text-xs text-slate-300 leading-relaxed mt-1 pl-3.5">
+              <p class="text-[11px] text-slate-300 leading-relaxed mt-1 pl-3.5">
                 {item.detail[lang]}
               </p>
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
 
-      <div class="mt-5 pt-3 border-t border-emerald-500/20 text-[11px] font-mono text-emerald-400/60 text-center">
-        {t.colBFootnote}
-      </div>
     </div>
 
+    <!-- Footnotes / Legend Bar at Bottom -->
+    <div class="relative z-10 grid grid-cols-3 gap-4 pt-8 mt-6 border-t border-slate-800/60 text-[10px] font-mono text-center">
+      <div class="text-sky-400/70">{t.legendA}</div>
+      <div class="text-indigo-300/80 font-semibold">{t.legendShared}</div>
+      <div class="text-emerald-400/70">{t.legendB}</div>
+    </div>
   </div>
+
+  <!-- ==================== MOBILE RESPONSIVE STACK (< md) ==================== -->
+  <div class="md:hidden space-y-4">
+    <!-- Mobile Role A -->
+    <div class="p-5 rounded-2xl bg-sky-950/30 border border-sky-500/40">
+      <div class="flex items-center justify-between gap-2 mb-3">
+        <span class="text-xs font-mono font-bold text-sky-300 uppercase tracking-wider flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-sky-400"></span>
+          <span>{nameA}</span>
+        </span>
+        <span class="text-[10px] font-mono text-sky-400/70">{t.uniqueAHeading}</span>
+      </div>
+      <ul class="space-y-3">
+        {uniqueA.map((item) => (
+          <li>
+            <div class="flex items-center justify-between gap-2">
+              <span class="text-xs font-bold text-white font-mono">• {item.name}</span>
+              {item.pctA !== undefined && (
+                <span class="px-1.5 py-0.5 rounded text-[10px] font-mono font-bold bg-sky-500/20 text-sky-300">
+                  {item.pctA}%
+                </span>
+              )}
+            </div>
+            <p class="text-[11px] text-slate-300 leading-relaxed mt-0.5 pl-3">
+              {item.detail[lang]}
+            </p>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Mobile Intersection (Shared) -->
+    <div class="p-5 rounded-2xl bg-indigo-950/40 border border-indigo-500/50 shadow-lg shadow-indigo-950/30">
+      <div class="flex items-center justify-between gap-2 mb-3">
+        <span class="text-xs font-mono font-bold text-indigo-200 uppercase tracking-wider flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-indigo-400 animate-pulse"></span>
+          <span>{t.sharedTitle}</span>
+        </span>
+        <span class="text-[10px] font-mono text-indigo-300/70">{t.sharedSub}</span>
+      </div>
+      <ul class="space-y-3">
+        {shared.map((item) => (
+          <li>
+            <div class="flex items-center justify-between gap-2">
+              <span class="text-xs font-bold text-white font-mono">✓ {item.name}</span>
+              <div class="flex items-center gap-1 font-mono text-[10px]">
+                {item.pctA !== undefined && (
+                  <span class="px-1 py-0.5 rounded font-bold bg-sky-500/20 text-sky-300">
+                    {item.pctA}%
+                  </span>
+                )}
+                {item.pctA !== undefined && item.pctB !== undefined && (
+                  <span class="text-slate-500">/</span>
+                )}
+                {item.pctB !== undefined && (
+                  <span class="px-1 py-0.5 rounded font-bold bg-emerald-500/20 text-emerald-300">
+                    {item.pctB}%
+                  </span>
+                )}
+              </div>
+            </div>
+            <p class="text-[11px] text-slate-300 leading-relaxed mt-0.5 pl-3">
+              {item.detail[lang]}
+            </p>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Mobile Role B -->
+    <div class="p-5 rounded-2xl bg-emerald-950/30 border border-emerald-500/40">
+      <div class="flex items-center justify-between gap-2 mb-3">
+        <span class="text-xs font-mono font-bold text-emerald-300 uppercase tracking-wider flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+          <span>{nameB}</span>
+        </span>
+        <span class="text-[10px] font-mono text-emerald-400/70">{t.uniqueBHeading}</span>
+      </div>
+      <ul class="space-y-3">
+        {uniqueB.map((item) => (
+          <li>
+            <div class="flex items-center justify-between gap-2">
+              <span class="text-xs font-bold text-white font-mono">• {item.name}</span>
+              {item.pctB !== undefined && (
+                <span class="px-1.5 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-300">
+                  {item.pctB}%
+                </span>
+              )}
+            </div>
+            <p class="text-[11px] text-slate-300 leading-relaxed mt-0.5 pl-3">
+              {item.detail[lang]}
+            </p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
 </div>
