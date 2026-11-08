@@ -1094,7 +1094,7 @@ export const ui = {
           summary:
             'Základní analytický motor na GCP. V podnikových architekturách dominuje díky oddělení výpočetní kapacity od úložiště, nativní podpoře Apache Iceberg přes BigLake a přímému volání modelů přímo ze SQL (BigQuery ML).',
           linkLabel: 'Architektura BigQuery na Substacku ↗',
-          href: 'https://antoninkucera.substack.com/p/bigquery-overview-a-new-navigation-hub-in-the-complex-analytics-platform',
+          href: 'https://antoninkucera.substack.com/p/bigquery-overview-novy-rozcestnik-v-komplexnim-svete-dat',
         },
         {
           service: 'Vertex AI & Agent Builder',
@@ -1295,11 +1295,11 @@ export const ui = {
           href: 'https://antoninkucera.substack.com/p/no-blueprint-exists-why-ai-made-me-double-down-on-being-data-informed',
         },
         {
-          title: 'BigQuery Overview: A New Navigation Hub in the Complex analytics platform',
+          title: 'BigQuery Overview: Nový rozcestník v komplexním světě datové platformy',
           topic: 'Cloudová datová architektura',
           summary:
             'Praktický průvodce architekturou BigQuery: od správy datasetů a slotové ekonomiky až po stavbu spolehlivých analytických pipeline v ekosystému Google Cloud.',
-          href: 'https://antoninkucera.substack.com/p/bigquery-overview-a-new-navigation-hub-in-the-complex-analytics-platform',
+          href: 'https://antoninkucera.substack.com/p/bigquery-overview-novy-rozcestnik-v-komplexnim-svete-dat',
         },
       ],
     },
