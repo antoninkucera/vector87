@@ -170,7 +170,12 @@ const academyJsonLd = {
       {ACADEMY_COURSES.map((course) => {
         const badgeClass = platformColors[course.platform] || 'bg-slate-800 text-slate-300 border-slate-700';
         return (
-          <div class="panel-surface-interactive rounded-xl p-5 flex flex-col justify-between group">
+          <a
+            href={course.url}
+            target="_blank"
+            rel="sponsored noopener noreferrer"
+            class="group panel-surface-interactive rounded-xl p-5 flex flex-col justify-between hover:border-cyan-500/50 hover:shadow-lg hover:shadow-cyan-950/20 transition-all"
+          >
             <div>
               <div class="flex items-center justify-between gap-2 mb-3">
                 <span class:list={['text-[11px] font-mono uppercase px-2.5 py-0.5 rounded border font-semibold', badgeClass]}>
@@ -205,16 +210,12 @@ const academyJsonLd = {
 
             <div class="mt-5 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs font-mono">
               <span class="text-slate-400">{course.level[lang]}</span>
-              <a
-                href={course.url}
-                target="_blank"
-                rel="sponsored noopener noreferrer"
-                class="px-3 py-1.5 rounded bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 font-bold hover:bg-cyan-400 hover:text-slate-950 transition-colors inline-flex items-center gap-1"
-              >
-                {t.ctaEnroll}
-              </a>
+              <span class="px-3 py-1.5 rounded bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 font-bold group-hover:bg-cyan-400 group-hover:text-slate-950 transition-colors inline-flex items-center gap-1">
+                <span>{t.ctaEnroll}</span>
+                <span class="group-hover:translate-x-0.5 transition-transform">↗</span>
+              </span>
             </div>
-          </div>
+          </a>
         );
       })}
     </div>
@@ -236,7 +237,12 @@ const academyJsonLd = {
       {FREE_AI_COURSES.map((course) => {
         const badgeClass = freeProviderColors[course.provider] || 'bg-slate-800 text-slate-300 border-slate-700';
         return (
-          <div class="panel-surface-interactive rounded-xl p-5 flex flex-col justify-between group">
+          <a
+            href={course.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group panel-surface-interactive rounded-xl p-5 flex flex-col justify-between hover:border-emerald-500/50 hover:shadow-lg hover:shadow-emerald-950/20 transition-all"
+          >
             <div>
               <div class="flex items-center justify-between gap-2 mb-3">
                 <span class:list={['text-[11px] font-mono uppercase px-2.5 py-0.5 rounded border font-semibold', badgeClass]}>
@@ -271,16 +277,12 @@ const academyJsonLd = {
 
             <div class="mt-5 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs font-mono">
               <span class="text-slate-400">{course.duration[lang]}</span>
-              <a
-                href={course.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="px-3 py-1.5 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 font-bold hover:bg-emerald-400 hover:text-slate-950 transition-colors inline-flex items-center gap-1"
-              >
-                {t.ctaFreeCourse}
-              </a>
+              <span class="px-3 py-1.5 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 font-bold group-hover:bg-emerald-400 group-hover:text-slate-950 transition-colors inline-flex items-center gap-1">
+                <span>{t.ctaFreeCourse}</span>
+                <span class="group-hover:translate-x-0.5 transition-transform">↗</span>
+              </span>
             </div>
-          </div>
+          </a>
         );
       })}
     </div>
@@ -347,33 +349,49 @@ const academyJsonLd = {
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
       {t.books.map((b) => (
-        <div class="panel-surface-interactive rounded-xl p-5 flex flex-col justify-between group">
-          <div>
-            <div class="flex items-center justify-between gap-2">
-              <span class="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-300 border border-cyan-500/30">
-                {b.category}
-              </span>
-              <span class="text-xs font-mono text-slate-400">{b.author}</span>
+        b.url ? (
+          <a
+            href={b.url}
+            target="_blank"
+            rel="sponsored noopener noreferrer"
+            class="group panel-surface-interactive rounded-xl p-5 flex flex-col justify-between hover:border-amber-500/50 hover:shadow-lg hover:shadow-amber-950/20 transition-all"
+          >
+            <div>
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-300 border border-cyan-500/30">
+                  {b.category}
+                </span>
+                <span class="text-xs font-mono text-slate-400">{b.author}</span>
+              </div>
+              <h3 class="text-base font-bold text-white mt-2.5 group-hover:text-amber-300 transition-colors leading-snug">
+                {b.title}
+              </h3>
+              <p class="text-xs text-slate-300 mt-2 leading-relaxed">{b.why}</p>
             </div>
-            <h3 class="text-base font-bold text-white mt-2.5 group-hover:text-cyan-300 transition-colors leading-snug">
-              {b.title}
-            </h3>
-            <p class="text-xs text-slate-300 mt-2 leading-relaxed">{b.why}</p>
-          </div>
 
-          {b.url && (
             <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-end">
-              <a
-                href={b.url}
-                target="_blank"
-                rel="sponsored noopener noreferrer"
-                class="text-xs font-mono text-amber-400 hover:text-amber-300 flex items-center gap-1 font-semibold"
-              >
-                {t.ctaBook}
-              </a>
+              <span class="text-xs font-mono text-amber-400 group-hover:text-amber-300 flex items-center gap-1 font-semibold">
+                <span>{t.ctaBook}</span>
+                <span class="group-hover:translate-x-0.5 transition-transform">↗</span>
+              </span>
             </div>
-          )}
-        </div>
+          </a>
+        ) : (
+          <div class="panel-surface-interactive rounded-xl p-5 flex flex-col justify-between group">
+            <div>
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-300 border border-cyan-500/30">
+                  {b.category}
+                </span>
+                <span class="text-xs font-mono text-slate-400">{b.author}</span>
+              </div>
+              <h3 class="text-base font-bold text-white mt-2.5 group-hover:text-cyan-300 transition-colors leading-snug">
+                {b.title}
+              </h3>
+              <p class="text-xs text-slate-300 mt-2 leading-relaxed">{b.why}</p>
+            </div>
+          </div>
+        )
       ))}
     </div>
   </section>

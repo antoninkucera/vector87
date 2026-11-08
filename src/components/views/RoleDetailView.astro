@@ -650,8 +650,11 @@ const roleDetailGraph = {
         <!-- Postings Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="postings-grid">
           {role.sample_postings.map((job) => (
-            <div
-              class="posting-card p-5 rounded-xl panel-surface border border-slate-800 hover:border-slate-700 transition-colors flex flex-col justify-between gap-4"
+            <a
+              href={job.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="posting-card group p-5 rounded-xl panel-surface border border-slate-800 hover:border-cyan-500/50 hover:shadow-lg hover:shadow-cyan-950/20 transition-all flex flex-col justify-between gap-4 block"
               data-region={job.region || 'Other'}
               data-country={job.country_code || 'OTHER'}
             >
@@ -678,7 +681,7 @@ const roleDetailGraph = {
                     </span>
                   )}
                 </div>
-                <h3 class="text-base font-bold text-white leading-snug">{job.title}</h3>
+                <h3 class="text-base font-bold text-white group-hover:text-cyan-300 transition-colors leading-snug">{job.title}</h3>
                 {job.seniority && (
                   <div class="text-xs font-mono text-slate-400">Seniority tier: <strong class="text-slate-300">{job.seniority}</strong></div>
                 )}
@@ -688,16 +691,12 @@ const roleDetailGraph = {
                 <span class="text-[11px] font-mono text-slate-500">
                   {job.posted_at ? `Posted: ${job.posted_at}` : 'Active Vacancy'}
                 </span>
-                <a
-                  href={job.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono font-semibold bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 hover:bg-cyan-500/25 hover:border-cyan-400 transition-colors"
-                >
-                  {t.applyBtn}
-                </a>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono font-semibold bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 group-hover:bg-cyan-400 group-hover:text-slate-950 transition-colors">
+                  <span>{t.applyBtn}</span>
+                  <span class="group-hover:translate-x-0.5 transition-transform">↗</span>
+                </span>
               </div>
-            </div>
+            </a>
           ))}
         </div>
 
