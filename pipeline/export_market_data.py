@@ -1357,6 +1357,7 @@ def generate_llms_txt(payload: dict[str, Any]) -> None:
 - [Education Academy](https://vector87.com/academy): 3 structured learning tracks (Analytics Engineering, Cloud Data Engineering, Applied AI/LLMOps) and essential architectural literature.
 - [Skill Gap Analyzer](https://vector87.com/academy/analyzer): Interactive career calculator matching your tech stack against 21 canonical roles and recommending targeted courses.
 - [Podcasts & Media Radar](https://vector87.com/academy/podcasts): Monitored shows, episodes, and executive summaries across data engineering and AI.
+- [Conferences Calendar](https://vector87.com/conferences): Curated global and European directory of Data Engineering, Lakehouse, and Applied AI summits with dates, locations, and CFP deadlines.
 - [About Author](https://vector87.com/about): Background of Antonín Kučera (akucera.eu), project philosophy, and essays on Data-Informed leadership.
 
 ## Machine-Readable Data Contracts
