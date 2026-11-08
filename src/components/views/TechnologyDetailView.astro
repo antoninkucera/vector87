@@ -39,12 +39,12 @@ const categoryColorMap: Record<string, { bg: string; text: string; border: strin
 const catStyle = categoryColorMap[tech.category] || categoryColorMap['cloud'];
 
 const pageTitle = lang === 'en' 
-  ? `${tech.name} Market Demand & Skills | Vector87 Telemetry` 
+  ? `${tech.name} Market Demand & Skills | Vector87` 
   : `${tech.name}: Poptávka na trhu práce a dovednosti | Vector87`;
 
 const pageDescription = lang === 'en'
-  ? `Live enterprise telemetry for ${tech.name}: ${tech.jobCount.toLocaleString()} active jobs (${tech.penetrationPct}% penetration), required roles, paired skills, and top hiring companies.`
-  : `Živá telemetrie pro ${tech.name}: ${tech.jobCount.toLocaleString()} aktivních pozic (${tech.penetrationPct} % trhu), nejčastější role, párované technologie a najímající firmy.`;
+  ? `Live enterprise hiring demand for ${tech.name}: ${tech.jobCount.toLocaleString()} active jobs (${tech.penetrationPct}% penetration), required roles, paired skills, and top hiring companies.`
+  : `Aktuální data z trhu práce pro ${tech.name}: ${tech.jobCount.toLocaleString()} aktivních pozic (${tech.penetrationPct} % trhu), nejčastější role, párované technologie a najímající firmy.`;
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -141,7 +141,7 @@ const jsonLd = {
           )}
         </div>
 
-        <!-- 3 Core Telemetry KPI Cards -->
+        <!-- 3 Core Market KPI Cards -->
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
           <div class="p-5 rounded-xl bg-slate-900/60 border border-slate-800/90 backdrop-blur-sm">
             <div class="text-xs font-mono text-slate-400 uppercase tracking-wider">{t.kpiJobs}</div>
@@ -418,7 +418,7 @@ const jsonLd = {
       <!-- Social Sharing & Link Bar -->
       <ShareBar
         lang={lang}
-        title={`${tech.name} Market Demand & Telemetry`}
+        title={`${tech.name} Market Demand & Hiring Trends`}
         subtitle={tech.description[lang]?.[0]}
         sourceUrl={`https://vector87.com${lang === 'en' ? '' : '/cs'}/technologies/${tech.id}`}
         className="mb-12"

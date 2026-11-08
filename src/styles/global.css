@@ -35,7 +35,7 @@
   }
 }
 
-/* Custom utility classes for Vector87 precision telemetry panels */
+/* Custom utility classes for Vector87 data panels */
 .panel-surface {
   background: rgba(11, 16, 29, 0.85);
   border: 1px solid rgba(148, 163, 184, 0.14);

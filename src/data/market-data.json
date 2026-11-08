@@ -1504,7 +1504,7 @@
     "total_occupied_seats": 187585,
     "coverage_note": {
       "en": "Workforce intelligence integration tracking 187,585 occupied Data & AI seats across 1900 enterprises. Measures Hiring Intensity Ratio: open job postings relative to currently occupied team seats.",
-      "cs": "Telemetrie obsazených pozic sledující 187,585 zaměstnaných Data & AI expertů u 1900 korporací. Měří Hiring Intensity Ratio: poměr otevřených inzerátů vůči aktuální velikosti týmů."
+      "cs": "Analýza obsazených pozic sledující 187,585 zaměstnaných Data & AI expertů u 1900 korporací. Měří Hiring Intensity Ratio: poměr otevřených inzerátů vůči aktuální velikosti týmů."
     },
     "macro_role_intensity": [
       {

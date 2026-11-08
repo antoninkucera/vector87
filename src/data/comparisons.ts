@@ -337,7 +337,7 @@ export const COMPARISONS_CATALOG: ComparisonDefinition[] = [
     },
     executiveSummary: {
       en: [
-        'Data Analysts and Data Engineers form the core symbiotic pair in modern data teams. The Data Engineer builds, scales, and maintains the data pipelines, lakes, and warehouses that ingest raw telemetry. The Data Analyst consumes that modeled data to uncover business trends, build dashboards, and advise leadership.',
+        'Data Analysts and Data Engineers form the core symbiotic pair in modern data teams. The Data Engineer builds, scales, and maintains the data pipelines, lakes, and warehouses that ingest enterprise data. The Data Analyst consumes that modeled data to uncover business trends, build dashboards, and advise leadership.',
         'While both roles rely heavily on SQL and data governance, Data Engineers operate as backend software engineers utilizing distributed compute (Apache Spark), orchestrators (Apache Airflow), and cloud infrastructure (AWS S3, Databricks, Snowflake). Analysts operate closer to business stakeholders utilizing BI platforms and dimensional modeling.',
       ],
       cs: [

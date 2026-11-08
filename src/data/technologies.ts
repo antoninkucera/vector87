@@ -93,7 +93,7 @@ export const TECHNOLOGIES_CATALOG: TechnologyDefinition[] = [
     authorNotes: {
       en: {
         title: 'Architectural Field Notes from Antonín Kučera',
-        lead: 'Practical lessons from architecting enterprise telemetry, slot economics, and warehouse migrations.',
+        lead: 'Practical lessons from architecting enterprise data platforms, slot economics, and warehouse migrations.',
         paragraphs: [
           'BigQuery has transformed from a straightforward SQL query engine into a holistic analytical operating system (BigQuery Studio). In production at scale, success is rarely about writing basic SELECT statements; it requires mastering partition & clustering layouts to avoid full-table scans, fine-tuning BigQuery Editions (Standard vs. Enterprise vs. Enterprise Plus), and leveraging BigLake to query open table formats without vendor lock-in.',
           'When designing telemetry and log pipelines, pairing BigQuery with Dataform or dbt and native streaming buffers creates an exceptionally resilient, zero-maintenance lakehouse foundation.',
@@ -111,10 +111,10 @@ export const TECHNOLOGIES_CATALOG: TechnologyDefinition[] = [
       },
       cs: {
         title: 'Praktické poznámky k architektuře od Antonína Kučery',
-        lead: 'Zkušenosti z návrhu podnikové telemetrie, slotové ekonomiky a migrací do cloudu.',
+        lead: 'Zkušenosti z návrhu podnikových datových platforem, slotové ekonomiky a migrací do cloudu.',
         paragraphs: [
           'BigQuery se v posledních letech posunulo od pouhého SQL analytického skladu k ucelenému analytickému prostředí (BigQuery Studio). V reálné podnikové praxi nerozhoduje znalost základního SELECTu, ale mistrné zvládnutí partitioningu a clusterování (které šetří terabajty skenovaných dat), optimalizace slotových rezervací v rámci BigQuery Editions a využití BigLake pro čtení otevřených formátů (Apache Iceberg) bez vendor lock-inu.',
-          'Při stavbě telemetrických a logovacích pipeline poskytuje BigQuery v kombinaci s Dataformem či dbt a nativním streaming bufferem mimořádně stabilní a bezúdržbový základ pro moderní lakehouse.',
+          'Při stavbě analytických a logovacích pipeline poskytuje BigQuery v kombinaci s Dataformem či dbt a nativním streaming bufferem mimořádně stabilní a bezúdržbový základ pro moderní lakehouse.',
         ],
         links: [
           {
@@ -153,9 +153,9 @@ export const TECHNOLOGIES_CATALOG: TechnologyDefinition[] = [
     authorNotes: {
       en: {
         title: 'Enterprise GCP Architecture Perspective',
-        lead: 'Why GCP remains an exceptional ecosystem for telemetry and data-informed organizations.',
+        lead: 'Why GCP remains an exceptional ecosystem for modern data-informed organizations.',
         paragraphs: [
-          'GCP provides unprecedented developer velocity for analytics teams because core services like BigQuery, Cloud Pub/Sub, and Cloud Storage require zero infrastructure management. In contrast to more complex multi-component setups, a lean engineering team can manage enterprise-grade telemetry ingestion on GCP without dedicated DevOps overhead.',
+          'GCP provides unprecedented developer velocity for analytics teams because core services like BigQuery, Cloud Pub/Sub, and Cloud Storage require zero infrastructure management. In contrast to more complex multi-component setups, a lean engineering team can manage enterprise-grade data ingestion on GCP without dedicated DevOps overhead.',
           'The integration between Vertex AI, BigQuery Vector Search, and Gemini makes GCP the most natural environment for organizations building production RAG and AI agent systems.',
         ],
         links: [
@@ -173,7 +173,7 @@ export const TECHNOLOGIES_CATALOG: TechnologyDefinition[] = [
         title: 'Pohled na podnikovou architekturu GCP',
         lead: 'Proč je Google Cloud mimořádně efektivním prostředím pro datově informované organizace.',
         paragraphs: [
-          'GCP nabízí datovým týmům obrovskou rychlost vývoje, protože klíčové služby jako BigQuery, Pub/Sub a Cloud Storage nevyžadují žádnou správu serverů. Na rozdíl od těžkopádných infrastrukturních sestav dokáže i nevelký datový tým postavit robustní podnikovou telemetrii bez nutnosti dedikovaného DevOps dohledu.',
+          'GCP nabízí datovým týmům obrovskou rychlost vývoje, protože klíčové služby jako BigQuery, Pub/Sub a Cloud Storage nevyžadují žádnou správu serverů. Na rozdíl od těžkopádných infrastrukturních sestav dokáže i nevelký datový tým postavit robustní datovou platformu bez nutnosti dedikovaného DevOps dohledu.',
           'Díky přímé integraci mezi Vertex AI, BigQuery Vector Searchem a modely Gemini je dnes GCP nejpřirozenějším prostředím pro stavbu produkčních RAG systémů a podnikových AI agentů.',
         ],
         links: [
