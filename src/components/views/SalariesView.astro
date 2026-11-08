@@ -1,0 +1,628 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ShareBar from '../ShareBar.astro';
+import NewsletterCta from '../NewsletterCta.astro';
+import { ui, type Locale } from '../../i18n/ui';
+import {
+  SALARY_PROFILES_DATA,
+  SALARY_MARKET_CONFIG,
+  PURCHASING_POWER_DATA,
+  SENIORITY_TIERS,
+  type SalaryMarket,
+  type SeniorityTier,
+} from '../../data/salaries';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = ui[lang].salaries;
+
+// Summary stats
+const totalRoles = SALARY_PROFILES_DATA.length;
+const totalDisclosed = SALARY_PROFILES_DATA.reduce(
+  (sum, r) => sum + r.liveDisclosedPostings.length,
+  0
+);
+const highestRole = SALARY_PROFILES_DATA[0];
+
+// JSON-LD structured data for SEO
+const salariesJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: t.pageTitle,
+  description: t.pageDescription,
+  itemListElement: SALARY_PROFILES_DATA.map((r, idx) => ({
+    '@type': 'ListItem',
+    position: idx + 1,
+    item: {
+      '@type': 'Occupation',
+      name: r.canonicalName,
+      description: r.description[lang],
+      estimatedSalary: [
+        {
+          '@type': 'MonetaryAmountDistribution',
+          name: 'US Base Salary',
+          currency: 'USD',
+          median: r.markets.US.median,
+          percentile25: r.markets.US.p25,
+          percentile75: r.markets.US.p75,
+        },
+      ],
+    },
+  })),
+};
+---
+
+<Layout
+  title={t.pageTitle}
+  description={t.pageDescription}
+  activeNav="salaries"
+  lang={lang}
+  jsonLd={salariesJsonLd}
+>
+  <!-- Hero Section -->
+  <section class="mb-10 pb-8 border-b border-slate-800/80">
+    <div class="max-w-4xl space-y-3">
+      <span class="text-xs font-mono uppercase tracking-widest text-cyan-400">{t.tag}</span>
+      <h1 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+        {t.title}
+      </h1>
+      <p class="text-sm sm:text-base text-slate-300 leading-relaxed font-light">
+        {t.subtitle}
+      </p>
+    </div>
+  </section>
+
+  <!-- Metric Highlights Bar -->
+  <section class="mb-10 grid grid-cols-2 sm:grid-cols-4 gap-4">
+    <div class="p-4 rounded-xl panel-surface border border-slate-800 flex flex-col justify-between">
+      <span class="text-xs font-mono text-slate-400">{t.kpiMedianBase}</span>
+      <div class="text-2xl font-bold text-white font-mono mt-1">$165,000</div>
+      <span class="text-[11px] text-slate-500 font-mono mt-1">{t.kpiMedianBaseSub}</span>
+    </div>
+
+    <div class="p-4 rounded-xl panel-surface border border-slate-800 flex flex-col justify-between">
+      <span class="text-xs font-mono text-slate-400">{t.kpiAiPremium}</span>
+      <div class="text-2xl font-bold text-cyan-300 font-mono mt-1">+24.0%</div>
+      <span class="text-[11px] text-slate-500 font-mono mt-1">{t.kpiAiPremiumSub}</span>
+    </div>
+
+    <div class="p-4 rounded-xl panel-surface border border-slate-800 flex flex-col justify-between">
+      <span class="text-xs font-mono text-slate-400">{t.kpiTopTrack}</span>
+      <div class="text-xl font-bold text-emerald-400 font-mono mt-1">ML &amp; AI Research</div>
+      <span class="text-[11px] text-slate-500 font-mono mt-1">$195k–$275k+ Base</span>
+    </div>
+
+    <div class="p-4 rounded-xl panel-surface border border-cyan-500/30 bg-cyan-950/15 flex flex-col justify-between">
+      <span class="text-xs font-mono text-cyan-300">{t.kpiDisclosedCount}</span>
+      <div class="text-2xl font-bold text-cyan-200 font-mono mt-1">484 {lang === 'cs' ? 'pozic' : 'jobs'}</div>
+      <span class="text-[11px] text-cyan-400/80 font-mono mt-1">{t.kpiDisclosedCountSub}</span>
+    </div>
+  </section>
+
+  <!-- Interactive Controls Toolbar -->
+  <section class="mb-8 p-5 sm:p-6 rounded-xl panel-surface border border-slate-800/90 shadow-md space-y-5">
+    <!-- Top Row: Geographic Market Switcher -->
+    <div>
+      <span class="text-xs font-mono text-slate-400 uppercase tracking-wider block mb-2 font-semibold">
+        {t.marketSelectorLabel}
+      </span>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+        {(['US', 'UK', 'EU', 'CZ'] as SalaryMarket[]).map((mKey) => {
+          const cfg = SALARY_MARKET_CONFIG[mKey];
+          return (
+            <button
+              type="button"
+              class={`market-btn p-3 rounded-lg text-left border transition-all ${
+                mKey === 'US'
+                  ? 'bg-cyan-500/15 border-cyan-500/50 text-white shadow-sm shadow-cyan-950/50'
+                  : 'bg-slate-900 border-slate-800 text-slate-300 hover:border-slate-700'
+              }`}
+              data-market={mKey}
+            >
+              <div class="flex items-center justify-between">
+                <span class="text-base">{cfg.flag}</span>
+                <span class="text-xs font-mono font-bold text-cyan-400">{cfg.symbol}</span>
+              </div>
+              <div class="font-bold text-xs mt-1.5 truncate">{cfg.name[lang]}</div>
+              <div class="text-[10px] font-mono text-slate-400 mt-0.5">{cfg.standardPeriod[lang]}</div>
+            </button>
+          );
+        })}
+      </div>
+    </div>
+
+    <!-- Second Row: Search, Seniority & Sorting Filter Controls -->
+    <div class="pt-4 border-t border-slate-800/80 flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <!-- Search Input -->
+      <div class="relative flex-1">
+        <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-500">
+          🔍
+        </span>
+        <input
+          type="search"
+          id="role-search"
+          placeholder={lang === 'cs' ? 'Hledat roli (např. Machine Learning, Data Engineer, Analyst)...' : 'Search role (e.g. Machine Learning, Data Engineer, Analyst)...'}
+          class="w-full pl-9 pr-3 py-2 bg-slate-900/90 border border-slate-800 rounded-lg text-xs font-mono text-slate-200 placeholder-slate-500 focus:outline-none focus:border-cyan-500/70"
+        />
+      </div>
+
+      <!-- Seniority Filter -->
+      <div class="flex items-center gap-2">
+        <label for="seniority-select" class="text-xs font-mono text-slate-400 shrink-0">
+          {t.senioritySelectorLabel}
+        </label>
+        <select
+          id="seniority-select"
+          class="px-3 py-2 bg-slate-900/90 border border-slate-800 rounded-lg text-xs font-mono text-slate-200 focus:outline-none focus:border-cyan-500/70"
+        >
+          <option value="all">{t.allSeniorities}</option>
+          {SENIORITY_TIERS.map((tier) => (
+            <option value={tier}>{tier}</option>
+          ))}
+        </select>
+      </div>
+
+      <!-- Sort Filter -->
+      <div class="flex items-center gap-2">
+        <label for="sort-select" class="text-xs font-mono text-slate-400 shrink-0">
+          {t.sortByLabel}
+        </label>
+        <select
+          id="sort-select"
+          class="px-3 py-2 bg-slate-900/90 border border-slate-800 rounded-lg text-xs font-mono text-slate-200 focus:outline-none focus:border-cyan-500/70"
+        >
+          <option value="median-desc">{t.sortMedianDesc}</option>
+          <option value="ai-premium">{t.sortAiPremium}</option>
+          <option value="alphabetical">{t.sortAlphabetical}</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <!-- Market Tax & Benefit Context Box -->
+  <section id="market-context-box" class="mb-8 p-4 rounded-xl bg-slate-900/40 border border-slate-800/80 text-xs font-mono text-slate-300 flex items-center justify-between gap-4">
+    <div class="flex items-center gap-2.5">
+      <span class="text-cyan-400 text-sm">ℹ️</span>
+      <span id="market-context-text">{SALARY_MARKET_CONFIG.US.taxContext[lang]}</span>
+    </div>
+    <span class="text-[11px] text-slate-500 shrink-0 hidden sm:inline">
+      {lang === 'cs' ? 'Zdroj: Levels.fyi, Radford, Hays Tech & In-Market Disclosures' : 'Source: Levels.fyi, Radford, Hays Tech & In-Market Disclosures'}
+    </span>
+  </section>
+
+  <!-- Role Compensation Cards Grid -->
+  <section class="space-y-6 mb-16">
+    <div id="roles-grid" class="grid grid-cols-1 gap-6">
+      {SALARY_PROFILES_DATA.map((role) => (
+        <article
+          class="role-card p-6 sm:p-7 rounded-2xl panel-surface border border-slate-800/90 hover:border-slate-700/80 transition-all space-y-6"
+          data-role-id={role.roleId}
+          data-role-name={role.canonicalName.toLowerCase()}
+          data-tier-rank={role.tierRank}
+          data-ai-premium={role.aiPremiumPct}
+          data-markets-json={JSON.stringify(role.markets)}
+          data-seniority-json={JSON.stringify(role.senioritySpread)}
+        >
+          <!-- Top Row: Role Title, AI Premium & Median Metric -->
+          <div class="flex flex-col md:flex-row md:items-start justify-between gap-4">
+            <div>
+              <div class="flex flex-wrap items-center gap-2 mb-2">
+                <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-slate-800 text-slate-300 border border-slate-700/70">
+                  #{role.tierRank} IN COMPENSATION
+                </span>
+                {role.aiPremiumPct > 0 ? (
+                  <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-cyan-950 text-cyan-300 border border-cyan-800/60">
+                    +{role.aiPremiumPct}% AI PREMIUM
+                  </span>
+                ) : (
+                  <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-slate-800/60 text-slate-400 border border-slate-700/50">
+                    BASELINE
+                  </span>
+                )}
+              </div>
+
+              <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                <a
+                  href={`${lang === 'en' ? '/roles' : '/cs/roles'}/${role.kebabSlug}`}
+                  class="hover:text-cyan-300 transition-colors inline-flex items-center gap-1.5"
+                >
+                  <span>{role.canonicalName}</span>
+                  <span class="text-xs text-slate-500">→</span>
+                </a>
+              </h2>
+
+              <p class="text-xs sm:text-sm text-slate-300 max-w-2xl mt-1.5 leading-relaxed font-light">
+                {role.description[lang]}
+              </p>
+            </div>
+
+            <!-- Big Median Callout -->
+            <div class="p-4 rounded-xl bg-slate-900/80 border border-cyan-500/30 text-right shrink-0 min-w-[200px]">
+              <span class="text-[10px] font-mono uppercase tracking-wider text-slate-400 block">
+                {lang === 'cs' ? 'Medián základní mzdy' : 'Median Base Pay'}
+              </span>
+              <div class="median-display text-2xl sm:text-3xl font-extrabold font-mono text-cyan-300 mt-0.5">
+                ${role.markets.US.median.toLocaleString()}
+              </div>
+              <div class="total-comp-display text-[11px] font-mono text-emerald-400 mt-1">
+                ${role.markets.US.totalCompMedian.toLocaleString()} TC ({t.totalCompLabel})
+              </div>
+            </div>
+          </div>
+
+          <!-- Middle Row: Visual Compensation Range Bar (p25 to p90) -->
+          <div class="p-4 rounded-xl bg-slate-900/40 border border-slate-800/70 space-y-2">
+            <div class="flex items-center justify-between text-xs font-mono text-slate-400">
+              <span class="p25-label">25th: ${role.markets.US.p25.toLocaleString()}</span>
+              <span class="median-label font-bold text-cyan-300">Median: ${role.markets.US.median.toLocaleString()}</span>
+              <span class="p75-label">75th: ${role.markets.US.p75.toLocaleString()}</span>
+              <span class="p90-label text-slate-500">Top 10%: ${role.markets.US.p90.toLocaleString()}</span>
+            </div>
+
+            <div class="relative w-full h-3 bg-slate-800 rounded-full overflow-hidden">
+              <div class="absolute inset-y-0 left-[20%] right-[15%] bg-gradient-to-r from-cyan-500/40 via-cyan-400 to-indigo-500/50 rounded-full"></div>
+              <div class="absolute inset-y-0 left-[50%] w-1.5 bg-white shadow-md shadow-cyan-300 -ml-0.5"></div>
+            </div>
+
+            <div class="flex justify-between text-[10px] font-mono text-slate-500">
+              <span>{lang === 'cs' ? 'Základní pásmo (Entry/Mid)' : 'Core Base Band (Entry/Mid)'}</span>
+              <span>{lang === 'cs' ? 'Elitní specialisté (Staff/Principal)' : 'Top Decile (Staff/Principal)'}</span>
+            </div>
+          </div>
+
+          <!-- Seniority Progression Matrix -->
+          <div>
+            <span class="text-[11px] font-mono uppercase tracking-wider text-slate-400 font-semibold block mb-2">
+              {lang === 'cs' ? 'Platová trajektorie podle seniority:' : 'Compensation Progression by Seniority:'}
+            </span>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
+              {role.senioritySpread.map((s) => (
+                <div class="p-2.5 rounded-lg bg-slate-900/60 border border-slate-800/80 text-left">
+                  <span class="text-[10px] font-mono text-slate-400 block truncate">{s.tier}</span>
+                  <div class="seniority-val text-xs font-bold font-mono text-slate-200 mt-1">
+                    ${s.US.toLocaleString()}
+                  </div>
+                  <span class="text-[9px] font-mono text-slate-500">{s.yearsOfExperience}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- Live Disclosed Postings Section -->
+          {role.liveDisclosedPostings && role.liveDisclosedPostings.length > 0 && (
+            <div class="pt-4 border-t border-slate-800/80">
+              <span class="text-[11px] font-mono text-slate-400 uppercase tracking-wider block mb-2 font-semibold">
+                {t.disclosedPostingsHeading}
+              </span>
+              <div class="flex flex-wrap gap-2">
+                {role.liveDisclosedPostings.map((p) => (
+                  <a
+                    href={p.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="p-2 sm:px-3 sm:py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-cyan-500/40 text-xs text-slate-300 transition-colors inline-flex items-center gap-2"
+                  >
+                    <span class="font-bold text-cyan-300">{p.companyName}:</span>
+                    <span class="text-slate-200">{p.title}</span>
+                    <span class="px-1.5 py-0.2 rounded bg-emerald-950 text-emerald-400 border border-emerald-800 text-[10px] font-mono font-bold">
+                      {p.currency} {p.salaryMin.toLocaleString()}–{p.salaryMax.toLocaleString()}
+                    </span>
+                    <span class="text-slate-500">↗</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+        </article>
+      ))}
+    </div>
+
+    <!-- Empty State -->
+    <div id="no-roles-msg" class="hidden text-center py-12 text-sm font-mono text-slate-400">
+      <p>{t.noRolesFound}</p>
+      <button
+        type="button"
+        id="reset-search-btn"
+        class="mt-3 px-4 py-1.5 rounded-lg bg-slate-800 text-cyan-300 hover:bg-slate-700 text-xs font-mono transition-colors"
+      >
+        {t.resetFilters}
+      </button>
+    </div>
+  </section>
+
+  <!-- Real Purchasing Power & Net Living Standard Comparison -->
+  <section class="mb-16 p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-slate-900/90 via-[#060b18] to-slate-900 border border-cyan-500/30 shadow-xl space-y-6">
+    <div>
+      <div class="flex items-center gap-2 mb-2">
+        <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse"></span>
+        <h2 class="text-xs font-mono uppercase tracking-widest text-cyan-300 font-bold">
+          {t.purchasingPowerHeading}
+        </h2>
+      </div>
+      <p class="text-sm text-slate-300 max-w-3xl leading-relaxed">
+        {t.purchasingPowerSub}
+      </p>
+    </div>
+
+    <div class="overflow-x-auto">
+      <table class="w-full text-left text-xs font-mono border-collapse">
+        <thead>
+          <tr class="border-b border-slate-800 text-slate-400">
+            <th class="py-3 px-3">{t.tableCity}</th>
+            <th class="py-3 px-3">{t.tableGross}</th>
+            <th class="py-3 px-3">{t.tableTax}</th>
+            <th class="py-3 px-3">{t.tableRent}</th>
+            <th class="py-3 px-3 text-emerald-400 font-bold">{t.tableNetSavings}</th>
+            <th class="py-3 px-3">{t.tableQualityOfLife}</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-slate-800/60 text-slate-300">
+          {PURCHASING_POWER_DATA.map((p) => (
+            <tr class="hover:bg-slate-800/40 transition-colors">
+              <td class="py-3 px-3 font-bold text-white flex items-center gap-2">
+                <span>{SALARY_MARKET_CONFIG[p.market].flag}</span>
+                <span>{p.city}</span>
+              </td>
+              <td class="py-3 px-3 font-mono font-bold text-slate-200">
+                {p.currency === 'USD' && '$'}
+                {p.currency === 'GBP' && '£'}
+                {p.currency === 'EUR' && '€'}
+                {p.grossAnnualLocal.toLocaleString()} {p.currency === 'CZK' && 'Kč'}
+              </td>
+              <td class="py-3 px-3 text-slate-400">{p.effectiveTaxPct}%</td>
+              <td class="py-3 px-3 text-slate-400">
+                {p.currency === 'USD' && '$'}
+                {p.currency === 'GBP' && '£'}
+                {p.currency === 'EUR' && '€'}
+                {p.estimatedAnnualRent.toLocaleString()} {p.currency === 'CZK' && 'Kč'}
+              </td>
+              <td class="py-3 px-3 font-bold font-mono text-emerald-400 text-sm">
+                €{p.netDisposableIncomeEur.toLocaleString()}
+              </td>
+              <td class="py-3 px-3">
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-800 text-cyan-300 border border-slate-700">
+                  {p.qualityOfLifeScore}/100 Score
+                </span>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="pt-4 border-t border-slate-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs font-mono text-slate-400">
+      <span>
+        {lang === 'cs'
+          ? 'Chcete porovnat země podle nákladů na život a bezpečnosti?'
+          : 'Want to compare countries by safety and housing affordability?'}
+      </span>
+      <a
+        href={lang === 'en' ? '/places' : '/cs/places'}
+        class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border border-cyan-500/40 transition-colors font-semibold"
+      >
+        <span>Vector87 Places &amp; Relocation Index</span>
+        <span>→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Share & Newsletter CTA -->
+  <ShareBar
+    title={t.pageTitle}
+    description={t.pageDescription}
+    lang={lang}
+  />
+  <NewsletterCta lang={lang} />
+</Layout>
+
+<script>
+  // Client-side Market Switcher, Filtering, and Sorting Controller
+  document.addEventListener('DOMContentLoaded', () => {
+    let currentMarket = 'US';
+    let currentSeniority = 'all';
+    let currentSearch = '';
+    let currentSort = 'median-desc';
+
+    const marketBtns = document.querySelectorAll<HTMLButtonElement>('.market-btn');
+    const roleSearchInput = document.getElementById('role-search') as HTMLInputElement | null;
+    const senioritySelect = document.getElementById('seniority-select') as HTMLSelectElement | null;
+    const sortSelect = document.getElementById('sort-select') as HTMLSelectElement | null;
+    const rolesGrid = document.getElementById('roles-grid');
+    const noRolesMsg = document.getElementById('no-roles-msg');
+    const resetSearchBtn = document.getElementById('reset-search-btn');
+    const marketContextText = document.getElementById('market-context-text');
+
+    const marketContexts: Record<string, { en: string; cs: string }> = {
+      US: {
+        en: 'Federal + State taxes (~28–38% total). High equity upside (RSUs / Stock Options).',
+        cs: 'Federální + státní daň (~28–38 % celkem). Významná složka akcií (RSU / opce).',
+      },
+      UK: {
+        en: 'Income tax + National Insurance (~35–45%). London market carries 20–30% weighting.',
+        cs: 'Daň z příjmu + odvody (~35–45 %). Londýnský trh nese 20–30% prémii vůči regionům.',
+      },
+      EU: {
+        en: 'Progressive taxation (~38–48%). Robust social benefits, mandatory health, 25–30 days PTO.',
+        cs: 'Progresivní zdanění (~38–48 %). Vysoké sociální jistoty, zdravotní pojištění a 25–30 dní dovolené.',
+      },
+      CZ: {
+        en: 'Flat 15%/23% tax + social/health insurance. Frequently contracted via B2B (IČO with 60% flat expense deductions).',
+        cs: 'Pásmová 15%/23% daň + SP/ZP. Běžná spolupráce na IČO (výdajový paušál 60 % s výrazně nižším efektivním zdaněním).',
+      },
+    };
+
+    const isCzech = window.location.pathname.startsWith('/cs');
+
+    function updateCardMarketData(card: HTMLElement, market: string) {
+      try {
+        const marketsJson = JSON.parse(card.dataset.marketsJson || '{}');
+        const seniorityJson = JSON.parse(card.dataset.seniorityJson || '[]');
+        const mData = marketsJson[market];
+        if (!mData) return;
+
+        const symbol = mData.currencySymbol || '$';
+        const isMonthly = mData.period === 'monthly';
+        const suffix = isMonthly ? (isCzech ? ' / měs' : ' / mo') : (isCzech ? ' / rok' : ' / yr');
+
+        // Update Median display
+        const medEl = card.querySelector('.median-display');
+        if (medEl) {
+          medEl.textContent = `${symbol}${mData.median.toLocaleString()}${suffix}`;
+        }
+
+        // Update Total Comp display
+        const tcEl = card.querySelector('.total-comp-display');
+        if (tcEl) {
+          const tcLabel = isCzech ? 'odhad balíčku TC' : 'TC (Base + Bonus + Equity)';
+          tcEl.textContent = `${symbol}${mData.totalCompMedian.toLocaleString()} ${tcLabel}`;
+        }
+
+        // Update Range labels
+        const p25El = card.querySelector('.p25-label');
+        if (p25El) p25El.textContent = `25th: ${symbol}${mData.p25.toLocaleString()}`;
+
+        const medLbl = card.querySelector('.median-label');
+        if (medLbl) medLbl.textContent = `Median: ${symbol}${mData.median.toLocaleString()}`;
+
+        const p75El = card.querySelector('.p75-label');
+        if (p75El) p75El.textContent = `75th: ${symbol}${mData.p75.toLocaleString()}`;
+
+        const p90El = card.querySelector('.p90-label');
+        if (p90El) p90El.textContent = `Top 10%: ${symbol}${mData.p90.toLocaleString()}`;
+
+        // Update Seniority Progression values
+        const seniorityVals = card.querySelectorAll<HTMLElement>('.seniority-val');
+        seniorityJson.forEach((s: any, idx: number) => {
+          if (seniorityVals[idx]) {
+            const val = s[market];
+            if (val) {
+              seniorityVals[idx].textContent = `${symbol}${Number(val).toLocaleString()}${suffix}`;
+            }
+          }
+        });
+      } catch (err) {
+        console.error('Error updating card market data:', err);
+      }
+    }
+
+    function applyFilters() {
+      const cards = Array.from(document.querySelectorAll<HTMLElement>('.role-card'));
+      let visibleCount = 0;
+
+      cards.forEach((card) => {
+        const roleName = card.dataset.roleName || '';
+        const matchesSearch = !currentSearch || roleName.includes(currentSearch.toLowerCase());
+
+        // Update display to current market
+        updateCardMarketData(card, currentMarket);
+
+        if (matchesSearch) {
+          card.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      // Sort visible cards
+      if (rolesGrid) {
+        cards.sort((a, b) => {
+          if (currentSort === 'median-desc') {
+            const aJson = JSON.parse(a.dataset.marketsJson || '{}');
+            const bJson = JSON.parse(b.dataset.marketsJson || '{}');
+            const aMed = aJson[currentMarket]?.median || 0;
+            const bMed = bJson[currentMarket]?.median || 0;
+            return bMed - aMed;
+          } else if (currentSort === 'ai-premium') {
+            const aPrem = parseFloat(a.dataset.aiPremium || '0');
+            const bPrem = parseFloat(b.dataset.aiPremium || '0');
+            return bPrem - aPrem;
+          } else {
+            const aName = a.dataset.roleName || '';
+            const bName = b.dataset.roleName || '';
+            return aName.localeCompare(bName);
+          }
+        });
+
+        cards.forEach((c) => rolesGrid.appendChild(c));
+      }
+
+      if (noRolesMsg) {
+        if (visibleCount === 0) {
+          noRolesMsg.classList.remove('hidden');
+        } else {
+          noRolesMsg.classList.add('hidden');
+        }
+      }
+    }
+
+    // Market Switcher Button handlers
+    marketBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const selected = btn.dataset.market;
+        if (!selected) return;
+        currentMarket = selected;
+
+        marketBtns.forEach((b) => {
+          if (b.dataset.market === selected) {
+            b.className =
+              'market-btn p-3 rounded-lg text-left border transition-all bg-cyan-500/15 border-cyan-500/50 text-white shadow-sm shadow-cyan-950/50';
+          } else {
+            b.className =
+              'market-btn p-3 rounded-lg text-left border transition-all bg-slate-900 border-slate-800 text-slate-300 hover:border-slate-700';
+          }
+        });
+
+        if (marketContextText) {
+          marketContextText.textContent =
+            marketContexts[selected]?.[isCzech ? 'cs' : 'en'] || '';
+        }
+
+        applyFilters();
+      });
+    });
+
+    // Search handler
+    if (roleSearchInput) {
+      roleSearchInput.addEventListener('input', (e) => {
+        currentSearch = (e.target as HTMLInputElement).value.trim();
+        applyFilters();
+      });
+    }
+
+    // Seniority select handler
+    if (senioritySelect) {
+      senioritySelect.addEventListener('change', (e) => {
+        currentSeniority = (e.target as HTMLSelectElement).value;
+        applyFilters();
+      });
+    }
+
+    // Sort select handler
+    if (sortSelect) {
+      sortSelect.addEventListener('change', (e) => {
+        currentSort = (e.target as HTMLSelectElement).value;
+        applyFilters();
+      });
+    }
+
+    // Reset handler
+    if (resetSearchBtn) {
+      resetSearchBtn.addEventListener('click', () => {
+        currentSearch = '';
+        if (roleSearchInput) roleSearchInput.value = '';
+        currentSeniority = 'all';
+        if (senioritySelect) senioritySelect.value = 'all';
+        currentSort = 'median-desc';
+        if (sortSelect) sortSelect.value = 'median-desc';
+        applyFilters();
+      });
+    }
+
+    // Initial run
+    applyFilters();
+  });
+</script>
