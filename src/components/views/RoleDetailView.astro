@@ -4,6 +4,7 @@ import marketData from '../../data/market-data.json';
 import { ACADEMY_COURSES, CERTIFICATIONS_LIST } from '../../data/academy';
 import { OPPORTUNITY_MATRIX_DATA } from '../../data/opportunity-matrix';
 import { ui, getLocalePath, type Locale } from '../../i18n/ui';
+import NewsletterCta from '../NewsletterCta.astro';
 
 interface Props {
   lang: Locale;
@@ -972,6 +973,11 @@ const roleDetailGraph = {
         <span>{lang === 'cs' ? 'Podcasty a pořady ↗' : 'Podcasts & Shows ↗'}</span>
       </a>
     </div>
+  </section>
+
+  <!-- Newsletter Capture Callout -->
+  <section class="mb-14">
+    <NewsletterCta lang={lang} topic={role.canonical_name} />
   </section>
 
   <!-- Related Roles in Domain -->

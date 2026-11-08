@@ -76,7 +76,7 @@ export const ui = {
       takeaway2Tag: 'INFRASTRUCTURE',
       takeaway2Title: 'Lakehouse & Multi-Cloud Dominance',
       takeaway2Desc:
-        'Hyperscalers (AWS, Azure, GCP) remain ubiquitous, but Lakehouse platforms (Databricks with 712 postings vs. Snowflake with 441) and dbt/Dataform define modern architectures.',
+        'Hyperscalers (AWS, Azure, GCP) remain ubiquitous, but Lakehouse platforms (Databricks with 706 postings vs. Snowflake with 440) and dbt/Dataform define modern architectures.',
       takeaway3Tag: 'FLEXIBILITY',
       takeaway3Title: 'Remote Tolerance & Global Relocation',
       takeaway3Desc:
@@ -322,7 +322,7 @@ export const ui = {
       tag: '03 // CLOUD & TECH ECOSYSTEM',
       title: 'Cloud Hyperscalers & Modern Data Platforms',
       subtitle:
-        'Comparative telemetry tracking adoption, market share, and enterprise hiring across the Big 3 Hyperscalers (AWS, Azure, GCP) and leading modern data platforms (Databricks, Snowflake, BigQuery, Redshift, Microsoft Fabric).',
+        'Comparative telemetry tracking job posting demand across the Big 3 Hyperscalers (AWS, Azure, GCP) and leading modern data platforms (Databricks, Snowflake, BigQuery, Redshift, Microsoft Fabric).',
       kpiTotalCloud: 'Total Cloud Openings',
       kpiTotalCloudFoot: 'Active job postings explicitly requiring cloud infrastructure',
       kpiMulticloud: 'Multi-Cloud Coexistence',
@@ -801,7 +801,7 @@ export const ui = {
       takeaway2Tag: 'INFRASTRUKTURA',
       takeaway2Title: 'Dominance Lakehouse a Multi-Cloudu',
       takeaway2Desc:
-        'Hyperscalery (AWS, Azure, GCP) zůstávají standardem, ale moderní architektury formují Lakehouse platformy (Databricks 712 pozic vs. Snowflake 441) a SQLX/Dataform.',
+        'Hyperscalery (AWS, Azure, GCP) zůstávají standardem, ale moderní architektury formují Lakehouse platformy (Databricks 706 pozic vs. Snowflake 440) a SQLX/Dataform.',
       takeaway3Tag: 'FLEXIBILITA',
       takeaway3Title: 'Otevřenost k remote a relokaci',
       takeaway3Desc:
@@ -1047,7 +1047,7 @@ export const ui = {
       tag: '03 // CLOUDOVÝ & TECHNOLOGICKÝ EKOSYSTÉM',
       title: 'Cloudové platformy, hyperscalery a technologický stack',
       subtitle:
-        'Srovnání tržního podílu a poptávky napříč velkou trojkou hyperscalerů (AWS, Azure, GCP) i moderními datovými platformami (Databricks, Snowflake, BigQuery, Redshift, Microsoft Fabric).',
+        'Srovnání poptávky a zastoupení v inzerátech napříč velkou trojkou hyperscalerů (AWS, Azure, GCP) i moderními datovými platformami (Databricks, Snowflake, BigQuery, Redshift, Microsoft Fabric).',
       kpiTotalCloud: 'Otevřené cloudové pozice',
       kpiTotalCloudFoot: 'Aktivní inzeráty explicitně vyžadující cloudovou infrastrukturu',
       kpiMulticloud: 'Multi-Cloud koexistence',

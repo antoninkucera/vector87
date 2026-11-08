@@ -5,6 +5,7 @@ import OpportunityMatrixChart from '../OpportunityMatrixChart.astro';
 import marketData from '../../data/market-data.json';
 import { OPPORTUNITY_MATRIX_DATA, TOP_SPOTLIGHT_COUNTRIES } from '../../data/opportunity-matrix';
 import { ui, getLocalePath, type Locale } from '../../i18n/ui';
+import NewsletterCta from '../NewsletterCta.astro';
 
 interface Props {
   lang: Locale;
@@ -1029,6 +1030,11 @@ const dashboardJsonLd = {
         </div>
       </div>
     </div>
+  </section>
+
+  <!-- Newsletter Capture Section -->
+  <section class="mb-14">
+    <NewsletterCta lang={lang} />
   </section>
 
   <!-- SECTION: METHODOLOGY & DATA TRANSPARENCY -->

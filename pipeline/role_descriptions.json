@@ -1,11 +1,11 @@
 {
   "ai_developer": {
     "cs": [
-      "AI Developer představuje nejrychleji rostoucí technický profil v korporátním prostředí S&P 500. Stojí na pomezí klasického softwarového inženýrství a aplikované AI. Místo trénování základních modelů od nuly se soustředí na integraci hotových velkých jazykových modelů (LLM), návrh autonomních agentních postupů a stavbu produkčních architektur RAG přímo do zákaznických aplikací.",
+      "AI Developer představuje jeden z nejvýraznějších nových technických profilů v korporátním prostředí S&P 500. Stojí na pomezí klasického softwarového inženýrství a aplikované AI. Místo trénování základních modelů od nuly se soustředí na integraci hotových velkých jazykových modelů (LLM), návrh autonomních agentních postupů a stavbu produkčních architektur RAG přímo do zákaznických aplikací.",
       "Firmy od kandidátů očekávají poctivé softwarové řemeslo v Pythonu nebo TypeScriptu, doplněné o schopnost zkrotit pravděpodobnostní chování modelů: od systematických evaluací (Evals) a guardrails až po hlídání latence a nákladů na cloudových platformách jako AWS, GCP Vertex AI nebo Azure."
     ],
     "en": [
-      "The AI Developer is the fastest-growing engineering profile across S&P 500 enterprises, positioned directly at the crossroads of software engineering and applied AI. Rather than training models from scratch, these engineers integrate Large Language Models (LLMs), build agentic workflows, and deploy production-grade RAG pipelines into products.",
+      "The AI Developer represents one of the most prominent emerging technical profiles across S&P 500 enterprises, positioned directly at the crossroads of software engineering and applied AI. Rather than training models from scratch, these engineers integrate Large Language Models (LLMs), build agentic workflows, and deploy production-grade RAG pipelines into products.",
       "Companies look for solid software engineering skills in Python or TypeScript paired with the discipline to manage probabilistic systems: from automated evaluations (Evals) and guardrails to latency and cost control across AWS, GCP Vertex AI, and Azure."
     ]
   },
