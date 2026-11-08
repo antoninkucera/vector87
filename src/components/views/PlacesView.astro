@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import placesData from '../../data/places-data.json';
 import mapPaths from '../../data/world-map-paths.json';
+import { getCountryMeta } from '../../data/places';
 import { ui, type Locale } from '../../i18n/ui';
 
 interface Props {
@@ -471,6 +472,9 @@ const placesJsonLd = {
                 else badgeColor = 'bg-slate-800/80 text-slate-300 border-slate-700/50';
               }
 
+              const cMeta = getCountryMeta(country.country_code_alpha3);
+              const countryDetailHref = cMeta ? (lang === 'cs' ? `/cs/places/${cMeta.slug}` : `/places/${cMeta.slug}`) : null;
+
               return (
                 <>
                   <tr
@@ -488,7 +492,18 @@ const placesJsonLd = {
                     </td>
                     <td class="py-3.5 px-4 font-sans font-medium text-white flex items-center gap-2">
                       <span class="font-mono text-xs text-slate-400">{country.country_code_alpha2}</span>
-                      <span>{country.country_name}</span>
+                      {countryDetailHref ? (
+                        <a
+                          href={countryDetailHref}
+                          class="hover:text-cyan-300 transition-colors inline-flex items-center gap-1 font-semibold group/cname"
+                          title={lang === 'cs' ? `Zobrazit samostatný profil země ${country.country_name}` : `View country hub for ${country.country_name}`}
+                        >
+                          <span>{country.country_name}</span>
+                          <span class="text-[10px] text-cyan-400 opacity-60 group-hover/cname:opacity-100 transition-opacity">↗</span>
+                        </a>
+                      ) : (
+                        <span>{country.country_name}</span>
+                      )}
                       {country.is_focus_country && (
                         <span class="text-[9px] font-mono px-1.5 py-0.2 rounded bg-cyan-950/80 border border-cyan-600/40 text-cyan-300">
                           FOCUS
@@ -561,11 +576,23 @@ const placesJsonLd = {
                                 </span>
                               )}
                             </div>
-                            {country.tech_market?.hiring_companies && (
-                              <span class="text-[11px] font-mono text-slate-400">
-                                {country.tech_market.hiring_companies} {lang === 'cs' ? 'zaměstnavatelů' : 'employers'}
-                              </span>
-                            )}
+                            <div class="flex items-center gap-3">
+                              {country.tech_market?.hiring_companies && (
+                                <span class="text-[11px] font-mono text-slate-400">
+                                  {country.tech_market.hiring_companies} {lang === 'cs' ? 'zaměstnavatelů' : 'employers'}
+                                </span>
+                              )}
+                              {countryDetailHref && (
+                                <a
+                                  href={countryDetailHref}
+                                  class="inline-flex items-center gap-1 px-2.5 py-1 rounded text-xs font-mono font-semibold bg-cyan-950/80 text-cyan-300 border border-cyan-700/50 hover:bg-cyan-900/80 transition-colors"
+                                  title={lang === 'cs' ? `Otevřít samostatný profil země ${country.country_name}` : `Open full country profile for ${country.country_name}`}
+                                >
+                                  <span>{lang === 'cs' ? 'Detail země' : 'Country Hub'}</span>
+                                  <span>→</span>
+                                </a>
+                              )}
+                            </div>
                           </div>
 
                           {/* Role Breakdown Filter Pills Bar */}

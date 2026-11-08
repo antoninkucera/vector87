@@ -1,0 +1,805 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import Layout from '../../layouts/Layout.astro';
+import placesData from '../../data/places-data.json';
+import {
+  TARGET_COUNTRIES,
+  getCountryMeta,
+  getCountryData,
+  getCountryConferences,
+  getCountrySalaryContext,
+  type CountryMeta,
+} from '../../data/places';
+import { ui, getLocalePath, type Locale } from '../../i18n/ui';
+import ShareBar from '../ShareBar.astro';
+import NewsletterCta from '../NewsletterCta.astro';
+
+interface Props {
+  lang: Locale;
+  countrySlug: string;
+}
+
+const { lang, countrySlug } = Astro.props;
+const t = ui[lang].placeDetail;
+const placesNav = ui[lang].places;
+
+const countryMeta = getCountryMeta(countrySlug);
+if (!countryMeta) {
+  throw new Error(`Country slug ${countrySlug} not found in TARGET_COUNTRIES`);
+}
+
+const country = getCountryData(countryMeta.alpha3);
+if (!country) {
+  throw new Error(`Country data for ${countryMeta.alpha3} not found in placesData`);
+}
+
+const countryName = lang === 'cs' ? countryMeta.nameCs : countryMeta.nameEn;
+const flag = countryMeta.flag;
+
+// 1. Ranking & Livability metrics
+const sortedCountries = [...placesData.countries].sort((a, b) => {
+  const sa = a.pillar_scores.composite_score ?? -1;
+  const sb = b.pillar_scores.composite_score ?? -1;
+  return sb - sa;
+});
+const rankIndex = sortedCountries.findIndex((c) => c.country_code_alpha3 === country.country_code_alpha3);
+const rank = rankIndex !== -1 ? rankIndex + 1 : null;
+
+const scores = country.pillar_scores;
+const compScore = scores.composite_score !== null && scores.composite_score !== undefined ? scores.composite_score.toFixed(1) : 'N/A';
+const ind = country.indicators || {};
+
+// 2. Read all country jobs from pre-generated static JSON at build time
+const jobsFilePath = path.join(process.cwd(), 'public', 'data', 'jobs', `${countryMeta.alpha2.toLowerCase()}.json`);
+let countryJobsData: any = null;
+let topEmployers: { name: string; count: number }[] = [];
+let citiesDistribution: { name: string; count: number }[] = [];
+let remoteJobsCount = 0;
+let hybridJobsCount = 0;
+
+if (fs.existsSync(jobsFilePath)) {
+  try {
+    const raw = fs.readFileSync(jobsFilePath, 'utf-8');
+    countryJobsData = JSON.parse(raw);
+    const jobs = countryJobsData.jobs || [];
+
+    // Aggregate top employers
+    const compCounts: Record<string, number> = {};
+    const cityCounts: Record<string, number> = {};
+
+    for (const j of jobs) {
+      if (j.company_name) {
+        compCounts[j.company_name] = (compCounts[j.company_name] || 0) + 1;
+      }
+      if (j.city) {
+        cityCounts[j.city] = (cityCounts[j.city] || 0) + 1;
+      }
+      if (j.work_mode === 'Remote') remoteJobsCount++;
+      if (j.work_mode === 'Hybrid') hybridJobsCount++;
+    }
+
+    topEmployers = Object.entries(compCounts)
+      .map(([name, count]) => ({ name, count }))
+      .sort((a, b) => b.count - a.count)
+      .slice(0, 16);
+
+    citiesDistribution = Object.entries(cityCounts)
+      .map(([name, count]) => ({ name, count }))
+      .sort((a, b) => b.count - a.count)
+      .slice(0, 8);
+  } catch (e) {
+    console.error(`Error reading jobs file for ${countryMeta.alpha2}:`, e);
+  }
+}
+
+// 3. Local Conferences & Meetups
+const conferences = getCountryConferences(countryMeta.alpha2);
+
+// 4. Salary & Purchasing Power Context
+const salaryContext = getCountrySalaryContext(countryMeta.alpha2);
+
+// 5. Related Destination Countries
+const otherDestinations = TARGET_COUNTRIES.filter(
+  (tc) => tc.alpha3 !== countryMeta.alpha3 && (tc.slug === 'czechia' || tc.slug === 'germany' || tc.slug === 'switzerland' || tc.slug === 'united-kingdom' || tc.slug === 'united-states' || tc.slug === 'poland' || tc.slug === 'netherlands')
+).slice(0, 4);
+
+// 6. JSON-LD Structured Data
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Country',
+  name: countryName,
+  alternateName: countryMeta.nameEn,
+  identifier: countryMeta.alpha2,
+  address: {
+    '@type': 'PostalAddress',
+    addressCountry: countryMeta.alpha2,
+  },
+  description: `${countryName} Data & AI Job Market and Livability Intelligence. Real enterprise job requisitions, compensation context, and tech ecosystem radar.`,
+  url: `https://vector87.com${lang === 'cs' ? `/cs/places/${countryMeta.slug}` : `/places/${countryMeta.slug}`}`,
+};
+
+const i18nConfig = {
+  applyBtn: t.applyBtn,
+  showingCount: t.showingCount,
+  searchPlaceholder: t.searchPlaceholder,
+  noMatching: t.noJobsMatch,
+  resetFilter: t.resetFilter,
+  allRoles: t.allRoles,
+};
+---
+
+<Layout
+  title={`${countryName} (${countryMeta.alpha2}) — Data & AI Jobs, Livability & Tech Hub | Vector87`}
+  description={`${countryName} AI & Data career radar: ${country.tech_market?.active_jobs || 0} active enterprise job postings, top hiring employers, tech meetups, livability score, and relocation mobility.`}
+  activeNav="places"
+  lang={lang}
+  jsonLd={jsonLd}
+>
+  <!-- 01. BREADCRUMBS & HERO SECTION -->
+  <section class="mb-10">
+    <div class="flex items-center gap-2 text-xs font-mono text-slate-500 mb-4 flex-wrap">
+      <a href={getLocalePath(lang, 'dashboard')} class="hover:text-cyan-400 transition-colors">Vector87</a>
+      <span>/</span>
+      <a href={getLocalePath(lang, 'places')} class="hover:text-cyan-400 transition-colors">{placesNav.pageTitle || 'Places'}</a>
+      <span>/</span>
+      <span class="text-slate-300 font-semibold">{countryName}</span>
+    </div>
+
+    <div class="p-6 sm:p-10 rounded-2xl bg-gradient-to-br from-slate-900/90 via-[#060a14] to-slate-900/90 border border-slate-800 shadow-2xl relative overflow-hidden">
+      <!-- Decorative ambient glow -->
+      <div class="absolute -top-24 -right-24 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+        <div class="space-y-4 max-w-3xl">
+          <!-- Flag & Badges -->
+          <div class="flex items-center gap-3 flex-wrap">
+            <span class="text-4xl sm:text-5xl">{flag}</span>
+            <div class="flex items-center gap-2 flex-wrap font-mono text-xs">
+              <span class="px-2.5 py-1 rounded bg-slate-800 border border-slate-700 font-bold text-white tracking-wider">
+                {countryMeta.alpha2} • {countryMeta.alpha3}
+              </span>
+              <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 text-slate-300">
+                {country.continent} • {country.subregion || ''}
+              </span>
+              {country.is_eu ? (
+                <span class="px-2.5 py-1 rounded bg-blue-950/80 border border-blue-600/50 text-blue-300 font-semibold flex items-center gap-1">
+                  <span>🇪🇺</span> {t.relocationFreedom}
+                </span>
+              ) : (
+                <span class="px-2.5 py-1 rounded bg-amber-950/80 border border-amber-600/50 text-amber-300 font-semibold flex items-center gap-1">
+                  <span>🛂</span> {t.relocationPoints}
+                </span>
+              )}
+            </div>
+          </div>
+
+          <!-- Title & Subtitle -->
+          <div>
+            <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+              {countryName}
+            </h1>
+            <p class="text-slate-400 text-sm sm:text-base mt-2 leading-relaxed">
+              {lang === 'cs'
+                ? `Komplexní kariérní a životní profil pro datové a AI specialisty. Přehled ${country.tech_market?.active_jobs?.toLocaleString('en-US') || 0} aktivních pracovních pozic, klíčových zaměstnavatelů, platového kontextu a lokálních tech komunit.`
+                : `Comprehensive career intelligence and livability benchmark for data and AI professionals in ${countryName}. Grounded in ${country.tech_market?.active_jobs?.toLocaleString('en-US') || 0} verified active corporate job postings, local hiring ecosystems, and mobility metrics.`}
+            </p>
+          </div>
+
+          <!-- Quick Jump Links -->
+          <div class="flex items-center gap-3 pt-2 flex-wrap text-xs font-mono">
+            <a
+              href="#jobs-market"
+              class="px-4 py-2 rounded-lg bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 hover:bg-cyan-500/30 transition-all font-semibold flex items-center gap-1.5 shadow-sm"
+            >
+              <span>🔥</span>
+              <span>{t.liveVacanciesTag}: {country.tech_market?.active_jobs || 0}</span>
+            </a>
+            <a
+              href="#institutions"
+              class="px-3.5 py-2 rounded-lg bg-slate-900 text-slate-300 border border-slate-800 hover:border-slate-700 transition-colors"
+            >
+              <span>🏛️</span> {t.institutionsTag}
+            </a>
+            {topEmployers.length > 0 && (
+              <a
+                href="#employers"
+                class="px-3.5 py-2 rounded-lg bg-slate-900 text-slate-300 border border-slate-800 hover:border-slate-700 transition-colors"
+              >
+                <span>🏢</span> {t.employersTag} ({topEmployers.length})
+              </a>
+            )}
+            {conferences.length > 0 && (
+              <a
+                href="#conferences"
+                class="px-3.5 py-2 rounded-lg bg-slate-900 text-slate-300 border border-slate-800 hover:border-slate-700 transition-colors"
+              >
+                <span>🎤</span> {t.conferencesTag} ({conferences.length})
+              </a>
+            )}
+          </div>
+        </div>
+
+        <!-- Right Side: Livability Radar / Score Card -->
+        <div class="lg:w-80 shrink-0 p-5 rounded-xl bg-slate-950/80 border border-slate-800 space-y-4 shadow-inner">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+            <span class="text-xs font-mono font-bold uppercase tracking-wider text-slate-400">
+              {t.compositeScore}
+            </span>
+            {rank && (
+              <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-400">
+                #{rank} / {placesData.meta.total_countries}
+              </span>
+            )}
+          </div>
+
+          <div class="flex items-baseline gap-2">
+            <span class="text-4xl font-extrabold font-mono text-white tracking-tight">
+              {compScore}
+            </span>
+            <span class="text-sm font-mono text-slate-500">/ 100</span>
+          </div>
+
+          <!-- 4 Pillars Breakdown Bars -->
+          <div class="space-y-2 pt-1 font-mono text-xs">
+            <div class="space-y-1">
+              <div class="flex justify-between text-[11px] text-slate-300">
+                <span>🛡️ {t.safetyPillar}</span>
+                <span class="font-bold">{scores.safety !== null ? scores.safety.toFixed(1) : 'N/A'}</span>
+              </div>
+              <div class="h-1.5 rounded-full bg-slate-800 overflow-hidden">
+                <div class="h-full bg-emerald-500 rounded-full" style={`width: ${scores.safety ?? 0}%`}></div>
+              </div>
+            </div>
+
+            <div class="space-y-1">
+              <div class="flex justify-between text-[11px] text-slate-300">
+                <span>🏠 {t.housingPillar}</span>
+                <span class="font-bold">{scores.housing !== null ? scores.housing.toFixed(1) : 'N/A'}</span>
+              </div>
+              <div class="h-1.5 rounded-full bg-slate-800 overflow-hidden">
+                <div class="h-full bg-amber-500 rounded-full" style={`width: ${scores.housing ?? 0}%`}></div>
+              </div>
+            </div>
+
+            <div class="space-y-1">
+              <div class="flex justify-between text-[11px] text-slate-300">
+                <span>📈 {t.economyPillar}</span>
+                <span class="font-bold">{scores.economy !== null ? scores.economy.toFixed(1) : 'N/A'}</span>
+              </div>
+              <div class="h-1.5 rounded-full bg-slate-800 overflow-hidden">
+                <div class="h-full bg-cyan-500 rounded-full" style={`width: ${scores.economy ?? 0}%`}></div>
+              </div>
+            </div>
+
+            <div class="space-y-1">
+              <div class="flex justify-between text-[11px] text-slate-300">
+                <span>⚖️ {t.governancePillar}</span>
+                <span class="font-bold">{scores.governance !== null ? scores.governance.toFixed(1) : 'N/A'}</span>
+              </div>
+              <div class="h-1.5 rounded-full bg-slate-800 overflow-hidden">
+                <div class="h-full bg-indigo-500 rounded-full" style={`width: ${scores.governance ?? 0}%`}></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02. FULL DATA & AI JOBS MARKET EXPLORER (Full Width) -->
+  <section id="jobs-market" class="mb-14 space-y-6">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-slate-800 pb-4">
+      <div>
+        <span class="text-xs font-mono uppercase tracking-widest text-cyan-400">{t.liveVacanciesTag}</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight mt-1">
+          {t.liveVacanciesTitle.replace('{country}', countryName)}
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-400 mt-1 max-w-3xl leading-relaxed">
+          {t.liveVacanciesSub}
+        </p>
+      </div>
+
+      <div class="flex items-center gap-3 font-mono text-xs shrink-0">
+        <span class="px-3 py-1.5 rounded-lg bg-cyan-950 border border-cyan-700/50 text-cyan-300 font-bold">
+          {country.tech_market?.active_jobs?.toLocaleString('en-US') || 0} {lang === 'cs' ? 'aktivních pozic' : 'active jobs'}
+        </span>
+        <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400">
+          {country.tech_market?.hiring_companies || topEmployers.length} {lang === 'cs' ? 'zaměstnavatelů' : 'employers'}
+        </span>
+      </div>
+    </div>
+
+    <!-- Role Breakdown Filter Pills Bar -->
+    {country.tech_market?.roles_breakdown && country.tech_market.roles_breakdown.length > 0 && (
+      <div class="space-y-2">
+        <div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-thin">
+          <button
+            type="button"
+            class="country-role-filter-btn px-3 py-1.5 rounded-md text-xs font-mono font-medium transition-all shrink-0 cursor-pointer bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 shadow-sm"
+            data-role="all"
+          >
+            {t.allRoles} ({country.tech_market.active_jobs || country.tech_market.roles_breakdown.reduce((acc: number, r: any) => acc + r.count, 0)})
+          </button>
+          {country.tech_market.roles_breakdown.map((rb: any) => (
+            <button
+              type="button"
+              class="country-role-filter-btn px-3 py-1.5 rounded-md text-xs font-mono font-medium transition-all shrink-0 cursor-pointer bg-slate-900 text-slate-400 border border-slate-800 hover:border-slate-700 hover:text-slate-200"
+              data-role={rb.category_id}
+            >
+              <span>{rb.role_name}</span>
+              <span class="ml-1 opacity-70 text-[10px]">({rb.count})</span>
+            </button>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <!-- Dynamic Jobs Explorer Panel -->
+    <div id="country-jobs-explorer" class="p-4 sm:p-6 rounded-2xl bg-slate-950/80 border border-slate-800 space-y-4 shadow-xl">
+      <!-- Toolbar: Instant Search & Counter -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 rounded-xl bg-slate-900/90 border border-slate-800">
+        <div class="relative flex-1">
+          <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-sm">🔍</span>
+          <input
+            id="input-jobs-search"
+            type="text"
+            placeholder={t.searchPlaceholder}
+            class="w-full pl-9 pr-4 py-2 bg-slate-950 border border-slate-800 rounded-lg text-xs sm:text-sm font-mono text-slate-200 placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition-colors"
+          />
+        </div>
+        <div class="flex items-center justify-between sm:justify-end gap-3 text-xs font-mono text-slate-400">
+          <span id="jobs-count-badge" class="text-xs text-cyan-300 font-semibold"></span>
+          <button
+            id="btn-clear-search"
+            type="button"
+            class="hidden text-xs text-slate-400 hover:text-white underline cursor-pointer"
+          >
+            {t.resetFilter}
+          </button>
+        </div>
+      </div>
+
+      <!-- Scrollable List of Jobs -->
+      <div id="jobs-list-container" class="space-y-3 max-h-[640px] overflow-y-auto pr-1 custom-scrollbar">
+        <!-- Rendered client-side via embedded jobs data -->
+      </div>
+    </div>
+  </section>
+
+  <!-- 03. LOCAL TECH ECOSYSTEM & KEY EMPLOYERS -->
+  {topEmployers.length > 0 && (
+    <section id="employers" class="mb-14 space-y-6">
+      <div class="border-b border-slate-800 pb-4">
+        <span class="text-xs font-mono uppercase tracking-widest text-emerald-400">{t.employersTag}</span>
+        <h2 class="text-2xl font-bold text-white tracking-tight mt-1">
+          {t.employersTitle}
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-400 mt-1 max-w-3xl leading-relaxed">
+          {t.employersSub.replace('{country}', countryName)}
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+        {topEmployers.map((emp) => (
+          <div class="employer-card p-4 rounded-xl bg-slate-900/70 border border-slate-800 hover:border-cyan-500/40 transition-all flex flex-col justify-between gap-3 group shadow-sm">
+            <div class="space-y-1 min-w-0">
+              <span class="text-sm font-semibold text-white group-hover:text-cyan-300 transition-colors block truncate" title={emp.name}>
+                {emp.name}
+              </span>
+              <span class="text-[11px] font-mono text-slate-500 block">
+                {countryName}
+              </span>
+            </div>
+            <div class="flex items-center justify-between text-xs font-mono border-t border-slate-800/80 pt-2.5">
+              <span class="text-slate-400">{lang === 'cs' ? 'Aktivní pozice' : 'Open roles'}:</span>
+              <span class="px-2 py-0.5 rounded bg-cyan-950/80 border border-cyan-700/40 text-cyan-300 font-bold">
+                {emp.count}
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- 04. CONFERENCES & DEVELOPER MEETUPS -->
+  <section id="conferences" class="mb-14 space-y-6">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-slate-800 pb-4">
+      <div>
+        <span class="text-xs font-mono uppercase tracking-widest text-indigo-400">{t.conferencesTag}</span>
+        <h2 class="text-2xl font-bold text-white tracking-tight mt-1">
+          {t.conferencesTitle.replace('{country}', countryName)}
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-400 mt-1 max-w-3xl leading-relaxed">
+          {t.conferencesSub}
+        </p>
+      </div>
+
+      <a
+        href={getLocalePath(lang, 'conferences')}
+        class="text-xs font-mono text-cyan-400 hover:text-cyan-300 hover:underline shrink-0"
+      >
+        {t.viewAllConferences}
+      </a>
+    </div>
+
+    {conferences.length > 0 ? (
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {conferences.map((conf) => {
+          const desc = lang === 'cs' ? conf.description.cs : conf.description.en;
+          const isMeetup = conf.type === 'meetup';
+          return (
+            <div class="p-5 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-indigo-500/40 transition-all flex flex-col justify-between gap-4 shadow-sm group">
+              <div class="space-y-3">
+                <div class="flex items-center justify-between gap-2">
+                  <span class={`text-[10px] font-mono uppercase px-2 py-0.5 rounded border font-semibold ${
+                    isMeetup ? 'bg-indigo-950 text-indigo-300 border-indigo-700/50' : 'bg-cyan-950 text-cyan-300 border-cyan-700/50'
+                  }`}>
+                    {conf.type}
+                  </span>
+                  <span class="text-xs font-mono text-slate-400">
+                    📍 {conf.city}
+                  </span>
+                </div>
+
+                <div>
+                  <h3 class="text-base font-bold text-white group-hover:text-indigo-300 transition-colors leading-snug">
+                    {conf.name}
+                  </h3>
+                  <span class="text-xs font-mono text-slate-500 mt-0.5 block">
+                    {conf.organizer}
+                  </span>
+                </div>
+
+                <p class="text-xs text-slate-400 leading-relaxed line-clamp-3">
+                  {desc}
+                </p>
+
+                <div class="flex flex-wrap gap-1.5 pt-1">
+                  {conf.topics.slice(0, 3).map((top) => (
+                    <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-950 border border-slate-800 text-slate-400">
+                      {top}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div class="pt-3 border-t border-slate-800 flex items-center justify-between gap-2">
+                <span class="text-xs font-mono text-slate-400">
+                  🗓️ {conf.startDate}
+                </span>
+                <a
+                  href={conf.websiteUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-1 text-xs font-mono font-semibold text-cyan-400 hover:text-cyan-300 hover:underline"
+                >
+                  <span>{lang === 'cs' ? 'Web akce' : 'Event website'}</span>
+                  <span>↗</span>
+                </a>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    ) : (
+      <div class="p-8 rounded-xl bg-slate-900/50 border border-slate-800 text-center space-y-3">
+        <p class="text-xs sm:text-sm font-mono text-slate-400">
+          {t.noConferencesFound.replace('{country}', countryName)}
+        </p>
+        <a
+          href={getLocalePath(lang, 'conferences')}
+          class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-mono font-semibold bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 hover:bg-cyan-500/30 transition-all"
+        >
+          {t.viewAllConferences}
+        </a>
+      </div>
+    )}
+  </section>
+
+  <!-- 05. LIVABILITY & INSTITUTIONAL INDICATORS -->
+  <section id="institutions" class="mb-14 space-y-6">
+    <div class="border-b border-slate-800 pb-4">
+      <span class="text-xs font-mono uppercase tracking-widest text-amber-400">{t.institutionsTag}</span>
+      <h2 class="text-2xl font-bold text-white tracking-tight mt-1">
+        {t.institutionsTitle}
+      </h2>
+      <p class="text-xs sm:text-sm text-slate-400 mt-1 max-w-3xl leading-relaxed">
+        {t.institutionsSub}
+      </p>
+    </div>
+
+    <!-- Indicators Grid -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+      <div class="p-3.5 rounded-xl bg-slate-900/70 border border-slate-800 space-y-1">
+        <span class="text-[11px] font-mono text-slate-500 block">{t.gdpPpp}</span>
+        <span class="text-base sm:text-lg font-bold font-mono text-white block">
+          {ind.gdp_pc_ppp?.raw_value ? `$${Math.round(ind.gdp_pc_ppp.raw_value).toLocaleString('en-US')}` : 'N/A'}
+        </span>
+      </div>
+
+      <div class="p-3.5 rounded-xl bg-slate-900/70 border border-slate-800 space-y-1">
+        <span class="text-[11px] font-mono text-slate-500 block">{t.population}</span>
+        <span class="text-base sm:text-lg font-bold font-mono text-white block">
+          {ind.population?.raw_value ? `${(ind.population.raw_value / 1e6).toFixed(1)} M` : 'N/A'}
+        </span>
+      </div>
+
+      <div class="p-3.5 rounded-xl bg-slate-900/70 border border-slate-800 space-y-1">
+        <span class="text-[11px] font-mono text-slate-500 block">{t.peaceIndex}</span>
+        <span class="text-base sm:text-lg font-bold font-mono text-white block">
+          {ind.peace_index?.raw_value ? ind.peace_index.raw_value.toFixed(2) : 'N/A'}
+        </span>
+      </div>
+
+      <div class="p-3.5 rounded-xl bg-slate-900/70 border border-slate-800 space-y-1">
+        <span class="text-[11px] font-mono text-slate-500 block">{t.ruleOfLaw}</span>
+        <span class="text-base sm:text-lg font-bold font-mono text-white block">
+          {ind.rule_of_law?.raw_value ? ind.rule_of_law.raw_value.toFixed(2) : 'N/A'}
+        </span>
+      </div>
+
+      <div class="p-3.5 rounded-xl bg-slate-900/70 border border-slate-800 space-y-1">
+        <span class="text-[11px] font-mono text-slate-500 block">{t.housingOverburden}</span>
+        <span class="text-base sm:text-lg font-bold font-mono text-white block">
+          {ind.housing_cost_overburden?.raw_value ? `${ind.housing_cost_overburden.raw_value.toFixed(1)}%` : 'N/A'}
+        </span>
+      </div>
+
+      <div class="p-3.5 rounded-xl bg-slate-900/70 border border-slate-800 space-y-1">
+        <span class="text-[11px] font-mono text-slate-500 block">{t.lifeExpectancy}</span>
+        <span class="text-base sm:text-lg font-bold font-mono text-white block">
+          {ind.life_expectancy?.raw_value ? `${ind.life_expectancy.raw_value.toFixed(1)} let` : 'N/A'}
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06. OTHER DESTINATIONS & HUBS -->
+  <section class="mb-14 space-y-6">
+    <div class="border-b border-slate-800 pb-4">
+      <h2 class="text-2xl font-bold text-white tracking-tight">
+        {t.otherDestinationsTitle}
+      </h2>
+      <p class="text-xs sm:text-sm text-slate-400 mt-1">
+        {t.otherDestinationsSub}
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {otherDestinations.map((od) => {
+        const odData = getCountryData(od.alpha3);
+        const odName = lang === 'cs' ? od.nameCs : od.nameEn;
+        const odScore = odData?.pillar_scores?.composite_score !== null && odData?.pillar_scores?.composite_score !== undefined
+          ? odData.pillar_scores.composite_score.toFixed(1)
+          : 'N/A';
+        const odHref = lang === 'cs' ? `/cs/places/${od.slug}` : `/places/${od.slug}`;
+
+        return (
+          <a
+            href={odHref}
+            class="p-4 rounded-xl bg-slate-900/70 border border-slate-800 hover:border-cyan-500/40 transition-all flex flex-col justify-between gap-3 group shadow-sm"
+          >
+            <div class="space-y-1">
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-2xl">{od.flag}</span>
+                <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-cyan-950 border border-cyan-700/50 text-cyan-300">
+                  {odScore} / 100
+                </span>
+              </div>
+              <h3 class="text-sm font-bold text-white group-hover:text-cyan-300 transition-colors pt-1">
+                {odName}
+              </h3>
+              <span class="text-xs font-mono text-slate-500">
+                {od.alpha2} • {odData?.tech_market?.active_jobs || 0} {lang === 'cs' ? 'pozic' : 'jobs'}
+              </span>
+            </div>
+
+            <div class="text-[11px] font-mono text-cyan-400 flex items-center justify-between border-t border-slate-800 pt-2">
+              <span>{lang === 'cs' ? 'Zobrazit profil' : 'View profile'}</span>
+              <span>→</span>
+            </div>
+          </a>
+        );
+      })}
+    </div>
+  </section>
+
+  <!-- SHARE & NEWSLETTER -->
+  <div class="space-y-8 mb-12">
+    <ShareBar title={`${countryName} — Data & AI Career & Livability Profile | Vector87`} lang={lang} />
+    <NewsletterCta lang={lang} />
+  </div>
+</Layout>
+
+<!-- Embedded Data & Interactive Client Script for Jobs Browser -->
+<script is:inline define:vars={{
+  jobsPayload: countryJobsData?.jobs || [],
+  i18n: i18nConfig,
+  currentLang: lang
+}}>
+  const allJobs = jobsPayload || [];
+  let currentRoleFilter = 'all';
+  let currentSearchQuery = '';
+
+  const listContainer = document.getElementById('jobs-list-container');
+  const countBadge = document.getElementById('jobs-count-badge');
+  const searchInput = document.getElementById('input-jobs-search');
+  const clearSearchBtn = document.getElementById('btn-clear-search');
+  const roleFilterBtns = document.querySelectorAll('.country-role-filter-btn');
+
+  function escapeHtml(str) {
+    if (!str) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  function renderJobCard(job) {
+    const roleSlug = job.category_id ? job.category_id.replace(/_/g, '-') : null;
+    const roleHref = roleSlug ? (currentLang === 'cs' ? `/cs/roles/${roleSlug}` : `/roles/${roleSlug}`) : null;
+    const roleDisplay = escapeHtml(job.role_name || job.category_id || 'Other Data/AI');
+    const compDisplay = escapeHtml(job.company_name || 'Enterprise Employer');
+    const titleDisplay = escapeHtml(job.title);
+    const cityDisplay = job.city ? escapeHtml(`• ${job.city}`) : '';
+    const senDisplay = job.seniority ? escapeHtml(`• ${job.seniority}`) : '';
+    const dateDisplay = job.posted_at ? escapeHtml(`• ${job.posted_at}`) : '';
+    const spBadge = job.is_sp500
+      ? '<span class="text-[9px] font-mono px-1.5 py-0.2 rounded bg-amber-950/80 border border-amber-600/40 text-amber-300 shrink-0">S&P 500</span>'
+      : '';
+    const roleTagHtml = roleHref
+      ? `<a href="${roleHref}" class="inline-flex items-center gap-1 text-[11px] text-cyan-400 hover:text-cyan-300 hover:underline shrink-0" title="Role profile for ${roleDisplay}">🏷️ ${roleDisplay}</a>`
+      : `<span class="text-[11px] text-cyan-400">🏷️ ${roleDisplay}</span>`;
+
+    return `
+      <div class="job-card p-4 rounded-xl bg-slate-900/90 border border-slate-800 hover:border-cyan-500/40 transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-inner">
+        <div class="space-y-1.5 min-w-0 flex-1">
+          <div class="flex items-center gap-2 flex-wrap">
+            <a href="${escapeHtml(job.url)}" target="_blank" rel="noopener noreferrer" class="text-sm sm:text-base font-semibold text-white tracking-tight hover:text-cyan-300 transition-colors">
+              ${titleDisplay}
+            </a>
+            ${spBadge}
+          </div>
+          <div class="flex items-center gap-2 text-xs font-mono text-slate-400 flex-wrap">
+            <span class="text-slate-200 font-medium">${compDisplay}</span>
+            ${cityDisplay ? `<span>${cityDisplay}</span>` : ''}
+            ${senDisplay ? `<span>${senDisplay}</span>` : ''}
+            ${dateDisplay ? `<span class="text-slate-500">${dateDisplay}</span>` : ''}
+            ${roleTagHtml}
+          </div>
+        </div>
+        <a href="${escapeHtml(job.url)}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg text-xs font-mono font-semibold bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 hover:bg-cyan-500/30 hover:border-cyan-300 transition-all shrink-0 whitespace-nowrap shadow-sm">
+          <span>${escapeHtml(i18n.applyBtn)}</span>
+        </a>
+      </div>
+    `;
+  }
+
+  function filterAndRender() {
+    const q = currentSearchQuery.toLowerCase().trim();
+    const role = currentRoleFilter;
+
+    const filtered = allJobs.filter((j) => {
+      if (role !== 'all') {
+        const matchCat = j.category_id === role;
+        const matchArr = Array.isArray(j.categories) && j.categories.includes(role);
+        if (!matchCat && !matchArr) return false;
+      }
+      if (q) {
+        const t = (j.title || '').toLowerCase();
+        const c = (j.company_name || '').toLowerCase();
+        const ci = (j.city || '').toLowerCase();
+        const r = (j.role_name || '').toLowerCase();
+        const s = (j.seniority || '').toLowerCase();
+        if (!t.includes(q) && !c.includes(q) && !ci.includes(q) && !r.includes(q) && !s.includes(q)) {
+          return false;
+        }
+      }
+      return true;
+    });
+
+    if (countBadge) {
+      countBadge.textContent = i18n.showingCount
+        .replace('{count}', filtered.length)
+        .replace('{total}', allJobs.length);
+    }
+
+    if (clearSearchBtn) {
+      if (q || role !== 'all') {
+        clearSearchBtn.classList.remove('hidden');
+      } else {
+        clearSearchBtn.classList.add('hidden');
+      }
+    }
+
+    if (!listContainer) return;
+
+    if (filtered.length === 0) {
+      listContainer.innerHTML = `
+        <div class="p-8 rounded-xl bg-slate-900/50 border border-slate-800 text-center space-y-3">
+          <p class="text-xs sm:text-sm font-mono text-slate-400">${escapeHtml(i18n.noMatching)}</p>
+          <button type="button" id="btn-reset-filters-inner" class="px-4 py-1.5 rounded-lg text-xs font-mono bg-cyan-950/60 text-cyan-300 border border-cyan-700/50 hover:bg-cyan-900/60 transition-colors cursor-pointer">
+            ${escapeHtml(i18n.resetFilter)}
+          </button>
+        </div>
+      `;
+      const btnInner = document.getElementById('btn-reset-filters-inner');
+      if (btnInner) {
+        btnInner.addEventListener('click', resetAllFilters);
+      }
+    } else {
+      listContainer.innerHTML = filtered.map(renderJobCard).join('');
+    }
+  }
+
+  function resetAllFilters() {
+    currentRoleFilter = 'all';
+    currentSearchQuery = '';
+    if (searchInput) searchInput.value = '';
+    roleFilterBtns.forEach((btn) => {
+      const bRole = btn.getAttribute('data-role');
+      if (bRole === 'all') {
+        btn.className = 'country-role-filter-btn px-3 py-1.5 rounded-md text-xs font-mono font-medium transition-all shrink-0 cursor-pointer bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 shadow-sm';
+      } else {
+        btn.className = 'country-role-filter-btn px-3 py-1.5 rounded-md text-xs font-mono font-medium transition-all shrink-0 cursor-pointer bg-slate-900 text-slate-400 border border-slate-800 hover:border-slate-700 hover:text-slate-200';
+      }
+    });
+    filterAndRender();
+  }
+
+  // Event Listeners
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      currentSearchQuery = e.target.value;
+      filterAndRender();
+    });
+  }
+
+  if (clearSearchBtn) {
+    clearSearchBtn.addEventListener('click', resetAllFilters);
+  }
+
+  roleFilterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const r = btn.getAttribute('data-role');
+      currentRoleFilter = r;
+      roleFilterBtns.forEach((b) => {
+        b.className = 'country-role-filter-btn px-3 py-1.5 rounded-md text-xs font-mono font-medium transition-all shrink-0 cursor-pointer bg-slate-900 text-slate-400 border border-slate-800 hover:border-slate-700 hover:text-slate-200';
+      });
+      btn.className = 'country-role-filter-btn px-3 py-1.5 rounded-md text-xs font-mono font-medium transition-all shrink-0 cursor-pointer bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 shadow-sm';
+      filterAndRender();
+    });
+  });
+
+  // URL hash/query handling on load: e.g. #role=data_engineer or ?role=data_engineer
+  function checkUrlFilters() {
+    const hash = window.location.hash || '';
+    const search = window.location.search || '';
+    let targetRole = null;
+
+    if (hash.includes('role=')) {
+      const match = hash.match(/role=([^&]+)/);
+      if (match) targetRole = match[1];
+    } else if (search.includes('role=')) {
+      const params = new URLSearchParams(search);
+      targetRole = params.get('role');
+    }
+
+    if (targetRole) {
+      currentRoleFilter = targetRole;
+      roleFilterBtns.forEach((b) => {
+        if (b.getAttribute('data-role') === targetRole) {
+          b.className = 'country-role-filter-btn px-3 py-1.5 rounded-md text-xs font-mono font-medium transition-all shrink-0 cursor-pointer bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 shadow-sm';
+        } else {
+          b.className = 'country-role-filter-btn px-3 py-1.5 rounded-md text-xs font-mono font-medium transition-all shrink-0 cursor-pointer bg-slate-900 text-slate-400 border border-slate-800 hover:border-slate-700 hover:text-slate-200';
+        }
+      });
+    }
+  }
+
+  checkUrlFilters();
+  filterAndRender();
+</script>

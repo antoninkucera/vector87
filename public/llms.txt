@@ -21,6 +21,8 @@
 - [Salary Benchmarks](https://vector87.com/salaries): Empirical compensation benchmarks across AI, Data Science, and Engineering roles in the US, UK, Western Europe, and Czech Republic.
 - [Podcasts & Media Radar](https://vector87.com/academy/podcasts): Monitored shows, episodes, and executive summaries across data engineering and AI.
 - [Conferences Calendar](https://vector87.com/conferences): Curated global and European directory of Data Engineering, Lakehouse, and Applied AI summits with dates, locations, and CFP deadlines.
+- [Places & Relocation Index](https://vector87.com/places): Future Tracker country ranking (217 countries) assessing quality of life, institutional safety, ease of relocation, and live enterprise Data & AI job opportunities.
+- [Country Hubs & Profiles](https://vector87.com/places/czechia): Dedicated country profiles featuring active local requisitions, top employers, tech meetups, and livability radar.
 - [About Author](https://vector87.com/about): Background of Antonín Kučera (akucera.eu), project philosophy, and essays on Data-Informed leadership.
 
 ## Machine-Readable Data Contracts
