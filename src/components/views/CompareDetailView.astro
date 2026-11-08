@@ -1,0 +1,289 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getComparison, type ComparisonResolved } from '../../data/comparisons';
+import { ui, getLocalePath, type Locale } from '../../i18n/ui';
+import VennDiagram from '../VennDiagram.astro';
+import NewsletterCta from '../NewsletterCta.astro';
+
+interface Props {
+  lang: Locale;
+  slug: string;
+}
+
+const { lang, slug } = Astro.props;
+const comp = getComparison(slug);
+
+if (!comp) {
+  throw new Error(`Comparison '${slug}' not found in catalog.`);
+}
+
+const homeHref = getLocalePath(lang, 'dashboard');
+const compareListHref = lang === 'en' ? '/compare' : '/cs/compare';
+
+const pageTitle = `${comp.title[lang]} | Vector87`;
+const pageDescription = comp.subtitle[lang];
+
+const entityAHref = comp.type === 'role'
+  ? `${lang === 'en' ? '/roles' : '/cs/roles'}/${comp.entityA.kebabSlug}`
+  : `${lang === 'en' ? '/technologies' : '/cs/technologies'}/${comp.entityA.kebabSlug}`;
+
+const entityBHref = comp.type === 'role'
+  ? `${lang === 'en' ? '/roles' : '/cs/roles'}/${comp.entityB.kebabSlug}`
+  : `${lang === 'en' ? '/technologies' : '/cs/technologies'}/${comp.entityB.kebabSlug}`;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'TechArticle',
+  headline: pageTitle,
+  description: pageDescription,
+  author: {
+    '@type': 'Person',
+    name: 'Antonín Kučera',
+    url: 'https://akucera.eu',
+  },
+};
+---
+
+<Layout
+  lang={lang}
+  activeNav="compare"
+  title={pageTitle}
+  description={pageDescription}
+  jsonLd={jsonLd}
+>
+  <main class="min-h-screen bg-[#04070e] pb-24">
+    <!-- Breadcrumb -->
+    <div class="border-b border-slate-800/80 bg-[#060911]/60 backdrop-blur-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+        <nav class="flex items-center gap-2 text-xs font-mono text-slate-400" aria-label="Breadcrumb">
+          <a href={homeHref} class="hover:text-cyan-300 transition-colors">{lang === 'en' ? 'Home' : 'Domů'}</a>
+          <span class="text-slate-600">/</span>
+          <a href={compareListHref} class="hover:text-cyan-300 transition-colors">{lang === 'en' ? 'Comparisons' : 'Srovnání'}</a>
+          <span class="text-slate-600">/</span>
+          <span class="text-slate-200 font-semibold">{comp.entityA.name} vs. {comp.entityB.name}</span>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Hero Header -->
+    <section class="relative pt-12 pb-14 border-b border-slate-800/80 overflow-hidden bg-gradient-to-b from-slate-900/40 via-transparent to-transparent">
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(99,102,241,0.15),rgba(255,255,255,0))] pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full text-xs font-mono font-medium border border-indigo-500/30 bg-indigo-500/10 text-indigo-300 mb-4">
+          <span class="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse"></span>
+          <span>{comp.type === 'role' ? (lang === 'en' ? 'HEAD-TO-HEAD ROLE ANALYSIS' : 'SROVNÁNÍ ROLÍ // HEAD-TO-HEAD') : (lang === 'en' ? 'TECH BATTLE' : 'SROVNÁNÍ PLATFOREM')}</span>
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+          {comp.title[lang]}
+        </h1>
+        <p class="text-base sm:text-lg text-slate-300 max-w-3xl mt-3 leading-relaxed">
+          {comp.subtitle[lang]}
+        </p>
+
+        <!-- Side-by-Side Dual Telemetry Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
+          
+          <!-- Entity A Card -->
+          <div class="p-6 rounded-2xl bg-slate-900/60 border border-sky-500/30 backdrop-blur-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="px-2 py-0.5 rounded text-[11px] font-mono font-bold bg-sky-500/10 text-sky-400 border border-sky-500/20">
+                  {comp.type === 'role' ? 'PROFILE A' : 'PLATFORM A'}
+                </span>
+                <a href={entityAHref} class="text-xs font-mono text-cyan-400 hover:text-cyan-300 font-semibold inline-flex items-center gap-1">
+                  <span>{lang === 'en' ? 'Full Profile' : 'Detail'}</span>
+                  <span>↗</span>
+                </a>
+              </div>
+              <h2 class="text-2xl font-bold text-white mb-4">
+                <a href={entityAHref} class="hover:text-cyan-300 transition-colors">
+                  {comp.entityA.name}
+                </a>
+              </h2>
+
+              <div class="grid grid-cols-2 gap-3 text-xs font-mono">
+                <div class="p-3 rounded-lg bg-slate-800/60 border border-slate-700/60">
+                  <div class="text-slate-400 text-[10px] uppercase">{lang === 'en' ? 'Active Postings' : 'Aktivní inzeráty'}</div>
+                  <div class="text-xl font-bold text-white mt-0.5">{comp.entityA.jobCount.toLocaleString()}</div>
+                </div>
+                <div class="p-3 rounded-lg bg-slate-800/60 border border-slate-700/60">
+                  <div class="text-slate-400 text-[10px] uppercase">{lang === 'en' ? 'Market Share' : 'Podíl na trhu'}</div>
+                  <div class="text-xl font-bold text-sky-400 mt-0.5">{comp.entityA.marketSharePct}%</div>
+                </div>
+                {comp.entityA.seniorPlusPct !== undefined && (
+                  <div class="p-3 rounded-lg bg-slate-800/60 border border-slate-700/60">
+                    <div class="text-slate-400 text-[10px] uppercase">{lang === 'en' ? 'Senior+ Tier' : 'Senior+ pozice'}</div>
+                    <div class="text-base font-bold text-slate-200 mt-0.5">{comp.entityA.seniorPlusPct}%</div>
+                  </div>
+                )}
+                {comp.entityA.remotePct !== undefined && (
+                  <div class="p-3 rounded-lg bg-slate-800/60 border border-slate-700/60">
+                    <div class="text-slate-400 text-[10px] uppercase">{lang === 'en' ? 'Remote Tolerance' : 'Remote pozice'}</div>
+                    <div class="text-base font-bold text-emerald-400 mt-0.5">{comp.entityA.remotePct}%</div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+
+          <!-- Entity B Card -->
+          <div class="p-6 rounded-2xl bg-slate-900/60 border border-emerald-500/30 backdrop-blur-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="px-2 py-0.5 rounded text-[11px] font-mono font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                  {comp.type === 'role' ? 'PROFILE B' : 'PLATFORM B'}
+                </span>
+                <a href={entityBHref} class="text-xs font-mono text-emerald-400 hover:text-emerald-300 font-semibold inline-flex items-center gap-1">
+                  <span>{lang === 'en' ? 'Full Profile' : 'Detail'}</span>
+                  <span>↗</span>
+                </a>
+              </div>
+              <h2 class="text-2xl font-bold text-white mb-4">
+                <a href={entityBHref} class="hover:text-emerald-300 transition-colors">
+                  {comp.entityB.name}
+                </a>
+              </h2>
+
+              <div class="grid grid-cols-2 gap-3 text-xs font-mono">
+                <div class="p-3 rounded-lg bg-slate-800/60 border border-slate-700/60">
+                  <div class="text-slate-400 text-[10px] uppercase">{lang === 'en' ? 'Active Postings' : 'Aktivní inzeráty'}</div>
+                  <div class="text-xl font-bold text-white mt-0.5">{comp.entityB.jobCount.toLocaleString()}</div>
+                </div>
+                <div class="p-3 rounded-lg bg-slate-800/60 border border-slate-700/60">
+                  <div class="text-slate-400 text-[10px] uppercase">{lang === 'en' ? 'Market Share' : 'Podíl na trhu'}</div>
+                  <div class="text-xl font-bold text-emerald-400 mt-0.5">{comp.entityB.marketSharePct}%</div>
+                </div>
+                {comp.entityB.seniorPlusPct !== undefined && (
+                  <div class="p-3 rounded-lg bg-slate-800/60 border border-slate-700/60">
+                    <div class="text-slate-400 text-[10px] uppercase">{lang === 'en' ? 'Senior+ Tier' : 'Senior+ pozice'}</div>
+                    <div class="text-base font-bold text-slate-200 mt-0.5">{comp.entityB.seniorPlusPct}%</div>
+                  </div>
+                )}
+                {comp.entityB.remotePct !== undefined && (
+                  <div class="p-3 rounded-lg bg-slate-800/60 border border-slate-700/60">
+                    <div class="text-slate-400 text-[10px] uppercase">{lang === 'en' ? 'Remote Tolerance' : 'Remote pozice'}</div>
+                    <div class="text-base font-bold text-emerald-400 mt-0.5">{comp.entityB.remotePct}%</div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content Flow -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 space-y-16">
+      
+      <!-- Executive Architectural Analysis -->
+      <section class="bg-slate-900/40 border border-slate-800/80 rounded-2xl p-6 sm:p-8">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="w-2 h-2 rounded-full bg-indigo-400"></span>
+          <h2 class="text-xs font-mono uppercase tracking-widest text-slate-400">
+            {lang === 'en' ? '01 // EXECUTIVE SUMMARY & MARKET POSITIONING' : '01 // SHRNUTÍ ROZDÍLŮ A POZICE NA TRHU'}
+          </h2>
+        </div>
+        <div class="space-y-4 text-slate-200 text-sm sm:text-base leading-relaxed">
+          {comp.executiveSummary[lang].map((p) => (
+            <p>{p}</p>
+          ))}
+        </div>
+      </section>
+
+      <!-- VENN DIAGRAM SECTION -->
+      <section>
+        <div class="flex items-center justify-between gap-4 mb-3">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-cyan-400"></span>
+            <h2 class="text-xs font-mono uppercase tracking-widest text-slate-400">
+              {lang === 'en' ? '02 // COMPETENCY OVERLAP & VENN DIAGRAM' : '02 // PŘEKRYV KOMPETENCÍ & VENNŮV DIAGRAM'}
+            </h2>
+          </div>
+          <span class="text-xs font-mono text-slate-500 hidden sm:inline">
+            {lang === 'en' ? 'Grounded in enterprise job requirements' : 'Podloženo reálnými požadavky firem'}
+          </span>
+        </div>
+        <p class="text-sm text-slate-400 mb-8 max-w-3xl">
+          {lang === 'en'
+            ? `Visualizing what sets ${comp.entityA.name} and ${comp.entityB.name} apart, alongside the shared technical baseline demanded across both roles.`
+            : `Vizuální znázornění toho, co odlišuje pozice ${comp.entityA.name} a ${comp.entityB.name}, a jaké dovednosti tvoří jejich společný průnik.`}
+        </p>
+
+        <VennDiagram
+          lang={lang}
+          nameA={comp.entityA.name}
+          nameB={comp.entityB.name}
+          uniqueA={comp.uniqueA}
+          shared={comp.shared}
+          uniqueB={comp.uniqueB}
+        />
+      </section>
+
+      <!-- Career Transition Guide (if available) -->
+      {comp.careerTransition && (
+        <section class="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-slate-900/60 to-slate-950/80 border border-slate-800">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+            <h2 class="text-xs font-mono uppercase tracking-widest text-slate-400">
+              {lang === 'en' ? '03 // CAREER EVOLUTION & TRANSITION GUIDE' : '03 // PRŮVODCE KARIÉRNÍM PŘECHODEM'}
+            </h2>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-bold text-white mb-6">
+            {comp.careerTransition.title[lang]}
+          </h3>
+
+          <div class="space-y-4 mb-8">
+            {comp.careerTransition.advice[lang].map((item, idx) => (
+              <div class="flex items-start gap-3 p-4 rounded-xl bg-slate-800/40 border border-slate-700/60">
+                <span class="w-6 h-6 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 font-mono font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
+                  {idx + 1}
+                </span>
+                <p class="text-sm text-slate-200 leading-relaxed">
+                  {item}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <!-- Recommended Courses & Certifications -->
+          {comp.careerTransition.courses.length > 0 && (
+            <div>
+              <div class="text-xs font-mono uppercase tracking-wider text-slate-400 mb-3">
+                {lang === 'en' ? 'Targeted Academy Courses & Programs:' : 'Doporučené vzdělávací kurzy k osvojení dovedností:'}
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {comp.careerTransition.courses.map((course) => (
+                  <a
+                    href={course.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="p-4 rounded-xl bg-slate-800/40 hover:bg-slate-800/70 border border-slate-700/60 hover:border-cyan-500/40 transition-all flex flex-col justify-between"
+                  >
+                    <div>
+                      <div class="flex items-center justify-between text-[11px] font-mono text-cyan-400 font-semibold mb-1.5">
+                        <span>{course.platform}</span>
+                        <span>↗</span>
+                      </div>
+                      <div class="font-bold text-white text-sm">
+                        {course.title[lang]}
+                      </div>
+                    </div>
+                    <div class="mt-3 pt-2 border-t border-slate-700/60 flex items-center justify-between text-[10px] font-mono text-slate-400">
+                      <span>{course.duration[lang]}</span>
+                      <span class="text-emerald-400">{course.marketSignal[lang]}</span>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+        </section>
+      )}
+
+      <!-- Substack / Newsletter CTA -->
+      <NewsletterCta lang={lang} />
+    </div>
+  </main>
+</Layout>

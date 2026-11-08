@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { getTechnology, type TechnologyResolved } from '../../data/technologies';
+import { COMPARISONS_CATALOG } from '../../data/comparisons';
 import { ui, getLocalePath, type Locale } from '../../i18n/ui';
 import NewsletterCta from '../NewsletterCta.astro';
 
@@ -113,15 +114,27 @@ const jsonLd = {
             <div class="flex flex-col sm:flex-row lg:flex-col gap-2 shrink-0">
               <span class="text-xs font-mono text-slate-400">{t.compareWithLabel || (lang === 'en' ? 'Head-to-Head:' : 'Přímé srovnání:')}</span>
               <div class="flex flex-wrap gap-2">
-                {tech.comparisons.map((comp) => (
-                  <a
-                    href={`${lang === 'en' ? '/technologies' : '/cs/technologies'}/${comp.targetSlug}`}
-                    class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono font-medium bg-slate-800/80 hover:bg-slate-700/80 text-cyan-300 border border-slate-700/80 hover:border-cyan-500/50 transition-all shadow-sm"
-                  >
-                    <span>vs {comp.targetName}</span>
-                    <span class="text-slate-500">→</span>
-                  </a>
-                ))}
+                {tech.comparisons.map((comp) => {
+                  const comparisonMatch = COMPARISONS_CATALOG.find(
+                    (c) =>
+                      c.type === 'technology' &&
+                      ((c.entityAId === tech.id && c.entityBId === comp.targetSlug) ||
+                        (c.entityBId === tech.id && c.entityAId === comp.targetSlug))
+                  );
+                  const href = comparisonMatch
+                    ? `${lang === 'en' ? '/compare' : '/cs/compare'}/${comparisonMatch.slug}`
+                    : `${lang === 'en' ? '/technologies' : '/cs/technologies'}/${comp.targetSlug}`;
+
+                  return (
+                    <a
+                      href={href}
+                      class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono font-medium bg-slate-800/80 hover:bg-slate-700/80 text-cyan-300 border border-slate-700/80 hover:border-cyan-500/50 transition-all shadow-sm"
+                    >
+                      <span>vs {comp.targetName}</span>
+                      <span class="text-slate-500">→</span>
+                    </a>
+                  );
+                })}
               </div>
             </div>
           )}

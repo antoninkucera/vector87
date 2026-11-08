@@ -5,6 +5,7 @@ import { ACADEMY_COURSES, CERTIFICATIONS_LIST } from '../../data/academy';
 import { OPPORTUNITY_MATRIX_DATA } from '../../data/opportunity-matrix';
 import { ui, getLocalePath, type Locale } from '../../i18n/ui';
 import { getTechnology } from '../../data/technologies';
+import { COMPARISONS_CATALOG } from '../../data/comparisons';
 import NewsletterCta from '../NewsletterCta.astro';
 
 interface Props {
@@ -76,6 +77,11 @@ const finalCerts = recommendedCerts.length > 0 ? recommendedCerts : CERTIFICATIO
 const relatedRoles = marketData.roles
   .filter((r) => r.domain === role.domain && r.category_id !== role.category_id)
   .slice(0, 4);
+
+// Head-to-Head Comparisons for this role
+const roleComparisons = COMPARISONS_CATALOG.filter(
+  (c) => c.type === 'role' && (c.entityAId === role.category_id || c.entityBId === role.category_id)
+);
 
 // Top geographic destinations for this role
 const roleCountries = [
@@ -297,6 +303,27 @@ const roleDetailGraph = {
           </div>
         </div>
       </div>
+
+      <!-- Quick Comparison Shortcuts (Venn Diagrams) -->
+      {roleComparisons.length > 0 && (
+        <div class="flex flex-wrap items-center gap-2 pt-2 text-xs font-mono">
+          <span class="text-slate-400 font-semibold">{lang === 'cs' ? 'Přímá srovnání (Vennův diagram):' : 'Head-to-Head Comparisons:'}</span>
+          {roleComparisons.map((c) => {
+            const targetRoleId = c.entityAId === role.category_id ? c.entityBId : c.entityAId;
+            const targetRole = marketData.roles.find((r) => r.category_id === targetRoleId);
+            const targetName = targetRole ? targetRole.canonical_name : targetRoleId;
+            return (
+              <a
+                href={`${lang === 'en' ? '/compare' : '/cs/compare'}/${c.slug}`}
+                class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 hover:border-indigo-400 transition-colors shadow-sm"
+              >
+                <span>vs. {targetName}</span>
+                <span class="text-slate-500">→</span>
+              </a>
+            );
+          })}
+        </div>
+      )}
     </div>
 
     <!-- KPI Grid -->
