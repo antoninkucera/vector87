@@ -81,6 +81,18 @@
                 "type": "array",
                 "items": { "type": "string" }
               },
+              "roles_breakdown": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["category_id", "role_name", "count"],
+                  "properties": {
+                    "category_id": { "type": "string" },
+                    "role_name": { "type": "string" },
+                    "count": { "type": "integer" }
+                  }
+                }
+              },
               "sample_jobs": {
                 "type": "array",
                 "items": {

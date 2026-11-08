@@ -93,7 +93,8 @@ def load_tech_jobs_metrics(jobs_db_path: Path) -> dict[str, dict[str, Any]]:
             "IT": "ITA", "CH": "CHE", "SE": "SWE", "NL": "NLD", "RO": "ROU",
             "BE": "BEL", "LU": "LUX", "GR": "GRC", "FI": "FIN", "AT": "AUT",
             "LT": "LTU", "BG": "BGR", "NO": "NOR", "SK": "SVK", "DK": "DNK",
-            "HU": "HUN", "HR": "HRV"
+            "HU": "HUN", "HR": "HRV", "IN": "IND", "BR": "BRA", "EE": "EST",
+            "LV": "LVA", "SI": "SVN", "CY": "CYP", "MT": "MLT", "IS": "ISL"
         }
 
         # Počty aktivních pozic a zaměstnavatelů (striktně deduplikováno podle unikátních URL inzerátů)
@@ -107,26 +108,48 @@ def load_tech_jobs_metrics(jobs_db_path: Path) -> dict[str, dict[str, Any]]:
             GROUP BY country_code
         """).fetchall()
 
-        # Top 3 kategorie pozic na zemi
-        top_cats_rows = con.execute("""
+        from collections import defaultdict
+
+        # Všechny role s počty pozic pro každou zemi (striktní primární přiřazení)
+        roles_breakdown_rows = con.execute("""
+            WITH primary_roles AS (
+                SELECT 
+                    j.job_id,
+                    r.category_id,
+                    cat.canonical_name AS role_name,
+                    ROW_NUMBER() OVER (
+                        PARTITION BY j.job_id 
+                        ORDER BY 
+                            CASE WHEN j.title_normalized = cat.canonical_name THEN 0 ELSE 1 END,
+                            CASE WHEN LOWER(j.title_raw) LIKE '%' || LOWER(REPLACE(REPLACE(cat.canonical_name, ' (AI/ML)', ''), ' / ', ' ')) || '%' THEN 0 ELSE 1 END,
+                            r.category_id
+                    ) as rn
+                FROM fact_jobs j
+                LEFT JOIN bridge_job_roles r ON j.job_id = r.job_id
+                LEFT JOIN dim_job_categories cat ON r.category_id = cat.category_id
+                WHERE j.is_active = TRUE AND j.country_code IS NOT NULL
+            )
             SELECT 
                 j.country_code,
-                r.category_id,
-                count(*) AS cnt
+                COALESCE(pr.category_id, 'unmapped') AS category_id,
+                COALESCE(pr.role_name, 'Other Data/AI') AS role_name,
+                COUNT(DISTINCT j.job_id) AS cnt
             FROM fact_jobs j
-            JOIN bridge_job_roles r ON j.job_id = r.job_id
+            LEFT JOIN primary_roles pr ON j.job_id = pr.job_id AND pr.rn = 1
             WHERE j.is_active = TRUE AND j.country_code IS NOT NULL
-            GROUP BY j.country_code, r.category_id
+            GROUP BY j.country_code, category_id, role_name
             ORDER BY j.country_code, cnt DESC
         """).fetchall()
 
-        from collections import defaultdict
-        cats_by_country = defaultdict(list)
-        for c_code, cat_id, _ in top_cats_rows:
-            if len(cats_by_country[c_code]) < 3:
-                cats_by_country[c_code].append(cat_id)
+        roles_by_country = defaultdict(list)
+        for c_code, cat_id, rname, cnt in roles_breakdown_rows:
+            roles_by_country[c_code].append({
+                "category_id": cat_id,
+                "role_name": rname,
+                "count": int(cnt)
+            })
 
-        # Reprezentativní aktivní inzeráty s přímým URL (až 5 nejlepších zástupců různých firem)
+        # Reprezentativní aktivní inzeráty s přímým URL (až 5 nejlepších zástupců různých firem pro rychlý SSR náhled)
         sample_jobs_rows = con.execute("""
             WITH candidate_jobs AS (
                 SELECT 
@@ -192,13 +215,105 @@ def load_tech_jobs_metrics(jobs_db_path: Path) -> dict[str, dict[str, Any]]:
                 "role_name": rname or (cat_id.replace("_", " ").title() if cat_id else None),
             })
 
+        # Export kompletního seznamu aktivních pozic pro každou zemi do statického JSON
+        jobs_dir = ROOT_DIR / "public" / "data" / "jobs"
+        jobs_dir.mkdir(parents=True, exist_ok=True)
+
+        all_jobs_rows = con.execute("""
+            WITH primary_roles AS (
+                SELECT 
+                    j.job_id,
+                    r.category_id,
+                    cat.canonical_name AS role_name,
+                    ROW_NUMBER() OVER (
+                        PARTITION BY j.job_id 
+                        ORDER BY 
+                            CASE WHEN j.title_normalized = cat.canonical_name THEN 0 ELSE 1 END,
+                            CASE WHEN LOWER(j.title_raw) LIKE '%' || LOWER(REPLACE(REPLACE(cat.canonical_name, ' (AI/ML)', ''), ' / ', ' ')) || '%' THEN 0 ELSE 1 END,
+                            r.category_id
+                    ) as rn
+                FROM fact_jobs j
+                LEFT JOIN bridge_job_roles r ON j.job_id = r.job_id
+                LEFT JOIN dim_job_categories cat ON r.category_id = cat.category_id
+                WHERE j.is_active = TRUE AND j.country_code IS NOT NULL
+            ),
+            all_roles AS (
+                SELECT 
+                    j.job_id,
+                    LIST(DISTINCT r.category_id) as categories
+                FROM fact_jobs j
+                JOIN bridge_job_roles r ON j.job_id = r.job_id
+                WHERE j.is_active = TRUE AND j.country_code IS NOT NULL
+                GROUP BY j.job_id
+            )
+            SELECT 
+                j.job_id,
+                j.country_code,
+                j.title_raw AS title,
+                COALESCE(c.company_name, 'Enterprise Employer') AS company_name,
+                COALESCE(c.is_sp500, FALSE) AS is_sp500,
+                j.city,
+                j.seniority,
+                j.work_mode,
+                j.url,
+                CAST(j.posted_at AS VARCHAR) AS posted_at,
+                pr.category_id,
+                COALESCE(pr.role_name, 'Other Data/AI') AS role_name,
+                COALESCE(ar.categories, []) AS categories
+            FROM fact_jobs j
+            LEFT JOIN dim_companies c ON j.company_id = c.company_id
+            LEFT JOIN primary_roles pr ON j.job_id = pr.job_id AND pr.rn = 1
+            LEFT JOIN all_roles ar ON j.job_id = ar.job_id
+            WHERE j.is_active = TRUE AND j.country_code IS NOT NULL AND j.url IS NOT NULL AND j.url != ''
+            ORDER BY j.country_code, 
+                     CASE WHEN c.is_sp500 = TRUE THEN 0 ELSE 1 END,
+                     j.posted_at DESC NULLS LAST
+        """).fetchall()
+
+        all_country_jobs = defaultdict(list)
+        for (jid, c_code, title, cname, sp500_flag, city, sen, wm, url, pdate, cat_id, rname, cats) in all_jobs_rows:
+            all_country_jobs[c_code].append({
+                "job_id": jid,
+                "title": title,
+                "company_name": cname,
+                "is_sp500": bool(sp500_flag),
+                "city": city,
+                "seniority": sen,
+                "work_mode": wm,
+                "url": url,
+                "posted_at": pdate,
+                "category_id": cat_id,
+                "role_name": rname,
+                "categories": cats,
+            })
+
+        for c_code, j_list in all_country_jobs.items():
+            iso3 = ISO2_TO_ISO3.get(c_code, c_code)
+            c_payload = {
+                "country_code": c_code,
+                "country_code_alpha3": iso3,
+                "total_jobs": len(j_list),
+                "roles_breakdown": roles_by_country.get(c_code, []),
+                "jobs": j_list,
+            }
+            # Uložit pod ISO2 (např. cz.json) i ISO3 (např. cze.json)
+            file_iso2 = jobs_dir / f"{c_code.lower()}.json"
+            file_iso3 = jobs_dir / f"{iso3.lower()}.json"
+            with open(file_iso2, "w", encoding="utf-8") as f:
+                json.dump(c_payload, f, ensure_ascii=False)
+            if file_iso3 != file_iso2:
+                with open(file_iso3, "w", encoding="utf-8") as f:
+                    json.dump(c_payload, f, ensure_ascii=False)
+
         res = {}
         for c_code, active_j, hiring_c in counts:
             iso3 = ISO2_TO_ISO3.get(c_code, c_code)
+            top_roles_list = [r["category_id"] for r in roles_by_country.get(c_code, []) if r["category_id"] != "unmapped"][:5]
             res[iso3] = {
                 "active_jobs": int(active_j),
                 "hiring_companies": int(hiring_c),
-                "top_roles": cats_by_country.get(c_code, []),
+                "top_roles": top_roles_list,
+                "roles_breakdown": roles_by_country.get(c_code, []),
                 "sample_jobs": sample_jobs_by_country.get(c_code, []),
             }
         print(f"Loaded live AI/Data jobs telemetry for {len(res)} countries from jobs.duckdb.")

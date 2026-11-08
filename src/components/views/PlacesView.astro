@@ -11,6 +11,17 @@ interface Props {
 const { lang } = Astro.props;
 const t = ui[lang].places;
 
+const i18nConfig = {
+  applyBtn: t.expandApplyBtn,
+  showingCount: t.expandShowingJobsCount,
+  searchPlaceholder: t.expandSearchJobsPlaceholder,
+  loading: t.expandLoadingJobs,
+  loadError: t.expandLoadError,
+  noMatching: t.expandNoMatchingJobs,
+  resetFilter: t.expandResetFilter,
+  allRolesPill: t.expandAllRolesPill,
+};
+
 const { meta, pillars, countries } = placesData;
 
 // Seřazení všech 217 zemí podle výchozího kompozitního skóre (nekompletní data N/A na konec)
@@ -465,6 +476,7 @@ const placesJsonLd = {
                   <tr
                     class="country-row hover:bg-slate-800/40 transition-colors cursor-pointer group"
                     data-iso3={country.country_code_alpha3}
+                    data-iso2={country.country_code_alpha2.toLowerCase()}
                     data-focus={country.is_focus_country ? 'true' : 'false'}
                     data-eu={country.is_eu ? 'true' : 'false'}
                     data-tech={country.tech_market?.active_jobs ? 'true' : 'false'}
@@ -556,68 +568,122 @@ const placesJsonLd = {
                             )}
                           </div>
 
-                          {country.tech_market?.sample_jobs && country.tech_market.sample_jobs.length > 0 ? (
-                            <div class="space-y-2.5">
-                              {country.tech_market.sample_jobs.map((job: any) => {
-                                const roleSlug = job.category_id ? job.category_id.replace(/_/g, '-') : null;
-                                const roleHref = roleSlug ? (lang === 'cs' ? `/cs/roles/${roleSlug}` : `/roles/${roleSlug}`) : null;
-                                return (
-                                  <div class="p-3 rounded-lg bg-slate-900/90 border border-slate-800/90 hover:border-cyan-500/40 transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-inner">
-                                    <div class="space-y-1 min-w-0 flex-1">
-                                      <div class="flex items-center gap-2 flex-wrap">
+                          {/* Role Breakdown Filter Pills Bar */}
+                          {country.tech_market?.roles_breakdown && country.tech_market.roles_breakdown.length > 0 && (
+                            <div class="space-y-1.5 pb-1">
+                              <div class="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-thin">
+                                <button
+                                  type="button"
+                                  class="country-role-pill px-2.5 py-1 rounded text-xs font-mono font-medium transition-all shrink-0 cursor-pointer bg-cyan-500/20 text-cyan-300 border border-cyan-500/40"
+                                  data-iso3={country.country_code_alpha3}
+                                  data-iso2={country.country_code_alpha2.toLowerCase()}
+                                  data-role="all"
+                                >
+                                  {t.expandAllRolesPill} ({country.tech_market.active_jobs || country.tech_market.roles_breakdown.reduce((acc: number, r: any) => acc + r.count, 0)})
+                                </button>
+                                {country.tech_market.roles_breakdown.map((rb: any) => (
+                                  <button
+                                    type="button"
+                                    class="country-role-pill px-2.5 py-1 rounded text-xs font-mono font-medium transition-all shrink-0 cursor-pointer bg-slate-900 text-slate-400 border border-slate-800 hover:border-slate-700 hover:text-slate-200"
+                                    data-iso3={country.country_code_alpha3}
+                                    data-iso2={country.country_code_alpha2.toLowerCase()}
+                                    data-role={rb.category_id}
+                                    title={`${rb.role_name}: ${rb.count} ${lang === 'cs' ? 'pozic' : 'vacancies'}`}
+                                  >
+                                    <span>{rb.role_name}</span>
+                                    <span class="ml-1 opacity-70 text-[10px]">({rb.count})</span>
+                                  </button>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+
+                          {/* Dynamic Jobs Explorer Container */}
+                          <div
+                            id={`jobs-container-${country.country_code_alpha3}`}
+                            data-iso3={country.country_code_alpha3}
+                            data-iso2={country.country_code_alpha2.toLowerCase()}
+                            data-country-name={country.country_name}
+                            class="country-jobs-container space-y-2.5"
+                          >
+                            {country.tech_market?.sample_jobs && country.tech_market.sample_jobs.length > 0 ? (
+                              <>
+                                <div class="jobs-list space-y-2.5">
+                                  {country.tech_market.sample_jobs.map((job: any) => {
+                                    const roleSlug = job.category_id ? job.category_id.replace(/_/g, '-') : null;
+                                    const roleHref = roleSlug ? (lang === 'cs' ? `/cs/roles/${roleSlug}` : `/roles/${roleSlug}`) : null;
+                                    return (
+                                      <div class="job-item p-3 rounded-lg bg-slate-900/90 border border-slate-800/90 hover:border-cyan-500/40 transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-inner">
+                                        <div class="space-y-1 min-w-0 flex-1">
+                                          <div class="flex items-center gap-2 flex-wrap">
+                                            <a
+                                              href={job.url}
+                                              target="_blank"
+                                              rel="noopener noreferrer"
+                                              class="text-sm font-semibold text-white tracking-tight hover:text-cyan-300 transition-colors"
+                                            >
+                                              {job.title}
+                                            </a>
+                                            {job.is_sp500 && (
+                                              <span class="text-[9px] font-mono px-1.5 py-0.2 rounded bg-amber-950/80 border border-amber-600/40 text-amber-300 shrink-0">
+                                                S&P 500
+                                              </span>
+                                            )}
+                                          </div>
+                                          <div class="flex items-center gap-2 text-xs font-mono text-slate-400 flex-wrap">
+                                            <span class="text-slate-200 font-medium">{job.company_name}</span>
+                                            {job.city && <span>• {job.city}</span>}
+                                            {job.seniority && <span class="text-slate-400">• {job.seniority}</span>}
+                                            {job.posted_at && <span class="text-slate-500">• {job.posted_at}</span>}
+                                            {roleSlug && (
+                                              <a
+                                                href={roleHref}
+                                                class="inline-flex items-center gap-1 text-[11px] text-cyan-400 hover:text-cyan-300 hover:underline shrink-0"
+                                                title={`Role profile for ${job.role_name}`}
+                                              >
+                                                🏷️ {job.role_name || job.category_id}
+                                              </a>
+                                            )}
+                                          </div>
+                                        </div>
+
+                                        <!-- External Apply Link -->
                                         <a
                                           href={job.url}
                                           target="_blank"
                                           rel="noopener noreferrer"
-                                          class="text-sm font-semibold text-white tracking-tight hover:text-cyan-300 transition-colors"
+                                          class="inline-flex items-center justify-center gap-1 px-3 py-1.5 rounded-md text-xs font-mono font-semibold bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 hover:bg-cyan-500/30 hover:border-cyan-300 transition-all shrink-0 whitespace-nowrap shadow-sm"
                                         >
-                                          {job.title}
+                                          <span>{t.expandApplyBtn}</span>
                                         </a>
-                                        {job.is_sp500 && (
-                                          <span class="text-[9px] font-mono px-1.5 py-0.2 rounded bg-amber-950/80 border border-amber-600/40 text-amber-300 shrink-0">
-                                            S&P 500
-                                          </span>
-                                        )}
                                       </div>
-                                      <div class="flex items-center gap-2 text-xs font-mono text-slate-400 flex-wrap">
-                                        <span class="text-slate-200 font-medium">{job.company_name}</span>
-                                        {job.city && <span>• {job.city}</span>}
-                                        {job.seniority && <span class="text-slate-400">• {job.seniority}</span>}
-                                        {job.posted_at && <span class="text-slate-500">• {job.posted_at}</span>}
-                                        {roleSlug && (
-                                          <a
-                                            href={roleHref}
-                                            class="inline-flex items-center gap-1 text-[11px] text-cyan-400 hover:text-cyan-300 hover:underline shrink-0"
-                                            title={`Role profile for ${job.role_name}`}
-                                          >
-                                            🏷️ {job.role_name || job.category_id}
-                                          </a>
-                                        )}
-                                      </div>
-                                    </div>
+                                    );
+                                  })}
+                                </div>
 
-                                    <!-- External Apply Link -->
-                                    <a
-                                      href={job.url}
-                                      target="_blank"
-                                      rel="noopener noreferrer"
-                                      class="inline-flex items-center justify-center gap-1 px-3 py-1.5 rounded-md text-xs font-mono font-semibold bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 hover:bg-cyan-500/30 hover:border-cyan-300 transition-all shrink-0 whitespace-nowrap shadow-sm"
-                                    >
-                                      <span>{t.expandApplyBtn}</span>
-                                    </a>
-                                  </div>
-                                );
-                              })}
-                            </div>
-                          ) : country.is_focus_country ? (
-                            <div class="p-4 rounded-lg bg-slate-900/50 border border-slate-800 text-xs font-mono text-slate-400">
-                              {t.expandNoVacancies}
-                            </div>
-                          ) : (
-                            <div class="p-4 rounded-lg bg-slate-900/50 border border-slate-800 text-xs font-mono text-slate-400">
-                              {t.expandNonFocusHub}
-                            </div>
-                          )}
+                                {country.tech_market?.active_jobs && country.tech_market.active_jobs > (country.tech_market.sample_jobs?.length || 0) && (
+                                  <button
+                                    type="button"
+                                    class="btn-load-all-jobs w-full py-2.5 px-4 rounded-lg bg-cyan-950/40 border border-cyan-500/40 hover:bg-cyan-500/20 hover:border-cyan-400 text-cyan-300 font-mono text-xs font-semibold flex items-center justify-center gap-2 transition-colors cursor-pointer"
+                                    data-iso3={country.country_code_alpha3}
+                                    data-iso2={country.country_code_alpha2.toLowerCase()}
+                                    data-count={country.tech_market.active_jobs}
+                                    data-country-name={country.country_name}
+                                  >
+                                    <span>⚡ {t.expandBrowseAllJobs.replace('{count}', country.tech_market.active_jobs.toString()).replace('{country}', country.country_name)}</span>
+                                  </button>
+                                )}
+                              </>
+                            ) : country.is_focus_country ? (
+                              <div class="p-4 rounded-lg bg-slate-900/50 border border-slate-800 text-xs font-mono text-slate-400">
+                                {t.expandNoVacancies}
+                              </div>
+                            ) : (
+                              <div class="p-4 rounded-lg bg-slate-900/50 border border-slate-800 text-xs font-mono text-slate-400">
+                                {t.expandNonFocusHub}
+                              </div>
+                            )}
+                          </div>
                         </div>
 
                         <!-- RIGHT: Role Pathways & Mobility Overview (5 cols) -->
@@ -629,21 +695,35 @@ const placesJsonLd = {
                                 <span>🎯</span> {t.expandTopRoles}
                               </h4>
                             </div>
-                            {country.tech_market?.top_roles && country.tech_market.top_roles.length > 0 ? (
+                            {country.tech_market?.roles_breakdown && country.tech_market.roles_breakdown.length > 0 ? (
                               <div class="space-y-2">
                                 <div class="flex flex-wrap gap-1.5">
-                                  {country.tech_market.top_roles.map((catId: string) => {
-                                    const kebabSlug = catId.replace(/_/g, '-');
-                                    const roleHref = lang === 'cs' ? `/cs/roles/${kebabSlug}` : `/roles/${kebabSlug}`;
-                                    const readableName = catId.replace(/_/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase());
+                                  {country.tech_market.roles_breakdown.slice(0, 6).map((rb: any) => {
+                                    const kebabSlug = rb.category_id ? rb.category_id.replace(/_/g, '-') : null;
+                                    const roleHref = kebabSlug ? (lang === 'cs' ? `/cs/roles/${kebabSlug}` : `/roles/${kebabSlug}`) : null;
                                     return (
-                                      <a
-                                        href={roleHref}
-                                        class="inline-flex items-center gap-1 px-2.5 py-1 rounded text-xs font-mono bg-slate-900 text-slate-200 border border-slate-700/70 hover:border-cyan-400 hover:text-cyan-300 transition-colors"
-                                      >
-                                        <span>{readableName}</span>
-                                        <span class="text-cyan-400 text-[10px]">→</span>
-                                      </a>
+                                      <div class="inline-flex items-center rounded text-xs font-mono bg-slate-900 border border-slate-700/70 overflow-hidden">
+                                        <button
+                                          type="button"
+                                          class="country-role-quick-filter px-2.5 py-1 text-slate-200 hover:text-cyan-300 hover:bg-slate-800 transition-colors cursor-pointer"
+                                          data-iso3={country.country_code_alpha3}
+                                          data-iso2={country.country_code_alpha2.toLowerCase()}
+                                          data-role={rb.category_id}
+                                          title={lang === 'cs' ? `Filtrovat inzeráty pro ${rb.role_name}` : `Filter postings for ${rb.role_name}`}
+                                        >
+                                          <span>{rb.role_name}</span>
+                                          <span class="ml-1 text-cyan-400 font-bold">({rb.count})</span>
+                                        </button>
+                                        {roleHref && (
+                                          <a
+                                            href={roleHref}
+                                            class="px-1.5 py-1 text-slate-400 hover:text-cyan-300 border-l border-slate-800 hover:bg-slate-800 transition-colors"
+                                            title={lang === 'cs' ? `Profil role ${rb.role_name}` : `Role dossier for ${rb.role_name}`}
+                                          >
+                                            ↗
+                                          </a>
+                                        )}
+                                      </div>
                                     );
                                   })}
                                 </div>
@@ -768,7 +848,7 @@ const placesJsonLd = {
 </Layout>
 
 <!-- Client Script: Interactive Map & Live Linked 100% Sliders -->
-<script is:inline define:vars={{ countriesData: countries, pageLang: lang }}>
+<script is:inline define:vars={{ countriesData: countries, pageLang: lang, i18nConfig }}>
   const countries = countriesData;
   const countriesMap = new Map(countries.map(c => [c.country_code_alpha3, c]));
 
@@ -1144,4 +1224,328 @@ const placesJsonLd = {
       toggleDetailRow(iso3);
     });
   });
+
+  // 5. Dynamic Lazy Loading & Live Filtering of Country Vacancies
+  const countryJobsCache = new Map();
+  const countryFilters = new Map(); // iso3 -> { role: 'all', search: '' }
+
+  function escapeHtml(str) {
+    if (!str) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  async function fetchCountryJobsData(iso3, iso2) {
+    if (countryJobsCache.has(iso3)) {
+      return countryJobsCache.get(iso3);
+    }
+    const cleanIso2 = (iso2 || '').toLowerCase();
+    const cleanIso3 = (iso3 || '').toLowerCase();
+    const primaryUrl = `/data/jobs/${cleanIso2 || cleanIso3}.json`;
+    const fallbackUrl = `/data/jobs/${cleanIso3}.json`;
+
+    try {
+      let res = await fetch(primaryUrl);
+      if (!res.ok && primaryUrl !== fallbackUrl) {
+        res = await fetch(fallbackUrl);
+      }
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const data = await res.json();
+      countryJobsCache.set(iso3, data);
+      return data;
+    } catch (err) {
+      console.error(`Failed to load jobs for ${iso3}:`, err);
+      return null;
+    }
+  }
+
+  function renderJobCard(job) {
+    const roleSlug = job.category_id ? job.category_id.replace(/_/g, '-') : null;
+    const roleHref = roleSlug ? (pageLang === 'cs' ? `/cs/roles/${roleSlug}` : `/roles/${roleSlug}`) : null;
+    const roleDisplay = escapeHtml(job.role_name || job.category_id || 'Other');
+    const compDisplay = escapeHtml(job.company_name || 'Enterprise Employer');
+    const titleDisplay = escapeHtml(job.title);
+    const cityDisplay = job.city ? escapeHtml(`• ${job.city}`) : '';
+    const senDisplay = job.seniority ? escapeHtml(`• ${job.seniority}`) : '';
+    const dateDisplay = job.posted_at ? escapeHtml(`• ${job.posted_at}`) : '';
+    const spBadge = job.is_sp500
+      ? '<span class="text-[9px] font-mono px-1.5 py-0.2 rounded bg-amber-950/80 border border-amber-600/40 text-amber-300 shrink-0">S&P 500</span>'
+      : '';
+    const roleTagHtml = roleHref
+      ? `<a href="${roleHref}" class="inline-flex items-center gap-1 text-[11px] text-cyan-400 hover:text-cyan-300 hover:underline shrink-0" title="Role profile for ${roleDisplay}">🏷️ ${roleDisplay}</a>`
+      : `<span class="text-[11px] text-cyan-400">🏷️ ${roleDisplay}</span>`;
+
+    return `
+      <div class="job-item p-3 rounded-lg bg-slate-900/90 border border-slate-800/90 hover:border-cyan-500/40 transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-inner">
+        <div class="space-y-1 min-w-0 flex-1">
+          <div class="flex items-center gap-2 flex-wrap">
+            <a href="${escapeHtml(job.url)}" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-white tracking-tight hover:text-cyan-300 transition-colors">
+              ${titleDisplay}
+            </a>
+            ${spBadge}
+          </div>
+          <div class="flex items-center gap-2 text-xs font-mono text-slate-400 flex-wrap">
+            <span class="text-slate-200 font-medium">${compDisplay}</span>
+            ${cityDisplay ? `<span>${cityDisplay}</span>` : ''}
+            ${senDisplay ? `<span>${senDisplay}</span>` : ''}
+            ${dateDisplay ? `<span class="text-slate-500">${dateDisplay}</span>` : ''}
+            ${roleTagHtml}
+          </div>
+        </div>
+        <a href="${escapeHtml(job.url)}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-1 px-3 py-1.5 rounded-md text-xs font-mono font-semibold bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 hover:bg-cyan-500/30 hover:border-cyan-300 transition-all shrink-0 whitespace-nowrap shadow-sm">
+          <span>${escapeHtml(i18nConfig.applyBtn)}</span>
+        </a>
+      </div>
+    `;
+  }
+
+  function updateCountryJobsUI(iso3) {
+    const container = document.getElementById(`jobs-container-${iso3}`);
+    if (!container) return;
+
+    const data = countryJobsCache.get(iso3);
+    if (!data) return;
+
+    const filter = countryFilters.get(iso3) || { role: 'all', search: '' };
+    const query = filter.search.toLowerCase().trim();
+    const role = filter.role;
+
+    // Filter jobs
+    const filtered = (data.jobs || []).filter(job => {
+      if (role && role !== 'all') {
+        const matchesCat = job.category_id === role;
+        const matchesList = Array.isArray(job.categories) && job.categories.includes(role);
+        if (!matchesCat && !matchesList) return false;
+      }
+      if (query) {
+        const t = (job.title || '').toLowerCase();
+        const c = (job.company_name || '').toLowerCase();
+        const ci = (job.city || '').toLowerCase();
+        const r = (job.role_name || '').toLowerCase();
+        if (!t.includes(query) && !c.includes(query) && !ci.includes(query) && !r.includes(query)) {
+          return false;
+        }
+      }
+      return true;
+    });
+
+    // Update count label
+    const countLabel = container.querySelector('.country-jobs-count-label');
+    if (countLabel) {
+      countLabel.textContent = i18nConfig.showingCount
+        .replace('{count}', filtered.length)
+        .replace('{total}', data.total_jobs || data.jobs.length);
+    }
+
+    // Update jobs list
+    const listEl = container.querySelector('.dynamic-jobs-list');
+    if (listEl) {
+      if (filtered.length === 0) {
+        listEl.innerHTML = `
+          <div class="p-6 rounded-lg bg-slate-900/60 border border-slate-800 text-center space-y-2">
+            <p class="text-xs font-mono text-slate-400">${escapeHtml(i18nConfig.noMatching)}</p>
+            <button type="button" class="btn-reset-country-filter px-3 py-1 rounded text-xs font-mono bg-cyan-950/60 text-cyan-300 border border-cyan-700/50 hover:bg-cyan-900/60 transition-colors cursor-pointer" data-iso3="${iso3}">
+              ${escapeHtml(i18nConfig.resetFilter)}
+            </button>
+          </div>
+        `;
+        const resetBtn = listEl.querySelector('.btn-reset-country-filter');
+        if (resetBtn) {
+          resetBtn.addEventListener('click', () => {
+            selectCountryRole(iso3, 'all');
+            const searchInput = container.querySelector('.country-jobs-search-input');
+            if (searchInput) searchInput.value = '';
+            countryFilters.set(iso3, { role: 'all', search: '' });
+            updateCountryJobsUI(iso3);
+          });
+        }
+      } else {
+        listEl.innerHTML = filtered.map(renderJobCard).join('');
+      }
+    }
+  }
+
+  function selectCountryRole(iso3, roleId) {
+    const parentDetail = document.getElementById(`detail-${iso3}`);
+    if (!parentDetail) return;
+
+    // Update role pills styling
+    parentDetail.querySelectorAll('.country-role-pill').forEach(pill => {
+      const pRole = pill.getAttribute('data-role');
+      if (pRole === roleId) {
+        pill.className = 'country-role-pill px-2.5 py-1 rounded text-xs font-mono font-medium transition-all shrink-0 cursor-pointer bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 shadow-sm';
+      } else {
+        pill.className = 'country-role-pill px-2.5 py-1 rounded text-xs font-mono font-medium transition-all shrink-0 cursor-pointer bg-slate-900 text-slate-400 border border-slate-800 hover:border-slate-700 hover:text-slate-200';
+      }
+    });
+
+    const current = countryFilters.get(iso3) || { role: 'all', search: '' };
+    current.role = roleId;
+    countryFilters.set(iso3, current);
+  }
+
+  async function activateCountryJobsExplorer(iso3, iso2, targetRole = 'all') {
+    const container = document.getElementById(`jobs-container-${iso3}`);
+    if (!container) return;
+
+    // If already showing dynamic explorer, just switch role filter
+    if (countryJobsCache.has(iso3) && container.querySelector('.dynamic-jobs-explorer')) {
+      selectCountryRole(iso3, targetRole);
+      updateCountryJobsUI(iso3);
+      return;
+    }
+
+    // Show loading state
+    container.innerHTML = `
+      <div class="p-8 rounded-lg bg-slate-900/60 border border-slate-800/80 flex flex-col items-center justify-center gap-3 text-cyan-400 font-mono text-xs">
+        <svg class="animate-spin h-5 w-5 text-cyan-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+        </svg>
+        <span>${escapeHtml(i18nConfig.loading)}</span>
+      </div>
+    `;
+
+    const data = await fetchCountryJobsData(iso3, iso2);
+    if (!data) {
+      container.innerHTML = `
+        <div class="p-4 rounded-lg bg-red-950/40 border border-red-800/50 text-red-300 font-mono text-xs">
+          ${escapeHtml(i18nConfig.loadError)}
+        </div>
+      `;
+      return;
+    }
+
+    countryFilters.set(iso3, { role: targetRole, search: '' });
+    selectCountryRole(iso3, targetRole);
+
+    container.innerHTML = `
+      <div class="dynamic-jobs-explorer space-y-3">
+        <!-- Toolbar: Search & Count Status -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 p-2.5 rounded-lg bg-slate-900/80 border border-slate-800">
+          <div class="relative flex-1">
+            <span class="absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-500 text-xs">🔍</span>
+            <input
+              type="text"
+              placeholder="${escapeHtml(i18nConfig.searchPlaceholder)}"
+              class="country-jobs-search-input w-full pl-8 pr-3 py-1.5 bg-slate-950 border border-slate-800 rounded text-xs font-mono text-slate-200 placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition-colors"
+            />
+          </div>
+          <div class="flex items-center justify-between sm:justify-end gap-3 text-xs font-mono text-slate-400">
+            <span class="country-jobs-count-label text-[11px] text-cyan-300 font-semibold"></span>
+          </div>
+        </div>
+
+        <!-- Scrollable List of Jobs -->
+        <div class="dynamic-jobs-list max-h-[520px] overflow-y-auto pr-1 space-y-2.5 custom-scrollbar"></div>
+      </div>
+    `;
+
+    const searchInput = container.querySelector('.country-jobs-search-input');
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        const filter = countryFilters.get(iso3) || { role: 'all', search: '' };
+        filter.search = e.target.value;
+        countryFilters.set(iso3, filter);
+        updateCountryJobsUI(iso3);
+      });
+    }
+
+    updateCountryJobsUI(iso3);
+  }
+
+  // Delegated event listener for pills, quick filters, and browse-all buttons
+  document.addEventListener('click', (e) => {
+    const pill = e.target.closest('.country-role-pill');
+    if (pill) {
+      const iso3 = pill.getAttribute('data-iso3');
+      const iso2 = pill.getAttribute('data-iso2');
+      const role = pill.getAttribute('data-role');
+      if (iso3) activateCountryJobsExplorer(iso3, iso2, role);
+      return;
+    }
+
+    const quickFilterBtn = e.target.closest('.country-role-quick-filter');
+    if (quickFilterBtn) {
+      const iso3 = quickFilterBtn.getAttribute('data-iso3');
+      const iso2 = quickFilterBtn.getAttribute('data-iso2');
+      const role = quickFilterBtn.getAttribute('data-role');
+      if (iso3) activateCountryJobsExplorer(iso3, iso2, role);
+      return;
+    }
+
+    const loadAllBtn = e.target.closest('.btn-load-all-jobs');
+    if (loadAllBtn) {
+      const iso3 = loadAllBtn.getAttribute('data-iso3');
+      const iso2 = loadAllBtn.getAttribute('data-iso2');
+      if (iso3) activateCountryJobsExplorer(iso3, iso2, 'all');
+      return;
+    }
+  });
+
+  // 6. Deep Linking & URL Hash / Parameter Navigation
+  function handleDeepLink() {
+    const hash = window.location.hash || '';
+    const search = window.location.search || '';
+    let targetCountry = null;
+    let targetRole = null;
+
+    // Check hash format: #country-CZE&role=data_engineer or #country-CZE or #country-CZ
+    if (hash.startsWith('#country-')) {
+      const raw = hash.substring(9);
+      const parts = raw.split('&');
+      targetCountry = parts[0];
+      for (let i = 1; i < parts.length; i++) {
+        if (parts[i].startsWith('role=')) {
+          targetRole = parts[i].substring(5);
+        }
+      }
+    } else if (hash.startsWith('#')) {
+      const cleanHash = hash.substring(1);
+      if (cleanHash && cleanHash.length <= 4) {
+        targetCountry = cleanHash;
+      }
+    }
+
+    // Check URL query parameters ?country=CZE&role=data_engineer
+    if (!targetCountry && search) {
+      const params = new URLSearchParams(search);
+      targetCountry = params.get('country');
+      if (params.get('role')) {
+        targetRole = params.get('role');
+      }
+    }
+
+    if (!targetCountry) return;
+
+    targetCountry = targetCountry.toUpperCase();
+    let iso3 = targetCountry;
+    if (targetCountry.length === 2) {
+      const found = countries.find(c => c.country_code_alpha2 === targetCountry);
+      if (found) iso3 = found.country_code_alpha3;
+    }
+
+    const row = document.querySelector(`.country-row[data-iso3="${iso3}"]`);
+    if (row) {
+      row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      row.classList.add('bg-cyan-950/60');
+      setTimeout(() => row.classList.remove('bg-cyan-950/60'), 2200);
+      toggleDetailRow(iso3, true);
+
+      const iso2 = row.getAttribute('data-iso2') || iso3.toLowerCase();
+      if (targetRole) {
+        activateCountryJobsExplorer(iso3, iso2, targetRole);
+      }
+    }
+  }
+
+  window.addEventListener('hashchange', handleDeepLink);
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    setTimeout(handleDeepLink, 150);
+  } else {
+    document.addEventListener('DOMContentLoaded', () => setTimeout(handleDeepLink, 150));
+  }
 </script>
