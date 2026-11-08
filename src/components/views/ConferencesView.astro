@@ -1,0 +1,573 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ShareBar from '../ShareBar.astro';
+import NewsletterCta from '../NewsletterCta.astro';
+import { ui, type Locale } from '../../i18n/ui';
+import {
+  CONFERENCES_DATA,
+  type ConferenceItem,
+  type ConferenceRegion,
+  type ConferenceFormat,
+  type ConferenceTopic,
+} from '../../data/conferences';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = ui[lang].conferences;
+
+// Sort conferences chronologically by startDate
+const conferences = [...CONFERENCES_DATA].sort((a, b) => a.startDate.localeCompare(b.startDate));
+
+// Compute summary metrics
+const totalCount = conferences.length;
+const europeCount = conferences.filter((c) => c.region === 'Europe').length;
+const openCfpCount = conferences.filter((c) => c.cfpStatus === 'open').length;
+const flagshipCount = conferences.filter((c) => c.isFlagship).length;
+
+// Helper to format date range
+function formatDateRange(startDateStr: string, endDateStr: string, locale: Locale): string {
+  try {
+    const s = new Date(startDateStr);
+    const e = new Date(endDateStr);
+
+    const monthName = s.toLocaleDateString(locale === 'cs' ? 'cs-CZ' : 'en-US', { month: 'short' });
+    const sDay = s.getDate();
+    const eDay = e.getDate();
+    const year = s.getFullYear();
+
+    if (sDay === eDay) {
+      return `${sDay} ${monthName} ${year}`;
+    }
+    return `${sDay}–${eDay} ${monthName} ${year}`;
+  } catch {
+    return `${startDateStr} - ${endDateStr}`;
+  }
+}
+
+// Helper to format CFP deadline
+function formatCfpDeadline(dateStr: string | undefined, locale: Locale): string {
+  if (!dateStr) return '';
+  try {
+    const d = new Date(dateStr);
+    return d.toLocaleDateString(locale === 'cs' ? 'cs-CZ' : 'en-US', {
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric',
+    });
+  } catch {
+    return dateStr;
+  }
+}
+
+// Flag mapping helper
+const countryFlags: Record<string, string> = {
+  US: '🇺🇸',
+  GB: '🇬🇧',
+  NL: '🇳🇱',
+  CZ: '🇨🇿',
+  FR: '🇫🇷',
+  DE: '🇩🇪',
+  ES: '🇪🇸',
+};
+
+// Schema.org Event JSON-LD markup
+const conferencesJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: t.title,
+  description: t.pageDescription,
+  itemListElement: conferences.map((conf, idx) => ({
+    '@type': 'ListItem',
+    position: idx + 1,
+    item: {
+      '@type': 'Event',
+      name: conf.name,
+      description: conf.description[lang],
+      startDate: conf.startDate,
+      endDate: conf.endDate,
+      eventAttendanceMode:
+        conf.format === 'virtual'
+          ? 'https://schema.org/OnlineEventAttendanceMode'
+          : conf.format === 'hybrid'
+          ? 'https://schema.org/MixedEventAttendanceMode'
+          : 'https://schema.org/OfflineEventAttendanceMode',
+      eventStatus: 'https://schema.org/EventScheduled',
+      location: {
+        '@type': 'Place',
+        name: conf.venue || `${conf.city}, ${conf.country}`,
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: conf.city,
+          addressCountry: conf.countryCode,
+        },
+      },
+      organizer: {
+        '@type': 'Organization',
+        name: conf.organizer,
+      },
+      url: conf.websiteUrl,
+    },
+  })),
+};
+---
+
+<Layout
+  title={t.pageTitle}
+  description={t.pageDescription}
+  activeNav="conferences"
+  lang={lang}
+  jsonLd={conferencesJsonLd}
+>
+  <!-- Hero Section -->
+  <section class="mb-10 pb-8 border-b border-slate-800/80">
+    <div class="max-w-4xl space-y-3">
+      <span class="text-xs font-mono uppercase tracking-widest text-cyan-400">{t.tag}</span>
+      <h1 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+        {t.title}
+      </h1>
+      <p class="text-sm sm:text-base text-slate-300 leading-relaxed font-light">
+        {t.subtitle}
+      </p>
+    </div>
+  </section>
+
+  <!-- Metric Highlights Bar -->
+  <section class="mb-10 grid grid-cols-2 sm:grid-cols-4 gap-4">
+    <div class="p-4 rounded-xl panel-surface border border-slate-800 flex flex-col justify-between">
+      <span class="text-xs font-mono text-slate-400">{lang === 'cs' ? 'Celkem konferencí' : 'Tracked Summits'}</span>
+      <div class="text-2xl font-bold text-white font-mono mt-1">{totalCount}</div>
+      <span class="text-[11px] text-slate-500 font-mono mt-1">{lang === 'cs' ? 'Roky 2026–2027' : '2026-2027 Cycles'}</span>
+    </div>
+
+    <div class="p-4 rounded-xl panel-surface border border-slate-800 flex flex-col justify-between">
+      <span class="text-xs font-mono text-slate-400">{lang === 'cs' ? 'Vlajkové summity' : 'Flagship Events'}</span>
+      <div class="text-2xl font-bold text-cyan-300 font-mono mt-1">{flagshipCount}</div>
+      <span class="text-[11px] text-slate-500 font-mono mt-1">Databricks, Google, dbt, Snowflake</span>
+    </div>
+
+    <div class="p-4 rounded-xl panel-surface border border-slate-800 flex flex-col justify-between">
+      <span class="text-xs font-mono text-slate-400">{lang === 'cs' ? 'Evropské summity' : 'European Events'}</span>
+      <div class="text-2xl font-bold text-indigo-300 font-mono mt-1">{europeCount}</div>
+      <span class="text-[11px] text-slate-500 font-mono mt-1">London, Amsterdam, Paris, Prague</span>
+    </div>
+
+    <div class="p-4 rounded-xl panel-surface border border-slate-800 flex flex-col justify-between">
+      <span class="text-xs font-mono text-slate-400">{lang === 'cs' ? 'Otevřené přihlášky (CFP)' : 'Open Call for Papers'}</span>
+      <div class="text-2xl font-bold text-emerald-400 font-mono mt-1">{openCfpCount}</div>
+      <span class="text-[11px] text-emerald-400/80 font-mono mt-1">{lang === 'cs' ? 'Možnost přednášet 🎤' : 'Submit your talk 🎤'}</span>
+    </div>
+  </section>
+
+  <!-- Interactive Search & Filter Toolbar -->
+  <section class="mb-8 p-5 sm:p-6 rounded-xl panel-surface border border-slate-800/90 shadow-md">
+    <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-slate-800/80">
+      <!-- Search Input -->
+      <div class="flex-1 max-w-md relative">
+        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-500">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </div>
+        <input
+          type="search"
+          id="conf-search-input"
+          placeholder={t.searchPlaceholder}
+          class="w-full pl-9 pr-3 py-2 bg-slate-900/90 border border-slate-700/80 rounded-lg text-xs font-mono text-slate-200 placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-colors"
+        />
+      </div>
+
+      <!-- Quick Status Toggles -->
+      <div class="flex flex-wrap items-center gap-2 text-xs font-mono">
+        <button
+          type="button"
+          id="toggle-cfp-btn"
+          class="px-3 py-1.5 rounded-lg border transition-all inline-flex items-center gap-1.5 bg-slate-900 text-slate-300 border-slate-800 hover:border-emerald-500/50"
+          data-active="false"
+        >
+          <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+          <span>{t.filterCfpOnly}</span>
+        </button>
+
+        <button
+          type="button"
+          id="reset-filters-btn"
+          class="px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-white border border-slate-800 transition-colors hidden"
+        >
+          {t.resetFilters}
+        </button>
+      </div>
+    </div>
+
+    <!-- Category / Filter Pills -->
+    <div class="pt-4 flex flex-wrap items-center gap-2">
+      <span class="text-xs font-mono text-slate-400 mr-2">{lang === 'cs' ? 'Region:' : 'Region:'}</span>
+      <button
+        type="button"
+        class="region-btn px-3 py-1 rounded-full text-xs font-mono transition-all bg-cyan-500/20 text-cyan-300 border border-cyan-500/40"
+        data-region="all"
+      >
+        {t.filterRegionAll}
+      </button>
+      <button
+        type="button"
+        class="region-btn px-3 py-1 rounded-full text-xs font-mono transition-all bg-slate-900 text-slate-400 border border-slate-800 hover:border-slate-700 hover:text-slate-200"
+        data-region="Europe"
+      >
+        🇪🇺 Europe
+      </button>
+      <button
+        type="button"
+        class="region-btn px-3 py-1 rounded-full text-xs font-mono transition-all bg-slate-900 text-slate-400 border border-slate-800 hover:border-slate-700 hover:text-slate-200"
+        data-region="North America"
+      >
+        🇺🇸 North America
+      </button>
+    </div>
+
+    <!-- Topic Pills -->
+    <div class="pt-3 flex flex-wrap items-center gap-2">
+      <span class="text-xs font-mono text-slate-400 mr-2">{lang === 'cs' ? 'Téma:' : 'Topic:'}</span>
+      <button
+        type="button"
+        class="topic-btn px-3 py-1 rounded-full text-xs font-mono transition-all bg-indigo-500/20 text-indigo-300 border border-indigo-500/40"
+        data-topic="all"
+      >
+        {t.filterTopicAll}
+      </button>
+      <button
+        type="button"
+        class="topic-btn px-3 py-1 rounded-full text-xs font-mono transition-all bg-slate-900 text-slate-400 border border-slate-800 hover:border-slate-700 hover:text-slate-200"
+        data-topic="Data Engineering"
+      >
+        Data Engineering
+      </button>
+      <button
+        type="button"
+        class="topic-btn px-3 py-1 rounded-full text-xs font-mono transition-all bg-slate-900 text-slate-400 border border-slate-800 hover:border-slate-700 hover:text-slate-200"
+        data-topic="Applied AI & LLMs"
+      >
+        Applied AI & LLMs
+      </button>
+      <button
+        type="button"
+        class="topic-btn px-3 py-1 rounded-full text-xs font-mono transition-all bg-slate-900 text-slate-400 border border-slate-800 hover:border-slate-700 hover:text-slate-200"
+        data-topic="Cloud & Warehousing"
+      >
+        Cloud & Warehousing
+      </button>
+      <button
+        type="button"
+        class="topic-btn px-3 py-1 rounded-full text-xs font-mono transition-all bg-slate-900 text-slate-400 border border-slate-800 hover:border-slate-700 hover:text-slate-200"
+        data-topic="Analytics & BI"
+      >
+        Analytics & BI
+      </button>
+    </div>
+  </section>
+
+  <!-- Conferences List Section -->
+  <section class="mb-14 space-y-4">
+    <div class="flex items-center justify-between text-xs font-mono text-slate-400 px-1">
+      <span id="results-count-text">
+        {totalCount} {t.conferencesCount}
+      </span>
+      <span class="text-slate-500">
+        {lang === 'cs' ? 'Seřazeno chronologicky' : 'Chronological order'}
+      </span>
+    </div>
+
+    <!-- Cards Grid -->
+    <div id="conferences-grid" class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      {conferences.map((conf) => {
+        const flag = countryFlags[conf.countryCode] || '🌐';
+        const dateRangeStr = formatDateRange(conf.startDate, conf.endDate, lang);
+
+        return (
+          <article
+            class="conf-card rounded-xl border border-slate-800/90 bg-slate-900/70 p-5 sm:p-6 flex flex-col justify-between hover:border-cyan-500/40 hover:bg-slate-900/95 transition-all shadow-md group"
+            data-region={conf.region}
+            data-topics={JSON.stringify(conf.topics)}
+            data-cfp={conf.cfpStatus}
+            data-search={[conf.name, conf.organizer, conf.city, conf.country, ...conf.topics].join(' ').toLowerCase()}
+          >
+            <div class="space-y-3.5">
+              <!-- Top Row: Date badge + Flagship/Organizer -->
+              <div class="flex items-center justify-between gap-2 text-xs font-mono">
+                <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-cyan-950/70 text-cyan-300 border border-cyan-800/60 font-semibold">
+                  <svg class="w-3.5 h-3.5 text-cyan-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  <span>{dateRangeStr}</span>
+                </div>
+
+                <div class="flex items-center gap-1.5">
+                  {conf.isFlagship && (
+                    <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-amber-500/15 text-amber-300 border border-amber-500/40">
+                      ★ {t.flagshipBadge}
+                    </span>
+                  )}
+                  <span class="text-[11px] text-slate-400 font-mono">{conf.format}</span>
+                </div>
+              </div>
+
+              <!-- Title & Location -->
+              <div>
+                <h3 class="text-lg sm:text-xl font-bold text-white group-hover:text-cyan-300 transition-colors tracking-tight">
+                  {conf.name}
+                </h3>
+                <div class="flex items-center gap-2 text-xs font-mono text-slate-300 mt-1">
+                  <span>{flag}</span>
+                  <span class="font-semibold">{conf.city}, {conf.country}</span>
+                  {conf.venue && <span class="text-slate-500 hidden sm:inline">({conf.venue})</span>}
+                </div>
+                <div class="text-[11px] font-mono text-slate-400 mt-0.5">
+                  <span>{lang === 'cs' ? 'Pořadatel:' : 'Organized by:'} <strong class="text-slate-300">{conf.organizer}</strong></span>
+                  {conf.attendeesCount && (
+                    <span class="ml-2 text-slate-500">• {t.expectedAttendees} {conf.attendeesCount}</span>
+                  )}
+                </div>
+              </div>
+
+              <!-- Description -->
+              <p class="text-xs text-slate-300 leading-relaxed font-light line-clamp-3">
+                {conf.description[lang]}
+              </p>
+
+              <!-- Topic Chips -->
+              <div class="flex flex-wrap gap-1.5 pt-1">
+                {conf.topics.map((top) => (
+                  <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-800 text-slate-300 border border-slate-700/60">
+                    {top}
+                  </span>
+                ))}
+              </div>
+
+              <!-- CFP Notice if Open -->
+              {conf.cfpStatus === 'open' && (
+                <div class="p-3 rounded-lg bg-emerald-950/40 border border-emerald-500/30 text-xs font-mono flex items-center justify-between gap-2">
+                  <div class="flex items-center gap-2 text-emerald-300">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span class="font-bold">{t.openCfpBadge}</span>
+                    {conf.cfpDeadline && (
+                      <span class="text-[11px] text-emerald-400/80">
+                        {t.cfpDeadlinePrefix} {formatCfpDeadline(conf.cfpDeadline, lang)}
+                      </span>
+                    )}
+                  </div>
+                  {conf.cfpUrl && (
+                    <a
+                      href={conf.cfpUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-[11px] font-bold text-emerald-300 hover:text-emerald-200 underline shrink-0"
+                    >
+                      {t.submitCfp}
+                    </a>
+                  )}
+                </div>
+              )}
+            </div>
+
+            <!-- Bottom Actions -->
+            <div class="pt-4 mt-4 border-t border-slate-800/80 flex items-center justify-between gap-3">
+              <a
+                href={conf.websiteUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="px-3.5 py-1.5 rounded-lg bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border border-cyan-500/40 text-xs font-mono font-semibold transition-all inline-flex items-center gap-1.5 group-hover:border-cyan-400"
+              >
+                <span>{t.officialSite}</span>
+              </a>
+
+              <div class="text-[11px] font-mono text-slate-500">
+                <span>{conf.region}</span>
+              </div>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+
+    <!-- Empty State -->
+    <div id="no-confs-msg" class="hidden p-12 text-center rounded-xl panel-surface border border-dashed border-slate-800 space-y-3">
+      <div class="text-2xl">📅</div>
+      <p class="text-xs font-mono text-slate-400">{t.noConferencesFound}</p>
+      <button
+        type="button"
+        id="empty-reset-btn"
+        class="px-4 py-2 rounded-lg bg-cyan-500/15 text-cyan-300 border border-cyan-500/40 text-xs font-mono font-semibold"
+      >
+        {t.resetFilters}
+      </button>
+    </div>
+  </section>
+
+  <!-- Newsletter Capture -->
+  <section class="mb-14">
+    <NewsletterCta lang={lang} topic="Global Data & AI Conferences" />
+  </section>
+
+  <!-- Social Sharing Bar -->
+  <section class="mb-14">
+    <ShareBar
+      lang={lang}
+      title={t.pageTitle}
+      subtitle={t.pageDescription}
+      sourceUrl={`https://vector87.com${lang === 'en' ? '' : '/cs'}/conferences`}
+    />
+  </section>
+</Layout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('conf-search-input') as HTMLInputElement | null;
+    const toggleCfpBtn = document.getElementById('toggle-cfp-btn');
+    const resetFiltersBtn = document.getElementById('reset-filters-btn');
+    const emptyResetBtn = document.getElementById('empty-reset-btn');
+    const regionBtns = document.querySelectorAll('.region-btn');
+    const topicBtns = document.querySelectorAll('.topic-btn');
+    const cards = document.querySelectorAll('.conf-card');
+    const countText = document.getElementById('results-count-text');
+    const emptyState = document.getElementById('no-confs-msg');
+
+    let currentRegion = 'all';
+    let currentTopic = 'all';
+    let onlyCfpOpen = false;
+    let searchQuery = '';
+
+    function applyFilters() {
+      let visibleCount = 0;
+
+      cards.forEach((card) => {
+        const region = card.getAttribute('data-region') || '';
+        const topicsRaw = card.getAttribute('data-topics') || '[]';
+        const cfp = card.getAttribute('data-cfp') || '';
+        const searchContent = card.getAttribute('data-search') || '';
+
+        let topics: string[] = [];
+        try {
+          topics = JSON.parse(topicsRaw);
+        } catch {}
+
+        const matchesRegion = currentRegion === 'all' || region === currentRegion;
+        const matchesTopic = currentTopic === 'all' || topics.includes(currentTopic);
+        const matchesCfp = !onlyCfpOpen || cfp === 'open';
+        const matchesSearch = !searchQuery || searchContent.includes(searchQuery);
+
+        if (matchesRegion && matchesTopic && matchesCfp && matchesSearch) {
+          (card as HTMLElement).style.display = '';
+          visibleCount++;
+        } else {
+          (card as HTMLElement).style.display = 'none';
+        }
+      });
+
+      if (countText) {
+        countText.textContent = `${visibleCount} conferences displayed`;
+      }
+
+      if (emptyState) {
+        if (visibleCount === 0) {
+          emptyState.classList.remove('hidden');
+        } else {
+          emptyState.classList.add('hidden');
+        }
+      }
+
+      const isFiltered = currentRegion !== 'all' || currentTopic !== 'all' || onlyCfpOpen || searchQuery !== '';
+      if (resetFiltersBtn) {
+        if (isFiltered) {
+          resetFiltersBtn.classList.remove('hidden');
+        } else {
+          resetFiltersBtn.classList.add('hidden');
+        }
+      }
+    }
+
+    function resetAll() {
+      currentRegion = 'all';
+      currentTopic = 'all';
+      onlyCfpOpen = false;
+      searchQuery = '';
+      if (searchInput) searchInput.value = '';
+
+      regionBtns.forEach((b) => {
+        const reg = b.getAttribute('data-region');
+        if (reg === 'all') {
+          b.className = 'region-btn px-3 py-1 rounded-full text-xs font-mono transition-all bg-cyan-500/20 text-cyan-300 border border-cyan-500/40';
+        } else {
+          b.className = 'region-btn px-3 py-1 rounded-full text-xs font-mono transition-all bg-slate-900 text-slate-400 border border-slate-800 hover:border-slate-700 hover:text-slate-200';
+        }
+      });
+
+      topicBtns.forEach((b) => {
+        const top = b.getAttribute('data-topic');
+        if (top === 'all') {
+          b.className = 'topic-btn px-3 py-1 rounded-full text-xs font-mono transition-all bg-indigo-500/20 text-indigo-300 border border-indigo-500/40';
+        } else {
+          b.className = 'topic-btn px-3 py-1 rounded-full text-xs font-mono transition-all bg-slate-900 text-slate-400 border border-slate-800 hover:border-slate-700 hover:text-slate-200';
+        }
+      });
+
+      if (toggleCfpBtn) {
+        toggleCfpBtn.setAttribute('data-active', 'false');
+        toggleCfpBtn.className = 'px-3 py-1.5 rounded-lg border transition-all inline-flex items-center gap-1.5 bg-slate-900 text-slate-300 border-slate-800 hover:border-emerald-500/50';
+      }
+
+      applyFilters();
+    }
+
+    // Search Input
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        searchQuery = ((e.target as HTMLInputElement).value || '').trim().toLowerCase();
+        applyFilters();
+      });
+    }
+
+    // Region Switcher
+    regionBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        regionBtns.forEach((b) => {
+          b.className = 'region-btn px-3 py-1 rounded-full text-xs font-mono transition-all bg-slate-900 text-slate-400 border border-slate-800 hover:border-slate-700 hover:text-slate-200';
+        });
+        btn.className = 'region-btn px-3 py-1 rounded-full text-xs font-mono transition-all bg-cyan-500/20 text-cyan-300 border border-cyan-500/40';
+        currentRegion = btn.getAttribute('data-region') || 'all';
+        applyFilters();
+      });
+    });
+
+    // Topic Switcher
+    topicBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        topicBtns.forEach((b) => {
+          b.className = 'topic-btn px-3 py-1 rounded-full text-xs font-mono transition-all bg-slate-900 text-slate-400 border border-slate-800 hover:border-slate-700 hover:text-slate-200';
+        });
+        btn.className = 'topic-btn px-3 py-1 rounded-full text-xs font-mono transition-all bg-indigo-500/20 text-indigo-300 border border-indigo-500/40';
+        currentTopic = btn.getAttribute('data-topic') || 'all';
+        applyFilters();
+      });
+    });
+
+    // Toggle CFP
+    if (toggleCfpBtn) {
+      toggleCfpBtn.addEventListener('click', () => {
+        onlyCfpOpen = !onlyCfpOpen;
+        if (onlyCfpOpen) {
+          toggleCfpBtn.setAttribute('data-active', 'true');
+          toggleCfpBtn.className = 'px-3 py-1.5 rounded-lg border transition-all inline-flex items-center gap-1.5 bg-emerald-500/20 text-emerald-300 border-emerald-500/50 font-bold';
+        } else {
+          toggleCfpBtn.setAttribute('data-active', 'false');
+          toggleCfpBtn.className = 'px-3 py-1.5 rounded-lg border transition-all inline-flex items-center gap-1.5 bg-slate-900 text-slate-300 border-slate-800 hover:border-emerald-500/50';
+        }
+        applyFilters();
+      });
+    }
+
+    if (resetFiltersBtn) resetFiltersBtn.addEventListener('click', resetAll);
+    if (emptyResetBtn) emptyResetBtn.addEventListener('click', resetAll);
+  });
+</script>

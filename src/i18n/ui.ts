@@ -1,6 +1,6 @@
 export type Locale = 'en' | 'cs';
 
-export type NavKey = 'dashboard' | 'roles' | 'technologies' | 'compare' | 'cloud' | 'places' | 'academy' | 'about';
+export type NavKey = 'dashboard' | 'roles' | 'technologies' | 'compare' | 'cloud' | 'places' | 'academy' | 'conferences' | 'about';
 
 const PATH_MAP: Record<NavKey, string> = {
   dashboard: '/',
@@ -10,6 +10,7 @@ const PATH_MAP: Record<NavKey, string> = {
   cloud: '/cloud-tech',
   places: '/places',
   academy: '/academy',
+  conferences: '/conferences',
   about: '/about',
 };
 
@@ -34,6 +35,7 @@ export const ui = {
       cloud: 'Cloud & Tech',
       places: 'Places',
       academy: 'Academy',
+      conferences: 'Conferences',
       about: 'About',
       mainAria: 'Main navigation',
       mobileAria: 'Mobile navigation',
@@ -664,6 +666,31 @@ export const ui = {
       seniorityRatio: 'Senior+ Ratio',
       positionsWord: 'positions',
     },
+    conferences: {
+      pageTitle: 'Data & AI Conferences Calendar 2026-2027 | Vector87',
+      pageDescription:
+        'Global and European directory of premier Data Engineering, Cloud Architecture, and Applied AI conferences. Track CFP deadlines, venues, and topics.',
+      tag: '05 // COMMUNITY & ECOSYSTEM RADAR',
+      title: 'Global Data & AI Conferences Calendar',
+      subtitle:
+        'A curated radar of premier industry summits and community gatherings across Data Engineering, Lakehouse Architecture, Cloud Warehousing, and Frontier AI. Track dates, locations, and open Call for Papers (CFP) deadlines.',
+      filterRegionAll: 'All Regions',
+      filterFormatAll: 'All Formats',
+      filterTopicAll: 'All Topics',
+      filterCfpOnly: 'CFP Open Now 🎤',
+      searchPlaceholder: 'Filter conferences (e.g. London, San Francisco, Databricks, Next, dbt)...',
+      openCfpBadge: 'CFP OPEN',
+      closedCfpBadge: 'CFP CLOSED',
+      tbaCfpBadge: 'CFP TBA',
+      cfpDeadlinePrefix: 'CFP Closes:',
+      expectedAttendees: 'Attendees:',
+      officialSite: 'Official Website ↗',
+      submitCfp: 'Submit Talk (CFP) ↗',
+      noConferencesFound: 'No conferences match your selected filters.',
+      resetFilters: 'Reset filters',
+      conferencesCount: 'conferences tracked',
+      flagshipBadge: 'FLAGSHIP SUMMIT',
+    },
     places: {
       pageTitle: 'Vector87 | Future Tracker — Country Ranking & Places Index',
       pageDescription:
@@ -843,6 +870,7 @@ export const ui = {
       cloud: 'Cloud & Tech',
       places: 'Místa k životu',
       academy: 'Akademie',
+      conferences: 'Konference',
       about: 'O autorovi',
       mainAria: 'Hlavní navigace',
       mobileAria: 'Mobilní navigace',
@@ -1472,6 +1500,31 @@ export const ui = {
       sp500Share: 'Pozice v S&P 500',
       seniorityRatio: 'Podíl Senior+',
       positionsWord: 'pozic',
+    },
+    conferences: {
+      pageTitle: 'Kalendář Data & AI konferencí 2026-2027 | Vector87',
+      pageDescription:
+        'Globální a evropský přehled předních konferencí o datovém inženýrství, cloudové architektuře a AI. Termíny, lokality a uzávěrky Call for Papers (CFP).',
+      tag: '05 // KOMUNITA & EKOSYSTÉMOVÝ RADAR',
+      title: 'Kalendář Data & AI konferencí',
+      subtitle:
+        'Kurátorovaný přehled klíčových světových i evropských oborových summitů a komunitních akcí v oblastech datového inženýrství, lakehouse systémů, cloudových skladů a aplikované AI. Sledujte termíny, místa a otevřené přihlášky přednášek (CFP).',
+      filterRegionAll: 'Všechny regiony',
+      filterFormatAll: 'Všechny formáty',
+      filterTopicAll: 'Všechna témata',
+      filterCfpOnly: 'Otevřené CFP 🎤',
+      searchPlaceholder: 'Hledat konferenci (např. Praha, Londýn, Databricks, dbt, Spark)...',
+      openCfpBadge: 'CFP OTEVŘENO',
+      closedCfpBadge: 'CFP UZAVŘENO',
+      tbaCfpBadge: 'CFP BUDE OZNÁMEN',
+      cfpDeadlinePrefix: 'Uzávěrka CFP:',
+      expectedAttendees: 'Účastníků:',
+      officialSite: 'Oficiální web ↗',
+      submitCfp: 'Přihlásit přednášku (CFP) ↗',
+      noConferencesFound: 'Žádné konference neodpovídají zvoleným filtrům.',
+      resetFilters: 'Obnovit filtry',
+      conferencesCount: 'sledovaných konferencí',
+      flagshipBadge: 'HLAVNÍ SUMMIT',
     },
     places: {
       pageTitle: 'Vector87 | Future Tracker — Žebříček zemí a index lokalit',
