@@ -20,7 +20,7 @@ country ranking (unique combination), and one person cannot sustain two sites' S
 - Data: pre-generated JSON committed into this repo
 
 ## Localization (i18n)
-- Two supported locales: **English (`en`, primary/default)** at root routes (`/`, `/roles`, `/roles/[id]`, `/technologies`, `/technologies/[id]`, `/cloud-tech`, `/academy`, `/academy/podcasts`, `/about`) and **Czech (`cs`)** at `/cs/*` (`/cs/`, `/cs/roles`, `/cs/roles/[id]`, `/cs/technologies`, `/cs/technologies/[id]`, `/cs/cloud-tech`, `/cs/academy`, `/cs/academy/podcasts`, `/cs/about`). Old `/gcp-hub` and `/cs/gcp-hub` routes redirect to the Cloud & Tech section.
+- Two supported locales: **English (`en`, primary/default)** at root routes (`/`, `/roles`, `/roles/[id]`, `/technologies`, `/technologies/[id]`, `/compare`, `/compare/[slug]`, `/cloud-tech`, `/academy`, `/academy/podcasts`, `/about`) and **Czech (`cs`)** at `/cs/*` (`/cs/`, `/cs/roles`, `/cs/roles/[id]`, `/cs/technologies`, `/cs/technologies/[id]`, `/cs/compare`, `/cs/compare/[slug]`, `/cs/cloud-tech`, `/cs/academy`, `/cs/academy/podcasts`, `/cs/about`). Old `/gcp-hub` and `/cs/gcp-hub` routes redirect to the Cloud & Tech section.
 - Architecture follows Rule #10 (Generic base + delta): shared view components in `src/components/views/` render both languages using typed dictionaries in `src/i18n/ui.ts` and localized `en`/`cs` fields in `src/data/market-data.json`.
 
 ## Visual identity

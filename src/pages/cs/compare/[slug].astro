@@ -1,0 +1,37 @@
+---
+import CompareDetailView from '../../../components/views/CompareDetailView.astro';
+import { COMPARISONS_CATALOG } from '../../../data/comparisons';
+
+export async function getStaticPaths() {
+  const paths: any[] = [];
+  for (const comp of COMPARISONS_CATALOG) {
+    paths.push({
+      params: { slug: comp.slug },
+      props: { slug: comp.slug, isAlias: false },
+    });
+    if (comp.aliases) {
+      for (const alias of comp.aliases) {
+        paths.push({
+          params: { slug: alias },
+          props: { slug: comp.slug, isAlias: true, targetSlug: comp.slug },
+        });
+      }
+    }
+  }
+  return paths;
+}
+
+interface Props {
+  slug: string;
+  isAlias: boolean;
+  targetSlug?: string;
+}
+
+const { slug, isAlias, targetSlug } = Astro.props;
+
+if (isAlias && targetSlug) {
+  return Astro.redirect(`/cs/compare/${targetSlug}`, 301);
+}
+---
+
+<CompareDetailView lang="cs" slug={slug} />

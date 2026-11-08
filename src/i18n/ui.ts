@@ -1,11 +1,12 @@
 export type Locale = 'en' | 'cs';
 
-export type NavKey = 'dashboard' | 'roles' | 'technologies' | 'cloud' | 'places' | 'academy' | 'about';
+export type NavKey = 'dashboard' | 'roles' | 'technologies' | 'compare' | 'cloud' | 'places' | 'academy' | 'about';
 
 const PATH_MAP: Record<NavKey, string> = {
   dashboard: '/',
   roles: '/roles',
   technologies: '/technologies',
+  compare: '/compare',
   cloud: '/cloud-tech',
   places: '/places',
   academy: '/academy',
@@ -29,6 +30,7 @@ export const ui = {
       dashboard: 'Dashboard',
       roles: 'Roles',
       technologies: 'Technologies',
+      compare: 'Compare',
       cloud: 'Cloud & Tech',
       places: 'Places',
       academy: 'Academy',
@@ -782,6 +784,7 @@ export const ui = {
       dashboard: 'Přehled trhu',
       roles: 'Analýza rolí',
       technologies: 'Technologie',
+      compare: 'Srovnání',
       cloud: 'Cloud & Tech',
       places: 'Místa k životu',
       academy: 'Akademie',
