@@ -12,6 +12,21 @@ export interface VennItem {
   };
 }
 
+export interface DiagramBullets {
+  left: {
+    en: string[];
+    cs: string[];
+  };
+  shared: {
+    en: string[];
+    cs: string[];
+  };
+  right: {
+    en: string[];
+    cs: string[];
+  };
+}
+
 export interface ComparisonDefinition {
   slug: string; // canonical slug, e.g. 'data-analyst-vs-data-scientist'
   type: 'role' | 'technology';
@@ -30,6 +45,7 @@ export interface ComparisonDefinition {
     en: string[];
     cs: string[];
   };
+  diagramBullets?: DiagramBullets;
   uniqueA: VennItem[];
   shared: VennItem[];
   uniqueB: VennItem[];
@@ -86,6 +102,7 @@ export interface ComparisonResolved {
     topSkills: Array<{ name: string; pct: number }>;
     kebabSlug: string;
   };
+  diagramBullets?: DiagramBullets;
   uniqueA: VennItem[];
   shared: VennItem[];
   uniqueB: VennItem[];
@@ -128,6 +145,44 @@ export const COMPARISONS_CATALOG: ComparisonDefinition[] = [
         'Hranice mezi Data Analystem a Data Scientistem bývá často zaměňována. V podnikové praxi je však rozdíl zřetelný: Data Analyst analyzuje historická a aktuální data pro podporu byznysových rozhodnutí, zatímco Data Scientist vytváří matematické a prediktivní modely strojového učení předpovídající budoucí vývoj.',
         'Obě role sdílejí nutnost pokročilého SQL a čištění dat. Zásadně se však rozcházejí v nástrojích: Analytik se soustředí na BI platformy (Power BI, Tableau, Excel) a dimenzionální modelování, zatímco Data Scientist na pokročilý Python, scikit-learn, PyTorch a statistické testování hypotéz.',
       ],
+    },
+    diagramBullets: {
+      left: {
+        en: [
+          'Provide insights into business performance & trends',
+          'Develop analytical systems to act as a single source of truth',
+          'Explain outcomes via data visualization & KPI monitoring',
+        ],
+        cs: [
+          'Poskytování vhledu do výkonnosti byznysu a trendů',
+          'Vývoj analytických systémů a jednotného zdroje pravdy',
+          'Interpretace výsledků, vizualizace dat a sledování KPI',
+        ],
+      },
+      shared: {
+        en: [
+          'Data gathering & extraction',
+          'Data cleaning & wrangling',
+          'Exploratory data analysis (EDA)',
+        ],
+        cs: [
+          'Získávání a extrakce dat',
+          'Čištění a transformace dat',
+          'Explorační analýza dat (EDA)',
+        ],
+      },
+      right: {
+        en: [
+          'Develop predictive models & algorithms for business forecasting',
+          'Generate hypotheses & statistical experiment design',
+          'Deploy machine learning models & data software products',
+        ],
+        cs: [
+          'Vývoj prediktivních modelů a algoritmů pro předpověď vývoje',
+          'Formulace hypotéz a navrhování statistických experimentů',
+          'Nasazování modelů strojového učení do produkce',
+        ],
+      },
     },
     uniqueA: [
       {
@@ -290,6 +345,44 @@ export const COMPARISONS_CATALOG: ComparisonDefinition[] = [
         'Obě role denně pracují se SQL a kvalitou dat. Data Engineer však vystupuje jako backendový softwarový inženýr: ovládá distribuované výpočty (Apache Spark), orchestrátory (Apache Airflow) a cloudové platformy (AWS S3, Databricks, Snowflake). Analytik se soustředí na sémantiku, metriky a vizualizaci.',
       ],
     },
+    diagramBullets: {
+      left: {
+        en: [
+          'Extract commercial value & KPI trees from curated data',
+          'Executive BI dashboards, dimensional semantic models & ad-hoc queries',
+          'Bridge quantitative insights with corporate strategy & operations',
+        ],
+        cs: [
+          'Tvorba hierarchie KPI a extrakce byznysové hodnoty z dat',
+          'Manažerské BI dashboardy, sémantické modely a ad-hoc analýzy',
+          'Propojení datových výstupů s firemní strategií a exekutivou',
+        ],
+      },
+      shared: {
+        en: [
+          'Advanced relational SQL & dimensional schema modeling',
+          'Data warehouse navigation (Snowflake, BigQuery, Databricks)',
+          'Data quality validation, documentation & governance',
+        ],
+        cs: [
+          'Pokročilé relační SQL a dimenzionální modelování schémat',
+          'Práce s cloudovými sklady (Snowflake, BigQuery, Databricks)',
+          'Validace kvality dat, dokumentace a správa metadat',
+        ],
+      },
+      right: {
+        en: [
+          'Build scalable, distributed ETL/ELT pipelines & streaming ingestion',
+          'Warehouse & lakehouse performance optimization, clustering & partitioning',
+          'CI/CD automation, orchestration (Airflow/Dagster) & infrastructure as code',
+        ],
+        cs: [
+          'Vývoj škálovatelných ETL/ELT pipeline a streamingových architektur',
+          'Optimalizace skladů a lakehouse, particionování a clustering',
+          'Automatizace CI/CD, orchestrace (Airflow/Dagster) a infrastruktura',
+        ],
+      },
+    },
     uniqueA: [
       {
         name: 'Power BI & Tableau',
@@ -436,6 +529,44 @@ export const COMPARISONS_CATALOG: ComparisonDefinition[] = [
         'AI Developer integruje hotové základní modely (Gemini, Claude, GPT-4) do produktů pomocí agentních frameworků (LangGraph, CrewAI), vektorového vyhledávání (RAG) a evaluačních smyček. ML Engineer navrhuje architektury na míru, ladí váhy v PyTorch a optimalizuje GPU inferenční servery.',
       ],
     },
+    diagramBullets: {
+      left: {
+        en: [
+          'Build AI-augmented applications, agentic workflows & UX interfaces',
+          'Prompt engineering, structured output parsing & function calling',
+          'Integrate foundation model APIs (Gemini, Claude, OpenAI) into products',
+        ],
+        cs: [
+          'Vývoj aplikací s AI agenty a interaktivním uživatelským rozhraním',
+          'Prompt engineering, parsování strukturovaných výstupů a function calling',
+          'Integrace API velkých jazykových modelů (Gemini, Claude, OpenAI)',
+        ],
+      },
+      shared: {
+        en: [
+          'Python software engineering & modern API architectures',
+          'Vector embeddings, semantic chunking & RAG retrieval pipelines',
+          'Automated LLM evaluation frameworks & latency profiling',
+        ],
+        cs: [
+          'Vývoj v Pythonu a moderní API mikroservisní architektura',
+          'Vektorové embeddingy, chunking a RAG retrieval pipeline',
+          'Evaluační frameworky pro LLM a profilování latence systémů',
+        ],
+      },
+      right: {
+        en: [
+          'Train, fine-tune & quantize custom neural architectures in PyTorch',
+          'Distributed GPU cluster training, tensor parallelism & mixed precision',
+          'Production model serving (vLLM, Triton), caching & MLOps pipelines',
+        ],
+        cs: [
+          'Trénování, fine-tuning a kvantizace neuronových sítí v PyTorch',
+          'Distribuované trénování na GPU clusterech a tensor parallelism',
+          'Produkční model serving (vLLM, Triton), monitoring a MLOps pipeline',
+        ],
+      },
+    },
     uniqueA: [
       {
         name: 'AI Agents & Agentic Workflows',
@@ -576,6 +707,44 @@ export const COMPARISONS_CATALOG: ComparisonDefinition[] = [
         'V aktivních inzerátech si Databricks udržuje vyšší počet otevřených pozic (854 pozic oproti 527 u Snowflake), zejména u Data Engineerů a architektů zpracovávajících velké objemy dat v PySparku. Snowflake naopak exceluje u Analytics Engineerů, BI specialistů a týmů stavějících na čistém SQL a dbt.',
       ],
     },
+    diagramBullets: {
+      left: {
+        en: [
+          'Unified Apache Spark distributed compute & streaming engine',
+          'Native MLflow experiment registry & Mosaic AI model training',
+          'Unstructured video, audio & complex lakehouse workloads',
+        ],
+        cs: [
+          'Distribuovaný výpočetní engine Apache Spark a streaming',
+          'Nativní správa ML modelů v MLflow a trénování v Mosaic AI',
+          'Zpracování nestrukturovaných dat (video, audio, text) a lakehouse',
+        ],
+      },
+      shared: {
+        en: [
+          'Cloud-native separation of storage & elastic compute',
+          'ACID transaction guarantees & enterprise multi-cloud support',
+          'Centralized data governance, RBAC security & SQL querying',
+        ],
+        cs: [
+          'Oddělení cloudového úložiště od elastického výpočetního výkonu',
+          'ACID transakce a multi-cloud provoz (AWS, Azure, GCP)',
+          'Centralizovaná správa přístupů, governance a SQL analytika',
+        ],
+      },
+      right: {
+        en: [
+          'Zero-maintenance serverless multi-cluster shared data architecture',
+          'Instant secure cross-company data sharing & Snowflake Marketplace',
+          'Cortex AI serverless LLM functions & SQL-first enterprise warehousing',
+        ],
+        cs: [
+          'Bezúdržbová serverless architektura s automatickým škálováním',
+          'Okamžité sdílení dat mezi firmami bez nutnosti kopírování',
+          'Serverless Cortex AI funkce pro LLM a SQL-first datový sklad',
+        ],
+      },
+    },
     uniqueA: [
       {
         name: 'Apache Spark & PySpark Engine',
@@ -713,6 +882,7 @@ export function getComparison(slugOrAlias: string): ComparisonResolved | null {
         topSkills: (roleB.top_skills || []).slice(0, 6).map((s) => ({ name: s.skill_name, pct: s.penetration_pct })),
         kebabSlug: roleB.category_id.replace(/_/g, '-'),
       },
+      diagramBullets: def.diagramBullets,
       uniqueA: def.uniqueA,
       shared: def.shared,
       uniqueB: def.uniqueB,
@@ -756,6 +926,7 @@ export function getComparison(slugOrAlias: string): ComparisonResolved | null {
         topSkills: techB.topRoles.slice(0, 6).map((r) => ({ name: r.roleName, pct: r.penetrationPct })),
         kebabSlug: techB.id,
       },
+      diagramBullets: def.diagramBullets,
       uniqueA: def.uniqueA,
       shared: def.shared,
       uniqueB: def.uniqueB,
