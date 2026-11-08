@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import { getTechnology, type TechnologyResolved } from '../../data/technologies';
 import { COMPARISONS_CATALOG } from '../../data/comparisons';
 import { ui, getLocalePath, type Locale } from '../../i18n/ui';
+import ShareBar from '../ShareBar.astro';
 import NewsletterCta from '../NewsletterCta.astro';
 
 interface Props {
@@ -413,6 +414,15 @@ const jsonLd = {
           </div>
         </section>
       )}
+
+      <!-- Social Sharing & Link Bar -->
+      <ShareBar
+        lang={lang}
+        title={`${tech.name} Market Demand & Telemetry`}
+        subtitle={tech.description[lang]?.[0]}
+        sourceUrl={`https://vector87.com${lang === 'en' ? '' : '/cs'}/technologies/${tech.id}`}
+        className="mb-12"
+      />
 
       <!-- Substack / Newsletter CTA -->
       <NewsletterCta lang={lang} />

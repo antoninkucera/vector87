@@ -23,6 +23,20 @@ export function showExportToast(message: string): void {
   }, 2600);
 }
 
+export function copyLinkToClipboard(customUrl?: string, lang: 'en' | 'cs' = 'en'): void {
+  const url = customUrl || (typeof window !== 'undefined' ? window.location.href : 'https://vector87.com');
+  const cleanUrl = url.split('#')[0];
+
+  navigator.clipboard.writeText(cleanUrl).then(
+    () => {
+      showExportToast(lang === 'cs' ? '✓ Odkaz zkopírován do schránky' : '✓ Link copied to clipboard');
+    },
+    (err) => {
+      console.error('Failed to copy link:', err);
+    }
+  );
+}
+
 export function copyCitationToClipboard(title: string, customUrl?: string, lang: 'en' | 'cs' = 'en'): void {
   const url = customUrl || (typeof window !== 'undefined' ? window.location.href : 'https://vector87.com');
   const cleanUrl = url.split('#')[0];

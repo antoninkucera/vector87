@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { ui, type Locale } from '../../i18n/ui';
-import CitationBox from '../CitationBox.astro';
+import ShareBar from '../ShareBar.astro';
 
 interface Props {
   lang: Locale;
@@ -108,8 +108,8 @@ const methodologyJsonLd = {
         </p>
       </section>
 
-      <!-- Formal Citation & Academic Reference -->
-      <CitationBox
+      <!-- Social Sharing & Link Bar -->
+      <ShareBar
         lang={lang}
         title={t.pageTitle}
         sourceUrl={`https://vector87.com${lang === 'en' ? '' : '/cs'}/methodology`}

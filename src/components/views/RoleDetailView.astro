@@ -6,6 +6,7 @@ import { OPPORTUNITY_MATRIX_DATA } from '../../data/opportunity-matrix';
 import { ui, getLocalePath, type Locale } from '../../i18n/ui';
 import { getTechnology } from '../../data/technologies';
 import { COMPARISONS_CATALOG } from '../../data/comparisons';
+import ShareBar from '../ShareBar.astro';
 import NewsletterCta from '../NewsletterCta.astro';
 
 interface Props {
@@ -1020,6 +1021,16 @@ const roleDetailGraph = {
         <span>{lang === 'cs' ? 'Podcasty a pořady ↗' : 'Podcasts & Shows ↗'}</span>
       </a>
     </div>
+  </section>
+
+  <!-- Social Sharing Bar -->
+  <section class="mb-14">
+    <ShareBar
+      lang={lang}
+      title={`${role.canonical_name} Market Demand & Role Profile`}
+      subtitle={role.synthesized_description ? (lang === 'cs' ? role.synthesized_description.cs : role.synthesized_description.en).slice(0, 160) + '...' : undefined}
+      sourceUrl={`https://vector87.com${lang === 'en' ? '' : '/cs'}/roles/${role.category_id}`}
+    />
   </section>
 
   <!-- Newsletter Capture Callout -->

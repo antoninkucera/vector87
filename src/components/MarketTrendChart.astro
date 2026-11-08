@@ -73,16 +73,16 @@ const chartPayload = JSON.stringify({
         </svg>
       </button>
 
-      <!-- Chart Action: Copy Citation -->
+      <!-- Chart Action: Copy Direct Link -->
       <button
         type="button"
-        class="v87-cite-btn p-1.5 rounded-lg text-slate-400 hover:text-cyan-300 hover:bg-slate-800/80 border border-transparent hover:border-slate-700/60 transition-all cursor-pointer"
+        class="v87-copy-link-btn p-1.5 rounded-lg text-slate-400 hover:text-cyan-300 hover:bg-slate-800/80 border border-transparent hover:border-slate-700/60 transition-all cursor-pointer"
         data-title={title}
-        title="Copy formal research citation"
-        aria-label="Copy citation"
+        title="Copy direct link to this analysis"
+        aria-label="Copy link"
       >
         <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
         </svg>
       </button>
     </div>
@@ -123,7 +123,7 @@ const chartPayload = JSON.stringify({
 
 <script>
   import Chart from 'chart.js/auto';
-  import { exportChartAsBrandedPng, copyCitationToClipboard } from '../utils/telemetryExport';
+  import { exportChartAsBrandedPng, copyLinkToClipboard } from '../utils/telemetryExport';
 
   function initChartActions() {
     document.querySelectorAll<HTMLButtonElement>('.v87-export-png-btn').forEach((btn) => {
@@ -145,16 +145,15 @@ const chartPayload = JSON.stringify({
       });
     });
 
-    document.querySelectorAll<HTMLButtonElement>('.v87-cite-btn').forEach((btn) => {
+    document.querySelectorAll<HTMLButtonElement>('.v87-copy-link-btn').forEach((btn) => {
       if (btn.getAttribute('data-v87-bound')) return;
       btn.setAttribute('data-v87-bound', 'true');
 
       btn.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
-        const title = btn.getAttribute('data-title') || 'Vector87 Telemetry';
         const isCs = window.location.pathname.startsWith('/cs');
-        copyCitationToClipboard(title, undefined, isCs ? 'cs' : 'en');
+        copyLinkToClipboard(undefined, isCs ? 'cs' : 'en');
       });
     });
   }
