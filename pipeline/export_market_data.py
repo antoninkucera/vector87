@@ -416,6 +416,70 @@ def export_market_data(db_path: Path | None = None, output_path: Path | None = N
                 "top_roles": [{"canonical_name": r[0], "job_count": int(r[1])} for r in plat_roles],
             }
 
+        # Autonomous AI Agent Frameworks Adoption
+        agent_framework_defs = [
+            ("langchain", "LangChain", "Chains & Retrieval Orchestration", "Established ecosystem for LLM scaffolding, sequential tool pipelines, and prompt management."),
+            ("langgraph", "LangGraph", "Multi-Agent & Cyclic State Graphs", "State machine architecture with cyclical loops, branching, and human-in-the-loop control for robust agents."),
+            ("crewai", "CrewAI", "Role-Playing Multi-Agent Crews", "Autonomous multi-agent orchestration where agents assume specific roles, collaborate, and delegate tasks."),
+            ("autogen", "AutoGen", "Multi-Agent Conversational Workflows", "Microsoft framework enabling multi-agent collaborative chat, code execution, and autonomous problem solving."),
+            ("llama_index", "LlamaIndex", "Data Ingestion & Agentic RAG", "Data framework connecting enterprise data connectors and vector stores to reasoning LLM agents."),
+            ("semantic_kernel", "Semantic Kernel", "Enterprise SDK & Microsoft AI", "Microsoft enterprise SDK integrating LLMs with native code plugins, memories, and enterprise security."),
+        ]
+
+        agent_frameworks_data = []
+        total_agentic_jobs = con.execute("SELECT COUNT(DISTINCT job_id) FROM bridge_job_skills WHERE skill_id = 'ai_agents'").fetchone()[0] or 1612
+
+        for fid, fname, fcat, fsummary in agent_framework_defs:
+            f_row = con.execute(
+                """
+                SELECT 
+                    COUNT(DISTINCT b.job_id) AS cnt,
+                    ROUND(COUNT(DISTINCT b.job_id) * 100.0 / ?, 2) AS pen_pct,
+                    ROUND(COUNT(DISTINCT b.job_id) * 100.0 / ?, 1) AS share_agent_pct
+                FROM bridge_job_skills b
+                WHERE b.skill_id = ?
+                """,
+                [total_jobs, total_agentic_jobs, fid],
+            ).fetchone()
+
+            f_comps = con.execute(
+                """
+                SELECT c.company_name, c.sp500_sector, COUNT(*) AS cnt
+                FROM bridge_job_skills b
+                JOIN fact_jobs j ON b.job_id = j.job_id
+                JOIN dim_companies c ON j.company_id = c.company_id
+                WHERE b.skill_id = ?
+                GROUP BY 1, 2
+                ORDER BY 3 DESC
+                LIMIT 5
+                """,
+                [fid],
+            ).fetchall()
+
+            f_samples = con.execute(
+                """
+                SELECT j.title_raw, c.company_name, j.country_code, j.url
+                FROM bridge_job_skills b
+                JOIN fact_jobs j ON b.job_id = j.job_id
+                JOIN dim_companies c ON j.company_id = c.company_id
+                WHERE b.skill_id = ? AND j.url IS NOT NULL
+                LIMIT 3
+                """,
+                [fid],
+            ).fetchall()
+
+            agent_frameworks_data.append({
+                "skill_id": fid,
+                "name": fname,
+                "paradigm": fcat,
+                "summary": fsummary,
+                "job_count": int(f_row[0]),
+                "penetration_pct": float(f_row[1] or 0.0),
+                "share_of_agent_jobs_pct": float(f_row[2] or 0.0),
+                "top_companies": [{"company_name": r[0], "sector": r[1], "job_count": int(r[2])} for r in f_comps],
+                "sample_postings": [{"title": r[0], "company_name": r[1], "country_code": r[2], "url": r[3]} for r in f_samples],
+            })
+
         tech_cloud_stack = {
             "hyperscalers": hyperscalers,
             "data_platforms": data_platforms,
@@ -423,6 +487,7 @@ def export_market_data(db_path: Path | None = None, output_path: Path | None = N
             "skill_cooccurrence": skill_cooccurrence,
             "multicloud": multicloud_stats,
             "ecosystems": ecosystems,
+            "agent_frameworks": agent_frameworks_data,
         }
 
         # 3. Industry Heatmap (S&P 500 Sectors + Seniority matrix)
