@@ -67,7 +67,10 @@ const pageDescription = lang === 'en'
           const detailHref = `${lang === 'en' ? '/compare' : '/cs/compare'}/${comp.slug}`;
 
           return (
-            <article class="p-6 rounded-2xl bg-slate-900/40 hover:bg-slate-900/80 border border-slate-800/80 hover:border-indigo-500/40 transition-all duration-200 flex flex-col justify-between shadow-lg">
+            <a
+              href={detailHref}
+              class="group block p-6 rounded-2xl bg-slate-900/40 hover:bg-slate-900/80 border border-slate-800/80 hover:border-cyan-500/50 hover:shadow-xl hover:shadow-cyan-950/20 transition-all duration-200 flex flex-col justify-between"
+            >
               <div>
                 <div class="flex items-center justify-between gap-2 mb-3">
                   <span class="px-2 py-0.5 rounded text-[11px] font-mono font-bold bg-indigo-500/10 text-indigo-300 border border-indigo-500/20">
@@ -79,10 +82,8 @@ const pageDescription = lang === 'en'
                   </span>
                 </div>
 
-                <h2 class="text-2xl font-bold text-white mb-2">
-                  <a href={detailHref} class="hover:text-cyan-300 transition-colors">
-                    {comp.entityA.name} <span class="text-slate-500 font-normal">vs.</span> {comp.entityB.name}
-                  </a>
+                <h2 class="text-2xl font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors">
+                  {comp.entityA.name} <span class="text-slate-500 font-normal">vs.</span> {comp.entityB.name}
                 </h2>
 
                 <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed mb-6">
@@ -123,17 +124,14 @@ const pageDescription = lang === 'en'
                 </div>
               </div>
 
-              <!-- Footer CTA Link -->
-              <div class="mt-8 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs font-mono">
-                <a
-                  href={detailHref}
-                  class="inline-flex items-center gap-1.5 text-cyan-400 hover:text-cyan-300 font-semibold"
-                >
-                  <span>{lang === 'en' ? 'View Full Comparison & Venn Diagram' : 'Zobrazit srovnání & Vennův diagram'}</span>
-                </a>
-                <span class="text-slate-600">→</span>
+              <!-- Footer CTA Indicator -->
+              <div class="mt-8 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs font-mono text-cyan-400 font-semibold">
+                <span class="group-hover:text-cyan-300 transition-colors">
+                  {lang === 'en' ? 'View Full Comparison & Venn Diagram' : 'Zobrazit srovnání & Vennův diagram'}
+                </span>
+                <span class="text-slate-600 group-hover:text-cyan-400 group-hover:translate-x-1 transition-all">→</span>
               </div>
-            </article>
+            </a>
           );
         })}
       </div>

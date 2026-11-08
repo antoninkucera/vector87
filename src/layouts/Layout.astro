@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import marketData from '../data/market-data.json';
 import { ui, getLocalePath, type Locale, type NavKey } from '../i18n/ui';
+import CookieConsent from '../components/CookieConsent.astro';
 
 interface Props {
   title?: string;
@@ -99,15 +100,28 @@ const { meta, market_vitality } = marketData;
     <!-- Google Search Console Verification -->
     <meta name="google-site-verification" content="nK64geQVZxqABdHrt2uaPLgNmKHIFeZj4xUNEH1nC7k" />
 
-    <!-- Google tag (gtag.js) -->
-    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-QF8ZTJNDK1"></script>
+    <!-- Google Consent Mode v2 (Strict EU/CZ Opt-in: denied by default until user consents) -->
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
 
+      var storedConsent = null;
+      try {
+        storedConsent = localStorage.getItem('v87_consent');
+      } catch (e) {}
+
+      gtag('consent', 'default', {
+        'analytics_storage': storedConsent === 'granted' ? 'granted' : 'denied',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'wait_for_update': 500
+      });
+
+      gtag('js', new Date());
       gtag('config', 'G-QF8ZTJNDK1');
     </script>
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-QF8ZTJNDK1"></script>
   </head>
   <body class="text-slate-100 antialiased selection:bg-cyan-400/20 selection:text-cyan-200 flex flex-col min-h-screen">
     <!-- Top Live Telemetry Bar -->
@@ -275,6 +289,9 @@ const { meta, market_vitality } = marketData;
           <a href={lang === 'en' ? '/privacy' : '/cs/privacy'} class="hover:text-cyan-300 transition-colors">
             {t.footer.privacyPolicy}
           </a>
+          <button type="button" class="cookie-settings-trigger hover:text-cyan-300 transition-colors cursor-pointer text-left">
+            {t.footer.cookieSettings}
+          </button>
           <a href="mailto:antonio.kucera@gmail.com" class="hover:text-cyan-300 transition-colors">
             {t.footer.contact}
           </a>
@@ -301,5 +318,8 @@ const { meta, market_vitality } = marketData;
         </div>
       </div>
     </footer>
+
+    <!-- Cookie Consent Banner (Opt-in for GA4 under EU e-Privacy & GDPR) -->
+    <CookieConsent lang={lang} />
   </body>
 </html>
