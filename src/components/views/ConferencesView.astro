@@ -9,6 +9,7 @@ import {
   type ConferenceRegion,
   type ConferenceFormat,
   type ConferenceTopic,
+  type EventType,
 } from '../../data/conferences';
 
 interface Props {
@@ -18,32 +19,35 @@ interface Props {
 const { lang } = Astro.props;
 const t = ui[lang].conferences;
 
-// Sort conferences chronologically by startDate
-const conferences = [...CONFERENCES_DATA].sort((a, b) => a.startDate.localeCompare(b.startDate));
+// Sort: conferences by date, meetups clustered
+const events = [...CONFERENCES_DATA].sort((a, b) => a.startDate.localeCompare(b.startDate));
 
 // Compute summary metrics
-const totalCount = conferences.length;
-const europeCount = conferences.filter((c) => c.region === 'Europe').length;
-const openCfpCount = conferences.filter((c) => c.cfpStatus === 'open').length;
-const flagshipCount = conferences.filter((c) => c.isFlagship).length;
+const totalCount = events.length;
+const conferenceCount = events.filter((c) => c.type === 'conference').length;
+const czCount = events.filter((c) => c.region === 'Czech Republic' || c.countryCode === 'CZ').length;
+const openCfpCount = events.filter((c) => c.cfpStatus === 'open').length;
 
 // Helper to format date range
-function formatDateRange(startDateStr: string, endDateStr: string, locale: Locale): string {
+function formatDateRange(startDateStr: string, endDateStr?: string, locale: Locale = 'en'): string {
   try {
     const s = new Date(startDateStr);
-    const e = new Date(endDateStr);
-
     const monthName = s.toLocaleDateString(locale === 'cs' ? 'cs-CZ' : 'en-US', { month: 'short' });
     const sDay = s.getDate();
-    const eDay = e.getDate();
     const year = s.getFullYear();
 
+    if (!endDateStr) {
+      return `${sDay} ${monthName} ${year}`;
+    }
+
+    const e = new Date(endDateStr);
+    const eDay = e.getDate();
     if (sDay === eDay) {
       return `${sDay} ${monthName} ${year}`;
     }
     return `${sDay}–${eDay} ${monthName} ${year}`;
   } catch {
-    return `${startDateStr} - ${endDateStr}`;
+    return endDateStr ? `${startDateStr} - ${endDateStr}` : startDateStr;
   }
 }
 
@@ -79,7 +83,7 @@ const conferencesJsonLd = {
   '@type': 'ItemList',
   name: t.title,
   description: t.pageDescription,
-  itemListElement: conferences.map((conf, idx) => ({
+  itemListElement: events.map((conf, idx) => ({
     '@type': 'ListItem',
     position: idx + 1,
     item: {
@@ -87,7 +91,7 @@ const conferencesJsonLd = {
       name: conf.name,
       description: conf.description[lang],
       startDate: conf.startDate,
-      endDate: conf.endDate,
+      endDate: conf.endDate || conf.startDate,
       eventAttendanceMode:
         conf.format === 'virtual'
           ? 'https://schema.org/OnlineEventAttendanceMode'
@@ -137,33 +141,64 @@ const conferencesJsonLd = {
   <!-- Metric Highlights Bar -->
   <section class="mb-10 grid grid-cols-2 sm:grid-cols-4 gap-4">
     <div class="p-4 rounded-xl panel-surface border border-slate-800 flex flex-col justify-between">
-      <span class="text-xs font-mono text-slate-400">{lang === 'cs' ? 'Celkem konferencí' : 'Tracked Summits'}</span>
+      <span class="text-xs font-mono text-slate-400">{lang === 'cs' ? 'Celkem akcí' : 'Total Events'}</span>
       <div class="text-2xl font-bold text-white font-mono mt-1">{totalCount}</div>
-      <span class="text-[11px] text-slate-500 font-mono mt-1">{lang === 'cs' ? 'Roky 2026–2027' : '2026-2027 Cycles'}</span>
+      <span class="text-[11px] text-slate-500 font-mono mt-1">{lang === 'cs' ? 'Konference & Meetupy' : 'Summits & Meetups'}</span>
     </div>
 
     <div class="p-4 rounded-xl panel-surface border border-slate-800 flex flex-col justify-between">
-      <span class="text-xs font-mono text-slate-400">{lang === 'cs' ? 'Vlajkové summity' : 'Flagship Events'}</span>
-      <div class="text-2xl font-bold text-cyan-300 font-mono mt-1">{flagshipCount}</div>
-      <span class="text-[11px] text-slate-500 font-mono mt-1">Databricks, Google, dbt, Snowflake</span>
+      <span class="text-xs font-mono text-slate-400">{lang === 'cs' ? 'Velké konference' : 'Major Conferences'}</span>
+      <div class="text-2xl font-bold text-cyan-300 font-mono mt-1">{conferenceCount}</div>
+      <span class="text-[11px] text-slate-500 font-mono mt-1">Google, Databricks, dbt, Snowflake</span>
     </div>
 
-    <div class="p-4 rounded-xl panel-surface border border-slate-800 flex flex-col justify-between">
-      <span class="text-xs font-mono text-slate-400">{lang === 'cs' ? 'Evropské summity' : 'European Events'}</span>
-      <div class="text-2xl font-bold text-indigo-300 font-mono mt-1">{europeCount}</div>
-      <span class="text-[11px] text-slate-500 font-mono mt-1">London, Amsterdam, Paris, Prague</span>
+    <div class="p-4 rounded-xl panel-surface border border-cyan-500/30 bg-cyan-950/15 flex flex-col justify-between">
+      <span class="text-xs font-mono text-cyan-300">{lang === 'cs' ? '🇨🇿 Domácí trh (ČR)' : '🇨🇿 Czech Tech Hub'}</span>
+      <div class="text-2xl font-bold text-cyan-200 font-mono mt-1">{czCount}</div>
+      <span class="text-[11px] text-cyan-400/80 font-mono mt-1">{lang === 'cs' ? 'Praha & Brno komunity' : 'Prague & Brno Scene'}</span>
     </div>
 
     <div class="p-4 rounded-xl panel-surface border border-slate-800 flex flex-col justify-between">
       <span class="text-xs font-mono text-slate-400">{lang === 'cs' ? 'Otevřené přihlášky (CFP)' : 'Open Call for Papers'}</span>
       <div class="text-2xl font-bold text-emerald-400 font-mono mt-1">{openCfpCount}</div>
-      <span class="text-[11px] text-emerald-400/80 font-mono mt-1">{lang === 'cs' ? 'Možnost přednášet 🎤' : 'Submit your talk 🎤'}</span>
+      <span class="text-[11px] text-emerald-400/80 font-mono mt-1">{lang === 'cs' ? 'Přednášejte na akcích 🎤' : 'Submit your talk 🎤'}</span>
     </div>
   </section>
 
   <!-- Interactive Search & Filter Toolbar -->
   <section class="mb-8 p-5 sm:p-6 rounded-xl panel-surface border border-slate-800/90 shadow-md">
-    <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-slate-800/80">
+    <!-- Top Row: Event Type Switcher Tabs -->
+    <div class="flex flex-wrap items-center gap-2 pb-5 border-b border-slate-800/80">
+      <button
+        type="button"
+        class="type-tab-btn px-4 py-2 rounded-lg text-xs font-mono font-semibold transition-all bg-cyan-500/15 text-cyan-300 border border-cyan-500/40 shadow-sm shadow-cyan-950/40"
+        data-type="all"
+      >
+        <span>{lang === 'cs' ? 'Všechny akce' : 'All Events'} ({totalCount})</span>
+      </button>
+
+      <button
+        type="button"
+        class="type-tab-btn px-4 py-2 rounded-lg text-xs font-mono font-semibold transition-all bg-slate-900 text-slate-400 border border-slate-800 hover:border-slate-700 hover:text-slate-200"
+        data-type="conference"
+      >
+        <span>{lang === 'cs' ? 'Velké konference & summity' : 'Major Conferences'} ({conferenceCount})</span>
+      </button>
+
+      <button
+        type="button"
+        class="type-tab-btn px-4 py-2 rounded-lg text-xs font-mono font-semibold transition-all bg-slate-900 text-slate-400 border border-slate-800 hover:border-slate-700 hover:text-slate-200 flex items-center gap-1.5"
+        data-type="meetup"
+      >
+        <span>🇨🇿 {lang === 'cs' ? 'České meetupy a komunity' : 'Czech Meetups & Community'}</span>
+        <span class="px-1.5 py-0.2 rounded text-[10px] bg-cyan-950 text-cyan-300 border border-cyan-800/60 font-bold">
+          {events.filter((e) => e.type === 'meetup').length}
+        </span>
+      </button>
+    </div>
+
+    <!-- Search & Quick Toggles -->
+    <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 py-4 border-b border-slate-800/80">
       <!-- Search Input -->
       <div class="flex-1 max-w-md relative">
         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-500">
@@ -193,6 +228,16 @@ const conferencesJsonLd = {
 
         <button
           type="button"
+          id="toggle-cz-only-btn"
+          class="px-3 py-1.5 rounded-lg border transition-all inline-flex items-center gap-1.5 bg-slate-900 text-slate-300 border-slate-800 hover:border-cyan-500/50"
+          data-active="false"
+        >
+          <span>🇨🇿</span>
+          <span>{lang === 'cs' ? 'Pouze ČR' : 'Czechia Only'}</span>
+        </button>
+
+        <button
+          type="button"
           id="reset-filters-btn"
           class="px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-white border border-slate-800 transition-colors hidden"
         >
@@ -210,6 +255,13 @@ const conferencesJsonLd = {
         data-region="all"
       >
         {t.filterRegionAll}
+      </button>
+      <button
+        type="button"
+        class="region-btn px-3 py-1 rounded-full text-xs font-mono transition-all bg-slate-900 text-slate-400 border border-slate-800 hover:border-slate-700 hover:text-slate-200"
+        data-region="Czech Republic"
+      >
+        🇨🇿 Czech Republic
       </button>
       <button
         type="button"
@@ -265,51 +317,72 @@ const conferencesJsonLd = {
       >
         Analytics & BI
       </button>
+      <button
+        type="button"
+        class="topic-btn px-3 py-1 rounded-full text-xs font-mono transition-all bg-slate-900 text-slate-400 border border-slate-800 hover:border-slate-700 hover:text-slate-200"
+        data-topic="MLOps & Agents"
+      >
+        MLOps & Agents
+      </button>
     </div>
   </section>
 
-  <!-- Conferences List Section -->
+  <!-- Events Grid Section -->
   <section class="mb-14 space-y-4">
     <div class="flex items-center justify-between text-xs font-mono text-slate-400 px-1">
       <span id="results-count-text">
         {totalCount} {t.conferencesCount}
       </span>
       <span class="text-slate-500">
-        {lang === 'cs' ? 'Seřazeno chronologicky' : 'Chronological order'}
+        {lang === 'cs' ? 'Přehled ověřených akcí a komunit' : 'Verified industry summits & communities'}
       </span>
     </div>
 
     <!-- Cards Grid -->
     <div id="conferences-grid" class="grid grid-cols-1 md:grid-cols-2 gap-5">
-      {conferences.map((conf) => {
+      {events.map((conf) => {
         const flag = countryFlags[conf.countryCode] || '🌐';
         const dateRangeStr = formatDateRange(conf.startDate, conf.endDate, lang);
+        const isMeetup = conf.type === 'meetup';
 
         return (
           <article
             class="conf-card rounded-xl border border-slate-800/90 bg-slate-900/70 p-5 sm:p-6 flex flex-col justify-between hover:border-cyan-500/40 hover:bg-slate-900/95 transition-all shadow-md group"
+            data-type={conf.type}
             data-region={conf.region}
+            data-country={conf.countryCode}
             data-topics={JSON.stringify(conf.topics)}
             data-cfp={conf.cfpStatus}
             data-search={[conf.name, conf.organizer, conf.city, conf.country, ...conf.topics].join(' ').toLowerCase()}
           >
             <div class="space-y-3.5">
-              <!-- Top Row: Date badge + Flagship/Organizer -->
+              <!-- Top Row: Date/Frequency badge + Type/Flagship -->
               <div class="flex items-center justify-between gap-2 text-xs font-mono">
-                <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-cyan-950/70 text-cyan-300 border border-cyan-800/60 font-semibold">
-                  <svg class="w-3.5 h-3.5 text-cyan-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                  <span>{dateRangeStr}</span>
-                </div>
+                {isMeetup ? (
+                  <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-indigo-950/70 text-indigo-300 border border-indigo-800/60 font-semibold">
+                    <span>🔁</span>
+                    <span>{conf.frequency ? conf.frequency[lang] : (lang === 'cs' ? 'Pravidelný meetup' : 'Regular meetup')}</span>
+                  </div>
+                ) : (
+                  <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-cyan-950/70 text-cyan-300 border border-cyan-800/60 font-semibold">
+                    <svg class="w-3.5 h-3.5 text-cyan-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <span>{dateRangeStr}</span>
+                  </div>
+                )}
 
                 <div class="flex items-center gap-1.5">
-                  {conf.isFlagship && (
+                  {isMeetup ? (
+                    <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-emerald-500/15 text-emerald-300 border border-emerald-500/40">
+                      COMMUNITY
+                    </span>
+                  ) : conf.isFlagship ? (
                     <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-amber-500/15 text-amber-300 border border-amber-500/40">
                       ★ {t.flagshipBadge}
                     </span>
-                  )}
-                  <span class="text-[11px] text-slate-400 font-mono">{conf.format}</span>
+                  ) : null}
+                  <span class="text-[11px] text-slate-400 font-mono capitalize">{conf.format}</span>
                 </div>
               </div>
 
@@ -326,7 +399,7 @@ const conferencesJsonLd = {
                 <div class="text-[11px] font-mono text-slate-400 mt-0.5">
                   <span>{lang === 'cs' ? 'Pořadatel:' : 'Organized by:'} <strong class="text-slate-300">{conf.organizer}</strong></span>
                   {conf.attendeesCount && (
-                    <span class="ml-2 text-slate-500">• {t.expectedAttendees} {conf.attendeesCount}</span>
+                    <span class="ml-2 text-slate-500">• {conf.attendeesCount}</span>
                   )}
                 </div>
               </div>
@@ -373,17 +446,31 @@ const conferencesJsonLd = {
 
             <!-- Bottom Actions -->
             <div class="pt-4 mt-4 border-t border-slate-800/80 flex items-center justify-between gap-3">
-              <a
-                href={conf.websiteUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="px-3.5 py-1.5 rounded-lg bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border border-cyan-500/40 text-xs font-mono font-semibold transition-all inline-flex items-center gap-1.5 group-hover:border-cyan-400"
-              >
-                <span>{t.officialSite}</span>
-              </a>
+              <div class="flex items-center gap-2">
+                <a
+                  href={conf.websiteUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="px-3.5 py-1.5 rounded-lg bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border border-cyan-500/40 text-xs font-mono font-semibold transition-all inline-flex items-center gap-1.5 group-hover:border-cyan-400"
+                >
+                  <span>{isMeetup ? (lang === 'cs' ? 'Stránka komunity ↗' : 'Community Page ↗') : t.officialSite}</span>
+                </a>
+
+                {conf.communityLinks?.meetupUrl && (
+                  <a
+                    href={conf.communityLinks.meetupUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-colors text-xs font-mono"
+                    title="Meetup.com group"
+                  >
+                    Meetup ↗
+                  </a>
+                )}
+              </div>
 
               <div class="text-[11px] font-mono text-slate-500">
-                <span>{conf.region}</span>
+                <span>{conf.region === 'Czech Republic' ? '🇨🇿 Czechia' : conf.region}</span>
               </div>
             </div>
           </article>
@@ -407,7 +494,7 @@ const conferencesJsonLd = {
 
   <!-- Newsletter Capture -->
   <section class="mb-14">
-    <NewsletterCta lang={lang} topic="Global Data & AI Conferences" />
+    <NewsletterCta lang={lang} topic="Global & Czech Data/AI Events" />
   </section>
 
   <!-- Social Sharing Bar -->
@@ -425,24 +512,30 @@ const conferencesJsonLd = {
   document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('conf-search-input') as HTMLInputElement | null;
     const toggleCfpBtn = document.getElementById('toggle-cfp-btn');
+    const toggleCzBtn = document.getElementById('toggle-cz-only-btn');
     const resetFiltersBtn = document.getElementById('reset-filters-btn');
     const emptyResetBtn = document.getElementById('empty-reset-btn');
+    const typeTabs = document.querySelectorAll('.type-tab-btn');
     const regionBtns = document.querySelectorAll('.region-btn');
     const topicBtns = document.querySelectorAll('.topic-btn');
     const cards = document.querySelectorAll('.conf-card');
     const countText = document.getElementById('results-count-text');
     const emptyState = document.getElementById('no-confs-msg');
 
+    let currentType = 'all';
     let currentRegion = 'all';
     let currentTopic = 'all';
     let onlyCfpOpen = false;
+    let onlyCz = false;
     let searchQuery = '';
 
     function applyFilters() {
       let visibleCount = 0;
 
       cards.forEach((card) => {
+        const type = card.getAttribute('data-type') || '';
         const region = card.getAttribute('data-region') || '';
+        const country = card.getAttribute('data-country') || '';
         const topicsRaw = card.getAttribute('data-topics') || '[]';
         const cfp = card.getAttribute('data-cfp') || '';
         const searchContent = card.getAttribute('data-search') || '';
@@ -452,12 +545,14 @@ const conferencesJsonLd = {
           topics = JSON.parse(topicsRaw);
         } catch {}
 
+        const matchesType = currentType === 'all' || type === currentType;
         const matchesRegion = currentRegion === 'all' || region === currentRegion;
+        const matchesCz = !onlyCz || country === 'CZ' || region === 'Czech Republic';
         const matchesTopic = currentTopic === 'all' || topics.includes(currentTopic);
         const matchesCfp = !onlyCfpOpen || cfp === 'open';
         const matchesSearch = !searchQuery || searchContent.includes(searchQuery);
 
-        if (matchesRegion && matchesTopic && matchesCfp && matchesSearch) {
+        if (matchesType && matchesRegion && matchesCz && matchesTopic && matchesCfp && matchesSearch) {
           (card as HTMLElement).style.display = '';
           visibleCount++;
         } else {
@@ -466,7 +561,7 @@ const conferencesJsonLd = {
       });
 
       if (countText) {
-        countText.textContent = `${visibleCount} conferences displayed`;
+        countText.textContent = `${visibleCount} events displayed`;
       }
 
       if (emptyState) {
@@ -477,7 +572,14 @@ const conferencesJsonLd = {
         }
       }
 
-      const isFiltered = currentRegion !== 'all' || currentTopic !== 'all' || onlyCfpOpen || searchQuery !== '';
+      const isFiltered =
+        currentType !== 'all' ||
+        currentRegion !== 'all' ||
+        currentTopic !== 'all' ||
+        onlyCfpOpen ||
+        onlyCz ||
+        searchQuery !== '';
+
       if (resetFiltersBtn) {
         if (isFiltered) {
           resetFiltersBtn.classList.remove('hidden');
@@ -488,11 +590,22 @@ const conferencesJsonLd = {
     }
 
     function resetAll() {
+      currentType = 'all';
       currentRegion = 'all';
       currentTopic = 'all';
       onlyCfpOpen = false;
+      onlyCz = false;
       searchQuery = '';
       if (searchInput) searchInput.value = '';
+
+      typeTabs.forEach((b) => {
+        const t = b.getAttribute('data-type');
+        if (t === 'all') {
+          b.className = 'type-tab-btn px-4 py-2 rounded-lg text-xs font-mono font-semibold transition-all bg-cyan-500/15 text-cyan-300 border border-cyan-500/40 shadow-sm shadow-cyan-950/40';
+        } else {
+          b.className = 'type-tab-btn px-4 py-2 rounded-lg text-xs font-mono font-semibold transition-all bg-slate-900 text-slate-400 border border-slate-800 hover:border-slate-700 hover:text-slate-200';
+        }
+      });
 
       regionBtns.forEach((b) => {
         const reg = b.getAttribute('data-region');
@@ -517,8 +630,25 @@ const conferencesJsonLd = {
         toggleCfpBtn.className = 'px-3 py-1.5 rounded-lg border transition-all inline-flex items-center gap-1.5 bg-slate-900 text-slate-300 border-slate-800 hover:border-emerald-500/50';
       }
 
+      if (toggleCzBtn) {
+        toggleCzBtn.setAttribute('data-active', 'false');
+        toggleCzBtn.className = 'px-3 py-1.5 rounded-lg border transition-all inline-flex items-center gap-1.5 bg-slate-900 text-slate-300 border-slate-800 hover:border-cyan-500/50';
+      }
+
       applyFilters();
     }
+
+    // Type Tabs
+    typeTabs.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        typeTabs.forEach((b) => {
+          b.className = 'type-tab-btn px-4 py-2 rounded-lg text-xs font-mono font-semibold transition-all bg-slate-900 text-slate-400 border border-slate-800 hover:border-slate-700 hover:text-slate-200';
+        });
+        btn.className = 'type-tab-btn px-4 py-2 rounded-lg text-xs font-mono font-semibold transition-all bg-cyan-500/15 text-cyan-300 border border-cyan-500/40 shadow-sm shadow-cyan-950/40';
+        currentType = btn.getAttribute('data-type') || 'all';
+        applyFilters();
+      });
+    });
 
     // Search Input
     if (searchInput) {
@@ -562,6 +692,21 @@ const conferencesJsonLd = {
         } else {
           toggleCfpBtn.setAttribute('data-active', 'false');
           toggleCfpBtn.className = 'px-3 py-1.5 rounded-lg border transition-all inline-flex items-center gap-1.5 bg-slate-900 text-slate-300 border-slate-800 hover:border-emerald-500/50';
+        }
+        applyFilters();
+      });
+    }
+
+    // Toggle CZ Only
+    if (toggleCzBtn) {
+      toggleCzBtn.addEventListener('click', () => {
+        onlyCz = !onlyCz;
+        if (onlyCz) {
+          toggleCzBtn.setAttribute('data-active', 'true');
+          toggleCzBtn.className = 'px-3 py-1.5 rounded-lg border transition-all inline-flex items-center gap-1.5 bg-cyan-500/20 text-cyan-300 border-cyan-500/50 font-bold';
+        } else {
+          toggleCzBtn.setAttribute('data-active', 'false');
+          toggleCzBtn.className = 'px-3 py-1.5 rounded-lg border transition-all inline-flex items-center gap-1.5 bg-slate-900 text-slate-300 border-slate-800 hover:border-cyan-500/50';
         }
         applyFilters();
       });

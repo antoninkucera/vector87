@@ -1,6 +1,7 @@
 import type { Locale } from '../i18n/ui';
 
-export type ConferenceRegion = 'Europe' | 'North America' | 'Global / Online';
+export type EventType = 'conference' | 'meetup';
+export type ConferenceRegion = 'Europe' | 'North America' | 'Czech Republic' | 'Global / Online';
 export type ConferenceFormat = 'in-person' | 'virtual' | 'hybrid';
 export type ConferenceTopic =
   | 'Data Engineering'
@@ -9,14 +10,15 @@ export type ConferenceTopic =
   | 'MLOps & Agents'
   | 'Analytics & BI';
 
-export type CfpStatus = 'open' | 'closed' | 'tba';
+export type CfpStatus = 'open' | 'closed' | 'tba' | 'not-applicable';
 
 export interface ConferenceItem {
   id: string;
   name: string;
+  type: EventType;
   organizer: string;
-  startDate: string; // ISO YYYY-MM-DD
-  endDate: string; // ISO YYYY-MM-DD
+  startDate: string; // ISO YYYY-MM-DD (for conferences) or next scheduled date
+  endDate?: string; // ISO YYYY-MM-DD
   city: string;
   country: string;
   countryCode: string;
@@ -35,12 +37,46 @@ export interface ConferenceItem {
   cfpUrl?: string;
   attendeesCount?: string;
   isFlagship?: boolean;
+  frequency?: {
+    en: string;
+    cs: string;
+  }; // For regular meetups (e.g. Monthly, Quarterly)
+  communityLinks?: {
+    meetupUrl?: string;
+    linkedinUrl?: string;
+    discordUrl?: string;
+  };
 }
 
 export const CONFERENCES_DATA: ConferenceItem[] = [
+  // --- FLAGSHIP GLOBAL SUMMITS ---
+  {
+    id: 'google-cloud-next-2027',
+    name: 'Google Cloud Next 2027',
+    type: 'conference',
+    organizer: 'Google Cloud',
+    startDate: '2027-04-13',
+    endDate: '2027-04-15',
+    city: 'Las Vegas',
+    country: 'United States',
+    countryCode: 'US',
+    venue: 'Mandalay Bay Convention Center',
+    region: 'North America',
+    format: 'hybrid',
+    topics: ['Cloud & Warehousing', 'Applied AI & LLMs', 'Data Engineering'],
+    description: {
+      en: 'Google Cloud flagship showcase: foundational announcements for BigQuery, Vertex AI, Gemini models, Looker semantic layers, and modern data architecture.',
+      cs: 'Vlajková loď Google Cloud: klíčové novinky pro BigQuery, Vertex AI, modely Gemini, sémantickou vrstvu Lookeru a moderní datovou architekturu.',
+    },
+    websiteUrl: 'https://cloud.withgoogle.com/next',
+    cfpStatus: 'tba',
+    attendeesCount: '25,000+',
+    isFlagship: true,
+  },
   {
     id: 'data-ai-summit-2027',
     name: 'Data + AI Summit 2027',
+    type: 'conference',
     organizer: 'Databricks',
     startDate: '2027-06-07',
     endDate: '2027-06-10',
@@ -63,30 +99,9 @@ export const CONFERENCES_DATA: ConferenceItem[] = [
     isFlagship: true,
   },
   {
-    id: 'google-cloud-next-2027',
-    name: 'Google Cloud Next 2027',
-    organizer: 'Google Cloud',
-    startDate: '2027-04-13',
-    endDate: '2027-04-15',
-    city: 'Las Vegas',
-    country: 'United States',
-    countryCode: 'US',
-    venue: 'Mandalay Bay Convention Center',
-    region: 'North America',
-    format: 'hybrid',
-    topics: ['Cloud & Warehousing', 'Applied AI & LLMs', 'Data Engineering'],
-    description: {
-      en: 'Google Cloud flagship showcase: foundational announcements for BigQuery, Vertex AI, Gemini models, Looker semantic layers, and modern data architecture.',
-      cs: 'Vlajková loď Google Cloud: klíčové novinky pro BigQuery, Vertex AI, modely Gemini, sémantickou vrstvu Lookeru a moderní datovou architekturu.',
-    },
-    websiteUrl: 'https://cloud.withgoogle.com/next',
-    cfpStatus: 'tba',
-    attendeesCount: '25,000+',
-    isFlagship: true,
-  },
-  {
     id: 'snowflake-summit-2027',
     name: 'Snowflake Data Cloud Summit 2027',
+    type: 'conference',
     organizer: 'Snowflake',
     startDate: '2027-06-01',
     endDate: '2027-06-04',
@@ -109,6 +124,7 @@ export const CONFERENCES_DATA: ConferenceItem[] = [
   {
     id: 'coalesce-2027',
     name: 'Coalesce 2027 (The Analytics Engineering Conference)',
+    type: 'conference',
     organizer: 'dbt Labs',
     startDate: '2027-10-18',
     endDate: '2027-10-21',
@@ -129,8 +145,57 @@ export const CONFERENCES_DATA: ConferenceItem[] = [
     isFlagship: true,
   },
   {
+    id: 'aws-reinvent-2026',
+    name: 'AWS re:Invent 2026',
+    type: 'conference',
+    organizer: 'Amazon Web Services',
+    startDate: '2026-11-30',
+    endDate: '2026-12-04',
+    city: 'Las Vegas',
+    country: 'United States',
+    countryCode: 'US',
+    venue: 'Venetian Convention Center',
+    region: 'North America',
+    format: 'hybrid',
+    topics: ['Cloud & Warehousing', 'Applied AI & LLMs', 'Data Engineering'],
+    description: {
+      en: 'The grand scale cloud computing conference with landmark announcements across Amazon Redshift, Amazon Bedrock, Glue ETL, and multi-region infrastructure.',
+      cs: 'Největší cloudová konference na světě s klíčovými oznámeními pro Amazon Redshift, generativní AI platformu Bedrock, Glue ETL a distribuovanou infrastrukturu.',
+    },
+    websiteUrl: 'https://reinvent.awsevents.com/',
+    cfpStatus: 'closed',
+    attendeesCount: '65,000+',
+    isFlagship: true,
+  },
+
+  // --- MAJOR EUROPEAN CONFERENCES ---
+  {
+    id: 'mlprague-2027',
+    name: 'Machine Learning Prague (MLPrague) 2027',
+    type: 'conference',
+    organizer: 'MLPrague Team',
+    startDate: '2027-03-19',
+    endDate: '2027-03-21',
+    city: 'Prague',
+    country: 'Czech Republic',
+    countryCode: 'CZ',
+    venue: 'Clarion Congress Hotel Prague',
+    region: 'Czech Republic',
+    format: 'hybrid',
+    topics: ['Applied AI & LLMs', 'MLOps & Agents'],
+    description: {
+      en: "One of Europe's largest and most practical machine learning and generative AI conferences, featuring hands-on workshops and real engineering architectures.",
+      cs: 'Jedna z největších a nejprestižnějších praktických ML a AI konferencí v Evropě přímo v Praze, s workshopy a ukázkami reálných architektur.',
+    },
+    websiteUrl: 'https://www.mlprague.com/',
+    cfpStatus: 'closed',
+    attendeesCount: '1,200+',
+    isFlagship: true,
+  },
+  {
     id: 'big-data-london-2027',
     name: 'Big Data LDN (London) 2027',
+    type: 'conference',
     organizer: 'Big Data LDN',
     startDate: '2027-09-22',
     endDate: '2027-09-23',
@@ -155,6 +220,7 @@ export const CONFERENCES_DATA: ConferenceItem[] = [
   {
     id: 'kubecon-cloudnative-eu-2027',
     name: 'KubeCon + CloudNativeCon Europe 2027',
+    type: 'conference',
     organizer: 'Linux Foundation / CNCF',
     startDate: '2027-03-23',
     endDate: '2027-03-26',
@@ -177,6 +243,7 @@ export const CONFERENCES_DATA: ConferenceItem[] = [
   {
     id: 'pydata-london-2027',
     name: 'PyData London 2027',
+    type: 'conference',
     organizer: 'NumFOCUS',
     startDate: '2027-06-18',
     endDate: '2027-06-20',
@@ -199,6 +266,7 @@ export const CONFERENCES_DATA: ConferenceItem[] = [
   {
     id: 'pydata-amsterdam-2027',
     name: 'PyData Amsterdam 2027',
+    type: 'conference',
     organizer: 'NumFOCUS',
     startDate: '2027-09-15',
     endDate: '2027-09-17',
@@ -220,6 +288,7 @@ export const CONFERENCES_DATA: ConferenceItem[] = [
   {
     id: 'webexpo-2027',
     name: 'WebExpo Prague 2027',
+    type: 'conference',
     organizer: 'WebExpo',
     startDate: '2027-05-26',
     endDate: '2027-05-28',
@@ -227,7 +296,7 @@ export const CONFERENCES_DATA: ConferenceItem[] = [
     country: 'Czech Republic',
     countryCode: 'CZ',
     venue: 'Lucerna Palace',
-    region: 'Europe',
+    region: 'Czech Republic',
     format: 'in-person',
     topics: ['Applied AI & LLMs', 'Analytics & BI'],
     description: {
@@ -243,6 +312,7 @@ export const CONFERENCES_DATA: ConferenceItem[] = [
   {
     id: 'data-talk-prague-2027',
     name: 'Data Talk Prague 2027',
+    type: 'conference',
     organizer: 'Czech Data Community',
     startDate: '2027-04-22',
     endDate: '2027-04-22',
@@ -250,7 +320,7 @@ export const CONFERENCES_DATA: ConferenceItem[] = [
     country: 'Czech Republic',
     countryCode: 'CZ',
     venue: 'Cubex Centre Prague',
-    region: 'Europe',
+    region: 'Czech Republic',
     format: 'in-person',
     topics: ['Data Engineering', 'Cloud & Warehousing', 'Analytics & BI'],
     description: {
@@ -261,10 +331,12 @@ export const CONFERENCES_DATA: ConferenceItem[] = [
     cfpStatus: 'open',
     cfpDeadline: '2027-02-15',
     attendeesCount: '600+',
+    isFlagship: true,
   },
   {
     id: 'ai-engineer-summit-2027',
     name: 'AI Engineer World’s Fair 2027',
+    type: 'conference',
     organizer: 'AI Engineer Foundation',
     startDate: '2027-06-23',
     endDate: '2027-06-25',
@@ -285,30 +357,9 @@ export const CONFERENCES_DATA: ConferenceItem[] = [
     isFlagship: true,
   },
   {
-    id: 'aws-reinvent-2026',
-    name: 'AWS re:Invent 2026',
-    organizer: 'Amazon Web Services',
-    startDate: '2026-11-30',
-    endDate: '2026-12-04',
-    city: 'Las Vegas',
-    country: 'United States',
-    countryCode: 'US',
-    venue: 'Venetian Convention Center',
-    region: 'North America',
-    format: 'hybrid',
-    topics: ['Cloud & Warehousing', 'Applied AI & LLMs', 'Data Engineering'],
-    description: {
-      en: 'The grand scale cloud computing conference with landmark announcements across Amazon Redshift, Amazon Bedrock, Glue ETL, and multi-region infrastructure.',
-      cs: 'Největší cloudová konference na světě s klíčovými oznámeními pro Amazon Redshift, generativní AI platformu Bedrock, Glue ETL a distribuovanou infrastrukturu.',
-    },
-    websiteUrl: 'https://reinvent.awsevents.com/',
-    cfpStatus: 'closed',
-    attendeesCount: '65,000+',
-    isFlagship: true,
-  },
-  {
     id: 'big-data-ai-paris-2027',
     name: 'Big Data & AI Paris 2027',
+    type: 'conference',
     organizer: 'Corp Agency',
     startDate: '2027-10-12',
     endDate: '2027-10-13',
@@ -326,5 +377,275 @@ export const CONFERENCES_DATA: ConferenceItem[] = [
     websiteUrl: 'https://www.bigdataparis.com/',
     cfpStatus: 'tba',
     attendeesCount: '15,000+',
+  },
+  {
+    id: 'google-cloud-summit-prague-2027',
+    name: 'Google Cloud Summit Prague 2027',
+    type: 'conference',
+    organizer: 'Google Cloud Czech Republic',
+    startDate: '2027-05-18',
+    endDate: '2027-05-18',
+    city: 'Prague',
+    country: 'Czech Republic',
+    countryCode: 'CZ',
+    venue: 'O2 Universum Prague',
+    region: 'Czech Republic',
+    format: 'in-person',
+    topics: ['Cloud & Warehousing', 'Applied AI & LLMs', 'Data Engineering'],
+    description: {
+      en: 'Official Google Cloud Central Europe flagship conference in Prague focusing on enterprise AI transformations, BigQuery architectures, and local enterprise success stories.',
+      cs: 'Oficiální konference Google Cloud pro Českou republiku a střední Evropu v O2 universu. Zaměření na podnikové transformace s AI, BigQuery a lokální případové studie.',
+    },
+    websiteUrl: 'https://cloud.withgoogle.com/',
+    cfpStatus: 'closed',
+    attendeesCount: '1,500+',
+    isFlagship: true,
+  },
+  {
+    id: 'kafka-summit-london-2027',
+    name: 'Kafka Summit London 2027',
+    type: 'conference',
+    organizer: 'Confluent',
+    startDate: '2027-05-11',
+    endDate: '2027-05-12',
+    city: 'London',
+    country: 'United Kingdom',
+    countryCode: 'GB',
+    venue: 'Queen Elizabeth II Centre',
+    region: 'Europe',
+    format: 'hybrid',
+    topics: ['Data Engineering', 'Cloud & Warehousing'],
+    description: {
+      en: 'The premier community event for Apache Kafka, Apache Flink, event-driven architectures, and real-time streaming data pipelines.',
+      cs: 'Přední komunitní konference pro Apache Kafka, Apache Flink, event-driven architektury a streamování dat v reálném čase.',
+    },
+    websiteUrl: 'https://www.confluent.io/kafka-summit/',
+    cfpStatus: 'open',
+    cfpDeadline: '2027-01-20',
+    attendeesCount: '2,000+',
+  },
+
+  // --- 🇨🇿 CZECH REPUBLIC REGULAR MEETUPS & COMMUNITY GROUPS ---
+  {
+    id: 'mlmu-prague',
+    name: 'Machine Learning Meetup Prague (MLMU)',
+    type: 'meetup',
+    organizer: 'MLMU Community',
+    startDate: '2027-01-20',
+    city: 'Prague',
+    country: 'Czech Republic',
+    countryCode: 'CZ',
+    venue: 'Faculty of Information Technology CTU / Various',
+    region: 'Czech Republic',
+    format: 'in-person',
+    topics: ['Applied AI & LLMs', 'MLOps & Agents'],
+    description: {
+      en: 'Czechia’s legendary machine learning meetup running monthly since 2014. In-depth technical presentations on deep learning, NLP, computer vision, and AI research.',
+      cs: 'Legendární český meetup o strojovém učení fungující měsíčně od roku 2014. Hluboké technické přednášky o deep learningu, NLP, počítačovém vidění a výzkumu AI.',
+    },
+    websiteUrl: 'https://www.mlmu.cz/prague/',
+    cfpStatus: 'open',
+    cfpUrl: 'https://www.mlmu.cz/contact/',
+    attendeesCount: '150-250 / meetup',
+    frequency: {
+      en: 'Monthly (every 3rd or 4th week)',
+      cs: 'Měsíčně (každý 3. nebo 4. týden)',
+    },
+    communityLinks: {
+      meetupUrl: 'https://www.meetup.com/machine-learning-meetup-prague/',
+      linkedinUrl: 'https://www.linkedin.com/company/mlmu/',
+    },
+  },
+  {
+    id: 'mlmu-brno',
+    name: 'Machine Learning Meetup Brno (MLMU)',
+    type: 'meetup',
+    organizer: 'MLMU Brno',
+    startDate: '2027-02-10',
+    city: 'Brno',
+    country: 'Czech Republic',
+    countryCode: 'CZ',
+    venue: 'FIT BUT / Impact Hub Brno',
+    region: 'Czech Republic',
+    format: 'in-person',
+    topics: ['Applied AI & LLMs', 'MLOps & Agents'],
+    description: {
+      en: 'The Moravian branch of MLMU connecting AI researchers, data scientists, and robotics engineers across Brno’s vibrant tech ecosystem.',
+      cs: 'Moravská větev MLMU propojující výzkumníky, datové vědce a inženýry napříč silným brněnským technologickým a akademickým ekosystémem.',
+    },
+    websiteUrl: 'https://www.mlmu.cz/brno/',
+    cfpStatus: 'open',
+    cfpUrl: 'https://www.mlmu.cz/contact/',
+    attendeesCount: '100-180 / meetup',
+    frequency: {
+      en: 'Monthly',
+      cs: 'Měsíčně',
+    },
+    communityLinks: {
+      meetupUrl: 'https://www.meetup.com/machine-learning-meetup-brno/',
+    },
+  },
+  {
+    id: 'dbt-meetup-prague',
+    name: 'dbt Meetup Czechia (Prague)',
+    type: 'meetup',
+    organizer: 'dbt Labs & Local Community',
+    startDate: '2027-02-18',
+    city: 'Prague',
+    country: 'Czech Republic',
+    countryCode: 'CZ',
+    venue: 'Livesport / Keboola / Heureka Offices',
+    region: 'Czech Republic',
+    format: 'in-person',
+    topics: ['Data Engineering', 'Analytics & BI', 'Cloud & Warehousing'],
+    description: {
+      en: 'Regular gathering of Czech Analytics Engineers and modern data stack practitioners sharing practical patterns for dbt modeling, BigQuery/Snowflake optimization, and CI/CD testing.',
+      cs: 'Pravidelné setkání českých analytics engineerů a uživatelů modern data stacku. Praktické ukázky datového modelování v dbt, optimalizace BigQuery a Snowflake a CI/CD.',
+    },
+    websiteUrl: 'https://www.meetup.com/prague-dbt-meetup/',
+    cfpStatus: 'open',
+    attendeesCount: '80-120 / meetup',
+    frequency: {
+      en: 'Quarterly',
+      cs: 'Čtvrtletně',
+    },
+    communityLinks: {
+      meetupUrl: 'https://www.meetup.com/prague-dbt-meetup/',
+    },
+  },
+  {
+    id: 'pydata-prague',
+    name: 'PyData Prague',
+    type: 'meetup',
+    organizer: 'PyData CZ / NumFOCUS',
+    startDate: '2027-03-04',
+    city: 'Prague',
+    country: 'Czech Republic',
+    countryCode: 'CZ',
+    venue: 'Various tech offices (Avast, Seznam, Livesport)',
+    region: 'Czech Republic',
+    format: 'in-person',
+    topics: ['Applied AI & LLMs', 'Data Engineering'],
+    description: {
+      en: 'Official Prague chapter of global PyData community. Focuses on Python for data analysis, machine learning algorithms, Polars, DuckDB, and open-source scientific tools.',
+      cs: 'Oficiální pražská pobočka celosvětové komunity PyData. Zaměřuje se na Python v datové analýze, machine learning, knihovny Polars, DuckDB a open-source ekosystém.',
+    },
+    websiteUrl: 'https://pydata.cz/',
+    cfpStatus: 'open',
+    attendeesCount: '100-150 / meetup',
+    frequency: {
+      en: 'Bimonthly',
+      cs: 'Jednou za 2 měsíce',
+    },
+    communityLinks: {
+      meetupUrl: 'https://www.meetup.com/pydata-prague/',
+    },
+  },
+  {
+    id: 'gdg-prague-cloud',
+    name: 'GDG Prague & Google Cloud Community',
+    type: 'meetup',
+    organizer: 'Google Developer Group Prague',
+    startDate: '2027-01-28',
+    city: 'Prague',
+    country: 'Czech Republic',
+    countryCode: 'CZ',
+    venue: 'Google Prague Offices / WeWork',
+    region: 'Czech Republic',
+    format: 'in-person',
+    topics: ['Cloud & Warehousing', 'Applied AI & LLMs'],
+    description: {
+      en: 'Community meetups covering Google Cloud infrastructure, BigQuery data platforms, Vertex AI pipelines, and Gemini integrations with Google Developer Experts.',
+      cs: 'Komunitní meetupy zaměřené na infrastrukturu Google Cloud, datové platformy na BigQuery, pipeline na Vertex AI a integrace Gemini modelů s Google Developer Experty.',
+    },
+    websiteUrl: 'https://gdg.community.dev/gdg-prague/',
+    cfpStatus: 'open',
+    attendeesCount: '100-200 / meetup',
+    frequency: {
+      en: 'Monthly',
+      cs: 'Měsíčně',
+    },
+    communityLinks: {
+      meetupUrl: 'https://gdg.community.dev/gdg-prague/',
+    },
+  },
+  {
+    id: 'aws-user-group-czech',
+    name: 'AWS User Group Czech Republic',
+    type: 'meetup',
+    organizer: 'AWS Community Leaders',
+    startDate: '2027-02-25',
+    city: 'Prague & Brno',
+    country: 'Czech Republic',
+    countryCode: 'CZ',
+    venue: 'Rotating IT company offices in Prague & Brno',
+    region: 'Czech Republic',
+    format: 'in-person',
+    topics: ['Cloud & Warehousing', 'Data Engineering'],
+    description: {
+      en: 'Active community of cloud engineers and architects sharing architectural lessons on AWS infrastructure, Amazon Bedrock, Redshift, serverless, and multi-account security.',
+      cs: 'Aktivní komunita cloudových inženýrů a architektů sdílející praktické zkušenosti s architekturou AWS, Bedrockem, Redshiftem, serverless a bezpečností.',
+    },
+    websiteUrl: 'https://www.meetup.com/aws-czech-republic/',
+    cfpStatus: 'open',
+    attendeesCount: '80-150 / meetup',
+    frequency: {
+      en: 'Monthly',
+      cs: 'Měsíčně',
+    },
+    communityLinks: {
+      meetupUrl: 'https://www.meetup.com/aws-czech-republic/',
+    },
+  },
+  {
+    id: 'p2d2-prague',
+    name: 'Prague PostgreSQL Developer Day (P2D2)',
+    type: 'conference',
+    organizer: 'Czech PostgreSQL Users Group (CSPUG)',
+    startDate: '2027-02-04',
+    endDate: '2027-02-05',
+    city: 'Prague',
+    country: 'Czech Republic',
+    countryCode: 'CZ',
+    venue: 'Faculty of Information Technology CTU Prague',
+    region: 'Czech Republic',
+    format: 'in-person',
+    topics: ['Data Engineering', 'Cloud & Warehousing'],
+    description: {
+      en: 'Traditional annual conference dedicated exclusively to PostgreSQL database internals, scaling, extensions (pgvector), performance tuning, and high availability.',
+      cs: 'Tradiční dvoudenní konference věnovaná výhradně databázi PostgreSQL, výkonu, replikacím, škálování, pgvector rozšíření a vysoké dostupnosti.',
+    },
+    websiteUrl: 'https://p2d2.cz/',
+    cfpStatus: 'closed',
+    attendeesCount: '350+',
+    isFlagship: true,
+  },
+  {
+    id: 'pyvo-prague-brno',
+    name: 'Czech Python Community (Pyvo Praha & Brno)',
+    type: 'meetup',
+    organizer: 'Pyvec / Python CZ',
+    startDate: '2027-01-14',
+    city: 'Prague & Brno',
+    country: 'Czech Republic',
+    countryCode: 'CZ',
+    venue: 'Pubs & Community spaces in Prague and Brno',
+    region: 'Czech Republic',
+    format: 'in-person',
+    topics: ['Data Engineering', 'Applied AI & LLMs'],
+    description: {
+      en: 'Casual monthly community gathering with lightning talks, discussions on Python ecosystems, async architectures, and networking over local Czech beer.',
+      cs: 'Neformální měsíční komunitní sraz s bleskovými přednáškami, diskusemi o ekosystému Pythonu, moderních architekturách a networkingem u piva.',
+    },
+    websiteUrl: 'https://pyvo.cz/',
+    cfpStatus: 'open',
+    attendeesCount: '50-100 / meetup',
+    frequency: {
+      en: 'Monthly (every 2nd Wednesday / Thursday)',
+      cs: 'Měsíčně (každou 2. středu / čtvrtek)',
+    },
+    communityLinks: {
+      meetupUrl: 'https://pyvo.cz/',
+    },
   },
 ];
