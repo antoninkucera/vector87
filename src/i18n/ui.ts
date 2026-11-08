@@ -1,10 +1,11 @@
 export type Locale = 'en' | 'cs';
 
-export type NavKey = 'dashboard' | 'roles' | 'cloud' | 'places' | 'academy' | 'about';
+export type NavKey = 'dashboard' | 'roles' | 'technologies' | 'cloud' | 'places' | 'academy' | 'about';
 
 const PATH_MAP: Record<NavKey, string> = {
   dashboard: '/',
   roles: '/roles',
+  technologies: '/technologies',
   cloud: '/cloud-tech',
   places: '/places',
   academy: '/academy',
@@ -27,6 +28,7 @@ export const ui = {
     nav: {
       dashboard: 'Dashboard',
       roles: 'Roles',
+      technologies: 'Technologies',
       cloud: 'Cloud & Tech',
       places: 'Places',
       academy: 'Academy',
@@ -314,6 +316,33 @@ export const ui = {
       } as Record<string, string>,
       relatedRolesTitle: 'Related Roles in Domain',
       backToRoles: '← Back to All Roles',
+    },
+    technologies: {
+      breadcrumbTitle: 'Technologies',
+      heroBadge: '03 // STACK & PLATFORMS',
+      title: 'Enterprise AI & Data Stack Intelligence',
+      subtitle:
+        'Direct telemetry on which technologies, cloud platforms, and data tools companies actually require across active job postings.',
+      exploreDetail: 'Explore Deep-Dive & Roles',
+    },
+    technologyDetail: {
+      breadcrumbHome: 'Home',
+      breadcrumbTech: 'Technologies',
+      compareWithLabel: 'Head-to-Head Comparisons:',
+      kpiJobs: 'Active Job Postings',
+      kpiJobsSub: 'demanding this technology',
+      kpiPenetration: 'Market Penetration',
+      kpiPenetrationSub: 'of all analyzed AI & data jobs',
+      kpiRank: 'Market Position',
+      kpiRankSub: (total: number) => `among top ${total} enterprise technologies`,
+      sectionRoles: 'Roles Demanding This Technology',
+      sectionRolesSub: 'Canonical roles ranked by penetration percentage of this technology in job requirements.',
+      sectionPaired: 'Frequently Paired Technologies & Skills',
+      sectionPairedSub: 'Co-occurring skills appearing together with this technology in job postings.',
+      sectionCompanies: 'Top Hiring Companies',
+      sectionCompaniesSub: 'Enterprises with open postings actively requiring this stack.',
+      sectionAcademy: 'Recommended Learning & Certifications',
+      sectionAcademySub: 'Industry certifications and courses aligned with this technology.',
     },
     cloud: {
       pageTitle: 'Cloud Platforms & Data Stack | Vector87',
@@ -752,6 +781,7 @@ export const ui = {
     nav: {
       dashboard: 'Přehled trhu',
       roles: 'Analýza rolí',
+      technologies: 'Technologie',
       cloud: 'Cloud & Tech',
       places: 'Místa k životu',
       academy: 'Akademie',
@@ -1039,6 +1069,33 @@ export const ui = {
       } as Record<string, string>,
       relatedRolesTitle: 'Související role v doméně',
       backToRoles: '← Zpět na přehled rolí',
+    },
+    technologies: {
+      breadcrumbTitle: 'Technologie',
+      heroBadge: '03 // STACK & PLATFORMY',
+      title: 'Katalog technologií a datových platforem',
+      subtitle:
+        'Živá telemetrie mapující, které technologie, cloudové platformy a datové nástroje zaměstnavatelé reálně vyžadují v otevřených inzerátech.',
+      exploreDetail: 'Zobrazit detail technologie a role',
+    },
+    technologyDetail: {
+      breadcrumbHome: 'Domů',
+      breadcrumbTech: 'Technologie',
+      compareWithLabel: 'Přímá srovnání:',
+      kpiJobs: 'Aktivní inzeráty',
+      kpiJobsSub: 'vyžadující tuto technologii',
+      kpiPenetration: 'Podíl na trhu',
+      kpiPenetrationSub: 'ze všech sledovaných AI a datových pozic',
+      kpiRank: 'Pozice na trhu',
+      kpiRankSub: (total: number) => `mezi top ${total} podnikovými technologiemi`,
+      sectionRoles: 'Které role tuto technologii vyžadují',
+      sectionRolesSub: 'Kanonické role seřazené podle procentuálního zastoupení této technologie v požadavcích.',
+      sectionPaired: 'Nejčastěji párované technologie a dovednosti',
+      sectionPairedSub: 'Dovednosti a nástroje, které se v inzerátech objevují nejčastěji společně.',
+      sectionCompanies: 'Nejčastěji najímající společnosti',
+      sectionCompaniesSub: 'Společnosti s otevřenými inzeráty v tomto technologickém stacku.',
+      sectionAcademy: 'Doporučené vzdělávání a certifikace',
+      sectionAcademySub: 'Oficiální průmyslové certifikace a kurzy odpovídající této technologii.',
     },
     cloud: {
       pageTitle: 'Cloudové platformy a datový stack | Vector87',

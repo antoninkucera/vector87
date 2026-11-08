@@ -1,0 +1,37 @@
+---
+import TechnologyDetailView from '../../components/views/TechnologyDetailView.astro';
+import { TECHNOLOGIES_CATALOG } from '../../data/technologies';
+
+export async function getStaticPaths() {
+  const paths: any[] = [];
+  for (const tech of TECHNOLOGIES_CATALOG) {
+    paths.push({
+      params: { id: tech.id },
+      props: { techId: tech.id, isAlias: false },
+    });
+    if (tech.aliases) {
+      for (const alias of tech.aliases) {
+        paths.push({
+          params: { id: alias },
+          props: { techId: tech.id, isAlias: true, targetSlug: tech.id },
+        });
+      }
+    }
+  }
+  return paths;
+}
+
+interface Props {
+  techId: string;
+  isAlias: boolean;
+  targetSlug?: string;
+}
+
+const { techId, isAlias, targetSlug } = Astro.props;
+
+if (isAlias && targetSlug) {
+  return Astro.redirect(`/technologies/${targetSlug}`, 301);
+}
+---
+
+<TechnologyDetailView lang="en" techId={techId} />
