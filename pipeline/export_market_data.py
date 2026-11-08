@@ -1336,11 +1336,11 @@ def generate_llms_txt(payload: dict[str, Any]) -> None:
     trend = payload["trend_radar"]
 
     # 1. llms.txt (Lehký přehledový manifest)
-    llms_txt = f"""# Vector87.com | Quantitative Telemetry of the Global AI & Data Job Market
+    llms_txt = f"""# Vector87.com | Quantitative Intelligence on the Global AI & Data Job Market
 
 > Vector87.com is an open, static data and intelligence hub monitoring the direction of the AI, ML, Data Science, and Analytics job market across S&P 500 corporations, frontier technology leaders, and Europe. Data is aggregated directly from corporate ATS platforms into a local DuckDB analytical warehouse and exported into deterministic static JSON contracts.
 
-## Core Market Telemetry (Snapshot: {meta['latest_snapshot_date']})
+## Core Market Data (Snapshot: {meta['latest_snapshot_date']})
 - **Active AI & Data Job Postings**: {mv['total_ai_data_jobs']:,}
 - **S&P 500 AI/Data Postings**: {mv['sp500_ai_data_jobs']:,} ({mv['sp500_ai_intensity_pct']}% of total corporate hiring pool)
 - **S&P 500 Enterprise Coverage**: {mv['sp500_hiring_companies']} hiring / {meta['sp500_tracked_companies']} tracked firms
@@ -1348,18 +1348,18 @@ def generate_llms_txt(payload: dict[str, Any]) -> None:
 - **Hands-on (IC) to Management Ratio**: {payload['hierarchy_shift']['ic_to_management_ratio']} : 1 ({payload['hierarchy_shift']['ic_share_pct']}% IC vs {payload['hierarchy_shift']['management_share_pct']}% Management)
 
 ## Key Pages & Endpoints
-- [Market Dashboard](https://vector87.com/): Core telemetry covering vitality, cloud stack, S&P 500 sector heatmap, hierarchy ratios, and emerging technology signals.
+- [Market Dashboard](https://vector87.com/): Core market data covering vitality, cloud stack, S&P 500 sector heatmap, hierarchy ratios, and emerging technology signals.
 - [Czech Version / Česká verze](https://vector87.com/cs/): Kompletní zrcadlo v češtině.
 - [Role Analysis](https://vector87.com/roles): 21 canonical AI & Data roles with synthesized job descriptions, required competencies, and team expansion velocity.
 - [Role & Tech Comparisons](https://vector87.com/compare): Head-to-head empirical comparisons and Venn diagrams (Data Analyst vs Data Scientist, Data Analyst vs Data Engineer, Databricks vs Snowflake).
-- [Technologies & Platforms](https://vector87.com/technologies): In-depth market telemetry across 20 core data and AI technologies (BigQuery, Databricks, Snowflake, Python, SQL, dbt, Spark, GCP).
-- [Cloud & Tech Hub](https://vector87.com/cloud-tech): In-depth market telemetry across cloud ecosystems (AWS, Azure, GCP) and platforms (Databricks, Snowflake).
+- [Technologies & Platforms](https://vector87.com/technologies): In-depth market demand across 20 core data and AI technologies (BigQuery, Databricks, Snowflake, Python, SQL, dbt, Spark, GCP).
+- [Cloud & Tech Hub](https://vector87.com/cloud-tech): In-depth market demand across cloud ecosystems (AWS, Azure, GCP) and platforms (Databricks, Snowflake).
 - [Education Academy](https://vector87.com/academy): 3 structured learning tracks (Analytics Engineering, Cloud Data Engineering, Applied AI/LLMOps) and essential architectural literature.
 - [About Author](https://vector87.com/about): Background of Antonín Kučera (akucera.eu), project philosophy, and essays on Data-Informed leadership.
 
 ## Machine-Readable Data Contracts
 - [JSON Schema](https://vector87.com/schema/market-data.schema.json): Formal draft 2020-12 schema specification.
-- [Full Text for LLMs](https://vector87.com/llms-full.txt): Complete uncompressed textual dump of all synthesized role profiles, skills, and telemetry for direct ingestion.
+- [Full Text for LLMs](https://vector87.com/llms-full.txt): Complete uncompressed textual dump of all synthesized role profiles, skills, and hiring data for direct ingestion.
 """
 
     LLMS_TXT_PATH.parent.mkdir(parents=True, exist_ok=True)
@@ -1367,7 +1367,7 @@ def generate_llms_txt(payload: dict[str, Any]) -> None:
 
     # 2. llms-full.txt (Detailní datový a syntetický výtah pro AI agenty)
     full_lines = [
-        f"# Vector87.com | Complete Telemetry & Role Syntheses (Snapshot {meta['latest_snapshot_date']})",
+        f"# Vector87.com | Complete Market Intelligence & Role Syntheses (Snapshot {meta['latest_snapshot_date']})",
         "",
         "## 1. Executive Summary & Market Vitality",
         f"- Total Active AI & Data Jobs: {mv['total_ai_data_jobs']:,}",
