@@ -134,7 +134,7 @@ const chartPayload = JSON.stringify({
         e.preventDefault();
         e.stopPropagation();
         const chartId = btn.getAttribute('data-chart-id');
-        const title = btn.getAttribute('data-title') || 'Vector87 Telemetry';
+        const title = btn.getAttribute('data-title') || 'Vector87 Market Trend';
         const subtitle = btn.getAttribute('data-subtitle') || undefined;
         if (!chartId) return;
         const canvas = document.getElementById(chartId) as HTMLCanvasElement | null;

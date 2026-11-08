@@ -15,7 +15,7 @@ const currentYear = 2026;
 const resolvedUrl = sourceUrl || `https://vector87.com`;
 const encodedUrl = encodeURIComponent(resolvedUrl);
 const encodedTitle = encodeURIComponent(title);
-const encodedTweet = encodeURIComponent(`${title} — via @vector87 telemetry`);
+const encodedTweet = encodeURIComponent(`${title} — via @vector87`);
 
 const linkedinShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`;
 const twitterShareUrl = `https://twitter.com/intent/tweet?text=${encodedTweet}&url=${encodedUrl}`;
@@ -23,16 +23,16 @@ const redditShareUrl = `https://reddit.com/submit?url=${encodedUrl}&title=${enco
 
 const t = {
   en: {
-    badge: 'SHARE TELEMETRY',
+    badge: 'SHARE MARKET DATA',
     heading: 'Share this empirical analysis',
-    sub: subtitle || 'Share verified market data and talent telemetry with your professional network.',
+    sub: subtitle || 'Share verified market data and hiring insights with your professional network.',
     linkedin: 'Share on LinkedIn',
     twitter: 'Post on X',
     reddit: 'Share on Reddit',
     copyLink: 'Copy Link',
     copiedToast: '✓ Direct link copied to clipboard!',
     citeToggle: 'Need formal academic citation? (APA / BibTeX)',
-    apaCitation: `Kučera, A. (${currentYear}). ${title}. Vector87 Global AI & Data Job Market Telemetry. Retrieved from ${resolvedUrl}`,
+    apaCitation: `Kučera, A. (${currentYear}). ${title}. Vector87 Global AI & Data Job Market Intelligence. Retrieved from ${resolvedUrl}`,
   },
   cs: {
     badge: 'SDÍLET ANALÝZU',
@@ -44,7 +44,7 @@ const t = {
     copyLink: 'Kopírovat odkaz',
     copiedToast: '✓ Odkaz na analýzu zkopírován do schránky!',
     citeToggle: 'Potřebujete formální akademickou citaci? (APA / BibTeX)',
-    apaCitation: `Kučera, A. (${currentYear}). ${title}. Vector87 Global AI & Data Job Market Telemetry. Dostupné z: ${resolvedUrl}`,
+    apaCitation: `Kučera, A. (${currentYear}). ${title}. Vector87 Global AI & Data Job Market Intelligence. Dostupné z: ${resolvedUrl}`,
   },
 }[lang];
 ---
@@ -139,7 +139,7 @@ const t = {
         rel="noopener noreferrer"
         class="hover:text-cyan-400 transition-colors"
       >
-        CC BY 4.0 Open Telemetry
+        CC BY 4.0 Open Data
       </a>
       <span class="text-slate-700 hidden sm:inline">•</span>
       <span class="text-slate-500 hidden sm:inline">vector87.com</span>

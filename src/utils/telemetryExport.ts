@@ -40,7 +40,7 @@ export function copyLinkToClipboard(customUrl?: string, lang: 'en' | 'cs' = 'en'
 export function copyCitationToClipboard(title: string, customUrl?: string, lang: 'en' | 'cs' = 'en'): void {
   const url = customUrl || (typeof window !== 'undefined' ? window.location.href : 'https://vector87.com');
   const cleanUrl = url.split('#')[0];
-  const citationText = `Vector87. (2026). "${title}". Vector87 Global AI & Data Job Market Telemetry. Retrieved from ${cleanUrl}`;
+  const citationText = `Vector87. (2026). "${title}". Vector87 Global AI & Data Job Market Intelligence. Retrieved from ${cleanUrl}`;
 
   navigator.clipboard.writeText(citationText).then(
     () => {
@@ -84,7 +84,7 @@ export function exportChartAsBrandedPng(
     ctx.fillStyle = '#22d3ee';
     ctx.fillText('VECTOR 87', 52, 56);
     ctx.fillStyle = '#64748b';
-    ctx.fillText(' // ANALYTICAL TELEMETRY HUB', 144, 56);
+    ctx.fillText(' // AI & DATA JOB MARKET HUB', 144, 56);
 
     // Top Right Snapshot Pill
     ctx.textAlign = 'right';

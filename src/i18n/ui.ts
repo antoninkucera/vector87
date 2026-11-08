@@ -39,7 +39,7 @@ export const ui = {
       mobileAria: 'Mobile navigation',
     },
     telemetryBar: {
-      status: 'TELEMETRY: ONLINE',
+      status: 'MARKET DATA: LIVE',
       snapshot: 'SNAPSHOT:',
       activeJobs: 'ACTIVE AI/DATA JOBS:',
       sp500Coverage: 'S&P 500 COVERAGE:',
@@ -48,7 +48,7 @@ export const ui = {
       ofPool: 'OF TOTAL HIRING POOL',
     },
     footer: {
-      subtitle: 'Analytical Telemetry Hub',
+      subtitle: 'AI & Data Job Market Intelligence',
       description:
         'Independent data hub tracking global demand for data and AI specialists across S&P 500 firms and Europe. Powered by a local DuckDB pipeline and Astro.',
       methodology: 'Methodology',
@@ -57,7 +57,7 @@ export const ui = {
       contact: 'Contact',
     },
     cookies: {
-      title: 'Privacy & Analytics Telemetry',
+      title: 'Privacy & Analytics',
       text: 'We use anonymous cookies to analyze site traffic and understand which roles and skills visitors find most useful. No advertising or cross-site tracking.',
       accept: 'Accept Analytics',
       decline: 'Decline',
@@ -152,7 +152,7 @@ export const ui = {
       indicesExplainerTag: '01.75 // METHODOLOGY: THREE COMPOSITE INDICES DECODED',
       indicesExplainerTitle: 'Understanding the Metrics: How We Measure Where AI & Data Talent Thrives',
       indicesExplainerSub:
-        'Our ranking combines enterprise career page telemetry from ai_data_jobs with public macroeconomic and institutional data from world_stats (World Bank, Eurostat, IEP).',
+        'Our ranking combines enterprise career page hiring data from ai_data_jobs with public macroeconomic and institutional data from world_stats (World Bank, Eurostat, IEP).',
       indexThrivingName: 'AI Thriving Index',
       indexThrivingDef:
         'Composite score indicating where tech & AI experts enjoy the best harmony of career opportunity, life quality, and legal freedom.',
@@ -210,7 +210,7 @@ export const ui = {
       chartSenLabel: 'Active Job Postings',
 
       // Headcount & Team Dynamics Section
-      headcountBadge: 'WORKFORCE HEADCOUNT TELEMETRY',
+      headcountBadge: 'WORKFORCE HEADCOUNT & HIRING INTENSITY',
       headcountTitle: 'Installed Base vs. Hiring Velocity (Hiring Intensity Ratio)',
       headcountSub: 'Comparing current employed data/AI headcount against active open job postings across enterprise teams',
       macroChartTitle: 'Installed Team Base vs. Open Positions by Role',
@@ -270,7 +270,7 @@ export const ui = {
       breadcrumbRoles: 'Role Analysis',
       tag: 'ROLE PROFILE & MARKET DEMAND',
       kpiOpenJobs: 'Active Postings',
-      kpiOpenJobsSub: 'in current telemetry snapshot',
+      kpiOpenJobsSub: 'in current monthly snapshot',
       kpiSp500: 'S&P 500 Share',
       kpiSp500Sub: 'of open roles in S&P 500',
       kpiSeniorPlus: 'Senior+ Tier',
@@ -332,7 +332,7 @@ export const ui = {
       heroBadge: '03 // STACK & PLATFORMS',
       title: 'Enterprise AI & Data Stack Intelligence',
       subtitle:
-        'Direct telemetry on which technologies, cloud platforms, and data tools companies actually require across active job postings.',
+        'Direct market data on which technologies, cloud platforms, and data tools companies actually require across active job postings.',
       exploreDetail: 'Explore Deep-Dive & Roles',
     },
     technologyDetail: {
@@ -361,7 +361,7 @@ export const ui = {
       tag: '03 // CLOUD & TECH ECOSYSTEM',
       title: 'Cloud Hyperscalers & Modern Data Platforms',
       subtitle:
-        'Comparative telemetry tracking job posting demand across the Big 3 Hyperscalers (AWS, Azure, GCP) and leading modern data platforms (Databricks, Snowflake, BigQuery, Redshift, Microsoft Fabric).',
+        'Comparative market analysis tracking job posting demand across the Big 3 Hyperscalers (AWS, Azure, GCP) and leading modern data platforms (Databricks, Snowflake, BigQuery, Redshift, Microsoft Fabric).',
       kpiTotalCloud: 'Total Cloud Openings',
       kpiTotalCloudFoot: 'Active job postings explicitly requiring cloud infrastructure',
       kpiMulticloud: 'Multi-Cloud Coexistence',
@@ -377,7 +377,7 @@ export const ui = {
       multicloudSub: 'Enterprise demand for multi-cloud competencies across the Big 3',
       multicloudNote:
         'Over 51% of cloud job postings list more than one major cloud platform in their requirements (e.g., AWS or Azure), reflecting widespread employer demand for cross-cloud versatility in candidate profiles.',
-      ecosystemsTitle: 'Platform Deep-Dives & Hiring Telemetry',
+      ecosystemsTitle: 'Platform Deep-Dives & Hiring Trends',
       ecosystemsSub: 'Explore market dynamics, top hiring corporations, and in-demand skills for each major ecosystem.',
       tabAll: 'All Platforms',
       tabGcp: 'Google Cloud (GCP)',
@@ -389,14 +389,14 @@ export const ui = {
       topRolesTitle: 'Top In-Demand Roles',
       positionsWord: 'positions',
       gcpSectionTitle: 'Google Cloud Platform (GCP) Deep-Dive',
-      gcpSectionSub: 'BigQuery, Vertex AI, Dataform SQLX, Dataflow streaming, and Looker semantic layer telemetry.',
+      gcpSectionSub: 'Enterprise demand signals for BigQuery, Vertex AI, Dataform SQLX, Dataflow streaming, and Looker semantic layer.',
       chartSvcTitle: 'Demand for Specific Google Cloud Services',
       chartSvcSub: 'Active job postings in the current snapshot',
       chartSvcLabel: 'Positions',
       chartRoleTitle: 'Top Roles Operating on the GCP Ecosystem',
       chartRoleSub: 'Distribution of canonical roles requiring GCP / BigQuery / Vertex AI',
       chartRoleLabel: 'GCP Positions',
-      svcSectionTitle: 'Detailed Telemetry of Tracked GCP Services',
+      svcSectionTitle: 'Enterprise Demand for Tracked GCP Services',
       ofGcpPositions: 'of GCP roles',
       postingsOfMarket: (pct: number) => `postings (${pct}% of market)`,
       pairedWithLabel: 'Most frequently paired with:',
@@ -442,7 +442,7 @@ export const ui = {
       lakehouseSummary: (db: number, sf: number) =>
         `The defining architectural battle in modern data platforms is between Databricks (pioneering the Lakehouse with Apache Spark, Delta Lake, and Unity Catalog) and Snowflake (expanding from cloud data warehousing into Iceberg tables, Snowpark, and Cortex AI). In analyzed enterprise postings, Databricks leads with ${db} postings vs. Snowflake with ${sf} postings.`,
       substackCalloutTitle: 'Author Deep-Dives from akucera.eu & Substack',
-      substackCalloutSub: 'Practical architectural lessons on BigQuery, slot economics, and telemetry engineering.',
+      substackCalloutSub: 'Practical architectural lessons on BigQuery, slot economics, and enterprise data platforms.',
     },
     academy: {
       subNav: {
@@ -455,11 +455,11 @@ export const ui = {
       tag: '04 // EDUCATION & APPLIED CURRICULUM',
       title: 'Education Academy & Industry Learning Hub',
       subtitle:
-        'A pragmatic curriculum mapped directly to real S&P 500 hiring demand from our telemetry. Curated interactive courses, hands-on tracks, industry-standard certifications, and foundational literature to master Data Architecture, Modern Analytics, and Applied AI.',
+        'A pragmatic curriculum mapped directly to real S&P 500 hiring demand. Curated interactive courses, hands-on tracks, industry-standard certifications, and foundational literature to master Data Architecture, Modern Analytics, and Applied AI.',
       tracksTitle: 'Structured Curriculum Tracks',
       tracksSubtitle: 'Architectural learning paths mapped to roles with verified hiring intensity.',
       coursesTitle: 'Interactive Hands-On Courses & Specializations',
-      coursesSubtitle: 'Industry-leading interactive programs on Coursera, DataCamp, and DeepLearning.AI aligned with our telemetry.',
+      coursesSubtitle: 'Industry-leading interactive programs on Coursera, DataCamp, and DeepLearning.AI aligned with employer demand.',
       freeCoursesTitle: 'Official Free AI & LLM Foundations (No Paywalls)',
       freeCoursesSubtitle: 'Direct, zero-cost curriculum from pioneer AI labs and elite universities (OpenAI, Anthropic, Google, Hugging Face, Stanford, NVIDIA).',
       certsTitle: 'Industry Certifications & Credentials Roadmap',
@@ -482,7 +482,7 @@ export const ui = {
       curationSub: 'Grounding educational recommendations in empirical employer demand and 15+ years of data engineering practice',
       curationPillar1Title: 'Empirical Skill Alignment',
       curationPillar1Text:
-        'Every course and certification directly addresses core technology requirements identified in our telemetry of thousands of enterprise job postings (Python, SQL, distributed systems, BigQuery, dbt, RAG/LLM architectures).',
+        'Every course and certification directly addresses core technology requirements identified from thousands of verified enterprise job postings (Python, SQL, distributed systems, BigQuery, dbt, RAG/LLM architectures).',
       curationPillar2Title: 'Practitioner-Tested Curricula',
       curationPillar2Text:
         'Selected by Antonín Kučera (15+ years in data & BI leadership, Google Cloud / BigQuery specialist). We recommend programs we have either personally completed, certified in, or that are published directly by engineering teams at Google Cloud, DeepLearning.AI, OpenAI, Anthropic, and dbt Labs.',
@@ -598,7 +598,7 @@ export const ui = {
           title: 'Mastering Tableau Cloud Logs: From S3 to a hundreds fields in BigQuery',
           topic: 'Google Cloud / BigQuery',
           summary:
-            'How to process, transform and ingest Tableau Cloud audit logs into BigQuery for enterprise telemetry and architectural observability.',
+            'How to process, transform and ingest Tableau Cloud audit logs into BigQuery for enterprise log analytics and architectural observability.',
           href: 'https://antoninkucera.substack.com/p/mastering-tableau-cloud-logs-from-s3-to-a-hundreds-fields-in-bigquery',
         },
         {
@@ -649,7 +649,7 @@ export const ui = {
       indicesExplainerTag: 'METHODOLOGY // THREE COMPOSITE INDICES DECODED',
       indicesExplainerTitle: 'Understanding the Metrics: How We Measure Where AI & Data Talent Thrives',
       indicesExplainerSub:
-        'Our ranking combines enterprise career page telemetry from ai_data_jobs with public macroeconomic and institutional data from world_stats (World Bank, Eurostat, IEP).',
+        'Our ranking combines enterprise career page hiring data from ai_data_jobs with public macroeconomic and institutional data from world_stats (World Bank, Eurostat, IEP).',
       indexThrivingName: 'AI Thriving Index',
       indexThrivingDef:
         'Composite score indicating where tech & AI experts enjoy the best harmony of career opportunity, life quality, and legal freedom.',
@@ -694,7 +694,7 @@ export const ui = {
       expandRoleDossier: 'Role Dossier →',
       expandAllRolesLink: 'Explore all 21 Canonical AI & Data Roles →',
       expandNoVacancies: 'No active vacancies detected in this scrape cycle.',
-      expandNonFocusHub: 'Live enterprise job telemetry is currently tracked for 27 priority hubs (EU22 + UK, CH, NO, US, CA).',
+      expandNonFocusHub: 'Live enterprise job data is currently tracked for 27 priority hubs (EU22 + UK, CH, NO, US, CA).',
       expandClickToClose: 'Close detail',
       expandClickToOpen: 'Click row to inspect live vacancies and role pathways',
     },
@@ -730,10 +730,10 @@ export const ui = {
       tag: 'LEGAL & PRIVACY',
       title: 'Privacy Policy & Affiliate Disclosure',
       lastUpdated: 'November 2026',
-      intro: 'Vector87.com is an independent static data telemetry hub created and operated by Antonín Kučera. We respect your privacy and process data transparently in full compliance with the General Data Protection Regulation (GDPR).',
+      intro: 'Vector87.com is an independent static data hub monitoring the AI and data job market, created and operated by Antonín Kučera. We respect your privacy and process data transparently in full compliance with the General Data Protection Regulation (GDPR).',
       s1Title: '1. Data We Collect & Static Hosting',
       s1Text: 'Vector87 is a static website generated via Astro and hosted on GitHub Pages. We do not require user accounts, do not store personal profiles, and do not process passwords or financial transaction information.',
-      s2Title: '2. Analytics Telemetry (Google Analytics 4 & Consent Mode v2)',
+      s2Title: '2. Web Analytics (Google Analytics 4 & Consent Mode v2)',
       s2Text: 'We use Google Analytics 4 in accordance with Google Consent Mode v2 and European opt-in requirements. Analytics cookies are created and stored only after you explicitly click "Accept Analytics" on our consent banner. Without consent, Google Analytics runs in a restricted cookieless state without saving identifiers to your device. IP addresses are anonymized by default.',
       s3Title: '3. Outbound Links & Affiliate Disclosure',
       s3Text: 'Vector87 participates in affiliate partner programs with selected educational platforms (such as Coursera, DataCamp, and Amazon). Outbound links to commercial courses or books may contain referral codes. If you enroll or make a purchase through these links, the partner service may use attribution cookies in accordance with their respective privacy policies, and Vector87 may receive a referral commission at zero additional cost to you. Free university and research curricula (OpenAI, Anthropic, Harvard, Stanford) are completely unmonetized.',
@@ -801,7 +801,7 @@ export const ui = {
       mobileAria: 'Mobilní navigace',
     },
     telemetryBar: {
-      status: 'TELEMETRIE: ONLINE',
+      status: 'TRŽNÍ DATA: ŽIVĚ',
       snapshot: 'SNAPSHOT:',
       activeJobs: 'AKTIVNÍ AI/DATA POZICE:',
       sp500Coverage: 'POKRYTÍ S&P 500:',
@@ -810,7 +810,7 @@ export const ui = {
       ofPool: 'Z CELKOVÉHO NÁBOROVÉHO POOLU',
     },
     footer: {
-      subtitle: 'Analytical Telemetry Hub',
+      subtitle: 'Tržní data a trendy v AI a datech',
       description:
         'Nezávislý datový projekt mapující reálnou poptávku po datových a AI specialistech v S&P 500 a Evropě. Postaveno na lokální DuckDB pipeline a Astro SSG.',
       methodology: 'Metodika',
@@ -1094,7 +1094,7 @@ export const ui = {
       heroBadge: '03 // STACK & PLATFORMY',
       title: 'Katalog technologií a datových platforem',
       subtitle:
-        'Živá telemetrie mapující, které technologie, cloudové platformy a datové nástroje zaměstnavatelé reálně vyžadují v otevřených inzerátech.',
+        'Aktuální data z trhu mapující, které technologie, cloudové platformy a datové nástroje zaměstnavatelé reálně vyžadují v otevřených inzerátech.',
       exploreDetail: 'Zobrazit detail technologie a role',
     },
     technologyDetail: {
@@ -1139,7 +1139,7 @@ export const ui = {
       multicloudSub: 'Poptávka po multi-cloudových kompetencích mezi AWS, Azure a GCP',
       multicloudNote:
         'Více než 51 % analyzovaných cloudových inzerátů uvádí v požadavcích více než jednu velkou cloudovou platformu (např. znalost AWS nebo Azure), což odráží vysokou poptávku zaměstnavatelů po flexibilitě kandidátů napříč ekosystémy.',
-      ecosystemsTitle: 'Detailní profily platforem & telemetrie náboru',
+      ecosystemsTitle: 'Detailní profily platforem & trendy v náboru',
       ecosystemsSub: 'Přehled trhu, přední zaměstnavatelé a nejžádanější role pro každý klíčový ekosystém.',
       tabAll: 'Všechny platformy',
       tabGcp: 'Google Cloud (GCP)',
@@ -1204,7 +1204,7 @@ export const ui = {
       lakehouseSummary: (db: number, sf: number) =>
         `Nejzajímavější souboj mezi datovými platformami dnes probíhá mezi Databricks (Lakehouse architektura, Apache Spark, Delta Lake a Unity Catalog) a Snowflake (cloudový sklad expandující k Apache Iceberg, Snowparku a Cortex AI). V analyzovaných inzerátech vede Databricks s ${db} pozicemi oproti ${sf} u Snowflake.`,
       substackCalloutTitle: 'Odborné články autora z akucera.eu & Substacku',
-      substackCalloutSub: 'Praktické zkušenosti z praxe: architektura BigQuery, slotová ekonomika a enterprise telemetrie.',
+      substackCalloutSub: 'Praktické zkušenosti z praxe: architektura BigQuery, slotová ekonomika a moderní datové platformy.',
     },
     academy: {
       subNav: {
@@ -1360,7 +1360,7 @@ export const ui = {
           title: 'Mastering Tableau Cloud Logs: From S3 to a hundreds fields in BigQuery',
           topic: 'Google Cloud / BigQuery',
           summary:
-            'Praktická architektura pro zpracování, transformaci a ukládání auditních logů z Tableau Cloud do BigQuery pro podnikovou telemetrii a dohled nad systémem.',
+            'Praktická architektura pro zpracování, transformaci a ukládání auditních logů z Tableau Cloud do BigQuery pro podnikové analýzy a dohled nad systémem.',
           href: 'https://antoninkucera.substack.com/p/mastering-tableau-cloud-logs-from-s3-to-a-hundreds-fields-in-bigquery',
         },
         {
@@ -1456,7 +1456,7 @@ export const ui = {
       expandRoleDossier: 'Profil role →',
       expandAllRolesLink: 'Prozkoumat všech 21 AI & datových rolí →',
       expandNoVacancies: 'V tomto sběru dat nebyly zachyceny otevřené pozice.',
-      expandNonFocusHub: 'Živá telemetrie inzerátů je průběžně sledována pro 27 prioritních tech center (EU22 + UK, CH, NO, USA, Kanada).',
+      expandNonFocusHub: 'Data o otevřených inzerátech jsou průběžně sledována pro 27 prioritních tech center (EU22 + UK, CH, NO, USA, Kanada).',
       expandClickToClose: 'Zavřít detail',
       expandClickToOpen: 'Kliknutím na řádek zobrazíte aktivní nabídky a role',
     },
