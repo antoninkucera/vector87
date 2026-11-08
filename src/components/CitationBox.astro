@@ -1,0 +1,140 @@
+---
+import type { Locale } from '../i18n/ui';
+
+interface Props {
+  lang: Locale;
+  title: string;
+  sourceUrl?: string;
+  className?: string;
+}
+
+const { lang, title, sourceUrl, className = '' } = Astro.props;
+
+const currentYear = 2026;
+const resolvedUrl = sourceUrl || `https://vector87.com`;
+
+const apaCitation = `Kučera, A. (${currentYear}). ${title}. Vector87 Global AI & Data Job Market Telemetry. Retrieved from ${resolvedUrl}`;
+
+const cleanKey = title
+  .toLowerCase()
+  .replace(/[^a-z0-9]+/g, '_')
+  .slice(0, 24);
+
+const bibtexCitation = `@misc{vector87_${cleanKey},
+  author = {Ku\\v{c}era, Anton\\'in},
+  title = {${title}},
+  year = {${currentYear}},
+  howpublished = {\\url{${resolvedUrl}}},
+  note = {Vector87 Enterprise Job Market Telemetry Hub}
+}`;
+
+const t = {
+  en: {
+    badge: 'LINKABLE RESEARCH ASSET',
+    heading: 'Cite this analysis & dataset',
+    sub: 'Vector87 telemetry is open for research, journalism, and presentations under Creative Commons Attribution 4.0 (CC BY 4.0).',
+    apaLabel: 'APA 7th Edition',
+    bibtexLabel: 'BibTeX',
+    copyApa: 'Copy APA',
+    copyBibtex: 'Copy BibTeX',
+    licenseNotice: 'License: CC BY 4.0 (Free to redistribute & build upon with attribution)',
+  },
+  cs: {
+    badge: 'CITAČNÍ & LINKABLE ASSET',
+    heading: 'Citace této analýzy a dat',
+    sub: 'Telemetrie Vector87 je otevřena pro výzkum, články, diplomové práce i prezentace pod licencí Creative Commons (CC BY 4.0).',
+    apaLabel: 'Formát APA',
+    bibtexLabel: 'BibTeX',
+    copyApa: 'Kopírovat APA',
+    copyBibtex: 'Kopírovat BibTeX',
+    licenseNotice: 'Licence: CC BY 4.0 (Volné k šíření a citování s uvedením zdroje)',
+  },
+}[lang];
+---
+
+<div class:list={['p-5 sm:p-6 rounded-2xl bg-slate-900/40 border border-slate-800/80 backdrop-blur-sm shadow-xl', className]}>
+  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+    <div>
+      <div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[10px] font-mono uppercase bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 mb-1.5 font-semibold">
+        <span>{t.badge}</span>
+      </div>
+      <h3 class="text-sm font-bold text-white tracking-tight">{t.heading}</h3>
+      <p class="text-xs text-slate-400 mt-0.5 leading-relaxed max-w-2xl">{t.sub}</p>
+    </div>
+
+    <!-- Copy Action Buttons -->
+    <div class="flex items-center gap-2 shrink-0">
+      <button
+        type="button"
+        class="v87-copy-citation-btn px-3 py-1.5 rounded-lg text-xs font-mono font-semibold bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 hover:border-cyan-400 transition-all cursor-pointer flex items-center gap-1.5"
+        data-text={apaCitation}
+        data-format="APA"
+      >
+        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+        </svg>
+        <span>{t.copyApa}</span>
+      </button>
+
+      <button
+        type="button"
+        class="v87-copy-citation-btn px-3 py-1.5 rounded-lg text-xs font-mono font-semibold bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition-all cursor-pointer flex items-center gap-1.5"
+        data-text={bibtexCitation}
+        data-format="BibTeX"
+      >
+        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+        </svg>
+        <span>{t.copyBibtex}</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Citation Text Box -->
+  <div class="p-3.5 rounded-xl bg-slate-950/70 border border-slate-800 font-mono text-xs text-slate-300 select-all leading-relaxed break-all sm:break-normal">
+    {apaCitation}
+  </div>
+
+  <div class="mt-3 flex items-center justify-between text-[11px] font-mono text-slate-500">
+    <a
+      href="https://creativecommons.org/licenses/by/4.0/"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="hover:text-cyan-400 transition-colors inline-flex items-center gap-1"
+    >
+      <span>{t.licenseNotice}</span>
+      <span>↗</span>
+    </a>
+    <span class="text-slate-600 hidden sm:inline">Vector87 Open Research Protocol</span>
+  </div>
+</div>
+
+<script>
+  import { showExportToast } from '../utils/telemetryExport';
+
+  function initCitationButtons() {
+    document.querySelectorAll<HTMLButtonElement>('.v87-copy-citation-btn').forEach((btn) => {
+      if (btn.getAttribute('data-v87-bound')) return;
+      btn.setAttribute('data-v87-bound', 'true');
+
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const text = btn.getAttribute('data-text');
+        const format = btn.getAttribute('data-format') || 'APA';
+        if (!text) return;
+
+        navigator.clipboard.writeText(text).then(() => {
+          const isCs = window.location.pathname.startsWith('/cs');
+          showExportToast(isCs ? `✓ ${format} citace zkopírována!` : `✓ ${format} citation copied to clipboard!`);
+        });
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCitationButtons);
+  } else {
+    initCitationButtons();
+  }
+  document.addEventListener('astro:page-load', initCitationButtons);
+</script>

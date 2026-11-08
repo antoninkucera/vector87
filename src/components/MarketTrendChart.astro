@@ -52,11 +52,40 @@ const chartPayload = JSON.stringify({
       <h3 class="text-sm font-semibold text-white tracking-tight">{title}</h3>
       {subtitle && <p class="text-xs text-slate-400 mt-0.5">{subtitle}</p>}
     </div>
-    {badge && (
-      <span class="px-2 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 shrink-0">
-        {badge}
-      </span>
-    )}
+    <div class="flex items-center gap-1.5 shrink-0">
+      {badge && (
+        <span class="px-2 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider bg-cyan-500/10 text-cyan-300 border border-cyan-500/30">
+          {badge}
+        </span>
+      )}
+      <!-- Chart Action: Export Branded 16:9 PNG -->
+      <button
+        type="button"
+        class="v87-export-png-btn p-1.5 rounded-lg text-slate-400 hover:text-cyan-300 hover:bg-slate-800/80 border border-transparent hover:border-slate-700/60 transition-all cursor-pointer"
+        data-chart-id={chartId}
+        data-title={title}
+        data-subtitle={subtitle || ''}
+        title="Download branded 16:9 chart image (PNG)"
+        aria-label="Download chart image"
+      >
+        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+        </svg>
+      </button>
+
+      <!-- Chart Action: Copy Citation -->
+      <button
+        type="button"
+        class="v87-cite-btn p-1.5 rounded-lg text-slate-400 hover:text-cyan-300 hover:bg-slate-800/80 border border-transparent hover:border-slate-700/60 transition-all cursor-pointer"
+        data-title={title}
+        title="Copy formal research citation"
+        aria-label="Copy citation"
+      >
+        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+        </svg>
+      </button>
+    </div>
   </div>
 
   <!-- Dedicated Chart Container for Chart.js (must be isolated from siblings for responsive sizing) -->
@@ -94,8 +123,44 @@ const chartPayload = JSON.stringify({
 
 <script>
   import Chart from 'chart.js/auto';
+  import { exportChartAsBrandedPng, copyCitationToClipboard } from '../utils/telemetryExport';
+
+  function initChartActions() {
+    document.querySelectorAll<HTMLButtonElement>('.v87-export-png-btn').forEach((btn) => {
+      if (btn.getAttribute('data-v87-bound')) return;
+      btn.setAttribute('data-v87-bound', 'true');
+
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const chartId = btn.getAttribute('data-chart-id');
+        const title = btn.getAttribute('data-title') || 'Vector87 Telemetry';
+        const subtitle = btn.getAttribute('data-subtitle') || undefined;
+        if (!chartId) return;
+        const canvas = document.getElementById(chartId) as HTMLCanvasElement | null;
+        if (canvas) {
+          const isCs = window.location.pathname.startsWith('/cs');
+          exportChartAsBrandedPng(canvas, title, subtitle, isCs ? 'cs' : 'en');
+        }
+      });
+    });
+
+    document.querySelectorAll<HTMLButtonElement>('.v87-cite-btn').forEach((btn) => {
+      if (btn.getAttribute('data-v87-bound')) return;
+      btn.setAttribute('data-v87-bound', 'true');
+
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const title = btn.getAttribute('data-title') || 'Vector87 Telemetry';
+        const isCs = window.location.pathname.startsWith('/cs');
+        copyCitationToClipboard(title, undefined, isCs ? 'cs' : 'en');
+      });
+    });
+  }
 
   function initVector87Charts() {
+    initChartActions();
     const canvases = document.querySelectorAll<HTMLCanvasElement>('canvas[data-v87-chart]');
     canvases.forEach((canvas) => {
       try {
