@@ -102,7 +102,7 @@ def load_tech_jobs_metrics(jobs_db_path: Path) -> dict[str, dict[str, Any]]:
             SELECT 
                 country_code,
                 COUNT(DISTINCT url) FILTER (WHERE is_active = TRUE) AS active_jobs,
-                count(DISTINCT company_id) AS hiring_companies
+                COUNT(DISTINCT company_id) FILTER (WHERE is_active = TRUE) AS hiring_companies
             FROM fact_jobs
             WHERE country_code IS NOT NULL
             GROUP BY country_code
