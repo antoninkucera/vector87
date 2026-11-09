@@ -1,16 +1,34 @@
 export type Locale = 'en' | 'cs';
 
-export type NavKey = 'dashboard' | 'roles' | 'technologies' | 'compare' | 'salaries' | 'cloud' | 'places' | 'academy' | 'conferences' | 'about';
+export type NavKey =
+  | 'dashboard'
+  | 'market'
+  | 'roles'
+  | 'technologies'
+  | 'compare'
+  | 'salaries'
+  | 'cloud'
+  | 'countries'
+  | 'places'
+  | 'resources'
+  | 'academy'
+  | 'podcasts'
+  | 'conferences'
+  | 'about';
 
 const PATH_MAP: Record<NavKey, string> = {
   dashboard: '/',
+  market: '/roles',
   roles: '/roles',
   technologies: '/technologies',
   compare: '/compare',
   salaries: '/salaries',
   cloud: '/cloud-tech',
-  places: '/places',
+  countries: '/countries',
+  places: '/countries',
+  resources: '/academy',
   academy: '/academy',
+  podcasts: '/academy/podcasts',
   conferences: '/conferences',
   about: '/about',
 };
@@ -30,13 +48,17 @@ export const ui = {
     },
     nav: {
       dashboard: 'Dashboard',
+      market: 'Market',
       roles: 'Roles',
       technologies: 'Technologies',
       compare: 'Compare',
       salaries: 'Salaries',
       cloud: 'Cloud & Tech',
-      places: 'Places',
+      countries: 'Countries',
+      places: 'Countries',
+      resources: 'Resources',
       academy: 'Academy',
+      podcasts: 'Podcasts',
       conferences: 'Conferences',
       about: 'About',
       mainAria: 'Main navigation',
@@ -965,16 +987,20 @@ export const ui = {
         'Nezávislý přehled trhu práce v oblasti AI a dat. Sledujeme reálné otevřené pozice v S&P 500, Evropě i technologických firmách.',
     },
     nav: {
-      dashboard: 'Přehled trhu',
-      roles: 'Analýza rolí',
+      dashboard: 'Přehled',
+      market: 'Trh',
+      roles: 'Role',
       technologies: 'Technologie',
       compare: 'Srovnání',
       salaries: 'Platy',
       cloud: 'Cloud & Tech',
-      places: 'Místa k životu',
+      countries: 'Země',
+      places: 'Země',
+      resources: 'Zdroje',
       academy: 'Akademie',
+      podcasts: 'Podcasty',
       conferences: 'Konference',
-      about: 'O autorovi',
+      about: 'O projektu',
       mainAria: 'Hlavní navigace',
       mobileAria: 'Mobilní navigace',
     },
@@ -1101,7 +1127,7 @@ export const ui = {
       indexThrivingPartReloc: 'Snadnost legálního přesunu a pracovní povolení',
       indexLivabilityName: 'Kvalita života (Livability Score)',
       indexLivabilityDef:
-        'Životní standard napříč 4 pilíři veřejných statistik (na stránce /places s plně nastavitelnými vahami).',
+        'Životní standard napříč 4 pilíři veřejných statistik (na stránce /countries s plně nastavitelnými vahami).',
       indexLifeSafe: 'Bezpečnost & geopolitický klid (Global Peace Index, WGI)',
       indexLifeHouse: 'Dostupnost bydlení & cenová hladina (Eurostat)',
       indexLifeEcon: 'Ekonomika & kupní síla (HDP PPP na obyvatele, dožití)',

@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "source": "Vector87 Podcast Ingestion Pipeline",
     "total_sources": 31,
-    "total_episodes": 513
+    "total_episodes": 514
   },
   "sources": [
     {
@@ -17,7 +17,7 @@
       "total_episodes": 232,
       "image_url": "https://i.scdn.co/image/ab6765630000ba8a5208343f71ab0730df9a14b8",
       "external_url": "https://open.spotify.com/show/6D5jY1VodQqSVnDYsVJWJt",
-      "updated_at": "2026-11-08 09:00:13.574609"
+      "updated_at": "2026-11-09 09:00:13.208228"
     },
     {
       "id": "57AJ6GiMDPVBLGRqvjeoz6",
@@ -30,7 +30,7 @@
       "total_episodes": 322,
       "image_url": "https://i.scdn.co/image/ab6765630000ba8afce233722273798fa1d05a5c",
       "external_url": "https://open.spotify.com/show/57AJ6GiMDPVBLGRqvjeoz6",
-      "updated_at": "2026-11-08 09:00:09.867113"
+      "updated_at": "2026-11-09 09:00:08.389905"
     },
     {
       "id": "2MAi0BvDc6GTFvKFPXnkCL",
@@ -43,7 +43,7 @@
       "total_episodes": 504,
       "image_url": "https://i.scdn.co/image/ab6765630000ba8a563ebb538d297875b10114b7",
       "external_url": "https://open.spotify.com/show/2MAi0BvDc6GTFvKFPXnkCL",
-      "updated_at": "2026-11-08 09:00:14.246998"
+      "updated_at": "2026-11-09 09:00:13.753751"
     },
     {
       "id": "1JdkD0ZoZ52KjwdR0b1WoT",
@@ -53,10 +53,10 @@
       "priority": "medium",
       "publisher": "",
       "description": "Demystifying AI for the intelligently curious",
-      "total_episodes": 331,
+      "total_episodes": 332,
       "image_url": "https://i.scdn.co/image/ab6765630000ba8a5569819b983784216bdd4ca6",
       "external_url": "https://open.spotify.com/show/1JdkD0ZoZ52KjwdR0b1WoT",
-      "updated_at": "2026-11-08 09:00:11.190680"
+      "updated_at": "2026-11-09 09:00:09.425879"
     },
     {
       "id": "UCBKM3HATRILZyG9jGNJKGXQ",
@@ -69,7 +69,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/channel/UCBKM3HATRILZyG9jGNJKGXQ",
-      "updated_at": "2026-11-08 09:00:16.174874"
+      "updated_at": "2026-11-09 09:00:16.146510"
     },
     {
       "id": "UCrXSVX9a1mj8l0CMLwKgMVw",
@@ -82,7 +82,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/channel/UCrXSVX9a1mj8l0CMLwKgMVw",
-      "updated_at": "2026-11-08 09:00:15.632306"
+      "updated_at": "2026-11-09 09:00:15.096760"
     },
     {
       "id": "UCXUPKJO5MZQN11PqgIvyuvQ",
@@ -95,7 +95,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/channel/UCXUPKJO5MZQN11PqgIvyuvQ",
-      "updated_at": "2026-11-08 09:00:15.981472"
+      "updated_at": "2026-11-09 09:00:15.983369"
     },
     {
       "id": "UCrDwWp7EBBv4NwvScIpBDOA",
@@ -108,7 +108,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/channel/UCrDwWp7EBBv4NwvScIpBDOA",
-      "updated_at": "2026-11-08 09:00:14.560225"
+      "updated_at": "2026-11-09 09:00:13.971990"
     },
     {
       "id": "2OJXB8v32CrKbbsv9Uq2vn",
@@ -121,7 +121,7 @@
       "total_episodes": 56,
       "image_url": "https://i.scdn.co/image/ab6765630000ba8a4895ec65f1c3c38cafe45d6d",
       "external_url": "https://open.spotify.com/show/2OJXB8v32CrKbbsv9Uq2vn",
-      "updated_at": "2026-11-08 09:00:13.063147"
+      "updated_at": "2026-11-09 09:00:12.444356"
     },
     {
       "id": "UCGZdaRgswLfee5hDWCG-_0g",
@@ -134,7 +134,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/channel/UCGZdaRgswLfee5hDWCG-_0g",
-      "updated_at": "2026-11-08 09:00:16.066917"
+      "updated_at": "2026-11-09 09:00:16.061942"
     },
     {
       "id": "2iLvljRGVVIGlJshT5vNDS",
@@ -147,7 +147,7 @@
       "total_episodes": 521,
       "image_url": "https://i.scdn.co/image/ab6765630000ba8a6e142b927c02a883ee855611",
       "external_url": "https://open.spotify.com/show/2iLvljRGVVIGlJshT5vNDS",
-      "updated_at": "2026-11-08 09:00:10.627409"
+      "updated_at": "2026-11-09 09:00:09.031609"
     },
     {
       "id": "UC3bSfMzhHjeX_tFdte1esgQ",
@@ -160,7 +160,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/channel/UC3bSfMzhHjeX_tFdte1esgQ",
-      "updated_at": "2026-11-08 09:00:16.326314"
+      "updated_at": "2026-11-09 09:00:16.268754"
     },
     {
       "id": "1BZN7H3ikovSejhwQTzNm4",
@@ -173,7 +173,7 @@
       "total_episodes": 612,
       "image_url": "https://i.scdn.co/image/ab6765630000ba8a2e312df484c4b50c03addd9b",
       "external_url": "https://open.spotify.com/show/1BZN7H3ikovSejhwQTzNm4",
-      "updated_at": "2026-11-08 09:00:08.170252"
+      "updated_at": "2026-11-09 09:00:06.901228"
     },
     {
       "id": "UCAq9f7jFEA7Mtl3qOZy2h1A",
@@ -186,7 +186,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/channel/UCAq9f7jFEA7Mtl3qOZy2h1A",
-      "updated_at": "2026-11-08 09:00:15.281947"
+      "updated_at": "2026-11-09 09:00:14.754763"
     },
     {
       "id": "02yJXEJAJiQ0Vm2AO9Xj6X",
@@ -199,7 +199,7 @@
       "total_episodes": 300,
       "image_url": "https://i.scdn.co/image/ab6765630000ba8a5f4712b441fcd4135ca7452c",
       "external_url": "https://open.spotify.com/show/02yJXEJAJiQ0Vm2AO9Xj6X",
-      "updated_at": "2026-11-08 09:00:08.943337"
+      "updated_at": "2026-11-09 09:00:07.328277"
     },
     {
       "id": "UCQli51lMp-oW0gUHrcIj0jA",
@@ -212,7 +212,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/channel/UCQli51lMp-oW0gUHrcIj0jA",
-      "updated_at": "2026-11-08 09:00:16.483973"
+      "updated_at": "2026-11-09 09:00:16.432573"
     },
     {
       "id": "1ZEwpdbarrLDlkeAfoHjtj",
@@ -225,7 +225,7 @@
       "total_episodes": 35,
       "image_url": "https://i.scdn.co/image/ab6765630000ba8ad61a0145e42da811a1943c42",
       "external_url": "https://open.spotify.com/show/1ZEwpdbarrLDlkeAfoHjtj",
-      "updated_at": "2026-11-08 09:00:11.807136"
+      "updated_at": "2026-11-09 09:00:11.661248"
     },
     {
       "id": "UCJS9pqu9BzkAMNTmzNMNhvg",
@@ -238,7 +238,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/channel/UCJS9pqu9BzkAMNTmzNMNhvg",
-      "updated_at": "2026-11-08 09:00:14.805860"
+      "updated_at": "2026-11-09 09:00:14.209640"
     },
     {
       "id": "UC_x5XG1OV2P6uZZ5FSM9Ttw",
@@ -251,7 +251,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/channel/UC_x5XG1OV2P6uZZ5FSM9Ttw",
-      "updated_at": "2026-11-08 09:00:14.943732"
+      "updated_at": "2026-11-09 09:00:14.428828"
     },
     {
       "id": "UCFp1vaKzpfvoGai0vE5VJ0w",
@@ -264,7 +264,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/channel/UCFp1vaKzpfvoGai0vE5VJ0w",
-      "updated_at": "2026-11-08 09:00:16.653626"
+      "updated_at": "2026-11-09 09:00:16.576750"
     },
     {
       "id": "UCC-lyoTfSrcJzA1ab3APAgw",
@@ -277,7 +277,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/channel/UCC-lyoTfSrcJzA1ab3APAgw",
-      "updated_at": "2026-11-08 09:00:15.706492"
+      "updated_at": "2026-11-09 09:00:15.217382"
     },
     {
       "id": "UCXZCJLdBC09xxGZ6gcdrc6A",
@@ -290,7 +290,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/channel/UCXZCJLdBC09xxGZ6gcdrc6A",
-      "updated_at": "2026-11-08 09:00:16.862211"
+      "updated_at": "2026-11-09 09:00:16.703244"
     },
     {
       "id": "1LaCr5TFAgYPK5qHjP3XDp",
@@ -303,7 +303,7 @@
       "total_episodes": 381,
       "image_url": "https://i.scdn.co/image/ab6765630000ba8a355eceddea89633108675df4",
       "external_url": "https://open.spotify.com/show/1LaCr5TFAgYPK5qHjP3XDp",
-      "updated_at": "2026-11-08 09:00:12.449094"
+      "updated_at": "2026-11-09 09:00:12.128738"
     },
     {
       "id": "search:Felipe Hoffa BigQuery",
@@ -316,7 +316,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/results?search_query=Felipe+Hoffa+BigQuery",
-      "updated_at": "2026-11-08 09:00:21.352053"
+      "updated_at": "2026-11-09 09:00:17.337529"
     },
     {
       "id": "search:Lak Lakshmanan data engineering",
@@ -329,7 +329,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/results?search_query=Lak+Lakshmanan+data+engineering",
-      "updated_at": "2026-11-08 09:00:22.159236"
+      "updated_at": "2026-11-09 09:00:17.763433"
     },
     {
       "id": "search:google cloud dataform bigquery deep dive",
@@ -342,7 +342,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/results?search_query=google+cloud+dataform+bigquery+deep+dive",
-      "updated_at": "2026-11-08 09:00:17.069949"
+      "updated_at": "2026-11-09 09:00:16.839826"
     },
     {
       "id": "UCmLGJ3VYBcfRaWbP6JLJcpA",
@@ -355,7 +355,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/channel/UCmLGJ3VYBcfRaWbP6JLJcpA",
-      "updated_at": "2026-11-08 09:00:15.097503"
+      "updated_at": "2026-11-09 09:00:14.633021"
     },
     {
       "id": "1n8P7ZSgfVLVJ3GegxPat1",
@@ -368,7 +368,7 @@
       "total_episodes": 1043,
       "image_url": "https://i.scdn.co/image/ab6765630000ba8afceea1b76d40bb25f1cea453",
       "external_url": "https://open.spotify.com/show/1n8P7ZSgfVLVJ3GegxPat1",
-      "updated_at": "2026-11-08 09:00:09.435101"
+      "updated_at": "2026-11-09 09:00:07.915743"
     },
     {
       "id": "2ReJKUbDtcom5U0GgpOlAz",
@@ -381,7 +381,7 @@
       "total_episodes": 320,
       "image_url": "https://i.scdn.co/image/ab6765630000ba8a5269a259a4ef259d0211ecd1",
       "external_url": "https://open.spotify.com/show/2ReJKUbDtcom5U0GgpOlAz",
-      "updated_at": "2026-11-08 09:00:07.294334"
+      "updated_at": "2026-11-09 09:00:06.091804"
     },
     {
       "id": "UCEnwiDW2rOCQJnF18CEGemg",
@@ -394,7 +394,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/channel/UCEnwiDW2rOCQJnF18CEGemg",
-      "updated_at": "2026-11-08 09:00:15.846182"
+      "updated_at": "2026-11-09 09:00:15.839470"
     },
     {
       "id": "UCVpBwKK-ecMEV75y1dYLE5w",
@@ -407,10 +407,41 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/channel/UCVpBwKK-ecMEV75y1dYLE5w",
-      "updated_at": "2026-11-08 09:00:15.494604"
+      "updated_at": "2026-11-09 09:00:14.970469"
     }
   ],
   "episodes": [
+    {
+      "id": "7IZpmCZXRFOQTjLICizHxY",
+      "show_id": "1JdkD0ZoZ52KjwdR0b1WoT",
+      "show_name": "Linear Digressions",
+      "title": "GPU Architecture for LLM Inference: Memory, Bandwidth and Hardware Explained",
+      "description": "GPUs are the engines powering every AI conversation you've ever had — but what's actually happening inside those chips when an LLM generates a response? Understanding GPU fundamentals turns out to be surprisingly useful for making sense of why inference works the way it does, from the prefill stage that processes your entire prompt at once to the serial decode step that produces tokens one by one. If you want to understand the real constraints shaping modern AI systems, this is where to start.",
+      "release_date": "2026-11-09",
+      "duration_ms": 1178452,
+      "external_url": "https://open.spotify.com/episode/7IZpmCZXRFOQTjLICizHxY",
+      "category": "Machine Learning & AI",
+      "summary": "Epizoda vysvětluje vnitřní architekturu GPU a její klíčový vliv na efektivitu inference velkých jazykových modelů. Zaměřuje se na rozdíly mezi fázemi prefill a decode a na to, jak paměťová propustnost limituje výkon moderních AI systémů.",
+      "topics": [
+        "GPU Architecture",
+        "LLM Inference",
+        "Hardware Acceleration",
+        "AI Infrastructure",
+        "Memory Bandwidth"
+      ],
+      "keywords": [
+        "GPU",
+        "LLM",
+        "Inference",
+        "Prefill",
+        "Decode",
+        "VRAM",
+        "AI Hardware",
+        "Token Generation"
+      ],
+      "relevance_score": 0.95,
+      "ingested_at": "2026-11-09 09:00:11.328068"
+    },
     {
       "id": "yt:Ar5zQnD-VkE",
       "show_id": "UCJS9pqu9BzkAMNTmzNMNhvg",

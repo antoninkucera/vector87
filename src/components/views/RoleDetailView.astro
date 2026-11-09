@@ -849,7 +849,7 @@ const roleDetailGraph = {
         <p class="text-xs sm:text-sm text-slate-400 mt-1 max-w-2xl">{t.geoRelocationSub}</p>
       </div>
       <a
-        href={getLocalePath(lang, 'places')}
+        href={getLocalePath(lang, 'countries')}
         class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-mono font-semibold bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 hover:bg-cyan-500/25 transition-colors shrink-0"
       >
         <span>{t.geoExplorePlacesBtn}</span>
@@ -860,7 +860,7 @@ const roleDetailGraph = {
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
       {roleCountries.map((c) => (
         <a
-          href={`${getLocalePath(lang, 'places')}/${c.iso3.toLowerCase()}#role=${role.role_id}`}
+          href={`${getLocalePath(lang, 'countries')}/${c.iso3.toLowerCase()}#role=${role.role_id}`}
           class="group p-5 rounded-xl panel-surface border border-slate-800 hover:border-cyan-500/40 transition-all flex flex-col justify-between gap-4 hover:shadow-lg hover:shadow-cyan-500/5"
         >
           <div class="space-y-3">
