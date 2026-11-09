@@ -1,23 +1,23 @@
 {
   "meta": {
-    "generated_at": "2026-11-09T19:36:16Z",
+    "generated_at": "2026-11-09T20:14:18Z",
     "schema_version": "1.0.0",
     "latest_snapshot_date": "2026-11-09",
     "total_tracked_companies": 3665,
     "sp500_tracked_companies": 508
   },
   "market_vitality": {
-    "total_ai_data_jobs": 11108,
-    "total_open_jobs_pool": 508057,
-    "overall_ai_intensity_pct": 2.19,
+    "total_ai_data_jobs": 11106,
+    "total_open_jobs_pool": 508552,
+    "overall_ai_intensity_pct": 2.18,
     "sp500_ai_data_jobs": 6153,
     "sp500_open_jobs_pool": 270175,
     "sp500_ai_intensity_pct": 2.28,
     "sp500_hiring_companies": 473,
     "sp500_zero_job_companies": 35,
-    "cz_ai_data_jobs": 231,
-    "eu_uk_ch_ai_data_jobs": 3448,
-    "us_ca_ai_data_jobs": 7660,
+    "cz_ai_data_jobs": 232,
+    "eu_uk_ch_ai_data_jobs": 3447,
+    "us_ca_ai_data_jobs": 7659,
     "top_hiring_companies": [
       {
         "company_id": "alphabet",
@@ -92,8 +92,8 @@
         "ai_intensity_pct": 1.13
       },
       {
-        "company_id": "ing_belgium",
-        "company_name": "ING Belgium",
+        "company_id": "ing_group",
+        "company_name": "ING Group",
         "is_sp500": false,
         "sector": null,
         "ai_data_jobs": 111,
@@ -101,8 +101,8 @@
         "ai_intensity_pct": 16.82
       },
       {
-        "company_id": "ing_group",
-        "company_name": "ING Group",
+        "company_id": "ing_belgium",
+        "company_name": "ING Belgium",
         "is_sp500": false,
         "sector": null,
         "ai_data_jobs": 111,
@@ -160,7 +160,7 @@
         "country_code": "US",
         "country_name": "United States",
         "region": "Americas",
-        "job_count": 6052,
+        "job_count": 6051,
         "share_pct": 61.55
       },
       {
@@ -195,15 +195,15 @@
         "country_code": "CZ",
         "country_name": "Czech Republic",
         "region": "EU",
-        "job_count": 230,
-        "share_pct": 2.34
+        "job_count": 231,
+        "share_pct": 2.35
       },
       {
         "country_code": "PL",
         "country_name": "Poland",
         "region": "EU",
-        "job_count": 179,
-        "share_pct": 1.82
+        "job_count": 178,
+        "share_pct": 1.81
       },
       {
         "country_code": "ES",
@@ -216,8 +216,8 @@
         "country_code": "FR",
         "country_name": "France",
         "region": "EU",
-        "job_count": 117,
-        "share_pct": 1.19
+        "job_count": 116,
+        "share_pct": 1.18
       },
       {
         "country_code": "IE",
@@ -263,7 +263,7 @@
         "skill_name": "Google Cloud Platform",
         "category": "Cloud",
         "job_count": 1210,
-        "penetration_pct": 10.89
+        "penetration_pct": 10.9
       }
     ],
     "data_platforms": [
@@ -316,14 +316,14 @@
         "skill_name": "Python",
         "category": "Programming",
         "job_count": 4212,
-        "penetration_pct": 37.92
+        "penetration_pct": 37.93
       },
       {
         "skill_id": "sql",
         "skill_name": "SQL",
         "category": "Programming",
-        "job_count": 2915,
-        "penetration_pct": 26.24
+        "job_count": 2916,
+        "penetration_pct": 26.26
       },
       {
         "skill_id": "ai_agents",
@@ -351,7 +351,7 @@
         "skill_name": "GenAI / Generative AI",
         "category": "AI/ML",
         "job_count": 1601,
-        "penetration_pct": 14.41
+        "penetration_pct": 14.42
       },
       {
         "skill_id": "aws",
@@ -379,14 +379,14 @@
         "skill_name": "Apache Spark",
         "category": "Framework",
         "job_count": 1240,
-        "penetration_pct": 11.16
+        "penetration_pct": 11.17
       },
       {
         "skill_id": "gcp",
         "skill_name": "Google Cloud Platform",
         "category": "Cloud",
         "job_count": 1210,
-        "penetration_pct": 10.89
+        "penetration_pct": 10.9
       },
       {
         "skill_id": "databricks",
@@ -428,7 +428,7 @@
         "skill_name": "PyTorch",
         "category": "Framework",
         "job_count": 808,
-        "penetration_pct": 7.27
+        "penetration_pct": 7.28
       },
       {
         "skill_id": "snowflake_db",
@@ -591,7 +591,7 @@
       }
     ],
     "multicloud": {
-      "total_cloud_jobs": 2182,
+      "total_cloud_jobs": 2180,
       "multicloud_jobs": 1054,
       "multicloud_pct": 48.3,
       "aws_azure_jobs": 924,
@@ -604,9 +604,9 @@
         "id": "aws",
         "name": "AWS",
         "type": "hyperscaler",
-        "total_jobs": 1526,
-        "share_of_all_jobs_pct": 13.74,
-        "share_of_cloud_jobs_pct": 69.94,
+        "total_jobs": 1524,
+        "share_of_all_jobs_pct": 13.72,
+        "share_of_cloud_jobs_pct": 69.91,
         "top_companies": [
           {
             "company_name": "Databricks",
@@ -652,11 +652,11 @@
         "top_roles": [
           {
             "canonical_name": "AI Developer",
-            "job_count": 518
+            "job_count": 517
           },
           {
             "canonical_name": "Data Engineer",
-            "job_count": 404
+            "job_count": 403
           },
           {
             "canonical_name": "Machine Learning Engineer",
@@ -682,7 +682,7 @@
         "type": "hyperscaler",
         "total_jobs": 1358,
         "share_of_all_jobs_pct": 12.23,
-        "share_of_cloud_jobs_pct": 62.24,
+        "share_of_cloud_jobs_pct": 62.29,
         "top_companies": [
           {
             "company_name": "Databricks",
@@ -758,7 +758,7 @@
         "type": "hyperscaler",
         "total_jobs": 1291,
         "share_of_all_jobs_pct": 11.62,
-        "share_of_cloud_jobs_pct": 59.17,
+        "share_of_cloud_jobs_pct": 59.22,
         "top_companies": [
           {
             "company_name": "Databricks",
@@ -776,12 +776,12 @@
             "job_count": 28
           },
           {
-            "company_name": "Cloudflare",
+            "company_name": "Snowflake",
             "sector": null,
             "job_count": 25
           },
           {
-            "company_name": "Snowflake",
+            "company_name": "Cloudflare",
             "sector": null,
             "job_count": 25
           },
@@ -834,7 +834,7 @@
         "type": "platform",
         "total_jobs": 1033,
         "share_of_all_jobs_pct": 9.3,
-        "share_of_cloud_jobs_pct": 47.34,
+        "share_of_cloud_jobs_pct": 47.39,
         "top_companies": [
           {
             "company_name": "Databricks",
@@ -908,9 +908,9 @@
         "id": "snowflake_db",
         "name": "Snowflake",
         "type": "platform",
-        "total_jobs": 701,
-        "share_of_all_jobs_pct": 6.31,
-        "share_of_cloud_jobs_pct": 32.13,
+        "total_jobs": 698,
+        "share_of_all_jobs_pct": 6.28,
+        "share_of_cloud_jobs_pct": 32.02,
         "top_companies": [
           {
             "company_name": "Snowflake",
@@ -956,11 +956,11 @@
         "top_roles": [
           {
             "canonical_name": "Data Engineer",
-            "job_count": 252
+            "job_count": 249
           },
           {
             "canonical_name": "AI Developer",
-            "job_count": 138
+            "job_count": 137
           },
           {
             "canonical_name": "Data Analyst",
@@ -1002,18 +1002,18 @@
             "job_count": 15
           },
           {
-            "company_name": "Amgen",
-            "sector": "Health Care",
-            "job_count": 11
-          },
-          {
             "company_name": "Hewlett Packard Enterprise",
             "sector": "Information Technology",
             "job_count": 11
           },
           {
-            "company_name": "Johnson Controls",
-            "sector": "Industrials",
+            "company_name": "Amgen",
+            "sector": "Health Care",
+            "job_count": 11
+          },
+          {
+            "company_name": "Ecolab",
+            "sector": "Materials",
             "job_count": 9
           }
         ],
@@ -1048,12 +1048,12 @@
         "share_of_agent_jobs_pct": 12.5,
         "top_companies": [
           {
-            "company_name": "Alphabet Inc. (Class A)",
+            "company_name": "Alphabet Inc. (Class C)",
             "sector": "Communication Services",
             "job_count": 11
           },
           {
-            "company_name": "Alphabet Inc. (Class C)",
+            "company_name": "Alphabet Inc. (Class A)",
             "sector": "Communication Services",
             "job_count": 11
           },
@@ -1068,8 +1068,8 @@
             "job_count": 9
           },
           {
-            "company_name": "Roche Group",
-            "sector": null,
+            "company_name": "Amgen",
+            "sector": "Health Care",
             "job_count": 6
           }
         ],
@@ -1104,17 +1104,17 @@
         "share_of_agent_jobs_pct": 5.6,
         "top_companies": [
           {
+            "company_name": "Alphabet Inc. (Class A)",
+            "sector": "Communication Services",
+            "job_count": 10
+          },
+          {
             "company_name": "Google (Alphabet)",
             "sector": "Communication Services",
             "job_count": 10
           },
           {
             "company_name": "Alphabet Inc. (Class C)",
-            "sector": "Communication Services",
-            "job_count": 10
-          },
-          {
-            "company_name": "Alphabet Inc. (Class A)",
             "sector": "Communication Services",
             "job_count": 10
           },
@@ -1221,13 +1221,13 @@
             "job_count": 13
           },
           {
-            "company_name": "United Parcel Service",
-            "sector": "Industrials",
+            "company_name": "Snowflake",
+            "sector": null,
             "job_count": 6
           },
           {
-            "company_name": "Snowflake",
-            "sector": null,
+            "company_name": "United Parcel Service",
+            "sector": "Industrials",
             "job_count": 6
           },
           {
@@ -1236,8 +1236,8 @@
             "job_count": 5
           },
           {
-            "company_name": "Thales Group",
-            "sector": null,
+            "company_name": "Salesforce",
+            "sector": "Information Technology",
             "job_count": 3
           }
         ],
@@ -1292,8 +1292,8 @@
             "job_count": 4
           },
           {
-            "company_name": "Advanced Micro Devices",
-            "sector": "Information Technology",
+            "company_name": "Solita",
+            "sector": null,
             "job_count": 3
           }
         ],
@@ -1520,7 +1520,7 @@
     ]
   },
   "hierarchy_shift": {
-    "ic_count": 10163,
+    "ic_count": 10161,
     "management_count": 945,
     "ic_share_pct": 91.49,
     "management_share_pct": 8.51,
@@ -1529,32 +1529,32 @@
       {
         "seniority": "Junior / Entry",
         "track": "IC",
-        "job_count": 522,
-        "share_pct": 4.7
+        "job_count": 521,
+        "share_pct": 4.69
       },
       {
         "seniority": "Mid",
         "track": "Management",
-        "job_count": 4058,
-        "share_pct": 36.53
+        "job_count": 4060,
+        "share_pct": 36.56
       },
       {
         "seniority": "Senior",
         "track": "IC",
-        "job_count": 2946,
-        "share_pct": 26.52
+        "job_count": 2947,
+        "share_pct": 26.54
       },
       {
         "seniority": "Staff / Principal",
         "track": "Management",
-        "job_count": 1638,
-        "share_pct": 14.75
+        "job_count": 1636,
+        "share_pct": 14.73
       },
       {
         "seniority": "Lead / Manager",
         "track": "Management",
-        "job_count": 1373,
-        "share_pct": 12.36
+        "job_count": 1371,
+        "share_pct": 12.34
       },
       {
         "seniority": "Executive",
@@ -1566,26 +1566,26 @@
     "by_domain": [
       {
         "domain": "AI/ML",
-        "ic_jobs": 4458,
+        "ic_jobs": 4460,
         "management_jobs": 0,
         "ic_share_pct": 100.0
       },
       {
         "domain": "Analytics & DS",
-        "ic_jobs": 4319,
+        "ic_jobs": 4325,
         "management_jobs": 0,
         "ic_share_pct": 100.0
       },
       {
         "domain": "Data Engineering",
-        "ic_jobs": 2221,
+        "ic_jobs": 2224,
         "management_jobs": 0,
         "ic_share_pct": 100.0
       },
       {
         "domain": "Management",
         "ic_jobs": 0,
-        "management_jobs": 618,
+        "management_jobs": 619,
         "ic_share_pct": 0.0
       },
       {
@@ -1604,23 +1604,23 @@
     "work_modes": [
       {
         "work_mode": "Unspecified",
-        "job_count": 7816,
-        "share_pct": 70.36
+        "job_count": 7823,
+        "share_pct": 70.44
       },
       {
         "work_mode": "Hybrid",
-        "job_count": 2109,
-        "share_pct": 18.99
+        "job_count": 2108,
+        "share_pct": 18.98
       },
       {
         "work_mode": "Remote",
-        "job_count": 759,
-        "share_pct": 6.83
+        "job_count": 755,
+        "share_pct": 6.8
       },
       {
         "work_mode": "On-site",
-        "job_count": 424,
-        "share_pct": 3.82
+        "job_count": 420,
+        "share_pct": 3.78
       }
     ]
   },
@@ -1649,7 +1649,7 @@
         "label": "GenAI / Generative AI",
         "category": "AI/ML",
         "job_count": 1601,
-        "penetration_pct": 14.41,
+        "penetration_pct": 14.42,
         "sp500_job_count": 980,
         "signal_stage": "Dominant"
       },
@@ -1738,8 +1738,8 @@
         "snapshot_date": "2026-10-01",
         "snapshot_week": "2026-W40",
         "active_jobs": 863,
-        "new_jobs": 655,
-        "inflow_ratio_pct": 75.9,
+        "new_jobs": 656,
+        "inflow_ratio_pct": 76.0,
         "active_companies": 35,
         "senior_plus_pct": 69.8,
         "remote_of_known_pct": 15.4,
@@ -1760,7 +1760,7 @@
         "snapshot_date": "2026-11-01",
         "snapshot_week": "2026-W44",
         "active_jobs": 7983,
-        "new_jobs": 2163,
+        "new_jobs": 2164,
         "inflow_ratio_pct": 27.1,
         "active_companies": 1008,
         "senior_plus_pct": 59.0,
@@ -1771,8 +1771,8 @@
         "snapshot_date": "2026-11-08",
         "snapshot_week": "2026-W45",
         "active_jobs": 8516,
-        "new_jobs": 1153,
-        "inflow_ratio_pct": 13.5,
+        "new_jobs": 1155,
+        "inflow_ratio_pct": 13.6,
         "active_companies": 1339,
         "senior_plus_pct": 58.3,
         "remote_of_known_pct": 17.4,
@@ -1781,13 +1781,13 @@
       {
         "snapshot_date": "2026-11-09",
         "snapshot_week": "2026-W46",
-        "active_jobs": 11167,
-        "new_jobs": 1121,
-        "inflow_ratio_pct": 10.0,
-        "active_companies": 1419,
+        "active_jobs": 11179,
+        "new_jobs": 1126,
+        "inflow_ratio_pct": 10.1,
+        "active_companies": 1423,
         "senior_plus_pct": 58.6,
         "remote_of_known_pct": 23.5,
-        "wow_growth_pct": 31.1
+        "wow_growth_pct": 31.3
       }
     ],
     "monthly_inflow": [
@@ -1829,21 +1829,21 @@
       },
       {
         "posted_month": "2026-10",
-        "new_jobs": 4422,
-        "aiml_jobs": 1502,
-        "data_eng_jobs": 911,
-        "analytics_jobs": 1633,
+        "new_jobs": 4427,
+        "aiml_jobs": 1503,
+        "data_eng_jobs": 912,
+        "analytics_jobs": 1636,
         "aiml_share_pct": 34.0,
         "senior_plus_pct": 59.9
       },
       {
         "posted_month": "2026-11",
-        "new_jobs": 1300,
+        "new_jobs": 1304,
         "aiml_jobs": 420,
-        "data_eng_jobs": 214,
-        "analytics_jobs": 523,
-        "aiml_share_pct": 32.3,
-        "senior_plus_pct": 64.7
+        "data_eng_jobs": 216,
+        "analytics_jobs": 525,
+        "aiml_share_pct": 32.2,
+        "senior_plus_pct": 64.5
       }
     ]
   },
@@ -1861,15 +1861,15 @@
         "canonical_name": "Data Analyst",
         "domain": "Analytics & DS",
         "occupied_seats": 51483,
-        "open_jobs": 2615,
-        "hiring_intensity_pct": 5.08
+        "open_jobs": 2620,
+        "hiring_intensity_pct": 5.09
       },
       {
         "role_id": "data_engineer",
         "canonical_name": "Data Engineer",
         "domain": "Data Engineering",
         "occupied_seats": 46799,
-        "open_jobs": 1639,
+        "open_jobs": 1638,
         "hiring_intensity_pct": 3.5
       },
       {
@@ -1893,8 +1893,8 @@
         "canonical_name": "Machine Learning Engineer",
         "domain": "AI/ML",
         "occupied_seats": 9867,
-        "open_jobs": 1315,
-        "hiring_intensity_pct": 13.33
+        "open_jobs": 1313,
+        "hiring_intensity_pct": 13.31
       },
       {
         "role_id": "bi_developer",
@@ -1933,8 +1933,8 @@
         "canonical_name": "AI / Data Product Manager",
         "domain": "Product",
         "occupied_seats": 1989,
-        "open_jobs": 367,
-        "hiring_intensity_pct": 18.45
+        "open_jobs": 366,
+        "hiring_intensity_pct": 18.4
       },
       {
         "role_id": "team_lead_data_ai",
@@ -1957,16 +1957,16 @@
         "canonical_name": "AI Developer",
         "domain": "AI/ML",
         "occupied_seats": 1541,
-        "open_jobs": 2529,
-        "hiring_intensity_pct": 164.11
+        "open_jobs": 2524,
+        "hiring_intensity_pct": 163.79
       },
       {
         "role_id": "analytics_engineer",
         "canonical_name": "Analytics Engineer",
         "domain": "Data Engineering",
         "occupied_seats": 1485,
-        "open_jobs": 153,
-        "hiring_intensity_pct": 10.3
+        "open_jobs": 152,
+        "hiring_intensity_pct": 10.24
       },
       {
         "role_id": "llm_engineer",
@@ -2436,17 +2436,17 @@
       "canonical_name": "Data Analyst",
       "domain": "Analytics & DS",
       "track": "IC",
-      "job_count": 2538,
-      "market_share_pct": 22.85,
-      "category_job_count": 2689,
-      "full_desc_jobs_count": 1324,
-      "desc_coverage_pct": 49.2,
+      "job_count": 2543,
+      "market_share_pct": 22.9,
+      "category_job_count": 2695,
+      "full_desc_jobs_count": 1323,
+      "desc_coverage_pct": 49.1,
       "sp500_job_count": 1411,
-      "cz_job_count": 38,
+      "cz_job_count": 43,
       "occupied_seats": 51483,
       "expansion_index_pct": 4.9,
       "senior_plus_pct": 40.9,
-      "remote_pct": 18.4,
+      "remote_pct": 18.3,
       "synthesized_description": {
         "cs": [
           "Data Analyst je klíčový člověk pro to, aby se ve firmě dělala rozhodnutí podložená reálnými čísly (Data-Informed decision making). Těžiště práce se dnes posunulo od ručního lepení tabulek k hlubšímu porozumění byznysu, definování smysluplných produktových metrik a práci se sjednocenou sémantickou vrstvou.",
@@ -2462,11 +2462,11 @@
           "skill_id": "sql",
           "skill_name": "SQL",
           "category": "Programming",
-          "job_count": 624,
+          "job_count": 623,
           "penetration_pct": 47.1,
           "job_count_all": 628,
-          "penetration_all_pct": 23.4,
-          "job_count_full_desc": 624
+          "penetration_all_pct": 23.3,
+          "job_count_full_desc": 623
         },
         {
           "skill_id": "excel",
@@ -2475,7 +2475,7 @@
           "job_count": 478,
           "penetration_pct": 36.1,
           "job_count_all": 478,
-          "penetration_all_pct": 17.8,
+          "penetration_all_pct": 17.7,
           "job_count_full_desc": 478
         },
         {
@@ -2493,7 +2493,7 @@
           "skill_name": "Power BI",
           "category": "Business",
           "job_count": 391,
-          "penetration_pct": 29.5,
+          "penetration_pct": 29.6,
           "job_count_all": 402,
           "penetration_all_pct": 14.9,
           "job_count_full_desc": 391
@@ -2515,7 +2515,7 @@
           "job_count": 275,
           "penetration_pct": 20.8,
           "job_count_all": 276,
-          "penetration_all_pct": 10.3,
+          "penetration_all_pct": 10.2,
           "job_count_full_desc": 275
         },
         {
@@ -2643,7 +2643,7 @@
           "job_count": 31
         },
         {
-          "company_name": "Alpro (Danone)",
+          "company_name": "Stripe",
           "job_count": 26
         }
       ],
@@ -2682,12 +2682,12 @@
         },
         {
           "seniority": "Mid",
-          "job_count": 1289,
+          "job_count": 1293,
           "share_pct": 50.8
         },
         {
           "seniority": "Senior",
-          "job_count": 772,
+          "job_count": 773,
           "share_pct": 30.4
         },
         {
@@ -2698,7 +2698,7 @@
         {
           "seniority": "Lead / Manager",
           "job_count": 179,
-          "share_pct": 7.1
+          "share_pct": 7.0
         },
         {
           "seniority": "Executive",
@@ -2792,17 +2792,17 @@
           "posted_at": "2026-11-04"
         },
         {
-          "job_id": "bc3917f08cb095a3",
-          "title": "Business Intelligence (BI) Analyst",
-          "company_name": "Cushman & Wakefield",
+          "job_id": "6f3aab4f490322d8",
+          "title": "BI Specialist",
+          "company_name": "Sony Europe",
           "is_sp500": false,
           "location": "HU",
           "country_code": "HU",
           "country_name": "Hungary",
           "region": "EU",
           "seniority": "Mid",
-          "work_mode": "Unspecified",
-          "url": "https://hu.linkedin.com/jobs/view/business-intelligence-bi-analyst-at-cushman-wakefield-4478580209?position=3&pageNum=0&refId=QqcqnghHHpmvLYISlzPdgg%3D%3D&trackingId=PxmKYTgVQyV5Fc6sq6p%2FLw%3D%3D",
+          "work_mode": "Hybrid",
+          "url": "https://hu.linkedin.com/jobs/view/bi-specialist-at-sony-europe-4478777157?position=2&pageNum=0&refId=QqcqnghHHpmvLYISlzPdgg%3D%3D&trackingId=7dNMYVTzXdnnOXjtlRXmKA%3D%3D",
           "posted_at": "2026-11-03"
         },
         {
@@ -2848,17 +2848,17 @@
           "posted_at": "2026-11-01"
         },
         {
-          "job_id": "b3b6e593366f3d8e",
-          "title": "Enterprise Risk Management Analyst",
-          "company_name": "Coinbase",
-          "is_sp500": true,
-          "location": "LU",
-          "country_code": "LU",
-          "country_name": "Luxembourg",
+          "job_id": "301bacbcc7202aae",
+          "title": "Data & Digital Marketing Analyst",
+          "company_name": "Unilever",
+          "is_sp500": false,
+          "location": "BE",
+          "country_code": "BE",
+          "country_name": "Belgium",
           "region": "EU",
           "seniority": "Mid",
-          "work_mode": "Remote",
-          "url": "https://www.coinbase.com/careers/positions/8233945?gh_jid=8233945",
+          "work_mode": "Hybrid",
+          "url": "https://unilever.wd3.myworkdayjobs.com/en-US/Unilever_Experienced_Professionals/job/Brussels-Belgium/Data-Analyst-Benelux_R-1189025",
           "posted_at": "2026-10-30"
         },
         {
@@ -2876,17 +2876,17 @@
           "posted_at": "2026-10-30"
         },
         {
-          "job_id": "301bacbcc7202aae",
-          "title": "Data & Digital Marketing Analyst",
-          "company_name": "Unilever",
-          "is_sp500": false,
-          "location": "BE",
-          "country_code": "BE",
-          "country_name": "Belgium",
+          "job_id": "b3b6e593366f3d8e",
+          "title": "Enterprise Risk Management Analyst",
+          "company_name": "Coinbase",
+          "is_sp500": true,
+          "location": "LU",
+          "country_code": "LU",
+          "country_name": "Luxembourg",
           "region": "EU",
           "seniority": "Mid",
-          "work_mode": "Hybrid",
-          "url": "https://unilever.wd3.myworkdayjobs.com/en-US/Unilever_Experienced_Professionals/job/Brussels-Belgium/Data-Analyst-Benelux_R-1189025",
+          "work_mode": "Remote",
+          "url": "https://www.coinbase.com/careers/positions/8233945?gh_jid=8233945",
           "posted_at": "2026-10-30"
         },
         {
@@ -2918,20 +2918,6 @@
           "posted_at": "2026-10-26"
         },
         {
-          "job_id": "407d84c19a260196",
-          "title": "2027 Summer Intern: HR - People Analytics",
-          "company_name": "Hubbell Incorporated",
-          "is_sp500": true,
-          "location": "HR",
-          "country_code": "HR",
-          "country_name": "Croatia",
-          "region": "EU",
-          "seniority": "Junior / Entry",
-          "work_mode": "Unspecified",
-          "url": "https://careers.hubbell.com/job/Greenville-2027-Summer-Intern-HR-People-Analytics-SC-29615/1427573700/",
-          "posted_at": "2026-10-21"
-        },
-        {
           "job_id": "297877ad3939c46c",
           "title": "Senior One Accounting Analyst",
           "company_name": "Schlumberger",
@@ -2943,6 +2929,20 @@
           "seniority": "Senior",
           "work_mode": "Unspecified",
           "url": "https://slb.eightfold.ai/careers?pid=563499734324160&domain=slb.com",
+          "posted_at": "2026-10-21"
+        },
+        {
+          "job_id": "407d84c19a260196",
+          "title": "2027 Summer Intern: HR - People Analytics",
+          "company_name": "Hubbell Incorporated",
+          "is_sp500": true,
+          "location": "HR",
+          "country_code": "HR",
+          "country_name": "Croatia",
+          "region": "EU",
+          "seniority": "Junior / Entry",
+          "work_mode": "Unspecified",
+          "url": "https://careers.hubbell.com/job/Greenville-2027-Summer-Intern-HR-People-Analytics-SC-29615/1427573700/",
           "posted_at": "2026-10-21"
         },
         {
@@ -2974,9 +2974,9 @@
           "posted_at": "2026-10-05"
         },
         {
-          "job_id": "bf3d15cb32a7793d",
-          "title": "Marketing Analyst",
-          "company_name": "Capital One",
+          "job_id": "0a2aee583e63c3dc",
+          "title": "Site Reliability Operations Analyst",
+          "company_name": "Palantir Technologies",
           "is_sp500": true,
           "location": "PL",
           "country_code": "PL",
@@ -2984,7 +2984,7 @@
           "region": "EU",
           "seniority": "Mid",
           "work_mode": "Unspecified",
-          "url": "https://jobs.lever.co/capital/05d40f70-e065-4066-afe5-26cd13411083",
+          "url": "https://jobs.lever.co/palantir/2da72708-a7b0-4178-9cb2-6b009eb6e07f",
           "posted_at": null
         },
         {
@@ -3156,17 +3156,17 @@
           "posted_at": "2026-11-06"
         },
         {
-          "job_id": "352257563561ea66",
-          "title": "Lead AI Business Analyst",
-          "company_name": "American International Group",
+          "job_id": "61046df64e2a4d17",
+          "title": "Principal Systems Analyst",
+          "company_name": "Verizon",
           "is_sp500": true,
           "location": "IE",
           "country_code": "IE",
           "country_name": "Ireland",
           "region": "EU",
-          "seniority": "Lead / Manager",
-          "work_mode": "Unspecified",
-          "url": "https://aig.wd1.myworkdayjobs.com/en-US/aig/job/Dublin/Lead-AI-Business-Analyst_JR2604661",
+          "seniority": "Staff / Principal",
+          "work_mode": "Hybrid",
+          "url": "https://verizon.wd12.myworkdayjobs.com/en-US/verizon-careers/job/Limerick-Ireland/Principal-Systems-Analyst_R-1103358-1",
           "posted_at": "2026-11-05"
         },
         {
@@ -3212,32 +3212,18 @@
           "posted_at": "2026-11-03"
         },
         {
-          "job_id": "6f3aab4f490322d8",
-          "title": "BI Specialist",
-          "company_name": "Sony Europe",
+          "job_id": "bc3917f08cb095a3",
+          "title": "Business Intelligence (BI) Analyst",
+          "company_name": "Cushman & Wakefield",
           "is_sp500": false,
           "location": "HU",
           "country_code": "HU",
           "country_name": "Hungary",
           "region": "EU",
           "seniority": "Mid",
-          "work_mode": "Hybrid",
-          "url": "https://hu.linkedin.com/jobs/view/bi-specialist-at-sony-europe-4478777157?position=2&pageNum=0&refId=QqcqnghHHpmvLYISlzPdgg%3D%3D&trackingId=7dNMYVTzXdnnOXjtlRXmKA%3D%3D",
+          "work_mode": "Unspecified",
+          "url": "https://hu.linkedin.com/jobs/view/business-intelligence-bi-analyst-at-cushman-wakefield-4478580209?position=3&pageNum=0&refId=QqcqnghHHpmvLYISlzPdgg%3D%3D&trackingId=PxmKYTgVQyV5Fc6sq6p%2FLw%3D%3D",
           "posted_at": "2026-11-03"
-        },
-        {
-          "job_id": "23883c316658d53d",
-          "title": "Lead Data Analyst (Analytics Engineering), Data Platform",
-          "company_name": "CUJO AI®",
-          "is_sp500": false,
-          "location": "FI",
-          "country_code": "FI",
-          "country_name": "Finland",
-          "region": "EU",
-          "seniority": "Lead / Manager",
-          "work_mode": "Hybrid",
-          "url": "https://fi.linkedin.com/jobs/view/lead-data-analyst-analytics-engineering-data-platform-at-cujo-ai%C2%AE-4475464024?position=2&pageNum=0&refId=EHieYoHsDnRkd%2FyDD9EWoQ%3D%3D&trackingId=IN7eOnLpc1DjYY4zle4OfQ%3D%3D",
-          "posted_at": "2026-10-30"
         },
         {
           "job_id": "6e359809e13848b7",
@@ -3251,6 +3237,20 @@
           "seniority": "Senior",
           "work_mode": "Unspecified",
           "url": "https://hr.linkedin.com/jobs/view/senior-data-analyst-at-span-4439841647?position=1&pageNum=0&refId=p1QZHcssIE5z7Qyb%2Bi7Bog%3D%3D&trackingId=xXhGTxv0UN3v0utWQUe%2FeA%3D%3D",
+          "posted_at": "2026-10-30"
+        },
+        {
+          "job_id": "23883c316658d53d",
+          "title": "Lead Data Analyst (Analytics Engineering), Data Platform",
+          "company_name": "CUJO AI®",
+          "is_sp500": false,
+          "location": "FI",
+          "country_code": "FI",
+          "country_name": "Finland",
+          "region": "EU",
+          "seniority": "Lead / Manager",
+          "work_mode": "Hybrid",
+          "url": "https://fi.linkedin.com/jobs/view/lead-data-analyst-analytics-engineering-data-platform-at-cujo-ai%C2%AE-4475464024?position=2&pageNum=0&refId=EHieYoHsDnRkd%2FyDD9EWoQ%3D%3D&trackingId=IN7eOnLpc1DjYY4zle4OfQ%3D%3D",
           "posted_at": "2026-10-30"
         },
         {
@@ -3394,9 +3394,9 @@
           "posted_at": "2026-09-29"
         },
         {
-          "job_id": "0a2aee583e63c3dc",
-          "title": "Site Reliability Operations Analyst",
-          "company_name": "Palantir Technologies",
+          "job_id": "bf3d15cb32a7793d",
+          "title": "Marketing Analyst",
+          "company_name": "Capital One",
           "is_sp500": true,
           "location": "PL",
           "country_code": "PL",
@@ -3404,7 +3404,7 @@
           "region": "EU",
           "seniority": "Mid",
           "work_mode": "Unspecified",
-          "url": "https://jobs.lever.co/palantir/2da72708-a7b0-4178-9cb2-6b009eb6e07f",
+          "url": "https://jobs.lever.co/capital/05d40f70-e065-4066-afe5-26cd13411083",
           "posted_at": null
         }
       ]
@@ -3414,17 +3414,17 @@
       "canonical_name": "AI Developer",
       "domain": "AI/ML",
       "track": "IC",
-      "job_count": 2005,
-      "market_share_pct": 18.05,
-      "category_job_count": 2583,
-      "full_desc_jobs_count": 1790,
-      "desc_coverage_pct": 69.3,
+      "job_count": 2001,
+      "market_share_pct": 18.02,
+      "category_job_count": 2585,
+      "full_desc_jobs_count": 1785,
+      "desc_coverage_pct": 69.1,
       "sp500_job_count": 1169,
-      "cz_job_count": 77,
+      "cz_job_count": 74,
       "occupied_seats": 1541,
-      "expansion_index_pct": 130.1,
+      "expansion_index_pct": 129.9,
       "senior_plus_pct": 58.6,
-      "remote_pct": 18.2,
+      "remote_pct": 18.1,
       "synthesized_description": {
         "cs": [
           "AI Developer představuje jeden z nejvýraznějších nových technických profilů v korporátním prostředí S&P 500. Stojí na pomezí klasického softwarového inženýrství a aplikované AI. Místo trénování základních modelů od nuly se soustředí na integraci hotových velkých jazykových modelů (LLM), návrh autonomních agentních postupů a stavbu produkčních architektur RAG přímo do zákaznických aplikací.",
@@ -3440,68 +3440,68 @@
           "skill_id": "python",
           "skill_name": "Python",
           "category": "Programming",
-          "job_count": 1178,
-          "penetration_pct": 65.8,
-          "job_count_all": 1189,
-          "penetration_all_pct": 46.0,
-          "job_count_full_desc": 1178
+          "job_count": 1173,
+          "penetration_pct": 65.7,
+          "job_count_all": 1184,
+          "penetration_all_pct": 45.8,
+          "job_count_full_desc": 1173
         },
         {
           "skill_id": "ai_agents",
           "skill_name": "AI Agents / Agentic AI",
           "category": "AI/ML",
-          "job_count": 968,
+          "job_count": 966,
           "penetration_pct": 54.1,
-          "job_count_all": 1025,
-          "penetration_all_pct": 39.7,
-          "job_count_full_desc": 968
+          "job_count_all": 1023,
+          "penetration_all_pct": 39.6,
+          "job_count_full_desc": 966
         },
         {
           "skill_id": "llm",
           "skill_name": "LLM / Large Language Models",
           "category": "AI/ML",
-          "job_count": 947,
+          "job_count": 944,
           "penetration_pct": 52.9,
-          "job_count_all": 951,
-          "penetration_all_pct": 36.8,
-          "job_count_full_desc": 947
+          "job_count_all": 948,
+          "penetration_all_pct": 36.7,
+          "job_count_full_desc": 944
         },
         {
           "skill_id": "genai",
           "skill_name": "GenAI / Generative AI",
           "category": "AI/ML",
           "job_count": 650,
-          "penetration_pct": 36.3,
+          "penetration_pct": 36.4,
           "job_count_all": 694,
-          "penetration_all_pct": 26.9,
+          "penetration_all_pct": 26.8,
           "job_count_full_desc": 650
         },
         {
           "skill_id": "rag",
           "skill_name": "RAG (Retrieval-Augmented Generation)",
           "category": "AI/ML",
-          "job_count": 549,
-          "penetration_pct": 30.7,
-          "job_count_all": 550,
-          "penetration_all_pct": 21.3,
-          "job_count_full_desc": 549
+          "job_count": 547,
+          "penetration_pct": 30.6,
+          "job_count_all": 548,
+          "penetration_all_pct": 21.2,
+          "job_count_full_desc": 547
         },
         {
           "skill_id": "sql",
           "skill_name": "SQL",
           "category": "Programming",
-          "job_count": 367,
-          "penetration_pct": 20.5,
-          "job_count_all": 367,
-          "penetration_all_pct": 14.2,
-          "job_count_full_desc": 367
+          "job_count": 364,
+          "penetration_pct": 20.4,
+          "job_count_all": 364,
+          "penetration_all_pct": 14.1,
+          "job_count_full_desc": 364
         },
         {
           "skill_id": "fine_tuning",
           "skill_name": "Fine-Tuning",
           "category": "AI/ML",
           "job_count": 267,
-          "penetration_pct": 14.9,
+          "penetration_pct": 15.0,
           "job_count_all": 268,
           "penetration_all_pct": 10.4,
           "job_count_full_desc": 267
@@ -3510,11 +3510,11 @@
           "skill_id": "java",
           "skill_name": "Java",
           "category": "Programming",
-          "job_count": 265,
+          "job_count": 264,
           "penetration_pct": 14.8,
-          "job_count_all": 266,
+          "job_count_all": 265,
           "penetration_all_pct": 10.3,
-          "job_count_full_desc": 265
+          "job_count_full_desc": 264
         }
       ],
       "top_technologies": [
@@ -3522,21 +3522,21 @@
           "skill_id": "aws",
           "skill_name": "AWS",
           "category": "Cloud",
-          "job_count": 536,
-          "penetration_pct": 29.9,
-          "job_count_all": 540,
+          "job_count": 535,
+          "penetration_pct": 30.0,
+          "job_count_all": 539,
           "penetration_all_pct": 20.9,
-          "job_count_full_desc": 536
+          "job_count_full_desc": 535
         },
         {
           "skill_id": "evals_observability",
           "skill_name": "MLOps / Evals & Observability",
           "category": "MLOps",
-          "job_count": 531,
+          "job_count": 530,
           "penetration_pct": 29.7,
-          "job_count_all": 535,
+          "job_count_all": 534,
           "penetration_all_pct": 20.7,
-          "job_count_full_desc": 531
+          "job_count_full_desc": 530
         },
         {
           "skill_id": "azure",
@@ -3563,7 +3563,7 @@
           "skill_name": "PyTorch",
           "category": "Framework",
           "job_count": 330,
-          "penetration_pct": 18.4,
+          "penetration_pct": 18.5,
           "job_count_all": 330,
           "penetration_all_pct": 12.8,
           "job_count_full_desc": 330
@@ -3573,7 +3573,7 @@
           "skill_name": "Kubernetes",
           "category": "MLOps",
           "job_count": 305,
-          "penetration_pct": 17.0,
+          "penetration_pct": 17.1,
           "job_count_all": 305,
           "penetration_all_pct": 11.8,
           "job_count_full_desc": 305
@@ -3582,18 +3582,18 @@
           "skill_id": "docker",
           "skill_name": "Docker",
           "category": "MLOps",
-          "job_count": 288,
-          "penetration_pct": 16.1,
-          "job_count_all": 288,
+          "job_count": 286,
+          "penetration_pct": 16.0,
+          "job_count_all": 286,
           "penetration_all_pct": 11.1,
-          "job_count_full_desc": 288
+          "job_count_full_desc": 286
         },
         {
           "skill_id": "langchain",
           "skill_name": "LangChain",
           "category": "Framework",
           "job_count": 237,
-          "penetration_pct": 13.2,
+          "penetration_pct": 13.3,
           "job_count_all": 238,
           "penetration_all_pct": 9.2,
           "job_count_full_desc": 237
@@ -3655,12 +3655,12 @@
       "seniority_breakdown": [
         {
           "seniority": "Junior / Entry",
-          "job_count": 106,
-          "share_pct": 5.3
+          "job_count": 105,
+          "share_pct": 5.2
         },
         {
           "seniority": "Mid",
-          "job_count": 787,
+          "job_count": 786,
           "share_pct": 39.3
         },
         {
@@ -3670,13 +3670,13 @@
         },
         {
           "seniority": "Staff / Principal",
-          "job_count": 500,
+          "job_count": 499,
           "share_pct": 24.9
         },
         {
           "seniority": "Lead / Manager",
-          "job_count": 144,
-          "share_pct": 7.2
+          "job_count": 143,
+          "share_pct": 7.1
         },
         {
           "seniority": "Executive",
@@ -3698,20 +3698,6 @@
           "work_mode": "Hybrid",
           "url": "https://mastercard.wd1.myworkdayjobs.com/en-US/CorporateCareers/job/Prague-Czech-Rep/Senior-AI-Engineer_R-294531",
           "posted_at": "2026-11-06"
-        },
-        {
-          "job_id": "421b31cedf3434a8",
-          "title": "Senior AI Research Engineer - GPU Systems & Kernels",
-          "company_name": "Datadog",
-          "is_sp500": true,
-          "location": "FR",
-          "country_code": "FR",
-          "country_name": "France",
-          "region": "EU",
-          "seniority": "Senior",
-          "work_mode": "Hybrid",
-          "url": "https://careers.datadoghq.com/detail/8365206/?gh_jid=8365206",
-          "posted_at": "2026-11-09"
         },
         {
           "job_id": "04d23d0349bb53ff",
@@ -3739,6 +3725,20 @@
           "seniority": "Senior",
           "work_mode": "Hybrid",
           "url": "https://aptiv.wd5.myworkdayjobs.com/en-US/aptiv_careers/job/Krakow-Poland/Senior-AI-ML-Engineer---Perception---Planning_J000700857",
+          "posted_at": "2026-11-09"
+        },
+        {
+          "job_id": "421b31cedf3434a8",
+          "title": "Senior AI Research Engineer - GPU Systems & Kernels",
+          "company_name": "Datadog",
+          "is_sp500": true,
+          "location": "FR",
+          "country_code": "FR",
+          "country_name": "France",
+          "region": "EU",
+          "seniority": "Senior",
+          "work_mode": "Hybrid",
+          "url": "https://careers.datadoghq.com/detail/8365206/?gh_jid=8365206",
           "posted_at": "2026-11-09"
         },
         {
@@ -3784,20 +3784,6 @@
           "posted_at": "2026-11-04"
         },
         {
-          "job_id": "65eeccd37c1f9824",
-          "title": "Junior AI Engineer",
-          "company_name": "PwC Luxembourg",
-          "is_sp500": false,
-          "location": "LU",
-          "country_code": "LU",
-          "country_name": "Luxembourg",
-          "region": "EU",
-          "seniority": "Junior / Entry",
-          "work_mode": "Unspecified",
-          "url": "https://lu.linkedin.com/jobs/view/junior-ai-engineer-at-pwc-luxembourg-4484655506?position=4&pageNum=0&refId=WEJSxamHC11KZcS%2BISfdYw%3D%3D&trackingId=s6l31rmVq2Ut%2BTEKWr%2BUBw%3D%3D",
-          "posted_at": "2026-11-03"
-        },
-        {
           "job_id": "e7079c4d87675bb6",
           "title": "AI Engineer (w/m/d)",
           "company_name": "Fabasoft",
@@ -3809,6 +3795,20 @@
           "seniority": "Mid",
           "work_mode": "Unspecified",
           "url": "https://at.linkedin.com/jobs/view/ai-engineer-w-m-d-at-fabasoft-4440024587?position=4&pageNum=0&refId=San8IUpRtqMo%2BxNI3L6ZIg%3D%3D&trackingId=%2FRPVz%2B20UG1yKrl5YhGuKw%3D%3D",
+          "posted_at": "2026-11-03"
+        },
+        {
+          "job_id": "65eeccd37c1f9824",
+          "title": "Junior AI Engineer",
+          "company_name": "PwC Luxembourg",
+          "is_sp500": false,
+          "location": "LU",
+          "country_code": "LU",
+          "country_name": "Luxembourg",
+          "region": "EU",
+          "seniority": "Junior / Entry",
+          "work_mode": "Unspecified",
+          "url": "https://lu.linkedin.com/jobs/view/junior-ai-engineer-at-pwc-luxembourg-4484655506?position=4&pageNum=0&refId=WEJSxamHC11KZcS%2BISfdYw%3D%3D&trackingId=s6l31rmVq2Ut%2BTEKWr%2BUBw%3D%3D",
           "posted_at": "2026-11-03"
         },
         {
@@ -4148,17 +4148,17 @@
           "posted_at": "2026-11-03"
         },
         {
-          "job_id": "3b1d9c8bd8db40b4",
-          "title": "Data Scientist & AI Engineer (all genders)",
-          "company_name": "Austrian Lotteries",
+          "job_id": "2e4c25e9b83027f4",
+          "title": "AI/ML Engineer, LLM Orchestration & Agentic Workflows (Remote, EU)",
+          "company_name": "Bnbwelcome d.o.o.",
           "is_sp500": false,
-          "location": "AT",
-          "country_code": "AT",
-          "country_name": "Austria",
+          "location": "HR",
+          "country_code": "HR",
+          "country_name": "Croatia",
           "region": "EU",
           "seniority": "Mid",
-          "work_mode": "Unspecified",
-          "url": "https://at.linkedin.com/jobs/view/data-scientist-ai-engineer-all-genders-at-austrian-lotteries-4448254411?position=5&pageNum=0&refId=uxRCN%2BNTEqX1FQLCVPhulA%3D%3D&trackingId=KFp1wnJy1%2B5bL3JlT5GxWQ%3D%3D",
+          "work_mode": "Remote",
+          "url": "https://hr.linkedin.com/jobs/view/ai-ml-engineer-llm-orchestration-agentic-workflows-remote-eu-at-bnbwelcome-d-o-o-4484388877?position=2&pageNum=0&refId=8EhbZBfz4QdVc95rObBrdw%3D%3D&trackingId=GFqx13qIArsEu%2BiqXZvjxA%3D%3D",
           "posted_at": "2026-11-02"
         },
         {
@@ -4176,20 +4176,6 @@
           "posted_at": "2026-11-02"
         },
         {
-          "job_id": "2e4c25e9b83027f4",
-          "title": "AI/ML Engineer, LLM Orchestration & Agentic Workflows (Remote, EU)",
-          "company_name": "Bnbwelcome d.o.o.",
-          "is_sp500": false,
-          "location": "HR",
-          "country_code": "HR",
-          "country_name": "Croatia",
-          "region": "EU",
-          "seniority": "Mid",
-          "work_mode": "Remote",
-          "url": "https://hr.linkedin.com/jobs/view/ai-ml-engineer-llm-orchestration-agentic-workflows-remote-eu-at-bnbwelcome-d-o-o-4484388877?position=2&pageNum=0&refId=8EhbZBfz4QdVc95rObBrdw%3D%3D&trackingId=GFqx13qIArsEu%2BiqXZvjxA%3D%3D",
-          "posted_at": "2026-11-02"
-        },
-        {
           "job_id": "74f2f66d3dd1bf98",
           "title": "Cloud & AI Security Architect",
           "company_name": "Elevance Health",
@@ -4204,18 +4190,18 @@
           "posted_at": "2026-11-02"
         },
         {
-          "job_id": "935017ac1e8703a0",
-          "title": "Senior AI Engineer, Unstructured AI",
-          "company_name": "Collibra",
+          "job_id": "3b1d9c8bd8db40b4",
+          "title": "Data Scientist & AI Engineer (all genders)",
+          "company_name": "Austrian Lotteries",
           "is_sp500": false,
-          "location": "BE",
-          "country_code": "BE",
-          "country_name": "Belgium",
+          "location": "AT",
+          "country_code": "AT",
+          "country_name": "Austria",
           "region": "EU",
-          "seniority": "Senior",
-          "work_mode": "Hybrid",
-          "url": "https://www.collibra.com/us/en/company/careers/job-listing/?gh_jid=8136489",
-          "posted_at": "2026-10-30"
+          "seniority": "Mid",
+          "work_mode": "Unspecified",
+          "url": "https://at.linkedin.com/jobs/view/data-scientist-ai-engineer-all-genders-at-austrian-lotteries-4448254411?position=5&pageNum=0&refId=uxRCN%2BNTEqX1FQLCVPhulA%3D%3D&trackingId=KFp1wnJy1%2B5bL3JlT5GxWQ%3D%3D",
+          "posted_at": "2026-11-02"
         },
         {
           "job_id": "5112904975519d05",
@@ -4232,18 +4218,18 @@
           "posted_at": "2026-10-30"
         },
         {
-          "job_id": "544a57a63fbab478",
-          "title": "Edge AI Engineer (Mid/Senior) | Telematics",
-          "company_name": "Teltonika",
+          "job_id": "935017ac1e8703a0",
+          "title": "Senior AI Engineer, Unstructured AI",
+          "company_name": "Collibra",
           "is_sp500": false,
-          "location": "LT",
-          "country_code": "LT",
-          "country_name": "Lithuania",
+          "location": "BE",
+          "country_code": "BE",
+          "country_name": "Belgium",
           "region": "EU",
           "seniority": "Senior",
           "work_mode": "Hybrid",
-          "url": "https://lt.linkedin.com/jobs/view/edge-ai-engineer-mid-senior-telematics-at-teltonika-4484472680?position=1&pageNum=0&refId=pVebiLiUnod8X97o4AYVvw%3D%3D&trackingId=WLWiz%2Fc%2F0O0yvJjoACG0OA%3D%3D",
-          "posted_at": "2026-10-28"
+          "url": "https://www.collibra.com/us/en/company/careers/job-listing/?gh_jid=8136489",
+          "posted_at": "2026-10-30"
         },
         {
           "job_id": "2aa11fb824010f2b",
@@ -4257,6 +4243,20 @@
           "seniority": "Mid",
           "work_mode": "Hybrid",
           "url": "https://intel.wd1.myworkdayjobs.com/en-US/External/job/Germany-Munich/AI-Software-Development-Engineer---Neuromorphic-Computing--m-f-d---Fixed-Term-_JR0287336",
+          "posted_at": "2026-10-28"
+        },
+        {
+          "job_id": "544a57a63fbab478",
+          "title": "Edge AI Engineer (Mid/Senior) | Telematics",
+          "company_name": "Teltonika",
+          "is_sp500": false,
+          "location": "LT",
+          "country_code": "LT",
+          "country_name": "Lithuania",
+          "region": "EU",
+          "seniority": "Senior",
+          "work_mode": "Hybrid",
+          "url": "https://lt.linkedin.com/jobs/view/edge-ai-engineer-mid-senior-telematics-at-teltonika-4484472680?position=1&pageNum=0&refId=pVebiLiUnod8X97o4AYVvw%3D%3D&trackingId=WLWiz%2Fc%2F0O0yvJjoACG0OA%3D%3D",
           "posted_at": "2026-10-28"
         },
         {
@@ -4274,6 +4274,34 @@
           "posted_at": "2026-10-24"
         },
         {
+          "job_id": "449e29093dcd446b",
+          "title": "Generative AI Specialist",
+          "company_name": "If Insurance",
+          "is_sp500": false,
+          "location": "DK",
+          "country_code": "DK",
+          "country_name": "Denmark",
+          "region": "EU",
+          "seniority": "Mid",
+          "work_mode": "Hybrid",
+          "url": "https://dk.linkedin.com/jobs/view/generative-ai-specialist-at-if-insurance-4481681927?position=3&pageNum=0&refId=e3jxq%2FqbhoTdvkmb9Pr0yw%3D%3D&trackingId=kywi5XcQnhKejefveZa6Nw%3D%3D",
+          "posted_at": "2026-10-23"
+        },
+        {
+          "job_id": "f82d864a04ac6ae3",
+          "title": "AI & ML Engineer",
+          "company_name": "Zurich Insurance Group",
+          "is_sp500": false,
+          "location": "SK",
+          "country_code": "SK",
+          "country_name": "Slovakia",
+          "region": "EU",
+          "seniority": "Mid",
+          "work_mode": "Hybrid",
+          "url": "https://sk.linkedin.com/jobs/view/ai-ml-engineer-at-zurich-insurance-4472563666?position=1&pageNum=0&refId=Mh8VVY6YL%2F8IwxABdGz8IA%3D%3D&trackingId=AYYvwkGQ%2FoHif3Xx7ENKGg%3D%3D",
+          "posted_at": "2026-10-23"
+        },
+        {
           "job_id": "01daea8b92451c9f",
           "title": "AI Engineer",
           "company_name": "NTT DATA Europe & Latam",
@@ -4285,34 +4313,6 @@
           "seniority": "Junior / Entry",
           "work_mode": "Unspecified",
           "url": "https://ro.linkedin.com/jobs/view/ai-engineer-at-ntt-data-europe-latam-4472947579?position=4&pageNum=0&refId=sU1RKtHdCh%2FiV%2FFD%2B887dw%3D%3D&trackingId=nK3acBp3KnyNQsF02uNEsQ%3D%3D",
-          "posted_at": "2026-10-23"
-        },
-        {
-          "job_id": "d2b832365806e8bc",
-          "title": "AI Engineer (m/f)",
-          "company_name": "PwC Slovakia",
-          "is_sp500": false,
-          "location": "SK",
-          "country_code": "SK",
-          "country_name": "Slovakia",
-          "region": "EU",
-          "seniority": "Mid",
-          "work_mode": "Hybrid",
-          "url": "https://sk.linkedin.com/jobs/view/ai-engineer-m-f-at-pwc-slovakia-4446431290?position=2&pageNum=0&refId=Mh8VVY6YL%2F8IwxABdGz8IA%3D%3D&trackingId=D7EqKQYTnh9IZKkQTa%2FT1A%3D%3D",
-          "posted_at": "2026-10-23"
-        },
-        {
-          "job_id": "b44b65bdcc3e8190",
-          "title": "Senior AI Engineer",
-          "company_name": "JYSK",
-          "is_sp500": false,
-          "location": "DK",
-          "country_code": "DK",
-          "country_name": "Denmark",
-          "region": "EU",
-          "seniority": "Senior",
-          "work_mode": "Hybrid",
-          "url": "https://dk.linkedin.com/jobs/view/senior-ai-engineer-at-jysk-4480633429?position=2&pageNum=0&refId=uw1p1gDo6Fv4IwGujNk7ww%3D%3D&trackingId=eBqP6rFi5hPlOdlQ%2FSr0Dg%3D%3D",
           "posted_at": "2026-10-23"
         },
         {
@@ -4392,17 +4392,17 @@
       "canonical_name": "Data Engineer",
       "domain": "Data Engineering",
       "track": "IC",
-      "job_count": 1342,
-      "market_share_pct": 12.08,
-      "category_job_count": 1685,
-      "full_desc_jobs_count": 1070,
-      "desc_coverage_pct": 63.5,
+      "job_count": 1343,
+      "market_share_pct": 12.09,
+      "category_job_count": 1688,
+      "full_desc_jobs_count": 1066,
+      "desc_coverage_pct": 63.2,
       "sp500_job_count": 719,
-      "cz_job_count": 43,
+      "cz_job_count": 46,
       "occupied_seats": 46799,
       "expansion_index_pct": 2.9,
       "senior_plus_pct": 54.0,
-      "remote_pct": 24.1,
+      "remote_pct": 23.9,
       "synthesized_description": {
         "cs": [
           "Data Engineer staví a spravuje infrastrukturu, bez které moderní analytika ani umělá inteligence nemohou fungovat. Pokud chybí spolehlivé datové toky, správně vyčištěná data a dohled nad jejich kvalitou, jakékoliv snahy o pokročilý reporting nebo generativní AI rychle ztroskotají. Právě proto patří datoví inženýři dlouhodobě k nejžádanějším technickým profilům.",
@@ -4418,31 +4418,31 @@
           "skill_id": "python",
           "skill_name": "Python",
           "category": "Programming",
-          "job_count": 701,
-          "penetration_pct": 65.5,
-          "job_count_all": 710,
-          "penetration_all_pct": 42.1,
-          "job_count_full_desc": 701
+          "job_count": 697,
+          "penetration_pct": 65.4,
+          "job_count_all": 706,
+          "penetration_all_pct": 41.8,
+          "job_count_full_desc": 697
         },
         {
           "skill_id": "sql",
           "skill_name": "SQL",
           "category": "Programming",
-          "job_count": 683,
+          "job_count": 680,
           "penetration_pct": 63.8,
-          "job_count_all": 687,
-          "penetration_all_pct": 40.8,
-          "job_count_full_desc": 683
+          "job_count_all": 684,
+          "penetration_all_pct": 40.5,
+          "job_count_full_desc": 680
         },
         {
           "skill_id": "data_governance",
           "skill_name": "Data Governance & Quality",
           "category": "Business",
-          "job_count": 505,
+          "job_count": 503,
           "penetration_pct": 47.2,
-          "job_count_all": 506,
-          "penetration_all_pct": 30.0,
-          "job_count_full_desc": 505
+          "job_count_all": 504,
+          "penetration_all_pct": 29.9,
+          "job_count_full_desc": 503
         },
         {
           "skill_id": "java",
@@ -4459,27 +4459,27 @@
           "skill_name": "AI Agents / Agentic AI",
           "category": "AI/ML",
           "job_count": 185,
-          "penetration_pct": 17.3,
+          "penetration_pct": 17.4,
           "job_count_all": 188,
-          "penetration_all_pct": 11.2,
+          "penetration_all_pct": 11.1,
           "job_count_full_desc": 185
         },
         {
           "skill_id": "llm",
           "skill_name": "LLM / Large Language Models",
           "category": "AI/ML",
-          "job_count": 173,
-          "penetration_pct": 16.2,
-          "job_count_all": 173,
-          "penetration_all_pct": 10.3,
-          "job_count_full_desc": 173
+          "job_count": 172,
+          "penetration_pct": 16.1,
+          "job_count_all": 172,
+          "penetration_all_pct": 10.2,
+          "job_count_full_desc": 172
         },
         {
           "skill_id": "genai",
           "skill_name": "GenAI / Generative AI",
           "category": "AI/ML",
           "job_count": 164,
-          "penetration_pct": 15.3,
+          "penetration_pct": 15.4,
           "job_count_all": 164,
           "penetration_all_pct": 9.7,
           "job_count_full_desc": 164
@@ -4491,7 +4491,7 @@
           "job_count": 129,
           "penetration_pct": 12.1,
           "job_count_all": 129,
-          "penetration_all_pct": 7.7,
+          "penetration_all_pct": 7.6,
           "job_count_full_desc": 129
         }
       ],
@@ -4501,7 +4501,7 @@
           "skill_name": "Apache Spark",
           "category": "Framework",
           "job_count": 445,
-          "penetration_pct": 41.6,
+          "penetration_pct": 41.7,
           "job_count_all": 454,
           "penetration_all_pct": 26.9,
           "job_count_full_desc": 445
@@ -4510,20 +4510,20 @@
           "skill_id": "aws",
           "skill_name": "AWS",
           "category": "Cloud",
-          "job_count": 411,
-          "penetration_pct": 38.4,
-          "job_count_all": 417,
-          "penetration_all_pct": 24.7,
-          "job_count_full_desc": 411
+          "job_count": 410,
+          "penetration_pct": 38.5,
+          "job_count_all": 416,
+          "penetration_all_pct": 24.6,
+          "job_count_full_desc": 410
         },
         {
           "skill_id": "databricks",
           "skill_name": "Databricks",
           "category": "Cloud",
           "job_count": 343,
-          "penetration_pct": 32.1,
+          "penetration_pct": 32.2,
           "job_count_all": 360,
-          "penetration_all_pct": 21.4,
+          "penetration_all_pct": 21.3,
           "job_count_full_desc": 343
         },
         {
@@ -4531,37 +4531,37 @@
           "skill_name": "Microsoft Azure",
           "category": "Cloud",
           "job_count": 329,
-          "penetration_pct": 30.7,
+          "penetration_pct": 30.9,
           "job_count_all": 340,
-          "penetration_all_pct": 20.2,
+          "penetration_all_pct": 20.1,
           "job_count_full_desc": 329
         },
         {
           "skill_id": "snowflake_db",
           "skill_name": "Snowflake",
           "category": "Cloud",
-          "job_count": 260,
-          "penetration_pct": 24.3,
-          "job_count_all": 266,
-          "penetration_all_pct": 15.8,
-          "job_count_full_desc": 260
+          "job_count": 257,
+          "penetration_pct": 24.1,
+          "job_count_all": 263,
+          "penetration_all_pct": 15.6,
+          "job_count_full_desc": 257
         },
         {
           "skill_id": "airflow",
           "skill_name": "Apache Airflow",
           "category": "Framework",
-          "job_count": 217,
-          "penetration_pct": 20.3,
-          "job_count_all": 219,
-          "penetration_all_pct": 13.0,
-          "job_count_full_desc": 217
+          "job_count": 214,
+          "penetration_pct": 20.1,
+          "job_count_all": 216,
+          "penetration_all_pct": 12.8,
+          "job_count_full_desc": 214
         },
         {
           "skill_id": "gcp",
           "skill_name": "Google Cloud Platform",
           "category": "Cloud",
           "job_count": 210,
-          "penetration_pct": 19.6,
+          "penetration_pct": 19.7,
           "job_count_all": 224,
           "penetration_all_pct": 13.3,
           "job_count_full_desc": 210
@@ -4570,11 +4570,11 @@
           "skill_id": "dbt",
           "skill_name": "dbt",
           "category": "Framework",
-          "job_count": 191,
-          "penetration_pct": 17.9,
-          "job_count_all": 191,
-          "penetration_all_pct": 11.3,
-          "job_count_full_desc": 191
+          "job_count": 188,
+          "penetration_pct": 17.6,
+          "job_count_all": 188,
+          "penetration_all_pct": 11.1,
+          "job_count_full_desc": 188
         }
       ],
       "top_companies": [
@@ -4638,7 +4638,7 @@
         },
         {
           "seniority": "Mid",
-          "job_count": 649,
+          "job_count": 650,
           "share_pct": 48.4
         },
         {
@@ -4649,7 +4649,7 @@
         {
           "seniority": "Staff / Principal",
           "job_count": 202,
-          "share_pct": 15.1
+          "share_pct": 15.0
         },
         {
           "seniority": "Lead / Manager",
@@ -4706,20 +4706,6 @@
           "posted_at": "2026-11-02"
         },
         {
-          "job_id": "d300ad2ef0d0c63f",
-          "title": "Data Engineer",
-          "company_name": "Continia Software",
-          "is_sp500": false,
-          "location": "DK",
-          "country_code": "DK",
-          "country_name": "Denmark",
-          "region": "EU",
-          "seniority": "Mid",
-          "work_mode": "Hybrid",
-          "url": "https://dk.linkedin.com/jobs/view/data-engineer-at-continia-software-4486150139?position=4&pageNum=0&refId=huV9D6ej0lmWtM8O1fyiwg%3D%3D&trackingId=0MthA4dz4GQJBXUEelccPQ%3D%3D",
-          "posted_at": "2026-11-02"
-        },
-        {
           "job_id": "ef8752483b677596",
           "title": "Data Engineer",
           "company_name": "C&I Ltd",
@@ -4731,6 +4717,20 @@
           "seniority": "Mid",
           "work_mode": "Hybrid",
           "url": "https://hr.linkedin.com/jobs/view/data-engineer-at-c-i-ltd-4484335977?position=1&pageNum=0&refId=QUYsWWU40jXdK5dig%2FcG%2BQ%3D%3D&trackingId=2wnkSukm2sRlwjDgBPHZKw%3D%3D",
+          "posted_at": "2026-11-02"
+        },
+        {
+          "job_id": "d300ad2ef0d0c63f",
+          "title": "Data Engineer",
+          "company_name": "Continia Software",
+          "is_sp500": false,
+          "location": "DK",
+          "country_code": "DK",
+          "country_name": "Denmark",
+          "region": "EU",
+          "seniority": "Mid",
+          "work_mode": "Hybrid",
+          "url": "https://dk.linkedin.com/jobs/view/data-engineer-at-continia-software-4486150139?position=4&pageNum=0&refId=huV9D6ej0lmWtM8O1fyiwg%3D%3D&trackingId=0MthA4dz4GQJBXUEelccPQ%3D%3D",
           "posted_at": "2026-11-02"
         },
         {
@@ -4762,20 +4762,6 @@
           "posted_at": "2026-11-01"
         },
         {
-          "job_id": "bf6e8d07480924f7",
-          "title": "Software Engineer, Large-Scale Data Systems",
-          "company_name": "Smartly.io",
-          "is_sp500": false,
-          "location": "FI",
-          "country_code": "FI",
-          "country_name": "Finland",
-          "region": "EU",
-          "seniority": "Mid",
-          "work_mode": "Hybrid",
-          "url": "https://job-boards.greenhouse.io/smartlyio/jobs/6010952004",
-          "posted_at": "2026-10-30"
-        },
-        {
           "job_id": "1b13a6727938157e",
           "title": "Data Engineer",
           "company_name": "EY",
@@ -4787,6 +4773,20 @@
           "seniority": "Mid",
           "work_mode": "Hybrid",
           "url": "https://sk.linkedin.com/jobs/view/data-engineer-at-ey-4476280990?position=5&pageNum=0&refId=i6Smxgix08%2BCX%2BwoykDqgw%3D%3D&trackingId=JBIM43hxnVqOonHy8JUe%2Bg%3D%3D",
+          "posted_at": "2026-10-30"
+        },
+        {
+          "job_id": "bf6e8d07480924f7",
+          "title": "Software Engineer, Large-Scale Data Systems",
+          "company_name": "Smartly.io",
+          "is_sp500": false,
+          "location": "FI",
+          "country_code": "FI",
+          "country_name": "Finland",
+          "region": "EU",
+          "seniority": "Mid",
+          "work_mode": "Hybrid",
+          "url": "https://job-boards.greenhouse.io/smartlyio/jobs/6010952004",
           "posted_at": "2026-10-30"
         },
         {
@@ -5112,9 +5112,9 @@
           "posted_at": "2026-11-02"
         },
         {
-          "job_id": "3b8ee0e75a02c314",
-          "title": "(Senior) Software Engineer - Data Core",
-          "company_name": "Celonis",
+          "job_id": "f2955f15d9f5c3a7",
+          "title": "Senior Data Platform Engineer",
+          "company_name": "Smartly.io",
           "is_sp500": false,
           "location": "DE",
           "country_code": "DE",
@@ -5122,7 +5122,7 @@
           "region": "EU",
           "seniority": "Senior",
           "work_mode": "Hybrid",
-          "url": "https://job-boards.greenhouse.io/celonis/jobs/8036958003?gh_jid=8036958003",
+          "url": "https://job-boards.greenhouse.io/smartlyio/jobs/6146519004",
           "posted_at": "2026-11-02"
         },
         {
@@ -5140,17 +5140,17 @@
           "posted_at": "2026-11-02"
         },
         {
-          "job_id": "1467200867e7cdbd",
-          "title": "Sr. BI Analyst (Data Engineering)",
-          "company_name": "The LEGO Group",
+          "job_id": "1204728cfa7026aa",
+          "title": "Senior Data Engineer",
+          "company_name": "Span",
           "is_sp500": false,
-          "location": "DK",
-          "country_code": "DK",
-          "country_name": "Denmark",
+          "location": "HR",
+          "country_code": "HR",
+          "country_name": "Croatia",
           "region": "EU",
           "seniority": "Senior",
-          "work_mode": "Hybrid",
-          "url": "https://dk.linkedin.com/jobs/view/sr-bi-analyst-data-engineering-at-the-lego-group-4483486052?position=4&pageNum=0&refId=dr3SaoVOSpJRbl5qKv1SEw%3D%3D&trackingId=rwDTN%2FSwNRbv6L0720A24w%3D%3D",
+          "work_mode": "Unspecified",
+          "url": "https://hr.linkedin.com/jobs/view/senior-data-engineer-at-span-4433667571?position=3&pageNum=0&refId=QUYsWWU40jXdK5dig%2FcG%2BQ%3D%3D&trackingId=evHzHs3JjyINLrncWLds1w%3D%3D",
           "posted_at": "2026-10-30"
         },
         {
@@ -5168,45 +5168,31 @@
           "posted_at": "2026-10-30"
         },
         {
-          "job_id": "1204728cfa7026aa",
-          "title": "Senior Data Engineer",
-          "company_name": "Span",
+          "job_id": "1467200867e7cdbd",
+          "title": "Sr. BI Analyst (Data Engineering)",
+          "company_name": "The LEGO Group",
           "is_sp500": false,
-          "location": "HR",
-          "country_code": "HR",
-          "country_name": "Croatia",
+          "location": "DK",
+          "country_code": "DK",
+          "country_name": "Denmark",
           "region": "EU",
           "seniority": "Senior",
-          "work_mode": "Unspecified",
-          "url": "https://hr.linkedin.com/jobs/view/senior-data-engineer-at-span-4433667571?position=3&pageNum=0&refId=QUYsWWU40jXdK5dig%2FcG%2BQ%3D%3D&trackingId=evHzHs3JjyINLrncWLds1w%3D%3D",
+          "work_mode": "Hybrid",
+          "url": "https://dk.linkedin.com/jobs/view/sr-bi-analyst-data-engineering-at-the-lego-group-4483486052?position=4&pageNum=0&refId=dr3SaoVOSpJRbl5qKv1SEw%3D%3D&trackingId=rwDTN%2FSwNRbv6L0720A24w%3D%3D",
           "posted_at": "2026-10-30"
         },
         {
-          "job_id": "2b8bc840f607be39",
-          "title": "Data Engineer (People Analytics Team)",
-          "company_name": "eMAG (Dante International / Naspers)",
+          "job_id": "e1bd3a6b5d4adc1c",
+          "title": "Senior Data Engineer",
+          "company_name": "Allianz Services",
           "is_sp500": false,
           "location": "RO",
           "country_code": "RO",
           "country_name": "Romania",
           "region": "EU",
-          "seniority": "Mid",
-          "work_mode": "Hybrid",
-          "url": "https://teams.emag.ro/jobs/?gh_jid=4986232101",
-          "posted_at": "2026-10-29"
-        },
-        {
-          "job_id": "2aa65e1fd797cf7b",
-          "title": "Data Engineer - Group Business Intelligence",
-          "company_name": "Luxaviation Group",
-          "is_sp500": false,
-          "location": "LU",
-          "country_code": "LU",
-          "country_name": "Luxembourg",
-          "region": "EU",
-          "seniority": "Mid",
+          "seniority": "Senior",
           "work_mode": "Unspecified",
-          "url": "https://lu.linkedin.com/jobs/view/data-engineer-group-business-intelligence-at-luxaviation-group-4484171053?position=4&pageNum=0&refId=4Kziq1FoQ9FVKMINcpBg0A%3D%3D&trackingId=ljF%2F8HOyr9eC5QVkDPfu2w%3D%3D",
+          "url": "https://ro.linkedin.com/jobs/view/senior-data-engineer-at-allianz-services-4483086032?position=5&pageNum=0&refId=e319qXjaMs6weI12AUb8Xg%3D%3D&trackingId=U0ynB9trqagw1aXCKtIQQw%3D%3D",
           "posted_at": "2026-10-29"
         },
         {
@@ -5224,18 +5210,18 @@
           "posted_at": "2026-10-29"
         },
         {
-          "job_id": "394cfbbb84f2c6e2",
-          "title": "Senior Data Engineer (Google Cloud, Python, SQL, PySpark)",
-          "company_name": "ING Hubs Slovakia",
+          "job_id": "2aa65e1fd797cf7b",
+          "title": "Data Engineer - Group Business Intelligence",
+          "company_name": "Luxaviation Group",
           "is_sp500": false,
-          "location": "SK",
-          "country_code": "SK",
-          "country_name": "Slovakia",
+          "location": "LU",
+          "country_code": "LU",
+          "country_name": "Luxembourg",
           "region": "EU",
-          "seniority": "Senior",
-          "work_mode": "Hybrid",
-          "url": "https://sk.linkedin.com/jobs/view/senior-data-engineer-google-cloud-python-sql-pyspark-at-ing-hubs-slovakia-4482506013?position=2&pageNum=0&refId=i6Smxgix08%2BCX%2BwoykDqgw%3D%3D&trackingId=XXE%2BW8oE%2F7b2N5128zT0DA%3D%3D",
-          "posted_at": "2026-10-28"
+          "seniority": "Mid",
+          "work_mode": "Unspecified",
+          "url": "https://lu.linkedin.com/jobs/view/data-engineer-group-business-intelligence-at-luxaviation-group-4484171053?position=4&pageNum=0&refId=4Kziq1FoQ9FVKMINcpBg0A%3D%3D&trackingId=ljF%2F8HOyr9eC5QVkDPfu2w%3D%3D",
+          "posted_at": "2026-10-29"
         },
         {
           "job_id": "de1018e067f13265",
@@ -5252,17 +5238,31 @@
           "posted_at": "2026-10-28"
         },
         {
-          "job_id": "e66b77dbc216ab55",
-          "title": "Data Platform Engineer - Cybersecurity",
-          "company_name": "Workday, Inc.",
+          "job_id": "394cfbbb84f2c6e2",
+          "title": "Senior Data Engineer (Google Cloud, Python, SQL, PySpark)",
+          "company_name": "ING Hubs Slovakia",
+          "is_sp500": false,
+          "location": "SK",
+          "country_code": "SK",
+          "country_name": "Slovakia",
+          "region": "EU",
+          "seniority": "Senior",
+          "work_mode": "Hybrid",
+          "url": "https://sk.linkedin.com/jobs/view/senior-data-engineer-google-cloud-python-sql-pyspark-at-ing-hubs-slovakia-4482506013?position=2&pageNum=0&refId=i6Smxgix08%2BCX%2BwoykDqgw%3D%3D&trackingId=XXE%2BW8oE%2F7b2N5128zT0DA%3D%3D",
+          "posted_at": "2026-10-28"
+        },
+        {
+          "job_id": "e0986de271544219",
+          "title": "Data Engineer II — Product Data Group",
+          "company_name": "F5, Inc.",
           "is_sp500": true,
           "location": "IE",
           "country_code": "IE",
           "country_name": "Ireland",
           "region": "EU",
           "seniority": "Mid",
-          "work_mode": "Hybrid",
-          "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/Ireland-Dublin/Data-Platform-Engineer---Cybersecurity_JR-0108816",
+          "work_mode": "Unspecified",
+          "url": "https://ffive.wd5.myworkdayjobs.com/en-US/f5jobs/job/Dublin/Senior-Data-Engineer_RP1037005-1",
           "posted_at": "2026-10-22"
         },
         {
@@ -5598,12 +5598,12 @@
           "share_pct": 13.6
         },
         {
-          "sector": "Information Technology",
+          "sector": "Health Care",
           "job_count": 95,
           "share_pct": 11.8
         },
         {
-          "sector": "Health Care",
+          "sector": "Information Technology",
           "job_count": 95,
           "share_pct": 11.8
         }
@@ -5698,17 +5698,17 @@
           "posted_at": "2026-11-03"
         },
         {
-          "job_id": "22e72d0937988141",
-          "title": "(Senior) Data Scientist (flexhub)",
-          "company_name": "Commerzbank Digital Technology Centre Bulgaria",
+          "job_id": "912172f835aac0cb",
+          "title": "Data Scientist - QuantumBlack, AI by McKinsey",
+          "company_name": "QuantumBlack, AI by McKinsey",
           "is_sp500": false,
-          "location": "BG",
-          "country_code": "BG",
-          "country_name": "Bulgaria",
+          "location": "HU",
+          "country_code": "HU",
+          "country_name": "Hungary",
           "region": "EU",
-          "seniority": "Senior",
+          "seniority": "Mid",
           "work_mode": "Unspecified",
-          "url": "https://bg.linkedin.com/jobs/view/senior-data-scientist-flexhub-at-commerzbank-digital-technology-centre-bulgaria-4474043054?position=5&pageNum=0&refId=0kQ%2FCBTWfifyAoeJJn3lCA%3D%3D&trackingId=amVSAUSZu4lZQ2c%2Fro0epA%3D%3D",
+          "url": "https://hu.linkedin.com/jobs/view/data-scientist-quantumblack-ai-by-mckinsey-at-quantumblack-ai-by-mckinsey-4486425382?position=5&pageNum=0&refId=RYYolxriY8bkjuFC6kaCLg%3D%3D&trackingId=bf86qklBcpyeTEwLH8LPrw%3D%3D",
           "posted_at": "2026-11-02"
         },
         {
@@ -5726,17 +5726,17 @@
           "posted_at": "2026-11-02"
         },
         {
-          "job_id": "912172f835aac0cb",
-          "title": "Data Scientist - QuantumBlack, AI by McKinsey",
-          "company_name": "QuantumBlack, AI by McKinsey",
+          "job_id": "22e72d0937988141",
+          "title": "(Senior) Data Scientist (flexhub)",
+          "company_name": "Commerzbank Digital Technology Centre Bulgaria",
           "is_sp500": false,
-          "location": "HU",
-          "country_code": "HU",
-          "country_name": "Hungary",
+          "location": "BG",
+          "country_code": "BG",
+          "country_name": "Bulgaria",
           "region": "EU",
-          "seniority": "Mid",
+          "seniority": "Senior",
           "work_mode": "Unspecified",
-          "url": "https://hu.linkedin.com/jobs/view/data-scientist-quantumblack-ai-by-mckinsey-at-quantumblack-ai-by-mckinsey-4486425382?position=5&pageNum=0&refId=RYYolxriY8bkjuFC6kaCLg%3D%3D&trackingId=bf86qklBcpyeTEwLH8LPrw%3D%3D",
+          "url": "https://bg.linkedin.com/jobs/view/senior-data-scientist-flexhub-at-commerzbank-digital-technology-centre-bulgaria-4474043054?position=5&pageNum=0&refId=0kQ%2FCBTWfifyAoeJJn3lCA%3D%3D&trackingId=amVSAUSZu4lZQ2c%2Fro0epA%3D%3D",
           "posted_at": "2026-11-02"
         },
         {
@@ -5824,17 +5824,17 @@
           "posted_at": "2026-10-20"
         },
         {
-          "job_id": "87fe8e0f3835fb17",
-          "title": "Data Scientist, GenAI & Advanced Analytics",
-          "company_name": "IQVIA",
+          "job_id": "004eff2d2d6627e0",
+          "title": "Decision Scientist (Automation & Optimization)",
+          "company_name": "CVS Health",
           "is_sp500": true,
-          "location": "DE",
-          "country_code": "DE",
-          "country_name": "Germany",
+          "location": "AT",
+          "country_code": "AT",
+          "country_name": "Austria",
           "region": "EU",
           "seniority": "Mid",
           "work_mode": "Unspecified",
-          "url": "https://iqvia.wd1.myworkdayjobs.com/en-US/iqvia/job/Frankfurt-Hesse-Germany/Data-Scientist--GenAI---Advanced-Analytics_R1565189-1",
+          "url": "https://cvshealth.wd1.myworkdayjobs.com/en-US/CVS_Health_Careers/job/Work-At-Home-Illinois/Decision-Scientist--Automation---Optimization-_R1053070",
           "posted_at": "2026-10-19"
         },
         {
@@ -5852,17 +5852,17 @@
           "posted_at": "2026-10-19"
         },
         {
-          "job_id": "004eff2d2d6627e0",
-          "title": "Decision Scientist (Automation & Optimization)",
-          "company_name": "CVS Health",
+          "job_id": "87fe8e0f3835fb17",
+          "title": "Data Scientist, GenAI & Advanced Analytics",
+          "company_name": "IQVIA",
           "is_sp500": true,
-          "location": "AT",
-          "country_code": "AT",
-          "country_name": "Austria",
+          "location": "DE",
+          "country_code": "DE",
+          "country_name": "Germany",
           "region": "EU",
           "seniority": "Mid",
           "work_mode": "Unspecified",
-          "url": "https://cvshealth.wd1.myworkdayjobs.com/en-US/CVS_Health_Careers/job/Work-At-Home-Illinois/Decision-Scientist--Automation---Optimization-_R1053070",
+          "url": "https://iqvia.wd1.myworkdayjobs.com/en-US/iqvia/job/Frankfurt-Hesse-Germany/Data-Scientist--GenAI---Advanced-Analytics_R1565189-1",
           "posted_at": "2026-10-19"
         },
         {
@@ -5992,20 +5992,6 @@
           "posted_at": "2026-09-07"
         },
         {
-          "job_id": "20e17e69999a3305",
-          "title": "Senior Staff Data Scientist, Consumer Relevance",
-          "company_name": "Reddit",
-          "is_sp500": true,
-          "location": "US",
-          "country_code": "US",
-          "country_name": "United States",
-          "region": "Americas",
-          "seniority": "Staff / Principal",
-          "work_mode": "Remote",
-          "url": "https://job-boards.greenhouse.io/reddit/jobs/7974605",
-          "posted_at": "2026-11-06"
-        },
-        {
           "job_id": "476ba9ccd59d5d9f",
           "title": "Staff Data Scientist, Ads",
           "company_name": "Reddit",
@@ -6017,6 +6003,20 @@
           "seniority": "Staff / Principal",
           "work_mode": "Remote",
           "url": "https://job-boards.greenhouse.io/reddit/jobs/7721851",
+          "posted_at": "2026-11-06"
+        },
+        {
+          "job_id": "dca9726fac2f87a4",
+          "title": "Senior Data Scientist - Product Intelligence Analytics",
+          "company_name": "Axon Enterprise",
+          "is_sp500": true,
+          "location": "US",
+          "country_code": "US",
+          "country_name": "United States",
+          "region": "Americas",
+          "seniority": "Senior",
+          "work_mode": "Hybrid",
+          "url": "https://job-boards.greenhouse.io/axon/jobs/7902827003",
           "posted_at": "2026-11-06"
         },
         {
@@ -6062,20 +6062,6 @@
           "posted_at": "2026-10-27"
         },
         {
-          "job_id": "5c4d96a68654c7a8",
-          "title": "Stage - Data Scientist (H/F)",
-          "company_name": "Compagnie Financière Richemont (Cartier, IWC)",
-          "is_sp500": false,
-          "location": "FR",
-          "country_code": "FR",
-          "country_name": "France",
-          "region": "EU",
-          "seniority": "Mid",
-          "work_mode": "Unspecified",
-          "url": "https://richemont.wd3.myworkdayjobs.com/en-US/richemont/job/PARIS/Stage---Data-Scientist--H-F-_JR135796-1",
-          "posted_at": "2026-11-09"
-        },
-        {
           "job_id": "97a739de7f3b6747",
           "title": "Data Scientist - Team BusFactor",
           "company_name": "Flix (FlixBus & FlixTrain)",
@@ -6087,6 +6073,20 @@
           "seniority": "Mid",
           "work_mode": "Unspecified",
           "url": "https://flix.careers/job/8905383002?gh_jid=8905383002",
+          "posted_at": "2026-11-09"
+        },
+        {
+          "job_id": "5c4d96a68654c7a8",
+          "title": "Stage - Data Scientist (H/F)",
+          "company_name": "Compagnie Financière Richemont (Cartier, IWC)",
+          "is_sp500": false,
+          "location": "FR",
+          "country_code": "FR",
+          "country_name": "France",
+          "region": "EU",
+          "seniority": "Mid",
+          "work_mode": "Unspecified",
+          "url": "https://richemont.wd3.myworkdayjobs.com/en-US/richemont/job/PARIS/Stage---Data-Scientist--H-F-_JR135796-1",
           "posted_at": "2026-11-09"
         },
         {
@@ -6104,20 +6104,6 @@
           "posted_at": "2026-11-04"
         },
         {
-          "job_id": "34fa2ab76696d777",
-          "title": "Senior Data Scientist - Personalization & Predictions",
-          "company_name": "Bloomreach",
-          "is_sp500": false,
-          "location": "SK",
-          "country_code": "SK",
-          "country_name": "Slovakia",
-          "region": "EU",
-          "seniority": "Senior",
-          "work_mode": "Remote",
-          "url": "https://sk.linkedin.com/jobs/view/senior-data-scientist-personalization-predictions-at-bloomreach-4419189728?position=3&pageNum=0&refId=SXwU%2Be6p%2FzNZ9p%2B888Q4aw%3D%3D&trackingId=OXYI50TTJPpbhYwhbvJqrg%3D%3D",
-          "posted_at": "2026-11-03"
-        },
-        {
           "job_id": "1878f64d252647f5",
           "title": "Data Scientist",
           "company_name": "Haystack",
@@ -6129,6 +6115,20 @@
           "seniority": "Mid",
           "work_mode": "Unspecified",
           "url": "https://at.linkedin.com/jobs/view/data-scientist-at-haystack-4477050883?position=2&pageNum=0&refId=ncKWQDKBJ%2BjaTtHanBqS2Q%3D%3D&trackingId=O5MtPKlB%2FLFQFUV%2Bh6%2BQUQ%3D%3D",
+          "posted_at": "2026-11-03"
+        },
+        {
+          "job_id": "34fa2ab76696d777",
+          "title": "Senior Data Scientist - Personalization & Predictions",
+          "company_name": "Bloomreach",
+          "is_sp500": false,
+          "location": "SK",
+          "country_code": "SK",
+          "country_name": "Slovakia",
+          "region": "EU",
+          "seniority": "Senior",
+          "work_mode": "Remote",
+          "url": "https://sk.linkedin.com/jobs/view/senior-data-scientist-personalization-predictions-at-bloomreach-4419189728?position=3&pageNum=0&refId=SXwU%2Be6p%2FzNZ9p%2B888Q4aw%3D%3D&trackingId=OXYI50TTJPpbhYwhbvJqrg%3D%3D",
           "posted_at": "2026-11-03"
         },
         {
@@ -6286,17 +6286,17 @@
           "posted_at": "2026-10-26"
         },
         {
-          "job_id": "70024b4233782b86",
-          "title": "Data Scientist",
-          "company_name": "XTEL",
+          "job_id": "cf94962de5b599e0",
+          "title": "Senior Data Scientist",
+          "company_name": "CGI",
           "is_sp500": false,
           "location": "BE",
           "country_code": "BE",
           "country_name": "Belgium",
           "region": "EU",
-          "seniority": "Mid",
-          "work_mode": "Hybrid",
-          "url": "https://be.linkedin.com/jobs/view/data-scientist-at-xtel-4472549955?position=4&pageNum=0&refId=464dHolRJOl3isp9ZOzl4A%3D%3D&trackingId=4PdIoNZCuhyBax%2Bo3gkI2A%3D%3D",
+          "seniority": "Senior",
+          "work_mode": "Unspecified",
+          "url": "https://be.linkedin.com/jobs/view/senior-data-scientist-at-cgi-4456382834?position=3&pageNum=0&refId=464dHolRJOl3isp9ZOzl4A%3D%3D&trackingId=oMB7cu69fUe4a0oufl2CYA%3D%3D",
           "posted_at": "2026-10-22"
         },
         {
@@ -6348,17 +6348,17 @@
       "canonical_name": "Machine Learning Engineer",
       "domain": "AI/ML",
       "track": "IC",
-      "job_count": 1199,
-      "market_share_pct": 10.79,
+      "job_count": 1197,
+      "market_share_pct": 10.78,
       "category_job_count": 1321,
-      "full_desc_jobs_count": 1029,
-      "desc_coverage_pct": 77.9,
+      "full_desc_jobs_count": 1027,
+      "desc_coverage_pct": 77.7,
       "sp500_job_count": 595,
-      "cz_job_count": 18,
+      "cz_job_count": 16,
       "occupied_seats": 9867,
-      "expansion_index_pct": 12.2,
-      "senior_plus_pct": 67.2,
-      "remote_pct": 32.7,
+      "expansion_index_pct": 12.1,
+      "senior_plus_pct": 67.3,
+      "remote_pct": 32.6,
       "synthesized_description": {
         "cs": [
           "Machine Learning Engineer přenáší experimentální modely ze zápisníků do spolehlivého produkčního provozu. V inzerátech předních technologických firem dominuje požadavek na převzetí plné odpovědnosti za celý životní cyklus modelu: od přípravy trénovacích dat a pipeline přes ladění (fine-tuning) až po rychlé odbavování predikcí v reálném čase.",
@@ -6374,51 +6374,51 @@
           "skill_id": "python",
           "skill_name": "Python",
           "category": "Programming",
-          "job_count": 735,
+          "job_count": 733,
           "penetration_pct": 71.4,
-          "job_count_all": 741,
-          "penetration_all_pct": 56.1,
-          "job_count_full_desc": 735
+          "job_count_all": 739,
+          "penetration_all_pct": 55.9,
+          "job_count_full_desc": 733
         },
         {
           "skill_id": "llm",
           "skill_name": "LLM / Large Language Models",
           "category": "AI/ML",
-          "job_count": 412,
-          "penetration_pct": 40.0,
-          "job_count_all": 413,
-          "penetration_all_pct": 31.3,
-          "job_count_full_desc": 412
+          "job_count": 410,
+          "penetration_pct": 39.9,
+          "job_count_all": 411,
+          "penetration_all_pct": 31.1,
+          "job_count_full_desc": 410
         },
         {
           "skill_id": "ai_agents",
           "skill_name": "AI Agents / Agentic AI",
           "category": "AI/ML",
-          "job_count": 327,
-          "penetration_pct": 31.8,
-          "job_count_all": 330,
-          "penetration_all_pct": 25.0,
-          "job_count_full_desc": 327
+          "job_count": 325,
+          "penetration_pct": 31.6,
+          "job_count_all": 328,
+          "penetration_all_pct": 24.8,
+          "job_count_full_desc": 325
         },
         {
           "skill_id": "genai",
           "skill_name": "GenAI / Generative AI",
           "category": "AI/ML",
-          "job_count": 266,
-          "penetration_pct": 25.9,
-          "job_count_all": 276,
-          "penetration_all_pct": 20.9,
-          "job_count_full_desc": 266
+          "job_count": 265,
+          "penetration_pct": 25.8,
+          "job_count_all": 275,
+          "penetration_all_pct": 20.8,
+          "job_count_full_desc": 265
         },
         {
           "skill_id": "rag",
           "skill_name": "RAG (Retrieval-Augmented Generation)",
           "category": "AI/ML",
-          "job_count": 191,
-          "penetration_pct": 18.6,
-          "job_count_all": 192,
+          "job_count": 190,
+          "penetration_pct": 18.5,
+          "job_count_all": 191,
           "penetration_all_pct": 14.5,
-          "job_count_full_desc": 191
+          "job_count_full_desc": 190
         },
         {
           "skill_id": "sql",
@@ -6434,21 +6434,21 @@
           "skill_id": "fine_tuning",
           "skill_name": "Fine-Tuning",
           "category": "AI/ML",
-          "job_count": 171,
+          "job_count": 170,
           "penetration_pct": 16.6,
-          "job_count_all": 172,
-          "penetration_all_pct": 13.0,
-          "job_count_full_desc": 171
+          "job_count_all": 171,
+          "penetration_all_pct": 12.9,
+          "job_count_full_desc": 170
         },
         {
           "skill_id": "java",
           "skill_name": "Java",
           "category": "Programming",
-          "job_count": 146,
-          "penetration_pct": 14.2,
-          "job_count_all": 146,
-          "penetration_all_pct": 11.1,
-          "job_count_full_desc": 146
+          "job_count": 145,
+          "penetration_pct": 14.1,
+          "job_count_all": 145,
+          "penetration_all_pct": 11.0,
+          "job_count_full_desc": 145
         }
       ],
       "top_technologies": [
@@ -6457,7 +6457,7 @@
           "skill_name": "AWS",
           "category": "Cloud",
           "job_count": 317,
-          "penetration_pct": 30.8,
+          "penetration_pct": 30.9,
           "job_count_all": 318,
           "penetration_all_pct": 24.1,
           "job_count_full_desc": 317
@@ -6466,11 +6466,11 @@
           "skill_id": "evals_observability",
           "skill_name": "MLOps / Evals & Observability",
           "category": "MLOps",
-          "job_count": 305,
+          "job_count": 304,
           "penetration_pct": 29.6,
-          "job_count_all": 309,
-          "penetration_all_pct": 23.4,
-          "job_count_full_desc": 305
+          "job_count_all": 308,
+          "penetration_all_pct": 23.3,
+          "job_count_full_desc": 304
         },
         {
           "skill_id": "gcp",
@@ -6497,7 +6497,7 @@
           "skill_name": "Apache Spark",
           "category": "Framework",
           "job_count": 274,
-          "penetration_pct": 26.6,
+          "penetration_pct": 26.7,
           "job_count_all": 274,
           "penetration_all_pct": 20.7,
           "job_count_full_desc": 274
@@ -6507,7 +6507,7 @@
           "skill_name": "Microsoft Azure",
           "category": "Cloud",
           "job_count": 243,
-          "penetration_pct": 23.6,
+          "penetration_pct": 23.7,
           "job_count_all": 243,
           "penetration_all_pct": 18.4,
           "job_count_full_desc": 243
@@ -6517,7 +6517,7 @@
           "skill_name": "TensorFlow",
           "category": "Framework",
           "job_count": 202,
-          "penetration_pct": 19.6,
+          "penetration_pct": 19.7,
           "job_count_all": 202,
           "penetration_all_pct": 15.3,
           "job_count_full_desc": 202
@@ -6527,7 +6527,7 @@
           "skill_name": "Databricks",
           "category": "Cloud",
           "job_count": 168,
-          "penetration_pct": 16.3,
+          "penetration_pct": 16.4,
           "job_count_all": 168,
           "penetration_all_pct": 12.7,
           "job_count_full_desc": 168
@@ -6594,18 +6594,18 @@
         },
         {
           "seniority": "Mid",
-          "job_count": 353,
+          "job_count": 352,
           "share_pct": 29.4
         },
         {
           "seniority": "Senior",
           "job_count": 501,
-          "share_pct": 41.8
+          "share_pct": 41.9
         },
         {
           "seniority": "Staff / Principal",
-          "job_count": 237,
-          "share_pct": 19.8
+          "job_count": 236,
+          "share_pct": 19.7
         },
         {
           "seniority": "Lead / Manager",
@@ -6620,18 +6620,18 @@
       ],
       "sample_postings": [
         {
-          "job_id": "1869f58729608ffa",
-          "title": "Staff Forward Deployed Engineer – AI-Native Software Development",
+          "job_id": "2635541013a9f756",
+          "title": "(Senior) Machine Learning Developer (Junie)",
           "company_name": "JetBrains",
           "is_sp500": false,
           "location": "CZ",
           "country_code": "CZ",
           "country_name": "Czech Republic",
           "region": "EU",
-          "seniority": "Staff / Principal",
-          "work_mode": "Unspecified",
-          "url": "https://job-boards.eu.greenhouse.io/jetbrains/jobs/4814057101",
-          "posted_at": "2026-10-25"
+          "seniority": "Senior",
+          "work_mode": "Remote",
+          "url": "https://job-boards.eu.greenhouse.io/jetbrains/jobs/4937092101",
+          "posted_at": "2026-08-31"
         },
         {
           "job_id": "d113062beaf848bc",
@@ -6676,20 +6676,6 @@
           "posted_at": "2026-11-05"
         },
         {
-          "job_id": "85a372e3a0252c3b",
-          "title": "Lead Machine Learning Engineer",
-          "company_name": "SoftServe",
-          "is_sp500": false,
-          "location": "BG",
-          "country_code": "BG",
-          "country_name": "Bulgaria",
-          "region": "EU",
-          "seniority": "Lead / Manager",
-          "work_mode": "Hybrid",
-          "url": "https://bg.linkedin.com/jobs/view/lead-machine-learning-engineer-at-softserve-4468007580?position=3&pageNum=0&refId=InZ2%2BSKzj1MII3FQVDoe4g%3D%3D&trackingId=WIA5ulNg24fFxBz7vPmVWg%3D%3D",
-          "posted_at": "2026-10-31"
-        },
-        {
           "job_id": "aba17925913ac096",
           "title": "Senior AI & ML Engineer - AML Search Quality",
           "company_name": "SEON",
@@ -6704,18 +6690,18 @@
           "posted_at": "2026-10-31"
         },
         {
-          "job_id": "130566fead597261",
-          "title": "Senior Machine Learning Engineer, AI Platform",
-          "company_name": "Smartly.io",
+          "job_id": "85a372e3a0252c3b",
+          "title": "Lead Machine Learning Engineer",
+          "company_name": "SoftServe",
           "is_sp500": false,
-          "location": "FI",
-          "country_code": "FI",
-          "country_name": "Finland",
+          "location": "BG",
+          "country_code": "BG",
+          "country_name": "Bulgaria",
           "region": "EU",
-          "seniority": "Senior",
+          "seniority": "Lead / Manager",
           "work_mode": "Hybrid",
-          "url": "https://job-boards.greenhouse.io/smartlyio/jobs/5658123004",
-          "posted_at": "2026-10-30"
+          "url": "https://bg.linkedin.com/jobs/view/lead-machine-learning-engineer-at-softserve-4468007580?position=3&pageNum=0&refId=InZ2%2BSKzj1MII3FQVDoe4g%3D%3D&trackingId=WIA5ulNg24fFxBz7vPmVWg%3D%3D",
+          "posted_at": "2026-10-31"
         },
         {
           "job_id": "96fe468d32c4e6d4",
@@ -6729,6 +6715,20 @@
           "seniority": "Senior",
           "work_mode": "Unspecified",
           "url": "https://it.linkedin.com/jobs/view/ml-engineer-senior-genai-solutions-at-ntt-data-europe-latam-4413261935?position=4&pageNum=0&refId=OoHETuOxcv2hJLu%2B5ufUWQ%3D%3D&trackingId=h8T4Rkn1RzN%2F%2Bl6FOqVvpw%3D%3D",
+          "posted_at": "2026-10-30"
+        },
+        {
+          "job_id": "130566fead597261",
+          "title": "Senior Machine Learning Engineer, AI Platform",
+          "company_name": "Smartly.io",
+          "is_sp500": false,
+          "location": "FI",
+          "country_code": "FI",
+          "country_name": "Finland",
+          "region": "EU",
+          "seniority": "Senior",
+          "work_mode": "Hybrid",
+          "url": "https://job-boards.greenhouse.io/smartlyio/jobs/5658123004",
           "posted_at": "2026-10-30"
         },
         {
@@ -6746,20 +6746,6 @@
           "posted_at": "2026-10-29"
         },
         {
-          "job_id": "3d149a178f828a69",
-          "title": "Machine Learning Engineer Intern (x/f/m)",
-          "company_name": "Doctolib",
-          "is_sp500": false,
-          "location": "FR",
-          "country_code": "FR",
-          "country_name": "France",
-          "region": "EU",
-          "seniority": "Junior / Entry",
-          "work_mode": "Hybrid",
-          "url": "https://job-boards.greenhouse.io/doctolib/jobs/8042970003",
-          "posted_at": "2026-10-27"
-        },
-        {
           "job_id": "27a3e48b1d0491f3",
           "title": "Senior Machine Learning Engineer",
           "company_name": "Too Good To Go",
@@ -6771,6 +6757,20 @@
           "seniority": "Senior",
           "work_mode": "Hybrid",
           "url": "https://dk.linkedin.com/jobs/view/senior-machine-learning-engineer-at-too-good-to-go-4466189279?position=1&pageNum=0&refId=uw1p1gDo6Fv4IwGujNk7ww%3D%3D&trackingId=rhYW01XroRK8ikRWCFwxIQ%3D%3D",
+          "posted_at": "2026-10-27"
+        },
+        {
+          "job_id": "3d149a178f828a69",
+          "title": "Machine Learning Engineer Intern (x/f/m)",
+          "company_name": "Doctolib",
+          "is_sp500": false,
+          "location": "FR",
+          "country_code": "FR",
+          "country_name": "France",
+          "region": "EU",
+          "seniority": "Junior / Entry",
+          "work_mode": "Hybrid",
+          "url": "https://job-boards.greenhouse.io/doctolib/jobs/8042970003",
           "posted_at": "2026-10-27"
         },
         {
@@ -6970,17 +6970,17 @@
           "posted_at": "2026-11-06"
         },
         {
-          "job_id": "5fa7da8e80ba5423",
-          "title": "Sr Machine Learning Engineer II",
-          "company_name": "Axon Enterprise",
+          "job_id": "16b63b810834a76d",
+          "title": "Staff Machine Learning Engineer, Ads Forecasting & Scenarios",
+          "company_name": "Reddit",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
           "country_name": "United States",
           "region": "Americas",
-          "seniority": "Senior",
-          "work_mode": "Hybrid",
-          "url": "https://job-boards.greenhouse.io/axon/jobs/7788918003",
+          "seniority": "Staff / Principal",
+          "work_mode": "Remote",
+          "url": "https://job-boards.greenhouse.io/reddit/jobs/8334138",
           "posted_at": "2026-11-06"
         },
         {
@@ -7040,6 +7040,20 @@
           "posted_at": "2026-11-03"
         },
         {
+          "job_id": "9fe100c9f6d59e1b",
+          "title": "AI & ML Engineer",
+          "company_name": "Amaris Consulting  | Part of Mantu",
+          "is_sp500": false,
+          "location": "SE",
+          "country_code": "SE",
+          "country_name": "Sweden",
+          "region": "EU",
+          "seniority": "Mid",
+          "work_mode": "Unspecified",
+          "url": "https://se.linkedin.com/jobs/view/ai-ml-engineer-at-amaris-consulting-part-of-mantu-4478517095?position=5&pageNum=0&refId=vHK8e67n7e39%2BuXB5FO0fw%3D%3D&trackingId=%2BlIkD8o6kWCrPayXRuu9tg%3D%3D",
+          "posted_at": "2026-11-02"
+        },
+        {
           "job_id": "598c6e845ca32f0c",
           "title": "Machine Learning Engineer",
           "company_name": "Hoxhunt",
@@ -7051,20 +7065,6 @@
           "seniority": "Mid",
           "work_mode": "Hybrid",
           "url": "https://fi.linkedin.com/jobs/view/machine-learning-engineer-at-hoxhunt-4472873934?position=3&pageNum=0&refId=B8BT2kj%2F0SC5%2Bah2E%2FcufQ%3D%3D&trackingId=QQK%2FG103tsGDYfnzboecMA%3D%3D",
-          "posted_at": "2026-11-02"
-        },
-        {
-          "job_id": "f82b3e2c36dd7c82",
-          "title": "AI/ML Engineer",
-          "company_name": "Air Apps",
-          "is_sp500": false,
-          "location": "PT",
-          "country_code": "PT",
-          "country_name": "Portugal",
-          "region": "EU",
-          "seniority": "Mid",
-          "work_mode": "Unspecified",
-          "url": "https://pt.linkedin.com/jobs/view/ai-ml-engineer-at-air-apps-4478280550?position=2&pageNum=0&refId=GsbziLs6jxSgUP7nme%2BBKA%3D%3D&trackingId=Il%2F8Q1sxyMdF77%2B%2F%2BkFcqw%3D%3D",
           "posted_at": "2026-11-02"
         },
         {
@@ -7082,17 +7082,17 @@
           "posted_at": "2026-11-02"
         },
         {
-          "job_id": "9fe100c9f6d59e1b",
-          "title": "AI & ML Engineer",
-          "company_name": "Amaris Consulting  | Part of Mantu",
+          "job_id": "f82b3e2c36dd7c82",
+          "title": "AI/ML Engineer",
+          "company_name": "Air Apps",
           "is_sp500": false,
-          "location": "SE",
-          "country_code": "SE",
-          "country_name": "Sweden",
+          "location": "PT",
+          "country_code": "PT",
+          "country_name": "Portugal",
           "region": "EU",
           "seniority": "Mid",
           "work_mode": "Unspecified",
-          "url": "https://se.linkedin.com/jobs/view/ai-ml-engineer-at-amaris-consulting-part-of-mantu-4478517095?position=5&pageNum=0&refId=vHK8e67n7e39%2BuXB5FO0fw%3D%3D&trackingId=%2BlIkD8o6kWCrPayXRuu9tg%3D%3D",
+          "url": "https://pt.linkedin.com/jobs/view/ai-ml-engineer-at-air-apps-4478280550?position=2&pageNum=0&refId=GsbziLs6jxSgUP7nme%2BBKA%3D%3D&trackingId=Il%2F8Q1sxyMdF77%2B%2F%2BkFcqw%3D%3D",
           "posted_at": "2026-11-02"
         },
         {
@@ -7110,20 +7110,6 @@
           "posted_at": "2026-10-30"
         },
         {
-          "job_id": "0dc36f9dbd32c270",
-          "title": "Machine Learning Engineer",
-          "company_name": "BV TECH",
-          "is_sp500": false,
-          "location": "IT",
-          "country_code": "IT",
-          "country_name": "Italy",
-          "region": "EU",
-          "seniority": "Mid",
-          "work_mode": "Unspecified",
-          "url": "https://it.linkedin.com/jobs/view/machine-learning-engineer-at-bv-tech-4448148833?position=3&pageNum=0&refId=OoHETuOxcv2hJLu%2B5ufUWQ%3D%3D&trackingId=%2BNIu83ciE4gvoNczR7w4DQ%3D%3D",
-          "posted_at": "2026-10-29"
-        },
-        {
           "job_id": "95531839d713f336",
           "title": "AI/GenAI - ML Engineer",
           "company_name": "Qualco Group",
@@ -7135,6 +7121,20 @@
           "seniority": "Mid",
           "work_mode": "Hybrid",
           "url": "https://gr.linkedin.com/jobs/view/ai-genai-ml-engineer-at-qualco-group-4484936652?position=4&pageNum=0&refId=70HMiQkuFTfHsjzUaawzAA%3D%3D&trackingId=0wlpbQl6mLbTwWvRKbPTTQ%3D%3D",
+          "posted_at": "2026-10-29"
+        },
+        {
+          "job_id": "0dc36f9dbd32c270",
+          "title": "Machine Learning Engineer",
+          "company_name": "BV TECH",
+          "is_sp500": false,
+          "location": "IT",
+          "country_code": "IT",
+          "country_name": "Italy",
+          "region": "EU",
+          "seniority": "Mid",
+          "work_mode": "Unspecified",
+          "url": "https://it.linkedin.com/jobs/view/machine-learning-engineer-at-bv-tech-4448148833?position=3&pageNum=0&refId=OoHETuOxcv2hJLu%2B5ufUWQ%3D%3D&trackingId=%2BNIu83ciE4gvoNczR7w4DQ%3D%3D",
           "posted_at": "2026-10-29"
         },
         {
@@ -7152,17 +7152,17 @@
           "posted_at": "2026-10-29"
         },
         {
-          "job_id": "d3f2309d3c839c73",
-          "title": "Machine Learning Engineer (on-site)",
-          "company_name": "OPSWAT",
+          "job_id": "f3560289a1c0bb16",
+          "title": "Senior ML Engineer",
+          "company_name": "Undelucram.ro",
           "is_sp500": false,
           "location": "RO",
           "country_code": "RO",
           "country_name": "Romania",
           "region": "EU",
-          "seniority": "Mid",
-          "work_mode": "On-site",
-          "url": "https://ro.linkedin.com/jobs/view/machine-learning-engineer-on-site-at-opswat-4410224124?position=1&pageNum=0&refId=vrqT3sugoNK1DqAYfTWrXQ%3D%3D&trackingId=GUgjL0sIfoXJ%2BgZZjBBBug%3D%3D",
+          "seniority": "Senior",
+          "work_mode": "Unspecified",
+          "url": "https://ro.linkedin.com/jobs/view/senior-ml-engineer-at-undelucram-ro-4483272998?position=4&pageNum=0&refId=vrqT3sugoNK1DqAYfTWrXQ%3D%3D&trackingId=nQGbZgrTv%2Bcp3GecVlHpEA%3D%3D",
           "posted_at": "2026-10-27"
         },
         {
@@ -7278,9 +7278,9 @@
           "posted_at": "2026-10-30"
         },
         {
-          "job_id": "16b63b810834a76d",
-          "title": "Staff Machine Learning Engineer, Ads Forecasting & Scenarios",
-          "company_name": "Reddit",
+          "job_id": "279263e84d99ba5b",
+          "title": "Principal, Machine Learning Engineer (L5)",
+          "company_name": "Twilio",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
@@ -7288,22 +7288,8 @@
           "region": "Americas",
           "seniority": "Staff / Principal",
           "work_mode": "Remote",
-          "url": "https://job-boards.greenhouse.io/reddit/jobs/8334138",
+          "url": "https://job-boards.greenhouse.io/twilio/jobs/8258597",
           "posted_at": "2026-11-06"
-        },
-        {
-          "job_id": "9a49daf9e50e995d",
-          "title": "Software Engineer, Machine Learning",
-          "company_name": "AppLovin",
-          "is_sp500": true,
-          "location": "CA",
-          "country_code": "CA",
-          "country_name": "Canada",
-          "region": "Americas",
-          "seniority": "Mid",
-          "work_mode": "Unspecified",
-          "url": "https://boards.greenhouse.io/applovin/jobs/4712559006?gh_jid=4712559006",
-          "posted_at": "2026-11-05"
         },
         {
           "job_id": "9dbde1f4675eb560",
@@ -7317,6 +7303,20 @@
           "seniority": "Senior",
           "work_mode": "Unspecified",
           "url": "https://global-external-amd.icims.com/jobs/96155/login",
+          "posted_at": "2026-11-05"
+        },
+        {
+          "job_id": "9a49daf9e50e995d",
+          "title": "Software Engineer, Machine Learning",
+          "company_name": "AppLovin",
+          "is_sp500": true,
+          "location": "CA",
+          "country_code": "CA",
+          "country_name": "Canada",
+          "region": "Americas",
+          "seniority": "Mid",
+          "work_mode": "Unspecified",
+          "url": "https://boards.greenhouse.io/applovin/jobs/4712559006?gh_jid=4712559006",
           "posted_at": "2026-11-05"
         }
       ]
@@ -7533,7 +7533,7 @@
           "job_count": 13
         },
         {
-          "company_name": "Flow Traders",
+          "company_name": "ElevenLabs",
           "job_count": 8
         }
       ],
@@ -7990,20 +7990,6 @@
           "posted_at": "2026-11-02"
         },
         {
-          "job_id": "eeb3f0a175f9ec65",
-          "title": "Senior Machine Learning Research Scientist",
-          "company_name": "Pfizer",
-          "is_sp500": true,
-          "location": "US",
-          "country_code": "US",
-          "country_name": "United States",
-          "region": "Americas",
-          "seniority": "Senior",
-          "work_mode": "Hybrid",
-          "url": "https://pfizer.wd1.myworkdayjobs.com/en-US/pfizercareers/job/United-States---Washington--Bothell/Senior-Machine-Learning-Research-Scientist_4967518-1",
-          "posted_at": "2026-11-06"
-        },
-        {
           "job_id": "10e03a57ab6faac5",
           "title": "Research Scientist, AI Safety and Alignment",
           "company_name": "Scale AI",
@@ -8015,6 +8001,20 @@
           "seniority": "Mid",
           "work_mode": "Unspecified",
           "url": "https://job-boards.greenhouse.io/scaleai/jobs/4675684005",
+          "posted_at": "2026-11-06"
+        },
+        {
+          "job_id": "3f5b6b8937bbaea3",
+          "title": "Staff Research Scientist - Post-Training for Agents",
+          "company_name": "Datadog",
+          "is_sp500": true,
+          "location": "US",
+          "country_code": "US",
+          "country_name": "United States",
+          "region": "Americas",
+          "seniority": "Staff / Principal",
+          "work_mode": "Unspecified",
+          "url": "https://careers.datadoghq.com/detail/8261934/?gh_jid=8261934",
           "posted_at": "2026-11-06"
         },
         {
@@ -8492,20 +8492,6 @@
           "posted_at": "2026-10-23"
         },
         {
-          "job_id": "0bfba9c6982e29f2",
-          "title": "Vice President, Data Scientist - Credit Risk, Risk Insights - Chase 360",
-          "company_name": "JPMorgan Chase",
-          "is_sp500": true,
-          "location": "DE",
-          "country_code": "DE",
-          "country_name": "Germany",
-          "region": "EU",
-          "seniority": "Executive",
-          "work_mode": "Unspecified",
-          "url": "https://www.linkedin.com/jobs/view/vice-president-data-scientist-credit-risk-risk-insights-chase-360-at-jpmorganchase-4443321854",
-          "posted_at": "2026-10-14"
-        },
-        {
           "job_id": "5e186165f3ff3059",
           "title": "Associate Director, Analytics",
           "company_name": "Johnson & Johnson",
@@ -8517,6 +8503,20 @@
           "seniority": "Executive",
           "work_mode": "Unspecified",
           "url": "https://www.careers.jnj.com/en/jobs/r-104170/associate-director-analytics/",
+          "posted_at": "2026-10-14"
+        },
+        {
+          "job_id": "0bfba9c6982e29f2",
+          "title": "Vice President, Data Scientist - Credit Risk, Risk Insights - Chase 360",
+          "company_name": "JPMorgan Chase",
+          "is_sp500": true,
+          "location": "DE",
+          "country_code": "DE",
+          "country_name": "Germany",
+          "region": "EU",
+          "seniority": "Executive",
+          "work_mode": "Unspecified",
+          "url": "https://www.linkedin.com/jobs/view/vice-president-data-scientist-credit-risk-risk-insights-chase-360-at-jpmorganchase-4443321854",
           "posted_at": "2026-10-14"
         },
         {
@@ -8534,17 +8534,17 @@
           "posted_at": "2026-07-22"
         },
         {
-          "job_id": "c45512b9cc48c16b",
-          "title": "Sr Director, Analyst - Data Management and AI Readiness",
-          "company_name": "Gartner",
+          "job_id": "a1a895a110af8711",
+          "title": "Director, Data Science - Analytics",
+          "company_name": "Expedia Group",
           "is_sp500": true,
           "location": "UK",
           "country_code": "UK",
           "country_name": "United Kingdom",
           "region": "UK",
           "seniority": "Executive",
-          "work_mode": "Remote",
-          "url": "https://gartner.wd5.myworkdayjobs.com/en-US/ext/job/Remote---United-Kingdom/Sr-Director--Analyst---Data-Management-and-AI-Readiness_115689",
+          "work_mode": "Unspecified",
+          "url": "https://expedia.wd108.myworkdayjobs.com/en-US/Search/job/UK---London/Director--Data-Science---Analytics_R-110017",
           "posted_at": "2026-11-02"
         },
         {
@@ -8562,17 +8562,17 @@
           "posted_at": "2026-10-21"
         },
         {
-          "job_id": "1747e57fa7131414",
-          "title": "Director, HR Systems, Operations & AI Enablement",
-          "company_name": "Hasbro",
+          "job_id": "1ec2ff8b273b3e78",
+          "title": "Sr. Director, Marketing Strategy and Analytics",
+          "company_name": "Twilio",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
           "country_name": "United States",
           "region": "Americas",
           "seniority": "Executive",
-          "work_mode": "Hybrid",
-          "url": "https://job-boards.greenhouse.io/hasbro/jobs/4456359009",
+          "work_mode": "Remote",
+          "url": "https://job-boards.greenhouse.io/twilio/jobs/8325734",
           "posted_at": "2026-11-06"
         },
         {
@@ -8660,17 +8660,17 @@
           "posted_at": null
         },
         {
-          "job_id": "a1a895a110af8711",
-          "title": "Director, Data Science - Analytics",
-          "company_name": "Expedia Group",
+          "job_id": "c45512b9cc48c16b",
+          "title": "Sr Director, Analyst - Data Management and AI Readiness",
+          "company_name": "Gartner",
           "is_sp500": true,
           "location": "UK",
           "country_code": "UK",
           "country_name": "United Kingdom",
           "region": "UK",
           "seniority": "Executive",
-          "work_mode": "Unspecified",
-          "url": "https://expedia.wd108.myworkdayjobs.com/en-US/Search/job/UK---London/Director--Data-Science---Analytics_R-110017",
+          "work_mode": "Remote",
+          "url": "https://gartner.wd5.myworkdayjobs.com/en-US/ext/job/Remote---United-Kingdom/Sr-Director--Analyst---Data-Management-and-AI-Readiness_115689",
           "posted_at": "2026-11-02"
         },
         {
@@ -8758,17 +8758,17 @@
           "posted_at": "2026-11-05"
         },
         {
-          "job_id": "1ec2ff8b273b3e78",
-          "title": "Sr. Director, Marketing Strategy and Analytics",
-          "company_name": "Twilio",
+          "job_id": "1747e57fa7131414",
+          "title": "Director, HR Systems, Operations & AI Enablement",
+          "company_name": "Hasbro",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
           "country_name": "United States",
           "region": "Americas",
           "seniority": "Executive",
-          "work_mode": "Remote",
-          "url": "https://job-boards.greenhouse.io/twilio/jobs/8325734",
+          "work_mode": "Hybrid",
+          "url": "https://job-boards.greenhouse.io/hasbro/jobs/4456359009",
           "posted_at": "2026-11-06"
         },
         {
@@ -8946,15 +8946,15 @@
       "canonical_name": "AI / Data Product Manager",
       "domain": "Product",
       "track": "IC",
-      "job_count": 346,
+      "job_count": 345,
       "market_share_pct": 3.11,
       "category_job_count": 369,
       "full_desc_jobs_count": 287,
       "desc_coverage_pct": 77.8,
       "sp500_job_count": 193,
-      "cz_job_count": 3,
+      "cz_job_count": 2,
       "occupied_seats": 1989,
-      "expansion_index_pct": 17.4,
+      "expansion_index_pct": 17.3,
       "senior_plus_pct": 92.5,
       "remote_pct": 33.3,
       "synthesized_description": {
@@ -9039,9 +9039,9 @@
           "job_count_full_desc": 22
         },
         {
-          "skill_id": "excel",
-          "skill_name": "Excel",
-          "category": "Business",
+          "skill_id": "r",
+          "skill_name": "R",
+          "category": "Programming",
           "job_count": 20,
           "penetration_pct": 7.0,
           "job_count_all": 20,
@@ -9149,11 +9149,11 @@
           "job_count": 8
         },
         {
-          "company_name": "Workday, Inc.",
+          "company_name": "MongoDB",
           "job_count": 7
         },
         {
-          "company_name": "MongoDB",
+          "company_name": "Workday, Inc.",
           "job_count": 7
         }
       ],
@@ -9203,12 +9203,12 @@
         {
           "seniority": "Staff / Principal",
           "job_count": 54,
-          "share_pct": 15.6
+          "share_pct": 15.7
         },
         {
           "seniority": "Lead / Manager",
-          "job_count": 256,
-          "share_pct": 74.0
+          "job_count": 255,
+          "share_pct": 73.9
         },
         {
           "seniority": "Executive",
@@ -9302,20 +9302,6 @@
           "posted_at": "2026-09-10"
         },
         {
-          "job_id": "841f630606faf4a7",
-          "title": "Data Product Manager - OpenData Europe",
-          "company_name": "Veeva Systems",
-          "is_sp500": true,
-          "location": "DE",
-          "country_code": "DE",
-          "country_name": "Germany",
-          "region": "EU",
-          "seniority": "Lead / Manager",
-          "work_mode": "Remote",
-          "url": "https://jobs.lever.co/veeva/47f23890-3f80-4cde-9877-08745db82116",
-          "posted_at": null
-        },
-        {
           "job_id": "7f6a2ef8f0b36612",
           "title": "Data Product Manager - OpenData Europe",
           "company_name": "Veeva Systems",
@@ -9327,6 +9313,20 @@
           "seniority": "Lead / Manager",
           "work_mode": "Remote",
           "url": "https://jobs.lever.co/veeva/08fd90c3-4e5f-4af5-92a3-5111261f9ec3",
+          "posted_at": null
+        },
+        {
+          "job_id": "841f630606faf4a7",
+          "title": "Data Product Manager - OpenData Europe",
+          "company_name": "Veeva Systems",
+          "is_sp500": true,
+          "location": "DE",
+          "country_code": "DE",
+          "country_name": "Germany",
+          "region": "EU",
+          "seniority": "Lead / Manager",
+          "work_mode": "Remote",
+          "url": "https://jobs.lever.co/veeva/47f23890-3f80-4cde-9877-08745db82116",
           "posted_at": null
         },
         {
@@ -9358,17 +9358,17 @@
           "posted_at": "2026-10-23"
         },
         {
-          "job_id": "4c9d3dae46b813ff",
-          "title": "Senior Product Manager, Analytics, Reporting, & City ",
-          "company_name": "Axon Enterprise",
+          "job_id": "6993bdd4d7a8de94",
+          "title": "Staff Technical Product Manager, Ads ML Platform ",
+          "company_name": "Reddit",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
           "country_name": "United States",
           "region": "Americas",
-          "seniority": "Lead / Manager",
-          "work_mode": "Unspecified",
-          "url": "https://job-boards.greenhouse.io/axon/jobs/7577018003",
+          "seniority": "Staff / Principal",
+          "work_mode": "Remote",
+          "url": "https://job-boards.greenhouse.io/reddit/jobs/7954001",
           "posted_at": "2026-11-06"
         },
         {
@@ -9512,17 +9512,17 @@
           "posted_at": "2026-11-04"
         },
         {
-          "job_id": "6993bdd4d7a8de94",
-          "title": "Staff Technical Product Manager, Ads ML Platform ",
-          "company_name": "Reddit",
+          "job_id": "4c9d3dae46b813ff",
+          "title": "Senior Product Manager, Analytics, Reporting, & City ",
+          "company_name": "Axon Enterprise",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
           "country_name": "United States",
           "region": "Americas",
-          "seniority": "Staff / Principal",
-          "work_mode": "Remote",
-          "url": "https://job-boards.greenhouse.io/reddit/jobs/7954001",
+          "seniority": "Lead / Manager",
+          "work_mode": "Unspecified",
+          "url": "https://job-boards.greenhouse.io/axon/jobs/7577018003",
           "posted_at": "2026-11-06"
         },
         {
@@ -9834,17 +9834,17 @@
           "posted_at": "2026-08-20"
         },
         {
-          "job_id": "079aedeb18ee2fbf",
-          "title": "Senior Product Manager, Customer Data Platform: Identity & User Keychain",
-          "company_name": "Expedia Group",
+          "job_id": "b108ccaa7a99fb23",
+          "title": "Principal Product Manager -  AI Defense (Hyrbid)",
+          "company_name": "Cisco",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
           "country_name": "United States",
           "region": "Americas",
-          "seniority": "Lead / Manager",
-          "work_mode": "On-site",
-          "url": "https://expedia.wd108.myworkdayjobs.com/en-US/Search/job/Washington---Seattle-Campus/Senior-Product-Manager--Customer-Data-Platform--Identity---User-Keychain_R-109599",
+          "seniority": "Staff / Principal",
+          "work_mode": "Hybrid",
+          "url": "https://cisco.wd5.myworkdayjobs.com/en-US/cisco_careers/job/Milpitas-California-US/Principal-Product-Manager----AI-Defense--Hyrbid-_2028944",
           "posted_at": "2026-11-06"
         },
         {
@@ -10069,11 +10069,11 @@
       ],
       "top_companies": [
         {
-          "company_name": "Anthropic",
+          "company_name": "Databricks",
           "job_count": 34
         },
         {
-          "company_name": "Databricks",
+          "company_name": "Anthropic",
           "job_count": 34
         },
         {
@@ -10085,11 +10085,11 @@
           "job_count": 8
         },
         {
-          "company_name": "Nvidia",
+          "company_name": "Arthur J. Gallagher & Co.",
           "job_count": 6
         },
         {
-          "company_name": "Hewlett Packard Enterprise",
+          "company_name": "Nvidia",
           "job_count": 6
         }
       ],
@@ -10168,20 +10168,6 @@
           "posted_at": "2026-09-25"
         },
         {
-          "job_id": "06264327e05578d8",
-          "title": "Senior Solutions Architect - Lakebase",
-          "company_name": "Databricks",
-          "is_sp500": false,
-          "location": "SE",
-          "country_code": "SE",
-          "country_name": "Sweden",
-          "region": "EU",
-          "seniority": "Staff / Principal",
-          "work_mode": "Hybrid",
-          "url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8932964002",
-          "posted_at": "2026-11-06"
-        },
-        {
           "job_id": "a6e94bdd7c096819",
           "title": "Staff Solutions Architect, AI Subject Matter Expert",
           "company_name": "GitLab",
@@ -10196,18 +10182,18 @@
           "posted_at": "2026-11-06"
         },
         {
-          "job_id": "1706c9b4c1af9d07",
-          "title": "Specialist Solutions Architect - Data Engineering",
+          "job_id": "06264327e05578d8",
+          "title": "Senior Solutions Architect - Lakebase",
           "company_name": "Databricks",
           "is_sp500": false,
-          "location": "NL",
-          "country_code": "NL",
-          "country_name": "Netherlands",
+          "location": "SE",
+          "country_code": "SE",
+          "country_name": "Sweden",
           "region": "EU",
           "seniority": "Staff / Principal",
           "work_mode": "Hybrid",
-          "url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8870159002",
-          "posted_at": "2026-11-05"
+          "url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8932964002",
+          "posted_at": "2026-11-06"
         },
         {
           "job_id": "8d34a09f76a69840",
@@ -10221,6 +10207,20 @@
           "seniority": "Staff / Principal",
           "work_mode": "Unspecified",
           "url": "https://salesforce.wd12.myworkdayjobs.com/en-US/External_Career_Site/job/Ireland---Dublin/Success-Architect---Agentforce-Data-Cloud_JR354598",
+          "posted_at": "2026-11-05"
+        },
+        {
+          "job_id": "1706c9b4c1af9d07",
+          "title": "Specialist Solutions Architect - Data Engineering",
+          "company_name": "Databricks",
+          "is_sp500": false,
+          "location": "NL",
+          "country_code": "NL",
+          "country_name": "Netherlands",
+          "region": "EU",
+          "seniority": "Staff / Principal",
+          "work_mode": "Hybrid",
+          "url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8870159002",
           "posted_at": "2026-11-05"
         },
         {
@@ -10336,9 +10336,9 @@
           "posted_at": "2026-08-28"
         },
         {
-          "job_id": "0e67e6dedd887271",
+          "job_id": "3c873fb0022133a6",
           "title": "Data Architect - Data & AI Platforms (Databricks Focus) - Tieto Tech Consulting (m/f/d)",
-          "company_name": "Tietoevry Norway",
+          "company_name": "Tietoevry",
           "is_sp500": false,
           "location": "BG",
           "country_code": "BG",
@@ -10346,7 +10346,7 @@
           "region": "EU",
           "seniority": "Staff / Principal",
           "work_mode": "Unspecified",
-          "url": "https://www.tietoevry.com/job/data-architect-data-and-ai-platforms-databricks-focus-tieto-tech-consulting-m-f-d-in-varna-bulgaria-jid-3157",
+          "url": "https://www.tietoevry.com/job/data-architect-data-and-ai-platforms-databricks-focus-tieto-tech-consulting-m-f-d-in-sofia-bulgaria-jid-3155",
           "posted_at": null
         },
         {
@@ -10392,17 +10392,17 @@
           "posted_at": null
         },
         {
-          "job_id": "1678bf98451cb70a",
-          "title": "Data Architect III",
-          "company_name": "Generac",
+          "job_id": "58349255aca2ae2c",
+          "title": "Data Architect",
+          "company_name": "Fiserv",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
           "country_name": "United States",
           "region": "Americas",
           "seniority": "Staff / Principal",
-          "work_mode": "Unspecified",
-          "url": "https://generac.wd5.myworkdayjobs.com/en-US/External/job/Waukesha-WI---USA/Data-Architect-III_JR17582",
+          "work_mode": "On-site",
+          "url": "https://fiserv.wd5.myworkdayjobs.com/en-US/ext/job/Alpharetta-Georgia/Data-Architect_R-10403912",
           "posted_at": "2026-11-05"
         },
         {
@@ -10532,9 +10532,9 @@
           "posted_at": null
         },
         {
-          "job_id": "3c873fb0022133a6",
+          "job_id": "0e67e6dedd887271",
           "title": "Data Architect - Data & AI Platforms (Databricks Focus) - Tieto Tech Consulting (m/f/d)",
-          "company_name": "Tietoevry",
+          "company_name": "Tietoevry Norway",
           "is_sp500": false,
           "location": "BG",
           "country_code": "BG",
@@ -10542,7 +10542,7 @@
           "region": "EU",
           "seniority": "Staff / Principal",
           "work_mode": "Unspecified",
-          "url": "https://www.tietoevry.com/job/data-architect-data-and-ai-platforms-databricks-focus-tieto-tech-consulting-m-f-d-in-sofia-bulgaria-jid-3155",
+          "url": "https://www.tietoevry.com/job/data-architect-data-and-ai-platforms-databricks-focus-tieto-tech-consulting-m-f-d-in-varna-bulgaria-jid-3157",
           "posted_at": null
         },
         {
@@ -10560,17 +10560,17 @@
           "posted_at": "2026-10-16"
         },
         {
-          "job_id": "58349255aca2ae2c",
-          "title": "Data Architect",
-          "company_name": "Fiserv",
+          "job_id": "1678bf98451cb70a",
+          "title": "Data Architect III",
+          "company_name": "Generac",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
           "country_name": "United States",
           "region": "Americas",
           "seniority": "Staff / Principal",
-          "work_mode": "On-site",
-          "url": "https://fiserv.wd5.myworkdayjobs.com/en-US/ext/job/Alpharetta-Georgia/Data-Architect_R-10403912",
+          "work_mode": "Unspecified",
+          "url": "https://generac.wd5.myworkdayjobs.com/en-US/External/job/Waukesha-WI---USA/Data-Architect-III_JR17582",
           "posted_at": "2026-11-05"
         },
         {
@@ -10602,20 +10602,6 @@
           "posted_at": "2026-10-06"
         },
         {
-          "job_id": "bb6a95d1d2ee468b",
-          "title": "Senior Solutions Architect (EDW Enterprise Data Warehouse Migrations)",
-          "company_name": "Databricks",
-          "is_sp500": false,
-          "location": "DE",
-          "country_code": "DE",
-          "country_name": "Germany",
-          "region": "EU",
-          "seniority": "Staff / Principal",
-          "work_mode": "Unspecified",
-          "url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8720253002",
-          "posted_at": "2026-11-01"
-        },
-        {
           "job_id": "6489a3884781a5ce",
           "title": "Senior Solutions Architect (EDW Enterprise Data Warehouse Migrations)",
           "company_name": "Databricks",
@@ -10627,6 +10613,20 @@
           "seniority": "Staff / Principal",
           "work_mode": "Unspecified",
           "url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8720251002",
+          "posted_at": "2026-11-01"
+        },
+        {
+          "job_id": "bb6a95d1d2ee468b",
+          "title": "Senior Solutions Architect (EDW Enterprise Data Warehouse Migrations)",
+          "company_name": "Databricks",
+          "is_sp500": false,
+          "location": "DE",
+          "country_code": "DE",
+          "country_name": "Germany",
+          "region": "EU",
+          "seniority": "Staff / Principal",
+          "work_mode": "Unspecified",
+          "url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8720253002",
           "posted_at": "2026-11-01"
         },
         {
@@ -10860,17 +10860,17 @@
       "canonical_name": "Analytics Engineer",
       "domain": "Data Engineering",
       "track": "IC",
-      "job_count": 151,
-      "market_share_pct": 1.36,
+      "job_count": 150,
+      "market_share_pct": 1.35,
       "category_job_count": 157,
-      "full_desc_jobs_count": 84,
-      "desc_coverage_pct": 53.5,
+      "full_desc_jobs_count": 83,
+      "desc_coverage_pct": 52.9,
       "sp500_job_count": 49,
       "cz_job_count": 10,
       "occupied_seats": 1485,
-      "expansion_index_pct": 10.2,
-      "senior_plus_pct": 39.1,
-      "remote_pct": 44.2,
+      "expansion_index_pct": 10.1,
+      "senior_plus_pct": 39.3,
+      "remote_pct": 45.2,
       "synthesized_description": {
         "cs": [
           "Analytics Engineer propojuje svět datové infrastruktury s potřebami analytiků a byznysu. Přenáší osvědčené inženýrské postupy, jako je verzování v Gitu, automatizované testování kvality dat, dokumentace a CI/CD, přímo do tvorby datových modelů a sémantických vrstev.",
@@ -10886,38 +10886,38 @@
           "skill_id": "sql",
           "skill_name": "SQL",
           "category": "Programming",
-          "job_count": 72,
-          "penetration_pct": 85.7,
-          "job_count_all": 72,
-          "penetration_all_pct": 45.9,
-          "job_count_full_desc": 72
+          "job_count": 71,
+          "penetration_pct": 85.5,
+          "job_count_all": 71,
+          "penetration_all_pct": 45.2,
+          "job_count_full_desc": 71
         },
         {
           "skill_id": "python",
           "skill_name": "Python",
           "category": "Programming",
-          "job_count": 58,
-          "penetration_pct": 69.0,
-          "job_count_all": 58,
-          "penetration_all_pct": 36.9,
-          "job_count_full_desc": 58
+          "job_count": 57,
+          "penetration_pct": 68.7,
+          "job_count_all": 57,
+          "penetration_all_pct": 36.3,
+          "job_count_full_desc": 57
         },
         {
           "skill_id": "data_governance",
           "skill_name": "Data Governance & Quality",
           "category": "Business",
-          "job_count": 46,
-          "penetration_pct": 54.8,
-          "job_count_all": 46,
-          "penetration_all_pct": 29.3,
-          "job_count_full_desc": 46
+          "job_count": 45,
+          "penetration_pct": 54.2,
+          "job_count_all": 45,
+          "penetration_all_pct": 28.7,
+          "job_count_full_desc": 45
         },
         {
           "skill_id": "ai_agents",
           "skill_name": "AI Agents / Agentic AI",
           "category": "AI/ML",
           "job_count": 27,
-          "penetration_pct": 32.1,
+          "penetration_pct": 32.5,
           "job_count_all": 29,
           "penetration_all_pct": 18.5,
           "job_count_full_desc": 27
@@ -10926,18 +10926,18 @@
           "skill_id": "llm",
           "skill_name": "LLM / Large Language Models",
           "category": "AI/ML",
-          "job_count": 21,
-          "penetration_pct": 25.0,
-          "job_count_all": 21,
-          "penetration_all_pct": 13.4,
-          "job_count_full_desc": 21
+          "job_count": 20,
+          "penetration_pct": 24.1,
+          "job_count_all": 20,
+          "penetration_all_pct": 12.7,
+          "job_count_full_desc": 20
         },
         {
           "skill_id": "tableau",
           "skill_name": "Tableau",
           "category": "Business",
           "job_count": 18,
-          "penetration_pct": 21.4,
+          "penetration_pct": 21.7,
           "job_count_all": 18,
           "penetration_all_pct": 11.5,
           "job_count_full_desc": 18
@@ -10947,7 +10947,7 @@
           "skill_name": "Looker",
           "category": "Business",
           "job_count": 15,
-          "penetration_pct": 17.9,
+          "penetration_pct": 18.1,
           "job_count_all": 15,
           "penetration_all_pct": 9.6,
           "job_count_full_desc": 15
@@ -10956,11 +10956,11 @@
           "skill_id": "powerbi",
           "skill_name": "Power BI",
           "category": "Business",
-          "job_count": 12,
-          "penetration_pct": 14.3,
-          "job_count_all": 13,
-          "penetration_all_pct": 8.3,
-          "job_count_full_desc": 12
+          "job_count": 11,
+          "penetration_pct": 13.3,
+          "job_count_all": 12,
+          "penetration_all_pct": 7.6,
+          "job_count_full_desc": 11
         }
       ],
       "top_technologies": [
@@ -10968,18 +10968,18 @@
           "skill_id": "dbt",
           "skill_name": "dbt",
           "category": "Framework",
-          "job_count": 47,
-          "penetration_pct": 56.0,
-          "job_count_all": 47,
-          "penetration_all_pct": 29.9,
-          "job_count_full_desc": 47
+          "job_count": 46,
+          "penetration_pct": 55.4,
+          "job_count_all": 46,
+          "penetration_all_pct": 29.3,
+          "job_count_full_desc": 46
         },
         {
           "skill_id": "snowflake_db",
           "skill_name": "Snowflake",
           "category": "Cloud",
           "job_count": 27,
-          "penetration_pct": 32.1,
+          "penetration_pct": 32.5,
           "job_count_all": 27,
           "penetration_all_pct": 17.2,
           "job_count_full_desc": 27
@@ -10989,7 +10989,7 @@
           "skill_name": "Apache Airflow",
           "category": "Framework",
           "job_count": 24,
-          "penetration_pct": 28.6,
+          "penetration_pct": 28.9,
           "job_count_all": 24,
           "penetration_all_pct": 15.3,
           "job_count_full_desc": 24
@@ -10999,7 +10999,7 @@
           "skill_name": "BigQuery",
           "category": "Cloud",
           "job_count": 19,
-          "penetration_pct": 22.6,
+          "penetration_pct": 22.9,
           "job_count_all": 19,
           "penetration_all_pct": 12.1,
           "job_count_full_desc": 19
@@ -11008,18 +11008,18 @@
           "skill_id": "databricks",
           "skill_name": "Databricks",
           "category": "Cloud",
-          "job_count": 18,
-          "penetration_pct": 21.4,
-          "job_count_all": 18,
-          "penetration_all_pct": 11.5,
-          "job_count_full_desc": 18
+          "job_count": 17,
+          "penetration_pct": 20.5,
+          "job_count_all": 17,
+          "penetration_all_pct": 10.8,
+          "job_count_full_desc": 17
         },
         {
           "skill_id": "spark",
           "skill_name": "Apache Spark",
           "category": "Framework",
           "job_count": 13,
-          "penetration_pct": 15.5,
+          "penetration_pct": 15.7,
           "job_count_all": 13,
           "penetration_all_pct": 8.3,
           "job_count_full_desc": 13
@@ -11029,7 +11029,7 @@
           "skill_name": "Google Cloud Platform",
           "category": "Cloud",
           "job_count": 13,
-          "penetration_pct": 15.5,
+          "penetration_pct": 15.7,
           "job_count_all": 13,
           "penetration_all_pct": 8.3,
           "job_count_full_desc": 13
@@ -11039,7 +11039,7 @@
           "skill_name": "AWS",
           "category": "Cloud",
           "job_count": 12,
-          "penetration_pct": 14.3,
+          "penetration_pct": 14.5,
           "job_count_all": 12,
           "penetration_all_pct": 7.6,
           "job_count_full_desc": 12
@@ -11047,11 +11047,11 @@
       ],
       "top_companies": [
         {
-          "company_name": "Netflix",
+          "company_name": "Delivery Hero",
           "job_count": 8
         },
         {
-          "company_name": "Delivery Hero",
+          "company_name": "Netflix",
           "job_count": 8
         },
         {
@@ -11059,11 +11059,11 @@
           "job_count": 6
         },
         {
-          "company_name": "Booking Holdings",
+          "company_name": "Satispay",
           "job_count": 5
         },
         {
-          "company_name": "Satispay",
+          "company_name": "Booking Holdings",
           "job_count": 5
         },
         {
@@ -11106,23 +11106,23 @@
         },
         {
           "seniority": "Mid",
-          "job_count": 83,
-          "share_pct": 55.0
+          "job_count": 82,
+          "share_pct": 54.7
         },
         {
           "seniority": "Senior",
           "job_count": 42,
-          "share_pct": 27.8
+          "share_pct": 28.0
         },
         {
           "seniority": "Staff / Principal",
           "job_count": 12,
-          "share_pct": 7.9
+          "share_pct": 8.0
         },
         {
           "seniority": "Lead / Manager",
           "job_count": 4,
-          "share_pct": 2.6
+          "share_pct": 2.7
         },
         {
           "seniority": "Executive",
@@ -11174,20 +11174,6 @@
           "posted_at": "2026-10-21"
         },
         {
-          "job_id": "6693dda63ef2efe2",
-          "title": "Data Analytics Engineer I - Treasury Data Science & Analytics",
-          "company_name": "Booking Holdings",
-          "is_sp500": true,
-          "location": "NL",
-          "country_code": "NL",
-          "country_name": "Netherlands",
-          "region": "EU",
-          "seniority": "Junior / Entry",
-          "work_mode": "Hybrid",
-          "url": "https://external-workingatbooking.icims.com/jobs/30320/login",
-          "posted_at": "2026-09-29"
-        },
-        {
           "job_id": "cc110a3bbfa40ba6",
           "title": "FinCrime Analytics Engineer",
           "company_name": "Satispay",
@@ -11199,6 +11185,20 @@
           "seniority": "Senior",
           "work_mode": "Hybrid",
           "url": "https://jobs.ashbyhq.com/satispay/3ec6b7d1-6820-4cb0-817b-e1470dfb61d9",
+          "posted_at": "2026-09-29"
+        },
+        {
+          "job_id": "6693dda63ef2efe2",
+          "title": "Data Analytics Engineer I - Treasury Data Science & Analytics",
+          "company_name": "Booking Holdings",
+          "is_sp500": true,
+          "location": "NL",
+          "country_code": "NL",
+          "country_name": "Netherlands",
+          "region": "EU",
+          "seniority": "Junior / Entry",
+          "work_mode": "Hybrid",
+          "url": "https://external-workingatbooking.icims.com/jobs/30320/login",
           "posted_at": "2026-09-29"
         },
         {
@@ -11524,46 +11524,32 @@
           "posted_at": "2026-10-12"
         },
         {
-          "job_id": "58a46ba2499304a5",
-          "title": "Analytics Engineer - Finance",
-          "company_name": "Mews",
+          "job_id": "8f90579711c53f2d",
+          "title": "Power BI Analytics Engineer (H/F)",
+          "company_name": "HOUSE OF ABY",
           "is_sp500": false,
           "location": "FR",
           "country_code": "FR",
           "country_name": "France",
           "region": "EU",
           "seniority": "Mid",
-          "work_mode": "Hybrid",
-          "url": "https://www.mews.com/en/careers/jobs/4938369101?gh_jid=4938369101",
-          "posted_at": "2026-10-20"
+          "work_mode": "Unspecified",
+          "url": "https://fr.linkedin.com/jobs/view/power-bi-analytics-engineer-h-f-at-house-of-aby-4478616087?position=1&pageNum=0&refId=5S2Y%2B0ZzJnqPfIRLLpvVRQ%3D%3D&trackingId=dQFksldL3VyKP0n7WmPeIg%3D%3D",
+          "posted_at": "2026-10-19"
         },
         {
-          "job_id": "07c56f781a7a6228",
-          "title": "Analytics Engineer - Shop Analytics (all genders)",
-          "company_name": "ABOUT YOU",
+          "job_id": "fb36d76d9aa1894f",
+          "title": "Senior Analytics Engineer (gn) Green Energy Markets",
+          "company_name": "LichtBlick SE",
           "is_sp500": false,
           "location": "DE",
           "country_code": "DE",
           "country_name": "Germany",
           "region": "EU",
-          "seniority": "Mid",
+          "seniority": "Senior",
           "work_mode": "Unspecified",
-          "url": "https://de.linkedin.com/jobs/view/analytics-engineer-shop-analytics-all-genders-at-about-you-4479382900",
+          "url": "https://de.linkedin.com/jobs/view/senior-analytics-engineer-gn-green-energy-markets-at-lichtblick-se-4462401893",
           "posted_at": "2026-10-16"
-        },
-        {
-          "job_id": "62c97ca677d8bb22",
-          "title": "Analytics Engineer",
-          "company_name": "Satispay",
-          "is_sp500": false,
-          "location": "IT",
-          "country_code": "IT",
-          "country_name": "Italy",
-          "region": "EU",
-          "seniority": "Mid",
-          "work_mode": "Hybrid",
-          "url": "https://jobs.ashbyhq.com/satispay/31e09fdd-2cd3-4156-a99d-c09a1733c50a",
-          "posted_at": "2026-10-01"
         },
         {
           "job_id": "d1d17dbf03501993",
@@ -11577,6 +11563,20 @@
           "seniority": "Mid",
           "work_mode": "Unspecified",
           "url": "https://richemont.wd3.myworkdayjobs.com/en-US/richemont/job/AMSTERDAM/Analytics-Engineer_JR133727-2",
+          "posted_at": "2026-10-01"
+        },
+        {
+          "job_id": "62c97ca677d8bb22",
+          "title": "Analytics Engineer",
+          "company_name": "Satispay",
+          "is_sp500": false,
+          "location": "IT",
+          "country_code": "IT",
+          "country_name": "Italy",
+          "region": "EU",
+          "seniority": "Mid",
+          "work_mode": "Hybrid",
+          "url": "https://jobs.ashbyhq.com/satispay/31e09fdd-2cd3-4156-a99d-c09a1733c50a",
           "posted_at": "2026-10-01"
         },
         {
@@ -11664,9 +11664,23 @@
           "posted_at": "2026-10-10"
         },
         {
-          "job_id": "8f90579711c53f2d",
-          "title": "Power BI Analytics Engineer (H/F)",
-          "company_name": "HOUSE OF ABY",
+          "job_id": "07c56f781a7a6228",
+          "title": "Analytics Engineer - Shop Analytics (all genders)",
+          "company_name": "ABOUT YOU",
+          "is_sp500": false,
+          "location": "DE",
+          "country_code": "DE",
+          "country_name": "Germany",
+          "region": "EU",
+          "seniority": "Mid",
+          "work_mode": "Unspecified",
+          "url": "https://de.linkedin.com/jobs/view/analytics-engineer-shop-analytics-all-genders-at-about-you-4479382900",
+          "posted_at": "2026-10-16"
+        },
+        {
+          "job_id": "130e134b59b0e7b3",
+          "title": "Data Analytics Engineer \"MATE\" - F/H/X",
+          "company_name": "Accor",
           "is_sp500": false,
           "location": "FR",
           "country_code": "FR",
@@ -11674,27 +11688,13 @@
           "region": "EU",
           "seniority": "Mid",
           "work_mode": "Unspecified",
-          "url": "https://fr.linkedin.com/jobs/view/power-bi-analytics-engineer-h-f-at-house-of-aby-4478616087?position=1&pageNum=0&refId=5S2Y%2B0ZzJnqPfIRLLpvVRQ%3D%3D&trackingId=dQFksldL3VyKP0n7WmPeIg%3D%3D",
-          "posted_at": "2026-10-19"
+          "url": "https://careers.accor.com/job/data-analytics-engineer-mate-f-h-x-in-issy-les-moulineaux-france-jid-115931",
+          "posted_at": null
         },
         {
-          "job_id": "fb36d76d9aa1894f",
-          "title": "Senior Analytics Engineer (gn) Green Energy Markets",
-          "company_name": "LichtBlick SE",
-          "is_sp500": false,
-          "location": "DE",
-          "country_code": "DE",
-          "country_name": "Germany",
-          "region": "EU",
-          "seniority": "Senior",
-          "work_mode": "Unspecified",
-          "url": "https://de.linkedin.com/jobs/view/senior-analytics-engineer-gn-green-energy-markets-at-lichtblick-se-4462401893",
-          "posted_at": "2026-10-16"
-        },
-        {
-          "job_id": "ccf51fb34f1c2008",
-          "title": "Analytics Engineer - BI/Data",
-          "company_name": "Xelix",
+          "job_id": "f2411621a048d977",
+          "title": "Analytics Engineer",
+          "company_name": "ONMO",
           "is_sp500": false,
           "location": "UK",
           "country_code": "UK",
@@ -11702,7 +11702,7 @@
           "region": "UK",
           "seniority": "Mid",
           "work_mode": "Unspecified",
-          "url": "https://uk.linkedin.com/jobs/view/analytics-engineer-bi-data-at-xelix-4480976627",
+          "url": "https://uk.linkedin.com/jobs/view/analytics-engineer-at-onmo-4480961832",
           "posted_at": "2026-10-19"
         },
         {
@@ -11762,23 +11762,9 @@
           "posted_at": "2026-10-15"
         },
         {
-          "job_id": "130e134b59b0e7b3",
-          "title": "Data Analytics Engineer \"MATE\" - F/H/X",
-          "company_name": "Accor",
-          "is_sp500": false,
-          "location": "FR",
-          "country_code": "FR",
-          "country_name": "France",
-          "region": "EU",
-          "seniority": "Mid",
-          "work_mode": "Unspecified",
-          "url": "https://careers.accor.com/job/data-analytics-engineer-mate-f-h-x-in-issy-les-moulineaux-france-jid-115931",
-          "posted_at": null
-        },
-        {
-          "job_id": "f2411621a048d977",
-          "title": "Analytics Engineer",
-          "company_name": "ONMO",
+          "job_id": "ccf51fb34f1c2008",
+          "title": "Analytics Engineer - BI/Data",
+          "company_name": "Xelix",
           "is_sp500": false,
           "location": "UK",
           "country_code": "UK",
@@ -11786,7 +11772,7 @@
           "region": "UK",
           "seniority": "Mid",
           "work_mode": "Unspecified",
-          "url": "https://uk.linkedin.com/jobs/view/analytics-engineer-at-onmo-4480961832",
+          "url": "https://uk.linkedin.com/jobs/view/analytics-engineer-bi-data-at-xelix-4480976627",
           "posted_at": "2026-10-19"
         },
         {
@@ -11917,8 +11903,8 @@
           "job_count_full_desc": 11
         },
         {
-          "skill_id": "nlp",
-          "skill_name": "Natural Language Processing",
+          "skill_id": "rag",
+          "skill_name": "RAG (Retrieval-Augmented Generation)",
           "category": "AI/ML",
           "job_count": 9,
           "penetration_pct": 7.1,
@@ -11949,9 +11935,9 @@
           "job_count_full_desc": 15
         },
         {
-          "skill_id": "azure",
-          "skill_name": "Microsoft Azure",
-          "category": "Cloud",
+          "skill_id": "pytorch",
+          "skill_name": "PyTorch",
+          "category": "Framework",
           "job_count": 8,
           "penetration_pct": 6.3,
           "job_count_all": 8,
@@ -11959,9 +11945,9 @@
           "job_count_full_desc": 8
         },
         {
-          "skill_id": "pytorch",
-          "skill_name": "PyTorch",
-          "category": "Framework",
+          "skill_id": "azure",
+          "skill_name": "Microsoft Azure",
+          "category": "Cloud",
           "job_count": 8,
           "penetration_pct": 6.3,
           "job_count_all": 8,
@@ -12015,15 +12001,15 @@
           "job_count": 10
         },
         {
-          "company_name": "OpenAI",
-          "job_count": 7
-        },
-        {
           "company_name": "Anthropic",
           "job_count": 7
         },
         {
-          "company_name": "Monzo Bank",
+          "company_name": "OpenAI",
+          "job_count": 7
+        },
+        {
+          "company_name": "Stripe",
           "job_count": 4
         },
         {
@@ -12031,7 +12017,7 @@
           "job_count": 4
         },
         {
-          "company_name": "Stripe",
+          "company_name": "eBay Inc.",
           "job_count": 4
         }
       ],
@@ -12052,12 +12038,12 @@
           "share_pct": 10.4
         },
         {
-          "sector": "Health Care",
+          "sector": "Industrials",
           "job_count": 5,
           "share_pct": 7.5
         },
         {
-          "sector": "Industrials",
+          "sector": "Health Care",
           "job_count": 5,
           "share_pct": 7.5
         }
@@ -12446,20 +12432,6 @@
           "posted_at": "2026-11-02"
         },
         {
-          "job_id": "4d26f40b3a1bb9b1",
-          "title": "Senior Manager, Data Science",
-          "company_name": "Bristol Myers Squibb",
-          "is_sp500": true,
-          "location": "IN",
-          "country_code": "IN",
-          "country_name": "India",
-          "region": "Asia",
-          "seniority": "Lead / Manager",
-          "work_mode": "Unspecified",
-          "url": "https://bristolmyerssquibb.wd5.myworkdayjobs.com/en-US/bms/job/Hyderabad---TS---IN/Senior-Manager--Data-Science_R1601747-1",
-          "posted_at": null
-        },
-        {
           "job_id": "0eea74de29c11f09",
           "title": "Technical Program Manager III, Machine Learning, Pixel Software",
           "company_name": "Google (Alphabet)",
@@ -12471,6 +12443,20 @@
           "seniority": "Lead / Manager",
           "work_mode": "Unspecified",
           "url": "https://www.google.com/about/careers/applications/jobs/results/138382286721557190-technical-program-manager-iii-machine-learning-pixel-software",
+          "posted_at": null
+        },
+        {
+          "job_id": "5fe43c0f04301fed",
+          "title": "Senior Product Manager Lead Product Manager Data Science Machine Learning Cloud",
+          "company_name": "UnitedHealth Group",
+          "is_sp500": true,
+          "location": "IN",
+          "country_code": "IN",
+          "country_name": "India",
+          "region": "Asia",
+          "seniority": "Lead / Manager",
+          "work_mode": "Unspecified",
+          "url": "https://careers.unitedhealthgroup.com/job/hyderabad/senior-product-manager-lead-product-manager-data-science-machine-learning-cloud/34088/97491838768",
           "posted_at": null
         },
         {
@@ -12516,9 +12502,9 @@
           "posted_at": "2026-10-30"
         },
         {
-          "job_id": "5fe43c0f04301fed",
-          "title": "Senior Product Manager Lead Product Manager Data Science Machine Learning Cloud",
-          "company_name": "UnitedHealth Group",
+          "job_id": "4d26f40b3a1bb9b1",
+          "title": "Senior Manager, Data Science",
+          "company_name": "Bristol Myers Squibb",
           "is_sp500": true,
           "location": "IN",
           "country_code": "IN",
@@ -12526,7 +12512,7 @@
           "region": "Asia",
           "seniority": "Lead / Manager",
           "work_mode": "Unspecified",
-          "url": "https://careers.unitedhealthgroup.com/job/hyderabad/senior-product-manager-lead-product-manager-data-science-machine-learning-cloud/34088/97491838768",
+          "url": "https://bristolmyerssquibb.wd5.myworkdayjobs.com/en-US/bms/job/Hyderabad---TS---IN/Senior-Manager--Data-Science_R1601747-1",
           "posted_at": null
         }
       ]
@@ -12731,19 +12717,19 @@
           "job_count": 3
         },
         {
-          "company_name": "abcfinance GmbH",
-          "job_count": 2
-        },
-        {
-          "company_name": "GRID esports",
-          "job_count": 2
-        },
-        {
-          "company_name": "Coca-Cola Europacific Partners",
+          "company_name": "NovaTaste",
           "job_count": 2
         },
         {
           "company_name": "Arrows",
+          "job_count": 2
+        },
+        {
+          "company_name": "GEICO",
+          "job_count": 2
+        },
+        {
+          "company_name": "abcfinance GmbH",
           "job_count": 2
         }
       ],
@@ -12769,7 +12755,7 @@
           "share_pct": 7.9
         },
         {
-          "sector": "Materials",
+          "sector": "Financials",
           "job_count": 2,
           "share_pct": 5.3
         }
@@ -12836,20 +12822,6 @@
           "posted_at": "2026-11-03"
         },
         {
-          "job_id": "e4bde29ce9b069c9",
-          "title": "Senior Microsoft Fabric & Power BI Consultant (m/f)",
-          "company_name": "ARHS Developments",
-          "is_sp500": false,
-          "location": "LU",
-          "country_code": "LU",
-          "country_name": "Luxembourg",
-          "region": "EU",
-          "seniority": "Senior",
-          "work_mode": "Unspecified",
-          "url": "https://jobs.smartrecruiters.com/ARHS/744000159414951",
-          "posted_at": "2026-11-03"
-        },
-        {
           "job_id": "8dcafe1239bd9391",
           "title": "Senior Power BI Developer | Snowflake & ETL",
           "company_name": "Luxoft",
@@ -12878,6 +12850,20 @@
           "posted_at": "2026-11-03"
         },
         {
+          "job_id": "e4bde29ce9b069c9",
+          "title": "Senior Microsoft Fabric & Power BI Consultant (m/f)",
+          "company_name": "ARHS Developments",
+          "is_sp500": false,
+          "location": "LU",
+          "country_code": "LU",
+          "country_name": "Luxembourg",
+          "region": "EU",
+          "seniority": "Senior",
+          "work_mode": "Unspecified",
+          "url": "https://jobs.smartrecruiters.com/ARHS/744000159414951",
+          "posted_at": "2026-11-03"
+        },
+        {
           "job_id": "9934f6113e015fac",
           "title": "Business Intelligence Specialist",
           "company_name": "Thales",
@@ -12892,20 +12878,6 @@
           "posted_at": "2026-11-03"
         },
         {
-          "job_id": "6681730754ec3364",
-          "title": "Data Analyst - Power BI Specialist",
-          "company_name": "EUROPEAN DYNAMICS",
-          "is_sp500": false,
-          "location": "GR",
-          "country_code": "GR",
-          "country_name": "Greece",
-          "region": "EU",
-          "seniority": "Mid",
-          "work_mode": "Unspecified",
-          "url": "https://gr.linkedin.com/jobs/view/data-analyst-power-bi-specialist-at-european-dynamics-4486128640?position=2&pageNum=0&refId=3E%2B01%2BmpZCzSB0RZm8TOXw%3D%3D&trackingId=24WaqoaY21DUucqNcAc9FQ%3D%3D",
-          "posted_at": "2026-11-02"
-        },
-        {
           "job_id": "2ee07c2d7b0b5ff5",
           "title": "Senior Power BI & Microsoft Fabric Specialist (w/m/d)",
           "company_name": "Valora Group",
@@ -12917,6 +12889,20 @@
           "seniority": "Senior",
           "work_mode": "Unspecified",
           "url": "https://de.linkedin.com/jobs/view/senior-power-bi-microsoft-fabric-specialist-w-m-d-at-valora-group-4464871918?position=1&pageNum=0&refId=sB8xtQkGplTDf6G3oL%2FLYA%3D%3D&trackingId=%2FvttRMvZSnSrHFViCyFgMA%3D%3D",
+          "posted_at": "2026-11-02"
+        },
+        {
+          "job_id": "6681730754ec3364",
+          "title": "Data Analyst - Power BI Specialist",
+          "company_name": "EUROPEAN DYNAMICS",
+          "is_sp500": false,
+          "location": "GR",
+          "country_code": "GR",
+          "country_name": "Greece",
+          "region": "EU",
+          "seniority": "Mid",
+          "work_mode": "Unspecified",
+          "url": "https://gr.linkedin.com/jobs/view/data-analyst-power-bi-specialist-at-european-dynamics-4486128640?position=2&pageNum=0&refId=3E%2B01%2BmpZCzSB0RZm8TOXw%3D%3D&trackingId=24WaqoaY21DUucqNcAc9FQ%3D%3D",
           "posted_at": "2026-11-02"
         },
         {
@@ -12948,6 +12934,20 @@
           "posted_at": "2026-10-30"
         },
         {
+          "job_id": "38cf50bdfd4ee442",
+          "title": "Business Intelligence Analyst",
+          "company_name": "Casumo",
+          "is_sp500": false,
+          "location": "HR",
+          "country_code": "HR",
+          "country_name": "Croatia",
+          "region": "EU",
+          "seniority": "Mid",
+          "work_mode": "Remote",
+          "url": "https://hr.linkedin.com/jobs/view/business-intelligence-analyst-at-casumo-4476710552?position=3&pageNum=0&refId=p1QZHcssIE5z7Qyb%2Bi7Bog%3D%3D&trackingId=sg%2F6P%2FUPvEu3uyFI41DWsQ%3D%3D",
+          "posted_at": "2026-10-29"
+        },
+        {
           "job_id": "96e4c2894e9b074f",
           "title": "Senior BI Developer",
           "company_name": "Mondelez International",
@@ -12973,20 +12973,6 @@
           "seniority": "Senior",
           "work_mode": "Unspecified",
           "url": "https://be.linkedin.com/jobs/view/senior-bi-engineer-%E2%80%93-power-bi-at-sopra-steria-4437866905?position=2&pageNum=0&refId=hxPGh3TDxQv4MQ4slaWb1g%3D%3D&trackingId=Vxo3%2BpyUQD%2Bfa2coY1kqaw%3D%3D",
-          "posted_at": "2026-10-29"
-        },
-        {
-          "job_id": "38cf50bdfd4ee442",
-          "title": "Business Intelligence Analyst",
-          "company_name": "Casumo",
-          "is_sp500": false,
-          "location": "HR",
-          "country_code": "HR",
-          "country_name": "Croatia",
-          "region": "EU",
-          "seniority": "Mid",
-          "work_mode": "Remote",
-          "url": "https://hr.linkedin.com/jobs/view/business-intelligence-analyst-at-casumo-4476710552?position=3&pageNum=0&refId=p1QZHcssIE5z7Qyb%2Bi7Bog%3D%3D&trackingId=sg%2F6P%2FUPvEu3uyFI41DWsQ%3D%3D",
           "posted_at": "2026-10-29"
         },
         {
@@ -13130,17 +13116,17 @@
           "posted_at": "2026-11-02"
         },
         {
-          "job_id": "1f9e2faeddc03a0c",
-          "title": "MID-LEVEL – SAP BI / BO SUPPORT ANALYST  - 36492",
-          "company_name": "Bosch Portugal (Aveiro, Braga, Ovar)",
+          "job_id": "97c2f4bee132324f",
+          "title": "(JUNIOR TO MID-LEVEL) BI DATA ANALYST - 36523/36524/36525",
+          "company_name": "Bosch Group Hungary (Hatvan, Maklár, Miskolc)",
           "is_sp500": false,
           "location": "BR",
           "country_code": "BR",
           "country_name": "Brazil",
           "region": "Americas",
-          "seniority": "Mid",
+          "seniority": "Junior / Entry",
           "work_mode": "Unspecified",
-          "url": "https://jobs.smartrecruiters.com/BoschGroup/744000160670890",
+          "url": "https://jobs.smartrecruiters.com/BoschGroup/744000160623050",
           "posted_at": "2026-11-09"
         },
         {
@@ -13242,20 +13228,6 @@
           "posted_at": "2026-11-02"
         },
         {
-          "job_id": "631f5d93478cbb18",
-          "title": "BI Developer in Solution Team",
-          "company_name": "Saab",
-          "is_sp500": false,
-          "location": "SE",
-          "country_code": "SE",
-          "country_name": "Sweden",
-          "region": "EU",
-          "seniority": "Mid",
-          "work_mode": "Hybrid",
-          "url": "https://se.linkedin.com/jobs/view/bi-developer-in-solution-team-at-saab-4478517570?position=2&pageNum=0&refId=B5mlq93DL5unMZODdth1pQ%3D%3D&trackingId=VQB3MNGFOKel8LM1CkKCcg%3D%3D",
-          "posted_at": "2026-11-02"
-        },
-        {
           "job_id": "0858f17e9a55c6a4",
           "title": "Senior Business Intelligence Developer / Qlik Sense Entwickler (m/w/d)",
           "company_name": "abcfinance GmbH",
@@ -13267,6 +13239,20 @@
           "seniority": "Senior",
           "work_mode": "Unspecified",
           "url": "https://de.linkedin.com/jobs/view/senior-business-intelligence-developer-qlik-sense-entwickler-m-w-d-at-abcfinance-gmbh-4484345239?position=3&pageNum=0&refId=sB8xtQkGplTDf6G3oL%2FLYA%3D%3D&trackingId=V%2FbqCD5THc9pxJr8%2FbAVeQ%3D%3D",
+          "posted_at": "2026-11-02"
+        },
+        {
+          "job_id": "631f5d93478cbb18",
+          "title": "BI Developer in Solution Team",
+          "company_name": "Saab",
+          "is_sp500": false,
+          "location": "SE",
+          "country_code": "SE",
+          "country_name": "Sweden",
+          "region": "EU",
+          "seniority": "Mid",
+          "work_mode": "Hybrid",
+          "url": "https://se.linkedin.com/jobs/view/bi-developer-in-solution-team-at-saab-4478517570?position=2&pageNum=0&refId=B5mlq93DL5unMZODdth1pQ%3D%3D&trackingId=VQB3MNGFOKel8LM1CkKCcg%3D%3D",
           "posted_at": "2026-11-02"
         },
         {
@@ -13298,20 +13284,6 @@
           "posted_at": "2026-10-30"
         },
         {
-          "job_id": "9e17d71b48f8ef58",
-          "title": "Data Analyst – BI Engineer",
-          "company_name": "Clavem Group",
-          "is_sp500": false,
-          "location": "LU",
-          "country_code": "LU",
-          "country_name": "Luxembourg",
-          "region": "EU",
-          "seniority": "Mid",
-          "work_mode": "Unspecified",
-          "url": "https://lu.linkedin.com/jobs/view/data-analyst-%E2%80%93-bi-engineer-at-clavem-group-4484521573?position=1&pageNum=0&refId=pQrrj3kLs4EH6u%2BBw6NhXg%3D%3D&trackingId=2PPbv3Q7rp06DyKvOlDaAg%3D%3D",
-          "posted_at": "2026-10-29"
-        },
-        {
           "job_id": "280247d91a5b987f",
           "title": "BI and Reporting Analyst (SSIS, SSAS, Data Warehouse) for NATO with security clearance",
           "company_name": "WLG",
@@ -13323,6 +13295,20 @@
           "seniority": "Mid",
           "work_mode": "Unspecified",
           "url": "https://be.linkedin.com/jobs/view/bi-and-reporting-analyst-ssis-ssas-data-warehouse-for-nato-with-security-clearance-at-wlg-4484581213?position=4&pageNum=0&refId=hxPGh3TDxQv4MQ4slaWb1g%3D%3D&trackingId=7Vz%2BmdzRDM8hZ5jxNC6%2FYA%3D%3D",
+          "posted_at": "2026-10-29"
+        },
+        {
+          "job_id": "9e17d71b48f8ef58",
+          "title": "Data Analyst – BI Engineer",
+          "company_name": "Clavem Group",
+          "is_sp500": false,
+          "location": "LU",
+          "country_code": "LU",
+          "country_name": "Luxembourg",
+          "region": "EU",
+          "seniority": "Mid",
+          "work_mode": "Unspecified",
+          "url": "https://lu.linkedin.com/jobs/view/data-analyst-%E2%80%93-bi-engineer-at-clavem-group-4484521573?position=1&pageNum=0&refId=pQrrj3kLs4EH6u%2BBw6NhXg%3D%3D&trackingId=2PPbv3Q7rp06DyKvOlDaAg%3D%3D",
           "posted_at": "2026-10-29"
         },
         {
@@ -13340,20 +13326,6 @@
           "posted_at": "2026-10-26"
         },
         {
-          "job_id": "65187d1750892d41",
-          "title": "GCP/Power BI Data Analyst (French Speaker) | BPCE-SI",
-          "company_name": "Natixis in Portugal (Porto Centre of Expertise)",
-          "is_sp500": false,
-          "location": "PT",
-          "country_code": "PT",
-          "country_name": "Portugal",
-          "region": "EU",
-          "seniority": "Mid",
-          "work_mode": "Unspecified",
-          "url": "https://jobs.smartrecruiters.com/natixisinportugal/744000157875639",
-          "posted_at": "2026-10-26"
-        },
-        {
           "job_id": "e53de492043d261b",
           "title": "BI Business Analyst I",
           "company_name": "Hamamatsu Photonics A/S",
@@ -13365,6 +13337,20 @@
           "seniority": "Junior / Entry",
           "work_mode": "Unspecified",
           "url": "https://dk.linkedin.com/jobs/view/bi-business-analyst-i-at-hamamatsu-photonics-a-s-4476667848?position=3&pageNum=0&refId=dr3SaoVOSpJRbl5qKv1SEw%3D%3D&trackingId=pJY17dwEMlMTGJQdr0I%2B%2BQ%3D%3D",
+          "posted_at": "2026-10-26"
+        },
+        {
+          "job_id": "65187d1750892d41",
+          "title": "GCP/Power BI Data Analyst (French Speaker) | BPCE-SI",
+          "company_name": "Natixis in Portugal (Porto Centre of Expertise)",
+          "is_sp500": false,
+          "location": "PT",
+          "country_code": "PT",
+          "country_name": "Portugal",
+          "region": "EU",
+          "seniority": "Mid",
+          "work_mode": "Unspecified",
+          "url": "https://jobs.smartrecruiters.com/natixisinportugal/744000157875639",
           "posted_at": "2026-10-26"
         },
         {
@@ -13382,20 +13368,6 @@
           "posted_at": "2026-10-26"
         },
         {
-          "job_id": "176399f4bc8c3d75",
-          "title": "BI & Data Developer | SEB, Vilnius",
-          "company_name": "SEB",
-          "is_sp500": false,
-          "location": "LT",
-          "country_code": "LT",
-          "country_name": "Lithuania",
-          "region": "EU",
-          "seniority": "Mid",
-          "work_mode": "Unspecified",
-          "url": "https://lt.linkedin.com/jobs/view/bi-data-developer-seb-vilnius-at-seb-4482869326?position=2&pageNum=0&refId=znXK4iNUNmRnqAlJb%2BILqQ%3D%3D&trackingId=WSFX5b2xPiqweNPg00Qogg%3D%3D",
-          "posted_at": "2026-10-23"
-        },
-        {
           "job_id": "e508b1313a26cb7d",
           "title": "BI Developer / Junior BI Developer (Power BI)",
           "company_name": "HBIS",
@@ -13407,6 +13379,20 @@
           "seniority": "Junior / Entry",
           "work_mode": "Remote",
           "url": "https://gr.linkedin.com/jobs/view/bi-developer-junior-bi-developer-power-bi-at-hbis-4480623426?position=1&pageNum=0&refId=3E%2B01%2BmpZCzSB0RZm8TOXw%3D%3D&trackingId=TcmnANDG5xwKxRJxCH4YBg%3D%3D",
+          "posted_at": "2026-10-23"
+        },
+        {
+          "job_id": "176399f4bc8c3d75",
+          "title": "BI & Data Developer | SEB, Vilnius",
+          "company_name": "SEB",
+          "is_sp500": false,
+          "location": "LT",
+          "country_code": "LT",
+          "country_name": "Lithuania",
+          "region": "EU",
+          "seniority": "Mid",
+          "work_mode": "Unspecified",
+          "url": "https://lt.linkedin.com/jobs/view/bi-data-developer-seb-vilnius-at-seb-4482869326?position=2&pageNum=0&refId=znXK4iNUNmRnqAlJb%2BILqQ%3D%3D&trackingId=WSFX5b2xPiqweNPg00Qogg%3D%3D",
           "posted_at": "2026-10-23"
         },
         {
@@ -13709,19 +13695,19 @@
           "job_count": 6
         },
         {
-          "company_name": "Netflix",
-          "job_count": 3
-        },
-        {
-          "company_name": "McDonald's",
-          "job_count": 3
-        },
-        {
           "company_name": "Ecolab",
           "job_count": 3
         },
         {
-          "company_name": "Arthur J. Gallagher & Co.",
+          "company_name": "Netflix",
+          "job_count": 3
+        },
+        {
+          "company_name": "Nvidia",
+          "job_count": 3
+        },
+        {
+          "company_name": "Anthropic",
           "job_count": 3
         }
       ],
@@ -13828,20 +13814,6 @@
           "posted_at": "2026-10-19"
         },
         {
-          "job_id": "8e656ec123780d18",
-          "title": "Manager II, Data Engineering - Advanced Capabilities COE",
-          "company_name": "Bristol Myers Squibb",
-          "is_sp500": true,
-          "location": "IN",
-          "country_code": "IN",
-          "country_name": "India",
-          "region": "Asia",
-          "seniority": "Lead / Manager",
-          "work_mode": "Unspecified",
-          "url": "https://bristolmyerssquibb.wd5.myworkdayjobs.com/en-US/bms/job/Hyderabad---TS---IN/Manager-II--Data-Engineering---Advanced-Capabilities-COE_R1606028",
-          "posted_at": "2026-11-06"
-        },
-        {
           "job_id": "6993bdd4d7a8de94",
           "title": "Staff Technical Product Manager, Ads ML Platform ",
           "company_name": "Reddit",
@@ -13853,6 +13825,20 @@
           "seniority": "Staff / Principal",
           "work_mode": "Remote",
           "url": "https://job-boards.greenhouse.io/reddit/jobs/7954001",
+          "posted_at": "2026-11-06"
+        },
+        {
+          "job_id": "8e656ec123780d18",
+          "title": "Manager II, Data Engineering - Advanced Capabilities COE",
+          "company_name": "Bristol Myers Squibb",
+          "is_sp500": true,
+          "location": "IN",
+          "country_code": "IN",
+          "country_name": "India",
+          "region": "Asia",
+          "seniority": "Lead / Manager",
+          "work_mode": "Unspecified",
+          "url": "https://bristolmyerssquibb.wd5.myworkdayjobs.com/en-US/bms/job/Hyderabad---TS---IN/Manager-II--Data-Engineering---Advanced-Capabilities-COE_R1606028",
           "posted_at": "2026-11-06"
         },
         {
@@ -14259,8 +14245,8 @@
           "job_count_full_desc": 7
         },
         {
-          "skill_id": "bigquery",
-          "skill_name": "BigQuery",
+          "skill_id": "azure",
+          "skill_name": "Microsoft Azure",
           "category": "Cloud",
           "job_count": 6,
           "penetration_pct": 8.6,
@@ -14279,8 +14265,8 @@
           "job_count_full_desc": 6
         },
         {
-          "skill_id": "azure",
-          "skill_name": "Microsoft Azure",
+          "skill_id": "bigquery",
+          "skill_name": "BigQuery",
           "category": "Cloud",
           "job_count": 6,
           "penetration_pct": 8.6,
@@ -14289,8 +14275,8 @@
           "job_count_full_desc": 6
         },
         {
-          "skill_id": "gcp",
-          "skill_name": "Google Cloud Platform",
+          "skill_id": "redshift",
+          "skill_name": "Amazon Redshift",
           "category": "Cloud",
           "job_count": 3,
           "penetration_pct": 4.3,
@@ -14301,15 +14287,15 @@
       ],
       "top_companies": [
         {
-          "company_name": "eBay Inc.",
-          "job_count": 5
-        },
-        {
           "company_name": "Amgen",
           "job_count": 5
         },
         {
           "company_name": "Marriott International",
+          "job_count": 5
+        },
+        {
+          "company_name": "eBay Inc.",
           "job_count": 5
         },
         {
@@ -14347,7 +14333,7 @@
           "share_pct": 15.5
         },
         {
-          "sector": "Information Technology",
+          "sector": "Industrials",
           "job_count": 8,
           "share_pct": 13.8
         }
@@ -14498,9 +14484,9 @@
           "posted_at": null
         },
         {
-          "job_id": "4c9d3dae46b813ff",
-          "title": "Senior Product Manager, Analytics, Reporting, & City ",
-          "company_name": "Axon Enterprise",
+          "job_id": "8a9d70905d569781",
+          "title": "Sr. Manager, Data Analytics",
+          "company_name": "Hasbro",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
@@ -14508,7 +14494,7 @@
           "region": "Americas",
           "seniority": "Lead / Manager",
           "work_mode": "Unspecified",
-          "url": "https://job-boards.greenhouse.io/axon/jobs/7577018003",
+          "url": "https://job-boards.greenhouse.io/hasbro/jobs/4473110009",
           "posted_at": "2026-11-06"
         },
         {
@@ -14540,9 +14526,9 @@
           "posted_at": "2026-10-21"
         },
         {
-          "job_id": "7fc534144d8a5b66",
-          "title": "S%C3%A3O Paulo Associate Manager De Business Intelligence & Analytics All",
-          "company_name": "Hershey Company (The)",
+          "job_id": "ce08be9f93c5e63a",
+          "title": "Commercial Strategy & Analytics Manager (m/w/d)",
+          "company_name": "Fiserv",
           "is_sp500": true,
           "location": "DE",
           "country_code": "DE",
@@ -14550,7 +14536,7 @@
           "region": "EU",
           "seniority": "Lead / Manager",
           "work_mode": "Unspecified",
-          "url": "https://careers.thehersheycompany.com/job/S%C3%A3o-Paulo-Associate-Manager-de-Business-Intelligence-&-Analytics-All/1435121500/",
+          "url": "https://fiserv.wd5.myworkdayjobs.com/en-US/ext/job/Frankfurt-Germany/Commercial-Strategy---Analytics-Manager--m-w-d-_R-10400461",
           "posted_at": null
         },
         {
@@ -14568,9 +14554,9 @@
           "posted_at": "2026-10-29"
         },
         {
-          "job_id": "8a9d70905d569781",
-          "title": "Sr. Manager, Data Analytics",
-          "company_name": "Hasbro",
+          "job_id": "4c9d3dae46b813ff",
+          "title": "Senior Product Manager, Analytics, Reporting, & City ",
+          "company_name": "Axon Enterprise",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
@@ -14578,7 +14564,7 @@
           "region": "Americas",
           "seniority": "Lead / Manager",
           "work_mode": "Unspecified",
-          "url": "https://job-boards.greenhouse.io/hasbro/jobs/4473110009",
+          "url": "https://job-boards.greenhouse.io/axon/jobs/7577018003",
           "posted_at": "2026-11-06"
         },
         {
@@ -14610,9 +14596,9 @@
           "posted_at": "2026-10-08"
         },
         {
-          "job_id": "ce08be9f93c5e63a",
-          "title": "Commercial Strategy & Analytics Manager (m/w/d)",
-          "company_name": "Fiserv",
+          "job_id": "7fc534144d8a5b66",
+          "title": "S%C3%A3O Paulo Associate Manager De Business Intelligence & Analytics All",
+          "company_name": "Hershey Company (The)",
           "is_sp500": true,
           "location": "DE",
           "country_code": "DE",
@@ -14620,7 +14606,7 @@
           "region": "EU",
           "seniority": "Lead / Manager",
           "work_mode": "Unspecified",
-          "url": "https://fiserv.wd5.myworkdayjobs.com/en-US/ext/job/Frankfurt-Germany/Commercial-Strategy---Analytics-Manager--m-w-d-_R-10400461",
+          "url": "https://careers.thehersheycompany.com/job/S%C3%A3o-Paulo-Associate-Manager-de-Business-Intelligence-&-Analytics-All/1435121500/",
           "posted_at": null
         },
         {
@@ -14708,17 +14694,17 @@
           "posted_at": "2026-10-30"
         },
         {
-          "job_id": "1e449def64ce160f",
-          "title": "Business Intelligence Manager",
-          "company_name": "Verizon",
+          "job_id": "5aa2172f0ceb04d7",
+          "title": "Data Analytics Manager",
+          "company_name": "IQVIA",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
           "country_name": "United States",
           "region": "Americas",
           "seniority": "Lead / Manager",
-          "work_mode": "Hybrid",
-          "url": "https://verizon.wd12.myworkdayjobs.com/en-US/verizon-careers/job/Basking-Ridge-New-Jersey/Business-Intelligence-Manager_R-1103095",
+          "work_mode": "Unspecified",
+          "url": "https://iqvia.wd1.myworkdayjobs.com/en-US/iqvia/job/Mexico-City-Mexico/Data-Analytics-Manager_R1568232",
           "posted_at": "2026-11-06"
         },
         {
@@ -14778,17 +14764,17 @@
           "posted_at": "2026-10-29"
         },
         {
-          "job_id": "5aa2172f0ceb04d7",
-          "title": "Data Analytics Manager",
-          "company_name": "IQVIA",
+          "job_id": "1e449def64ce160f",
+          "title": "Business Intelligence Manager",
+          "company_name": "Verizon",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
           "country_name": "United States",
           "region": "Americas",
           "seniority": "Lead / Manager",
-          "work_mode": "Unspecified",
-          "url": "https://iqvia.wd1.myworkdayjobs.com/en-US/iqvia/job/Mexico-City-Mexico/Data-Analytics-Manager_R1568232",
+          "work_mode": "Hybrid",
+          "url": "https://verizon.wd12.myworkdayjobs.com/en-US/verizon-careers/job/Basking-Ridge-New-Jersey/Business-Intelligence-Manager_R-1103095",
           "posted_at": "2026-11-06"
         },
         {
@@ -14814,11 +14800,11 @@
       "track": "Management",
       "job_count": 65,
       "market_share_pct": 0.59,
-      "category_job_count": 228,
+      "category_job_count": 229,
       "full_desc_jobs_count": 136,
-      "desc_coverage_pct": 59.6,
+      "desc_coverage_pct": 59.4,
       "sp500_job_count": 29,
-      "cz_job_count": 3,
+      "cz_job_count": 2,
       "occupied_seats": 1922,
       "expansion_index_pct": 3.4,
       "senior_plus_pct": 96.9,
@@ -14841,7 +14827,7 @@
           "job_count": 92,
           "penetration_pct": 67.6,
           "job_count_all": 92,
-          "penetration_all_pct": 40.4,
+          "penetration_all_pct": 40.2,
           "job_count_full_desc": 92
         },
         {
@@ -14851,18 +14837,8 @@
           "job_count": 70,
           "penetration_pct": 51.5,
           "job_count_all": 70,
-          "penetration_all_pct": 30.7,
+          "penetration_all_pct": 30.6,
           "job_count_full_desc": 70
-        },
-        {
-          "skill_id": "ai_agents",
-          "skill_name": "AI Agents / Agentic AI",
-          "category": "AI/ML",
-          "job_count": 51,
-          "penetration_pct": 37.5,
-          "job_count_all": 52,
-          "penetration_all_pct": 22.8,
-          "job_count_full_desc": 51
         },
         {
           "skill_id": "genai",
@@ -14871,7 +14847,17 @@
           "job_count": 51,
           "penetration_pct": 37.5,
           "job_count_all": 52,
-          "penetration_all_pct": 22.8,
+          "penetration_all_pct": 22.7,
+          "job_count_full_desc": 51
+        },
+        {
+          "skill_id": "ai_agents",
+          "skill_name": "AI Agents / Agentic AI",
+          "category": "AI/ML",
+          "job_count": 51,
+          "penetration_pct": 37.5,
+          "job_count_all": 52,
+          "penetration_all_pct": 22.7,
           "job_count_full_desc": 51
         },
         {
@@ -14881,7 +14867,7 @@
           "job_count": 44,
           "penetration_pct": 32.4,
           "job_count_all": 44,
-          "penetration_all_pct": 19.3,
+          "penetration_all_pct": 19.2,
           "job_count_full_desc": 44
         },
         {
@@ -14891,7 +14877,7 @@
           "job_count": 41,
           "penetration_pct": 30.1,
           "job_count_all": 41,
-          "penetration_all_pct": 18.0,
+          "penetration_all_pct": 17.9,
           "job_count_full_desc": 41
         },
         {
@@ -14901,7 +14887,7 @@
           "job_count": 36,
           "penetration_pct": 26.5,
           "job_count_all": 36,
-          "penetration_all_pct": 15.8,
+          "penetration_all_pct": 15.7,
           "job_count_full_desc": 36
         },
         {
@@ -14911,21 +14897,11 @@
           "job_count": 28,
           "penetration_pct": 20.6,
           "job_count_all": 28,
-          "penetration_all_pct": 12.3,
+          "penetration_all_pct": 12.2,
           "job_count_full_desc": 28
         }
       ],
       "top_technologies": [
-        {
-          "skill_id": "spark",
-          "skill_name": "Apache Spark",
-          "category": "Framework",
-          "job_count": 42,
-          "penetration_pct": 30.9,
-          "job_count_all": 43,
-          "penetration_all_pct": 18.9,
-          "job_count_full_desc": 42
-        },
         {
           "skill_id": "aws",
           "skill_name": "AWS",
@@ -14933,7 +14909,17 @@
           "job_count": 42,
           "penetration_pct": 30.9,
           "job_count_all": 43,
-          "penetration_all_pct": 18.9,
+          "penetration_all_pct": 18.8,
+          "job_count_full_desc": 42
+        },
+        {
+          "skill_id": "spark",
+          "skill_name": "Apache Spark",
+          "category": "Framework",
+          "job_count": 42,
+          "penetration_pct": 30.9,
+          "job_count_all": 43,
+          "penetration_all_pct": 18.8,
           "job_count_full_desc": 42
         },
         {
@@ -14953,7 +14939,7 @@
           "job_count": 29,
           "penetration_pct": 21.3,
           "job_count_all": 30,
-          "penetration_all_pct": 13.2,
+          "penetration_all_pct": 13.1,
           "job_count_full_desc": 29
         },
         {
@@ -14973,18 +14959,8 @@
           "job_count": 25,
           "penetration_pct": 18.4,
           "job_count_all": 25,
-          "penetration_all_pct": 11.0,
+          "penetration_all_pct": 10.9,
           "job_count_full_desc": 25
-        },
-        {
-          "skill_id": "vector_db",
-          "skill_name": "Vector Databases",
-          "category": "Database",
-          "job_count": 23,
-          "penetration_pct": 16.9,
-          "job_count_all": 23,
-          "penetration_all_pct": 10.1,
-          "job_count_full_desc": 23
         },
         {
           "skill_id": "langchain",
@@ -14993,7 +14969,17 @@
           "job_count": 23,
           "penetration_pct": 16.9,
           "job_count_all": 23,
-          "penetration_all_pct": 10.1,
+          "penetration_all_pct": 10.0,
+          "job_count_full_desc": 23
+        },
+        {
+          "skill_id": "vector_db",
+          "skill_name": "Vector Databases",
+          "category": "Database",
+          "job_count": 23,
+          "penetration_pct": 16.9,
+          "job_count_all": 23,
+          "penetration_all_pct": 10.0,
           "job_count_full_desc": 23
         }
       ],
@@ -15019,7 +15005,7 @@
           "job_count": 6
         },
         {
-          "company_name": "Cargill Belgium",
+          "company_name": "State Street Bank Luxembourg",
           "job_count": 5
         }
       ],
@@ -15210,9 +15196,9 @@
           "posted_at": "2026-09-22"
         },
         {
-          "job_id": "e6f830b6fe3d0203",
-          "title": "Technical Lead Engineer – ML (f/m/d)",
-          "company_name": "Aptiv",
+          "job_id": "12369662fe42c27a",
+          "title": "Lead Data Analyst, LATAM",
+          "company_name": "Nike, Inc.",
           "is_sp500": true,
           "location": "DE",
           "country_code": "DE",
@@ -15220,7 +15206,7 @@
           "region": "EU",
           "seniority": "Lead / Manager",
           "work_mode": "Unspecified",
-          "url": "https://aptiv.wd5.myworkdayjobs.com/en-US/aptiv_careers/job/Wuppertal-Germany/Technical-Lead-Engineer---ML--f-m-d-_J000705067",
+          "url": "https://nike.wd1.myworkdayjobs.com/en-US/nke/job/Ciudad-de-Mxico-Mexico/Lead-Data-Analyst--LATAM_R-96744-1",
           "posted_at": null
         },
         {
@@ -15238,9 +15224,9 @@
           "posted_at": "2026-11-03"
         },
         {
-          "job_id": "9e9e04bccc8ea10d",
+          "job_id": "4f356e4205b6b640",
           "title": "Lead Data Analyst",
-          "company_name": "Target Corporation",
+          "company_name": "Target",
           "is_sp500": true,
           "location": "IN",
           "country_code": "IN",
@@ -15336,9 +15322,9 @@
           "posted_at": "2026-09-25"
         },
         {
-          "job_id": "12369662fe42c27a",
-          "title": "Lead Data Analyst, LATAM",
-          "company_name": "Nike, Inc.",
+          "job_id": "e6f830b6fe3d0203",
+          "title": "Technical Lead Engineer – ML (f/m/d)",
+          "company_name": "Aptiv",
           "is_sp500": true,
           "location": "DE",
           "country_code": "DE",
@@ -15346,7 +15332,7 @@
           "region": "EU",
           "seniority": "Lead / Manager",
           "work_mode": "Unspecified",
-          "url": "https://nike.wd1.myworkdayjobs.com/en-US/nke/job/Ciudad-de-Mxico-Mexico/Lead-Data-Analyst--LATAM_R-96744-1",
+          "url": "https://aptiv.wd5.myworkdayjobs.com/en-US/aptiv_careers/job/Wuppertal-Germany/Technical-Lead-Engineer---ML--f-m-d-_J000705067",
           "posted_at": null
         },
         {
@@ -15364,9 +15350,9 @@
           "posted_at": "2026-11-06"
         },
         {
-          "job_id": "4f356e4205b6b640",
+          "job_id": "9e9e04bccc8ea10d",
           "title": "Lead Data Analyst",
-          "company_name": "Target",
+          "company_name": "Target Corporation",
           "is_sp500": true,
           "location": "IN",
           "country_code": "IN",
@@ -15630,17 +15616,17 @@
           "posted_at": "2026-08-25"
         },
         {
-          "job_id": "913df44f28c79ebc",
-          "title": "Data Science Team Lead - Process Intelligence",
-          "company_name": "Processand s.r.o.",
+          "job_id": "6642a5afa0540b86",
+          "title": "Tech Lead / Senior .NET Developer – produktový vývoj a AI | HPP až 100 tis. / IČO 6000 MD",
+          "company_name": "Jobs Contact Personal, s.r.o.",
           "is_sp500": false,
           "location": "CZ",
           "country_code": "CZ",
           "country_name": "Czech Republic",
           "region": "EU",
           "seniority": "Lead / Manager",
-          "work_mode": "Remote",
-          "url": "https://www.jobs.cz/rpd/2001383531/",
+          "work_mode": "Unspecified",
+          "url": "https://www.jobs.cz/rpd/2001515091/",
           "posted_at": null
         },
         {
@@ -15783,9 +15769,9 @@
           "job_count_full_desc": 7
         },
         {
-          "skill_id": "sql",
-          "skill_name": "SQL",
-          "category": "Programming",
+          "skill_id": "powerbi",
+          "skill_name": "Power BI",
+          "category": "Business",
           "job_count": 5,
           "penetration_pct": 15.6,
           "job_count_all": 5,
@@ -15793,9 +15779,9 @@
           "job_count_full_desc": 5
         },
         {
-          "skill_id": "powerbi",
-          "skill_name": "Power BI",
-          "category": "Business",
+          "skill_id": "sql",
+          "skill_name": "SQL",
+          "category": "Programming",
           "job_count": 5,
           "penetration_pct": 15.6,
           "job_count_all": 5,
@@ -15855,9 +15841,9 @@
           "job_count_full_desc": 3
         },
         {
-          "skill_id": "spark",
-          "skill_name": "Apache Spark",
-          "category": "Framework",
+          "skill_id": "databricks",
+          "skill_name": "Databricks",
+          "category": "Cloud",
           "job_count": 2,
           "penetration_pct": 6.2,
           "job_count_all": 2,
@@ -15865,9 +15851,9 @@
           "job_count_full_desc": 2
         },
         {
-          "skill_id": "databricks",
-          "skill_name": "Databricks",
-          "category": "Cloud",
+          "skill_id": "spark",
+          "skill_name": "Apache Spark",
+          "category": "Framework",
           "job_count": 2,
           "penetration_pct": 6.2,
           "job_count_all": 2,
@@ -15915,19 +15901,19 @@
           "job_count": 3
         },
         {
-          "company_name": "Ares Management",
-          "job_count": 2
-        },
-        {
-          "company_name": "L'Oréal",
-          "job_count": 2
-        },
-        {
-          "company_name": "Veeva Systems",
+          "company_name": "State Street Bank Luxembourg",
           "job_count": 2
         },
         {
           "company_name": "ABB",
+          "job_count": 2
+        },
+        {
+          "company_name": "Ares Management",
+          "job_count": 2
+        },
+        {
+          "company_name": "Veeva Systems",
           "job_count": 2
         }
       ],
@@ -16476,9 +16462,9 @@
           "job_count_full_desc": 13
         },
         {
-          "skill_id": "tensorflow",
-          "skill_name": "TensorFlow",
-          "category": "Framework",
+          "skill_id": "mlflow",
+          "skill_name": "MLflow",
+          "category": "MLOps",
           "job_count": 10,
           "penetration_pct": 25.6,
           "job_count_all": 10,
@@ -16487,10 +16473,6 @@
         }
       ],
       "top_companies": [
-        {
-          "company_name": "Workday, Inc.",
-          "job_count": 2
-        },
         {
           "company_name": "United Parcel Service",
           "job_count": 2
@@ -16504,7 +16486,11 @@
           "job_count": 2
         },
         {
-          "company_name": "TE Connectivity",
+          "company_name": "Workday, Inc.",
+          "job_count": 2
+        },
+        {
+          "company_name": "Cegeka",
           "job_count": 1
         },
         {
@@ -16534,7 +16520,7 @@
           "share_pct": 11.1
         },
         {
-          "sector": "Consumer Discretionary",
+          "sector": "Energy",
           "job_count": 1,
           "share_pct": 5.6
         }
@@ -16657,9 +16643,9 @@
           "posted_at": "2026-11-06"
         },
         {
-          "job_id": "7514394281654305",
+          "job_id": "769bd4b4ae28be5d",
           "title": "DataOps/MLOps Engineer – Data, AI & Analytics | Tieto Tech Consulting (m/f/d)",
-          "company_name": "Tietoevry Norway",
+          "company_name": "Tietoevry",
           "is_sp500": false,
           "location": "NO",
           "country_code": "NO",
@@ -16741,9 +16727,9 @@
           "posted_at": null
         },
         {
-          "job_id": "769bd4b4ae28be5d",
+          "job_id": "7514394281654305",
           "title": "DataOps/MLOps Engineer – Data, AI & Analytics | Tieto Tech Consulting (m/f/d)",
-          "company_name": "Tietoevry",
+          "company_name": "Tietoevry Norway",
           "is_sp500": false,
           "location": "NO",
           "country_code": "NO",
@@ -16909,9 +16895,9 @@
           "posted_at": "2026-10-20"
         },
         {
-          "job_id": "914b0f5902ffa792",
-          "title": "Bangalore Lead Data Science (Ml Ops) Ka 560076",
-          "company_name": "TE Connectivity",
+          "job_id": "7d8a8d06fd928796",
+          "title": "Manager Ai Ml Engineering Genai Rag And Mlops",
+          "company_name": "UnitedHealth Group",
           "is_sp500": true,
           "location": "IN",
           "country_code": "IN",
@@ -16919,7 +16905,7 @@
           "region": "Asia",
           "seniority": "Lead / Manager",
           "work_mode": "Unspecified",
-          "url": "https://careers.te.com/job/Bangalore-LEAD-DATA-SCIENCE-%28ML-Ops%29-KA-560076/1439419900/",
+          "url": "https://careers.unitedhealthgroup.com/job/hyderabad/manager-ai-ml-engineering-genai-rag-and-mlops/34088/101240884400",
           "posted_at": null
         }
       ]
@@ -16962,19 +16948,19 @@
           "job_count": 2
         },
         {
-          "company_name": "London Stock Exchange Group (LSEG)",
-          "job_count": 1
-        },
-        {
-          "company_name": "Version 1",
-          "job_count": 1
-        },
-        {
           "company_name": "Berkshire Hathaway",
           "job_count": 1
         },
         {
           "company_name": "Ipsen",
+          "job_count": 1
+        },
+        {
+          "company_name": "UnitedHealth Group",
+          "job_count": 1
+        },
+        {
+          "company_name": "London Stock Exchange Group (LSEG)",
           "job_count": 1
         }
       ],
@@ -17080,20 +17066,6 @@
           "posted_at": "2026-10-13"
         },
         {
-          "job_id": "950c86c0d6bc2759",
-          "title": "assistant digital manager cdo cpd",
-          "company_name": "L'Oréal",
-          "is_sp500": false,
-          "location": "US",
-          "country_code": "US",
-          "country_name": "United States",
-          "region": "Americas",
-          "seniority": "Executive",
-          "work_mode": "Unspecified",
-          "url": "https://careers.loreal.com/en/job/shanghai/assistant-digital-manager-cdo-cpd/3456/46299101824",
-          "posted_at": null
-        },
-        {
           "job_id": "283e830f9df87812",
           "title": "Senior Valuations Lead, CLO / CDO",
           "company_name": "London Stock Exchange Group (LSEG)",
@@ -17105,6 +17077,20 @@
           "seniority": "Executive",
           "work_mode": "Unspecified",
           "url": "https://lseg.wd3.myworkdayjobs.com/en-US/Careers/job/USA-New-York-28-Liberty-Street/Senior-Valuations-Lead--CLO---CDO_R0121718-1",
+          "posted_at": null
+        },
+        {
+          "job_id": "0f87d013d6565945",
+          "title": "Director Business Management CDO",
+          "company_name": "Ipsen",
+          "is_sp500": false,
+          "location": "US",
+          "country_code": "US",
+          "country_name": "United States",
+          "region": "Americas",
+          "seniority": "Executive",
+          "work_mode": "Unspecified",
+          "url": "https://ipsen.wd103.myworkdayjobs.com/en-US/Ipsen_Careers/job/London-UK/Director-Business-Management-CDO_R-22840-1",
           "posted_at": null
         }
       ]
@@ -17269,8 +17255,8 @@
           "job_count_full_desc": 6
         },
         {
-          "skill_id": "aws",
-          "skill_name": "AWS",
+          "skill_id": "gcp",
+          "skill_name": "Google Cloud Platform",
           "category": "Cloud",
           "job_count": 5,
           "penetration_pct": 21.7,
@@ -17279,8 +17265,8 @@
           "job_count_full_desc": 5
         },
         {
-          "skill_id": "gcp",
-          "skill_name": "Google Cloud Platform",
+          "skill_id": "aws",
+          "skill_name": "AWS",
           "category": "Cloud",
           "job_count": 5,
           "penetration_pct": 21.7,
@@ -17610,17 +17596,17 @@
           "posted_at": "2026-10-30"
         },
         {
-          "job_id": "f07c491b032c14c5",
-          "title": "Generative AI/LLM Engineer",
-          "company_name": "Public Storage",
+          "job_id": "6b5b2fe346635ea8",
+          "title": "Sr Advanced GenAI Engineer - Agentic AI & Cloud",
+          "company_name": "Honeywell Technologies",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
           "country_name": "United States",
           "region": "Americas",
-          "seniority": "Mid",
+          "seniority": "Senior",
           "work_mode": "Unspecified",
-          "url": "https://www.linkedin.com/jobs/view/generative-ai-llm-engineer-at-public-storage-4443618147",
+          "url": "https://www.linkedin.com/jobs/view/sr-advanced-genai-engineer-agentic-ai-cloud-at-honeywell-aerospace-4456412538",
           "posted_at": "2026-10-02"
         },
         {
@@ -17652,17 +17638,17 @@
           "posted_at": "2026-10-30"
         },
         {
-          "job_id": "6b5b2fe346635ea8",
-          "title": "Sr Advanced GenAI Engineer - Agentic AI & Cloud",
-          "company_name": "Honeywell Technologies",
+          "job_id": "f07c491b032c14c5",
+          "title": "Generative AI/LLM Engineer",
+          "company_name": "Public Storage",
           "is_sp500": true,
           "location": "US",
           "country_code": "US",
           "country_name": "United States",
           "region": "Americas",
-          "seniority": "Senior",
+          "seniority": "Mid",
           "work_mode": "Unspecified",
-          "url": "https://www.linkedin.com/jobs/view/sr-advanced-genai-engineer-agentic-ai-cloud-at-honeywell-aerospace-4456412538",
+          "url": "https://www.linkedin.com/jobs/view/generative-ai-llm-engineer-at-public-storage-4443618147",
           "posted_at": "2026-10-02"
         },
         {
@@ -17904,7 +17890,7 @@
         "category": "Cloud",
         "job_count": 1210,
         "penetration_in_gcp_pct": 80.8,
-        "penetration_all_pct": 10.89,
+        "penetration_all_pct": 10.9,
         "top_paired_skills": [
           "Python",
           "AWS",
@@ -17978,8 +17964,8 @@
         "top_paired_skills": [
           "Apache Spark",
           "Data Governance & Quality",
-          "Python",
-          "BigQuery"
+          "BigQuery",
+          "Google Cloud Platform"
         ]
       }
     ],
@@ -18034,12 +18020,12 @@
         "job_count": 28
       },
       {
-        "company_name": "Cloudflare",
+        "company_name": "Snowflake",
         "sector": null,
         "job_count": 25
       },
       {
-        "company_name": "Snowflake",
+        "company_name": "Cloudflare",
         "sector": null,
         "job_count": 25
       },
