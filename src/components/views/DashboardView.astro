@@ -150,7 +150,7 @@ const dashboardJsonLd = {
           {t.ctaMarket}
         </a>
         <a
-          href={getLocalePath(lang, 'places')}
+          href={getLocalePath(lang, 'countries')}
           class="px-4 py-2.5 rounded-lg border border-emerald-500/40 bg-emerald-950/40 text-emerald-300 font-mono text-xs font-semibold hover:border-emerald-400 hover:text-emerald-200 transition-colors inline-flex items-center gap-1.5"
         >
           <span>{t.ctaPlaces}</span>
@@ -484,7 +484,7 @@ const dashboardJsonLd = {
         <p class="text-xs text-slate-400 mt-1 max-w-3xl leading-relaxed">{t.placesTeaserSub}</p>
       </div>
       <a
-        href={getLocalePath(lang, 'places')}
+        href={getLocalePath(lang, 'countries')}
         class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-mono font-semibold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/25 transition-colors shrink-0"
       >
         <span>{t.exploreAllPlacesBtn}</span>
@@ -601,7 +601,7 @@ const dashboardJsonLd = {
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {TOP_SPOTLIGHT_COUNTRIES.map((c) => (
           <a
-            href={`${getLocalePath(lang, 'places')}#country-${c.iso3}`}
+            href={`${getLocalePath(lang, 'countries')}#country-${c.iso3}`}
             class="group p-4 rounded-xl panel-surface border border-slate-800 hover:border-emerald-500/40 transition-all flex flex-col justify-between gap-3 hover:shadow-lg hover:shadow-emerald-500/5"
           >
             <div>

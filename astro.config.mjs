@@ -22,14 +22,14 @@ for (const t of TECHNOLOGIES_CATALOG) {
 }
 
 function isSitemapAllowed(page) {
-  if (page.includes('/gcp-hub') || page.includes('_') || page.includes('/data/')) {
+  if (page.includes('/gcp-hub') || page.includes('_') || page.includes('/data/') || page.includes('/places')) {
     return false;
   }
 
-  // Filter country alias redirects, e.g. /places/cz/ or /cs/places/cz/
-  const placeMatch = page.match(/\/(?:cs\/)?places\/([a-z0-9-]+)\/?$/);
-  if (placeMatch) {
-    const slug = placeMatch[1];
+  // Filter country alias redirects, e.g. /countries/cz/ or /cs/countries/cz/
+  const countryMatch = page.match(/\/(?:cs\/)?countries\/([a-z0-9-]+)\/?$/);
+  if (countryMatch) {
+    const slug = countryMatch[1];
     if (countryAliases.has(slug)) return false;
   }
 

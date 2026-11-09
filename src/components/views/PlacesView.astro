@@ -60,7 +60,7 @@ const placesJsonLd = {
 };
 ---
 
-<Layout title={t.pageTitle} description={t.pageDescription} activeNav="places" lang={lang} jsonLd={placesJsonLd}>
+<Layout title={t.pageTitle} description={t.pageDescription} activeNav="countries" lang={lang} jsonLd={placesJsonLd}>
   <!-- 1. Hero Header -->
   <section class="mb-10 pb-8 border-b border-slate-800/80">
     <div class="max-w-3xl space-y-3">
@@ -473,7 +473,7 @@ const placesJsonLd = {
               }
 
               const cMeta = getCountryMeta(country.country_code_alpha3);
-              const countryDetailHref = cMeta ? (lang === 'cs' ? `/cs/places/${cMeta.slug}` : `/places/${cMeta.slug}`) : null;
+              const countryDetailHref = cMeta ? (lang === 'cs' ? `/cs/countries/${cMeta.slug}` : `/countries/${cMeta.slug}`) : null;
 
               return (
                 <>

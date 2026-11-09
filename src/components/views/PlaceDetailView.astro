@@ -116,7 +116,7 @@ const jsonLd = {
     addressCountry: countryMeta.alpha2,
   },
   description: `${countryName} Data & AI Job Market and Livability Intelligence. Real enterprise job requisitions, compensation context, and tech ecosystem radar.`,
-  url: `https://vector87.com${lang === 'cs' ? `/cs/places/${countryMeta.slug}` : `/places/${countryMeta.slug}`}`,
+  url: `https://vector87.com${lang === 'cs' ? `/cs/countries/${countryMeta.slug}` : `/countries/${countryMeta.slug}`}`,
 };
 
 const i18nConfig = {
@@ -132,7 +132,7 @@ const i18nConfig = {
 <Layout
   title={`${countryName} (${countryMeta.alpha2}) — Data & AI Jobs, Livability & Tech Hub | Vector87`}
   description={`${countryName} AI & Data career radar: ${country.tech_market?.active_jobs || 0} active enterprise job postings, top hiring employers, tech meetups, livability score, and relocation mobility.`}
-  activeNav="places"
+  activeNav="countries"
   lang={lang}
   jsonLd={jsonLd}
 >
@@ -141,7 +141,7 @@ const i18nConfig = {
     <div class="flex items-center gap-2 text-xs font-mono text-slate-500 mb-4 flex-wrap">
       <a href={getLocalePath(lang, 'dashboard')} class="hover:text-cyan-400 transition-colors">Vector87</a>
       <span>/</span>
-      <a href={getLocalePath(lang, 'places')} class="hover:text-cyan-400 transition-colors">{placesNav.pageTitle || 'Places'}</a>
+      <a href={getLocalePath(lang, 'countries')} class="hover:text-cyan-400 transition-colors">{lang === 'cs' ? 'Země' : 'Countries'}</a>
       <span>/</span>
       <span class="text-slate-300 font-semibold">{countryName}</span>
     </div>
@@ -605,7 +605,7 @@ const i18nConfig = {
         const odScore = odData?.pillar_scores?.composite_score !== null && odData?.pillar_scores?.composite_score !== undefined
           ? odData.pillar_scores.composite_score.toFixed(1)
           : 'N/A';
-        const odHref = lang === 'cs' ? `/cs/places/${od.slug}` : `/places/${od.slug}`;
+        const odHref = lang === 'cs' ? `/cs/countries/${od.slug}` : `/countries/${od.slug}`;
 
         return (
           <a

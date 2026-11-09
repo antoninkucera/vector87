@@ -1,5 +1,4 @@
 ---
-import PlaceDetailView from '../../../components/views/PlaceDetailView.astro';
 import { getAllCountryStaticPaths } from '../../../data/places';
 
 export async function getStaticPaths() {
@@ -8,16 +7,10 @@ export async function getStaticPaths() {
 
 interface Props {
   countryMeta: any;
-  countryData: any;
-  isAlias: boolean;
   targetSlug?: string;
 }
 
-const { countryMeta, isAlias, targetSlug } = Astro.props;
-
-if (isAlias && targetSlug) {
-  return Astro.redirect(`/cs/places/${targetSlug}`, 301);
-}
+const { countryMeta, targetSlug } = Astro.props;
+const destination = targetSlug || countryMeta.slug;
+return Astro.redirect(`/cs/countries/${destination}`, 301);
 ---
-
-<PlaceDetailView lang="cs" countrySlug={countryMeta.slug} />
