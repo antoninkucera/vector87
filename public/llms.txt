@@ -2,12 +2,12 @@
 
 > Vector87.com is an open, static data and intelligence hub monitoring the direction of the AI, ML, Data Science, and Analytics job market across S&P 500 corporations, frontier technology leaders, and Europe. Data is aggregated directly from corporate ATS platforms into a local DuckDB analytical warehouse and exported into deterministic static JSON contracts.
 
-## Core Market Data (Snapshot: 2026-11-09)
-- **Active AI & Data Job Postings**: 10,603
+## Core Market Data (Snapshot: 2026-11-10)
+- **Active AI & Data Job Postings**: 10,880
 - **S&P 500 AI/Data Postings**: 6,152 (2.28% of total corporate hiring pool)
 - **S&P 500 Enterprise Coverage**: 472 hiring / 508 tracked firms
 - **Tracked Occupied Workforce (Headcount)**: 187,585 data/AI team seats across 1900 enterprises
-- **Hands-on (IC) to Management Ratio**: 11.8 : 1 (92.16% IC vs 7.84% Management)
+- **Hands-on (IC) to Management Ratio**: 11.8 : 1 (92.19% IC vs 7.81% Management)
 
 ## Key Pages & Endpoints
 - [Market Dashboard](https://vector87.com/): Core market data covering vitality, cloud stack, S&P 500 sector heatmap, hierarchy ratios, and emerging technology signals.
