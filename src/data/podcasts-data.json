@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "source": "Vector87 Podcast Ingestion Pipeline",
     "total_sources": 31,
-    "total_episodes": 514
+    "total_episodes": 528
   },
   "sources": [
     {
@@ -17,7 +17,7 @@
       "total_episodes": 232,
       "image_url": "https://i.scdn.co/image/ab6765630000ba8a5208343f71ab0730df9a14b8",
       "external_url": "https://open.spotify.com/show/6D5jY1VodQqSVnDYsVJWJt",
-      "updated_at": "2026-11-09 09:00:13.208228"
+      "updated_at": "2026-11-10 09:00:20.555131"
     },
     {
       "id": "57AJ6GiMDPVBLGRqvjeoz6",
@@ -27,10 +27,10 @@
       "priority": "medium",
       "publisher": "",
       "description": "Cutting through AI bullsh*t.Come join the discussion on Discord! https://discord.gg/4UNKGf3",
-      "total_episodes": 322,
+      "total_episodes": 323,
       "image_url": "https://i.scdn.co/image/ab6765630000ba8afce233722273798fa1d05a5c",
       "external_url": "https://open.spotify.com/show/57AJ6GiMDPVBLGRqvjeoz6",
-      "updated_at": "2026-11-09 09:00:08.389905"
+      "updated_at": "2026-11-10 09:00:16.204583"
     },
     {
       "id": "2MAi0BvDc6GTFvKFPXnkCL",
@@ -43,7 +43,7 @@
       "total_episodes": 504,
       "image_url": "https://i.scdn.co/image/ab6765630000ba8a563ebb538d297875b10114b7",
       "external_url": "https://open.spotify.com/show/2MAi0BvDc6GTFvKFPXnkCL",
-      "updated_at": "2026-11-09 09:00:13.753751"
+      "updated_at": "2026-11-10 09:00:21.054882"
     },
     {
       "id": "1JdkD0ZoZ52KjwdR0b1WoT",
@@ -56,7 +56,7 @@
       "total_episodes": 332,
       "image_url": "https://i.scdn.co/image/ab6765630000ba8a5569819b983784216bdd4ca6",
       "external_url": "https://open.spotify.com/show/1JdkD0ZoZ52KjwdR0b1WoT",
-      "updated_at": "2026-11-09 09:00:09.425879"
+      "updated_at": "2026-11-10 09:00:18.681728"
     },
     {
       "id": "UCBKM3HATRILZyG9jGNJKGXQ",
@@ -69,7 +69,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/channel/UCBKM3HATRILZyG9jGNJKGXQ",
-      "updated_at": "2026-11-09 09:00:16.146510"
+      "updated_at": "2026-11-10 09:00:43.464706"
     },
     {
       "id": "UCrXSVX9a1mj8l0CMLwKgMVw",
@@ -82,7 +82,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/channel/UCrXSVX9a1mj8l0CMLwKgMVw",
-      "updated_at": "2026-11-09 09:00:15.096760"
+      "updated_at": "2026-11-10 09:00:38.484303"
     },
     {
       "id": "UCXUPKJO5MZQN11PqgIvyuvQ",
@@ -95,7 +95,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/channel/UCXUPKJO5MZQN11PqgIvyuvQ",
-      "updated_at": "2026-11-09 09:00:15.983369"
+      "updated_at": "2026-11-10 09:00:42.623050"
     },
     {
       "id": "UCrDwWp7EBBv4NwvScIpBDOA",
@@ -108,7 +108,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/channel/UCrDwWp7EBBv4NwvScIpBDOA",
-      "updated_at": "2026-11-09 09:00:13.971990"
+      "updated_at": "2026-11-10 09:00:21.218940"
     },
     {
       "id": "2OJXB8v32CrKbbsv9Uq2vn",
@@ -121,7 +121,7 @@
       "total_episodes": 56,
       "image_url": "https://i.scdn.co/image/ab6765630000ba8a4895ec65f1c3c38cafe45d6d",
       "external_url": "https://open.spotify.com/show/2OJXB8v32CrKbbsv9Uq2vn",
-      "updated_at": "2026-11-09 09:00:12.444356"
+      "updated_at": "2026-11-10 09:00:20.053297"
     },
     {
       "id": "UCGZdaRgswLfee5hDWCG-_0g",
@@ -134,7 +134,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/channel/UCGZdaRgswLfee5hDWCG-_0g",
-      "updated_at": "2026-11-09 09:00:16.061942"
+      "updated_at": "2026-11-10 09:00:43.227811"
     },
     {
       "id": "2iLvljRGVVIGlJshT5vNDS",
@@ -147,7 +147,7 @@
       "total_episodes": 521,
       "image_url": "https://i.scdn.co/image/ab6765630000ba8a6e142b927c02a883ee855611",
       "external_url": "https://open.spotify.com/show/2iLvljRGVVIGlJshT5vNDS",
-      "updated_at": "2026-11-09 09:00:09.031609"
+      "updated_at": "2026-11-10 09:00:18.311261"
     },
     {
       "id": "UC3bSfMzhHjeX_tFdte1esgQ",
@@ -160,7 +160,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/channel/UC3bSfMzhHjeX_tFdte1esgQ",
-      "updated_at": "2026-11-09 09:00:16.268754"
+      "updated_at": "2026-11-10 09:00:43.635104"
     },
     {
       "id": "1BZN7H3ikovSejhwQTzNm4",
@@ -170,10 +170,10 @@
       "priority": "high",
       "publisher": "",
       "description": "Data Skeptic is your source for a perspective of scientific skepticism on topics in statistics, machine learning, big data, artificial intelligence, and data science. Our weekly podcast and blog bring you stories and tutorials to help understand our data-driven world.",
-      "total_episodes": 612,
+      "total_episodes": 613,
       "image_url": "https://i.scdn.co/image/ab6765630000ba8a2e312df484c4b50c03addd9b",
       "external_url": "https://open.spotify.com/show/1BZN7H3ikovSejhwQTzNm4",
-      "updated_at": "2026-11-09 09:00:06.901228"
+      "updated_at": "2026-11-10 09:00:11.966230"
     },
     {
       "id": "UCAq9f7jFEA7Mtl3qOZy2h1A",
@@ -186,7 +186,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/channel/UCAq9f7jFEA7Mtl3qOZy2h1A",
-      "updated_at": "2026-11-09 09:00:14.754763"
+      "updated_at": "2026-11-10 09:00:33.653766"
     },
     {
       "id": "02yJXEJAJiQ0Vm2AO9Xj6X",
@@ -199,7 +199,7 @@
       "total_episodes": 300,
       "image_url": "https://i.scdn.co/image/ab6765630000ba8a5f4712b441fcd4135ca7452c",
       "external_url": "https://open.spotify.com/show/02yJXEJAJiQ0Vm2AO9Xj6X",
-      "updated_at": "2026-11-09 09:00:07.328277"
+      "updated_at": "2026-11-10 09:00:14.018276"
     },
     {
       "id": "UCQli51lMp-oW0gUHrcIj0jA",
@@ -212,7 +212,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/channel/UCQli51lMp-oW0gUHrcIj0jA",
-      "updated_at": "2026-11-09 09:00:16.432573"
+      "updated_at": "2026-11-10 09:00:43.927573"
     },
     {
       "id": "1ZEwpdbarrLDlkeAfoHjtj",
@@ -225,7 +225,7 @@
       "total_episodes": 35,
       "image_url": "https://i.scdn.co/image/ab6765630000ba8ad61a0145e42da811a1943c42",
       "external_url": "https://open.spotify.com/show/1ZEwpdbarrLDlkeAfoHjtj",
-      "updated_at": "2026-11-09 09:00:11.661248"
+      "updated_at": "2026-11-10 09:00:19.212391"
     },
     {
       "id": "UCJS9pqu9BzkAMNTmzNMNhvg",
@@ -238,7 +238,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/channel/UCJS9pqu9BzkAMNTmzNMNhvg",
-      "updated_at": "2026-11-09 09:00:14.209640"
+      "updated_at": "2026-11-10 09:00:21.456403"
     },
     {
       "id": "UC_x5XG1OV2P6uZZ5FSM9Ttw",
@@ -251,7 +251,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/channel/UC_x5XG1OV2P6uZZ5FSM9Ttw",
-      "updated_at": "2026-11-09 09:00:14.428828"
+      "updated_at": "2026-11-10 09:00:33.270995"
     },
     {
       "id": "UCFp1vaKzpfvoGai0vE5VJ0w",
@@ -264,7 +264,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/channel/UCFp1vaKzpfvoGai0vE5VJ0w",
-      "updated_at": "2026-11-09 09:00:16.576750"
+      "updated_at": "2026-11-10 09:00:44.547143"
     },
     {
       "id": "UCC-lyoTfSrcJzA1ab3APAgw",
@@ -277,7 +277,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/channel/UCC-lyoTfSrcJzA1ab3APAgw",
-      "updated_at": "2026-11-09 09:00:15.217382"
+      "updated_at": "2026-11-10 09:00:38.672826"
     },
     {
       "id": "UCXZCJLdBC09xxGZ6gcdrc6A",
@@ -290,7 +290,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/channel/UCXZCJLdBC09xxGZ6gcdrc6A",
-      "updated_at": "2026-11-09 09:00:16.703244"
+      "updated_at": "2026-11-10 09:00:44.686637"
     },
     {
       "id": "1LaCr5TFAgYPK5qHjP3XDp",
@@ -303,7 +303,7 @@
       "total_episodes": 381,
       "image_url": "https://i.scdn.co/image/ab6765630000ba8a355eceddea89633108675df4",
       "external_url": "https://open.spotify.com/show/1LaCr5TFAgYPK5qHjP3XDp",
-      "updated_at": "2026-11-09 09:00:12.128738"
+      "updated_at": "2026-11-10 09:00:19.590100"
     },
     {
       "id": "search:Felipe Hoffa BigQuery",
@@ -316,7 +316,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/results?search_query=Felipe+Hoffa+BigQuery",
-      "updated_at": "2026-11-09 09:00:17.337529"
+      "updated_at": "2026-11-10 09:00:46.318827"
     },
     {
       "id": "search:Lak Lakshmanan data engineering",
@@ -329,7 +329,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/results?search_query=Lak+Lakshmanan+data+engineering",
-      "updated_at": "2026-11-09 09:00:17.763433"
+      "updated_at": "2026-11-10 09:00:46.767650"
     },
     {
       "id": "search:google cloud dataform bigquery deep dive",
@@ -342,7 +342,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/results?search_query=google+cloud+dataform+bigquery+deep+dive",
-      "updated_at": "2026-11-09 09:00:16.839826"
+      "updated_at": "2026-11-10 09:00:45.863615"
     },
     {
       "id": "UCmLGJ3VYBcfRaWbP6JLJcpA",
@@ -355,7 +355,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/channel/UCmLGJ3VYBcfRaWbP6JLJcpA",
-      "updated_at": "2026-11-09 09:00:14.633021"
+      "updated_at": "2026-11-10 09:00:33.479606"
     },
     {
       "id": "1n8P7ZSgfVLVJ3GegxPat1",
@@ -368,7 +368,7 @@
       "total_episodes": 1043,
       "image_url": "https://i.scdn.co/image/ab6765630000ba8afceea1b76d40bb25f1cea453",
       "external_url": "https://open.spotify.com/show/1n8P7ZSgfVLVJ3GegxPat1",
-      "updated_at": "2026-11-09 09:00:07.915743"
+      "updated_at": "2026-11-10 09:00:15.658675"
     },
     {
       "id": "2ReJKUbDtcom5U0GgpOlAz",
@@ -378,10 +378,10 @@
       "priority": "high",
       "publisher": "",
       "description": "The \"Analytics Power Hour\" podcast is like a witty data geek's dream coffee chat—fun, insightful, and never boring. With episodes tackling current topics in the data and analytics space, it's packed with actionable advice and plenty of laughs. Featuring sharp hosts and amazing guests, they dive into topics like AI hype, making better decisions with data, and even what to do when your data feels more like a swamp than a lake. If you love analytics and a good chuckle, this podcast will have you hooked and learning in no time!",
-      "total_episodes": 320,
+      "total_episodes": 321,
       "image_url": "https://i.scdn.co/image/ab6765630000ba8a5269a259a4ef259d0211ecd1",
       "external_url": "https://open.spotify.com/show/2ReJKUbDtcom5U0GgpOlAz",
-      "updated_at": "2026-11-09 09:00:06.091804"
+      "updated_at": "2026-11-10 09:00:07.104218"
     },
     {
       "id": "UCEnwiDW2rOCQJnF18CEGemg",
@@ -394,7 +394,7 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/channel/UCEnwiDW2rOCQJnF18CEGemg",
-      "updated_at": "2026-11-09 09:00:15.839470"
+      "updated_at": "2026-11-10 09:00:42.495864"
     },
     {
       "id": "UCVpBwKK-ecMEV75y1dYLE5w",
@@ -407,10 +407,378 @@
       "total_episodes": 0,
       "image_url": null,
       "external_url": "https://www.youtube.com/channel/UCVpBwKK-ecMEV75y1dYLE5w",
-      "updated_at": "2026-11-09 09:00:14.970469"
+      "updated_at": "2026-11-10 09:00:33.931261"
     }
   ],
   "episodes": [
+    {
+      "id": "yt:FNTz0CdqL6g",
+      "show_id": "UCXZCJLdBC09xxGZ6gcdrc6A",
+      "show_name": "OpenAI",
+      "title": "Kuken Industries searches 70 years of drawings in minutes",
+      "description": "Kuken Industries is using the OpenAI API to help engineers search 70 years of drawings in minutes. Built with Recursive, a Japanese AI startup and an official OpenAI partner, the system gives teams more time to mentor younger engineers and take on more demanding work.\n\n➡️ Read how Kuken Industries is putting decades of engineering knowledge to work:\nhttps://openai.com/index/kuken/?utm_medium=social&amp;utm_source=youtube&amp;utm_campaign=CNT-yt_jp&amp;utm_content=case_kuken_article",
+      "release_date": "2026-11-10",
+      "duration_ms": null,
+      "external_url": "https://www.youtube.com/watch?v=FNTz0CdqL6g",
+      "category": "Machine Learning & AI",
+      "summary": "Společnost Kuken Industries využila OpenAI API k vytvoření systému, který umožňuje inženýrům během několika minut prohledávat sedmdesátiletý archiv technických výkresů. Tato automatizace uvolňuje kapacitu expertů pro mentoring a komplexnější inženýrské úkoly.",
+      "topics": [
+        "Generative AI",
+        "Enterprise Search",
+        "Document Digitization",
+        "AI Implementation",
+        "Knowledge Management"
+      ],
+      "keywords": [
+        "OpenAI API",
+        "Recursive",
+        "Engineering",
+        "Search",
+        "Automation",
+        "LLM",
+        "Data Retrieval"
+      ],
+      "relevance_score": 0.85,
+      "ingested_at": "2026-11-10 09:00:45.859078"
+    },
+    {
+      "id": "5yEt79zYehCHniIILSOBTA",
+      "show_id": "2ReJKUbDtcom5U0GgpOlAz",
+      "show_name": "The Analytics Power Hour",
+      "title": "#310: A Multi-Stop Tour of AI in Data and Analytics",
+      "description": "It can be hard to hear an AI story these days without wondering how much of it is sensationalized. So, we went looking for some reality on the ground. Moe rounded up four of her colleagues from Canva—Christian Sullivan, Nina Kumagai, Jack O'Hagan, and Flynn Alexander—and we made a series of short stops with each of them: an agent that investigates metric alerts (and cut the mean time to investigate from about two and a half days to about two hours), a prompt analytics platform prototyped during an AI Discovery Week (after a year of privacy and legal groundwork), a skill that synthesizes what a company has learned across its experiments (neutral results included!), and an LLM serving as the \"resident expert\" interface to a Markov chain model of user journeys. A common thread? Each of them found that the AI worked a lot better once they took some of the work away from it. And, no, AI did not get final say on the episode title, despite its insistence that a certain Antipodean phrase would land just fine. This episode is brought to you, in part, by our sponsors, Stape and Prism from Ask-Y. For complete show notes, including links to items mentioned in this episode and a transcript of the show, visit the show page: https://analyticshour.io/2026/11/10/310-a-multi-stop-tour-of-ai-in-data-and-analytics/",
+      "release_date": "2026-11-10",
+      "duration_ms": 3920100,
+      "external_url": "https://open.spotify.com/episode/5yEt79zYehCHniIILSOBTA",
+      "category": "Machine Learning & AI",
+      "summary": "Epizoda zkoumá praktické využití AI v datové analytice na příkladech z firmy Canva, kde se zaměřují na automatizaci vyšetřování metrik, analýzu promptů a modelování uživatelských cest. Autoři zdůrazňují, že AI dosahuje nejlepších výsledků, pokud je její role správně omezena a doplněna o lidský dohled.",
+      "topics": [
+        "Generative AI",
+        "Data Analytics",
+        "AI Agents",
+        "Process Automation",
+        "User Journey Modeling"
+      ],
+      "keywords": [
+        "LLM",
+        "Canva",
+        "Metric Alerts",
+        "Prompt Engineering",
+        "Markov Chains",
+        "AI Discovery",
+        "Data Strategy"
+      ],
+      "relevance_score": 0.95,
+      "ingested_at": "2026-11-10 09:00:11.745581"
+    },
+    {
+      "id": "yt:ruJw_tdKS8U",
+      "show_id": "UCJS9pqu9BzkAMNTmzNMNhvg",
+      "show_name": "Google Cloud Tech",
+      "title": "Gemini for regulated industries: Cited & auditable AI",
+      "description": "In banking and capital markets, you can't act on an AI recommendation if you can't verify its sources or methodology.\n\nIn this Google Cloud Live clip from Gemini at Work 2026, Archana Kannan (Senior Director of Product Management, Applied AI at Google Cloud) explains how Gemini for Financial Services pairs built-in governance and identity management with workflow-level traceability—giving analysts clear citations and transparent methodology on every day-to-day output.\n\nIn the full Google Cloud Live episode, we cover:\n* *Zero trust governance & traceability:* Cryptographic identities, isolated sandboxes, and end-to-end auditability for regulated workflows\n* *One persistent cloud agent:* 24/7 continuity across desktop, mobile, Workspace, and CLI\n* *Zero copy enterprise data:* Grounding agents in live business context via Knowledge Catalog & Borderless Lakehouse\n\n#Shorts #GoogleCloud #GeminiAtWork #FinancialServices #AIAgents\n\nSpeaker: Archana Kannan\nProducts Mentioned: Gemini",
+      "release_date": "2026-11-10",
+      "duration_ms": null,
+      "external_url": "https://www.youtube.com/watch?v=ruJw_tdKS8U",
+      "category": "Machine Learning & AI",
+      "summary": "Epizoda představuje využití modelu Gemini ve finančním sektoru se zaměřením na auditovatelnost, transparentnost zdrojů a striktní governance. Archana Kannan vysvětluje, jak propojit AI agenty s podnikovými daty při zachování bezpečnosti a sledovatelnosti rozhodnutí.",
+      "topics": [
+        "Generative AI",
+        "AI Governance",
+        "Financial Services",
+        "Data Traceability",
+        "Enterprise AI"
+      ],
+      "keywords": [
+        "Gemini",
+        "Google Cloud",
+        "Zero Trust",
+        "Auditability",
+        "Knowledge Catalog",
+        "Borderless Lakehouse",
+        "AI Agents",
+        "Compliance"
+      ],
+      "relevance_score": 0.95,
+      "ingested_at": "2026-11-10 09:00:22.889127"
+    },
+    {
+      "id": "yt:bY27JLlV3Ps",
+      "show_id": "UCJS9pqu9BzkAMNTmzNMNhvg",
+      "show_name": "Google Cloud Tech",
+      "title": "AI agent memory explained: Short-term vs. long-term state",
+      "description": "How do you give AI agents persistent memory without bloating your context window and spiking latency? Developer Relations Engineer Annie Wang explains how to architect two-tier agent memory:\n* Short-term memory (SessionService in ADK): Tracks active turn history, tool outputs, and working scratchpad state within a single task.\n* Long-term memory (MemoryService in ADK): Extracts durable user preferences and project conventions across sessions, indexing them for selective retrieval.\n* Context compaction: Using rolling summarization and pruning so multi-hour agent workflows stay fast, accurate, and cost-effective.\n\n🔔 Subscribe to Google Cloud Tech → https://goo.gle/GoogleCloudTech\n\n#GoogleCloud #AIAgents #CloudArchitecture\n\nSpeaker: Annie Wang\nProducts Mentioned: Gemini Enterprise Agent Platform",
+      "release_date": "2026-11-09",
+      "duration_ms": null,
+      "external_url": "https://www.youtube.com/watch?v=bY27JLlV3Ps",
+      "category": "Machine Learning & AI",
+      "summary": "Epizoda vysvětluje architekturu paměti AI agentů rozdělenou na krátkodobou a dlouhodobou složku pro efektivní správu kontextu. Zaměřuje se na techniky komprimace dat a selektivní vyhledávání, které zajišťují rychlost a nízké náklady při dlouhotrvajících úlohách.",
+      "topics": [
+        "AI Agents",
+        "Memory Architecture",
+        "Context Management",
+        "Cloud Architecture",
+        "LLM Optimization"
+      ],
+      "keywords": [
+        "Gemini",
+        "Google Cloud",
+        "ADK",
+        "Short-term memory",
+        "Long-term memory",
+        "Context window",
+        "Latency",
+        "Agentic workflows"
+      ],
+      "relevance_score": 0.95,
+      "ingested_at": "2026-11-10 09:00:33.264018"
+    },
+    {
+      "id": "7H13CYsUEGC1xiNYGZyPJp",
+      "show_id": "02yJXEJAJiQ0Vm2AO9Xj6X",
+      "show_name": "DataFramed",
+      "title": "# 386 Sales and Marketing Don't Care About Agents | Duncan Lennox, CPTO at HubSpot",
+      "description": "AI agents are being pitched for almost every part of sales, marketing, and customer support, from AI SDRs to support bots that resolve tickets without a person. But most businesses aren't excited about agents for their own sake. They want more leads, more closed deals, and happier customers. For go-to-market teams, that raises practical questions about where automation helps and where people still need to stay involved. How much of the sales process can an agent handle? How do you build enough trust to let one talk to your customers? And how do you know it's working?Duncan Lennox is the Chief Product and Technology Officer at HubSpot, where he oversees the product portfolio and leads Engineering, Product, UX, Next Bets, and IT and Security. Before HubSpot, he held roles at Google, most recently as general manager of the Applied AI team in Google Cloud, and at Amazon Web Services, where he was general manager of Elastic File System. He also co-founded two enterprise SaaS startups, serving as CEO and CTO.In the episode, Richie and Duncan explore automating sales with AI SDRs, how agents resolve over 70% of support tickets, building customer trust in agents, context engineering and evals, the humanity score for avoiding AI slop, model-agnostic agent harnesses, controlling AI costs, outcome-based pricing, the headless SaaS strategy, and much more.Links Mentioned in the Show:• HubSpot Customer Agent• HubSpot Prospecting Agent• Breeze Assistant• HubSpot Breeze agents overview• Lenny's Newsletter• Connect with Duncan• AI-Native Course: Intro to AI for Work• Related Episode: Don't Build on Jell-O: How to Make Agentic AI Reliable with Dan Klein, CTO at Scaled CognitionNew to DataCamp?Learn on the go using the DataCamp mobile appEmpower your business with world-class data and AI skills with DataCamp for business",
+      "release_date": "2026-11-09",
+      "duration_ms": 2989755,
+      "external_url": "https://open.spotify.com/episode/7H13CYsUEGC1xiNYGZyPJp",
+      "category": "Machine Learning & AI",
+      "summary": "Duncan Lennox z HubSpotu rozebírá praktické využití AI agentů v obchodu a marketingu se zaměřením na automatizaci zákaznické podpory a prodejních procesů. Epizoda se věnuje budování důvěry v agenty, měření jejich efektivity a strategii, jak vyvážit automatizaci s lidským faktorem.",
+      "topics": [
+        "AI Agents",
+        "Sales Automation",
+        "Customer Support AI",
+        "Enterprise SaaS",
+        "Human-AI Interaction"
+      ],
+      "keywords": [
+        "HubSpot",
+        "AI SDR",
+        "Context Engineering",
+        "Evals",
+        "Headless SaaS",
+        "Agentic AI",
+        "Automation",
+        "Customer Trust"
+      ],
+      "relevance_score": 0.95,
+      "ingested_at": "2026-11-10 09:00:15.453994"
+    },
+    {
+      "id": "yt:NUgaWmws0XQ",
+      "show_id": "UCC-lyoTfSrcJzA1ab3APAgw",
+      "show_name": "LangChain",
+      "title": "How Airbnb builds Trust for Guests and Hosts using AI Agents with LangGraph",
+      "description": "Pedro Rodriguez, Director of Engineering, ML at Airbnb, shares what his team learned building AI agents for trust, where a wrong decision affects a real guest or host and someone may later ask why it was made. He walks through the patterns they use: structured outputs with an abstain option that sends uncertain cases to a human, small subagents behind a plain rules layer, LangGraph interrupts for cases that wait days while case data lives in a separate database, MCP as the only path from agents to data, and verification of live runs with LLM judges, code checks, and a checker that runs on a different model family. He closes with why the team chose LangGraph and his main lesson: building the agents was the easy part, and knowing whether you can trust them takes the most work.\n\nThis session was captured at Interrupt New York City, the agent conference by LangChain.\n\nSpeakers:\nPedro Rodriguez, Director of Engineering, ML, Airbnb\n\nChapters:\n0:00 What happens when one record gets two different answers?\n2:03 How human agents help train Airbnb's support assistant\n3:39 What does high stakes mean for trust agents?\n4:35 Structured outputs and an abstain path to human review\n6:58 Splitting work into subagents behind a plain rules layer\n8:55 Building agents that wait days with LangGraph interrupts\n10:41 Making MCP the only path from agents to data\n11:46 Training the support assistant on what humans actually sent\n13:05 Why evals aren't enough when labels take months\n14:59 Catching inconsistent answers with a separate checker\n16:24 Why Pedro's team picked LangGraph after trying others\n17:25 Five takeaways, and why trust takes the most work\n\nResources:\n→ LangGraph: https://www.langchain.com/langgraph\n→ LangGraph interrupts docs: https://docs.langchain.com/oss/python/langgraph/interrupts\n→ Introduction to LangGraph on LangChain Academy: https://academy.langchain.com/courses/intro-to-langgraph\n→ Interrupt, the agent conference by LangChain: https://interrupt.langchain.com",
+      "release_date": "2026-11-09",
+      "duration_ms": null,
+      "external_url": "https://www.youtube.com/watch?v=NUgaWmws0XQ",
+      "category": "Machine Learning & AI",
+      "summary": "Pedro Rodriguez z Airbnb vysvětluje, jak využívají agenty postavené na LangGraphu k řešení vysoce rizikových úkolů v oblasti důvěry a bezpečnosti. Epizoda se zaměřuje na architekturu agentů, lidský dohled, strukturované výstupy a náročný proces validace spolehlivosti AI systémů v reálném provozu.",
+      "topics": [
+        "AI Agents",
+        "Trust & Safety",
+        "LLM Evaluation",
+        "Human-in-the-loop",
+        "System Architecture"
+      ],
+      "keywords": [
+        "LangGraph",
+        "Airbnb",
+        "MCP",
+        "LLM Judges",
+        "Structured Outputs",
+        "Agentic Workflows",
+        "Machine Learning"
+      ],
+      "relevance_score": 0.95,
+      "ingested_at": "2026-11-10 09:00:42.490844"
+    },
+    {
+      "id": "yt:kmPF75rTgh8",
+      "show_id": "UCC-lyoTfSrcJzA1ab3APAgw",
+      "show_name": "LangChain",
+      "title": "Should Agents Say \"I Don't Know\"? | AirBnB at Interrupt 26",
+      "description": "Pedro Rodriguez, Director of Engineering, ML at Airbnb, explains why his team lets agents answer abstain when they aren't sure and sends those cases to a human, since in high-stakes cases a confident wrong answer is one of the worst possible outcomes. He asks viewers to imagine an agent that approves loans or pays insurance claims, where an answer that looks right isn't enough and you need to explain why the agent reached it.\nCaptured at Interrupt New York City, the agent conference by LangChain.\n#AIAgents #HumanInTheLoop #Airbnb #LangChain #Interrupt",
+      "release_date": "2026-11-09",
+      "duration_ms": null,
+      "external_url": "https://www.youtube.com/watch?v=kmPF75rTgh8",
+      "category": "Machine Learning & AI",
+      "summary": "Pedro Rodriguez z Airbnb vysvětluje důležitost mechanismu 'abstinence' u AI agentů, kdy systém v kritických situacích přizná nevědomost a předá úkol člověku. Zdůrazňuje, že v oborech jako finance je přesnost a vysvětlitelnost rozhodnutí důležitější než slepá konfidence modelu.",
+      "topics": [
+        "AI Agents",
+        "Human-in-the-loop",
+        "Model Reliability",
+        "Explainable AI",
+        "Decision Support Systems"
+      ],
+      "keywords": [
+        "LangChain",
+        "Airbnb",
+        "LLM",
+        "AI Agents",
+        "Human-in-the-loop",
+        "Machine Learning",
+        "Model Confidence",
+        "AI Safety"
+      ],
+      "relevance_score": 0.95,
+      "ingested_at": "2026-11-10 09:00:39.879412"
+    },
+    {
+      "id": "yt:eszZTWbwJ48",
+      "show_id": "UCVpBwKK-ecMEV75y1dYLE5w",
+      "show_name": "dbt Labs",
+      "title": "How Careem generates 95% of its data pipelines with AI and dbt",
+      "description": "Careem generates about 95% of its data pipelines with AI. Akash Srivastava, who leads the data platform team there, explains the 2 layers that make it safe: context and validation.\n\nBefore dbt, Careem ran 5,000+ pipelines on a homegrown platform with no structure. In. this video, Srivastava explains why dbt was the first candidate to replace it, and how his team built an AI framework on top of it.\n\nIn this video:\n- What dbt gives an agent out of the box: lineage, tests, descriptions, and data contracts\n- Why Careem treats its context layer as a moat\n- How the team encodes tribal knowledge, like internal metric terms, so agents know what analysts mean\n- How a shadow environment and a self-correcting agent loop validate every AI change before human review\n- Why validation, not code generation, is the bottleneck\n\nRead the Careem story: https://www.getdbt.com/blog/careem-ai-dbt-model-testing-validation\n\n#dbt #dbtSummit #dataengineering #AI",
+      "release_date": "2026-11-09",
+      "duration_ms": null,
+      "external_url": "https://www.youtube.com/watch?v=eszZTWbwJ48",
+      "category": "Data Engineering",
+      "summary": "Akash Srivastava z Careem vysvětluje, jak využívají AI k automatizaci 95 % datových pipeline nad frameworkem dbt. Klíčem k úspěchu je robustní vrstva kontextu a automatizovaný validační proces, který zajišťuje integritu dat před zásahem člověka.",
+      "topics": [
+        "Data Engineering",
+        "AI Automation",
+        "Data Pipelines",
+        "Data Quality",
+        "Data Governance"
+      ],
+      "keywords": [
+        "dbt",
+        "AI agents",
+        "data lineage",
+        "data contracts",
+        "automation",
+        "validation",
+        "Careem",
+        "data platform"
+      ],
+      "relevance_score": 0.95,
+      "ingested_at": "2026-11-10 09:00:38.479767"
+    },
+    {
+      "id": "yt:OCGVV_r9Rmk",
+      "show_id": "UCVpBwKK-ecMEV75y1dYLE5w",
+      "show_name": "dbt Labs",
+      "title": "How Careem cut metric onboarding from 1-2 weeks to 1 day with dbt",
+      "description": "Careem cut metric onboarding from 1-2 weeks to within 1 day. Niyazulla Khan, data platform engineering manager at Careem, explains how a small team did it with dbt and AI agents.\n\nCareem runs a multi-service app across the Middle East, with 5,000+ pipelines behind it. The data platform team supports many domains, and maintaining its homegrown platform, Optimus, took capacity the team needed for new requests. In this interview, Khan explains why the team moved to dbt, and what changed once analysts could describe a requirement in plain English and an agent could build the model.\n\nIn this video:\n- Why Careem replaced Optimus with an industry standard\n- How dbt gives AI agents the structure and context they need, and how that context flows into OpenMetadata\n- How an isolated, end-to-end test loop lets an agent write, test, and fix a change before a human approves the PR\n- Why trust and speed were the two goals\n- How the team is migrating 5,000+ pipelines to dbt\n\nRead the full Careem story: https://www.getdbt.com/blog/careem-ai-dbt-model-testing-validation\n\n#dbt #dbtSummit #dataengineering #AI",
+      "release_date": "2026-11-09",
+      "duration_ms": null,
+      "external_url": "https://www.youtube.com/watch?v=OCGVV_r9Rmk",
+      "category": "Data Engineering",
+      "summary": "Inženýři z Careem sdílejí, jak pomocí dbt a AI agentů zkrátili proces onboardingu metrik z týdnů na jeden den. Epizoda ukazuje automatizaci vývoje datových modelů, testování a migraci rozsáhlé infrastruktury.",
+      "topics": [
+        "Data Engineering",
+        "AI Agents",
+        "Data Modeling",
+        "Automation",
+        "Data Platform Architecture"
+      ],
+      "keywords": [
+        "dbt",
+        "OpenMetadata",
+        "AI Agents",
+        "Data Pipelines",
+        "Metric Onboarding",
+        "Data Platform",
+        "Automation"
+      ],
+      "relevance_score": 0.95,
+      "ingested_at": "2026-11-10 09:00:35.492319"
+    },
+    {
+      "id": "yt:ivW7cqypZEY",
+      "show_id": "UCJS9pqu9BzkAMNTmzNMNhvg",
+      "show_name": "Google Cloud Tech",
+      "title": "Fix your vibe coded app with one prompt",
+      "description": "When you are vibe coding and fixing UI bugs one by one, it is easy to get stuck in an endless loop where fixing one thing breaks two others. In this episode of Build It, we tackle a frustrating set of UI bugs in our smart personal trainer app's active workout tracker, not by chasing isolated fixes, but by stepping back and defining a complete system.\n\nInstead of firing off piecemeal bug prompts, you will see how to map out presentational changes, component boundaries, page-level vs. exercise-level state variables (like current set and rest mode), display logic, and user actions to catch every edge case, including supersets and final set transitions. Then we use Gemini to generate a full end-to-end test suite and pass both the system spec and test cases to Google Antigravity in a single prompt so every scenario passes before we move on.\n\nChapters:\n0:00 - Intro: Why Systematic Updates Beat One-by-One Bug Fixes\n1:06 - Identifying Friction and UI Bugs in the Active Workout Tracker\n2:32 - Why Vibe Debugging Fails: Conflicting Fixes and Bug Whack-a-Mole\n3:31 - Mapping Presentational Changes and Page Components\n4:51 - Defining Page-Level vs. Exercise-Level State Variables\n6:31 - Designing Display Logic and Catching Edge Cases\n8:24 - Component-Level Display Logic: Current Set Card and Buttons\n9:33 - Mapping User Action Logic and Rest Timer Transitions\n10:45 - Generating an End-to-End Test Suite With Gemini\n12:06 - Managing Antigravity Sessions\n13:40 - Running the System Spec and Test Suite in One Prompt\n14:33 - Live Verification: Rest Mode, Supersets, and Final Set Edge Cases\n\nMore resources:\nGet the Prompts & Artifacts → https://g.dev/ai/build-it-resources\nBuilder Central → https://g.dev/ai/builder-central\nGoogle Antigravity → https://g.dev/ai/build-it-with-agy\n\nSubscribe to Google Cloud Tech → https://goo.gle/GoogleCloudTech\n\n#GoogleCloud #Gemini #Antigravity #NoCode #AIAgents #BuildIt\n\nSpeakers: Devin Chasanoff, AI Builder Advocate\nProducts Mentioned: Gemini, Google Antigravity, Google Cloud",
+      "release_date": "2026-11-09",
+      "duration_ms": null,
+      "external_url": "https://www.youtube.com/watch?v=ivW7cqypZEY",
+      "category": "Machine Learning & AI",
+      "summary": "Epizoda ukazuje, jak efektivně řešit komplexní UI chyby pomocí systémového přístupu a generativní AI namísto chaotického opravování jednotlivých bugů. Prakticky demonstruje využití Gemini a Google Antigravity k definování systémových specifikací a automatizovanému testování v jednom promptu.",
+      "topics": [
+        "AI-Assisted Development",
+        "Prompt Engineering",
+        "UI/UX Debugging",
+        "Software Testing",
+        "Generative AI"
+      ],
+      "keywords": [
+        "Gemini",
+        "Google Antigravity",
+        "Vibe Coding",
+        "End-to-End Testing",
+        "AI Agents",
+        "UI State Management",
+        "System Design"
+      ],
+      "relevance_score": 0.85,
+      "ingested_at": "2026-11-10 09:00:32.202108"
+    },
+    {
+      "id": "yt:pabDkNR7jIs",
+      "show_id": "UCJS9pqu9BzkAMNTmzNMNhvg",
+      "show_name": "Google Cloud Tech",
+      "title": "The Future of AI Infrastructure",
+      "description": "Experience the future of AI infrastructure live on Nov 9 at 9 AM PT.\n\nJoin Google SVP and Chief Technologist of AI and Infrastructure Amin Vahdat and Google Cloud VP and GM of AI and Computing Infrastructure Mark Lohmeyer on November 9 at 9:00 AM PT for a first look at AI infrastructure built for 24/7 AI agents. See how Google Cloud's AI Hypercomputer combines custom silicon, networking, and open software like PyTorch, vLLM, and Kubernetes to maximize performance.\n\nResource links:\n* Event updates on Cloud OnAir → https://g.dev/ai/nov9\n* Google Cloud AI Hypercomputer → https://g.dev/ai/ai-hypercomputer\n* Google Cloud TPUs → https://g.dev/ai/tpu\n\n#AIInfrastructure #GoogleCloud #AIHypercomputer #CloudTPU #AgenticAI\n\nSpeakers: Amin Vahdat, Mark Lohmeyer, Maria Biggs\nProducts Mentioned: Cloud TPUs, NVIDIA GPUs, Agent Compute Engine, GKE Inference Gateway",
+      "release_date": "2026-11-09",
+      "duration_ms": null,
+      "external_url": "https://www.youtube.com/watch?v=pabDkNR7jIs",
+      "category": "Machine Learning & AI",
+      "summary": "Epizoda představuje vizi Google Cloud pro budoucí AI infrastrukturu optimalizovanou pro nepřetržitý provoz autonomních AI agentů. Zaměřuje se na integraci vlastního hardwaru, jako jsou TPU, s otevřenými technologiemi pro dosažení maximálního výkonu při trénování a inferenci.",
+      "topics": [
+        "AI Infrastructure",
+        "Cloud Computing",
+        "Agentic AI",
+        "High-Performance Computing",
+        "AI Hardware"
+      ],
+      "keywords": [
+        "Google Cloud",
+        "AI Hypercomputer",
+        "TPU",
+        "Kubernetes",
+        "PyTorch",
+        "vLLM",
+        "GKE",
+        "NVIDIA GPU"
+      ],
+      "relevance_score": 0.95,
+      "ingested_at": "2026-11-10 09:00:30.768710"
+    },
+    {
+      "id": "yt:sUcvhFGc4mw",
+      "show_id": "UCJS9pqu9BzkAMNTmzNMNhvg",
+      "show_name": "Google Cloud Tech",
+      "title": "How Gemini 4 Argon & Carbon were built (ft. DeepMind’s Head of Gemini Product)",
+      "description": "Try Gemini 4 Argon & Carbon in Google AI Studio → https://g.dev/ai/studio\nBuild with AI Agents in Google Antigravity → https://g.dev/ai/use-antigravity\n\nHow do you build a frontier model that can work autonomously on complex codebases for days while bringing indirect prompt injection and cheating rates down to 0%? In this episode of The Google Cloud Show, we talk to Tulsee Doshi, Senior Director and Head of Product for the Gemini model family at Google DeepMind to unpack Google's back-to-back model releases of Gemini 4 Argon and Gemini 4 Carbon through an exclusive Google DeepMind interview and a hands-on developer demo showing how persistent, long-horizon models are powering the next generation of AI agents and software engineering workflows. \n\nIn our main segment, Smitha sits down with Tulsee to take you inside the lab to share how Google dogfoods early checkpoints through internal experiments. We will also discover why Gemini 4 Argon (built for deep reasoning and multi-step workflows with a 1M token output capacity) and Gemini 4 Carbon (#1 on the Artificial Analysis Intelligence Index) rolled out first to trusted cyber defenders via the Fairwind program. You'll also hear how Carbon improves web development aesthetics, reduces fabrication, and achieves state-of-the-art defensive cybersecurity performance, plus why agentic code submissions inside Google have jumped 30% since Argon launched, how the Chrome team saw Carbon perform over 10x better at generating high-quality code patches, and how Tulsee uses audio models in Antigravity alongside Argon to turn voice rambles into structured documents and vibe-code a custom nanny app.\n\nStick around after the interview for a hands-on builder segments that put Gemini 4 to work in Google AI Studio by using voice-to-text prompts to remix a 3D chessboard with coordinate labels and bright neon pieces, and adding Firebase Authentication and a live Cloud Firestore leaderboard to a 3D racing game in minutes instead of weeks. \n\nFinally, Rody Davis from the Antigravity DevRel team demonstrates how to build an automated \"Software Factory\" inside Google Antigravity powered by Gemini 4 Argon by using Markdown-defined custom subagents with isolated context windows and read-only permissions to audit Web (Node.js), Android (Jetpack Compose), and iOS (SwiftUI) code in parallel, strip out legacy polyfills, and steer subagents directly using /learn, /boost, and Teamwork Preview.\n\nChapters: \n0:00 - Intro\n0:46 - Gemini 4 Argon (1M token output) & carbon (#1 intelligence index) overview \n2:24 - Interview: Tulsee Doshi, Head of Product for Gemini at Google DeepMind  \n4:07 - Relentless shipping: How Gemini 4 iteration compares to Gemini 2 & 3 \n6:23 - Gemini 4 vs. Gemini 3.1 Pro: Model persistence on long-horizon tasks \n7:46 - Argon vs. Carbon: Less fabrication, web dev aesthetics & SOTA Cyber \n13:36 - Why Argon & Carbon rolled out to defensive cyber teams first \n14:43 - DeepMind PM’s workflow: Voice rambling to structured docs in Antigravity \n18:01 - How a DeepMind PM tests every new model checkpoint \n21:21 - Why you should treat Gemini 4 as a thought partner, not the thinker \n22:24 - Why Gemini 4 models are named after periodic table elements \n25:27 - Remix 3D apps in Google AI Studio \n28:28 - Adding Firebase Auth & a Live Firestore leaderboard to a 3D racing game \n30:26 - How to build a multi-agent software factory in Antigravity \n31:09 - Defining custom subagents in markdown & platform version policies \n34:20 - Using the /learn command & parallel subagent context windows \n35:31 - Enforcing read-only subagent permissions & direct subagent messaging \n38:00 - Scheduling monthly codebase audits & using /boost and teamwork preview \n40:07 - Wrap up & where to start building with Gemini 4 & Antigravity\n\n🔗 More resources: \n* Read the Gemini 4 Argon announcement → https://g.dev/ai/intro-gemini-4-argon\n* Read the Gemini 4 Carbon announcement → https://g.dev/ai/intro-gemini-4-carbon\n* Explore Google Antigravity custom subagents documentation → https://g.dev/ai/custom-subagents\n* Explore Firebase Authentication & Cloud Firestore → https://g.dev/firebase/docs\n\n🔔 Subscribe to Google Cloud Tech → https://goo.gle/GoogleCloudTech\n\nSpeakers: Smitha Kolan, Tulsee Doshi, Rody Davis, Annie Wang, Billy Jacobson, Luke Schlangen, Mollie Pettit\nProducts Mentioned:, Gemini 4, Gemini 4 Argon, Gemini 4 Carbon, Google Antigravity, Antigravity Web Search, Google AI Studio",
+      "release_date": "2026-11-09",
+      "duration_ms": null,
+      "external_url": "https://www.youtube.com/watch?v=sUcvhFGc4mw",
+      "category": "Machine Learning & AI",
+      "summary": "Epizoda představuje nové modely Gemini 4 Argon a Carbon, které se zaměřují na autonomní řešení komplexních úkolů, dlouhodobou persistenci a vysokou bezpečnost v softwarovém inženýrství. Praktické ukázky ukazují využití těchto modelů v rámci platformy Google Antigravity pro tvorbu multi-agentních systémů a automatizaci vývoje aplikací.",
+      "topics": [
+        "Large Language Models",
+        "AI Agents",
+        "Software Engineering Automation",
+        "Cybersecurity AI",
+        "Multi-agent Systems"
+      ],
+      "keywords": [
+        "Gemini 4",
+        "Google DeepMind",
+        "Argon",
+        "Carbon",
+        "Google Antigravity",
+        "AI Studio",
+        "Firebase",
+        "Prompt Engineering",
+        "Autonomous Agents"
+      ],
+      "relevance_score": 0.95,
+      "ingested_at": "2026-11-10 09:00:28.109707"
+    },
     {
       "id": "7IZpmCZXRFOQTjLICizHxY",
       "show_id": "1JdkD0ZoZ52KjwdR0b1WoT",
@@ -443,6 +811,67 @@
       "ingested_at": "2026-11-09 09:00:11.328068"
     },
     {
+      "id": "0gZOpCWr4tfWavKeLasAMv",
+      "show_id": "57AJ6GiMDPVBLGRqvjeoz6",
+      "show_name": "Data Science at Home",
+      "title": "AI is punishing game developers (Ep. 319) [RB]",
+      "description": "What is the state of AI and videogames? Who is considering it? What are the big fails so far? This and much more is covered in this 1st episode of AI and videogames.   Buy me a coffee https://ko-fi.com/datascience  Discord Channel: https://discord.gg/4UNKGf3   ✨ Connect with us! Personal newsletter: https://defragzone.substack.com  📩 Newsletter: https://datascienceathome.substack.com  🎙 Podcast: Available on Spotify, Apple Podcasts, and more. 🐦 Twitter: @DataScienceAtHome 📘LinkedIn: https://www.linkedin.com/in/fragadaleta/  Instagram: https://www.instagram.com/datascienceathome/  Facebook: https://www.facebook.com/datascienceAH  LinkedIn: https://www.linkedin.com/company/data-science-at-home-podcast     SPONSORS  This episode is brought to you by Outshift, Cisco's incubation engine. Check outshift.com Check out Drift by Amethix and stay safe on potential EU AI Act violations.        NEW TO DATA SCIENCE AT HOME?  Welcome! Data Science at Home explores the latest in AI, data science, and machine learning. Whether you’re a data professional, tech enthusiast, or just curious about the field, our podcast delivers insights, interviews, and discussions. Learn more at https://datascienceathome.com   SEND US MAIL!  We love hearing from you! Send us mail at: hello@datascienceathome.com  Don’t forget to like, subscribe, and hit the 🔔 for updates on the latest in AI and data science!",
+      "release_date": "2026-11-09",
+      "duration_ms": 1092890,
+      "external_url": "https://open.spotify.com/episode/0gZOpCWr4tfWavKeLasAMv",
+      "category": "Machine Learning & AI",
+      "summary": "Epizoda analyzuje současný stav integrace umělé inteligence do herního průmyslu a zaměřuje se na nejčastější chyby a výzvy, kterým vývojáři při implementaci AI čelí. Diskuse poskytuje kritický pohled na to, jak AI ovlivňuje herní vývoj a jaké jsou limity současných technologií v tomto odvětví.",
+      "topics": [
+        "Artificial Intelligence",
+        "Game Development",
+        "AI Ethics",
+        "Tech Industry Trends",
+        "Machine Learning Applications"
+      ],
+      "keywords": [
+        "AI",
+        "Game Design",
+        "Generative AI",
+        "EU AI Act",
+        "Game Development",
+        "Tech Trends",
+        "Automation"
+      ],
+      "relevance_score": 0.75,
+      "ingested_at": "2026-11-10 09:00:17.977857"
+    },
+    {
+      "id": "37bPlH16UPF6FVbIH6kVOQ",
+      "show_id": "1BZN7H3ikovSejhwQTzNm4",
+      "show_name": "Data Skeptic",
+      "title": "Working in Extended Reality",
+      "description": "Doug Bowman, Professor of Computer Science at Virginia Tech, joins Kyle to explore how augmented reality, virtual reality, and AI are reshaping the future of human-computer interaction. From wearable virtual workspaces to intelligent interfaces that adapt to our surroundings, they discuss the opportunities, challenges, and privacy concerns of a world where computing extends beyond the screen.",
+      "release_date": "2026-11-09",
+      "duration_ms": 2355907,
+      "external_url": "https://open.spotify.com/episode/37bPlH16UPF6FVbIH6kVOQ",
+      "category": "Machine Learning & AI",
+      "summary": "Profesor Doug Bowman diskutuje o budoucnosti interakce člověka s počítačem prostřednictvím rozšířené a virtuální reality. Epizoda analyzuje vliv AI na adaptivní rozhraní a řeší výzvy spojené s ochranou soukromí v éře prostorového computingu.",
+      "topics": [
+        "Extended Reality",
+        "Human-Computer Interaction",
+        "Artificial Intelligence",
+        "Spatial Computing",
+        "User Interface Design"
+      ],
+      "keywords": [
+        "AR",
+        "VR",
+        "XR",
+        "Human-Computer Interaction",
+        "Intelligent Interfaces",
+        "Wearable Technology",
+        "Privacy",
+        "Computer Science"
+      ],
+      "relevance_score": 0.75,
+      "ingested_at": "2026-11-10 09:00:13.719622"
+    },
+    {
       "id": "yt:Ar5zQnD-VkE",
       "show_id": "UCJS9pqu9BzkAMNTmzNMNhvg",
       "show_name": "Google Cloud Tech",
@@ -471,34 +900,35 @@
       "ingested_at": "2026-11-07 09:00:36.855503"
     },
     {
-      "id": "yt:vm4iXq8E5KU",
-      "show_id": "UCJS9pqu9BzkAMNTmzNMNhvg",
-      "show_name": "Google Cloud Tech",
-      "title": "Unlocking agentic workflows: Build agents with words",
-      "description": "Tired of configuring runtimes, model preferences, and rigid step-by-step workflow builders just to get an AI agent running?\n\nIn this Google Cloud Live clip from Gemini at Work 2026, Adam Fisher (Director of Product Management, Google Cloud) explains how Gemini constructs the exact agents you need directly from natural language—and equips them with modular Skills to get the work done.\n\nIn the full Google Cloud Live episode, we cover:\n* *One persistent cloud agent:* 24/7 continuity across desktop, mobile, Workspace, and CLI\n* *Zero copy enterprise data:* Grounding agents in live business context via Knowledge Catalog & Borderless Lakehouse\n* *Built in governance & smart routing:* Cryptographic identities, isolated sandboxes, and real-time spend caps\n\n#Shorts #GoogleCloud #GeminiAtWork #AIAgents #AgenticWorkflows\n\nSpeaker: Adam Fisher\nProducts Mentioned: Gemini",
+      "id": "yt:hJOwOkLHRN0",
+      "show_id": "UCXZCJLdBC09xxGZ6gcdrc6A",
+      "show_name": "OpenAI",
+      "title": "LifeVal: Measuring AI progress on the tasks that matter in everyday life.",
+      "description": "For AGI to benefit all of humanity, it should help people with the everyday tasks that matter most to them. \n\nSo we built LifeVal, a new benchmark shaped by feedback from thousands of ChatGPT users on where they most want help from a personal assistant—from finding childcare to accessing government services and managing personal finances.\n\nOver the past year, we’ve used LifeVal to measure and improve how well our models handle these everyday tasks.\n\n\nhttps://openai.com/index/lifeval/",
       "release_date": "2026-11-06",
       "duration_ms": null,
-      "external_url": "https://www.youtube.com/watch?v=vm4iXq8E5KU",
+      "external_url": "https://www.youtube.com/watch?v=hJOwOkLHRN0",
       "category": "Machine Learning & AI",
-      "summary": "Adam Fisher z Google Cloud představuje revoluční přístup k tvorbě AI agentů pomocí přirozeného jazyka, který eliminuje potřebu složité konfigurace. Epizoda se zaměřuje na integraci agentů do podnikového prostředí s důrazem na bezpečnost, správu dat a kontinuitu napříč platformami.",
+      "summary": "OpenAI představuje benchmark LifeVal, který hodnotí schopnost AI modelů asistovat lidem při řešení praktických každodenních úkolů. Cílem je zajistit, aby vývoj AGI směřoval k reálnému přínosu pro běžný život uživatelů.",
       "topics": [
-        "AI Agents",
-        "Agentic Workflows",
-        "Generative AI",
-        "Enterprise AI",
-        "Cloud Computing"
+        "AI Benchmarking",
+        "AGI Development",
+        "Human-AI Interaction",
+        "Model Evaluation",
+        "Personal Assistant AI"
       ],
       "keywords": [
-        "Gemini",
-        "Google Cloud",
-        "Knowledge Catalog",
-        "Borderless Lakehouse",
-        "Natural Language Processing",
-        "AI Governance",
-        "LLM"
+        "LifeVal",
+        "OpenAI",
+        "ChatGPT",
+        "AGI",
+        "Model Evaluation",
+        "AI Benchmarks",
+        "User Feedback",
+        "Task Automation"
       ],
       "relevance_score": 0.95,
-      "ingested_at": "2026-11-06 11:50:51.260665"
+      "ingested_at": "2026-11-07 09:05:28.918168"
     },
     {
       "id": "0TFEDSKntVd88vp8YRh0Yg",
@@ -563,35 +993,34 @@
       "ingested_at": "2026-11-07 09:01:39.735645"
     },
     {
-      "id": "yt:hJOwOkLHRN0",
-      "show_id": "UCXZCJLdBC09xxGZ6gcdrc6A",
-      "show_name": "OpenAI",
-      "title": "LifeVal: Measuring AI progress on the tasks that matter in everyday life.",
-      "description": "For AGI to benefit all of humanity, it should help people with the everyday tasks that matter most to them. \n\nSo we built LifeVal, a new benchmark shaped by feedback from thousands of ChatGPT users on where they most want help from a personal assistant—from finding childcare to accessing government services and managing personal finances.\n\nOver the past year, we’ve used LifeVal to measure and improve how well our models handle these everyday tasks.\n\n\nhttps://openai.com/index/lifeval/",
+      "id": "yt:vm4iXq8E5KU",
+      "show_id": "UCJS9pqu9BzkAMNTmzNMNhvg",
+      "show_name": "Google Cloud Tech",
+      "title": "Unlocking agentic workflows: Build agents with words",
+      "description": "Tired of configuring runtimes, model preferences, and rigid step-by-step workflow builders just to get an AI agent running?\n\nIn this Google Cloud Live clip from Gemini at Work 2026, Adam Fisher (Director of Product Management, Google Cloud) explains how Gemini constructs the exact agents you need directly from natural language—and equips them with modular Skills to get the work done.\n\nIn the full Google Cloud Live episode, we cover:\n* *One persistent cloud agent:* 24/7 continuity across desktop, mobile, Workspace, and CLI\n* *Zero copy enterprise data:* Grounding agents in live business context via Knowledge Catalog & Borderless Lakehouse\n* *Built in governance & smart routing:* Cryptographic identities, isolated sandboxes, and real-time spend caps\n\n#Shorts #GoogleCloud #GeminiAtWork #AIAgents #AgenticWorkflows\n\nSpeaker: Adam Fisher\nProducts Mentioned: Gemini",
       "release_date": "2026-11-06",
       "duration_ms": null,
-      "external_url": "https://www.youtube.com/watch?v=hJOwOkLHRN0",
+      "external_url": "https://www.youtube.com/watch?v=vm4iXq8E5KU",
       "category": "Machine Learning & AI",
-      "summary": "OpenAI představuje benchmark LifeVal, který hodnotí schopnost AI modelů asistovat lidem při řešení praktických každodenních úkolů. Cílem je zajistit, aby vývoj AGI směřoval k reálnému přínosu pro běžný život uživatelů.",
+      "summary": "Adam Fisher z Google Cloud představuje revoluční přístup k tvorbě AI agentů pomocí přirozeného jazyka, který eliminuje potřebu složité konfigurace. Epizoda se zaměřuje na integraci agentů do podnikového prostředí s důrazem na bezpečnost, správu dat a kontinuitu napříč platformami.",
       "topics": [
-        "AI Benchmarking",
-        "AGI Development",
-        "Human-AI Interaction",
-        "Model Evaluation",
-        "Personal Assistant AI"
+        "AI Agents",
+        "Agentic Workflows",
+        "Generative AI",
+        "Enterprise AI",
+        "Cloud Computing"
       ],
       "keywords": [
-        "LifeVal",
-        "OpenAI",
-        "ChatGPT",
-        "AGI",
-        "Model Evaluation",
-        "AI Benchmarks",
-        "User Feedback",
-        "Task Automation"
+        "Gemini",
+        "Google Cloud",
+        "Knowledge Catalog",
+        "Borderless Lakehouse",
+        "Natural Language Processing",
+        "AI Governance",
+        "LLM"
       ],
       "relevance_score": 0.95,
-      "ingested_at": "2026-11-07 09:05:28.918168"
+      "ingested_at": "2026-11-06 11:50:51.260665"
     },
     {
       "id": "26emWeQ2txPX0J5Ch8MF00",
@@ -797,36 +1226,6 @@
       "ingested_at": "2026-11-05 13:38:52.374411"
     },
     {
-      "id": "yt:5BdNMz6tHME",
-      "show_id": "UCJS9pqu9BzkAMNTmzNMNhvg",
-      "show_name": "Google Cloud Tech",
-      "title": "AI that knows your business: From data to ML fast",
-      "description": "Do you still need a specialized data engineering pipeline just to test a machine learning idea against your company's data?\n\nIn this Google Cloud Live clip from Gemini at Work 2026, Gabe Weiss (Developer Advocacy Lead, Google Cloud) explains how grounding Gemini in your business context lets anyone sift through enterprise data, train an initial model, and prove a concept—so data engineers can take a validated prototype and run with it.\n\nIn the full Google Cloud Live episode, we cover:\n* *Zero copy enterprise data:* Grounding agents in live schemas and business definitions via Knowledge Catalog & Borderless Lakehouse\n* *One persistent cloud agent:* 24/7 continuity across desktop, mobile, Workspace, and CLI\n* *Built in governance & smart routing:* Cryptographic identities, isolated sandboxes, and real-time spend caps\n\n#Shorts #GoogleCloud #GeminiAtWork #DataScience #AIAgents #KnowledgeCatalog\n\nSpeaker: Gabe Weiss\nProducts Mentioned: Gemini",
-      "release_date": "2026-11-05",
-      "duration_ms": null,
-      "external_url": "https://www.youtube.com/watch?v=5BdNMz6tHME",
-      "category": "Machine Learning & AI",
-      "summary": "Gabe Weiss z Google Cloud vysvětluje, jak propojení modelu Gemini s podnikovými daty umožňuje rychlé prototypování ML řešení bez nutnosti složitých datových pipeline. Epizoda se zaměřuje na efektivní využití AI agentů, zero-copy architekturu a integrovanou správu dat.",
-      "topics": [
-        "Generative AI",
-        "AI Agents",
-        "Data Engineering",
-        "Enterprise Data Strategy",
-        "Machine Learning Prototyping"
-      ],
-      "keywords": [
-        "Gemini",
-        "Google Cloud",
-        "Knowledge Catalog",
-        "Borderless Lakehouse",
-        "Zero Copy",
-        "AI Governance",
-        "Data Pipeline"
-      ],
-      "relevance_score": 0.9,
-      "ingested_at": "2026-11-06 11:50:53.583999"
-    },
-    {
       "id": "yt:czosBPhFnDI",
       "show_id": "UCJS9pqu9BzkAMNTmzNMNhvg",
       "show_name": "Google Cloud Tech",
@@ -917,6 +1316,36 @@
       ],
       "relevance_score": 0.95,
       "ingested_at": "2026-11-06 11:51:09.026545"
+    },
+    {
+      "id": "yt:5BdNMz6tHME",
+      "show_id": "UCJS9pqu9BzkAMNTmzNMNhvg",
+      "show_name": "Google Cloud Tech",
+      "title": "AI that knows your business: From data to ML fast",
+      "description": "Do you still need a specialized data engineering pipeline just to test a machine learning idea against your company's data?\n\nIn this Google Cloud Live clip from Gemini at Work 2026, Gabe Weiss (Developer Advocacy Lead, Google Cloud) explains how grounding Gemini in your business context lets anyone sift through enterprise data, train an initial model, and prove a concept—so data engineers can take a validated prototype and run with it.\n\nIn the full Google Cloud Live episode, we cover:\n* *Zero copy enterprise data:* Grounding agents in live schemas and business definitions via Knowledge Catalog & Borderless Lakehouse\n* *One persistent cloud agent:* 24/7 continuity across desktop, mobile, Workspace, and CLI\n* *Built in governance & smart routing:* Cryptographic identities, isolated sandboxes, and real-time spend caps\n\n#Shorts #GoogleCloud #GeminiAtWork #DataScience #AIAgents #KnowledgeCatalog\n\nSpeaker: Gabe Weiss\nProducts Mentioned: Gemini",
+      "release_date": "2026-11-05",
+      "duration_ms": null,
+      "external_url": "https://www.youtube.com/watch?v=5BdNMz6tHME",
+      "category": "Machine Learning & AI",
+      "summary": "Gabe Weiss z Google Cloud vysvětluje, jak propojení modelu Gemini s podnikovými daty umožňuje rychlé prototypování ML řešení bez nutnosti složitých datových pipeline. Epizoda se zaměřuje na efektivní využití AI agentů, zero-copy architekturu a integrovanou správu dat.",
+      "topics": [
+        "Generative AI",
+        "AI Agents",
+        "Data Engineering",
+        "Enterprise Data Strategy",
+        "Machine Learning Prototyping"
+      ],
+      "keywords": [
+        "Gemini",
+        "Google Cloud",
+        "Knowledge Catalog",
+        "Borderless Lakehouse",
+        "Zero Copy",
+        "AI Governance",
+        "Data Pipeline"
+      ],
+      "relevance_score": 0.9,
+      "ingested_at": "2026-11-06 11:50:53.583999"
     },
     {
       "id": "yt:pXRZyOxbDL4",
@@ -15567,37 +15996,6 @@
       "ingested_at": "2026-11-06 11:51:18.422346"
     },
     {
-      "id": "yt:3dMSI-UDFfA",
-      "show_id": "search:google cloud dataform bigquery deep dive",
-      "show_name": "TechTrapture (google cloud dataform bigquery deep dive)",
-      "title": "Google Cloud Dataflow Explained | Create Your First Data Pipeline (GCS to BigQuery)",
-      "description": "",
-      "release_date": null,
-      "duration_ms": null,
-      "external_url": "https://www.youtube.com/watch?v=3dMSI-UDFfA",
-      "category": "Data Engineering",
-      "summary": "Praktický průvodce službou Google Cloud Dataflow, který vás provede vytvořením prvního datového pipeline pro přesun dat z GCS do BigQuery. Epizoda vysvětluje základní principy streamování a dávkového zpracování v prostředí GCP.",
-      "topics": [
-        "Data Pipelines",
-        "Cloud Computing",
-        "ETL/ELT",
-        "Data Processing",
-        "Google Cloud Platform"
-      ],
-      "keywords": [
-        "Google Cloud Dataflow",
-        "Apache Beam",
-        "BigQuery",
-        "GCS",
-        "Cloud Storage",
-        "Data Engineering",
-        "GCP",
-        "Batch Processing"
-      ],
-      "relevance_score": 0.95,
-      "ingested_at": "2026-11-08 09:00:20.254202"
-    },
-    {
       "id": "yt:Unbx59eHL5I",
       "show_id": "search:google cloud dataform bigquery deep dive",
       "show_name": "TechTrapture (google cloud dataform bigquery deep dive)",
@@ -15627,6 +16025,37 @@
       ],
       "relevance_score": 0.95,
       "ingested_at": "2026-11-08 09:00:21.346316"
+    },
+    {
+      "id": "yt:3dMSI-UDFfA",
+      "show_id": "search:google cloud dataform bigquery deep dive",
+      "show_name": "TechTrapture (google cloud dataform bigquery deep dive)",
+      "title": "Google Cloud Dataflow Explained | Create Your First Data Pipeline (GCS to BigQuery)",
+      "description": "",
+      "release_date": null,
+      "duration_ms": null,
+      "external_url": "https://www.youtube.com/watch?v=3dMSI-UDFfA",
+      "category": "Data Engineering",
+      "summary": "Praktický průvodce službou Google Cloud Dataflow, který vás provede vytvořením prvního datového pipeline pro přesun dat z GCS do BigQuery. Epizoda vysvětluje základní principy streamování a dávkového zpracování v prostředí GCP.",
+      "topics": [
+        "Data Pipelines",
+        "Cloud Computing",
+        "ETL/ELT",
+        "Data Processing",
+        "Google Cloud Platform"
+      ],
+      "keywords": [
+        "Google Cloud Dataflow",
+        "Apache Beam",
+        "BigQuery",
+        "GCS",
+        "Cloud Storage",
+        "Data Engineering",
+        "GCP",
+        "Batch Processing"
+      ],
+      "relevance_score": 0.95,
+      "ingested_at": "2026-11-08 09:00:20.254202"
     }
   ]
 }
