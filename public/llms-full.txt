@@ -1,18 +1,18 @@
 # Vector87.com | Complete Market Intelligence & Role Syntheses (Snapshot 2026-11-10)
 
 ## 1. Executive Summary & Market Vitality
-- Total Active AI & Data Jobs: 13,581
-- Total Corporate Hiring Pool (all departments): 415,088
+- Total Active AI & Data Jobs: 13,589
+- Total Corporate Hiring Pool (all departments): 417,067
 - S&P 500 AI Hiring Intensity: 2.28% of all open jobs
 - Tracked Headcount Base (Coresignal / LinkedIn): 187,585 occupied data/AI seats across 1900 companies
 - Organizational Shift: 11.1 : 1 in favor of Individual Contributors
 
 ## 2. Emerging Paradigms & Trend Radar Signals
-- **AI Agents / Agentic AI** (AI/ML): 2,458 postings (18.1% market penetration) | Stage: Dominant
-- **LLM / Large Language Models** (AI/ML): 2,357 postings (17.36% market penetration) | Stage: Dominant
-- **GenAI / Generative AI** (AI/ML): 1,831 postings (13.48% market penetration) | Stage: Dominant
-- **MLOps / Evals & Observability** (MLOps): 1,415 postings (10.42% market penetration) | Stage: Scaling
-- **RAG (Retrieval-Augmented Generation)** (AI/ML): 1,119 postings (8.24% market penetration) | Stage: Scaling
+- **AI Agents / Agentic AI** (AI/ML): 2,458 postings (18.09% market penetration) | Stage: Dominant
+- **LLM / Large Language Models** (AI/ML): 2,357 postings (17.34% market penetration) | Stage: Dominant
+- **GenAI / Generative AI** (AI/ML): 1,831 postings (13.47% market penetration) | Stage: Dominant
+- **MLOps / Evals & Observability** (MLOps): 1,416 postings (10.42% market penetration) | Stage: Scaling
+- **RAG (Retrieval-Augmented Generation)** (AI/ML): 1,119 postings (8.23% market penetration) | Stage: Scaling
 - **Fine-Tuning** (AI/ML): 576 postings (4.24% market penetration) | Stage: Scaling
 - **Vector Databases** (Database): 440 postings (3.24% market penetration) | Stage: Emerging
 - **Vertex AI** (Cloud): 129 postings (0.95% market penetration) | Stage: Emerging
@@ -21,19 +21,19 @@
 - **Dataform** (Framework): 6 postings (0.04% market penetration) | Stage: Niche Signal
 
 ## 3. Google Cloud (GCP) Telemetry
-- Total GCP Ecosystem Postings: 1,671 (12.3% of all data jobs, 47.59% of cloud jobs)
+- Total GCP Ecosystem Postings: 1,671 (12.3% of all data jobs, 47.58% of cloud jobs)
 - Google Cloud Platform (Cloud): 1,354 postings (81.0% of GCP positions) | Paired with: Python, AWS, Microsoft Azure, SQL
 - BigQuery (Cloud): 312 postings (18.7% of GCP positions) | Paired with: SQL, Python, Google Cloud Platform, Data Governance & Quality
 - Looker (Business): 186 postings (11.1% of GCP positions) | Paired with: SQL, Python, Tableau, BigQuery
 - Vertex AI (Cloud): 129 postings (7.7% of GCP positions) | Paired with: Python, AI Agents / Agentic AI, Google Cloud Platform, LLM / Large Language Models
-- Google Cloud Dataflow (Framework): 51 postings (3.1% of GCP positions) | Paired with: Python, SQL, BigQuery, Google Cloud Platform
+- Google Cloud Dataflow (Framework): 51 postings (3.1% of GCP positions) | Paired with: Python, SQL, Google Cloud Platform, BigQuery
 - Dataform (Framework): 6 postings (0.4% of GCP positions) | Paired with: Apache Spark, BigQuery, Python, Data Governance & Quality
 
 ## 4. Canonical Role Analysis & Syntheses (21 Profiles)
 ### Data Analyst (Analytics & DS • IC)
-- Active Job Postings: 3,625 (26.69% of market)
-- Installed Workforce Base: 51,483 occupied seats (Expansion Index: 7.0%)
-- Seniority Skew (Senior+): 36.7% | Remote Share: 18.3%
+- Active Job Postings: 3,649 (26.85% of market)
+- Installed Workforce Base: 51,483 occupied seats (Expansion Index: 7.1%)
+- Seniority Skew (Senior+): 36.5% | Remote Share: 16.0%
 - Synthesized Profile (English):
   The Data Analyst remains central to helping organizations make decisions grounded in solid evidence. In modern data stacks, the focus has moved from ad-hoc spreadsheets to deep business domain knowledge, clean metric definition, and working with governed semantic layers.
   Core expectations include advanced SQL and dimensional modeling, visualization platforms (Tableau, Power BI, Looker), and Python for exploratory analysis. High-impact analysts translate data in cloud warehouses (Snowflake, BigQuery, Databricks) into clear business direction.
@@ -45,9 +45,9 @@
 - Top Hiring Companies: EY Luxembourg (275), TE Connectivity (83), ING Group (62), ING Bank Romania (62)
 
 ### AI Developer (AI/ML • IC)
-- Active Job Postings: 2,606 (19.19% of market)
-- Installed Workforce Base: 1,541 occupied seats (Expansion Index: 169.1%)
-- Seniority Skew (Senior+): 58.6% | Remote Share: 18.5%
+- Active Job Postings: 2,596 (19.1% of market)
+- Installed Workforce Base: 1,541 occupied seats (Expansion Index: 168.5%)
+- Seniority Skew (Senior+): 58.7% | Remote Share: 16.3%
 - Synthesized Profile (English):
   The AI Developer represents one of the most prominent emerging technical profiles across S&P 500 enterprises, positioned directly at the crossroads of software engineering and applied AI. Rather than training models from scratch, these engineers integrate Large Language Models (LLMs), build agentic workflows, and deploy production-grade RAG pipelines into products.
   Companies look for solid software engineering skills in Python or TypeScript paired with the discipline to manage probabilistic systems: from automated evaluations (Evals) and guardrails to latency and cost control across AWS, GCP Vertex AI, and Azure.
@@ -59,9 +59,9 @@
 - Top Hiring Companies: EY Luxembourg (139), OpenAI (75), Google (Alphabet) (69), Advanced Micro Devices (54)
 
 ### Data Engineer (Data Engineering • IC)
-- Active Job Postings: 1,558 (11.47% of market)
+- Active Job Postings: 1,556 (11.45% of market)
 - Installed Workforce Base: 46,799 occupied seats (Expansion Index: 3.3%)
-- Seniority Skew (Senior+): 54.0% | Remote Share: 24.5%
+- Seniority Skew (Senior+): 54.0% | Remote Share: 22.3%
 - Synthesized Profile (English):
   The Data Engineer builds and maintains the data foundations required by modern analytics and AI systems. Without dependable data ingestion, clean transformation pipelines, and rigorous observability, reporting and machine learning projects stall. This keeps Data Engineering among the most consistently recruited technical tracks.
   Modern data engineering applies software best practices: writing clean Python and SQL, designing cloud data warehouses and lakehouses (BigQuery, Snowflake, Databricks), and adopting table formats like Apache Iceberg and Delta Lake. Orchestration tools (Airflow, Dagster), version control, and data contract enforcement are core requirements.
@@ -73,9 +73,9 @@
 - Top Hiring Companies: Google (Alphabet) (64), EY Luxembourg (44), Amazon (36), UnitedHealth Group (29)
 
 ### Data Scientist (Analytics & DS • IC)
-- Active Job Postings: 1,522 (11.21% of market)
+- Active Job Postings: 1,523 (11.21% of market)
 - Installed Workforce Base: 29,182 occupied seats (Expansion Index: 5.2%)
-- Seniority Skew (Senior+): 55.3% | Remote Share: 21.5%
+- Seniority Skew (Senior+): 55.2% | Remote Share: 19.9%
 - Synthesized Profile (English):
   The Data Scientist role has matured significantly: organizations now prioritize specialists in causal inference, rigorous experimentation (A/B testing), optimization algorithms, and predictive modeling tied to revenue and risk reduction over generic data exploration.
   Beyond fluency in Python, SQL, and core statistical libraries like scikit-learn and PyTorch, business acumen is essential. Senior data scientists must frame open business problems as mathematical tasks, validate assumptions, and work with engineers to deploy solutions.
@@ -83,13 +83,13 @@
   Role Data Scientista prošla v posledních letech vystřízlivěním: firmy méně poptávají obecné experimentátory a mnohem více hledají specialisty na kauzální inferenci, rigorózní A/B testování, optimalizační algoritmy a prediktivní modely s jasným dopadem na zisk či řízení rizik.
   Vedle jistoty v Pythonu, SQL a knihovnách jako scikit-learn nebo PyTorch roste význam produktového uvažování. Od seniorních data scientistů se čeká schopnost samostatně formulovat byznysový problém jako statistickou úlohu, obhájit metodiku před vedením a spolupracovat s inženýry na nasazení.
 - Core Skills: Python (89.1%), SQL (72.4%), R (42.6%), GenAI / Generative AI (26.9%), LLM / Large Language Models (24.9%)
-- Technology Stack: Apache Spark (19.1%), MLOps / Evals & Observability (18.7%), AWS (18.5%), PyTorch (14.3%), Microsoft Azure (14.3%)
+- Technology Stack: Apache Spark (19.1%), MLOps / Evals & Observability (18.7%), AWS (18.5%), Microsoft Azure (14.3%), PyTorch (14.3%)
 - Top Hiring Companies: Google (Alphabet) (69), Amazon (39), RELX Group (30), Leidos (26)
 
 ### Machine Learning Engineer (AI/ML • IC)
-- Active Job Postings: 1,308 (9.63% of market)
-- Installed Workforce Base: 9,867 occupied seats (Expansion Index: 13.3%)
-- Seniority Skew (Senior+): 66.9% | Remote Share: 33.0%
+- Active Job Postings: 1,307 (9.62% of market)
+- Installed Workforce Base: 9,867 occupied seats (Expansion Index: 13.2%)
+- Seniority Skew (Senior+): 66.9% | Remote Share: 32.7%
 - Synthesized Profile (English):
   The Machine Learning Engineer takes experimental models out of notebooks and puts them into reliable, production-ready services. Job postings emphasize end-to-end ownership of the ML lifecycle: building feature pipelines, distributed training, fine-tuning, and low-latency inference at scale.
   The technical stack centers on Python, PyTorch, and MLOps fundamentals like Docker, Kubernetes, MLflow, and live model monitoring. Classical machine learning methods (recommenders, risk models) are now frequently combined with LLM serving in cloud environments.
@@ -143,9 +143,9 @@
 - Top Hiring Companies: Veeva Systems (23), BNY Mellon Luxembourg (12), OpenAI (10), Scale AI (9)
 
 ### Data Architect (Data Engineering • IC)
-- Active Job Postings: 366 (2.69% of market)
+- Active Job Postings: 365 (2.69% of market)
 - Installed Workforce Base: 3,610 occupied seats (Expansion Index: 10.1%)
-- Seniority Skew (Senior+): 98.6% | Remote Share: 16.5%
+- Seniority Skew (Senior+): 98.9% | Remote Share: 16.5%
 - Synthesized Profile (English):
   The Data Architect designs the structural blueprint for enterprise data: defining how information flows from operational systems through analytical tiers to end consumers. They establish standards for data modeling, platform selection, security, and governance across the company.
   The position requires deep familiarity with modern architectural patterns: distributed lakehouses (Databricks, Apache Iceberg), cloud warehouses (BigQuery, Snowflake), and data contracts. An effective architect explains technical trade-offs clearly to both engineering leads and executive boards.
@@ -154,12 +154,12 @@
   Role vyžaduje hlubokou znalost moderních architektonických vzorů: od distribuovaných Lakehouse systémů (Databricks, Apache Iceberg) přes cloudové sklady (BigQuery, Snowflake) až po datové kontrakty a governance. Zkušený architekt dokáže své návrhy srozumitelně obhájit jak před inženýry, tak před vedením firmy.
 - Core Skills: Python (56.5%), LLM / Large Language Models (35.7%), SQL (34.8%), Data Governance & Quality (33.0%), AI Agents / Agentic AI (30.0%)
 - Technology Stack: Microsoft Azure (43.0%), AWS (37.8%), Databricks (35.2%), MLOps / Evals & Observability (30.0%), Google Cloud Platform (28.3%)
-- Top Hiring Companies: Databricks (34), Anthropic (34), EY Luxembourg (30), OpenAI (21)
+- Top Hiring Companies: Anthropic (34), Databricks (34), EY Luxembourg (30), OpenAI (21)
 
 ### Analytics Engineer (Data Engineering • IC)
 - Active Job Postings: 158 (1.16% of market)
 - Installed Workforce Base: 1,485 occupied seats (Expansion Index: 10.6%)
-- Seniority Skew (Senior+): 39.9% | Remote Share: 42.9%
+- Seniority Skew (Senior+): 39.9% | Remote Share: 39.1%
 - Synthesized Profile (English):
   The Analytics Engineer bridges raw data infrastructure and downstream business analytics. They bring software engineering practices, such as Git version control, automated testing, documentation, and CI/CD pipelines, directly into data modeling and semantic layer design.
   The role relies on advanced SQL alongside transformation frameworks like dbt and Google Cloud Dataform (SQLX). Analytics Engineers produce clean, tested, and well-documented datasets so analysts and leaders can rely on trusted business metrics.
@@ -187,21 +187,21 @@
 ### BI / Analytics Manager (Management • Management)
 - Active Job Postings: 133 (0.98% of market)
 - Installed Workforce Base: 5,228 occupied seats (Expansion Index: 2.5%)
-- Seniority Skew (Senior+): 100.0% | Remote Share: 35.7%
+- Seniority Skew (Senior+): 99.2% | Remote Share: 35.7%
 - Synthesized Profile (English):
   The BI & Analytics Manager leads teams of data analysts and BI developers, ensuring analytics deliverables directly address business priorities while mentoring team members in technical craft and career growth.
   The position balances technical depth (SQL, BI platforms, dimensional modeling) with people leadership: managing stakeholder demands, maintaining metric consistency, and prioritizing delivery pipelines.
 - Syntetizovaný profil (Čeština):
   BI & Analytics Manager vede tým analytiků a BI vývojářů. Zajišťuje, aby dodávané reporty a analýzy odpovídaly skutečným potřebám byznysu, určuje priority zadání a pomáhá svým lidem odborně i kariérně růst.
   Pozice vyžaduje vyvážený mix technických znalostí (SQL, vizualizační platformy, datové modelování) a manažerských dovedností: schopnost efektivně komunikovat se stakeholdery napříč firmou a udržet pořádek v prioritách a datových metrikách.
-- Core Skills: SQL (64.8%), Python (45.1%), Power BI (39.4%), Data Governance & Quality (38.0%), Tableau (36.6%)
-- Technology Stack: Databricks (19.7%), AWS (14.1%), Snowflake (14.1%), Apache Spark (12.7%), dbt (8.5%)
+- Core Skills: SQL (63.9%), Python (44.4%), Power BI (38.9%), Data Governance & Quality (37.5%), Tableau (36.1%)
+- Technology Stack: Databricks (19.4%), AWS (13.9%), Snowflake (13.9%), Apache Spark (12.5%), dbt (8.3%)
 - Top Hiring Companies: EY Luxembourg (14), Oliver James (6), eBay Inc. (5), Marriott International (5)
 
 ### BI Developer / Analyst (Analytics & DS • IC)
-- Active Job Postings: 124 (0.91% of market)
+- Active Job Postings: 121 (0.89% of market)
 - Installed Workforce Base: 7,790 occupied seats (Expansion Index: 1.6%)
-- Seniority Skew (Senior+): 35.5% | Remote Share: 33.3%
+- Seniority Skew (Senior+): 35.5% | Remote Share: 27.3%
 - Synthesized Profile (English):
   The BI Developer designs, builds, and maintains interactive dashboards, analytical reporting systems, and data models for business users. The role focuses on delivering clear, fast, and methodologically accurate insights.
   Core skills include strong SQL, dimensional modeling (star schemas), and enterprise visualization platforms (Power BI, Tableau, Looker). Success depends on understanding business goals and presenting data so stakeholders can act on it quickly.
@@ -210,7 +210,7 @@
   Základem práce je vynikající znalost analytického SQL, datového modelování (hvězdicová schémata) a moderních BI platforem (Power BI, Tableau, Looker). Důležitá je také schopnost pochopit byznysové souvislosti a navrhnout vizualizace, které uživatelům usnadňují každodenní rozhodování.
 - Core Skills: SQL (85.6%), Power BI (75.4%), Data Governance & Quality (44.9%), Python (43.2%), Tableau (38.1%)
 - Technology Stack: Microsoft Azure (27.1%), Snowflake (22.9%), Databricks (16.1%), Microsoft Fabric (15.3%), AWS (8.5%)
-- Top Hiring Companies: TE Connectivity (4), Snap-on (2), GEICO (2), abcfinance GmbH (2)
+- Top Hiring Companies: TE Connectivity (4), Unknown (4), Oliver James (2), abcfinance GmbH (2)
 
 ### Engineering Manager (AI/Data) (Management • Management)
 - Active Job Postings: 115 (0.85% of market)
@@ -224,12 +224,12 @@
   Ideální kandidát má za sebou vlastní inženýrskou praxi, díky které rozumí technickým detailům i úskalím datových systémů, ale dnes se plně soustředí na organizaci práce, technické standardy a spolupráci s produktovým managementem.
 - Core Skills: LLM / Large Language Models (34.4%), Data Governance & Quality (32.2%), Python (31.1%), GenAI / Generative AI (28.9%), AI Agents / Agentic AI (28.9%)
 - Technology Stack: MLOps / Evals & Observability (24.4%), Apache Spark (24.4%), Databricks (23.3%), Microsoft Azure (20.0%), AWS (15.6%)
-- Top Hiring Companies: UnitedHealth Group (17), EY Luxembourg (10), OpenAI (6), Netflix (3)
+- Top Hiring Companies: UnitedHealth Group (17), EY Luxembourg (10), OpenAI (6), Anthropic (3)
 
 ### Team Lead (Data/AI) (Management • Management)
 - Active Job Postings: 101 (0.74% of market)
 - Installed Workforce Base: 1,922 occupied seats (Expansion Index: 5.3%)
-- Seniority Skew (Senior+): 98.0% | Remote Share: 21.9%
+- Seniority Skew (Senior+): 98.0% | Remote Share: 10.7%
 - Synthesized Profile (English):
   The Team Lead in Data & AI serves as a player-coach for a focused group of engineers or analysts. They split time between hands-on engineering or architectural design and day-to-day team coordination, code reviews, and unblocking colleagues.
   The role demands technical depth in data engineering or applied ML paired with mentoring skills, clear communication, and the ability to keep sprint deliveries on track.
@@ -252,10 +252,10 @@
   Pozice vyžaduje přirozenou autoritu, přehled v moderních cloudových a AI architekturách a schopnost otevřeně mluvit s vedením společnosti o reálných nákladech, rizicích i skutečném přínosu datových projektů.
 - Core Skills: Data Governance & Quality (51.6%), AI Agents / Agentic AI (38.7%), GenAI / Generative AI (29.0%), LLM / Large Language Models (25.8%), Python (16.1%)
 - Technology Stack: MLOps / Evals & Observability (29.0%), AWS (12.9%), Microsoft Azure (9.7%), Google Cloud Platform (9.7%), Apache Spark (6.5%)
-- Top Hiring Companies: State Street Bank Luxembourg (4), Synchrony Financial (3), Ares Management (2), Veeva Systems (2)
+- Top Hiring Companies: State Street Bank Luxembourg (4), Synchrony Financial (3), UCB (2), Experian (2)
 
 ### MLOps Engineer (Data Engineering • IC)
-- Active Job Postings: 36 (0.27% of market)
+- Active Job Postings: 36 (0.26% of market)
 - Installed Workforce Base: 295 occupied seats (Expansion Index: 12.2%)
 - Seniority Skew (Senior+): 55.6% | Remote Share: 10.0%
 - Synthesized Profile (English):
@@ -264,9 +264,9 @@
 - Syntetizovaný profil (Čeština):
   MLOps Engineer (často také LLMOps nebo AI Platform Engineer) staví spolehlivé zázemí pro trénování, verzování, nasazování a sledování modelů strojového učení i generativní AI v produkčním provozu.
   Hlavní náplní práce je automatizace procesů (CI/CD pro ML), správa kontejnerů a výpočetních clusterů (Docker, Kubernetes), optimalizace využití GPU (např. Triton Inference Server) a zavedení monitoringu pro včasné odhalení driftu dat a poklesu kvality odpovědí.
-- Core Skills: Python (88.1%), GenAI / Generative AI (38.1%), LLM / Large Language Models (35.7%), AI Agents / Agentic AI (35.7%), SQL (33.3%)
+- Core Skills: Python (88.1%), GenAI / Generative AI (38.1%), AI Agents / Agentic AI (35.7%), LLM / Large Language Models (35.7%), SQL (33.3%)
 - Technology Stack: MLOps / Evals & Observability (66.7%), Kubernetes (61.9%), Docker (54.8%), AWS (52.4%), Microsoft Azure (38.1%)
-- Top Hiring Companies: Workday, Inc. (2), United Parcel Service (2), Hensoldt (2), Medtronic (2)
+- Top Hiring Companies: Hensoldt (2), BP (2), Medtronic (2), PKO Bank Polski (2)
 
 ### Chief Data / AI Officer (CDO/CAIO) (Executive • Management)
 - Active Job Postings: 9 (0.07% of market)
@@ -280,7 +280,7 @@
   Tato exekutivní role vyžaduje zkušenosti s vedením rozsáhlých transformací, schopnost řídit velké multidisciplinární týmy a strategicky plánovat víceleté rozpočty na cloudové i personální kapacity.
 - Core Skills: N/A
 - Technology Stack: N/A
-- Top Hiring Companies: Telefónica (Movistar, O2) (2), L'Oréal (2), UnitedHealth Group (1), Ipsen (1)
+- Top Hiring Companies: L'Oréal (2), Telefónica (Movistar, O2) (2), Ipsen (1), Berkshire Hathaway (1)
 
 ### LLM / GenAI Engineer (AI/ML • IC)
 - Active Job Postings: 3 (0.02% of market)
@@ -294,7 +294,7 @@
   Na trhu práce je po těchto specialistech obrovská poptávka. Firmy hledají inženýry, kteří ovládají Python a moderní frameworky (LangChain, LlamaIndex), rozumí práci s vektorovými databázemi a dokážou zavést systematické testování kvality (Evals) pro omezení halucinací a nechtěných odpovědí v produkci.
 - Core Skills: GenAI / Generative AI (96.4%), Python (89.3%), LLM / Large Language Models (85.7%), RAG (Retrieval-Augmented Generation) (64.3%), AI Agents / Agentic AI (60.7%)
 - Technology Stack: Microsoft Azure (57.1%), MLOps / Evals & Observability (39.3%), Vector Databases (35.7%), LangChain (32.1%), PyTorch (28.6%)
-- Top Hiring Companies: Forsure.ai (1), BP (1), HSBC Holdings (1)
+- Top Hiring Companies: BP (1), Forsure.ai (1), HSBC Holdings (1)
 
 ### Computer Vision Engineer (AI/ML • IC)
 - Active Job Postings: 2 (0.01% of market)
@@ -308,7 +308,7 @@
   Své uplatnění nachází v robotice, autonomních vozidlech, automatizované kontrole výroby nebo medicíně. Podmínkou úspěchu je skvělá znalost Pythonu a C++, knihoven PyTorch a OpenCV a schopnost optimalizovat modely pro rychlý běh na specializovaném hardwaru nebo koncových (edge) zařízeních.
 - Core Skills: Computer Vision (100.0%)
 - Technology Stack: N/A
-- Top Hiring Companies: Alstom (1), Kraft Heinz (1)
+- Top Hiring Companies: Kraft Heinz (1), Alstom (1)
 
 ### NLP Engineer (AI/ML • IC)
 - Active Job Postings: 0 (0.0% of market)

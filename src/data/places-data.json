@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-11-10T19:21:24.419433+00:00",
+    "generated_at": "2026-11-10T19:59:21.996577+00:00",
     "schema_version": "1.0.0",
     "total_countries": 217,
     "focus_countries_count": 27,
@@ -68,31 +68,31 @@
         "active_jobs": 35,
         "hiring_companies": 24,
         "top_roles": [
-          "ai_developer",
           "data_analyst",
-          "data_scientist",
+          "ai_developer",
           "data_engineer",
+          "data_scientist",
           "ml_engineer"
         ],
         "roles_breakdown": [
-          {
-            "category_id": "ai_developer",
-            "role_name": "AI Developer",
-            "count": 12
-          },
           {
             "category_id": "data_analyst",
             "role_name": "Data Analyst",
             "count": 12
           },
           {
-            "category_id": "data_scientist",
-            "role_name": "Data Scientist",
-            "count": 5
+            "category_id": "ai_developer",
+            "role_name": "AI Developer",
+            "count": 12
           },
           {
             "category_id": "data_engineer",
             "role_name": "Data Engineer",
+            "count": 5
+          },
+          {
+            "category_id": "data_scientist",
+            "role_name": "Data Scientist",
             "count": 5
           },
           {
@@ -180,39 +180,9 @@
         ]
       },
       "indicators": {
-        "peace_index": {
-          "raw_value": 1.31,
-          "normalized_value": 94.5,
-          "reference_year": 2024
-        },
         "political_stability": {
           "raw_value": 0.53,
           "normalized_value": 74.5,
-          "reference_year": 2025
-        },
-        "population": {
-          "raw_value": 9208163.0,
-          "normalized_value": 2.7,
-          "reference_year": 2025
-        },
-        "rule_of_law": {
-          "raw_value": 1.65,
-          "normalized_value": 91.8,
-          "reference_year": 2025
-        },
-        "gov_effectiveness": {
-          "raw_value": 1.54,
-          "normalized_value": 87.4,
-          "reference_year": 2025
-        },
-        "ease_of_relocation": {
-          "raw_value": 92.0,
-          "normalized_value": 96.7,
-          "reference_year": 2024
-        },
-        "gdp_pc_ppp": {
-          "raw_value": 76777.54,
-          "normalized_value": 58.9,
           "reference_year": 2025
         },
         "life_expectancy": {
@@ -229,6 +199,36 @@
           "raw_value": 6.1,
           "normalized_value": 86.5,
           "reference_year": 2025
+        },
+        "peace_index": {
+          "raw_value": 1.31,
+          "normalized_value": 94.5,
+          "reference_year": 2024
+        },
+        "population": {
+          "raw_value": 9208163.0,
+          "normalized_value": 2.7,
+          "reference_year": 2025
+        },
+        "rule_of_law": {
+          "raw_value": 1.65,
+          "normalized_value": 91.8,
+          "reference_year": 2025
+        },
+        "gdp_pc_ppp": {
+          "raw_value": 76777.54,
+          "normalized_value": 58.9,
+          "reference_year": 2025
+        },
+        "gov_effectiveness": {
+          "raw_value": 1.54,
+          "normalized_value": 87.4,
+          "reference_year": 2025
+        },
+        "ease_of_relocation": {
+          "raw_value": 92.0,
+          "normalized_value": 96.7,
+          "reference_year": 2024
         }
       }
     },
@@ -350,17 +350,17 @@
             "role_name": "Data Analyst"
           },
           {
-            "job_id": "935017ac1e8703a0",
-            "title": "Senior AI Engineer, Unstructured AI",
-            "company_name": "Collibra",
+            "job_id": "301bacbcc7202aae",
+            "title": "Data & Digital Marketing Analyst",
+            "company_name": "Unilever",
             "is_sp500": false,
             "city": null,
-            "seniority": "Senior",
+            "seniority": "Mid",
             "work_mode": "Hybrid",
-            "url": "https://www.collibra.com/us/en/company/careers/job-listing/?gh_jid=8136489",
+            "url": "https://unilever.wd3.myworkdayjobs.com/en-US/Unilever_Experienced_Professionals/job/Brussels-Belgium/Data-Analyst-Benelux_R-1189025",
             "posted_at": "2026-10-30",
-            "category_id": "ai_developer",
-            "role_name": "AI Developer"
+            "category_id": "data_analyst",
+            "role_name": "Data Analyst"
           }
         ]
       },
@@ -400,6 +400,11 @@
           "normalized_value": 84.6,
           "reference_year": 2025
         },
+        "political_stability": {
+          "raw_value": 0.17,
+          "normalized_value": 65.5,
+          "reference_year": 2025
+        },
         "population": {
           "raw_value": 11941781.0,
           "normalized_value": 3.5,
@@ -408,11 +413,6 @@
         "rule_of_law": {
           "raw_value": 1.27,
           "normalized_value": 82.2,
-          "reference_year": 2025
-        },
-        "political_stability": {
-          "raw_value": 0.17,
-          "normalized_value": 65.5,
           "reference_year": 2025
         }
       }
@@ -439,8 +439,8 @@
         "hiring_companies": 25,
         "top_roles": [
           "data_engineer",
-          "ml_engineer",
           "data_architect",
+          "ml_engineer",
           "data_analyst",
           "data_scientist"
         ],
@@ -451,13 +451,13 @@
             "count": 25
           },
           {
-            "category_id": "ml_engineer",
-            "role_name": "Machine Learning Engineer",
+            "category_id": "data_architect",
+            "role_name": "Data Architect",
             "count": 8
           },
           {
-            "category_id": "data_architect",
-            "role_name": "Data Architect",
+            "category_id": "ml_engineer",
+            "role_name": "Machine Learning Engineer",
             "count": 8
           },
           {
@@ -471,13 +471,13 @@
             "count": 4
           },
           {
-            "category_id": "ai_developer",
-            "role_name": "AI Developer",
+            "category_id": "bi_developer",
+            "role_name": "BI Developer / Analyst",
             "count": 3
           },
           {
-            "category_id": "bi_developer",
-            "role_name": "BI Developer / Analyst",
+            "category_id": "ai_developer",
+            "role_name": "AI Developer",
             "count": 3
           },
           {
@@ -540,17 +540,17 @@
             "role_name": "Machine Learning Engineer"
           },
           {
-            "job_id": "55fdaa0e81a457e2",
-            "title": "Senior AI Engineer (Python)",
-            "company_name": "CADABRA",
+            "job_id": "22e72d0937988141",
+            "title": "(Senior) Data Scientist (flexhub)",
+            "company_name": "Commerzbank Digital Technology Centre Bulgaria",
             "is_sp500": false,
             "city": null,
             "seniority": "Senior",
-            "work_mode": "Hybrid",
-            "url": "https://bg.linkedin.com/jobs/view/senior-ai-engineer-python-at-cadabra-4473616620?position=2&pageNum=0&refId=KQyB%2BLZzIRkCiyiLZoJWEQ%3D%3D&trackingId=dPpTMk1Jdrn20R6KXhmsgQ%3D%3D",
+            "work_mode": "Unspecified",
+            "url": "https://bg.linkedin.com/jobs/view/senior-data-scientist-flexhub-at-commerzbank-digital-technology-centre-bulgaria-4474043054?position=5&pageNum=0&refId=0kQ%2FCBTWfifyAoeJJn3lCA%3D%3D&trackingId=amVSAUSZu4lZQ2c%2Fro0epA%3D%3D",
             "posted_at": "2026-11-02",
-            "category_id": "ai_developer",
-            "role_name": "AI Developer"
+            "category_id": "data_scientist",
+            "role_name": "Data Scientist"
           }
         ]
       },
@@ -570,11 +570,6 @@
           "normalized_value": 88.8,
           "reference_year": 2024
         },
-        "political_stability": {
-          "raw_value": 0.25,
-          "normalized_value": 67.3,
-          "reference_year": 2025
-        },
         "life_expectancy": {
           "raw_value": 75.76,
           "normalized_value": 69.8,
@@ -590,6 +585,11 @@
           "normalized_value": 84.0,
           "reference_year": 2025
         },
+        "peace_index": {
+          "raw_value": 1.63,
+          "normalized_value": 79.0,
+          "reference_year": 2024
+        },
         "population": {
           "raw_value": 6433302.0,
           "normalized_value": 1.9,
@@ -600,10 +600,10 @@
           "normalized_value": 49.4,
           "reference_year": 2025
         },
-        "peace_index": {
-          "raw_value": 1.63,
-          "normalized_value": 79.0,
-          "reference_year": 2024
+        "political_stability": {
+          "raw_value": 0.25,
+          "normalized_value": 67.3,
+          "reference_year": 2025
         }
       }
     },
@@ -728,19 +728,6 @@
         ],
         "sample_jobs": [
           {
-            "job_id": "1f2ba10336448edb",
-            "title": "Program Manager, Carrier Operations & Governance",
-            "company_name": "Twilio",
-            "is_sp500": true,
-            "city": null,
-            "seniority": "Lead / Manager",
-            "work_mode": "Remote",
-            "url": "https://job-boards.greenhouse.io/twilio/jobs/8263280",
-            "posted_at": "2026-11-06",
-            "category_id": "ai_product_manager",
-            "role_name": "AI / Data Product Manager"
-          },
-          {
             "job_id": "fa1c861f4c39c65b",
             "title": "Staff Data Scientist, Marketing",
             "company_name": "Reddit",
@@ -767,17 +754,30 @@
             "role_name": "Data Scientist"
           },
           {
-            "job_id": "e35c20b4731bc35b",
-            "title": "Data Scientist – Analytics ",
+            "job_id": "1f2ba10336448edb",
+            "title": "Program Manager, Carrier Operations & Governance",
+            "company_name": "Twilio",
+            "is_sp500": true,
+            "city": null,
+            "seniority": "Lead / Manager",
+            "work_mode": "Remote",
+            "url": "https://job-boards.greenhouse.io/twilio/jobs/8263280",
+            "posted_at": "2026-11-06",
+            "category_id": "ai_product_manager",
+            "role_name": "AI / Data Product Manager"
+          },
+          {
+            "job_id": "9a49daf9e50e995d",
+            "title": "Software Engineer, Machine Learning",
             "company_name": "AppLovin",
             "is_sp500": true,
             "city": null,
             "seniority": "Mid",
             "work_mode": "Unspecified",
-            "url": "https://boards.greenhouse.io/applovin/jobs/4705263006?gh_jid=4705263006",
+            "url": "https://boards.greenhouse.io/applovin/jobs/4712559006?gh_jid=4712559006",
             "posted_at": "2026-11-05",
-            "category_id": "data_scientist",
-            "role_name": "Data Scientist"
+            "category_id": "ml_engineer",
+            "role_name": "Machine Learning Engineer"
           },
           {
             "job_id": "bf35255aef35ff9c",
@@ -810,21 +810,6 @@
           "normalized_value": 87.5,
           "reference_year": 2025
         },
-        "gdp_pc_ppp": {
-          "raw_value": 66745.82,
-          "normalized_value": 51.0,
-          "reference_year": 2025
-        },
-        "life_expectancy": {
-          "raw_value": 82.11,
-          "normalized_value": 90.3,
-          "reference_year": 2024
-        },
-        "peace_index": {
-          "raw_value": 1.45,
-          "normalized_value": 87.9,
-          "reference_year": 2024
-        },
         "gov_effectiveness": {
           "raw_value": 1.76,
           "normalized_value": 92.6,
@@ -833,6 +818,21 @@
         "ease_of_relocation": {
           "raw_value": 75.0,
           "normalized_value": 77.7,
+          "reference_year": 2024
+        },
+        "gdp_pc_ppp": {
+          "raw_value": 66745.82,
+          "normalized_value": 51.0,
+          "reference_year": 2025
+        },
+        "peace_index": {
+          "raw_value": 1.45,
+          "normalized_value": 87.9,
+          "reference_year": 2024
+        },
+        "life_expectancy": {
+          "raw_value": 82.11,
+          "normalized_value": 90.3,
           "reference_year": 2024
         }
       }
@@ -860,9 +860,9 @@
         "top_roles": [
           "ml_engineer",
           "data_analyst",
+          "ai_developer",
           "data_scientist",
-          "data_engineer",
-          "ai_developer"
+          "data_engineer"
         ],
         "roles_breakdown": [
           {
@@ -876,6 +876,11 @@
             "count": 4
           },
           {
+            "category_id": "ai_developer",
+            "role_name": "AI Developer",
+            "count": 4
+          },
+          {
             "category_id": "data_scientist",
             "role_name": "Data Scientist",
             "count": 4
@@ -883,11 +888,6 @@
           {
             "category_id": "data_engineer",
             "role_name": "Data Engineer",
-            "count": 4
-          },
-          {
-            "category_id": "ai_developer",
-            "role_name": "AI Developer",
             "count": 4
           },
           {
@@ -1000,6 +1000,11 @@
           "normalized_value": 38.7,
           "reference_year": 2025
         },
+        "political_stability": {
+          "raw_value": 0.68,
+          "normalized_value": 78.3,
+          "reference_year": 2025
+        },
         "population": {
           "raw_value": 3876200.0,
           "normalized_value": 1.1,
@@ -1008,11 +1013,6 @@
         "rule_of_law": {
           "raw_value": 0.42,
           "normalized_value": 61.1,
-          "reference_year": 2025
-        },
-        "political_stability": {
-          "raw_value": 0.68,
-          "normalized_value": 78.3,
           "reference_year": 2025
         }
       }
@@ -1035,8 +1035,8 @@
         "composite_score": 77.4
       },
       "tech_market": {
-        "active_jobs": 329,
-        "hiring_companies": 187,
+        "active_jobs": 320,
+        "hiring_companies": 117,
         "top_roles": [
           "ai_developer",
           "data_analyst",
@@ -1048,17 +1048,17 @@
           {
             "category_id": "ai_developer",
             "role_name": "AI Developer",
-            "count": 121
+            "count": 111
           },
           {
             "category_id": "data_analyst",
             "role_name": "Data Analyst",
-            "count": 74
+            "count": 85
           },
           {
             "category_id": "data_engineer",
             "role_name": "Data Engineer",
-            "count": 61
+            "count": 57
           },
           {
             "category_id": "data_scientist",
@@ -1068,12 +1068,7 @@
           {
             "category_id": "ml_engineer",
             "role_name": "Machine Learning Engineer",
-            "count": 16
-          },
-          {
-            "category_id": "bi_developer",
-            "role_name": "BI Developer / Analyst",
-            "count": 12
+            "count": 15
           },
           {
             "category_id": "analytics_engineer",
@@ -1081,9 +1076,14 @@
             "count": 11
           },
           {
+            "category_id": "bi_developer",
+            "role_name": "BI Developer / Analyst",
+            "count": 9
+          },
+          {
             "category_id": "data_architect",
             "role_name": "Data Architect",
-            "count": 8
+            "count": 7
           },
           {
             "category_id": "ai_product_manager",
@@ -1094,11 +1094,6 @@
             "category_id": "team_lead_data_ai",
             "role_name": "Team Lead (Data/AI)",
             "count": 5
-          },
-          {
-            "category_id": "bi_analytics_manager",
-            "role_name": "BI / Analytics Manager",
-            "count": 1
           },
           {
             "category_id": "data_science_manager",
@@ -1190,6 +1185,11 @@
           "normalized_value": 96.7,
           "reference_year": 2024
         },
+        "gdp_pc_ppp": {
+          "raw_value": 60487.29,
+          "normalized_value": 46.1,
+          "reference_year": 2025
+        },
         "life_expectancy": {
           "raw_value": 79.98,
           "normalized_value": 83.5,
@@ -1205,9 +1205,9 @@
           "normalized_value": 79.9,
           "reference_year": 2025
         },
-        "gdp_pc_ppp": {
-          "raw_value": 60487.29,
-          "normalized_value": 46.1,
+        "political_stability": {
+          "raw_value": 1.02,
+          "normalized_value": 86.6,
           "reference_year": 2025
         },
         "population": {
@@ -1218,11 +1218,6 @@
         "rule_of_law": {
           "raw_value": 1.17,
           "normalized_value": 79.8,
-          "reference_year": 2025
-        },
-        "political_stability": {
-          "raw_value": 1.02,
-          "normalized_value": 86.6,
           "reference_year": 2025
         },
         "peace_index": {
@@ -1370,6 +1365,11 @@
           "normalized_value": 98.9,
           "reference_year": 2024
         },
+        "gdp_pc_ppp": {
+          "raw_value": 83218.07,
+          "normalized_value": 63.9,
+          "reference_year": 2025
+        },
         "life_expectancy": {
           "raw_value": 82.25,
           "normalized_value": 90.8,
@@ -1385,9 +1385,9 @@
           "normalized_value": 59.6,
           "reference_year": 2025
         },
-        "gdp_pc_ppp": {
-          "raw_value": 83218.07,
-          "normalized_value": 63.9,
+        "political_stability": {
+          "raw_value": 0.79,
+          "normalized_value": 80.9,
           "reference_year": 2025
         },
         "population": {
@@ -1398,11 +1398,6 @@
         "rule_of_law": {
           "raw_value": 2.01,
           "normalized_value": 100.0,
-          "reference_year": 2025
-        },
-        "political_stability": {
-          "raw_value": 0.79,
-          "normalized_value": 80.9,
           "reference_year": 2025
         },
         "peace_index": {
@@ -1466,13 +1461,13 @@
             "count": 3
           },
           {
-            "category_id": "data_architect",
-            "role_name": "Data Architect",
+            "category_id": "ai_product_manager",
+            "role_name": "AI / Data Product Manager",
             "count": 1
           },
           {
-            "category_id": "ai_product_manager",
-            "role_name": "AI / Data Product Manager",
+            "category_id": "data_architect",
+            "role_name": "Data Architect",
             "count": 1
           }
         ],
@@ -1681,6 +1676,11 @@
             "count": 4
           },
           {
+            "category_id": "mlops_engineer",
+            "role_name": "MLOps Engineer",
+            "count": 1
+          },
+          {
             "category_id": "director_vp_data_ai",
             "role_name": "Director / VP of Data & AI",
             "count": 1
@@ -1688,11 +1688,6 @@
           {
             "category_id": "bi_developer",
             "role_name": "BI Developer / Analyst",
-            "count": 1
-          },
-          {
-            "category_id": "mlops_engineer",
-            "role_name": "MLOps Engineer",
             "count": 1
           }
         ],
@@ -1750,14 +1745,14 @@
             "role_name": "Data Scientist"
           },
           {
-            "job_id": "498df4ffca062e43",
-            "title": "AI Sales Specialist II, Google Cloud",
+            "job_id": "ce0d4da53f94e96c",
+            "title": "AI Sales Specialist III, Google Cloud",
             "company_name": "Alphabet Inc. (Class A)",
             "is_sp500": true,
             "city": null,
-            "seniority": "Mid",
+            "seniority": "Senior",
             "work_mode": "Unspecified",
-            "url": "https://www.google.com/about/careers/applications/jobs/results/88472237006299846-ai-sales-specialist-ii-google-cloud",
+            "url": "https://www.google.com/about/careers/applications/jobs/results/89381739280900806-ai-sales-specialist-iii-google-cloud",
             "posted_at": null,
             "category_id": null,
             "role_name": null
@@ -1780,6 +1775,11 @@
           "normalized_value": 59.0,
           "reference_year": 2025
         },
+        "gdp_pc_ppp": {
+          "raw_value": 63975.35,
+          "normalized_value": 48.9,
+          "reference_year": 2025
+        },
         "gov_effectiveness": {
           "raw_value": 1.21,
           "normalized_value": 79.2,
@@ -1788,11 +1788,6 @@
         "ease_of_relocation": {
           "raw_value": 90.0,
           "normalized_value": 94.4,
-          "reference_year": 2024
-        },
-        "peace_index": {
-          "raw_value": 1.77,
-          "normalized_value": 72.6,
           "reference_year": 2024
         },
         "life_expectancy": {
@@ -1810,10 +1805,10 @@
           "normalized_value": 85.6,
           "reference_year": 2025
         },
-        "gdp_pc_ppp": {
-          "raw_value": 63975.35,
-          "normalized_value": 48.9,
-          "reference_year": 2025
+        "peace_index": {
+          "raw_value": 1.77,
+          "normalized_value": 72.6,
+          "reference_year": 2024
         }
       }
     },
@@ -1896,13 +1891,13 @@
             "count": 7
           },
           {
-            "category_id": "ai_product_manager",
-            "role_name": "AI / Data Product Manager",
+            "category_id": "director_vp_data_ai",
+            "role_name": "Director / VP of Data & AI",
             "count": 6
           },
           {
-            "category_id": "director_vp_data_ai",
-            "role_name": "Director / VP of Data & AI",
+            "category_id": "ai_product_manager",
+            "role_name": "AI / Data Product Manager",
             "count": 6
           },
           {
@@ -1911,23 +1906,23 @@
             "count": 5
           },
           {
-            "category_id": "team_lead_data_ai",
-            "role_name": "Team Lead (Data/AI)",
-            "count": 5
-          },
-          {
             "category_id": "data_science_manager",
             "role_name": "Data Science / ML Manager",
             "count": 5
           },
           {
-            "category_id": "head_of_ai_data",
-            "role_name": "Head of AI / Data",
-            "count": 3
+            "category_id": "team_lead_data_ai",
+            "role_name": "Team Lead (Data/AI)",
+            "count": 5
           },
           {
             "category_id": "engineering_manager_ai_data",
             "role_name": "Engineering Manager (AI/Data)",
+            "count": 3
+          },
+          {
+            "category_id": "head_of_ai_data",
+            "role_name": "Head of AI / Data",
             "count": 3
           },
           {
@@ -1951,17 +1946,17 @@
             "role_name": "Data Analyst"
           },
           {
-            "job_id": "dde361a40d6d64b5",
-            "title": "Analytics Engineer - OpenData EMEA (Remote)",
+            "job_id": "841f630606faf4a7",
+            "title": "Data Product Manager - OpenData Europe",
             "company_name": "Veeva Systems",
             "is_sp500": true,
             "city": null,
-            "seniority": "Mid",
+            "seniority": "Lead / Manager",
             "work_mode": "Remote",
-            "url": "https://jobs.lever.co/veeva/dc0b5a84-05ac-4ff4-941b-01cef16048f2",
+            "url": "https://jobs.lever.co/veeva/47f23890-3f80-4cde-9877-08745db82116",
             "posted_at": null,
-            "category_id": "analytics_engineer",
-            "role_name": "Analytics Engineer"
+            "category_id": "ai_product_manager",
+            "role_name": "AI / Data Product Manager"
           },
           {
             "job_id": "3d0f0d5cc69eba25",
@@ -2081,8 +2076,8 @@
           "ai_developer",
           "data_engineer",
           "data_scientist",
-          "ml_engineer",
-          "bi_developer"
+          "bi_developer",
+          "ml_engineer"
         ],
         "roles_breakdown": [
           {
@@ -2101,13 +2096,13 @@
             "count": 5
           },
           {
-            "category_id": "ml_engineer",
-            "role_name": "Machine Learning Engineer",
+            "category_id": "bi_developer",
+            "role_name": "BI Developer / Analyst",
             "count": 3
           },
           {
-            "category_id": "bi_developer",
-            "role_name": "BI Developer / Analyst",
+            "category_id": "ml_engineer",
+            "role_name": "Machine Learning Engineer",
             "count": 3
           },
           {
@@ -2116,13 +2111,13 @@
             "count": 2
           },
           {
-            "category_id": "director_vp_data_ai",
-            "role_name": "Director / VP of Data & AI",
+            "category_id": "research_scientist",
+            "role_name": "Research Scientist (AI/ML)",
             "count": 1
           },
           {
-            "category_id": "research_scientist",
-            "role_name": "Research Scientist (AI/ML)",
+            "category_id": "director_vp_data_ai",
+            "role_name": "Director / VP of Data & AI",
             "count": 1
           }
         ],
@@ -2180,14 +2175,14 @@
             "role_name": "Data Analyst"
           },
           {
-            "job_id": "fab8b6a3f5a1f74b",
-            "title": "Applied AI Engineer — LLMs & Business Automation",
-            "company_name": "Loulis Food Ingredients",
+            "job_id": "ee7ef30707037e91",
+            "title": "AI Software Engineer (Mid Level)",
+            "company_name": "Grant Thornton Greece",
             "is_sp500": false,
             "city": null,
             "seniority": "Mid",
-            "work_mode": "Unspecified",
-            "url": "https://gr.linkedin.com/jobs/view/applied-ai-engineer-%E2%80%94-llms-business-automation-at-loulis-food-ingredients-4484651526?position=2&pageNum=0&refId=6BfYPUy6FlZfvpXOIlbwng%3D%3D&trackingId=5EbtxQDYz4laecGg0VzwJA%3D%3D",
+            "work_mode": "Hybrid",
+            "url": "https://gr.linkedin.com/jobs/view/ai-software-engineer-mid-level-at-grant-thornton-greece-4484350640?position=5&pageNum=0&refId=6BfYPUy6FlZfvpXOIlbwng%3D%3D&trackingId=xrlGmSGmA%2BfDhMmNn3GjKQ%3D%3D",
             "posted_at": "2026-11-03",
             "category_id": "ai_developer",
             "role_name": "AI Developer"
@@ -2195,39 +2190,9 @@
         ]
       },
       "indicators": {
-        "peace_index": {
-          "raw_value": 1.78,
-          "normalized_value": 71.8,
-          "reference_year": 2024
-        },
         "political_stability": {
           "raw_value": 0.28,
           "normalized_value": 68.1,
-          "reference_year": 2025
-        },
-        "population": {
-          "raw_value": 10413962.0,
-          "normalized_value": 3.1,
-          "reference_year": 2025
-        },
-        "rule_of_law": {
-          "raw_value": 0.29,
-          "normalized_value": 57.7,
-          "reference_year": 2025
-        },
-        "gov_effectiveness": {
-          "raw_value": 0.32,
-          "normalized_value": 57.3,
-          "reference_year": 2025
-        },
-        "ease_of_relocation": {
-          "raw_value": 89.0,
-          "normalized_value": 93.3,
-          "reference_year": 2024
-        },
-        "gdp_pc_ppp": {
-          "raw_value": 45263.65,
-          "normalized_value": 34.3,
           "reference_year": 2025
         },
         "life_expectancy": {
@@ -2244,6 +2209,36 @@
           "raw_value": 26.4,
           "normalized_value": 22.9,
           "reference_year": 2025
+        },
+        "peace_index": {
+          "raw_value": 1.78,
+          "normalized_value": 71.8,
+          "reference_year": 2024
+        },
+        "population": {
+          "raw_value": 10413962.0,
+          "normalized_value": 3.1,
+          "reference_year": 2025
+        },
+        "rule_of_law": {
+          "raw_value": 0.29,
+          "normalized_value": 57.7,
+          "reference_year": 2025
+        },
+        "gdp_pc_ppp": {
+          "raw_value": 45263.65,
+          "normalized_value": 34.3,
+          "reference_year": 2025
+        },
+        "gov_effectiveness": {
+          "raw_value": 0.32,
+          "normalized_value": 57.3,
+          "reference_year": 2025
+        },
+        "ease_of_relocation": {
+          "raw_value": 89.0,
+          "normalized_value": 93.3,
+          "reference_year": 2024
         }
       }
     },
@@ -2265,8 +2260,8 @@
         "composite_score": 69.2
       },
       "tech_market": {
-        "active_jobs": 23,
-        "hiring_companies": 18,
+        "active_jobs": 24,
+        "hiring_companies": 19,
         "top_roles": [
           "data_scientist",
           "data_engineer",
@@ -2299,6 +2294,11 @@
             "category_id": "data_analyst",
             "role_name": "Data Analyst",
             "count": 3
+          },
+          {
+            "category_id": "bi_analytics_manager",
+            "role_name": "BI / Analytics Manager",
+            "count": 1
           }
         ],
         "sample_jobs": [
@@ -2316,19 +2316,6 @@
             "role_name": "Data Engineer"
           },
           {
-            "job_id": "bc3917f08cb095a3",
-            "title": "Business Intelligence (BI) Analyst",
-            "company_name": "Cushman & Wakefield",
-            "is_sp500": false,
-            "city": null,
-            "seniority": "Mid",
-            "work_mode": "Unspecified",
-            "url": "https://hu.linkedin.com/jobs/view/business-intelligence-bi-analyst-at-cushman-wakefield-4478580209?position=3&pageNum=0&refId=QqcqnghHHpmvLYISlzPdgg%3D%3D&trackingId=PxmKYTgVQyV5Fc6sq6p%2FLw%3D%3D",
-            "posted_at": "2026-11-03",
-            "category_id": "data_analyst",
-            "role_name": "Data Analyst"
-          },
-          {
             "job_id": "6f3aab4f490322d8",
             "title": "BI Specialist",
             "company_name": "Sony Europe",
@@ -2337,6 +2324,19 @@
             "seniority": "Mid",
             "work_mode": "Hybrid",
             "url": "https://hu.linkedin.com/jobs/view/bi-specialist-at-sony-europe-4478777157?position=2&pageNum=0&refId=QqcqnghHHpmvLYISlzPdgg%3D%3D&trackingId=7dNMYVTzXdnnOXjtlRXmKA%3D%3D",
+            "posted_at": "2026-11-03",
+            "category_id": "bi_developer",
+            "role_name": "BI Developer / Analyst"
+          },
+          {
+            "job_id": "bc3917f08cb095a3",
+            "title": "Business Intelligence (BI) Analyst",
+            "company_name": "Cushman & Wakefield",
+            "is_sp500": false,
+            "city": null,
+            "seniority": "Mid",
+            "work_mode": "Unspecified",
+            "url": "https://hu.linkedin.com/jobs/view/business-intelligence-bi-analyst-at-cushman-wakefield-4478580209?position=3&pageNum=0&refId=QqcqnghHHpmvLYISlzPdgg%3D%3D&trackingId=PxmKYTgVQyV5Fc6sq6p%2FLw%3D%3D",
             "posted_at": "2026-11-03",
             "category_id": "data_analyst",
             "role_name": "Data Analyst"
@@ -2491,13 +2491,13 @@
             "count": 4
           },
           {
-            "category_id": "mlops_engineer",
-            "role_name": "MLOps Engineer",
+            "category_id": "bi_analytics_manager",
+            "role_name": "BI / Analytics Manager",
             "count": 2
           },
           {
-            "category_id": "bi_analytics_manager",
-            "role_name": "BI / Analytics Manager",
+            "category_id": "mlops_engineer",
+            "role_name": "MLOps Engineer",
             "count": 2
           },
           {
@@ -2534,6 +2534,19 @@
             "role_name": "AI Developer"
           },
           {
+            "job_id": "facfb44c6a5033e3",
+            "title": "SR Azure Database Engineer",
+            "company_name": "Mastercard",
+            "is_sp500": true,
+            "city": null,
+            "seniority": "Senior",
+            "work_mode": "Hybrid",
+            "url": "https://mastercard.wd1.myworkdayjobs.com/en-US/CorporateCareers/job/Dublin-Ireland/SR-Azure-Database-Engineer_R-293822",
+            "posted_at": "2026-11-06",
+            "category_id": "data_engineer",
+            "role_name": "Data Engineer"
+          },
+          {
             "job_id": "32c2f8e7594b2340",
             "title": "AI Solution Architect",
             "company_name": "Aptiv",
@@ -2558,23 +2571,15 @@
             "posted_at": "2026-11-06",
             "category_id": "data_scientist",
             "role_name": "Data Scientist"
-          },
-          {
-            "job_id": "facfb44c6a5033e3",
-            "title": "SR Azure Database Engineer",
-            "company_name": "Mastercard",
-            "is_sp500": true,
-            "city": null,
-            "seniority": "Senior",
-            "work_mode": "Hybrid",
-            "url": "https://mastercard.wd1.myworkdayjobs.com/en-US/CorporateCareers/job/Dublin-Ireland/SR-Azure-Database-Engineer_R-293822",
-            "posted_at": "2026-11-06",
-            "category_id": "data_engineer",
-            "role_name": "Data Engineer"
           }
         ]
       },
       "indicators": {
+        "political_stability": {
+          "raw_value": 0.75,
+          "normalized_value": 79.8,
+          "reference_year": 2025
+        },
         "population": {
           "raw_value": 5484367.0,
           "normalized_value": 1.6,
@@ -2584,6 +2589,11 @@
           "raw_value": 1.55,
           "normalized_value": 89.3,
           "reference_year": 2025
+        },
+        "peace_index": {
+          "raw_value": 1.3,
+          "normalized_value": 95.0,
+          "reference_year": 2024
         },
         "life_expectancy": {
           "raw_value": 83.01,
@@ -2600,16 +2610,6 @@
           "normalized_value": 89.0,
           "reference_year": 2025
         },
-        "political_stability": {
-          "raw_value": 0.75,
-          "normalized_value": 79.8,
-          "reference_year": 2025
-        },
-        "gdp_pc_ppp": {
-          "raw_value": 155089.41,
-          "normalized_value": 100.0,
-          "reference_year": 2025
-        },
         "gov_effectiveness": {
           "raw_value": 1.63,
           "normalized_value": 89.5,
@@ -2620,10 +2620,10 @@
           "normalized_value": 100.0,
           "reference_year": 2024
         },
-        "peace_index": {
-          "raw_value": 1.3,
-          "normalized_value": 95.0,
-          "reference_year": 2024
+        "gdp_pc_ppp": {
+          "raw_value": 155089.41,
+          "normalized_value": 100.0,
+          "reference_year": 2025
         }
       }
     },
@@ -2686,6 +2686,11 @@
             "count": 6
           },
           {
+            "category_id": "data_architect",
+            "role_name": "Data Architect",
+            "count": 3
+          },
+          {
             "category_id": "director_vp_data_ai",
             "role_name": "Director / VP of Data & AI",
             "count": 3
@@ -2696,18 +2701,13 @@
             "count": 3
           },
           {
-            "category_id": "data_architect",
-            "role_name": "Data Architect",
-            "count": 3
+            "category_id": "unmapped",
+            "role_name": "Other Data/AI",
+            "count": 1
           },
           {
             "category_id": "team_lead_data_ai",
             "role_name": "Team Lead (Data/AI)",
-            "count": 1
-          },
-          {
-            "category_id": "unmapped",
-            "role_name": "Other Data/AI",
             "count": 1
           }
         ],
@@ -2795,6 +2795,11 @@
           "normalized_value": 72.6,
           "reference_year": 2025
         },
+        "gdp_pc_ppp": {
+          "raw_value": 62802.51,
+          "normalized_value": 48.0,
+          "reference_year": 2025
+        },
         "gov_effectiveness": {
           "raw_value": 0.92,
           "normalized_value": 72.1,
@@ -2803,11 +2808,6 @@
         "ease_of_relocation": {
           "raw_value": 88.0,
           "normalized_value": 92.2,
-          "reference_year": 2024
-        },
-        "peace_index": {
-          "raw_value": 1.63,
-          "normalized_value": 79.1,
           "reference_year": 2024
         },
         "life_expectancy": {
@@ -2825,10 +2825,10 @@
           "normalized_value": 90.0,
           "reference_year": 2025
         },
-        "gdp_pc_ppp": {
-          "raw_value": 62802.51,
-          "normalized_value": 48.0,
-          "reference_year": 2025
+        "peace_index": {
+          "raw_value": 1.63,
+          "normalized_value": 79.1,
+          "reference_year": 2024
         }
       }
     },
@@ -2855,9 +2855,9 @@
         "top_roles": [
           "data_analyst",
           "data_engineer",
-          "ai_developer",
           "data_scientist",
-          "bi_developer"
+          "ai_developer",
+          "ml_engineer"
         ],
         "roles_breakdown": [
           {
@@ -2871,23 +2871,23 @@
             "count": 6
           },
           {
-            "category_id": "ai_developer",
-            "role_name": "AI Developer",
-            "count": 5
-          },
-          {
             "category_id": "data_scientist",
             "role_name": "Data Scientist",
             "count": 5
           },
           {
-            "category_id": "bi_developer",
-            "role_name": "BI Developer / Analyst",
-            "count": 1
+            "category_id": "ai_developer",
+            "role_name": "AI Developer",
+            "count": 5
           },
           {
             "category_id": "ml_engineer",
             "role_name": "Machine Learning Engineer",
+            "count": 1
+          },
+          {
+            "category_id": "bi_developer",
+            "role_name": "BI Developer / Analyst",
             "count": 1
           }
         ],
@@ -2902,8 +2902,8 @@
             "work_mode": "Hybrid",
             "url": "https://dexcom.wd1.myworkdayjobs.com/en-US/Dexcom/job/Vilnius-Lithuania/Staff-Business-Intelligence-Analyst_JR121392-1",
             "posted_at": "2026-10-05",
-            "category_id": "bi_developer",
-            "role_name": "BI Developer / Analyst"
+            "category_id": "data_analyst",
+            "role_name": "Data Analyst"
           },
           {
             "job_id": "984495047fa0077c",
@@ -2919,19 +2919,6 @@
             "role_name": "Data Scientist"
           },
           {
-            "job_id": "d452264acdde6ee2",
-            "title": "AI Engineer - Senior",
-            "company_name": "EY",
-            "is_sp500": false,
-            "city": null,
-            "seniority": "Senior",
-            "work_mode": "Hybrid",
-            "url": "https://lt.linkedin.com/jobs/view/ai-engineer-senior-at-ey-4474892911?position=2&pageNum=0&refId=pVebiLiUnod8X97o4AYVvw%3D%3D&trackingId=BvQa9d4NJy15lRXe%2FN9ekQ%3D%3D",
-            "posted_at": "2026-10-30",
-            "category_id": "ai_developer",
-            "role_name": "AI Developer"
-          },
-          {
             "job_id": "26dca6412eb60b98",
             "title": "Junior Data Engineer",
             "company_name": "Littelfuse",
@@ -2943,6 +2930,19 @@
             "posted_at": "2026-10-30",
             "category_id": "data_engineer",
             "role_name": "Data Engineer"
+          },
+          {
+            "job_id": "d452264acdde6ee2",
+            "title": "AI Engineer - Senior",
+            "company_name": "EY",
+            "is_sp500": false,
+            "city": null,
+            "seniority": "Senior",
+            "work_mode": "Hybrid",
+            "url": "https://lt.linkedin.com/jobs/view/ai-engineer-senior-at-ey-4474892911?position=2&pageNum=0&refId=pVebiLiUnod8X97o4AYVvw%3D%3D&trackingId=BvQa9d4NJy15lRXe%2FN9ekQ%3D%3D",
+            "posted_at": "2026-10-30",
+            "category_id": "ai_developer",
+            "role_name": "AI Developer"
           },
           {
             "job_id": "55aef5c58e01cc20",
@@ -2995,6 +2995,11 @@
           "normalized_value": 87.8,
           "reference_year": 2025
         },
+        "political_stability": {
+          "raw_value": 0.93,
+          "normalized_value": 84.5,
+          "reference_year": 2025
+        },
         "population": {
           "raw_value": 2888774.0,
           "normalized_value": 0.8,
@@ -3003,11 +3008,6 @@
         "rule_of_law": {
           "raw_value": 1.37,
           "normalized_value": 84.8,
-          "reference_year": 2025
-        },
-        "political_stability": {
-          "raw_value": 0.93,
-          "normalized_value": 84.5,
           "reference_year": 2025
         }
       }
@@ -3037,7 +3037,7 @@
           "data_engineer",
           "data_analyst",
           "ai_developer",
-          "ml_engineer"
+          "bi_developer"
         ],
         "roles_breakdown": [
           {
@@ -3061,6 +3061,11 @@
             "count": 3
           },
           {
+            "category_id": "bi_developer",
+            "role_name": "BI Developer / Analyst",
+            "count": 1
+          },
+          {
             "category_id": "ml_engineer",
             "role_name": "Machine Learning Engineer",
             "count": 1
@@ -3068,11 +3073,6 @@
           {
             "category_id": "analytics_engineer",
             "role_name": "Analytics Engineer",
-            "count": 1
-          },
-          {
-            "category_id": "bi_developer",
-            "role_name": "BI Developer / Analyst",
             "count": 1
           }
         ],
@@ -3160,6 +3160,11 @@
           "normalized_value": 80.2,
           "reference_year": 2025
         },
+        "peace_index": {
+          "raw_value": 1.41,
+          "normalized_value": 89.8,
+          "reference_year": 2024
+        },
         "gov_effectiveness": {
           "raw_value": 1.98,
           "normalized_value": 98.0,
@@ -3170,19 +3175,9 @@
           "normalized_value": 95.5,
           "reference_year": 2024
         },
-        "peace_index": {
-          "raw_value": 1.41,
-          "normalized_value": 89.8,
-          "reference_year": 2024
-        },
         "gdp_pc_ppp": {
           "raw_value": 156542.08,
           "normalized_value": 100.0,
-          "reference_year": 2025
-        },
-        "political_stability": {
-          "raw_value": 1.19,
-          "normalized_value": 90.9,
           "reference_year": 2025
         },
         "population": {
@@ -3193,6 +3188,11 @@
         "rule_of_law": {
           "raw_value": 1.71,
           "normalized_value": 93.2,
+          "reference_year": 2025
+        },
+        "political_stability": {
+          "raw_value": 1.19,
+          "normalized_value": 90.9,
           "reference_year": 2025
         }
       }
@@ -3218,31 +3218,31 @@
         "active_jobs": 73,
         "hiring_companies": 46,
         "top_roles": [
-          "ai_developer",
           "ml_engineer",
-          "data_engineer",
+          "ai_developer",
           "data_analyst",
+          "data_engineer",
           "data_scientist"
         ],
         "roles_breakdown": [
-          {
-            "category_id": "ai_developer",
-            "role_name": "AI Developer",
-            "count": 13
-          },
           {
             "category_id": "ml_engineer",
             "role_name": "Machine Learning Engineer",
             "count": 13
           },
           {
-            "category_id": "data_engineer",
-            "role_name": "Data Engineer",
-            "count": 12
+            "category_id": "ai_developer",
+            "role_name": "AI Developer",
+            "count": 13
           },
           {
             "category_id": "data_analyst",
             "role_name": "Data Analyst",
+            "count": 12
+          },
+          {
+            "category_id": "data_engineer",
+            "role_name": "Data Engineer",
             "count": 12
           },
           {
@@ -3276,13 +3276,13 @@
             "count": 1
           },
           {
-            "category_id": "research_scientist",
-            "role_name": "Research Scientist (AI/ML)",
+            "category_id": "ai_product_manager",
+            "role_name": "AI / Data Product Manager",
             "count": 1
           },
           {
-            "category_id": "ai_product_manager",
-            "role_name": "AI / Data Product Manager",
+            "category_id": "research_scientist",
+            "role_name": "Research Scientist (AI/ML)",
             "count": 1
           }
         ],
@@ -3355,11 +3355,6 @@
         ]
       },
       "indicators": {
-        "political_stability": {
-          "raw_value": 0.53,
-          "normalized_value": 74.5,
-          "reference_year": 2025
-        },
         "population": {
           "raw_value": 18087633.0,
           "normalized_value": 5.3,
@@ -3368,6 +3363,11 @@
         "rule_of_law": {
           "raw_value": 1.67,
           "normalized_value": 92.4,
+          "reference_year": 2025
+        },
+        "political_stability": {
+          "raw_value": 0.53,
+          "normalized_value": 74.5,
           "reference_year": 2025
         },
         "life_expectancy": {
@@ -3432,7 +3432,7 @@
           "data_scientist",
           "data_engineer",
           "llm_engineer",
-          "data_science_manager"
+          "data_analyst"
         ],
         "roles_breakdown": [
           {
@@ -3456,11 +3456,6 @@
             "count": 1
           },
           {
-            "category_id": "data_science_manager",
-            "role_name": "Data Science / ML Manager",
-            "count": 1
-          },
-          {
             "category_id": "data_analyst",
             "role_name": "Data Analyst",
             "count": 1
@@ -3474,21 +3469,26 @@
             "category_id": "analytics_engineer",
             "role_name": "Analytics Engineer",
             "count": 1
+          },
+          {
+            "category_id": "data_science_manager",
+            "role_name": "Data Science / ML Manager",
+            "count": 1
           }
         ],
         "sample_jobs": [
           {
-            "job_id": "a23f40403961621e",
-            "title": "Data Science Manager — Digital Transformation",
+            "job_id": "d5268b7f3f32eadb",
+            "title": "Data Scientist",
             "company_name": "Otis Worldwide",
             "is_sp500": true,
             "city": null,
-            "seniority": "Lead / Manager",
+            "seniority": "Mid",
             "work_mode": "Unspecified",
-            "url": "https://otis.wd504.myworkdayjobs.com/en-US/REC_Ext_Gateway/job/LOC3344-7-8F-Building-N1-Fusion-New-Bund-No-8-Lane-131-New-Bund-Avenue-Pudong-Shanghai-China/Sr-Mgr--DataSci---Anlytc_20167502-1",
+            "url": "https://otis.wd504.myworkdayjobs.com/en-US/REC_Ext_Gateway/job/LOC3344-7-8F-Building-N1-Fusion-New-Bund-No-8-Lane-131-New-Bund-Avenue-Pudong-Shanghai-China/Data-Scientist_20169666",
             "posted_at": "2026-11-07",
-            "category_id": "data_science_manager",
-            "role_name": "Data Science / ML Manager"
+            "category_id": "data_scientist",
+            "role_name": "Data Scientist"
           },
           {
             "job_id": "bd69ad04de7d0c7d",
@@ -3517,17 +3517,17 @@
             "role_name": "Data Scientist"
           },
           {
-            "job_id": "d9c5e877f49e2734",
-            "title": "Analytics Engineer",
-            "company_name": "Stingray Marine Solutions AS",
+            "job_id": "2a440c3a48a1cf2d",
+            "title": "Senior Analytics & AI Engineer",
+            "company_name": "TGS",
             "is_sp500": false,
             "city": null,
-            "seniority": "Mid",
+            "seniority": "Senior",
             "work_mode": "Unspecified",
-            "url": "https://no.linkedin.com/jobs/view/analytics-engineer-at-stingray-marine-solutions-as-4479360622?position=2&pageNum=0&refId=xnq5CzioSXPnSGhSHsb5VQ%3D%3D&trackingId=tc9HmcU8Y%2Brpm48gAzatlw%3D%3D",
+            "url": "https://no.linkedin.com/jobs/view/senior-analytics-ai-engineer-at-tgs-4484364839?position=4&pageNum=0&refId=wi85ctmsLPsBe%2Ff9Rz12oQ%3D%3D&trackingId=dG1yCUkSxqsRzicWzfTN0Q%3D%3D",
             "posted_at": "2026-11-02",
-            "category_id": "analytics_engineer",
-            "role_name": "Analytics Engineer"
+            "category_id": "ai_developer",
+            "role_name": "AI Developer"
           },
           {
             "job_id": "92d239a19f1d7d1e",
@@ -3545,11 +3545,6 @@
         ]
       },
       "indicators": {
-        "peace_index": {
-          "raw_value": 1.55,
-          "normalized_value": 82.9,
-          "reference_year": 2024
-        },
         "population": {
           "raw_value": 5610870.0,
           "normalized_value": 1.6,
@@ -3559,6 +3554,11 @@
           "raw_value": 1.94,
           "normalized_value": 99.1,
           "reference_year": 2025
+        },
+        "peace_index": {
+          "raw_value": 1.55,
+          "normalized_value": 82.9,
+          "reference_year": 2024
         },
         "political_stability": {
           "raw_value": 1.08,
@@ -3666,13 +3666,13 @@
             "count": 5
           },
           {
-            "category_id": "unmapped",
-            "role_name": "Other Data/AI",
+            "category_id": "data_science_manager",
+            "role_name": "Data Science / ML Manager",
             "count": 4
           },
           {
-            "category_id": "data_science_manager",
-            "role_name": "Data Science / ML Manager",
+            "category_id": "unmapped",
+            "role_name": "Other Data/AI",
             "count": 4
           },
           {
@@ -3708,6 +3708,19 @@
         ],
         "sample_jobs": [
           {
+            "job_id": "a3ffe95aba179912",
+            "title": "Data Engineer (Data Engineering Team)",
+            "company_name": "Capital One",
+            "is_sp500": true,
+            "city": null,
+            "seniority": "Mid",
+            "work_mode": "Unspecified",
+            "url": "https://jobs.lever.co/capital/6a5c096f-2cc6-41bc-ba4e-436b2655add1",
+            "posted_at": null,
+            "category_id": "data_engineer",
+            "role_name": "Data Engineer"
+          },
+          {
             "job_id": "0a2aee583e63c3dc",
             "title": "Site Reliability Operations Analyst",
             "company_name": "Palantir Technologies",
@@ -3716,19 +3729,6 @@
             "seniority": "Mid",
             "work_mode": "Unspecified",
             "url": "https://jobs.lever.co/palantir/2da72708-a7b0-4178-9cb2-6b009eb6e07f",
-            "posted_at": null,
-            "category_id": "data_analyst",
-            "role_name": "Data Analyst"
-          },
-          {
-            "job_id": "bf3d15cb32a7793d",
-            "title": "Marketing Analyst",
-            "company_name": "Capital One",
-            "is_sp500": true,
-            "city": null,
-            "seniority": "Mid",
-            "work_mode": "Unspecified",
-            "url": "https://jobs.lever.co/capital/05d40f70-e065-4066-afe5-26cd13411083",
             "posted_at": null,
             "category_id": "data_analyst",
             "role_name": "Data Analyst"
@@ -3975,11 +3975,6 @@
           "normalized_value": 40.4,
           "reference_year": 2025
         },
-        "peace_index": {
-          "raw_value": 1.37,
-          "normalized_value": 91.7,
-          "reference_year": 2024
-        },
         "gov_effectiveness": {
           "raw_value": 1.02,
           "normalized_value": 74.5,
@@ -3989,6 +3984,21 @@
           "raw_value": 96.0,
           "normalized_value": 100.0,
           "reference_year": 2024
+        },
+        "peace_index": {
+          "raw_value": 1.37,
+          "normalized_value": 91.7,
+          "reference_year": 2024
+        },
+        "population": {
+          "raw_value": 10804871.0,
+          "normalized_value": 3.2,
+          "reference_year": 2025
+        },
+        "rule_of_law": {
+          "raw_value": 1.05,
+          "normalized_value": 76.7,
+          "reference_year": 2025
         },
         "life_expectancy": {
           "raw_value": 82.38,
@@ -4008,16 +4018,6 @@
         "political_stability": {
           "raw_value": 0.7,
           "normalized_value": 78.7,
-          "reference_year": 2025
-        },
-        "population": {
-          "raw_value": 10804871.0,
-          "normalized_value": 3.2,
-          "reference_year": 2025
-        },
-        "rule_of_law": {
-          "raw_value": 1.05,
-          "normalized_value": 76.7,
           "reference_year": 2025
         }
       }
@@ -4046,8 +4046,8 @@
           "ai_developer",
           "data_engineer",
           "ml_engineer",
-          "data_analyst",
-          "data_scientist"
+          "data_scientist",
+          "data_analyst"
         ],
         "roles_breakdown": [
           {
@@ -4066,13 +4066,13 @@
             "count": 6
           },
           {
-            "category_id": "data_analyst",
-            "role_name": "Data Analyst",
+            "category_id": "data_scientist",
+            "role_name": "Data Scientist",
             "count": 5
           },
           {
-            "category_id": "data_scientist",
-            "role_name": "Data Scientist",
+            "category_id": "data_analyst",
+            "role_name": "Data Analyst",
             "count": 5
           },
           {
@@ -4127,9 +4127,9 @@
             "role_name": "Data Engineer"
           },
           {
-            "job_id": "fa54ebe2bb553017",
+            "job_id": "bbfc31c654867b92",
             "title": "AI & Cloud Application Security Specialist - Tires",
-            "company_name": "Continental",
+            "company_name": "Continental Romania (Timișoara, Sibiu, Iași)",
             "is_sp500": false,
             "city": null,
             "seniority": "Mid",
@@ -4140,9 +4140,9 @@
             "role_name": "AI Developer"
           },
           {
-            "job_id": "df1b749a4176532e",
+            "job_id": "fa54ebe2bb553017",
             "title": "AI & Cloud Application Security Specialist - Tires",
-            "company_name": "Continental Mabor (Lousado)",
+            "company_name": "Continental",
             "is_sp500": false,
             "city": null,
             "seniority": "Mid",
@@ -4155,11 +4155,6 @@
         ]
       },
       "indicators": {
-        "political_stability": {
-          "raw_value": 0.21,
-          "normalized_value": 66.4,
-          "reference_year": 2025
-        },
         "population": {
           "raw_value": 19020271.0,
           "normalized_value": 5.6,
@@ -4168,6 +4163,11 @@
         "rule_of_law": {
           "raw_value": 0.3,
           "normalized_value": 58.0,
+          "reference_year": 2025
+        },
+        "political_stability": {
+          "raw_value": 0.21,
+          "normalized_value": 66.4,
           "reference_year": 2025
         },
         "life_expectancy": {
@@ -4266,13 +4266,13 @@
             "count": 2
           },
           {
-            "category_id": "ai_product_manager",
-            "role_name": "AI / Data Product Manager",
+            "category_id": "data_architect",
+            "role_name": "Data Architect",
             "count": 1
           },
           {
-            "category_id": "data_architect",
-            "role_name": "Data Architect",
+            "category_id": "ai_product_manager",
+            "role_name": "AI / Data Product Manager",
             "count": 1
           }
         ],
@@ -4355,6 +4355,11 @@
           "normalized_value": 63.7,
           "reference_year": 2025
         },
+        "gdp_pc_ppp": {
+          "raw_value": 49308.7,
+          "normalized_value": 37.4,
+          "reference_year": 2025
+        },
         "life_expectancy": {
           "raw_value": 78.37,
           "normalized_value": 78.3,
@@ -4370,9 +4375,9 @@
           "normalized_value": 94.7,
           "reference_year": 2025
         },
-        "gdp_pc_ppp": {
-          "raw_value": 49308.7,
-          "normalized_value": 37.4,
+        "political_stability": {
+          "raw_value": 0.67,
+          "normalized_value": 77.8,
           "reference_year": 2025
         },
         "population": {
@@ -4383,11 +4388,6 @@
         "rule_of_law": {
           "raw_value": 0.45,
           "normalized_value": 61.8,
-          "reference_year": 2025
-        },
-        "political_stability": {
-          "raw_value": 0.67,
-          "normalized_value": 77.8,
           "reference_year": 2025
         },
         "peace_index": {
@@ -4511,17 +4511,17 @@
             "role_name": "Machine Learning Engineer"
           },
           {
-            "job_id": "7f6a2ef8f0b36612",
-            "title": "Data Product Manager - OpenData Europe",
+            "job_id": "bcac162736de668e",
+            "title": "Senior Data Analyst",
             "company_name": "Veeva Systems",
             "is_sp500": true,
             "city": null,
-            "seniority": "Lead / Manager",
+            "seniority": "Senior",
             "work_mode": "Remote",
-            "url": "https://jobs.lever.co/veeva/08fd90c3-4e5f-4af5-92a3-5111261f9ec3",
+            "url": "https://jobs.lever.co/veeva/4dc699df-99a6-46de-8c16-3e5a899157ae",
             "posted_at": null,
-            "category_id": "ai_product_manager",
-            "role_name": "AI / Data Product Manager"
+            "category_id": "data_analyst",
+            "role_name": "Data Analyst"
           },
           {
             "job_id": "a5668f26949b2a51",
@@ -4580,6 +4580,11 @@
           "normalized_value": 65.7,
           "reference_year": 2025
         },
+        "gdp_pc_ppp": {
+          "raw_value": 59867.69,
+          "normalized_value": 45.7,
+          "reference_year": 2025
+        },
         "ease_of_relocation": {
           "raw_value": 98.0,
           "normalized_value": 100.0,
@@ -4589,11 +4594,6 @@
           "raw_value": 1.13,
           "normalized_value": 77.2,
           "reference_year": 2025
-        },
-        "peace_index": {
-          "raw_value": 1.58,
-          "normalized_value": 81.5,
-          "reference_year": 2024
         },
         "life_expectancy": {
           "raw_value": 83.89,
@@ -4610,10 +4610,10 @@
           "normalized_value": 83.1,
           "reference_year": 2025
         },
-        "gdp_pc_ppp": {
-          "raw_value": 59867.69,
-          "normalized_value": 45.7,
-          "reference_year": 2025
+        "peace_index": {
+          "raw_value": 1.58,
+          "normalized_value": 81.5,
+          "reference_year": 2024
         }
       }
     },
@@ -4642,7 +4642,7 @@
           "ml_engineer",
           "data_scientist",
           "ai_developer",
-          "research_scientist"
+          "data_analyst"
         ],
         "roles_breakdown": [
           {
@@ -4671,13 +4671,13 @@
             "count": 6
           },
           {
-            "category_id": "research_scientist",
-            "role_name": "Research Scientist (AI/ML)",
+            "category_id": "data_analyst",
+            "role_name": "Data Analyst",
             "count": 4
           },
           {
-            "category_id": "data_analyst",
-            "role_name": "Data Analyst",
+            "category_id": "research_scientist",
+            "role_name": "Research Scientist (AI/ML)",
             "count": 4
           },
           {
@@ -4770,11 +4770,6 @@
           "normalized_value": 55.5,
           "reference_year": 2025
         },
-        "peace_index": {
-          "raw_value": 1.56,
-          "normalized_value": 82.4,
-          "reference_year": 2024
-        },
         "ease_of_relocation": {
           "raw_value": 93.0,
           "normalized_value": 97.8,
@@ -4783,6 +4778,21 @@
         "gov_effectiveness": {
           "raw_value": 1.82,
           "normalized_value": 94.1,
+          "reference_year": 2025
+        },
+        "peace_index": {
+          "raw_value": 1.56,
+          "normalized_value": 82.4,
+          "reference_year": 2024
+        },
+        "population": {
+          "raw_value": 10596620.0,
+          "normalized_value": 3.1,
+          "reference_year": 2025
+        },
+        "rule_of_law": {
+          "raw_value": 1.74,
+          "normalized_value": 94.0,
           "reference_year": 2025
         },
         "life_expectancy": {
@@ -4803,16 +4813,6 @@
         "political_stability": {
           "raw_value": 0.85,
           "normalized_value": 82.5,
-          "reference_year": 2025
-        },
-        "population": {
-          "raw_value": 10596620.0,
-          "normalized_value": 3.1,
-          "reference_year": 2025
-        },
-        "rule_of_law": {
-          "raw_value": 1.74,
-          "normalized_value": 94.0,
           "reference_year": 2025
         }
       }
@@ -4881,13 +4881,13 @@
             "count": 4
           },
           {
-            "category_id": "bi_analytics_manager",
-            "role_name": "BI / Analytics Manager",
+            "category_id": "data_architect",
+            "role_name": "Data Architect",
             "count": 2
           },
           {
-            "category_id": "data_architect",
-            "role_name": "Data Architect",
+            "category_id": "bi_analytics_manager",
+            "role_name": "BI / Analytics Manager",
             "count": 2
           },
           {
@@ -5040,8 +5040,8 @@
         "composite_score": 69.8
       },
       "tech_market": {
-        "active_jobs": 669,
-        "hiring_companies": 194,
+        "active_jobs": 683,
+        "hiring_companies": 201,
         "top_roles": [
           "data_analyst",
           "ai_developer",
@@ -5053,7 +5053,7 @@
           {
             "category_id": "data_analyst",
             "role_name": "Data Analyst",
-            "count": 185
+            "count": 196
           },
           {
             "category_id": "ai_developer",
@@ -5068,7 +5068,7 @@
           {
             "category_id": "data_scientist",
             "role_name": "Data Scientist",
-            "count": 71
+            "count": 72
           },
           {
             "category_id": "research_scientist",
@@ -5078,7 +5078,7 @@
           {
             "category_id": "data_engineer",
             "role_name": "Data Engineer",
-            "count": 56
+            "count": 58
           },
           {
             "category_id": "ai_product_manager",
@@ -5106,23 +5106,23 @@
             "count": 18
           },
           {
-            "category_id": "bi_analytics_manager",
-            "role_name": "BI / Analytics Manager",
-            "count": 10
-          },
-          {
             "category_id": "unmapped",
             "role_name": "Other Data/AI",
             "count": 10
           },
           {
-            "category_id": "team_lead_data_ai",
-            "role_name": "Team Lead (Data/AI)",
-            "count": 8
+            "category_id": "bi_analytics_manager",
+            "role_name": "BI / Analytics Manager",
+            "count": 10
           },
           {
             "category_id": "bi_developer",
             "role_name": "BI Developer / Analyst",
+            "count": 8
+          },
+          {
+            "category_id": "team_lead_data_ai",
+            "role_name": "Team Lead (Data/AI)",
             "count": 8
           },
           {
@@ -5169,19 +5169,6 @@
             "role_name": "Machine Learning Engineer"
           },
           {
-            "job_id": "094cde6e0d94c4e9",
-            "title": "Site Reliability Operations Analyst - UK Government",
-            "company_name": "Palantir Technologies",
-            "is_sp500": true,
-            "city": null,
-            "seniority": "Mid",
-            "work_mode": "Unspecified",
-            "url": "https://jobs.lever.co/palantir/98bbe55b-f591-4272-a486-d82404d2c576",
-            "posted_at": null,
-            "category_id": "data_analyst",
-            "role_name": "Data Analyst"
-          },
-          {
             "job_id": "e4aaff8ed1a9dddd",
             "title": "Data Product Manager - OpenData Europe",
             "company_name": "Veeva Systems",
@@ -5193,6 +5180,19 @@
             "posted_at": null,
             "category_id": "ai_product_manager",
             "role_name": "AI / Data Product Manager"
+          },
+          {
+            "job_id": "094cde6e0d94c4e9",
+            "title": "Site Reliability Operations Analyst - UK Government",
+            "company_name": "Palantir Technologies",
+            "is_sp500": true,
+            "city": null,
+            "seniority": "Mid",
+            "work_mode": "Unspecified",
+            "url": "https://jobs.lever.co/palantir/98bbe55b-f591-4272-a486-d82404d2c576",
+            "posted_at": null,
+            "category_id": "data_analyst",
+            "role_name": "Data Analyst"
           },
           {
             "job_id": "557fddff8eb795f5",
@@ -5245,6 +5245,11 @@
           "normalized_value": 58.3,
           "reference_year": 2018
         },
+        "political_stability": {
+          "raw_value": 0.29,
+          "normalized_value": 68.5,
+          "reference_year": 2025
+        },
         "population": {
           "raw_value": 69487000.0,
           "normalized_value": 20.5,
@@ -5253,11 +5258,6 @@
         "rule_of_law": {
           "raw_value": 1.27,
           "normalized_value": 82.3,
-          "reference_year": 2025
-        },
-        "political_stability": {
-          "raw_value": 0.29,
-          "normalized_value": 68.5,
           "reference_year": 2025
         }
       }
@@ -5280,8 +5280,8 @@
         "composite_score": 63.8
       },
       "tech_market": {
-        "active_jobs": 7599,
-        "hiring_companies": 891,
+        "active_jobs": 7601,
+        "hiring_companies": 893,
         "top_roles": [
           "data_analyst",
           "ai_developer",
@@ -5293,7 +5293,7 @@
           {
             "category_id": "data_analyst",
             "role_name": "Data Analyst",
-            "count": 2682
+            "count": 2684
           },
           {
             "category_id": "ai_developer",
@@ -5407,47 +5407,21 @@
             "work_mode": "Hybrid",
             "url": "https://job-boards.greenhouse.io/hasbro/jobs/4384410009",
             "posted_at": "2026-11-08",
-            "category_id": "data_engineer",
-            "role_name": "Data Engineer"
+            "category_id": "ai_developer",
+            "role_name": "AI Developer"
           },
           {
-            "job_id": "cf0ecfbf6fdd640a",
-            "title": "Billing Operations Analyst 1",
+            "job_id": "01aa6bed3c8f36ba",
+            "title": "Staff Software Engineer (L4) Data Platform",
             "company_name": "Twilio",
             "is_sp500": true,
             "city": null,
-            "seniority": "Mid",
+            "seniority": "Staff / Principal",
             "work_mode": "Remote",
-            "url": "https://job-boards.greenhouse.io/twilio/jobs/8261245",
+            "url": "https://job-boards.greenhouse.io/twilio/jobs/7782805",
             "posted_at": "2026-11-06",
-            "category_id": "data_analyst",
-            "role_name": "Data Analyst"
-          },
-          {
-            "job_id": "756c273b92148d90",
-            "title": "Senior Machine Learning Engineer, Ads Forecasting & Scenarios",
-            "company_name": "Reddit",
-            "is_sp500": true,
-            "city": null,
-            "seniority": "Senior",
-            "work_mode": "Remote",
-            "url": "https://job-boards.greenhouse.io/reddit/jobs/8029120",
-            "posted_at": "2026-11-06",
-            "category_id": "ml_engineer",
-            "role_name": "Machine Learning Engineer"
-          },
-          {
-            "job_id": "0feeec3662c28ab1",
-            "title": "AI Research Scientist II",
-            "company_name": "Axon Enterprise",
-            "is_sp500": true,
-            "city": null,
-            "seniority": "Mid",
-            "work_mode": "Hybrid",
-            "url": "https://job-boards.greenhouse.io/axon/jobs/7976602003",
-            "posted_at": "2026-11-06",
-            "category_id": "research_scientist",
-            "role_name": "Research Scientist (AI/ML)"
+            "category_id": "data_engineer",
+            "role_name": "Data Engineer"
           },
           {
             "job_id": "580a9a0ebdff88f8",
@@ -5461,6 +5435,32 @@
             "posted_at": "2026-11-06",
             "category_id": "ai_developer",
             "role_name": "AI Developer"
+          },
+          {
+            "job_id": "a8fb4202c8258e7d",
+            "title": "Lead Forward Deployed Engineer (AI Enablement)",
+            "company_name": "Reddit",
+            "is_sp500": true,
+            "city": null,
+            "seniority": "Lead / Manager",
+            "work_mode": "Remote",
+            "url": "https://job-boards.greenhouse.io/reddit/jobs/8301736",
+            "posted_at": "2026-11-06",
+            "category_id": "ai_developer",
+            "role_name": "AI Developer"
+          },
+          {
+            "job_id": "6f8c6d9c6048e5cf",
+            "title": "Senior Machine Learning Engineer",
+            "company_name": "Axon Enterprise",
+            "is_sp500": true,
+            "city": null,
+            "seniority": "Senior",
+            "work_mode": "Hybrid",
+            "url": "https://job-boards.greenhouse.io/axon/jobs/7888103003",
+            "posted_at": "2026-11-06",
+            "category_id": "ml_engineer",
+            "role_name": "Machine Learning Engineer"
           }
         ]
       },
@@ -5468,6 +5468,11 @@
         "life_expectancy": {
           "raw_value": 78.89,
           "normalized_value": 79.9,
+          "reference_year": 2024
+        },
+        "peace_index": {
+          "raw_value": 2.62,
+          "normalized_value": 31.2,
           "reference_year": 2024
         },
         "ease_of_relocation": {
@@ -5480,19 +5485,9 @@
           "normalized_value": 78.7,
           "reference_year": 2025
         },
-        "peace_index": {
-          "raw_value": 2.62,
-          "normalized_value": 31.2,
-          "reference_year": 2024
-        },
         "gdp_pc_ppp": {
           "raw_value": 90026.52,
           "normalized_value": 69.2,
-          "reference_year": 2025
-        },
-        "political_stability": {
-          "raw_value": -0.3,
-          "normalized_value": 53.7,
           "reference_year": 2025
         },
         "population": {
@@ -5503,6 +5498,11 @@
         "rule_of_law": {
           "raw_value": 0.79,
           "normalized_value": 70.3,
+          "reference_year": 2025
+        },
+        "political_stability": {
+          "raw_value": -0.3,
+          "normalized_value": 53.7,
           "reference_year": 2025
         }
       }
@@ -5582,11 +5582,6 @@
       },
       "tech_market": null,
       "indicators": {
-        "political_stability": {
-          "raw_value": 0.09,
-          "normalized_value": 63.5,
-          "reference_year": 2025
-        },
         "population": {
           "raw_value": 2349580.0,
           "normalized_value": 0.7,
@@ -5595,6 +5590,11 @@
         "rule_of_law": {
           "raw_value": -0.04,
           "normalized_value": 49.6,
+          "reference_year": 2025
+        },
+        "political_stability": {
+          "raw_value": 0.09,
+          "normalized_value": 63.5,
           "reference_year": 2025
         },
         "life_expectancy": {
@@ -5668,6 +5668,11 @@
           "normalized_value": 13.5,
           "reference_year": 2025
         },
+        "political_stability": {
+          "raw_value": -0.66,
+          "normalized_value": 44.8,
+          "reference_year": 2025
+        },
         "population": {
           "raw_value": 47435312.0,
           "normalized_value": 14.0,
@@ -5676,11 +5681,6 @@
         "rule_of_law": {
           "raw_value": -0.65,
           "normalized_value": 34.3,
-          "reference_year": 2025
-        },
-        "political_stability": {
-          "raw_value": -0.66,
-          "normalized_value": 44.8,
           "reference_year": 2025
         }
       }
@@ -5770,16 +5770,6 @@
           "normalized_value": 66.5,
           "reference_year": 2024
         },
-        "life_expectancy": {
-          "raw_value": 84.19,
-          "normalized_value": 97.0,
-          "reference_year": 2024
-        },
-        "political_stability": {
-          "raw_value": 1.56,
-          "normalized_value": 100.0,
-          "reference_year": 2025
-        },
         "population": {
           "raw_value": 82904.0,
           "normalized_value": 0.0,
@@ -5788,6 +5778,16 @@
         "rule_of_law": {
           "raw_value": 1.58,
           "normalized_value": 90.0,
+          "reference_year": 2025
+        },
+        "life_expectancy": {
+          "raw_value": 84.19,
+          "normalized_value": 97.0,
+          "reference_year": 2024
+        },
+        "political_stability": {
+          "raw_value": 1.56,
+          "normalized_value": 100.0,
           "reference_year": 2025
         }
       }
@@ -5887,6 +5887,11 @@
           "normalized_value": 76.3,
           "reference_year": 2024
         },
+        "political_stability": {
+          "raw_value": 1.21,
+          "normalized_value": 91.3,
+          "reference_year": 2025
+        },
         "population": {
           "raw_value": 94209.0,
           "normalized_value": 0.0,
@@ -5895,11 +5900,6 @@
         "rule_of_law": {
           "raw_value": 0.57,
           "normalized_value": 64.8,
-          "reference_year": 2025
-        },
-        "political_stability": {
-          "raw_value": 1.21,
-          "normalized_value": 91.3,
           "reference_year": 2025
         }
       }
@@ -5984,6 +5984,11 @@
           "normalized_value": 50.5,
           "reference_year": 2025
         },
+        "life_expectancy": {
+          "raw_value": 78.32,
+          "normalized_value": 78.1,
+          "reference_year": 2024
+        },
         "population": {
           "raw_value": 3086700.0,
           "normalized_value": 0.9,
@@ -5994,6 +5999,11 @@
           "normalized_value": 43.9,
           "reference_year": 2025
         },
+        "gdp_pc_ppp": {
+          "raw_value": 24754.21,
+          "normalized_value": 18.3,
+          "reference_year": 2025
+        },
         "gov_effectiveness": {
           "raw_value": -0.24,
           "normalized_value": 43.6,
@@ -6002,16 +6012,6 @@
         "ease_of_relocation": {
           "raw_value": 65.0,
           "normalized_value": 66.5,
-          "reference_year": 2024
-        },
-        "gdp_pc_ppp": {
-          "raw_value": 24754.21,
-          "normalized_value": 18.3,
-          "reference_year": 2025
-        },
-        "life_expectancy": {
-          "raw_value": 78.32,
-          "normalized_value": 78.1,
           "reference_year": 2024
         }
       }
@@ -6050,6 +6050,11 @@
           "normalized_value": 92.7,
           "reference_year": 2025
         },
+        "gdp_pc_ppp": {
+          "raw_value": 51712.15,
+          "normalized_value": 39.3,
+          "reference_year": 2024
+        },
         "gov_effectiveness": {
           "raw_value": 0.9,
           "normalized_value": 71.7,
@@ -6063,11 +6068,6 @@
         "life_expectancy": {
           "raw_value": 76.5,
           "normalized_value": 72.2,
-          "reference_year": 2024
-        },
-        "gdp_pc_ppp": {
-          "raw_value": 51712.15,
-          "normalized_value": 39.3,
           "reference_year": 2024
         }
       }
@@ -6106,21 +6106,6 @@
           "normalized_value": 87.0,
           "reference_year": 2025
         },
-        "gdp_pc_ppp": {
-          "raw_value": 71934.4,
-          "normalized_value": 55.1,
-          "reference_year": 2025
-        },
-        "life_expectancy": {
-          "raw_value": 83.05,
-          "normalized_value": 93.4,
-          "reference_year": 2024
-        },
-        "peace_index": {
-          "raw_value": 1.57,
-          "normalized_value": 81.9,
-          "reference_year": 2024
-        },
         "gov_effectiveness": {
           "raw_value": 1.75,
           "normalized_value": 92.5,
@@ -6129,6 +6114,21 @@
         "ease_of_relocation": {
           "raw_value": 72.0,
           "normalized_value": 74.3,
+          "reference_year": 2024
+        },
+        "gdp_pc_ppp": {
+          "raw_value": 71934.4,
+          "normalized_value": 55.1,
+          "reference_year": 2025
+        },
+        "peace_index": {
+          "raw_value": 1.57,
+          "normalized_value": 81.9,
+          "reference_year": 2024
+        },
+        "life_expectancy": {
+          "raw_value": 83.05,
+          "normalized_value": 93.4,
           "reference_year": 2024
         }
       }
@@ -6335,16 +6335,6 @@
           "normalized_value": 27.8,
           "reference_year": 2025
         },
-        "gdp_pc_ppp": {
-          "raw_value": 10153.71,
-          "normalized_value": 6.9,
-          "reference_year": 2025
-        },
-        "life_expectancy": {
-          "raw_value": 74.93,
-          "normalized_value": 67.2,
-          "reference_year": 2024
-        },
         "gov_effectiveness": {
           "raw_value": -0.44,
           "normalized_value": 38.5,
@@ -6353,6 +6343,16 @@
         "ease_of_relocation": {
           "raw_value": 45.0,
           "normalized_value": 44.1,
+          "reference_year": 2024
+        },
+        "gdp_pc_ppp": {
+          "raw_value": 10153.71,
+          "normalized_value": 6.9,
+          "reference_year": 2025
+        },
+        "life_expectancy": {
+          "raw_value": 74.93,
+          "normalized_value": 67.2,
           "reference_year": 2024
         }
       }
@@ -6391,16 +6391,6 @@
           "normalized_value": 49.7,
           "reference_year": 2024
         },
-        "life_expectancy": {
-          "raw_value": 76.33,
-          "normalized_value": 71.7,
-          "reference_year": 2024
-        },
-        "political_stability": {
-          "raw_value": 1.28,
-          "normalized_value": 93.1,
-          "reference_year": 2025
-        },
         "population": {
           "raw_value": 282623.0,
           "normalized_value": 0.1,
@@ -6409,6 +6399,16 @@
         "rule_of_law": {
           "raw_value": 0.72,
           "normalized_value": 68.5,
+          "reference_year": 2025
+        },
+        "life_expectancy": {
+          "raw_value": 76.33,
+          "normalized_value": 71.7,
+          "reference_year": 2024
+        },
+        "political_stability": {
+          "raw_value": 1.28,
+          "normalized_value": 93.1,
           "reference_year": 2025
         }
       }
@@ -6508,6 +6508,11 @@
           "normalized_value": 10.7,
           "reference_year": 2025
         },
+        "political_stability": {
+          "raw_value": 0.81,
+          "normalized_value": 81.4,
+          "reference_year": 2025
+        },
         "population": {
           "raw_value": 422924.0,
           "normalized_value": 0.1,
@@ -6516,11 +6521,6 @@
         "rule_of_law": {
           "raw_value": -0.37,
           "normalized_value": 41.3,
-          "reference_year": 2025
-        },
-        "political_stability": {
-          "raw_value": 0.81,
-          "normalized_value": 81.4,
           "reference_year": 2025
         }
       }
@@ -6564,6 +6564,11 @@
           "normalized_value": 22.1,
           "reference_year": 2024
         },
+        "political_stability": {
+          "raw_value": -0.4,
+          "normalized_value": 51.3,
+          "reference_year": 2025
+        },
         "population": {
           "raw_value": 14814460.0,
           "normalized_value": 4.4,
@@ -6572,11 +6577,6 @@
         "rule_of_law": {
           "raw_value": -0.46,
           "normalized_value": 39.2,
-          "reference_year": 2025
-        },
-        "political_stability": {
-          "raw_value": -0.4,
-          "normalized_value": 51.3,
           "reference_year": 2025
         }
       }
@@ -6610,15 +6610,20 @@
           "normalized_value": 49.7,
           "reference_year": 2024
         },
+        "gdp_pc_ppp": {
+          "raw_value": 118727.97,
+          "normalized_value": 91.5,
+          "reference_year": 2024
+        },
         "life_expectancy": {
           "raw_value": 82.49,
           "normalized_value": 91.5,
           "reference_year": 2024
         },
-        "gdp_pc_ppp": {
-          "raw_value": 118727.97,
-          "normalized_value": 91.5,
-          "reference_year": 2024
+        "political_stability": {
+          "raw_value": 1.08,
+          "normalized_value": 88.1,
+          "reference_year": 2025
         },
         "population": {
           "raw_value": 64555.0,
@@ -6628,11 +6633,6 @@
         "rule_of_law": {
           "raw_value": 0.81,
           "normalized_value": 70.8,
-          "reference_year": 2025
-        },
-        "political_stability": {
-          "raw_value": 1.08,
-          "normalized_value": 88.1,
           "reference_year": 2025
         }
       }
@@ -6676,11 +6676,6 @@
           "normalized_value": 14.3,
           "reference_year": 2025
         },
-        "political_stability": {
-          "raw_value": 1.39,
-          "normalized_value": 95.9,
-          "reference_year": 2025
-        },
         "population": {
           "raw_value": 796682.0,
           "normalized_value": 0.2,
@@ -6689,6 +6684,11 @@
         "rule_of_law": {
           "raw_value": 0.72,
           "normalized_value": 68.6,
+          "reference_year": 2025
+        },
+        "political_stability": {
+          "raw_value": 1.39,
+          "normalized_value": 95.9,
           "reference_year": 2025
         }
       }
@@ -6727,11 +6727,6 @@
           "normalized_value": 49.7,
           "reference_year": 2024
         },
-        "political_stability": {
-          "raw_value": -0.16,
-          "normalized_value": 57.2,
-          "reference_year": 2025
-        },
         "life_expectancy": {
           "raw_value": 68.74,
           "normalized_value": 47.2,
@@ -6745,6 +6740,11 @@
         "rule_of_law": {
           "raw_value": -1.35,
           "normalized_value": 16.9,
+          "reference_year": 2025
+        },
+        "political_stability": {
+          "raw_value": -0.16,
+          "normalized_value": 57.2,
           "reference_year": 2025
         }
       }
@@ -6783,6 +6783,16 @@
           "normalized_value": 42.1,
           "reference_year": 2025
         },
+        "gov_effectiveness": {
+          "raw_value": -0.48,
+          "normalized_value": 37.7,
+          "reference_year": 2025
+        },
+        "ease_of_relocation": {
+          "raw_value": 65.0,
+          "normalized_value": 66.5,
+          "reference_year": 2024
+        },
         "gdp_pc_ppp": {
           "raw_value": 25814.26,
           "normalized_value": 19.1,
@@ -6796,16 +6806,6 @@
         "price_level_index": {
           "raw_value": 74.6,
           "normalized_value": 75.8,
-          "reference_year": 2024
-        },
-        "gov_effectiveness": {
-          "raw_value": -0.48,
-          "normalized_value": 37.7,
-          "reference_year": 2025
-        },
-        "ease_of_relocation": {
-          "raw_value": 65.0,
-          "normalized_value": 66.5,
           "reference_year": 2024
         }
       }
@@ -6834,6 +6834,11 @@
           "normalized_value": 88.1,
           "reference_year": 2025
         },
+        "life_expectancy": {
+          "raw_value": 69.29,
+          "normalized_value": 49.0,
+          "reference_year": 2024
+        },
         "population": {
           "raw_value": 2562122.0,
           "normalized_value": 0.8,
@@ -6844,6 +6849,11 @@
           "normalized_value": 57.6,
           "reference_year": 2025
         },
+        "gdp_pc_ppp": {
+          "raw_value": 20697.91,
+          "normalized_value": 15.2,
+          "reference_year": 2025
+        },
         "gov_effectiveness": {
           "raw_value": 0.43,
           "normalized_value": 60.1,
@@ -6852,16 +6862,6 @@
         "ease_of_relocation": {
           "raw_value": 40.0,
           "normalized_value": 38.6,
-          "reference_year": 2024
-        },
-        "gdp_pc_ppp": {
-          "raw_value": 20697.91,
-          "normalized_value": 15.2,
-          "reference_year": 2025
-        },
-        "life_expectancy": {
-          "raw_value": 69.29,
-          "normalized_value": 49.0,
           "reference_year": 2024
         }
       }
@@ -6888,10 +6888,10 @@
         "hiring_companies": 23,
         "top_roles": [
           "data_analyst",
-          "ml_engineer",
           "ai_developer",
-          "data_scientist",
-          "data_engineer"
+          "ml_engineer",
+          "data_engineer",
+          "data_scientist"
         ],
         "roles_breakdown": [
           {
@@ -6900,23 +6900,23 @@
             "count": 22
           },
           {
-            "category_id": "ml_engineer",
-            "role_name": "Machine Learning Engineer",
-            "count": 6
-          },
-          {
             "category_id": "ai_developer",
             "role_name": "AI Developer",
             "count": 6
           },
           {
-            "category_id": "data_scientist",
-            "role_name": "Data Scientist",
-            "count": 4
+            "category_id": "ml_engineer",
+            "role_name": "Machine Learning Engineer",
+            "count": 6
           },
           {
             "category_id": "data_engineer",
             "role_name": "Data Engineer",
+            "count": 4
+          },
+          {
+            "category_id": "data_scientist",
+            "role_name": "Data Scientist",
             "count": 4
           },
           {
@@ -7014,21 +7014,6 @@
           "normalized_value": 38.4,
           "reference_year": 2025
         },
-        "gdp_pc_ppp": {
-          "raw_value": 23433.29,
-          "normalized_value": 17.3,
-          "reference_year": 2025
-        },
-        "life_expectancy": {
-          "raw_value": 76.02,
-          "normalized_value": 70.7,
-          "reference_year": 2024
-        },
-        "peace_index": {
-          "raw_value": 2.59,
-          "normalized_value": 32.8,
-          "reference_year": 2024
-        },
         "gov_effectiveness": {
           "raw_value": -0.04,
           "normalized_value": 48.5,
@@ -7037,6 +7022,21 @@
         "ease_of_relocation": {
           "raw_value": 48.0,
           "normalized_value": 47.5,
+          "reference_year": 2024
+        },
+        "gdp_pc_ppp": {
+          "raw_value": 23433.29,
+          "normalized_value": 17.3,
+          "reference_year": 2025
+        },
+        "peace_index": {
+          "raw_value": 2.59,
+          "normalized_value": 32.8,
+          "reference_year": 2024
+        },
+        "life_expectancy": {
+          "raw_value": 76.02,
+          "normalized_value": 70.7,
           "reference_year": 2024
         }
       }
@@ -7101,6 +7101,11 @@
           "normalized_value": 98.5,
           "reference_year": 2025
         },
+        "life_expectancy": {
+          "raw_value": 75.5,
+          "normalized_value": 69.0,
+          "reference_year": 2024
+        },
         "population": {
           "raw_value": 466330.0,
           "normalized_value": 0.1,
@@ -7111,6 +7116,11 @@
           "normalized_value": 67.4,
           "reference_year": 2025
         },
+        "gdp_pc_ppp": {
+          "raw_value": 92429.93,
+          "normalized_value": 71.0,
+          "reference_year": 2025
+        },
         "gov_effectiveness": {
           "raw_value": 0.89,
           "normalized_value": 71.4,
@@ -7119,16 +7129,6 @@
         "ease_of_relocation": {
           "raw_value": 45.0,
           "normalized_value": 44.1,
-          "reference_year": 2024
-        },
-        "gdp_pc_ppp": {
-          "raw_value": 92429.93,
-          "normalized_value": 71.0,
-          "reference_year": 2025
-        },
-        "life_expectancy": {
-          "raw_value": 75.5,
-          "normalized_value": 69.0,
           "reference_year": 2024
         }
       }
@@ -7172,6 +7172,11 @@
           "normalized_value": 23.2,
           "reference_year": 2024
         },
+        "political_stability": {
+          "raw_value": -1.8,
+          "normalized_value": 16.5,
+          "reference_year": 2025
+        },
         "population": {
           "raw_value": 24074580.0,
           "normalized_value": 7.1,
@@ -7180,11 +7185,6 @@
         "rule_of_law": {
           "raw_value": -0.92,
           "normalized_value": 27.6,
-          "reference_year": 2025
-        },
-        "political_stability": {
-          "raw_value": -1.8,
-          "normalized_value": 16.5,
           "reference_year": 2025
         }
       }
@@ -7335,11 +7335,6 @@
           "normalized_value": 44.1,
           "reference_year": 2024
         },
-        "political_stability": {
-          "raw_value": 0.33,
-          "normalized_value": 69.6,
-          "reference_year": 2025
-        },
         "life_expectancy": {
           "raw_value": 70.82,
           "normalized_value": 53.9,
@@ -7353,6 +7348,11 @@
         "rule_of_law": {
           "raw_value": -1.05,
           "normalized_value": 24.3,
+          "reference_year": 2025
+        },
+        "political_stability": {
+          "raw_value": 0.33,
+          "normalized_value": 69.6,
           "reference_year": 2025
         }
       }
@@ -7391,16 +7391,6 @@
           "normalized_value": 20.7,
           "reference_year": 2025
         },
-        "gdp_pc_ppp": {
-          "raw_value": 5787.85,
-          "normalized_value": 3.5,
-          "reference_year": 2025
-        },
-        "life_expectancy": {
-          "raw_value": 63.97,
-          "normalized_value": 31.8,
-          "reference_year": 2024
-        },
         "gov_effectiveness": {
           "raw_value": -0.79,
           "normalized_value": 29.9,
@@ -7409,6 +7399,16 @@
         "ease_of_relocation": {
           "raw_value": 40.0,
           "normalized_value": 38.6,
+          "reference_year": 2024
+        },
+        "gdp_pc_ppp": {
+          "raw_value": 5787.85,
+          "normalized_value": 3.5,
+          "reference_year": 2025
+        },
+        "life_expectancy": {
+          "raw_value": 63.97,
+          "normalized_value": 31.8,
           "reference_year": 2024
         }
       }
@@ -7432,11 +7432,6 @@
       },
       "tech_market": null,
       "indicators": {
-        "political_stability": {
-          "raw_value": 1.49,
-          "normalized_value": 98.3,
-          "reference_year": 2025
-        },
         "population": {
           "raw_value": 75844.0,
           "normalized_value": 0.0,
@@ -7445,6 +7440,11 @@
         "rule_of_law": {
           "raw_value": 0.96,
           "normalized_value": 74.7,
+          "reference_year": 2025
+        },
+        "political_stability": {
+          "raw_value": 1.49,
+          "normalized_value": 98.3,
           "reference_year": 2025
         },
         "life_expectancy": {
@@ -7503,11 +7503,6 @@
           "normalized_value": 38.6,
           "reference_year": 2024
         },
-        "political_stability": {
-          "raw_value": -1.69,
-          "normalized_value": 19.1,
-          "reference_year": 2025
-        },
         "life_expectancy": {
           "raw_value": 57.67,
           "normalized_value": 11.5,
@@ -7521,6 +7516,11 @@
         "rule_of_law": {
           "raw_value": -1.7,
           "normalized_value": 8.1,
+          "reference_year": 2025
+        },
+        "political_stability": {
+          "raw_value": -1.69,
+          "normalized_value": 19.1,
           "reference_year": 2025
         }
       }
@@ -7544,15 +7544,15 @@
       },
       "tech_market": null,
       "indicators": {
-        "gdp_pc_ppp": {
-          "raw_value": 2902.74,
-          "normalized_value": 1.3,
-          "reference_year": 2025
-        },
         "life_expectancy": {
           "raw_value": 55.24,
           "normalized_value": 3.7,
           "reference_year": 2024
+        },
+        "gdp_pc_ppp": {
+          "raw_value": 2902.74,
+          "normalized_value": 1.3,
+          "reference_year": 2025
         },
         "gov_effectiveness": {
           "raw_value": -1.05,
@@ -7692,11 +7692,6 @@
       },
       "tech_market": null,
       "indicators": {
-        "political_stability": {
-          "raw_value": 0.02,
-          "normalized_value": 61.8,
-          "reference_year": 2025
-        },
         "population": {
           "raw_value": 1406585000.0,
           "normalized_value": 100.0,
@@ -7705,6 +7700,11 @@
         "rule_of_law": {
           "raw_value": -0.43,
           "normalized_value": 39.8,
+          "reference_year": 2025
+        },
+        "political_stability": {
+          "raw_value": 0.02,
+          "normalized_value": 61.8,
           "reference_year": 2025
         },
         "life_expectancy": {
@@ -7773,6 +7773,11 @@
           "normalized_value": 16.7,
           "reference_year": 2025
         },
+        "political_stability": {
+          "raw_value": -0.95,
+          "normalized_value": 37.5,
+          "reference_year": 2025
+        },
         "population": {
           "raw_value": 53425635.0,
           "normalized_value": 15.8,
@@ -7781,11 +7786,6 @@
         "rule_of_law": {
           "raw_value": -0.63,
           "normalized_value": 34.9,
-          "reference_year": 2025
-        },
-        "political_stability": {
-          "raw_value": -0.95,
-          "normalized_value": 37.5,
           "reference_year": 2025
         }
       }
@@ -7880,16 +7880,6 @@
           "normalized_value": 9.0,
           "reference_year": 2025
         },
-        "gdp_pc_ppp": {
-          "raw_value": 1919.82,
-          "normalized_value": 0.5,
-          "reference_year": 2025
-        },
-        "life_expectancy": {
-          "raw_value": 62.07,
-          "normalized_value": 25.7,
-          "reference_year": 2024
-        },
         "gov_effectiveness": {
           "raw_value": -1.67,
           "normalized_value": 8.3,
@@ -7898,6 +7888,16 @@
         "ease_of_relocation": {
           "raw_value": 40.0,
           "normalized_value": 38.6,
+          "reference_year": 2024
+        },
+        "gdp_pc_ppp": {
+          "raw_value": 1919.82,
+          "normalized_value": 0.5,
+          "reference_year": 2025
+        },
+        "life_expectancy": {
+          "raw_value": 62.07,
+          "normalized_value": 25.7,
           "reference_year": 2024
         }
       }
@@ -7936,6 +7936,11 @@
           "normalized_value": 49.1,
           "reference_year": 2025
         },
+        "gdp_pc_ppp": {
+          "raw_value": 7248.44,
+          "normalized_value": 4.7,
+          "reference_year": 2025
+        },
         "gov_effectiveness": {
           "raw_value": -1.17,
           "normalized_value": 20.6,
@@ -7950,11 +7955,6 @@
           "raw_value": 66.0,
           "normalized_value": 38.4,
           "reference_year": 2024
-        },
-        "gdp_pc_ppp": {
-          "raw_value": 7248.44,
-          "normalized_value": 4.7,
-          "reference_year": 2025
         }
       }
     },
@@ -7997,11 +7997,6 @@
           "normalized_value": 25.4,
           "reference_year": 2025
         },
-        "political_stability": {
-          "raw_value": 1.22,
-          "normalized_value": 91.7,
-          "reference_year": 2025
-        },
         "population": {
           "raw_value": 5152950.0,
           "normalized_value": 1.5,
@@ -8010,6 +8005,11 @@
         "rule_of_law": {
           "raw_value": 0.6,
           "normalized_value": 65.6,
+          "reference_year": 2025
+        },
+        "political_stability": {
+          "raw_value": 1.22,
+          "normalized_value": 91.7,
           "reference_year": 2025
         }
       }
@@ -8104,11 +8104,6 @@
           "normalized_value": 23.6,
           "reference_year": 2025
         },
-        "life_expectancy": {
-          "raw_value": 78.26,
-          "normalized_value": 77.9,
-          "reference_year": 2024
-        },
         "gov_effectiveness": {
           "raw_value": -0.4,
           "normalized_value": 39.6,
@@ -8117,6 +8112,11 @@
         "ease_of_relocation": {
           "raw_value": 50.0,
           "normalized_value": 49.7,
+          "reference_year": 2024
+        },
+        "life_expectancy": {
+          "raw_value": 78.26,
+          "normalized_value": 77.9,
           "reference_year": 2024
         }
       }
@@ -8191,6 +8191,11 @@
           "normalized_value": 93.3,
           "reference_year": 2024
         },
+        "gdp_pc_ppp": {
+          "raw_value": 64574.62,
+          "normalized_value": 49.3,
+          "reference_year": 2025
+        },
         "life_expectancy": {
           "raw_value": 81.82,
           "normalized_value": 89.4,
@@ -8206,9 +8211,9 @@
           "normalized_value": 98.1,
           "reference_year": 2025
         },
-        "gdp_pc_ppp": {
-          "raw_value": 64574.62,
-          "normalized_value": 49.3,
+        "political_stability": {
+          "raw_value": 0.44,
+          "normalized_value": 72.2,
           "reference_year": 2025
         },
         "population": {
@@ -8219,11 +8224,6 @@
         "rule_of_law": {
           "raw_value": 0.74,
           "normalized_value": 69.0,
-          "reference_year": 2025
-        },
-        "political_stability": {
-          "raw_value": 0.44,
-          "normalized_value": 72.2,
           "reference_year": 2025
         },
         "peace_index": {
@@ -8313,6 +8313,11 @@
           "normalized_value": 85.7,
           "reference_year": 2025
         },
+        "life_expectancy": {
+          "raw_value": 71.29,
+          "normalized_value": 55.4,
+          "reference_year": 2024
+        },
         "population": {
           "raw_value": 65871.0,
           "normalized_value": 0.0,
@@ -8323,6 +8328,11 @@
           "normalized_value": 61.2,
           "reference_year": 2025
         },
+        "gdp_pc_ppp": {
+          "raw_value": 22713.13,
+          "normalized_value": 16.7,
+          "reference_year": 2025
+        },
         "gov_effectiveness": {
           "raw_value": 0.16,
           "normalized_value": 53.4,
@@ -8331,16 +8341,6 @@
         "ease_of_relocation": {
           "raw_value": 50.0,
           "normalized_value": 49.7,
-          "reference_year": 2024
-        },
-        "gdp_pc_ppp": {
-          "raw_value": 22713.13,
-          "normalized_value": 16.7,
-          "reference_year": 2025
-        },
-        "life_expectancy": {
-          "raw_value": 71.29,
-          "normalized_value": 55.4,
           "reference_year": 2024
         }
       }
@@ -8440,11 +8440,6 @@
           "normalized_value": 12.1,
           "reference_year": 2025
         },
-        "political_stability": {
-          "raw_value": -0.64,
-          "normalized_value": 45.3,
-          "reference_year": 2025
-        },
         "population": {
           "raw_value": 18289896.0,
           "normalized_value": 5.4,
@@ -8453,6 +8448,11 @@
         "rule_of_law": {
           "raw_value": -1.03,
           "normalized_value": 24.7,
+          "reference_year": 2025
+        },
+        "political_stability": {
+          "raw_value": -0.64,
+          "normalized_value": 45.3,
           "reference_year": 2025
         }
       }
@@ -8491,11 +8491,6 @@
           "normalized_value": 38.6,
           "reference_year": 2024
         },
-        "political_stability": {
-          "raw_value": -0.89,
-          "normalized_value": 39.2,
-          "reference_year": 2025
-        },
         "life_expectancy": {
           "raw_value": 71.81,
           "normalized_value": 57.1,
@@ -8509,6 +8504,11 @@
         "rule_of_law": {
           "raw_value": -0.69,
           "normalized_value": 33.4,
+          "reference_year": 2025
+        },
+        "political_stability": {
+          "raw_value": -0.89,
+          "normalized_value": 39.2,
           "reference_year": 2025
         }
       }
@@ -8547,11 +8547,6 @@
           "normalized_value": 49.7,
           "reference_year": 2024
         },
-        "political_stability": {
-          "raw_value": 0.11,
-          "normalized_value": 64.0,
-          "reference_year": 2025
-        },
         "life_expectancy": {
           "raw_value": 72.3,
           "normalized_value": 58.7,
@@ -8565,6 +8560,11 @@
         "rule_of_law": {
           "raw_value": -0.71,
           "normalized_value": 32.9,
+          "reference_year": 2025
+        },
+        "political_stability": {
+          "raw_value": 0.11,
+          "normalized_value": 64.0,
           "reference_year": 2025
         }
       }
@@ -8608,6 +8608,11 @@
           "normalized_value": 31.6,
           "reference_year": 2024
         },
+        "political_stability": {
+          "raw_value": -0.15,
+          "normalized_value": 57.5,
+          "reference_year": 2025
+        },
         "population": {
           "raw_value": 1938431.0,
           "normalized_value": 0.6,
@@ -8616,11 +8621,6 @@
         "rule_of_law": {
           "raw_value": -1.54,
           "normalized_value": 12.1,
-          "reference_year": 2025
-        },
-        "political_stability": {
-          "raw_value": -0.15,
-          "normalized_value": 57.5,
           "reference_year": 2025
         }
       }
@@ -8730,6 +8730,11 @@
           "normalized_value": 39.6,
           "reference_year": 2025
         },
+        "political_stability": {
+          "raw_value": 0.89,
+          "normalized_value": 83.3,
+          "reference_year": 2025
+        },
         "population": {
           "raw_value": 1366475.0,
           "normalized_value": 0.4,
@@ -8738,11 +8743,6 @@
         "rule_of_law": {
           "raw_value": 1.43,
           "normalized_value": 86.4,
-          "reference_year": 2025
-        },
-        "political_stability": {
-          "raw_value": 0.89,
-          "normalized_value": 83.3,
           "reference_year": 2025
         }
       }
@@ -8766,6 +8766,11 @@
       },
       "tech_market": null,
       "indicators": {
+        "political_stability": {
+          "raw_value": -0.57,
+          "normalized_value": 47.0,
+          "reference_year": 2025
+        },
         "population": {
           "raw_value": 1256174.0,
           "normalized_value": 0.4,
@@ -8781,16 +8786,6 @@
           "normalized_value": 32.8,
           "reference_year": 2024
         },
-        "political_stability": {
-          "raw_value": -0.57,
-          "normalized_value": 47.0,
-          "reference_year": 2025
-        },
-        "gdp_pc_ppp": {
-          "raw_value": 12529.28,
-          "normalized_value": 8.8,
-          "reference_year": 2025
-        },
         "gov_effectiveness": {
           "raw_value": -0.84,
           "normalized_value": 28.8,
@@ -8800,6 +8795,11 @@
           "raw_value": 40.0,
           "normalized_value": 38.6,
           "reference_year": 2024
+        },
+        "gdp_pc_ppp": {
+          "raw_value": 12529.28,
+          "normalized_value": 8.8,
+          "reference_year": 2025
         }
       }
     },
@@ -8837,16 +8837,6 @@
           "normalized_value": 38.6,
           "reference_year": 2024
         },
-        "life_expectancy": {
-          "raw_value": 67.6,
-          "normalized_value": 43.5,
-          "reference_year": 2024
-        },
-        "political_stability": {
-          "raw_value": -1.85,
-          "normalized_value": 15.1,
-          "reference_year": 2025
-        },
         "population": {
           "raw_value": 135472051.0,
           "normalized_value": 40.0,
@@ -8855,6 +8845,16 @@
         "rule_of_law": {
           "raw_value": -0.94,
           "normalized_value": 27.1,
+          "reference_year": 2025
+        },
+        "life_expectancy": {
+          "raw_value": 67.6,
+          "normalized_value": 43.5,
+          "reference_year": 2024
+        },
+        "political_stability": {
+          "raw_value": -1.85,
+          "normalized_value": 15.1,
           "reference_year": 2025
         }
       }
@@ -8878,14 +8878,14 @@
       },
       "tech_market": null,
       "indicators": {
-        "gdp_pc_ppp": {
-          "raw_value": 82089.28,
-          "normalized_value": 63.0,
-          "reference_year": 2024
-        },
         "life_expectancy": {
           "raw_value": 83.08,
           "normalized_value": 93.5,
+          "reference_year": 2024
+        },
+        "gdp_pc_ppp": {
+          "raw_value": 82089.28,
+          "normalized_value": 63.0,
           "reference_year": 2024
         },
         "ease_of_relocation": {
@@ -8980,6 +8980,11 @@
           "normalized_value": 75.6,
           "reference_year": 2025
         },
+        "life_expectancy": {
+          "raw_value": 84.19,
+          "normalized_value": 97.0,
+          "reference_year": 2024
+        },
         "population": {
           "raw_value": 282465.0,
           "normalized_value": 0.1,
@@ -8993,11 +8998,6 @@
         "ease_of_relocation": {
           "raw_value": 45.0,
           "normalized_value": 44.1,
-          "reference_year": 2024
-        },
-        "life_expectancy": {
-          "raw_value": 84.19,
-          "normalized_value": 97.0,
           "reference_year": 2024
         }
       }
@@ -9026,6 +9026,11 @@
           "normalized_value": 64.1,
           "reference_year": 2025
         },
+        "life_expectancy": {
+          "raw_value": 68.51,
+          "normalized_value": 46.5,
+          "reference_year": 2024
+        },
         "population": {
           "raw_value": 2593130.0,
           "normalized_value": 0.8,
@@ -9036,6 +9041,11 @@
           "normalized_value": 25.0,
           "reference_year": 2025
         },
+        "gdp_pc_ppp": {
+          "raw_value": 22218.34,
+          "normalized_value": 16.3,
+          "reference_year": 2025
+        },
         "gov_effectiveness": {
           "raw_value": -0.55,
           "normalized_value": 35.9,
@@ -9044,16 +9054,6 @@
         "ease_of_relocation": {
           "raw_value": 40.0,
           "normalized_value": 38.6,
-          "reference_year": 2024
-        },
-        "gdp_pc_ppp": {
-          "raw_value": 22218.34,
-          "normalized_value": 16.3,
-          "reference_year": 2025
-        },
-        "life_expectancy": {
-          "raw_value": 68.51,
-          "normalized_value": 46.5,
           "reference_year": 2024
         }
       }
@@ -9153,6 +9153,11 @@
           "normalized_value": 21.9,
           "reference_year": 2025
         },
+        "political_stability": {
+          "raw_value": -0.5,
+          "normalized_value": 48.9,
+          "reference_year": 2025
+        },
         "population": {
           "raw_value": 3935766.0,
           "normalized_value": 1.2,
@@ -9161,11 +9166,6 @@
         "rule_of_law": {
           "raw_value": 0.1,
           "normalized_value": 52.9,
-          "reference_year": 2025
-        },
-        "political_stability": {
-          "raw_value": -0.5,
-          "normalized_value": 48.9,
           "reference_year": 2025
         }
       }
@@ -9194,6 +9194,11 @@
           "normalized_value": 63.4,
           "reference_year": 2025
         },
+        "life_expectancy": {
+          "raw_value": 65.69,
+          "normalized_value": 37.4,
+          "reference_year": 2024
+        },
         "population": {
           "raw_value": 35064272.0,
           "normalized_value": 10.3,
@@ -9204,6 +9209,11 @@
           "normalized_value": 50.5,
           "reference_year": 2025
         },
+        "gdp_pc_ppp": {
+          "raw_value": 8610.28,
+          "normalized_value": 5.7,
+          "reference_year": 2025
+        },
         "gov_effectiveness": {
           "raw_value": 0.13,
           "normalized_value": 52.7,
@@ -9212,16 +9222,6 @@
         "ease_of_relocation": {
           "raw_value": 40.0,
           "normalized_value": 38.6,
-          "reference_year": 2024
-        },
-        "gdp_pc_ppp": {
-          "raw_value": 8610.28,
-          "normalized_value": 5.7,
-          "reference_year": 2025
-        },
-        "life_expectancy": {
-          "raw_value": 65.69,
-          "normalized_value": 37.4,
           "reference_year": 2024
         }
       }
@@ -9301,6 +9301,11 @@
           "normalized_value": 60.5,
           "reference_year": 2023
         },
+        "political_stability": {
+          "raw_value": 0.79,
+          "normalized_value": 80.9,
+          "reference_year": 2025
+        },
         "population": {
           "raw_value": 56831.0,
           "normalized_value": 0.0,
@@ -9309,11 +9314,6 @@
         "rule_of_law": {
           "raw_value": 1.59,
           "normalized_value": 90.2,
-          "reference_year": 2025
-        },
-        "political_stability": {
-          "raw_value": 0.79,
-          "normalized_value": 80.9,
           "reference_year": 2025
         }
       }
@@ -9352,16 +9352,6 @@
           "normalized_value": 49.7,
           "reference_year": 2024
         },
-        "life_expectancy": {
-          "raw_value": 75.37,
-          "normalized_value": 68.6,
-          "reference_year": 2024
-        },
-        "political_stability": {
-          "raw_value": 1.24,
-          "normalized_value": 92.0,
-          "reference_year": 2025
-        },
         "population": {
           "raw_value": 117303.0,
           "normalized_value": 0.0,
@@ -9370,6 +9360,16 @@
         "rule_of_law": {
           "raw_value": 0.58,
           "normalized_value": 65.1,
+          "reference_year": 2025
+        },
+        "life_expectancy": {
+          "raw_value": 75.37,
+          "normalized_value": 68.6,
+          "reference_year": 2024
+        },
+        "political_stability": {
+          "raw_value": 1.24,
+          "normalized_value": 92.0,
           "reference_year": 2025
         }
       }
@@ -9403,16 +9403,6 @@
           "normalized_value": 44.1,
           "reference_year": 2024
         },
-        "life_expectancy": {
-          "raw_value": 77.42,
-          "normalized_value": 75.2,
-          "reference_year": 2024
-        },
-        "political_stability": {
-          "raw_value": 1.19,
-          "normalized_value": 90.9,
-          "reference_year": 2025
-        },
         "population": {
           "raw_value": 168999.0,
           "normalized_value": 0.0,
@@ -9421,6 +9411,16 @@
         "rule_of_law": {
           "raw_value": 0.98,
           "normalized_value": 75.0,
+          "reference_year": 2025
+        },
+        "life_expectancy": {
+          "raw_value": 77.42,
+          "normalized_value": 75.2,
+          "reference_year": 2024
+        },
+        "political_stability": {
+          "raw_value": 1.19,
+          "normalized_value": 90.9,
           "reference_year": 2025
         }
       }
@@ -9449,6 +9449,11 @@
           "normalized_value": 56.0,
           "reference_year": 2025
         },
+        "life_expectancy": {
+          "raw_value": 72.75,
+          "normalized_value": 60.1,
+          "reference_year": 2024
+        },
         "population": {
           "raw_value": 18687881.0,
           "normalized_value": 5.5,
@@ -9459,6 +9464,11 @@
           "normalized_value": 24.8,
           "reference_year": 2025
         },
+        "gdp_pc_ppp": {
+          "raw_value": 15197.08,
+          "normalized_value": 10.9,
+          "reference_year": 2025
+        },
         "gov_effectiveness": {
           "raw_value": -0.78,
           "normalized_value": 30.4,
@@ -9467,16 +9477,6 @@
         "ease_of_relocation": {
           "raw_value": 50.0,
           "normalized_value": 49.7,
-          "reference_year": 2024
-        },
-        "gdp_pc_ppp": {
-          "raw_value": 15197.08,
-          "normalized_value": 10.9,
-          "reference_year": 2025
-        },
-        "life_expectancy": {
-          "raw_value": 72.75,
-          "normalized_value": 60.1,
           "reference_year": 2024
         }
       }
@@ -9500,15 +9500,15 @@
       },
       "tech_market": null,
       "indicators": {
-        "gdp_pc_ppp": {
-          "raw_value": 4934.65,
-          "normalized_value": 2.9,
-          "reference_year": 2025
-        },
         "life_expectancy": {
           "raw_value": 60.9,
           "normalized_value": 21.9,
           "reference_year": 2024
+        },
+        "gdp_pc_ppp": {
+          "raw_value": 4934.65,
+          "normalized_value": 2.9,
+          "reference_year": 2025
         },
         "gov_effectiveness": {
           "raw_value": -0.9,
@@ -9612,6 +9612,11 @@
       },
       "tech_market": null,
       "indicators": {
+        "political_stability": {
+          "raw_value": 0.2,
+          "normalized_value": 66.3,
+          "reference_year": 2025
+        },
         "population": {
           "raw_value": 835986.0,
           "normalized_value": 0.2,
@@ -9627,16 +9632,6 @@
           "normalized_value": 52.3,
           "reference_year": 2024
         },
-        "political_stability": {
-          "raw_value": 0.2,
-          "normalized_value": 66.3,
-          "reference_year": 2025
-        },
-        "gdp_pc_ppp": {
-          "raw_value": 97899.01,
-          "normalized_value": 75.3,
-          "reference_year": 2025
-        },
         "gov_effectiveness": {
           "raw_value": 0.15,
           "normalized_value": 53.0,
@@ -9646,6 +9641,11 @@
           "raw_value": 50.0,
           "normalized_value": 49.7,
           "reference_year": 2024
+        },
+        "gdp_pc_ppp": {
+          "raw_value": 97899.01,
+          "normalized_value": 75.3,
+          "reference_year": 2025
         }
       }
     },
@@ -9739,11 +9739,6 @@
           "normalized_value": 49.7,
           "reference_year": 2024
         },
-        "political_stability": {
-          "raw_value": -0.44,
-          "normalized_value": 50.4,
-          "reference_year": 2025
-        },
         "life_expectancy": {
           "raw_value": 73.04,
           "normalized_value": 61.1,
@@ -9757,6 +9752,11 @@
         "rule_of_law": {
           "raw_value": -1.15,
           "normalized_value": 21.7,
+          "reference_year": 2025
+        },
+        "political_stability": {
+          "raw_value": -0.44,
+          "normalized_value": 50.4,
           "reference_year": 2025
         }
       }
@@ -9836,39 +9836,9 @@
       },
       "tech_market": null,
       "indicators": {
-        "peace_index": {
-          "raw_value": 1.11,
-          "normalized_value": 100.0,
-          "reference_year": 2024
-        },
         "political_stability": {
           "raw_value": 1.32,
           "normalized_value": 94.1,
-          "reference_year": 2025
-        },
-        "population": {
-          "raw_value": 392404.0,
-          "normalized_value": 0.1,
-          "reference_year": 2025
-        },
-        "rule_of_law": {
-          "raw_value": 1.61,
-          "normalized_value": 90.8,
-          "reference_year": 2025
-        },
-        "gov_effectiveness": {
-          "raw_value": 1.55,
-          "normalized_value": 87.4,
-          "reference_year": 2025
-        },
-        "ease_of_relocation": {
-          "raw_value": 94.0,
-          "normalized_value": 98.9,
-          "reference_year": 2024
-        },
-        "gdp_pc_ppp": {
-          "raw_value": 83431.21,
-          "normalized_value": 64.0,
           "reference_year": 2025
         },
         "life_expectancy": {
@@ -9885,6 +9855,36 @@
           "raw_value": 13.1,
           "normalized_value": 64.6,
           "reference_year": 2020
+        },
+        "peace_index": {
+          "raw_value": 1.11,
+          "normalized_value": 100.0,
+          "reference_year": 2024
+        },
+        "population": {
+          "raw_value": 392404.0,
+          "normalized_value": 0.1,
+          "reference_year": 2025
+        },
+        "rule_of_law": {
+          "raw_value": 1.61,
+          "normalized_value": 90.8,
+          "reference_year": 2025
+        },
+        "gdp_pc_ppp": {
+          "raw_value": 83431.21,
+          "normalized_value": 64.0,
+          "reference_year": 2025
+        },
+        "gov_effectiveness": {
+          "raw_value": 1.55,
+          "normalized_value": 87.4,
+          "reference_year": 2025
+        },
+        "ease_of_relocation": {
+          "raw_value": 94.0,
+          "normalized_value": 98.9,
+          "reference_year": 2024
         }
       }
     },
@@ -9957,8 +9957,8 @@
             "count": 22
           },
           {
-            "category_id": "ai_product_manager",
-            "role_name": "AI / Data Product Manager",
+            "category_id": "team_lead_data_ai",
+            "role_name": "Team Lead (Data/AI)",
             "count": 15
           },
           {
@@ -9967,8 +9967,8 @@
             "count": 15
           },
           {
-            "category_id": "team_lead_data_ai",
-            "role_name": "Team Lead (Data/AI)",
+            "category_id": "ai_product_manager",
+            "role_name": "AI / Data Product Manager",
             "count": 15
           },
           {
@@ -10002,13 +10002,13 @@
             "count": 3
           },
           {
-            "category_id": "llm_engineer",
-            "role_name": "LLM / GenAI Engineer",
+            "category_id": "head_of_ai_data",
+            "role_name": "Head of AI / Data",
             "count": 1
           },
           {
-            "category_id": "head_of_ai_data",
-            "role_name": "Head of AI / Data",
+            "category_id": "llm_engineer",
+            "role_name": "LLM / GenAI Engineer",
             "count": 1
           }
         ],
@@ -10027,27 +10027,40 @@
             "role_name": "Data Engineer"
           },
           {
-            "job_id": "88561d5a41ec2f6e",
-            "title": "Analyst-Data Rptg & Analysis",
-            "company_name": "Verizon",
+            "job_id": "b68b7a4566a991c3",
+            "title": "Senior Software Engineer (Python-AI/ML)",
+            "company_name": "FactSet",
             "is_sp500": true,
             "city": null,
-            "seniority": "Mid",
+            "seniority": "Senior",
             "work_mode": "Hybrid",
-            "url": "https://verizon.wd12.myworkdayjobs.com/en-US/verizon-careers/job/Chennai-India/Analyst-Data-Rptg---Analysis_R-1102824-1",
+            "url": "https://factset.wd108.myworkdayjobs.com/en-US/FactSetCareers/job/India-Hyderabad-DVS-SEZ-1--Orion-B4-FL-78911-Hyderabad---Divyasree-3/Senior-Software-Engineer--Python-_R33211-4",
+            "posted_at": "2026-11-09",
+            "category_id": "ai_developer",
+            "role_name": "AI Developer"
+          },
+          {
+            "job_id": "dc4eea3d1288cde8",
+            "title": "Senior Analyst-Risk analytics",
+            "company_name": "Arthur J. Gallagher & Co.",
+            "is_sp500": true,
+            "city": null,
+            "seniority": "Senior",
+            "work_mode": "Unspecified",
+            "url": "https://indiajobs-ajg.icims.com/jobs/56976/login",
             "posted_at": "2026-11-09",
             "category_id": "data_analyst",
             "role_name": "Data Analyst"
           },
           {
-            "job_id": "2837deefff2c6f79",
-            "title": "Sr Data Analyst",
-            "company_name": "Target",
+            "job_id": "0ec167f868c4e9a5",
+            "title": "Data Analyst",
+            "company_name": "Gartner",
             "is_sp500": true,
             "city": null,
-            "seniority": "Senior",
-            "work_mode": "Unspecified",
-            "url": "https://target.wd5.myworkdayjobs.com/en-US/targetcareers/job/L4-Manyata-Embassy-Business-Park-Racenahali--Nagawara-Villages-Outer-Ring-Rd-Bangalore-540065/Sr-Data-Analyst_R0000444688-1",
+            "seniority": "Mid",
+            "work_mode": "Hybrid",
+            "url": "https://gartner.wd5.myworkdayjobs.com/en-US/ext/job/Gurgaon/Data-Analyst_115505",
             "posted_at": "2026-11-09",
             "category_id": "data_analyst",
             "role_name": "Data Analyst"
@@ -10064,19 +10077,6 @@
             "posted_at": "2026-11-09",
             "category_id": "data_analyst",
             "role_name": "Data Analyst"
-          },
-          {
-            "job_id": "f3ba77d27ef72294",
-            "title": "Senior Data Engineer - (Python, ETL, Databricks, AWS)",
-            "company_name": "FactSet",
-            "is_sp500": true,
-            "city": null,
-            "seniority": "Senior",
-            "work_mode": "Hybrid",
-            "url": "https://factset.wd108.myworkdayjobs.com/en-US/FactSetCareers/job/India-Hyderabad-DVS-SEZ-1--Orion-B4-FL-78911-Hyderabad---Divyasree-3/Principal-Software-Engineer---Python--ETL--Databricks--AWS_R32624",
-            "posted_at": "2026-11-09",
-            "category_id": "data_engineer",
-            "role_name": "Data Engineer"
           }
         ]
       },
@@ -10091,14 +10091,19 @@
           "normalized_value": 36.3,
           "reference_year": 2024
         },
+        "gdp_pc_ppp": {
+          "raw_value": 11747.92,
+          "normalized_value": 8.2,
+          "reference_year": 2025
+        },
         "life_expectancy": {
           "raw_value": 72.23,
           "normalized_value": 58.5,
           "reference_year": 2024
         },
-        "gdp_pc_ppp": {
-          "raw_value": 11747.92,
-          "normalized_value": 8.2,
+        "political_stability": {
+          "raw_value": -0.61,
+          "normalized_value": 46.1,
           "reference_year": 2025
         },
         "population": {
@@ -10109,11 +10114,6 @@
         "rule_of_law": {
           "raw_value": -0.13,
           "normalized_value": 47.4,
-          "reference_year": 2025
-        },
-        "political_stability": {
-          "raw_value": -0.61,
-          "normalized_value": 46.1,
           "reference_year": 2025
         },
         "peace_index": {
@@ -10208,14 +10208,19 @@
           "normalized_value": 2.8,
           "reference_year": 2024
         },
+        "gdp_pc_ppp": {
+          "raw_value": 19699.22,
+          "normalized_value": 14.4,
+          "reference_year": 2025
+        },
         "life_expectancy": {
           "raw_value": 77.85,
           "normalized_value": 76.6,
           "reference_year": 2024
         },
-        "gdp_pc_ppp": {
-          "raw_value": 19699.22,
-          "normalized_value": 14.4,
+        "political_stability": {
+          "raw_value": -1.69,
+          "normalized_value": 19.2,
           "reference_year": 2025
         },
         "population": {
@@ -10226,11 +10231,6 @@
         "rule_of_law": {
           "raw_value": -1.22,
           "normalized_value": 20.1,
-          "reference_year": 2025
-        },
-        "political_stability": {
-          "raw_value": -1.69,
-          "normalized_value": 19.2,
           "reference_year": 2025
         }
       }
@@ -10346,6 +10346,11 @@
       },
       "tech_market": null,
       "indicators": {
+        "political_stability": {
+          "raw_value": -0.91,
+          "normalized_value": 38.5,
+          "reference_year": 2025
+        },
         "population": {
           "raw_value": 10122800.0,
           "normalized_value": 3.0,
@@ -10356,20 +10361,15 @@
           "normalized_value": 67.5,
           "reference_year": 2025
         },
+        "peace_index": {
+          "raw_value": 3.12,
+          "normalized_value": 7.3,
+          "reference_year": 2024
+        },
         "life_expectancy": {
           "raw_value": 83.2,
           "normalized_value": 93.8,
           "reference_year": 2024
-        },
-        "political_stability": {
-          "raw_value": -0.91,
-          "normalized_value": 38.5,
-          "reference_year": 2025
-        },
-        "gdp_pc_ppp": {
-          "raw_value": 59716.97,
-          "normalized_value": 45.5,
-          "reference_year": 2025
         },
         "gov_effectiveness": {
           "raw_value": 1.19,
@@ -10381,10 +10381,10 @@
           "normalized_value": 38.6,
           "reference_year": 2024
         },
-        "peace_index": {
-          "raw_value": 3.12,
-          "normalized_value": 7.3,
-          "reference_year": 2024
+        "gdp_pc_ppp": {
+          "raw_value": 59716.97,
+          "normalized_value": 45.5,
+          "reference_year": 2025
         }
       }
     },
@@ -10407,11 +10407,6 @@
       },
       "tech_market": null,
       "indicators": {
-        "political_stability": {
-          "raw_value": 0.54,
-          "normalized_value": 74.8,
-          "reference_year": 2025
-        },
         "population": {
           "raw_value": 2837077.0,
           "normalized_value": 0.8,
@@ -10420,6 +10415,11 @@
         "rule_of_law": {
           "raw_value": -0.03,
           "normalized_value": 49.8,
+          "reference_year": 2025
+        },
+        "political_stability": {
+          "raw_value": 0.54,
+          "normalized_value": 74.8,
           "reference_year": 2025
         },
         "life_expectancy": {
@@ -10463,15 +10463,20 @@
       },
       "tech_market": null,
       "indicators": {
-        "peace_index": {
-          "raw_value": 1.52,
-          "normalized_value": 84.3,
-          "reference_year": 2024
-        },
         "political_stability": {
           "raw_value": 1.26,
           "normalized_value": 92.5,
           "reference_year": 2025
+        },
+        "life_expectancy": {
+          "raw_value": 84.04,
+          "normalized_value": 96.5,
+          "reference_year": 2024
+        },
+        "peace_index": {
+          "raw_value": 1.52,
+          "normalized_value": 84.3,
+          "reference_year": 2024
         },
         "population": {
           "raw_value": 123366734.0,
@@ -10483,6 +10488,11 @@
           "normalized_value": 89.1,
           "reference_year": 2025
         },
+        "gdp_pc_ppp": {
+          "raw_value": 55421.88,
+          "normalized_value": 42.2,
+          "reference_year": 2025
+        },
         "gov_effectiveness": {
           "raw_value": 2.04,
           "normalized_value": 99.6,
@@ -10491,16 +10501,6 @@
         "ease_of_relocation": {
           "raw_value": 52.0,
           "normalized_value": 52.0,
-          "reference_year": 2024
-        },
-        "gdp_pc_ppp": {
-          "raw_value": 55421.88,
-          "normalized_value": 42.2,
-          "reference_year": 2025
-        },
-        "life_expectancy": {
-          "raw_value": 84.04,
-          "normalized_value": 96.5,
           "reference_year": 2024
         }
       }
@@ -10534,14 +10534,19 @@
           "normalized_value": 38.6,
           "reference_year": 2024
         },
+        "gdp_pc_ppp": {
+          "raw_value": 12631.63,
+          "normalized_value": 8.9,
+          "reference_year": 2025
+        },
         "life_expectancy": {
           "raw_value": 77.98,
           "normalized_value": 77.0,
           "reference_year": 2024
         },
-        "gdp_pc_ppp": {
-          "raw_value": 12631.63,
-          "normalized_value": 8.9,
+        "political_stability": {
+          "raw_value": -0.32,
+          "normalized_value": 53.4,
           "reference_year": 2025
         },
         "population": {
@@ -10552,11 +10557,6 @@
         "rule_of_law": {
           "raw_value": 0.19,
           "normalized_value": 55.4,
-          "reference_year": 2025
-        },
-        "political_stability": {
-          "raw_value": -0.32,
-          "normalized_value": 53.4,
           "reference_year": 2025
         }
       }
@@ -10595,11 +10595,6 @@
           "normalized_value": 66.5,
           "reference_year": 2024
         },
-        "political_stability": {
-          "raw_value": -0.2,
-          "normalized_value": 56.1,
-          "reference_year": 2025
-        },
         "life_expectancy": {
           "raw_value": 74.53,
           "normalized_value": 65.9,
@@ -10613,6 +10608,11 @@
         "rule_of_law": {
           "raw_value": -0.41,
           "normalized_value": 40.4,
+          "reference_year": 2025
+        },
+        "political_stability": {
+          "raw_value": -0.2,
+          "normalized_value": 56.1,
           "reference_year": 2025
         }
       }
@@ -10656,6 +10656,11 @@
           "normalized_value": 4.5,
           "reference_year": 2025
         },
+        "political_stability": {
+          "raw_value": -1.12,
+          "normalized_value": 33.4,
+          "reference_year": 2025
+        },
         "population": {
           "raw_value": 57532493.0,
           "normalized_value": 17.0,
@@ -10664,11 +10669,6 @@
         "rule_of_law": {
           "raw_value": -0.47,
           "normalized_value": 38.7,
-          "reference_year": 2025
-        },
-        "political_stability": {
-          "raw_value": -1.12,
-          "normalized_value": 33.4,
           "reference_year": 2025
         }
       }
@@ -10692,11 +10692,6 @@
       },
       "tech_market": null,
       "indicators": {
-        "political_stability": {
-          "raw_value": 1.25,
-          "normalized_value": 92.3,
-          "reference_year": 2025
-        },
         "population": {
           "raw_value": 136488.0,
           "normalized_value": 0.0,
@@ -10705,6 +10700,11 @@
         "rule_of_law": {
           "raw_value": 0.87,
           "normalized_value": 72.3,
+          "reference_year": 2025
+        },
+        "political_stability": {
+          "raw_value": 1.25,
+          "normalized_value": 92.3,
           "reference_year": 2025
         },
         "life_expectancy": {
@@ -10758,16 +10758,6 @@
           "normalized_value": 0.0,
           "reference_year": 2024
         },
-        "life_expectancy": {
-          "raw_value": 73.74,
-          "normalized_value": 63.3,
-          "reference_year": 2024
-        },
-        "political_stability": {
-          "raw_value": 0.08,
-          "normalized_value": 63.3,
-          "reference_year": 2025
-        },
         "population": {
           "raw_value": 26571036.0,
           "normalized_value": 7.8,
@@ -10776,6 +10766,16 @@
         "rule_of_law": {
           "raw_value": -1.49,
           "normalized_value": 13.4,
+          "reference_year": 2025
+        },
+        "life_expectancy": {
+          "raw_value": 73.74,
+          "normalized_value": 63.3,
+          "reference_year": 2024
+        },
+        "political_stability": {
+          "raw_value": 0.08,
+          "normalized_value": 63.3,
           "reference_year": 2025
         }
       }
@@ -10809,14 +10809,19 @@
           "normalized_value": 52.0,
           "reference_year": 2024
         },
+        "gdp_pc_ppp": {
+          "raw_value": 63124.92,
+          "normalized_value": 48.2,
+          "reference_year": 2025
+        },
         "life_expectancy": {
           "raw_value": 83.63,
           "normalized_value": 95.2,
           "reference_year": 2024
         },
-        "gdp_pc_ppp": {
-          "raw_value": 63124.92,
-          "normalized_value": 48.2,
+        "political_stability": {
+          "raw_value": 0.92,
+          "normalized_value": 84.1,
           "reference_year": 2025
         },
         "population": {
@@ -10827,11 +10832,6 @@
         "rule_of_law": {
           "raw_value": 1.2,
           "normalized_value": 80.4,
-          "reference_year": 2025
-        },
-        "political_stability": {
-          "raw_value": 0.92,
-          "normalized_value": 84.1,
           "reference_year": 2025
         },
         "peace_index": {
@@ -10860,11 +10860,6 @@
       },
       "tech_market": null,
       "indicators": {
-        "political_stability": {
-          "raw_value": -0.18,
-          "normalized_value": 56.8,
-          "reference_year": 2025
-        },
         "population": {
           "raw_value": 1576876.0,
           "normalized_value": 0.5,
@@ -10873,6 +10868,11 @@
         "rule_of_law": {
           "raw_value": 0.11,
           "normalized_value": 53.3,
+          "reference_year": 2025
+        },
+        "political_stability": {
+          "raw_value": -0.18,
+          "normalized_value": 56.8,
           "reference_year": 2025
         },
         "life_expectancy": {
@@ -10926,15 +10926,15 @@
       },
       "tech_market": null,
       "indicators": {
-        "gdp_pc_ppp": {
-          "raw_value": 56467.73,
-          "normalized_value": 43.0,
-          "reference_year": 2025
-        },
         "life_expectancy": {
           "raw_value": 84.58,
           "normalized_value": 98.3,
           "reference_year": 2024
+        },
+        "gdp_pc_ppp": {
+          "raw_value": 56467.73,
+          "normalized_value": 43.0,
+          "reference_year": 2025
         },
         "gov_effectiveness": {
           "raw_value": 0.26,
@@ -10997,16 +10997,6 @@
           "normalized_value": 27.3,
           "reference_year": 2025
         },
-        "gdp_pc_ppp": {
-          "raw_value": 9219.51,
-          "normalized_value": 6.2,
-          "reference_year": 2025
-        },
-        "life_expectancy": {
-          "raw_value": 72.4,
-          "normalized_value": 59.0,
-          "reference_year": 2024
-        },
         "gov_effectiveness": {
           "raw_value": -0.85,
           "normalized_value": 28.5,
@@ -11015,6 +11005,16 @@
         "ease_of_relocation": {
           "raw_value": 65.0,
           "normalized_value": 66.5,
+          "reference_year": 2024
+        },
+        "gdp_pc_ppp": {
+          "raw_value": 9219.51,
+          "normalized_value": 6.2,
+          "reference_year": 2025
+        },
+        "life_expectancy": {
+          "raw_value": 72.4,
+          "normalized_value": 59.0,
           "reference_year": 2024
         }
       }
@@ -11043,6 +11043,11 @@
           "normalized_value": 75.0,
           "reference_year": 2025
         },
+        "life_expectancy": {
+          "raw_value": 69.22,
+          "normalized_value": 48.8,
+          "reference_year": 2024
+        },
         "population": {
           "raw_value": 7873046.0,
           "normalized_value": 2.3,
@@ -11053,6 +11058,11 @@
           "normalized_value": 34.6,
           "reference_year": 2025
         },
+        "gdp_pc_ppp": {
+          "raw_value": 10383.0,
+          "normalized_value": 7.1,
+          "reference_year": 2025
+        },
         "gov_effectiveness": {
           "raw_value": -0.59,
           "normalized_value": 34.8,
@@ -11061,16 +11071,6 @@
         "ease_of_relocation": {
           "raw_value": 45.0,
           "normalized_value": 44.1,
-          "reference_year": 2024
-        },
-        "gdp_pc_ppp": {
-          "raw_value": 10383.0,
-          "normalized_value": 7.1,
-          "reference_year": 2025
-        },
-        "life_expectancy": {
-          "raw_value": 69.22,
-          "normalized_value": 48.8,
           "reference_year": 2024
         }
       }
@@ -11180,16 +11180,6 @@
           "normalized_value": 24.2,
           "reference_year": 2025
         },
-        "gdp_pc_ppp": {
-          "raw_value": 11917.45,
-          "normalized_value": 8.3,
-          "reference_year": 2024
-        },
-        "life_expectancy": {
-          "raw_value": 77.94,
-          "normalized_value": 76.9,
-          "reference_year": 2024
-        },
         "gov_effectiveness": {
           "raw_value": -1.1,
           "normalized_value": 22.5,
@@ -11198,6 +11188,16 @@
         "ease_of_relocation": {
           "raw_value": 40.0,
           "normalized_value": 38.6,
+          "reference_year": 2024
+        },
+        "gdp_pc_ppp": {
+          "raw_value": 11917.45,
+          "normalized_value": 8.3,
+          "reference_year": 2024
+        },
+        "life_expectancy": {
+          "raw_value": 77.94,
+          "normalized_value": 76.9,
           "reference_year": 2024
         }
       }
@@ -11353,6 +11353,11 @@
           "normalized_value": 54.9,
           "reference_year": 2024
         },
+        "political_stability": {
+          "raw_value": -1.84,
+          "normalized_value": 15.6,
+          "reference_year": 2025
+        },
         "population": {
           "raw_value": 7458555.0,
           "normalized_value": 2.2,
@@ -11361,11 +11366,6 @@
         "rule_of_law": {
           "raw_value": -1.65,
           "normalized_value": 9.3,
-          "reference_year": 2025
-        },
-        "political_stability": {
-          "raw_value": -1.84,
-          "normalized_value": 15.6,
           "reference_year": 2025
         }
       }
@@ -11404,6 +11404,11 @@
           "normalized_value": 97.1,
           "reference_year": 2024
         },
+        "political_stability": {
+          "raw_value": 1.53,
+          "normalized_value": 99.2,
+          "reference_year": 2025
+        },
         "population": {
           "raw_value": 41024.0,
           "normalized_value": 0.0,
@@ -11412,11 +11417,6 @@
         "rule_of_law": {
           "raw_value": 1.71,
           "normalized_value": 93.3,
-          "reference_year": 2025
-        },
-        "political_stability": {
-          "raw_value": 1.53,
-          "normalized_value": 99.2,
           "reference_year": 2025
         }
       }
@@ -11440,6 +11440,11 @@
       },
       "tech_market": null,
       "indicators": {
+        "political_stability": {
+          "raw_value": 1.06,
+          "normalized_value": 87.7,
+          "reference_year": 2025
+        },
         "population": {
           "raw_value": 685900.0,
           "normalized_value": 0.2,
@@ -11455,16 +11460,6 @@
           "normalized_value": 94.3,
           "reference_year": 2024
         },
-        "political_stability": {
-          "raw_value": 1.06,
-          "normalized_value": 87.7,
-          "reference_year": 2025
-        },
-        "gdp_pc_ppp": {
-          "raw_value": 137030.68,
-          "normalized_value": 100.0,
-          "reference_year": 2025
-        },
         "gov_effectiveness": {
           "raw_value": 1.16,
           "normalized_value": 78.0,
@@ -11474,6 +11469,11 @@
           "raw_value": 45.0,
           "normalized_value": 44.1,
           "reference_year": 2024
+        },
+        "gdp_pc_ppp": {
+          "raw_value": 137030.68,
+          "normalized_value": 100.0,
+          "reference_year": 2025
         }
       }
     },
@@ -11496,15 +11496,15 @@
       },
       "tech_market": null,
       "indicators": {
-        "gdp_pc_ppp": {
-          "raw_value": 1952.48,
-          "normalized_value": 0.5,
-          "reference_year": 2025
-        },
         "life_expectancy": {
           "raw_value": 63.84,
           "normalized_value": 31.4,
           "reference_year": 2024
+        },
+        "gdp_pc_ppp": {
+          "raw_value": 1952.48,
+          "normalized_value": 0.5,
+          "reference_year": 2025
         },
         "gov_effectiveness": {
           "raw_value": -0.87,
@@ -11552,15 +11552,15 @@
       },
       "tech_market": null,
       "indicators": {
-        "gdp_pc_ppp": {
-          "raw_value": 1899.29,
-          "normalized_value": 0.5,
-          "reference_year": 2025
-        },
         "life_expectancy": {
           "raw_value": 67.56,
           "normalized_value": 43.4,
           "reference_year": 2024
+        },
+        "gdp_pc_ppp": {
+          "raw_value": 1899.29,
+          "normalized_value": 0.5,
+          "reference_year": 2025
         },
         "gov_effectiveness": {
           "raw_value": -0.6,
@@ -11623,21 +11623,6 @@
           "normalized_value": 60.8,
           "reference_year": 2025
         },
-        "gdp_pc_ppp": {
-          "raw_value": 41497.67,
-          "normalized_value": 31.4,
-          "reference_year": 2025
-        },
-        "life_expectancy": {
-          "raw_value": 76.82,
-          "normalized_value": 73.3,
-          "reference_year": 2024
-        },
-        "peace_index": {
-          "raw_value": 1.43,
-          "normalized_value": 89.0,
-          "reference_year": 2024
-        },
         "gov_effectiveness": {
           "raw_value": 0.96,
           "normalized_value": 72.9,
@@ -11646,6 +11631,21 @@
         "ease_of_relocation": {
           "raw_value": 64.0,
           "normalized_value": 65.4,
+          "reference_year": 2024
+        },
+        "gdp_pc_ppp": {
+          "raw_value": 41497.67,
+          "normalized_value": 31.4,
+          "reference_year": 2025
+        },
+        "peace_index": {
+          "raw_value": 1.43,
+          "normalized_value": 89.0,
+          "reference_year": 2024
+        },
+        "life_expectancy": {
+          "raw_value": 76.82,
+          "normalized_value": 73.3,
           "reference_year": 2024
         }
       }
@@ -11679,14 +11679,19 @@
           "normalized_value": 44.1,
           "reference_year": 2024
         },
+        "gdp_pc_ppp": {
+          "raw_value": 28554.89,
+          "normalized_value": 21.3,
+          "reference_year": 2025
+        },
         "life_expectancy": {
           "raw_value": 81.28,
           "normalized_value": 87.7,
           "reference_year": 2024
         },
-        "gdp_pc_ppp": {
-          "raw_value": 28554.89,
-          "normalized_value": 21.3,
+        "political_stability": {
+          "raw_value": 0.08,
+          "normalized_value": 63.2,
           "reference_year": 2025
         },
         "population": {
@@ -11697,11 +11702,6 @@
         "rule_of_law": {
           "raw_value": -0.01,
           "normalized_value": 50.3,
-          "reference_year": 2025
-        },
-        "political_stability": {
-          "raw_value": 0.08,
-          "normalized_value": 63.2,
           "reference_year": 2025
         }
       }
@@ -11796,11 +11796,6 @@
           "normalized_value": 94.4,
           "reference_year": 2024
         },
-        "political_stability": {
-          "raw_value": 1.04,
-          "normalized_value": 87.0,
-          "reference_year": 2025
-        },
         "life_expectancy": {
           "raw_value": 82.96,
           "normalized_value": 93.0,
@@ -11824,6 +11819,11 @@
         "rule_of_law": {
           "raw_value": 0.67,
           "normalized_value": 67.2,
+          "reference_year": 2025
+        },
+        "political_stability": {
+          "raw_value": 1.04,
+          "normalized_value": 87.0,
           "reference_year": 2025
         }
       }
@@ -11857,14 +11857,19 @@
           "normalized_value": 44.1,
           "reference_year": 2024
         },
+        "gdp_pc_ppp": {
+          "raw_value": 8964.32,
+          "normalized_value": 6.0,
+          "reference_year": 2025
+        },
         "life_expectancy": {
           "raw_value": 67.08,
           "normalized_value": 41.8,
           "reference_year": 2024
         },
-        "gdp_pc_ppp": {
-          "raw_value": 8964.32,
-          "normalized_value": 6.0,
+        "political_stability": {
+          "raw_value": 1.52,
+          "normalized_value": 99.0,
           "reference_year": 2025
         },
         "population": {
@@ -11875,11 +11880,6 @@
         "rule_of_law": {
           "raw_value": 0.95,
           "normalized_value": 74.4,
-          "reference_year": 2025
-        },
-        "political_stability": {
-          "raw_value": 1.52,
-          "normalized_value": 99.0,
           "reference_year": 2025
         }
       }
@@ -11964,6 +11964,11 @@
           "normalized_value": 84.4,
           "reference_year": 2025
         },
+        "life_expectancy": {
+          "raw_value": 73.79,
+          "normalized_value": 63.5,
+          "reference_year": 2024
+        },
         "population": {
           "raw_value": 1243741.0,
           "normalized_value": 0.4,
@@ -11974,6 +11979,11 @@
           "normalized_value": 67.5,
           "reference_year": 2025
         },
+        "gdp_pc_ppp": {
+          "raw_value": 33666.64,
+          "normalized_value": 25.3,
+          "reference_year": 2025
+        },
         "gov_effectiveness": {
           "raw_value": 0.86,
           "normalized_value": 70.5,
@@ -11982,16 +11992,6 @@
         "ease_of_relocation": {
           "raw_value": 40.0,
           "normalized_value": 38.6,
-          "reference_year": 2024
-        },
-        "gdp_pc_ppp": {
-          "raw_value": 33666.64,
-          "normalized_value": 25.3,
-          "reference_year": 2025
-        },
-        "life_expectancy": {
-          "raw_value": 73.79,
-          "normalized_value": 63.5,
           "reference_year": 2024
         }
       }
@@ -12091,16 +12091,6 @@
           "normalized_value": 44.1,
           "reference_year": 2024
         },
-        "life_expectancy": {
-          "raw_value": 67.36,
-          "normalized_value": 42.8,
-          "reference_year": 2024
-        },
-        "political_stability": {
-          "raw_value": 1.52,
-          "normalized_value": 99.0,
-          "reference_year": 2025
-        },
         "population": {
           "raw_value": 113683.0,
           "normalized_value": 0.0,
@@ -12109,6 +12099,16 @@
         "rule_of_law": {
           "raw_value": 0.97,
           "normalized_value": 74.8,
+          "reference_year": 2025
+        },
+        "life_expectancy": {
+          "raw_value": 67.36,
+          "normalized_value": 42.8,
+          "reference_year": 2024
+        },
+        "political_stability": {
+          "raw_value": 1.52,
+          "normalized_value": 99.0,
           "reference_year": 2025
         }
       }
@@ -12203,11 +12203,6 @@
           "normalized_value": 66.5,
           "reference_year": 2024
         },
-        "political_stability": {
-          "raw_value": 1.25,
-          "normalized_value": 92.4,
-          "reference_year": 2025
-        },
         "population": {
           "raw_value": 38341.0,
           "normalized_value": 0.0,
@@ -12216,6 +12211,11 @@
         "rule_of_law": {
           "raw_value": 1.65,
           "normalized_value": 91.8,
+          "reference_year": 2025
+        },
+        "political_stability": {
+          "raw_value": 1.25,
+          "normalized_value": 92.4,
           "reference_year": 2025
         }
       }
@@ -12254,16 +12254,6 @@
           "normalized_value": 44.1,
           "reference_year": 2024
         },
-        "life_expectancy": {
-          "raw_value": 72.4,
-          "normalized_value": 59.0,
-          "reference_year": 2024
-        },
-        "political_stability": {
-          "raw_value": 0.57,
-          "normalized_value": 75.3,
-          "reference_year": 2025
-        },
         "population": {
           "raw_value": 3568978.0,
           "normalized_value": 1.1,
@@ -12272,6 +12262,16 @@
         "rule_of_law": {
           "raw_value": -0.12,
           "normalized_value": 47.7,
+          "reference_year": 2025
+        },
+        "life_expectancy": {
+          "raw_value": 72.4,
+          "normalized_value": 59.0,
+          "reference_year": 2024
+        },
+        "political_stability": {
+          "raw_value": 0.57,
+          "normalized_value": 75.3,
           "reference_year": 2025
         }
       }
@@ -12305,6 +12305,11 @@
           "normalized_value": 66.5,
           "reference_year": 2024
         },
+        "gdp_pc_ppp": {
+          "raw_value": 35422.64,
+          "normalized_value": 26.6,
+          "reference_year": 2025
+        },
         "life_expectancy": {
           "raw_value": 77.89,
           "normalized_value": 76.7,
@@ -12320,9 +12325,9 @@
           "normalized_value": 78.4,
           "reference_year": 2024
         },
-        "gdp_pc_ppp": {
-          "raw_value": 35422.64,
-          "normalized_value": 26.6,
+        "political_stability": {
+          "raw_value": 0.45,
+          "normalized_value": 72.4,
           "reference_year": 2025
         },
         "population": {
@@ -12333,11 +12338,6 @@
         "rule_of_law": {
           "raw_value": 0.21,
           "normalized_value": 55.8,
-          "reference_year": 2025
-        },
-        "political_stability": {
-          "raw_value": 0.45,
-          "normalized_value": 72.4,
           "reference_year": 2025
         }
       }
@@ -12376,6 +12376,11 @@
           "normalized_value": 47.8,
           "reference_year": 2025
         },
+        "gdp_pc_ppp": {
+          "raw_value": 11111.71,
+          "normalized_value": 7.7,
+          "reference_year": 2025
+        },
         "gov_effectiveness": {
           "raw_value": 0.18,
           "normalized_value": 53.8,
@@ -12390,11 +12395,6 @@
           "raw_value": 75.49,
           "normalized_value": 69.0,
           "reference_year": 2024
-        },
-        "gdp_pc_ppp": {
-          "raw_value": 11111.71,
-          "normalized_value": 7.7,
-          "reference_year": 2025
         }
       }
     },
@@ -12432,11 +12432,6 @@
           "normalized_value": 38.6,
           "reference_year": 2024
         },
-        "political_stability": {
-          "raw_value": -1.66,
-          "normalized_value": 20.1,
-          "reference_year": 2025
-        },
         "life_expectancy": {
           "raw_value": 63.8,
           "normalized_value": 31.3,
@@ -12450,6 +12445,11 @@
         "rule_of_law": {
           "raw_value": -1.18,
           "normalized_value": 21.1,
+          "reference_year": 2025
+        },
+        "political_stability": {
+          "raw_value": -1.66,
+          "normalized_value": 20.1,
           "reference_year": 2025
         }
       }
@@ -12544,16 +12544,6 @@
           "normalized_value": 60.0,
           "reference_year": 2025
         },
-        "gdp_pc_ppp": {
-          "raw_value": 11985.72,
-          "normalized_value": 8.4,
-          "reference_year": 2025
-        },
-        "life_expectancy": {
-          "raw_value": 67.52,
-          "normalized_value": 43.3,
-          "reference_year": 2024
-        },
         "gov_effectiveness": {
           "raw_value": 0.1,
           "normalized_value": 51.9,
@@ -12562,6 +12552,16 @@
         "ease_of_relocation": {
           "raw_value": 40.0,
           "normalized_value": 38.6,
+          "reference_year": 2024
+        },
+        "gdp_pc_ppp": {
+          "raw_value": 11985.72,
+          "normalized_value": 8.4,
+          "reference_year": 2025
+        },
+        "life_expectancy": {
+          "raw_value": 67.52,
+          "normalized_value": 43.3,
           "reference_year": 2024
         }
       }
@@ -12702,16 +12702,6 @@
           "normalized_value": 44.1,
           "reference_year": 2024
         },
-        "life_expectancy": {
-          "raw_value": 78.92,
-          "normalized_value": 80.0,
-          "reference_year": 2024
-        },
-        "political_stability": {
-          "raw_value": 0.29,
-          "normalized_value": 68.5,
-          "reference_year": 2025
-        },
         "population": {
           "raw_value": 295333.0,
           "normalized_value": 0.1,
@@ -12720,6 +12710,16 @@
         "rule_of_law": {
           "raw_value": 0.26,
           "normalized_value": 57.0,
+          "reference_year": 2025
+        },
+        "life_expectancy": {
+          "raw_value": 78.92,
+          "normalized_value": 80.0,
+          "reference_year": 2024
+        },
+        "political_stability": {
+          "raw_value": 0.29,
+          "normalized_value": 68.5,
           "reference_year": 2025
         }
       }
@@ -12809,6 +12809,11 @@
           "normalized_value": 61.0,
           "reference_year": 2025
         },
+        "life_expectancy": {
+          "raw_value": 75.1,
+          "normalized_value": 67.7,
+          "reference_year": 2024
+        },
         "population": {
           "raw_value": 7007502.0,
           "normalized_value": 2.1,
@@ -12819,6 +12824,11 @@
           "normalized_value": 10.9,
           "reference_year": 2025
         },
+        "gdp_pc_ppp": {
+          "raw_value": 9283.92,
+          "normalized_value": 6.3,
+          "reference_year": 2025
+        },
         "gov_effectiveness": {
           "raw_value": -0.89,
           "normalized_value": 27.4,
@@ -12827,16 +12837,6 @@
         "ease_of_relocation": {
           "raw_value": 50.0,
           "normalized_value": 49.7,
-          "reference_year": 2024
-        },
-        "gdp_pc_ppp": {
-          "raw_value": 9283.92,
-          "normalized_value": 6.3,
-          "reference_year": 2025
-        },
-        "life_expectancy": {
-          "raw_value": 75.1,
-          "normalized_value": 67.7,
           "reference_year": 2024
         }
       }
@@ -12880,6 +12880,11 @@
           "normalized_value": 0.7,
           "reference_year": 2025
         },
+        "political_stability": {
+          "raw_value": -1.77,
+          "normalized_value": 17.3,
+          "reference_year": 2025
+        },
         "population": {
           "raw_value": 27917831.0,
           "normalized_value": 8.2,
@@ -12888,11 +12893,6 @@
         "rule_of_law": {
           "raw_value": -1.13,
           "normalized_value": 22.4,
-          "reference_year": 2025
-        },
-        "political_stability": {
-          "raw_value": -1.77,
-          "normalized_value": 17.3,
           "reference_year": 2025
         }
       }
@@ -12987,6 +12987,16 @@
           "normalized_value": 66.5,
           "reference_year": 2024
         },
+        "population": {
+          "raw_value": 1820909.0,
+          "normalized_value": 0.5,
+          "reference_year": 2025
+        },
+        "rule_of_law": {
+          "raw_value": -0.14,
+          "normalized_value": 47.0,
+          "reference_year": 2025
+        },
         "life_expectancy": {
           "raw_value": 76.62,
           "normalized_value": 72.6,
@@ -13005,16 +13015,6 @@
         "political_stability": {
           "raw_value": 0.38,
           "normalized_value": 70.6,
-          "reference_year": 2025
-        },
-        "population": {
-          "raw_value": 1820909.0,
-          "normalized_value": 0.5,
-          "reference_year": 2025
-        },
-        "rule_of_law": {
-          "raw_value": -0.14,
-          "normalized_value": 47.0,
           "reference_year": 2025
         }
       }
@@ -13089,16 +13089,6 @@
           "normalized_value": 63.1,
           "reference_year": 2025
         },
-        "gdp_pc_ppp": {
-          "raw_value": 42295.18,
-          "normalized_value": 32.0,
-          "reference_year": 2025
-        },
-        "life_expectancy": {
-          "raw_value": 80.25,
-          "normalized_value": 84.3,
-          "reference_year": 2024
-        },
         "gov_effectiveness": {
           "raw_value": 0.38,
           "normalized_value": 58.8,
@@ -13107,6 +13097,16 @@
         "ease_of_relocation": {
           "raw_value": 40.0,
           "normalized_value": 38.6,
+          "reference_year": 2024
+        },
+        "gdp_pc_ppp": {
+          "raw_value": 42295.18,
+          "normalized_value": 32.0,
+          "reference_year": 2025
+        },
+        "life_expectancy": {
+          "raw_value": 80.25,
+          "normalized_value": 84.3,
           "reference_year": 2024
         }
       }
@@ -13252,14 +13252,19 @@
           "normalized_value": 63.1,
           "reference_year": 2024
         },
+        "gdp_pc_ppp": {
+          "raw_value": 43902.16,
+          "normalized_value": 33.2,
+          "reference_year": 2025
+        },
         "life_expectancy": {
           "raw_value": 79.78,
           "normalized_value": 82.8,
           "reference_year": 2024
         },
-        "gdp_pc_ppp": {
-          "raw_value": 43902.16,
-          "normalized_value": 33.2,
+        "political_stability": {
+          "raw_value": 0.24,
+          "normalized_value": 67.3,
           "reference_year": 2025
         },
         "population": {
@@ -13270,11 +13275,6 @@
         "rule_of_law": {
           "raw_value": -0.3,
           "normalized_value": 43.0,
-          "reference_year": 2025
-        },
-        "political_stability": {
-          "raw_value": 0.24,
-          "normalized_value": 67.3,
           "reference_year": 2025
         }
       }
@@ -13369,16 +13369,6 @@
           "normalized_value": 34.8,
           "reference_year": 2025
         },
-        "gdp_pc_ppp": {
-          "raw_value": 20181.42,
-          "normalized_value": 14.8,
-          "reference_year": 2025
-        },
-        "life_expectancy": {
-          "raw_value": 73.98,
-          "normalized_value": 64.1,
-          "reference_year": 2024
-        },
         "gov_effectiveness": {
           "raw_value": -0.23,
           "normalized_value": 43.8,
@@ -13387,6 +13377,16 @@
         "ease_of_relocation": {
           "raw_value": 50.0,
           "normalized_value": 49.7,
+          "reference_year": 2024
+        },
+        "gdp_pc_ppp": {
+          "raw_value": 20181.42,
+          "normalized_value": 14.8,
+          "reference_year": 2025
+        },
+        "life_expectancy": {
+          "raw_value": 73.98,
+          "normalized_value": 64.1,
           "reference_year": 2024
         }
       }
@@ -13425,16 +13425,6 @@
           "normalized_value": 49.7,
           "reference_year": 2024
         },
-        "life_expectancy": {
-          "raw_value": 77.94,
-          "normalized_value": 76.9,
-          "reference_year": 2024
-        },
-        "political_stability": {
-          "raw_value": -0.5,
-          "normalized_value": 48.9,
-          "reference_year": 2025
-        },
         "population": {
           "raw_value": 34576665.0,
           "normalized_value": 10.2,
@@ -13443,6 +13433,16 @@
         "rule_of_law": {
           "raw_value": -0.66,
           "normalized_value": 34.1,
+          "reference_year": 2025
+        },
+        "life_expectancy": {
+          "raw_value": 77.94,
+          "normalized_value": 76.9,
+          "reference_year": 2024
+        },
+        "political_stability": {
+          "raw_value": -0.5,
+          "normalized_value": 48.9,
           "reference_year": 2025
         }
       }
@@ -13466,6 +13466,11 @@
       },
       "tech_market": null,
       "indicators": {
+        "political_stability": {
+          "raw_value": -0.84,
+          "normalized_value": 40.5,
+          "reference_year": 2025
+        },
         "population": {
           "raw_value": 116786962.0,
           "normalized_value": 34.5,
@@ -13481,16 +13486,6 @@
           "normalized_value": 51.1,
           "reference_year": 2024
         },
-        "political_stability": {
-          "raw_value": -0.84,
-          "normalized_value": 40.5,
-          "reference_year": 2025
-        },
-        "gdp_pc_ppp": {
-          "raw_value": 12576.99,
-          "normalized_value": 8.8,
-          "reference_year": 2025
-        },
         "gov_effectiveness": {
           "raw_value": 0.19,
           "normalized_value": 54.2,
@@ -13500,6 +13495,11 @@
           "raw_value": 45.0,
           "normalized_value": 44.1,
           "reference_year": 2024
+        },
+        "gdp_pc_ppp": {
+          "raw_value": 12576.99,
+          "normalized_value": 8.8,
+          "reference_year": 2025
         }
       }
     },
@@ -13542,6 +13542,11 @@
           "normalized_value": 89.7,
           "reference_year": 2024
         },
+        "political_stability": {
+          "raw_value": 0.37,
+          "normalized_value": 70.3,
+          "reference_year": 2025
+        },
         "population": {
           "raw_value": 3184835.0,
           "normalized_value": 0.9,
@@ -13550,11 +13555,6 @@
         "rule_of_law": {
           "raw_value": 0.57,
           "normalized_value": 64.7,
-          "reference_year": 2025
-        },
-        "political_stability": {
-          "raw_value": 0.37,
-          "normalized_value": 70.3,
           "reference_year": 2025
         }
       }
@@ -13583,6 +13583,11 @@
           "normalized_value": 87.2,
           "reference_year": 2025
         },
+        "life_expectancy": {
+          "raw_value": 82.52,
+          "normalized_value": 91.7,
+          "reference_year": 2024
+        },
         "population": {
           "raw_value": 2972215.0,
           "normalized_value": 0.9,
@@ -13593,6 +13598,11 @@
           "normalized_value": 64.6,
           "reference_year": 2025
         },
+        "gdp_pc_ppp": {
+          "raw_value": 128882.93,
+          "normalized_value": 99.5,
+          "reference_year": 2025
+        },
         "gov_effectiveness": {
           "raw_value": 1.0,
           "normalized_value": 73.9,
@@ -13601,16 +13611,6 @@
         "ease_of_relocation": {
           "raw_value": 40.0,
           "normalized_value": 38.6,
-          "reference_year": 2024
-        },
-        "gdp_pc_ppp": {
-          "raw_value": 128882.93,
-          "normalized_value": 99.5,
-          "reference_year": 2025
-        },
-        "life_expectancy": {
-          "raw_value": 82.52,
-          "normalized_value": 91.7,
           "reference_year": 2024
         }
       }
@@ -13644,14 +13644,19 @@
           "normalized_value": 5.0,
           "reference_year": 2024
         },
+        "gdp_pc_ppp": {
+          "raw_value": 49568.14,
+          "normalized_value": 37.6,
+          "reference_year": 2025
+        },
         "life_expectancy": {
           "raw_value": 73.44,
           "normalized_value": 62.4,
           "reference_year": 2024
         },
-        "gdp_pc_ppp": {
-          "raw_value": 49568.14,
-          "normalized_value": 37.6,
+        "political_stability": {
+          "raw_value": -0.94,
+          "normalized_value": 37.7,
           "reference_year": 2025
         },
         "population": {
@@ -13662,11 +13667,6 @@
         "rule_of_law": {
           "raw_value": -1.27,
           "normalized_value": 18.8,
-          "reference_year": 2025
-        },
-        "political_stability": {
-          "raw_value": -0.94,
-          "normalized_value": 37.7,
           "reference_year": 2025
         },
         "peace_index": {
@@ -13710,16 +13710,6 @@
           "normalized_value": 53.0,
           "reference_year": 2025
         },
-        "gdp_pc_ppp": {
-          "raw_value": 4164.44,
-          "normalized_value": 2.3,
-          "reference_year": 2025
-        },
-        "life_expectancy": {
-          "raw_value": 68.02,
-          "normalized_value": 44.9,
-          "reference_year": 2024
-        },
         "gov_effectiveness": {
           "raw_value": 0.36,
           "normalized_value": 58.3,
@@ -13728,6 +13718,16 @@
         "ease_of_relocation": {
           "raw_value": 40.0,
           "normalized_value": 38.6,
+          "reference_year": 2024
+        },
+        "gdp_pc_ppp": {
+          "raw_value": 4164.44,
+          "normalized_value": 2.3,
+          "reference_year": 2025
+        },
+        "life_expectancy": {
+          "raw_value": 68.02,
+          "normalized_value": 44.9,
           "reference_year": 2024
         }
       }
@@ -13771,6 +13771,11 @@
           "normalized_value": 6.3,
           "reference_year": 2025
         },
+        "political_stability": {
+          "raw_value": 1.34,
+          "normalized_value": 94.5,
+          "reference_year": 2025
+        },
         "population": {
           "raw_value": 219306.0,
           "normalized_value": 0.1,
@@ -13779,11 +13784,6 @@
         "rule_of_law": {
           "raw_value": 1.06,
           "normalized_value": 77.1,
-          "reference_year": 2025
-        },
-        "political_stability": {
-          "raw_value": 1.34,
-          "normalized_value": 94.5,
           "reference_year": 2025
         }
       }
@@ -13827,6 +13827,11 @@
           "normalized_value": 100.0,
           "reference_year": 2024
         },
+        "political_stability": {
+          "raw_value": 1.43,
+          "normalized_value": 96.7,
+          "reference_year": 2025
+        },
         "population": {
           "raw_value": 34109.0,
           "normalized_value": 0.0,
@@ -13835,11 +13840,6 @@
         "rule_of_law": {
           "raw_value": 1.45,
           "normalized_value": 86.7,
-          "reference_year": 2025
-        },
-        "political_stability": {
-          "raw_value": 1.43,
-          "normalized_value": 96.7,
           "reference_year": 2025
         }
       }
@@ -13863,11 +13863,6 @@
       },
       "tech_market": null,
       "indicators": {
-        "political_stability": {
-          "raw_value": 0.55,
-          "normalized_value": 74.8,
-          "reference_year": 2025
-        },
         "population": {
           "raw_value": 240254.0,
           "normalized_value": 0.1,
@@ -13876,6 +13871,11 @@
         "rule_of_law": {
           "raw_value": -0.45,
           "normalized_value": 39.2,
+          "reference_year": 2025
+        },
+        "political_stability": {
+          "raw_value": 0.55,
+          "normalized_value": 74.8,
           "reference_year": 2025
         },
         "life_expectancy": {
@@ -13939,11 +13939,6 @@
           "normalized_value": 56.5,
           "reference_year": 2025
         },
-        "political_stability": {
-          "raw_value": 0.02,
-          "normalized_value": 61.7,
-          "reference_year": 2025
-        },
         "population": {
           "raw_value": 36973555.0,
           "normalized_value": 10.9,
@@ -13952,6 +13947,11 @@
         "rule_of_law": {
           "raw_value": 0.27,
           "normalized_value": 57.4,
+          "reference_year": 2025
+        },
+        "political_stability": {
+          "raw_value": 0.02,
+          "normalized_value": 61.7,
           "reference_year": 2025
         }
       }
@@ -13975,6 +13975,11 @@
       },
       "tech_market": null,
       "indicators": {
+        "political_stability": {
+          "raw_value": -0.17,
+          "normalized_value": 57.1,
+          "reference_year": 2025
+        },
         "population": {
           "raw_value": 18931966.0,
           "normalized_value": 5.6,
@@ -13990,16 +13995,6 @@
           "normalized_value": 47.8,
           "reference_year": 2024
         },
-        "political_stability": {
-          "raw_value": -0.17,
-          "normalized_value": 57.1,
-          "reference_year": 2025
-        },
-        "gdp_pc_ppp": {
-          "raw_value": 5463.22,
-          "normalized_value": 3.3,
-          "reference_year": 2025
-        },
         "ease_of_relocation": {
           "raw_value": 40.0,
           "normalized_value": 38.6,
@@ -14008,6 +14003,11 @@
         "gov_effectiveness": {
           "raw_value": 0.25,
           "normalized_value": 55.6,
+          "reference_year": 2025
+        },
+        "gdp_pc_ppp": {
+          "raw_value": 5463.22,
+          "normalized_value": 3.3,
           "reference_year": 2025
         }
       }
@@ -14031,11 +14031,6 @@
       },
       "tech_market": null,
       "indicators": {
-        "gdp_pc_ppp": {
-          "raw_value": 33909.76,
-          "normalized_value": 25.4,
-          "reference_year": 2025
-        },
         "life_expectancy": {
           "raw_value": 75.97,
           "normalized_value": 70.5,
@@ -14049,6 +14044,11 @@
         "housing_cost_overburden": {
           "raw_value": 7.9,
           "normalized_value": 80.9,
+          "reference_year": 2025
+        },
+        "gdp_pc_ppp": {
+          "raw_value": 33909.76,
+          "normalized_value": 25.4,
           "reference_year": 2025
         },
         "ease_of_relocation": {
@@ -14163,14 +14163,19 @@
           "normalized_value": 26.6,
           "reference_year": 2025
         },
+        "gdp_pc_ppp": {
+          "raw_value": 3716.89,
+          "normalized_value": 1.9,
+          "reference_year": 2025
+        },
         "life_expectancy": {
           "raw_value": 61.96,
           "normalized_value": 25.4,
           "reference_year": 2024
         },
-        "gdp_pc_ppp": {
-          "raw_value": 3716.89,
-          "normalized_value": 1.9,
+        "political_stability": {
+          "raw_value": -0.39,
+          "normalized_value": 51.6,
           "reference_year": 2025
         },
         "population": {
@@ -14181,11 +14186,6 @@
         "rule_of_law": {
           "raw_value": -0.84,
           "normalized_value": 29.5,
-          "reference_year": 2025
-        },
-        "political_stability": {
-          "raw_value": -0.39,
-          "normalized_value": 51.6,
           "reference_year": 2025
         }
       }
@@ -14209,11 +14209,6 @@
       },
       "tech_market": null,
       "indicators": {
-        "political_stability": {
-          "raw_value": 1.33,
-          "normalized_value": 94.4,
-          "reference_year": 2025
-        },
         "population": {
           "raw_value": 6111175.0,
           "normalized_value": 1.8,
@@ -14222,6 +14217,11 @@
         "rule_of_law": {
           "raw_value": 1.49,
           "normalized_value": 87.8,
+          "reference_year": 2025
+        },
+        "political_stability": {
+          "raw_value": 1.33,
+          "normalized_value": 94.4,
           "reference_year": 2025
         },
         "life_expectancy": {
@@ -14280,15 +14280,15 @@
           "normalized_value": 49.7,
           "reference_year": 2024
         },
-        "life_expectancy": {
-          "raw_value": 76.53,
-          "normalized_value": 72.3,
-          "reference_year": 2024
-        },
         "population": {
           "raw_value": 43923.0,
           "normalized_value": 0.0,
           "reference_year": 2025
+        },
+        "life_expectancy": {
+          "raw_value": 76.53,
+          "normalized_value": 72.3,
+          "reference_year": 2024
         }
       }
     },
@@ -14326,6 +14326,11 @@
           "normalized_value": 83.1,
           "reference_year": 2025
         },
+        "gdp_pc_ppp": {
+          "raw_value": 59244.71,
+          "normalized_value": 45.2,
+          "reference_year": 2025
+        },
         "ease_of_relocation": {
           "raw_value": 90.0,
           "normalized_value": 94.4,
@@ -14335,11 +14340,6 @@
           "raw_value": 1.1,
           "normalized_value": 76.5,
           "reference_year": 2025
-        },
-        "peace_index": {
-          "raw_value": 1.4,
-          "normalized_value": 90.5,
-          "reference_year": 2024
         },
         "life_expectancy": {
           "raw_value": 82.29,
@@ -14356,10 +14356,10 @@
           "normalized_value": 94.7,
           "reference_year": 2025
         },
-        "gdp_pc_ppp": {
-          "raw_value": 59244.71,
-          "normalized_value": 45.2,
-          "reference_year": 2025
+        "peace_index": {
+          "raw_value": 1.4,
+          "normalized_value": 90.5,
+          "reference_year": 2024
         }
       }
     },
@@ -14382,11 +14382,6 @@
       },
       "tech_market": null,
       "indicators": {
-        "political_stability": {
-          "raw_value": 0.75,
-          "normalized_value": 79.8,
-          "reference_year": 2025
-        },
         "population": {
           "raw_value": 838645.0,
           "normalized_value": 0.2,
@@ -14395,6 +14390,11 @@
         "rule_of_law": {
           "raw_value": 0.18,
           "normalized_value": 55.0,
+          "reference_year": 2025
+        },
+        "political_stability": {
+          "raw_value": 0.75,
+          "normalized_value": 79.8,
           "reference_year": 2025
         },
         "life_expectancy": {
@@ -14494,15 +14494,20 @@
       },
       "tech_market": null,
       "indicators": {
-        "peace_index": {
-          "raw_value": 2.4,
-          "normalized_value": 41.8,
-          "reference_year": 2024
-        },
         "political_stability": {
           "raw_value": -0.38,
           "normalized_value": 51.8,
           "reference_year": 2025
+        },
+        "life_expectancy": {
+          "raw_value": 66.31,
+          "normalized_value": 39.4,
+          "reference_year": 2024
+        },
+        "peace_index": {
+          "raw_value": 2.4,
+          "normalized_value": 41.8,
+          "reference_year": 2024
         },
         "population": {
           "raw_value": 64747319.0,
@@ -14514,6 +14519,11 @@
           "normalized_value": 51.6,
           "reference_year": 2025
         },
+        "gdp_pc_ppp": {
+          "raw_value": 15905.68,
+          "normalized_value": 11.4,
+          "reference_year": 2025
+        },
         "ease_of_relocation": {
           "raw_value": 40.0,
           "normalized_value": 38.6,
@@ -14523,16 +14533,6 @@
           "raw_value": -0.02,
           "normalized_value": 48.9,
           "reference_year": 2025
-        },
-        "gdp_pc_ppp": {
-          "raw_value": 15905.68,
-          "normalized_value": 11.4,
-          "reference_year": 2025
-        },
-        "life_expectancy": {
-          "raw_value": 66.31,
-          "normalized_value": 39.4,
-          "reference_year": 2024
         }
       }
     },
@@ -14565,16 +14565,6 @@
           "normalized_value": 0.0,
           "reference_year": 2025
         },
-        "life_expectancy": {
-          "raw_value": 57.74,
-          "normalized_value": 11.7,
-          "reference_year": 2024
-        },
-        "political_stability": {
-          "raw_value": -1.52,
-          "normalized_value": 23.6,
-          "reference_year": 2025
-        },
         "population": {
           "raw_value": 12188788.0,
           "normalized_value": 3.6,
@@ -14583,6 +14573,16 @@
         "rule_of_law": {
           "raw_value": -2.03,
           "normalized_value": 0.0,
+          "reference_year": 2025
+        },
+        "life_expectancy": {
+          "raw_value": 57.74,
+          "normalized_value": 11.7,
+          "reference_year": 2024
+        },
+        "political_stability": {
+          "raw_value": -1.52,
+          "normalized_value": 23.6,
           "reference_year": 2025
         }
       }
@@ -14621,16 +14621,6 @@
           "normalized_value": 46.3,
           "reference_year": 2025
         },
-        "life_expectancy": {
-          "raw_value": 77.67,
-          "normalized_value": 76.0,
-          "reference_year": 2024
-        },
-        "political_stability": {
-          "raw_value": -0.04,
-          "normalized_value": 60.2,
-          "reference_year": 2025
-        },
         "population": {
           "raw_value": 21756000.0,
           "normalized_value": 6.4,
@@ -14639,6 +14629,16 @@
         "rule_of_law": {
           "raw_value": -0.21,
           "normalized_value": 45.4,
+          "reference_year": 2025
+        },
+        "life_expectancy": {
+          "raw_value": 77.67,
+          "normalized_value": 76.0,
+          "reference_year": 2024
+        },
+        "political_stability": {
+          "raw_value": -0.04,
+          "normalized_value": 60.2,
           "reference_year": 2025
         }
       }
@@ -14662,11 +14662,6 @@
       },
       "tech_market": null,
       "indicators": {
-        "political_stability": {
-          "raw_value": 1.13,
-          "normalized_value": 89.3,
-          "reference_year": 2025
-        },
         "population": {
           "raw_value": 46922.0,
           "normalized_value": 0.0,
@@ -14675,6 +14670,11 @@
         "rule_of_law": {
           "raw_value": 0.58,
           "normalized_value": 65.1,
+          "reference_year": 2025
+        },
+        "political_stability": {
+          "raw_value": 1.13,
+          "normalized_value": 89.3,
           "reference_year": 2025
         },
         "life_expectancy": {
@@ -14738,11 +14738,6 @@
           "normalized_value": 21.4,
           "reference_year": 2025
         },
-        "political_stability": {
-          "raw_value": 1.13,
-          "normalized_value": 89.4,
-          "reference_year": 2025
-        },
         "population": {
           "raw_value": 180149.0,
           "normalized_value": 0.1,
@@ -14751,6 +14746,11 @@
         "rule_of_law": {
           "raw_value": 0.57,
           "normalized_value": 64.8,
+          "reference_year": 2025
+        },
+        "political_stability": {
+          "raw_value": 1.13,
+          "normalized_value": 89.4,
           "reference_year": 2025
         }
       }
@@ -14881,16 +14881,6 @@
           "normalized_value": 1.4,
           "reference_year": 2025
         },
-        "life_expectancy": {
-          "raw_value": 66.52,
-          "normalized_value": 40.0,
-          "reference_year": 2024
-        },
-        "political_stability": {
-          "raw_value": -2.07,
-          "normalized_value": 9.8,
-          "reference_year": 2025
-        },
         "population": {
           "raw_value": 51662147.0,
           "normalized_value": 15.2,
@@ -14899,6 +14889,16 @@
         "rule_of_law": {
           "raw_value": -1.86,
           "normalized_value": 4.2,
+          "reference_year": 2025
+        },
+        "life_expectancy": {
+          "raw_value": 66.52,
+          "normalized_value": 40.0,
+          "reference_year": 2024
+        },
+        "political_stability": {
+          "raw_value": -2.07,
+          "normalized_value": 9.8,
           "reference_year": 2025
         }
       }
@@ -14937,11 +14937,6 @@
           "normalized_value": 49.1,
           "reference_year": 2025
         },
-        "political_stability": {
-          "raw_value": 0.6,
-          "normalized_value": 76.2,
-          "reference_year": 2025
-        },
         "life_expectancy": {
           "raw_value": 73.76,
           "normalized_value": 63.4,
@@ -14955,6 +14950,11 @@
         "rule_of_law": {
           "raw_value": -0.22,
           "normalized_value": 45.1,
+          "reference_year": 2025
+        },
+        "political_stability": {
+          "raw_value": 0.6,
+          "normalized_value": 76.2,
           "reference_year": 2025
         }
       }
@@ -14978,15 +14978,15 @@
       },
       "tech_market": null,
       "indicators": {
-        "gdp_pc_ppp": {
-          "raw_value": 4905.15,
-          "normalized_value": 2.8,
-          "reference_year": 2022
-        },
         "life_expectancy": {
           "raw_value": 72.56,
           "normalized_value": 59.5,
           "reference_year": 2024
+        },
+        "gdp_pc_ppp": {
+          "raw_value": 4905.15,
+          "normalized_value": 2.8,
+          "reference_year": 2022
         },
         "ease_of_relocation": {
           "raw_value": 5.0,
@@ -15044,14 +15044,19 @@
           "normalized_value": 32.5,
           "reference_year": 2025
         },
+        "gdp_pc_ppp": {
+          "raw_value": 5923.47,
+          "normalized_value": 3.6,
+          "reference_year": 2025
+        },
         "life_expectancy": {
           "raw_value": 71.93,
           "normalized_value": 57.5,
           "reference_year": 2024
         },
-        "gdp_pc_ppp": {
-          "raw_value": 5923.47,
-          "normalized_value": 3.6,
+        "political_stability": {
+          "raw_value": -0.3,
+          "normalized_value": 53.9,
           "reference_year": 2025
         },
         "population": {
@@ -15062,11 +15067,6 @@
         "rule_of_law": {
           "raw_value": -1.22,
           "normalized_value": 20.0,
-          "reference_year": 2025
-        },
-        "political_stability": {
-          "raw_value": -0.3,
-          "normalized_value": 53.9,
           "reference_year": 2025
         }
       }
@@ -15110,11 +15110,6 @@
           "normalized_value": 2.5,
           "reference_year": 2025
         },
-        "political_stability": {
-          "raw_value": -0.48,
-          "normalized_value": 49.4,
-          "reference_year": 2025
-        },
         "population": {
           "raw_value": 70545865.0,
           "normalized_value": 20.8,
@@ -15123,6 +15118,11 @@
         "rule_of_law": {
           "raw_value": -0.57,
           "normalized_value": 36.3,
+          "reference_year": 2025
+        },
+        "political_stability": {
+          "raw_value": -0.48,
+          "normalized_value": 49.4,
           "reference_year": 2025
         }
       }
@@ -15156,14 +15156,19 @@
           "normalized_value": 55.9,
           "reference_year": 2025
         },
+        "gdp_pc_ppp": {
+          "raw_value": 26250.07,
+          "normalized_value": 19.5,
+          "reference_year": 2025
+        },
         "life_expectancy": {
           "raw_value": 76.56,
           "normalized_value": 72.4,
           "reference_year": 2024
         },
-        "gdp_pc_ppp": {
-          "raw_value": 26250.07,
-          "normalized_value": 19.5,
+        "political_stability": {
+          "raw_value": -0.56,
+          "normalized_value": 47.3,
           "reference_year": 2025
         },
         "population": {
@@ -15174,11 +15179,6 @@
         "rule_of_law": {
           "raw_value": -0.12,
           "normalized_value": 47.5,
-          "reference_year": 2025
-        },
-        "political_stability": {
-          "raw_value": -0.56,
-          "normalized_value": 47.3,
           "reference_year": 2025
         }
       }
@@ -15202,15 +15202,15 @@
       },
       "tech_market": null,
       "indicators": {
-        "gdp_pc_ppp": {
-          "raw_value": 4809.49,
-          "normalized_value": 2.8,
-          "reference_year": 2025
-        },
         "life_expectancy": {
           "raw_value": 67.9,
           "normalized_value": 44.5,
           "reference_year": 2024
+        },
+        "gdp_pc_ppp": {
+          "raw_value": 4809.49,
+          "normalized_value": 2.8,
+          "reference_year": 2025
         },
         "ease_of_relocation": {
           "raw_value": 45.0,
@@ -15329,16 +15329,6 @@
           "normalized_value": 48.0,
           "reference_year": 2025
         },
-        "life_expectancy": {
-          "raw_value": 73.07,
-          "normalized_value": 61.2,
-          "reference_year": 2024
-        },
-        "political_stability": {
-          "raw_value": 1.31,
-          "normalized_value": 93.9,
-          "reference_year": 2025
-        },
         "population": {
           "raw_value": 103742.0,
           "normalized_value": 0.0,
@@ -15347,6 +15337,16 @@
         "rule_of_law": {
           "raw_value": 0.77,
           "normalized_value": 69.9,
+          "reference_year": 2025
+        },
+        "life_expectancy": {
+          "raw_value": 73.07,
+          "normalized_value": 61.2,
+          "reference_year": 2024
+        },
+        "political_stability": {
+          "raw_value": 1.31,
+          "normalized_value": 93.9,
           "reference_year": 2025
         }
       }
@@ -15385,16 +15385,6 @@
           "normalized_value": 55.2,
           "reference_year": 2025
         },
-        "life_expectancy": {
-          "raw_value": 73.62,
-          "normalized_value": 62.9,
-          "reference_year": 2024
-        },
-        "political_stability": {
-          "raw_value": 0.47,
-          "normalized_value": 72.9,
-          "reference_year": 2025
-        },
         "population": {
           "raw_value": 1367764.0,
           "normalized_value": 0.4,
@@ -15403,6 +15393,16 @@
         "rule_of_law": {
           "raw_value": -0.35,
           "normalized_value": 41.8,
+          "reference_year": 2025
+        },
+        "life_expectancy": {
+          "raw_value": 73.62,
+          "normalized_value": 62.9,
+          "reference_year": 2024
+        },
+        "political_stability": {
+          "raw_value": 0.47,
+          "normalized_value": 72.9,
           "reference_year": 2025
         }
       }
@@ -15497,6 +15497,11 @@
           "normalized_value": 39.3,
           "reference_year": 2025
         },
+        "gdp_pc_ppp": {
+          "raw_value": 45288.48,
+          "normalized_value": 34.3,
+          "reference_year": 2025
+        },
         "ease_of_relocation": {
           "raw_value": 48.0,
           "normalized_value": 47.5,
@@ -15506,11 +15511,6 @@
           "raw_value": 0.03,
           "normalized_value": 50.1,
           "reference_year": 2025
-        },
-        "peace_index": {
-          "raw_value": 2.78,
-          "normalized_value": 23.5,
-          "reference_year": 2024
         },
         "life_expectancy": {
           "raw_value": 77.42,
@@ -15527,10 +15527,10 @@
           "normalized_value": 74.3,
           "reference_year": 2025
         },
-        "gdp_pc_ppp": {
-          "raw_value": 45288.48,
-          "normalized_value": 34.3,
-          "reference_year": 2025
+        "peace_index": {
+          "raw_value": 2.78,
+          "normalized_value": 23.5,
+          "reference_year": 2024
         }
       }
     },
@@ -15553,11 +15553,6 @@
       },
       "tech_market": null,
       "indicators": {
-        "political_stability": {
-          "raw_value": 0.24,
-          "normalized_value": 67.1,
-          "reference_year": 2025
-        },
         "population": {
           "raw_value": 7618847.0,
           "normalized_value": 2.2,
@@ -15566,6 +15561,11 @@
         "rule_of_law": {
           "raw_value": -1.42,
           "normalized_value": 15.1,
+          "reference_year": 2025
+        },
+        "political_stability": {
+          "raw_value": 0.24,
+          "normalized_value": 67.1,
           "reference_year": 2025
         },
         "life_expectancy": {
@@ -15609,24 +15609,24 @@
       },
       "tech_market": null,
       "indicators": {
+        "life_expectancy": {
+          "raw_value": 78.18,
+          "normalized_value": 77.7,
+          "reference_year": 2024
+        },
         "population": {
           "raw_value": 46855.0,
           "normalized_value": 0.0,
           "reference_year": 2025
-        },
-        "ease_of_relocation": {
-          "raw_value": 50.0,
-          "normalized_value": 49.7,
-          "reference_year": 2024
         },
         "gdp_pc_ppp": {
           "raw_value": 38009.51,
           "normalized_value": 28.6,
           "reference_year": 2024
         },
-        "life_expectancy": {
-          "raw_value": 78.18,
-          "normalized_value": 77.7,
+        "ease_of_relocation": {
+          "raw_value": 50.0,
+          "normalized_value": 49.7,
           "reference_year": 2024
         }
       }
@@ -15650,6 +15650,11 @@
       },
       "tech_market": null,
       "indicators": {
+        "political_stability": {
+          "raw_value": 1.42,
+          "normalized_value": 96.6,
+          "reference_year": 2025
+        },
         "population": {
           "raw_value": 9492.0,
           "normalized_value": 0.0,
@@ -15665,16 +15670,6 @@
           "normalized_value": 42.4,
           "reference_year": 2024
         },
-        "political_stability": {
-          "raw_value": 1.42,
-          "normalized_value": 96.6,
-          "reference_year": 2025
-        },
-        "gdp_pc_ppp": {
-          "raw_value": 6759.28,
-          "normalized_value": 4.3,
-          "reference_year": 2025
-        },
         "ease_of_relocation": {
           "raw_value": 45.0,
           "normalized_value": 44.1,
@@ -15683,6 +15678,11 @@
         "gov_effectiveness": {
           "raw_value": -0.6,
           "normalized_value": 34.6,
+          "reference_year": 2025
+        },
+        "gdp_pc_ppp": {
+          "raw_value": 6759.28,
+          "normalized_value": 4.3,
           "reference_year": 2025
         }
       }
@@ -15762,11 +15762,6 @@
       },
       "tech_market": null,
       "indicators": {
-        "political_stability": {
-          "raw_value": -0.33,
-          "normalized_value": 52.9,
-          "reference_year": 2025
-        },
         "population": {
           "raw_value": 38980376.0,
           "normalized_value": 11.5,
@@ -15775,6 +15770,11 @@
         "rule_of_law": {
           "raw_value": -0.79,
           "normalized_value": 30.9,
+          "reference_year": 2025
+        },
+        "political_stability": {
+          "raw_value": -0.33,
+          "normalized_value": 52.9,
           "reference_year": 2025
         },
         "life_expectancy": {
@@ -15838,11 +15838,6 @@
           "normalized_value": 77.2,
           "reference_year": 2025
         },
-        "political_stability": {
-          "raw_value": 0.83,
-          "normalized_value": 81.8,
-          "reference_year": 2025
-        },
         "life_expectancy": {
           "raw_value": 83.07,
           "normalized_value": 93.4,
@@ -15856,6 +15851,11 @@
         "rule_of_law": {
           "raw_value": 0.54,
           "normalized_value": 64.2,
+          "reference_year": 2025
+        },
+        "political_stability": {
+          "raw_value": 0.83,
+          "normalized_value": 81.8,
           "reference_year": 2025
         }
       }
@@ -15894,6 +15894,11 @@
           "normalized_value": 93.6,
           "reference_year": 2025
         },
+        "gdp_pc_ppp": {
+          "raw_value": 38314.89,
+          "normalized_value": 28.9,
+          "reference_year": 2025
+        },
         "ease_of_relocation": {
           "raw_value": 68.0,
           "normalized_value": 69.8,
@@ -15908,11 +15913,6 @@
           "raw_value": 78.29,
           "normalized_value": 78.0,
           "reference_year": 2024
-        },
-        "gdp_pc_ppp": {
-          "raw_value": 38314.89,
-          "normalized_value": 28.9,
-          "reference_year": 2025
         }
       }
     },
@@ -15940,6 +15940,11 @@
           "normalized_value": 63.8,
           "reference_year": 2025
         },
+        "life_expectancy": {
+          "raw_value": 72.53,
+          "normalized_value": 59.4,
+          "reference_year": 2024
+        },
         "population": {
           "raw_value": 37053428.0,
           "normalized_value": 10.9,
@@ -15948,6 +15953,11 @@
         "rule_of_law": {
           "raw_value": -0.64,
           "normalized_value": 34.5,
+          "reference_year": 2025
+        },
+        "gdp_pc_ppp": {
+          "raw_value": 13601.29,
+          "normalized_value": 9.6,
           "reference_year": 2025
         },
         "ease_of_relocation": {
@@ -15959,16 +15969,6 @@
           "raw_value": -0.2,
           "normalized_value": 44.6,
           "reference_year": 2025
-        },
-        "gdp_pc_ppp": {
-          "raw_value": 13601.29,
-          "normalized_value": 9.6,
-          "reference_year": 2025
-        },
-        "life_expectancy": {
-          "raw_value": 72.53,
-          "normalized_value": 59.4,
-          "reference_year": 2024
         }
       }
     },
@@ -16006,16 +16006,6 @@
           "normalized_value": 31.0,
           "reference_year": 2025
         },
-        "life_expectancy": {
-          "raw_value": 71.65,
-          "normalized_value": 56.6,
-          "reference_year": 2024
-        },
-        "political_stability": {
-          "raw_value": 0.95,
-          "normalized_value": 84.9,
-          "reference_year": 2025
-        },
         "population": {
           "raw_value": 335169.0,
           "normalized_value": 0.1,
@@ -16024,6 +16014,16 @@
         "rule_of_law": {
           "raw_value": 0.53,
           "normalized_value": 63.8,
+          "reference_year": 2025
+        },
+        "life_expectancy": {
+          "raw_value": 71.65,
+          "normalized_value": 56.6,
+          "reference_year": 2024
+        },
+        "political_stability": {
+          "raw_value": 0.95,
+          "normalized_value": 84.9,
           "reference_year": 2025
         }
       }
@@ -16062,11 +16062,6 @@
           "normalized_value": 0.0,
           "reference_year": 2025
         },
-        "life_expectancy": {
-          "raw_value": 72.67,
-          "normalized_value": 59.9,
-          "reference_year": 2024
-        },
         "ease_of_relocation": {
           "raw_value": 50.0,
           "normalized_value": 49.7,
@@ -16076,6 +16071,11 @@
           "raw_value": -1.39,
           "normalized_value": 15.2,
           "reference_year": 2025
+        },
+        "life_expectancy": {
+          "raw_value": 72.67,
+          "normalized_value": 59.9,
+          "reference_year": 2024
         }
       }
     },
@@ -16113,6 +16113,11 @@
           "normalized_value": 64.2,
           "reference_year": 2025
         },
+        "gdp_pc_ppp": {
+          "raw_value": 18088.49,
+          "normalized_value": 13.1,
+          "reference_year": 2025
+        },
         "ease_of_relocation": {
           "raw_value": 45.0,
           "normalized_value": 44.1,
@@ -16127,11 +16132,6 @@
           "raw_value": 74.74,
           "normalized_value": 66.5,
           "reference_year": 2024
-        },
-        "gdp_pc_ppp": {
-          "raw_value": 18088.49,
-          "normalized_value": 13.1,
-          "reference_year": 2025
         }
       }
     },
@@ -16281,6 +16281,11 @@
           "normalized_value": 3.4,
           "reference_year": 2025
         },
+        "political_stability": {
+          "raw_value": -2.51,
+          "normalized_value": 0.0,
+          "reference_year": 2025
+        },
         "population": {
           "raw_value": 41773878.0,
           "normalized_value": 12.3,
@@ -16289,11 +16294,6 @@
         "rule_of_law": {
           "raw_value": -1.94,
           "normalized_value": 2.0,
-          "reference_year": 2025
-        },
-        "political_stability": {
-          "raw_value": -2.51,
-          "normalized_value": 0.0,
           "reference_year": 2025
         }
       }
@@ -16317,11 +16317,6 @@
       },
       "tech_market": null,
       "indicators": {
-        "political_stability": {
-          "raw_value": -0.06,
-          "normalized_value": 59.8,
-          "reference_year": 2025
-        },
         "population": {
           "raw_value": 21913874.0,
           "normalized_value": 6.5,
@@ -16330,6 +16325,11 @@
         "rule_of_law": {
           "raw_value": -0.49,
           "normalized_value": 38.2,
+          "reference_year": 2025
+        },
+        "political_stability": {
+          "raw_value": -0.06,
+          "normalized_value": 59.8,
           "reference_year": 2025
         },
         "life_expectancy": {
