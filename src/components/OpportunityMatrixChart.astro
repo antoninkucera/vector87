@@ -23,6 +23,12 @@ const {
 // Radius helper based on AI/Data jobs volume
 const calcRadius = (jobs: number) => Math.max(5, Math.min(22, Math.round(4 + Math.sqrt(jobs) * 0.24)));
 
+const jobsByIso3 = Object.fromEntries(countries.map((c) => [c.iso3, c.activeJobs]));
+const usJobs = jobsByIso3.USA ?? 4508;
+const caJobs = jobsByIso3.CAN ?? 591;
+const ukJobs = jobsByIso3.GBR ?? 1232;
+const esJobs = jobsByIso3.ESP ?? 354;
+
 // Split into 3 visual groups for distinct colors and legend
 const easyWins = countries
   .filter((c) => c.quadrant === 'easy_win')
@@ -245,13 +251,13 @@ const payload = JSON.stringify({
       <div class="flex items-center gap-2 text-slate-300">
         <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 shrink-0"></span>
         <span class="text-slate-400">
-          <strong class="text-cyan-300">High Friction / High Reward:</strong> {lang === 'cs' ? 'USA (6 203 pozic, loterie H-1B), Kanada (779), UK (346)' : 'USA (6.2k jobs, H-1B lottery), Canada (779), UK (346)'}
+          <strong class="text-cyan-300">High Friction / High Reward:</strong> {lang === 'cs' ? `USA (${usJobs.toLocaleString('cs-CZ')} pozic, loterie H-1B), Kanada (${caJobs.toLocaleString('cs-CZ')}), UK (${ukJobs.toLocaleString('cs-CZ')})` : `USA (${usJobs.toLocaleString('en-US')} jobs, H-1B lottery), Canada (${caJobs.toLocaleString('en-US')}), UK (${ukJobs.toLocaleString('en-US')})`}
         </span>
       </div>
       <div class="flex items-center gap-2 text-slate-300">
         <span class="w-2.5 h-2.5 rounded-full bg-indigo-400 shrink-0"></span>
         <span class="text-slate-400">
-          <strong class="text-indigo-300">Lifestyle Havens:</strong> {lang === 'cs' ? 'Španělsko (97 rolí, Beckham Law), Portugalsko (D8 vízum)' : 'Spain (97 jobs, Beckham Law), Portugal (D8 visa)'}
+          <strong class="text-indigo-300">Lifestyle Havens:</strong> {lang === 'cs' ? `Španělsko (${esJobs.toLocaleString('cs-CZ')} rolí, Beckham Law), Portugalsko (D8 vízum)` : `Spain (${esJobs.toLocaleString('en-US')} jobs, Beckham Law), Portugal (D8 visa)`}
         </span>
       </div>
     </div>
@@ -467,14 +473,20 @@ const payload = JSON.stringify({
             btnReloc?.classList.remove('bg-emerald-500/20', 'text-emerald-300', 'border', 'border-emerald-500/30');
             btnReloc?.classList.add('text-slate-400');
 
+            const maxActiveJobs = Math.max(
+              5000,
+              ...chart.data.datasets.flatMap((ds: any) => ds.data.map((p: any) => Number(p.activeJobs) || 1))
+            );
+            const dynamicLogMax = Math.max(10000, Math.ceil((maxActiveJobs * 1.45) / 1000) * 1000);
+
             chart.options.scales!.x!.type = 'logarithmic';
             (chart.options.scales!.x as any).min = 1;
-            (chart.options.scales!.x as any).max = 7500;
+            (chart.options.scales!.x as any).max = dynamicLogMax;
             (chart.options.scales!.y as any).min = 0;
             (chart.options.scales!.y as any).max = 100;
             chart.options.scales!.x!.title!.text = labels.xAxisJobs;
             chart.options.scales!.x!.ticks!.callback = (val: any) => {
-              if ([1, 10, 50, 100, 500, 1000, 5000].includes(Number(val))) {
+              if ([1, 10, 50, 100, 500, 1000, 5000, 10000, 20000, 50000].includes(Number(val))) {
                 return Number(val).toLocaleString('en-US');
               }
               return null;

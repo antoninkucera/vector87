@@ -217,7 +217,7 @@ def export_market_data(db_path: Path | None = None, output_path: Path | None = N
             WHERE j.is_active = TRUE AND j.country_code IS NOT NULL
             GROUP BY 1, 2, 3
             ORDER BY cnt DESC
-            LIMIT 12
+            LIMIT 30
             """,
             [total_distinct_jobs],
         ).fetchall()

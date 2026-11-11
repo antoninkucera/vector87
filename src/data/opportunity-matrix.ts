@@ -223,6 +223,13 @@ const TECH_NOTES_QUAL: Record<string, { en: string; cs: string }> = {
   },
 };
 
+const maxFocusActiveJobs = Math.max(
+  4500,
+  ...(placesData.countries as any[])
+    .filter((c) => c.is_focus_country)
+    .map((c) => Number(c.tech_market?.active_jobs) || 1)
+);
+
 export const OPPORTUNITY_MATRIX_DATA: OpportunityCountry[] = (placesData.countries as any[])
   .filter((c) => c.is_focus_country && c.pillar_scores?.composite_score && c.pillar_scores?.ease_of_relocation)
   .map((c) => {
@@ -245,8 +252,7 @@ export const OPPORTUNITY_MATRIX_DATA: OpportunityCountry[] = (placesData.countri
       .join(', ');
 
     // Normalized Market Score based on active jobs (log-scaled 0 - 100)
-    // log(1) = 0, log(6203) = ~8.73
-    const marketScore = Math.min(100, Math.round((Math.log(activeJobs) / Math.log(6500)) * 100));
+    const marketScore = Math.min(100, Math.round((Math.log(Math.max(1, activeJobs)) / Math.log(maxFocusActiveJobs)) * 100));
 
     // Thriving Score: Weighted blend of Market Vitality (35%), Livability (40%), and Ease of Relocation (25%)
     const thrivingScore = Math.round(marketScore * 0.35 + livability * 0.40 + easeOfRelocation * 0.25);
