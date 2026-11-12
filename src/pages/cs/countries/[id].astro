@@ -16,7 +16,7 @@ interface Props {
 const { countryMeta, isAlias, targetSlug } = Astro.props;
 
 if (isAlias && targetSlug) {
-  return Astro.redirect(`/cs/countries/${targetSlug}`, 301);
+  return Astro.redirect(`/cs/countries/${targetSlug}/`, 301);
 }
 ---
 

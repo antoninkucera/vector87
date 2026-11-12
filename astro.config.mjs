@@ -46,6 +46,7 @@ function isSitemapAllowed(page) {
 export default defineConfig({
   site: 'https://vector87.com',
   output: 'static',
+  trailingSlash: 'always',
   integrations: [
     sitemap({
       i18n: {

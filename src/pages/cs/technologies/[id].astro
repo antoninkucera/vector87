@@ -30,7 +30,7 @@ interface Props {
 const { techId, isAlias, targetSlug } = Astro.props;
 
 if (isAlias && targetSlug) {
-  return Astro.redirect(`/cs/technologies/${targetSlug}`, 301);
+  return Astro.redirect(`/cs/technologies/${targetSlug}/`, 301);
 }
 ---
 

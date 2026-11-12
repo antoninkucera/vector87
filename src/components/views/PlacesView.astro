@@ -473,7 +473,7 @@ const placesJsonLd = {
               }
 
               const cMeta = getCountryMeta(country.country_code_alpha3);
-              const countryDetailHref = cMeta ? (lang === 'cs' ? `/cs/countries/${cMeta.slug}` : `/countries/${cMeta.slug}`) : null;
+              const countryDetailHref = cMeta ? (lang === 'cs' ? `/cs/countries/${cMeta.slug}/` : `/countries/${cMeta.slug}/`) : null;
 
               return (
                 <>
@@ -621,7 +621,7 @@ const placesJsonLd = {
                                 <div class="jobs-list space-y-2.5">
                                   {country.tech_market.sample_jobs.map((job: any) => {
                                     const roleSlug = job.category_id ? job.category_id.replace(/_/g, '-') : null;
-                                    const roleHref = roleSlug ? (lang === 'cs' ? `/cs/roles/${roleSlug}` : `/roles/${roleSlug}`) : null;
+                                    const roleHref = roleSlug ? (lang === 'cs' ? `/cs/roles/${roleSlug}/` : `/roles/${roleSlug}/`) : null;
                                     return (
                                       <div class="job-item p-3 rounded-lg bg-slate-900/90 border border-slate-800/90 hover:border-cyan-500/40 transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-inner">
                                         <div class="space-y-1 min-w-0 flex-1">
@@ -730,7 +730,7 @@ const placesJsonLd = {
                                 <div class="flex flex-wrap gap-1.5">
                                   {country.tech_market.roles_breakdown.slice(0, 6).map((rb: any) => {
                                     const kebabSlug = rb.category_id ? rb.category_id.replace(/_/g, '-') : null;
-                                    const roleHref = kebabSlug ? (lang === 'cs' ? `/cs/roles/${kebabSlug}` : `/roles/${kebabSlug}`) : null;
+                                    const roleHref = kebabSlug ? (lang === 'cs' ? `/cs/roles/${kebabSlug}/` : `/roles/${kebabSlug}/`) : null;
                                     return (
                                       <div class="inline-flex items-center rounded text-xs font-mono bg-slate-900 border border-slate-700/70 overflow-hidden">
                                         <button
@@ -759,7 +759,7 @@ const placesJsonLd = {
                                 </div>
                                 <div class="pt-1">
                                   <a
-                                    href={lang === 'cs' ? '/cs/roles' : '/roles'}
+                                    href={lang === 'cs' ? '/cs/roles/' : '/roles/'}
                                     class="text-[11px] font-mono text-cyan-400 hover:text-cyan-300 hover:underline inline-flex items-center gap-1"
                                   >
                                     {t.expandAllRolesLink}
@@ -1310,7 +1310,7 @@ const placesJsonLd = {
 
   function renderJobCard(job) {
     const roleSlug = job.category_id ? job.category_id.replace(/_/g, '-') : null;
-    const roleHref = roleSlug ? (pageLang === 'cs' ? `/cs/roles/${roleSlug}` : `/roles/${roleSlug}`) : null;
+    const roleHref = roleSlug ? (pageLang === 'cs' ? `/cs/roles/${roleSlug}/` : `/roles/${roleSlug}/`) : null;
     const roleDisplay = escapeHtml(job.role_name || job.category_id || 'Other');
     const compDisplay = escapeHtml(job.company_name || 'Enterprise Employer');
     const titleDisplay = escapeHtml(job.title);

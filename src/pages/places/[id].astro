@@ -12,5 +12,5 @@ interface Props {
 
 const { countryMeta, targetSlug } = Astro.props;
 const destination = targetSlug || countryMeta.slug;
-return Astro.redirect(`/countries/${destination}`, 301);
+return Astro.redirect(`/countries/${destination}/`, 301);
 ---

@@ -226,7 +226,7 @@ const salariesJsonLd = {
 
               <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight">
                 <a
-                  href={`${lang === 'en' ? '/roles' : '/cs/roles'}/${role.kebabSlug}`}
+                  href={`${lang === 'en' ? '/roles' : '/cs/roles'}/${role.kebabSlug}/`}
                   class="hover:text-cyan-300 transition-colors inline-flex items-center gap-1.5"
                 >
                   <span>{role.canonicalName}</span>
@@ -400,7 +400,7 @@ const salariesJsonLd = {
           : 'Want to compare countries by safety and housing affordability?'}
       </span>
       <a
-        href={lang === 'en' ? '/countries' : '/cs/countries'}
+        href={lang === 'en' ? '/countries/' : '/cs/countries/'}
         class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border border-cyan-500/40 transition-colors font-semibold"
       >
         <span>{lang === 'cs' ? 'Vector87 Žebříček zemí (Countries Index)' : 'Vector87 Countries & Relocation Index'}</span>

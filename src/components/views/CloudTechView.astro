@@ -270,7 +270,7 @@ const cloudJsonLd = {
           const matched = (marketData.roles as any[]).find((r) => r.canonical_name.toLowerCase() === gRole.canonical_name.toLowerCase());
           if (!matched) return null;
           const slug = matched.category_id.replace(/_/g, '-');
-          const href = lang === 'en' ? `/roles/${slug}` : `/cs/roles/${slug}`;
+          const href = lang === 'en' ? `/roles/${slug}/` : `/cs/roles/${slug}/`;
           return (
             <a
               href={href}

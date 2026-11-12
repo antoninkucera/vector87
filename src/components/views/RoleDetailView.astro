@@ -201,7 +201,7 @@ const roleDetailGraph = {
       responsibilities: role.synthesized_description[lang]?.[1] || role.synthesized_description.en[1],
       mainEntityOfPage: {
         '@type': 'WebPage',
-        '@id': `https://vector87.com${lang === 'en' ? `/roles/${roleKebabSlug}` : `/cs/roles/${roleKebabSlug}`}`,
+        '@id': `https://vector87.com${lang === 'en' ? `/roles/${roleKebabSlug}/` : `/cs/roles/${roleKebabSlug}/`}`,
       },
     },
     {
@@ -217,13 +217,13 @@ const roleDetailGraph = {
           '@type': 'ListItem',
           position: 2,
           name: t.breadcrumbRoles,
-          item: `https://vector87.com${lang === 'en' ? '/roles' : '/cs/roles'}`,
+          item: `https://vector87.com${lang === 'en' ? '/roles/' : '/cs/roles/'}`,
         },
         {
           '@type': 'ListItem',
           position: 3,
           name: role.canonical_name,
-          item: `https://vector87.com${lang === 'en' ? `/roles/${roleKebabSlug}` : `/cs/roles/${roleKebabSlug}`}`,
+          item: `https://vector87.com${lang === 'en' ? `/roles/${roleKebabSlug}/` : `/cs/roles/${roleKebabSlug}/`}`,
         },
       ],
     },
@@ -238,7 +238,7 @@ const roleDetailGraph = {
       {t.breadcrumbHome}
     </a>
     <span class="text-slate-600">/</span>
-    <a href={lang === 'en' ? '/roles' : '/cs/roles'} class="hover:text-cyan-300 transition-colors">
+    <a href={lang === 'en' ? '/roles/' : '/cs/roles/'} class="hover:text-cyan-300 transition-colors">
       {t.breadcrumbRoles}
     </a>
     <span class="text-slate-600">/</span>
@@ -315,7 +315,7 @@ const roleDetailGraph = {
             const targetName = targetRole ? targetRole.canonical_name : targetRoleId;
             return (
               <a
-                href={`${lang === 'en' ? '/compare' : '/cs/compare'}/${c.slug}`}
+                href={`${lang === 'en' ? '/compare' : '/cs/compare'}/${c.slug}/`}
                 class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 hover:border-indigo-400 transition-colors shadow-sm"
               >
                 <span>vs. {targetName}</span>
@@ -419,7 +419,7 @@ const roleDetailGraph = {
                   const resolved = getTechnology(sk.skill_id || sk.skill_name);
                   return resolved ? (
                     <a
-                      href={`${lang === 'en' ? '/technologies' : '/cs/technologies'}/${resolved.id}`}
+                      href={`${lang === 'en' ? '/technologies' : '/cs/technologies'}/${resolved.id}/`}
                       class="text-slate-200 font-semibold hover:text-cyan-300 transition-colors inline-flex items-center gap-1 group/skill"
                     >
                       <span>{sk.skill_name}</span>
@@ -860,7 +860,7 @@ const roleDetailGraph = {
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
       {roleCountries.map((c) => (
         <a
-          href={`${getLocalePath(lang, 'countries')}/${c.iso3.toLowerCase()}#role=${role.role_id}`}
+          href={`${getLocalePath(lang, 'countries')}${c.iso3.toLowerCase()}/#role=${role.role_id}`}
           class="group p-5 rounded-xl panel-surface border border-slate-800 hover:border-cyan-500/40 transition-all flex flex-col justify-between gap-4 hover:shadow-lg hover:shadow-cyan-500/5"
         >
           <div class="space-y-3">
@@ -913,7 +913,7 @@ const roleDetailGraph = {
         <p class="text-xs sm:text-sm text-slate-400 mt-1 max-w-2xl">{t.educationSub}</p>
       </div>
       <a
-        href={lang === 'en' ? '/academy' : '/cs/academy'}
+        href={lang === 'en' ? '/academy/' : '/cs/academy/'}
         class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-mono font-semibold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/25 transition-colors shrink-0"
       >
         {t.exploreAcademyBtn}
@@ -1015,7 +1015,7 @@ const roleDetailGraph = {
         </div>
       </div>
       <a
-        href={lang === 'cs' ? '/cs/academy/podcasts' : '/academy/podcasts'}
+        href={lang === 'cs' ? '/cs/academy/podcasts/' : '/academy/podcasts/'}
         class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono font-semibold bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 hover:bg-cyan-500/20 transition-colors shrink-0"
       >
         <span>{lang === 'cs' ? 'Podcasty a pořady ↗' : 'Podcasts & Shows ↗'}</span>
@@ -1029,7 +1029,7 @@ const roleDetailGraph = {
       lang={lang}
       title={`${role.canonical_name} Market Demand & Role Profile`}
       subtitle={role.synthesized_description ? (lang === 'cs' ? role.synthesized_description.cs : role.synthesized_description.en).slice(0, 160) + '...' : undefined}
-      sourceUrl={`https://vector87.com${lang === 'en' ? '' : '/cs'}/roles/${role.category_id}`}
+      sourceUrl={`https://vector87.com${lang === 'en' ? '' : '/cs'}/roles/${role.category_id}/`}
     />
   </section>
 
@@ -1047,7 +1047,7 @@ const roleDetailGraph = {
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {relatedRoles.map((relRole) => (
           <a
-            href={lang === 'en' ? `/roles/${relRole.category_id.replace(/_/g, '-')}` : `/cs/roles/${relRole.category_id.replace(/_/g, '-')}`}
+            href={lang === 'en' ? `/roles/${relRole.category_id.replace(/_/g, '-')}/` : `/cs/roles/${relRole.category_id.replace(/_/g, '-')}/`}
             class="p-4 rounded-xl panel-surface border border-slate-800 hover:border-cyan-500/40 transition-colors group block space-y-2"
           >
             <div class="flex items-center justify-between text-xs font-mono text-slate-400">
@@ -1069,7 +1069,7 @@ const roleDetailGraph = {
   <!-- Footer Navigation -->
   <div class="pt-6 border-t border-slate-800/80 flex items-center justify-between">
     <a
-      href={lang === 'en' ? '/roles' : '/cs/roles'}
+      href={lang === 'en' ? '/roles/' : '/cs/roles/'}
       class="text-xs font-mono font-semibold text-cyan-400 hover:text-cyan-300 transition-colors"
     >
       {t.backToRoles}

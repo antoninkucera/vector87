@@ -116,7 +116,7 @@ const jsonLd = {
     addressCountry: countryMeta.alpha2,
   },
   description: `${countryName} Data & AI Job Market and Livability Intelligence. Real enterprise job requisitions, compensation context, and tech ecosystem radar.`,
-  url: `https://vector87.com${lang === 'cs' ? `/cs/countries/${countryMeta.slug}` : `/countries/${countryMeta.slug}`}`,
+  url: `https://vector87.com${lang === 'cs' ? `/cs/countries/${countryMeta.slug}/` : `/countries/${countryMeta.slug}/`}`,
 };
 
 const i18nConfig = {
@@ -379,7 +379,7 @@ const i18nConfig = {
         </p>
         <div class="pt-2 flex items-center justify-center gap-3 flex-wrap">
           <a
-            href={getLocalePath(lang, 'places')}
+            href={getLocalePath(lang, 'countries')}
             class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-mono font-semibold bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 hover:bg-cyan-500/30 transition-all"
           >
             <span>{t.exploreRegionalJobs.replace('{continent}', country.continent)}</span>
@@ -590,7 +590,7 @@ const i18nConfig = {
         </p>
       </div>
       <a
-        href={getLocalePath(lang, 'places')}
+        href={getLocalePath(lang, 'countries')}
         class="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-cyan-400 hover:text-cyan-300 hover:underline shrink-0"
       >
         <span>{lang === 'cs' ? 'Zpět na srovnávací žebříček zemí' : 'Back to country ranking'}</span>
@@ -605,7 +605,7 @@ const i18nConfig = {
         const odScore = odData?.pillar_scores?.composite_score !== null && odData?.pillar_scores?.composite_score !== undefined
           ? odData.pillar_scores.composite_score.toFixed(1)
           : 'N/A';
-        const odHref = lang === 'cs' ? `/cs/countries/${od.slug}` : `/countries/${od.slug}`;
+        const odHref = lang === 'cs' ? `/cs/countries/${od.slug}/` : `/countries/${od.slug}/`;
 
         return (
           <a
@@ -671,7 +671,7 @@ const i18nConfig = {
 
   function renderJobCard(job) {
     const roleSlug = job.category_id ? job.category_id.replace(/_/g, '-') : null;
-    const roleHref = roleSlug ? (currentLang === 'cs' ? `/cs/roles/${roleSlug}` : `/roles/${roleSlug}`) : null;
+    const roleHref = roleSlug ? (currentLang === 'cs' ? `/cs/roles/${roleSlug}/` : `/roles/${roleSlug}/`) : null;
     const roleDisplay = escapeHtml(job.role_name || job.category_id || 'Other Data/AI');
     const compDisplay = escapeHtml(job.company_name || 'Enterprise Employer');
     const titleDisplay = escapeHtml(job.title);

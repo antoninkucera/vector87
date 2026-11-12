@@ -18,19 +18,19 @@ export type NavKey =
 
 const PATH_MAP: Record<NavKey, string> = {
   dashboard: '/',
-  market: '/roles',
-  roles: '/roles',
-  technologies: '/technologies',
-  compare: '/compare',
-  salaries: '/salaries',
-  cloud: '/cloud-tech',
-  countries: '/countries',
-  places: '/countries',
-  resources: '/academy',
-  academy: '/academy',
-  podcasts: '/academy/podcasts',
-  conferences: '/conferences',
-  about: '/about',
+  market: '/roles/',
+  roles: '/roles/',
+  technologies: '/technologies/',
+  compare: '/compare/',
+  salaries: '/salaries/',
+  cloud: '/cloud-tech/',
+  countries: '/countries/',
+  places: '/countries/',
+  resources: '/academy/',
+  academy: '/academy/',
+  podcasts: '/academy/podcasts/',
+  conferences: '/conferences/',
+  about: '/about/',
 };
 
 export function getLocalePath(lang: Locale, key: NavKey): string {
