@@ -3,6 +3,7 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import { ALL_COUNTRIES_META } from './src/data/places';
 import { TECHNOLOGIES_CATALOG } from './src/data/technologies';
+import { COMPARISONS_CATALOG } from './src/data/comparisons';
 
 // Collect all alias paths that return 301 redirects so the sitemap contains ONLY canonical 200 OK URLs
 const countryAliases = new Set();
@@ -17,6 +18,15 @@ for (const t of TECHNOLOGIES_CATALOG) {
   if (t.aliases) {
     for (const a of t.aliases) {
       if (a !== t.id) techAliases.add(a.toLowerCase());
+    }
+  }
+}
+
+const compareAliases = new Set();
+for (const comp of COMPARISONS_CATALOG) {
+  if (comp.aliases) {
+    for (const a of comp.aliases) {
+      if (a !== comp.slug) compareAliases.add(a.toLowerCase());
     }
   }
 }
@@ -38,6 +48,13 @@ function isSitemapAllowed(page) {
   if (techMatch) {
     const slug = techMatch[1];
     if (techAliases.has(slug)) return false;
+  }
+
+  // Filter comparison alias redirects (e.g. reverse /compare/data-scientist-vs-data-engineer/)
+  const compareMatch = page.match(/\/(?:cs\/)?compare\/([a-z0-9-]+)\/?$/);
+  if (compareMatch) {
+    const slug = compareMatch[1];
+    if (compareAliases.has(slug)) return false;
   }
 
   return true;

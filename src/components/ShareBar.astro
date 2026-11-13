@@ -12,10 +12,11 @@ interface Props {
 const { lang, title, sourceUrl, subtitle, className = '' } = Astro.props;
 
 const currentYear = 2026;
-const resolvedUrl = sourceUrl || `https://vector87.com`;
+const currentPath = Astro.url.pathname;
+const resolvedUrl = sourceUrl || `https://vector87.com${currentPath}`;
 const encodedUrl = encodeURIComponent(resolvedUrl);
 const encodedTitle = encodeURIComponent(title);
-const encodedTweet = encodeURIComponent(`${title} — via @vector87`);
+const encodedTweet = encodeURIComponent(`${title} — via @antkucera`);
 
 const linkedinShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`;
 const twitterShareUrl = `https://twitter.com/intent/tweet?text=${encodedTweet}&url=${encodedUrl}`;
