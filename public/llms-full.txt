@@ -154,7 +154,7 @@
   Role vyžaduje hlubokou znalost moderních architektonických vzorů: od distribuovaných Lakehouse systémů (Databricks, Apache Iceberg) přes cloudové sklady (BigQuery, Snowflake) až po datové kontrakty a governance. Zkušený architekt dokáže své návrhy srozumitelně obhájit jak před inženýry, tak před vedením firmy.
 - Core Skills: Python (54.3%), SQL (35.6%), Data Governance & Quality (35.2%), LLM / Large Language Models (33.6%), AI Agents / Agentic AI (28.7%)
 - Technology Stack: Microsoft Azure (41.7%), AWS (36.8%), Databricks (35.2%), MLOps / Evals & Observability (30.4%), Google Cloud Platform (27.9%)
-- Top Hiring Companies: Anthropic (34), Databricks (34), Capgemini (30), OpenAI (21)
+- Top Hiring Companies: Databricks (34), Anthropic (34), Capgemini (30), OpenAI (21)
 
 ### BI / Analytics Manager (Management • Management)
 - Active Job Postings: 193 (0.88% of market)
@@ -168,7 +168,7 @@
   Pozice vyžaduje vyvážený mix technických znalostí (SQL, vizualizační platformy, datové modelování) a manažerských dovedností: schopnost efektivně komunikovat se stakeholdery napříč firmou a udržet pořádek v prioritách a datových metrikách.
 - Core Skills: SQL (44.8%), Data Governance & Quality (41.4%), Python (32.8%), Power BI (31.0%), Tableau (22.4%)
 - Technology Stack: Databricks (17.2%), Snowflake (9.8%), AWS (9.8%), Microsoft Azure (9.2%), Apache Spark (7.5%)
-- Top Hiring Companies: Amgen (5), Marriott International (5), eBay Inc. (5), Publicis Groupe (5)
+- Top Hiring Companies: Marriott International (5), Amgen (5), eBay Inc. (5), Publicis Groupe (5)
 
 ### BI Developer / Analyst (Analytics & DS • IC)
 - Active Job Postings: 173 (0.79% of market)
@@ -196,7 +196,7 @@
   Úspěch v této roli stojí na schopnosti posoudit proveditelnost matematických a statistických metod, nastavit rozumná očekávání u vedení firmy a propojit práci vědců s inženýrskými týmy, které zajišťují provoz systémů.
 - Core Skills: Python (43.5%), LLM / Large Language Models (30.6%), SQL (29.3%), AI Agents / Agentic AI (25.9%), GenAI / Generative AI (23.8%)
 - Technology Stack: MLOps / Evals & Observability (19.0%), Apache Spark (11.6%), AWS (7.5%), Microsoft Azure (6.8%), Databricks (6.1%)
-- Top Hiring Companies: Google (Alphabet) (10), Anthropic (7), OpenAI (7), RELX Group (6)
+- Top Hiring Companies: Google (Alphabet) (10), OpenAI (7), Anthropic (7), RELX Group (6)
 
 ### Analytics Engineer (Data Engineering • IC)
 - Active Job Postings: 165 (0.75% of market)
@@ -236,7 +236,7 @@
 - Syntetizovaný profil (Čeština):
   Engineering Manager (AI & Data) odpovídá za vedení technických týmů datových inženýrů, MLOps specialistů nebo AI vývojářů. Dohlíží na kvalitu kódu, architekturu systémů a hladký průběh projektů, přičemž aktivně odstraňuje překážky a rozvíjí své lidi.
   Ideální kandidát má za sebou vlastní inženýrskou praxi, díky které rozumí technickým detailům i úskalím datových systémů, ale dnes se plně soustředí na organizaci práce, technické standardy a spolupráci s produktovým managementem.
-- Core Skills: LLM / Large Language Models (36.4%), AI Agents / Agentic AI (34.6%), Python (33.6%), Data Governance & Quality (33.6%), GenAI / Generative AI (29.9%)
+- Core Skills: LLM / Large Language Models (36.4%), AI Agents / Agentic AI (34.6%), Data Governance & Quality (33.6%), Python (33.6%), GenAI / Generative AI (29.9%)
 - Technology Stack: MLOps / Evals & Observability (28.0%), Databricks (23.4%), Apache Spark (22.4%), Microsoft Azure (20.6%), AWS (15.9%)
 - Top Hiring Companies: UnitedHealth Group (17), OpenAI (6), Anthropic (3), Nvidia (3)
 
@@ -251,8 +251,8 @@
   Head of AI / Data zastřešuje veškeré datové a AI aktivity ve společnosti nebo její hlavní divizi. Určuje dlouhodobé technologické směřování, nastavuje pravidla pro správu dat a rozhoduje o tom, jaké systémy firma vyvine interně a kde vsadí na hotová komerční řešení.
   Pozice vyžaduje přirozenou autoritu, přehled v moderních cloudových a AI architekturách a schopnost otevřeně mluvit s vedením společnosti o reálných nákladech, rizicích i skutečném přínosu datových projektů.
 - Core Skills: Data Governance & Quality (56.4%), AI Agents / Agentic AI (38.5%), GenAI / Generative AI (23.1%), LLM / Large Language Models (20.5%), Power BI (15.4%)
-- Technology Stack: MLOps / Evals & Observability (20.5%), AWS (10.3%), Google Cloud Platform (7.7%), Microsoft Azure (7.7%), Apache Spark (7.7%)
-- Top Hiring Companies: Comarch (4), Sonae (Continente, Worten) (4), Kojamo (Lumo) (3), Synchrony Financial (3)
+- Technology Stack: MLOps / Evals & Observability (20.5%), AWS (10.3%), Apache Spark (7.7%), Google Cloud Platform (7.7%), Microsoft Azure (7.7%)
+- Top Hiring Companies: Sonae (Continente, Worten) (4), Comarch (4), Kojamo (Lumo) (3), Synchrony Financial (3)
 
 ### MLOps Engineer (Data Engineering • IC)
 - Active Job Postings: 70 (0.32% of market)
@@ -280,7 +280,7 @@
   Tato exekutivní role vyžaduje zkušenosti s vedením rozsáhlých transformací, schopnost řídit velké multidisciplinární týmy a strategicky plánovat víceleté rozpočty na cloudové i personální kapacity.
 - Core Skills: N/A
 - Technology Stack: N/A
-- Top Hiring Companies: Telefónica (Movistar, O2) (2), L'Oréal (2), Société Générale (1), Merck KGaA (1)
+- Top Hiring Companies: Telefónica (Movistar, O2) (2), L'Oréal (2), UnitedHealth Group (1), Barclays (1)
 
 ### NLP Engineer (AI/ML • IC)
 - Active Job Postings: 13 (0.06% of market)
@@ -308,7 +308,7 @@
   Své uplatnění nachází v robotice, autonomních vozidlech, automatizované kontrole výroby nebo medicíně. Podmínkou úspěchu je skvělá znalost Pythonu a C++, knihoven PyTorch a OpenCV a schopnost optimalizovat modely pro rychlý běh na specializovaném hardwaru nebo koncových (edge) zařízeních.
 - Core Skills: Computer Vision (71.4%)
 - Technology Stack: N/A
-- Top Hiring Companies: Colruyt Group (7), Alstom (1), Kraft Heinz (1), Cimbria (AGCO) (1)
+- Top Hiring Companies: Colruyt Group (7), Cimbria (AGCO) (1), Alstom (1), Kraft Heinz (1)
 
 ### LLM / GenAI Engineer (AI/ML • IC)
 - Active Job Postings: 6 (0.03% of market)
@@ -322,7 +322,7 @@
   Na trhu práce je po těchto specialistech obrovská poptávka. Firmy hledají inženýry, kteří ovládají Python a moderní frameworky (LangChain, LlamaIndex), rozumí práci s vektorovými databázemi a dokážou zavést systematické testování kvality (Evals) pro omezení halucinací a nechtěných odpovědí v produkci.
 - Core Skills: GenAI / Generative AI (100.0%), Python (84.2%), LLM / Large Language Models (78.9%), AI Agents / Agentic AI (73.7%), RAG (Retrieval-Augmented Generation) (68.4%)
 - Technology Stack: Microsoft Azure (52.6%), LangChain (42.1%), MLOps / Evals & Observability (36.8%), Vector Databases (31.6%), LangGraph (31.6%)
-- Top Hiring Companies: Ericsson (1), Peakon (Workday) (1), HSBC Holdings (1), Coolblue (1)
+- Top Hiring Companies: HSBC Holdings (1), Coolblue (1), Ericsson (1), BP (1)
 
 ## 5. Author & Methodology
 Author: Antonín Kučera (akucera.eu) | Data & BI Leader, Google Cloud & BigQuery specialist.
