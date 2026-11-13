@@ -221,6 +221,21 @@ const analyzerJsonLd = {
       <p class="text-xs sm:text-sm text-slate-400 mt-1">{t.resultsSub}</p>
     </div>
 
+    <!-- Methodology & Fit Calculation Callout -->
+    <div class="mb-6 p-4 rounded-xl bg-slate-900/60 border border-slate-800 text-xs font-mono text-slate-300 flex items-start gap-3">
+      <span class="text-cyan-400 text-base leading-none mt-0.5">💡</span>
+      <div class="space-y-1">
+        <span class="font-bold text-slate-200 block">
+          {lang === 'cs' ? 'Jak algoritmus počítá shodu (Fit Score)?' : 'How the Fit Score is Calculated:'}
+        </span>
+        <p class="text-slate-400 leading-relaxed font-light">
+          {lang === 'cs'
+            ? 'Skóre kompatibility není prostý počet zaškrtnutých dovedností (např. 6 z 15). Každá dovednost má váhu podle reálné tržní penetrace v aktivních inzerátech. Zvládnutí klíčových požadavků (s poptávkou 70 %+ u dané role) posouvá vaše skóre výrazněji než okrajové nástroje.'
+            : 'Match score is not a naive count of checked boxes (e.g. 6 of 15). Each skill is weighted by its empirical market penetration across enterprise postings. Core proficiencies appearing in 70%+ of job requirements impact your compatibility score significantly more than peripheral tools.'}
+        </p>
+      </div>
+    </div>
+
     <!-- Empty State: No Skills Selected -->
     <div id="empty-state-card" class="p-8 sm:p-12 rounded-xl panel-surface border border-dashed border-slate-800 text-center space-y-4">
       <div class="w-12 h-12 rounded-full bg-slate-900 border border-slate-800 text-cyan-400 flex items-center justify-center mx-auto text-xl">

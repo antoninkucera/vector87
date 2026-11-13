@@ -211,7 +211,11 @@ const salariesJsonLd = {
             <div>
               <div class="flex flex-wrap items-center gap-2 mb-2">
                 <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-slate-800 text-slate-300 border border-slate-700/70">
-                  #{role.tierRank} IN COMPENSATION
+                  {role.tierRank === 1
+                    ? (lang === 'cs' ? '#1 V ODMĚŇOVÁNÍ (EXECUTIVE LEADERSHIP)' : '#1 IN COMPENSATION (EXECUTIVE LEADERSHIP)')
+                    : role.tierRank === 2
+                    ? (lang === 'cs' ? '#2 CELKOVĚ / #1 V IC ENGINEERINGU' : '#2 OVERALL / #1 IN IC ENGINEERING')
+                    : `#${role.tierRank} IN COMPENSATION`}
                 </span>
                 {role.aiPremiumPct > 0 ? (
                   <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-cyan-950 text-cyan-300 border border-cyan-800/60">
@@ -293,26 +297,38 @@ const salariesJsonLd = {
 
           <!-- Live Disclosed Postings Section -->
           {role.liveDisclosedPostings && role.liveDisclosedPostings.length > 0 && (
-            <div class="pt-4 border-t border-slate-800/80">
-              <span class="text-[11px] font-mono text-slate-400 uppercase tracking-wider block mb-2 font-semibold">
-                {t.disclosedPostingsHeading}
-              </span>
-              <div class="flex flex-wrap gap-2">
+            <div class="pt-4 border-t border-slate-800/80 disclosed-postings-section">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[11px] font-mono text-slate-400 uppercase tracking-wider font-semibold">
+                  {t.disclosedPostingsHeading}
+                </span>
+                <span class="text-[10px] font-mono text-slate-500 posting-market-label">
+                  ({SALARY_MARKET_CONFIG.US.name[lang]})
+                </span>
+              </div>
+              <div class="flex flex-wrap gap-2 disclosed-postings-list">
                 {role.liveDisclosedPostings.map((p) => (
                   <a
                     href={p.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="p-2 sm:px-3 sm:py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-cyan-500/40 text-xs text-slate-300 transition-colors inline-flex items-center gap-2"
+                    data-country={p.countryCode}
+                    class="posting-pill p-2 sm:px-3 sm:py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-cyan-500/40 text-xs text-slate-300 transition-colors inline-flex items-center gap-2"
                   >
+                    <span class="text-xs">{p.countryCode === 'US' ? '🇺🇸' : p.countryCode === 'UK' ? '🇬🇧' : p.countryCode === 'CZ' ? '🇨🇿' : '🇪🇺'}</span>
                     <span class="font-bold text-cyan-300">{p.companyName}:</span>
                     <span class="text-slate-200">{p.title}</span>
                     <span class="px-1.5 py-0.2 rounded bg-emerald-950 text-emerald-400 border border-emerald-800 text-[10px] font-mono font-bold">
-                      {p.currency} {p.salaryMin.toLocaleString()}–{p.salaryMax.toLocaleString()}
+                      {p.currency === 'USD' ? '$' : p.currency === 'GBP' ? '£' : p.currency === 'EUR' ? '€' : ''}
+                      {p.salaryMin.toLocaleString()}–{p.salaryMax.toLocaleString()}
+                      {p.currency === 'CZK' ? ' Kč' : ''}
                     </span>
                     <span class="text-slate-500">↗</span>
                   </a>
                 ))}
+              </div>
+              <div class="no-disclosed-market-msg hidden text-[11px] font-mono text-slate-500 italic py-1">
+                {lang === 'cs' ? 'Pro tento trh nejsou v databázi evidovány přímé mzdové inzeráty s rozsahem (zobrazena srovnávací data).' : 'No direct public salary disclosures in this specific market (benchmark model displayed).'}
               </div>
             </div>
           )}
@@ -503,6 +519,42 @@ const salariesJsonLd = {
             }
           }
         });
+
+        // Filter disclosed postings by selected market
+        const pills = card.querySelectorAll<HTMLElement>('.posting-pill');
+        let visiblePills = 0;
+        pills.forEach((pill) => {
+          const cCode = pill.dataset.country;
+          const matches =
+            cCode === market ||
+            (market === 'EU' && ['EU', 'DE', 'FR', 'NL', 'IE', 'ES', 'PL', 'SE'].includes(cCode || ''));
+          if (matches) {
+            pill.classList.remove('hidden');
+            visiblePills++;
+          } else {
+            pill.classList.add('hidden');
+          }
+        });
+
+        const noDisclosedMsg = card.querySelector<HTMLElement>('.no-disclosed-market-msg');
+        if (noDisclosedMsg) {
+          if (visiblePills === 0) {
+            noDisclosedMsg.classList.remove('hidden');
+          } else {
+            noDisclosedMsg.classList.add('hidden');
+          }
+        }
+
+        const indicator = card.querySelector<HTMLElement>('.posting-market-label');
+        if (indicator) {
+          const marketNames: Record<string, { en: string; cs: string }> = {
+            US: { en: 'United States', cs: 'Spojené státy' },
+            UK: { en: 'United Kingdom', cs: 'Velká Británie' },
+            EU: { en: 'European Union', cs: 'Evropská unie' },
+            CZ: { en: 'Česká republika', cs: 'Česká republika' },
+          };
+          indicator.textContent = `(${marketNames[market]?.[isCzech ? 'cs' : 'en'] || market})`;
+        }
       } catch (err) {
         console.error('Error updating card market data:', err);
       }
