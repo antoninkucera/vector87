@@ -19,18 +19,18 @@ if (!comp) {
 }
 
 const homeHref = getLocalePath(lang, 'dashboard');
-const compareListHref = lang === 'en' ? '/compare' : '/cs/compare';
+const compareListHref = lang === 'en' ? '/compare/' : '/cs/compare/';
 
 const pageTitle = `${comp.title[lang]} | Vector87`;
 const pageDescription = comp.subtitle[lang];
 
 const entityAHref = comp.type === 'role'
-  ? `${lang === 'en' ? '/roles' : '/cs/roles'}/${comp.entityA.kebabSlug}`
-  : `${lang === 'en' ? '/technologies' : '/cs/technologies'}/${comp.entityA.kebabSlug}`;
+  ? `${lang === 'en' ? '/roles' : '/cs/roles'}/${comp.entityA.kebabSlug}/`
+  : `${lang === 'en' ? '/technologies' : '/cs/technologies'}/${comp.entityA.kebabSlug}/`;
 
 const entityBHref = comp.type === 'role'
-  ? `${lang === 'en' ? '/roles' : '/cs/roles'}/${comp.entityB.kebabSlug}`
-  : `${lang === 'en' ? '/technologies' : '/cs/technologies'}/${comp.entityB.kebabSlug}`;
+  ? `${lang === 'en' ? '/roles' : '/cs/roles'}/${comp.entityB.kebabSlug}/`
+  : `${lang === 'en' ? '/technologies' : '/cs/technologies'}/${comp.entityB.kebabSlug}/`;
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -289,7 +289,7 @@ const jsonLd = {
         lang={lang}
         title={comp.title[lang]}
         subtitle={comp.subtitle[lang]}
-        sourceUrl={`https://vector87.com${lang === 'en' ? '' : '/cs'}/compare/${comp.slug}`}
+        sourceUrl={`https://vector87.com${lang === 'en' ? '' : '/cs'}/compare/${comp.slug}/`}
       />
 
       <!-- Substack / Newsletter CTA -->

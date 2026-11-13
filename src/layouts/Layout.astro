@@ -49,14 +49,15 @@ const mobileNavItems = mobileNavKeys.map((key) => ({
 }));
 
 const currentPath = Astro.url.pathname;
-const enHref = currentPath.startsWith('/cs')
-  ? currentPath.replace(/^\/cs(\/|$)/, '$1') || '/'
-  : currentPath;
-const csHref = currentPath.startsWith('/cs')
-  ? currentPath
-  : `/cs${currentPath === '/' ? '/' : currentPath}`;
+const normalizedPath = currentPath.endsWith('/') ? currentPath : `${currentPath}/`;
+const enHref = normalizedPath.startsWith('/cs/')
+  ? normalizedPath.replace(/^\/cs\//, '/')
+  : normalizedPath;
+const csHref = normalizedPath.startsWith('/cs/')
+  ? normalizedPath
+  : `/cs${normalizedPath === '/' ? '/' : normalizedPath}`;
 const homeHref = getLocalePath(lang, 'dashboard');
-const canonicalUrl = new URL(currentPath, 'https://vector87.com').href;
+const canonicalUrl = new URL(normalizedPath, 'https://vector87.com').href;
 
 const { meta, market_vitality } = marketData;
 ---
@@ -431,10 +432,10 @@ const { meta, market_vitality } = marketData;
           </p>
         </div>
         <div class="flex flex-wrap items-center gap-5 font-mono text-xs">
-          <a href={lang === 'en' ? '/methodology' : '/cs/methodology'} class="hover:text-cyan-300 transition-colors">
+          <a href={lang === 'en' ? '/methodology/' : '/cs/methodology/'} class="hover:text-cyan-300 transition-colors">
             {t.footer.methodology}
           </a>
-          <a href={lang === 'en' ? '/privacy' : '/cs/privacy'} class="hover:text-cyan-300 transition-colors">
+          <a href={lang === 'en' ? '/privacy/' : '/cs/privacy/'} class="hover:text-cyan-300 transition-colors">
             {t.footer.privacyPolicy}
           </a>
           <button type="button" class="cookie-settings-trigger hover:text-cyan-300 transition-colors cursor-pointer text-left">

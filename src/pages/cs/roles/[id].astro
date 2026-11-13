@@ -27,7 +27,7 @@ interface Props {
 const { roleId, isAlias, targetSlug } = Astro.props;
 
 if (isAlias && targetSlug) {
-  return Astro.redirect(`/cs/roles/${targetSlug}`, 301);
+  return Astro.redirect(`/cs/roles/${targetSlug}/`, 301);
 }
 ---
 

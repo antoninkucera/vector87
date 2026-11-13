@@ -30,7 +30,7 @@ interface Props {
 const { slug, isAlias, targetSlug } = Astro.props;
 
 if (isAlias && targetSlug) {
-  return Astro.redirect(`/compare/${targetSlug}`, 301);
+  return Astro.redirect(`/compare/${targetSlug}/`, 301);
 }
 ---
 

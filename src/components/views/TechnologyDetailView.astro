@@ -20,7 +20,7 @@ if (!tech) {
 
 const t = ui[lang].technologyDetail;
 const homeHref = getLocalePath(lang, 'dashboard');
-const techListHref = lang === 'en' ? '/technologies' : '/cs/technologies';
+const techListHref = lang === 'en' ? '/technologies/' : '/cs/technologies/';
 
 const authorNotes = tech.authorNotes ? tech.authorNotes[lang] : undefined;
 const descriptions = tech.description[lang];
@@ -206,7 +206,7 @@ const jsonLd = {
               </div>
             </div>
             <a
-              href={lang === 'en' ? '/about' : '/cs/about'}
+              href={lang === 'en' ? '/about/' : '/cs/about/'}
               class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono text-slate-300 bg-slate-800/80 hover:bg-slate-700 border border-slate-700 hover:border-cyan-500/40 transition-colors"
             >
               <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
@@ -421,7 +421,7 @@ const jsonLd = {
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             {tech.topRoles.map((r) => (
               <a
-                href={`${lang === 'en' ? '/roles' : '/cs/roles'}/${r.kebabSlug}`}
+                href={`${lang === 'en' ? '/roles' : '/cs/roles'}/${r.kebabSlug}/`}
                 class="group p-5 rounded-xl bg-slate-900/50 hover:bg-slate-800/60 border border-slate-800/80 hover:border-slate-700 transition-all flex items-center justify-between gap-4"
               >
                 <div>
@@ -580,7 +580,7 @@ const jsonLd = {
         lang={lang}
         title={`${tech.name} Market Demand & Hiring Trends`}
         subtitle={tech.description[lang]?.[0]}
-        sourceUrl={`https://vector87.com${lang === 'en' ? '' : '/cs'}/technologies/${tech.id}`}
+        sourceUrl={`https://vector87.com${lang === 'en' ? '' : '/cs'}/technologies/${tech.id}/`}
         className="mb-12"
       />
 
