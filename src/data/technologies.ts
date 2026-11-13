@@ -85,7 +85,7 @@ export interface TechnologyResolved {
   agentFrameworks?: AgentFrameworkMetric[];
 }
 
-export const TECHNOLOGIES_CATALOG: TechnologyDefinition[] = [
+export const CURATED_TECHNOLOGIES_CATALOG: TechnologyDefinition[] = [
   {
     id: 'bigquery',
     name: 'BigQuery & BigLake',
@@ -621,6 +621,152 @@ export const TECHNOLOGIES_CATALOG: TechnologyDefinition[] = [
       { targetSlug: 'kubernetes', targetName: 'Kubernetes' },
     ],
   },
+  {
+    id: 'evals-observability',
+    name: 'MLOps / Evals & Observability',
+    category: 'mlops',
+    aliases: ['evals_observability', 'observability', 'mlops-evals', 'evals'],
+    skillIdMatch: ['evals_observability', 'mlops'],
+    tags: ['MLOps', 'Model Evaluation', 'LLM Evals', 'Observability', 'Tracing', 'LangSmith', 'Arize', 'Weights & Biases'],
+    description: {
+      en: [
+        'MLOps, Model Evaluations (Evals), and Observability represent the mission-critical operational layer for productionizing Machine Learning models and LLM applications.',
+        'Enterprise job descriptions emphasize automated LLM evaluation benchmarks (factual accuracy, hallucination detection, prompt regression testing), distributed tracing, and real-time inference latency / drift monitoring.',
+      ],
+      cs: [
+        'MLOps, evaluace modelů (Evals) a observability představují nezbytnou provozní vrstvu pro nasazování strojového učení i aplikací postavených na LLM do spolehlivého produkčního provozu.',
+        'Firemní inzeráty kladou důraz na automatizované evaluační testy (přesnost, detekce halucinací, regrese promptů), trasování volání agentů a monitoring driftu dat v reálném čase.',
+      ],
+    },
+    comparisons: [
+      { targetSlug: 'ai-agents', targetName: 'AI Agents' },
+      { targetSlug: 'rag', targetName: 'RAG' },
+    ],
+  },
+  {
+    id: 'vector-db',
+    name: 'Vector Databases',
+    category: 'ai-ml',
+    aliases: ['vector_db', 'vector-databases', 'vector_databases', 'vector-search'],
+    skillIdMatch: ['vector_db'],
+    tags: ['Vector Search', 'Embeddings', 'Pinecone', 'Chroma', 'Milvus', 'Weaviate', 'Qdrant', 'pgvector'],
+    description: {
+      en: [
+        'Vector databases and dense vector search engines provide the indexing, similarity search, and retrieval infrastructure required for modern GenAI and RAG applications.',
+        'Hiring managers seek expertise in hybrid retrieval architectures combining dense vector indices (HNSW) with traditional BM25 inverted indexes, metadata filtering, and embedding quantization.',
+      ],
+      cs: [
+        'Vektorové databáze a vyhledávací enginy poskytují indexaci a sémantické vyhledávání nad textovými i multimediálními embeddingy pro moderní generativní AI a RAG aplikace.',
+        'V inzerátech se vyžaduje znalost hybridního vyhledávání (spojení HNSW vektorových indexů s klasickým fulltextovým BM25), filtrování metadat a škálování vektorových skladů.',
+      ],
+    },
+    comparisons: [
+      { targetSlug: 'rag', targetName: 'RAG' },
+      { targetSlug: 'bigquery', targetName: 'BigQuery' },
+    ],
+  },
+  {
+    id: 'fine-tuning',
+    name: 'Model Fine-Tuning & Alignment',
+    category: 'ai-ml',
+    aliases: ['fine_tuning', 'peft', 'lora'],
+    skillIdMatch: ['fine_tuning'],
+    tags: ['Fine-Tuning', 'PEFT', 'LoRA', 'QLoRA', 'RLHF', 'DPO', 'Instruction Tuning', 'Unsloth'],
+    description: {
+      en: [
+        'Model fine-tuning and alignment adapt open-weights foundation models to domain-specific enterprise vocabularies, proprietary APIs, and specialized reasoning workflows.',
+        'Postings prioritize parameter-efficient fine-tuning (PEFT/LoRA/QLoRA), alignment techniques (Direct Preference Optimization - DPO, RLHF), and synthetic dataset generation pipelines.',
+      ],
+      cs: [
+        'Fine-tuning a zarovnání (alignment) jazykových modelů adaptuje open-source foundation modely na firemní slovní zásobu, interní API a specifické myšlenkové postupy.',
+        'Inzeráty poptávají znalost parametricky efektivních metod (PEFT, LoRA, QLoRA), preferenčního učení (DPO, RLHF) a tvorby syntetických trénovacích datasetů.',
+      ],
+    },
+    comparisons: [
+      { targetSlug: 'llm', targetName: 'Large Language Models' },
+      { targetSlug: 'rag', targetName: 'RAG' },
+    ],
+  },
+];
+
+// Auto-synthesize entries for any tracked technology in market-data.json not in curated catalog
+const curatedIds = new Set(
+  CURATED_TECHNOLOGIES_CATALOG.flatMap((t) => [t.id, ...(t.aliases || [])].map((s) => s.toLowerCase().replace(/_/g, '-')))
+);
+
+const autoSynthesizedTechs: TechnologyDefinition[] = [];
+
+// Collect all tracked skills across tech_cloud_stack and trend_radar
+const rawSkills = new Map<string, { id: string; name: string; category?: string }>();
+
+(marketData.tech_cloud_stack?.top_technologies || []).forEach((t: any) => {
+  if (t.skill_id && !rawSkills.has(t.skill_id)) {
+    rawSkills.set(t.skill_id, { id: t.skill_id, name: t.skill_name, category: t.category });
+  }
+});
+
+(marketData.tech_cloud_stack?.hyperscalers || []).forEach((h: any) => {
+  if (h.skill_id && !rawSkills.has(h.skill_id)) {
+    rawSkills.set(h.skill_id, { id: h.skill_id, name: h.skill_name, category: 'Cloud' });
+  }
+});
+
+(marketData.tech_cloud_stack?.data_platforms || []).forEach((p: any) => {
+  if (p.skill_id && !rawSkills.has(p.skill_id)) {
+    rawSkills.set(p.skill_id, { id: p.skill_id, name: p.skill_name, category: 'Database' });
+  }
+});
+
+(marketData.trend_radar?.keywords || []).forEach((k: any) => {
+  if (k.skill_id && !rawSkills.has(k.skill_id)) {
+    rawSkills.set(k.skill_id, { id: k.skill_id, name: k.label || k.skill_id, category: k.category });
+  }
+});
+
+function mapCategory(rawCat?: string): TechnologyDefinition['category'] {
+  const c = (rawCat || '').toLowerCase();
+  if (c.includes('cloud')) return 'cloud';
+  if (c.includes('data') || c.includes('platform') || c.includes('db')) return 'data-platform';
+  if (c.includes('program') || c.includes('lang')) return 'programming';
+  if (c.includes('bi') || c.includes('business') || c.includes('analyt')) return 'bi-analytics';
+  if (c.includes('mlops') || c.includes('ops') || c.includes('eval')) return 'mlops';
+  if (c.includes('ai') || c.includes('ml')) return 'ai-ml';
+  return 'framework';
+}
+
+rawSkills.forEach((item, rawId) => {
+  const slug = rawId.toLowerCase().replace(/_/g, '-');
+  if (!curatedIds.has(slug) && !curatedIds.has(rawId.toLowerCase())) {
+    curatedIds.add(slug);
+    curatedIds.add(rawId.toLowerCase());
+
+    const cat = mapCategory(item.category);
+    const aliases = rawId.toLowerCase() !== slug ? [rawId.toLowerCase()] : [];
+    autoSynthesizedTechs.push({
+      id: slug,
+      name: item.name,
+      category: cat,
+      aliases,
+      skillIdMatch: [rawId.toLowerCase(), slug],
+      tags: [item.name, item.category || 'Technology', 'Enterprise Demand', 'S&P 500'],
+      description: {
+        en: [
+          `${item.name} is a key capability tracked in enterprise AI and data recruitment across the S&P 500 and European markets.`,
+          `Analysis of active postings highlights continuous enterprise adoption of ${item.name} across analytical and engineering roles.`,
+        ],
+        cs: [
+          `${item.name} představuje klíčovou technologickou kompetenci sledovanou v inzerátech předních zaměstnavatelů z indexu S&P 500 i evropského trhu.`,
+          `Z analýzy aktivních inzertních pozic vyplývá stabilní podniková poptávka po znalosti ${item.name} napříč inženýrskými i analytickými týmy.`,
+        ],
+      },
+      comparisons: [],
+    });
+  }
+});
+
+export const TECHNOLOGIES_CATALOG: TechnologyDefinition[] = [
+  ...CURATED_TECHNOLOGIES_CATALOG,
+  ...autoSynthesizedTechs,
 ];
 
 /**
