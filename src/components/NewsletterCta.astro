@@ -62,9 +62,14 @@ const trustBadge = isCs
         rel="noopener noreferrer"
         class="flex flex-col sm:flex-row gap-2.5 items-stretch"
       >
+        <label for="newsletter-email-input" class="sr-only">
+          {isCs ? 'Váš e-mail pro odběr tržního newsletteru' : 'Your email for market intelligence newsletter'}
+        </label>
         <input
+          id="newsletter-email-input"
           type="email"
           name="email"
+          aria-label={isCs ? 'Váš e-mail' : 'Your email'}
           placeholder={isCs ? 'váš@email.cz' : 'your.email@company.com'}
           required
           class="px-4 py-2.5 rounded-lg bg-slate-900 border border-slate-700/90 text-white placeholder-slate-400 text-xs font-mono focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all min-w-[220px]"

@@ -920,7 +920,7 @@ const dashboardJsonLd = {
           <div>
             <div class="flex items-center justify-between mb-3">
               <h4 class="text-sm font-semibold text-white">{t.intensityRankTitle}</h4>
-              <span class="text-[10px] font-mono text-emerald-400 uppercase">EXPANSION %</span>
+              <span class="text-[10px] font-mono text-cyan-400 uppercase tracking-wider">INTENSITY %</span>
             </div>
             <p class="text-[11px] text-slate-400 mb-3">{t.intensityRankSub}</p>
 
@@ -933,9 +933,9 @@ const dashboardJsonLd = {
                     <span class="text-[10px] text-slate-500 block font-normal truncate">{comp.sector}</span>
                   </div>
                   <div class="text-right shrink-0">
-                    <div class="text-emerald-400 font-bold">+{comp.hiring_intensity_ratio_pct}%</div>
+                    <div class="text-cyan-300 font-bold">{comp.hiring_intensity_ratio_pct}%</div>
                     <div class="text-[10px] text-slate-400 font-normal">
-                      {comp.open_data_jobs} open / {comp.total_data_team} team
+                      {comp.open_data_jobs} open / ~{comp.total_data_team} team
                     </div>
                   </div>
                 </div>
